@@ -223,11 +223,45 @@ input.addEventListener("keydown", function(e) {
 
 });
 
+
+
 // ==========================
 // 🚒 SISTEMA TIEMPO REAL
 // ==========================
 
 const panelIncidentes = document.getElementById("listaIncidentes");
+
+// ==========================
+// 🚑 UNIDADES FIJAS
+// ==========================
+
+const unidades = [
+  "Brigada La Ermita G21-G245",
+  "Brigada Los Bronces (Planta)",
+  "Brigada Mina LB",
+  "Brigada Mineroducto",
+  "Brigada Las Tortolas",
+  "Sala Primeros Auxilios Perez Caldera",
+  "Policlinico 220",
+  "Policlinico Las Tortolas"
+];
+
+const listaUnidades = document.getElementById("listaUnidades");
+
+// Crear lista en panel
+unidades.forEach(u => {
+
+  let div = document.createElement("div");
+  div.className = "unidad";
+
+  div.innerHTML = `
+    🚑 <b>${u}</b><br>
+    <small>Estado: Disponible (6-8)</small>
+  `;
+
+  listaUnidades.appendChild(div);
+
+});
 
 const estados = {
   "6-3": "En el lugar",
@@ -318,48 +352,3 @@ function crearIncidente(lugar) {
 
   panelIncidentes.prepend(div);
 }
-
-
-// ==========================
-// 🔥 GENERADOR REALISTA
-// ==========================
-
-// Simula ingreso de emergencias cada 5–10 seg
-function generarEventos() {
-
-  if (lugares.length === 0) return;
-
-  let lugar = lugares[Math.floor(Math.random() * lugares.length)];
-
-  crearIncidente(lugar);
-}
-
-// cada cierto tiempo llega un incidente
-setInterval(generarEventos, Math.random() * 5000 + 5000);
-
-// ==========================
-// 🔥 CREAR INCIDENTES AUTOMÁTICOS
-// ==========================
-
-setTimeout(() => {
-
-  for (let i = 0; i < Math.min(6, lugares.length); i++) {
-    crearIncidente(lugares[i]);
-  }
-
-}, 1500);
-``
-
-// ==========================
-// 🔥 GENERAR INCIDENTES AUTOMÁTICOS
-// ==========================
-
-// Crear algunos incidentes de prueba
-setTimeout(() => {
-
-  for (let i = 0; i < Math.min(5, lugares.length); i++) {
-    crearIncidente(lugares[i]);
-  }
-
-}, 2000);
-
