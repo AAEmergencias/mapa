@@ -316,3 +316,44 @@ map.on("click", function(e) {
   };
   crearIncidente(punto);
 });
+
+// ✅ CONTROL CON TECLADO
+input.addEventListener("keydown", function(e) {
+
+  let items = document.querySelectorAll(".result-item");
+
+  if (!items.length) return;
+
+  if (e.key === "ArrowDown") {
+    selectedIndex++;
+    if (selectedIndex >= items.length) selectedIndex = 0;
+    e.preventDefault();
+  }
+
+  if (e.key === "ArrowUp") {
+    selectedIndex--;
+    if (selectedIndex < 0) selectedIndex = items.length - 1;
+    e.preventDefault();
+  }
+
+  if (e.key === "Enter") {
+  if (items[selectedIndex]) {
+
+    let seleccionado = lugares.filter(l =>
+      l.nombre === items[selectedIndex].innerText
+    )[0];
+
+    if (seleccionado) {
+      crearIncidente(seleccionado);
+    }
+
+    items[selectedIndex].click();
+  }
+}
+
+  // ✅ destacar selección
+  items.forEach((el, index) => {
+    el.style.background = index === selectedIndex ? "#ddd" : "";
+  });
+
+});
