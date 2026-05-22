@@ -45,7 +45,7 @@ const iconos = {
 let lugares = [];
 
 let ubicacionSeleccionada = null;
-let unidadSeleccionada = nu
+let unidadSeleccionada = null;
 
 // ==========================
 // 📥 CARGAR KML (SIN CAPAS)
