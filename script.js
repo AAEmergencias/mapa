@@ -264,6 +264,7 @@ function actualizarEstadoUnidad(nombreUnidad, estado) {
 // 🚒 CREAR INCIDENTE
 // ==========================
 const panelEmergencias = document.getElementById("listaEmergencias");
+let incidenteActivoDiv = null;
 
 function crearIncidente(lugar) {
 
@@ -272,6 +273,9 @@ function crearIncidente(lugar) {
 
   let div = document.createElement("div");
   div.className = "emergencia-card";
+  
+  // 🔥 guardar referencia de la emergencia activa
+incidenteActivoDiv = div;
 
   function render() {
 
@@ -453,18 +457,23 @@ document.getElementById("minPanel").onclick = () => {
 // ==========================
 document.getElementById("btnFinalizar").onclick = () => {
 
-  // limpiar datos
+  // ✅ eliminar tarjeta del panel
+  if (incidenteActivoDiv) {
+    incidenteActivoDiv.remove();
+    incidenteActivoDiv = null;
+  }
+
+  // ✅ limpiar panel activo
   document.getElementById("pTipo").innerText = "";
   document.getElementById("pSubtipo").innerText = "";
   document.getElementById("pUbicacion").innerText = "";
   document.getElementById("pUnidades").innerText = "";
+  document.getElementById("pNotas").value = "";
 
-  // ocultar panel
+  // ✅ ocultar panel
   panelActivo.style.display = "none";
 
-  alert("✅ Emergencia finalizada");
 };
-
 // ==========================
 // 🖱️ PANEL DRAG
 // ==========================
