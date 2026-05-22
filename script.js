@@ -311,7 +311,7 @@ function actualizarEstadoUnidad(nombreUnidad, estado) {
 // ==========================
 // 🚒 CREAR INCIDENTE
 // ==========================
-const panelIncidentes = document.getElementById("listaIncidentes");
+const panelEmergencias = document.getElementById("listaEmergencias");
 
 function crearIncidente(lugar) {
 
@@ -319,15 +319,17 @@ function crearIncidente(lugar) {
   let unidadAsignada = "Sin asignar";
 
   let div = document.createElement("div");
-  div.className = "incidente";
+  div.className = "emergencia-card";
 
   function render() {
 
     div.style.background = coloresEstado[estadoActual];
     div.innerHTML = "";
 
-    div.innerHTML += `<b>${lugar.nombre}</b><br>`;
-    div.innerHTML += `<small>${estadoActual} - ${estados[estadoActual]}</small><br>`;
+    div.innerHTML = `
+  <b>${lugar.nombre}</b><br>
+  <small>Estado: ${estadoActual} - ${estados[estadoActual]}</small>
+`;
 
     let selectUnidad = document.createElement("select");
 
@@ -352,7 +354,7 @@ function crearIncidente(lugar) {
     map.setView(lugar.coords, 16);
   };
 
-  panelIncidentes.prepend(div);
+  panelEmergencias.prepend(div);
 }
 
 // ==========================
