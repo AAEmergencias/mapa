@@ -2,44 +2,63 @@ var map = L.map('map').setView([-33.45, -70.66], 10);
 
 // mapa base
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18
+  maxZoom: 18,
 }).addTo(map);
 
 var lugares = [];
 
-// cargar KML
-omnivore.kml('Central Emergencias OFICIAL NO BORRAR.kml')
-  .on('ready', function () {
+// ✅ CARGAR KML REAL
+fetch('Central Emergencias OFICIAL NO BORRAR.kml')
+  .then(res => res.text())
+  .then(kmlText => {
 
-    map.fitBounds(this.getBounds());
+    // parsear XML
+    const parser = new DOMParser();
+    const kml = parser.parseFromString(kmlText, "text/xml");
 
-    this.eachLayer(function (layer) {
+    // convertir a GeoJSON
+    const geojson = toGeoJSON.kml(kml);
 
-      if (layer.feature && layer.feature.properties) {
+    // dibujar en mapa
+    const layer = L.geoJSON(geojson, {
 
-        let nombre = layer.feature.properties.name || "Sin nombre";
-        let coords = layer.getLatLng();
+      onEachFeature: function (feature, layer) {
+
+        let nombre = "Sin nombre";
+
+        if (feature.properties) {
+          nombre = feature.properties.name || "Sin nombre";
+        }
 
         layer.bindPopup(`<b>${nombre}</b>`);
 
-        lugares.push({
-          nombre,
-          coords,
-          layer
-        });
+        let coords;
 
+        if (layer.getLatLng) {
+          coords = layer.getLatLng();
+        } else if (layer.getBounds) {
+          coords = layer.getBounds().getCenter();
+        }
+
+        if (coords) {
+          lugares.push({
+            nombre: nombre,
+            coords: coords,
+            layer: layer
+          });
+        }
       }
 
-    });
+    }).addTo(map);
 
-  })
-  .addTo(map);
+    map.fitBounds(layer.getBounds());
+
+  });
 
 
-// 🔍 BUSCADOR CON RESULTADOS
+// 🔍 BUSCADOR
 const input = document.getElementById("search");
 
-// crear contenedor de resultados
 const resultBox = document.createElement("div");
 resultBox.id = "results";
 document.body.appendChild(resultBox);
@@ -73,7 +92,7 @@ input.addEventListener("input", function () {
     };
 
     resultBox.appendChild(div);
-
   });
 
 });
+``
