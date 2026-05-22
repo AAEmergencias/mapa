@@ -493,6 +493,4 @@ document.addEventListener("mouseup", () => {
 // ==========================
 // 🔒 OCULTAR PANEL AL INICIO
 // ==========================
-const panelActivo = document.getElementById("panelActivo");
-
 panelActivo.style.display = "none";
