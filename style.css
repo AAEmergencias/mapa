@@ -7,7 +7,7 @@ body {
   height: 100vh;
 }
 
-/* Buscador */
+/* BUSCADOR */
 #search {
   position: absolute;
   top: 15px;
@@ -23,7 +23,7 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Resultados */
+/* RESULTADOS */
 #results {
   position: absolute;
   top: 60px;
@@ -49,4 +49,49 @@ body {
 
 .result-item:hover {
   background: #eee;
+}
+
+/* PANEL */
+#panel {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+
+  width: 220px;
+  max-height: 70vh;
+
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+
+  overflow-y: auto;
+
+  z-index: 1000;
+  box_shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#panel h3 {
+  margin: 5px 0;
+}
+
+.capa-item {
+  padding: 8px;
+  margin-bottom: 5px;
+
+  border-radius: 8px;
+  cursor: pointer;
+
+  background: #f0f0f0;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.capa-item:hover {
+  background: #ddd;
+}
+
+.capa-activa {
+  background: #4CAF50;
+  color: white;
 }
