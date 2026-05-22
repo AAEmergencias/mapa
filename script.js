@@ -154,10 +154,13 @@ const resultBox = document.createElement("div");
 resultBox.id = "results";
 document.body.appendChild(resultBox);
 
+let selectedIndex = -1;
+
 input.addEventListener("input", function () {
 
   let value = this.value.toLowerCase();
   resultBox.innerHTML = "";
+  selectedIndex = -1;
 
   if (value.length === 0) {
     resultBox.style.display = "none";
@@ -170,7 +173,7 @@ input.addEventListener("input", function () {
     l.nombre.toLowerCase().includes(value)
   );
 
-  encontrados.forEach(l => {
+  encontrados.forEach((l, index) => {
 
     let div = document.createElement("div");
     div.className = "result-item";
@@ -187,13 +190,45 @@ input.addEventListener("input", function () {
 
 });
 
+
+// ✅ CONTROL CON TECLADO
+input.addEventListener("keydown", function(e) {
+
+  let items = document.querySelectorAll(".result-item");
+
+  if (!items.length) return;
+
+  if (e.key === "ArrowDown") {
+    selectedIndex++;
+    if (selectedIndex >= items.length) selectedIndex = 0;
+    e.preventDefault();
+  }
+
+  if (e.key === "ArrowUp") {
+    selectedIndex--;
+    if (selectedIndex < 0) selectedIndex = items.length - 1;
+    e.preventDefault();
+  }
+
+  if (e.key === "Enter") {
+    if (items[selectedIndex]) {
+      items[selectedIndex].click();
+    }
+  }
+
+  // ✅ destacar selección
+  items.forEach((el, index) => {
+    el.style.background = index === selectedIndex ? "#ddd" : "";
+  });
+
+});
+
 // ==========================
-// 🚒 SISTEMA DE DESPACHO PRO
+// 🚒 SISTEMA TIEMPO REAL
 // ==========================
 
 const panelIncidentes = document.getElementById("listaIncidentes");
 
-// Estados reales
 const estados = {
   "6-3": "En el lugar",
   "6-7": "Situación Controlada",
@@ -209,7 +244,6 @@ const estados = {
   "6-19": "Sale del túnel"
 };
 
-// Colores por estado
 const coloresEstado = {
   "6-3": "#ff9800",
   "6-7": "#4CAF50",
@@ -227,12 +261,10 @@ const coloresEstado = {
 
 function crearIncidente(lugar) {
 
-  let estadoActual = "6-8"; // disponible por defecto
+  let estadoActual = "6-3"; // iniciar activo
 
   let div = document.createElement("div");
   div.className = "incidente";
-
-  render();
 
   function render() {
 
@@ -243,32 +275,31 @@ function crearIncidente(lugar) {
       <small>${estadoActual} - ${estados[estadoActual]}</small><br>
 
       <select class="estadoSelect">
-        ${Object.entries(estados).map(([clave, texto]) => 
-          `<option value="${clave}" ${clave === estadoActual ? "selected" : ""}>
+        ${Object.entries(estados).map(([clave, texto]) => `
+          <option value="${clave}" ${clave === estadoActual ? "selected" : ""}>
             ${clave} - ${texto}
-          </option>`
-        ).join("")}
+          </option>
+        `).join("")}
       </select>
     `;
   }
 
-  // CLICK → IR AL LUGAR
+  render();
+
+  // CLICK → IR
   div.onclick = () => {
     map.setView(lugar.coords, 17);
     lugar.layer.openPopup();
   };
 
-  // EVENTO DE CAMBIO DE ESTADO
+  // CAMBIO ESTADO
   div.addEventListener("change", (e) => {
 
     if (e.target.classList.contains("estadoSelect")) {
 
       estadoActual = e.target.value;
-
-      // actualizar visual
       render();
 
-      // cambiar icono (ej: emergencia crítica)
       if (lugar.layer.setIcon) {
 
         let iconoNuevo = L.icon({
@@ -285,8 +316,26 @@ function crearIncidente(lugar) {
     e.stopPropagation();
   });
 
-  panelIncidentes.appendChild(div);
+  panelIncidentes.prepend(div);
 }
+
+
+// ==========================
+// 🔥 GENERADOR REALISTA
+// ==========================
+
+// Simula ingreso de emergencias cada 5–10 seg
+function generarEventos() {
+
+  if (lugares.length === 0) return;
+
+  let lugar = lugares[Math.floor(Math.random() * lugares.length)];
+
+  crearIncidente(lugar);
+}
+
+// cada cierto tiempo llega un incidente
+setInterval(generarEventos, Math.random() * 5000 + 5000);
 
 // ==========================
 // 🔥 CREAR INCIDENTES AUTOMÁTICOS
