@@ -101,34 +101,57 @@ body {
   bottom: 10px;
   left: 10px;
 
-  width: 250px;
-  max-height: 300px;
+  width: 260px;
+  max-height: 350px;
 
-  background: white;
+  background: #b71c1c; /* ROJO */
+  color: white;
+
   border-radius: 12px;
   padding: 10px;
 
   overflow-y: auto;
 
   z-index: 1000;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* header */
+#dispatchHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+#dispatchHeader h3 {
+  margin: 0;
+}
+
+/* botón minimizar */
+#toggleDispatch {
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* contenido */
+#dispatchContent {
+  margin-top: 10px;
+}
+
+.unidad {
+  background: rgba(255,255,255,0.2);
+  padding: 6px;
+  margin-bottom: 5px;
+  border-radius: 6px;
 }
 
 .incidente {
-  padding: 8px;
-  margin-bottom: 6px;
-
-  border-radius: 8px;
-  background: #ffe0e0;
-
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.incidente:hover {
-  background: #ffcccc;
-}
-
-.incidente-atendido {
-  background: #d4edda;
+  background: rgba(255,255,255,0.3);
+  margin-top: 6px;
+  padding: 6px;
+  border-radius: 6px;
 }
