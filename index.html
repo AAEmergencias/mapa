@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mapa KML</title>
+  <title>Mapa Emergencias</title>
 
+  <!-- ✅ Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/0; }
     #map { height: 100vh; }
 
@@ -29,10 +30,9 @@
 <input id="search" placeholder="Buscar ubicación..." />
 <div id="map"></div>
 
-<!-- Leaflet -->
-<script src="https://unpkg.com/leaflet/dist/leaft>
-
-<!-- toGeoJSON correctamente -->
+<!-- ✅ Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet
+<!-- ✅ toGeoJSON (BIEN cargado) -->
 <script src="https://unpkg.com/@tmcw/togeojson@4.1.0/dist/togeojson.umd.js"></script>
 
 <script>
@@ -47,17 +47,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 
 var lugares = [];
 
-// ⚠️ IMPORTANTE: CAMBIA ESTE NOMBRE
+// ⚠️ CAMBIA ESTE NOMBRE EXACTO
 fetch('mapa.kml')
   .then(res => res.text())
   .then(kmlText => {
 
-    var parser = new DOMParser();
-    var kml = parser.parseFromString(kmlText, "text/xml");
+    const parser = new DOMParser();
+    const kml = parser.parseFromString(kmlText, "text/xml");
 
-    var geojson = toGeoJSON.kml(kml);
+    const geojson = toGeoJSON.kml(kml);
 
-    var layer = L.geoJSON(geojson, {
+    const layer = L.geoJSON(geojson, {
       onEachFeature: function (feature, layer) {
 
         let nombre = feature.properties.name || "Sin nombre";
@@ -85,8 +85,8 @@ fetch('mapa.kml')
 
   })
   .catch(err => {
-    console.error("Error cargando KML:", err);
-    alert("No se pudo cargar el KML");
+    console.error(err);
+    alert("Error cargando el KML");
   });
 
 </script>
