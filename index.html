@@ -2,27 +2,33 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mapa Emergencias</title>
+  <title>Central Emergencias</title>
 
-  <!-- ✅ Leaflet CSS -->
+  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 
-  <!-- Tu estilo -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
 <input id="search" placeholder="Buscar ubicación..." />
+
+<div id="panel">
+  <h3>Capas</h3>
+  <div id="listaCapas"></div>
+</div>
+
 <div id="map"></div>
 
-<!-- ✅ Leaflet JS -->
+<!-- Leaflet -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-<!-- ✅ toGeoJSON -->
+<!-- toGeoJSON -->
 <script src="https://unpkg.com/@tmcw/togeojson@4.1.0/dist/togeojson.umd.js"></script>
 
-<!-- Tu script -->
+<!-- JS -->
 <script src="script.js"></script>
 
 </body>
