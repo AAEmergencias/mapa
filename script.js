@@ -8,7 +8,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var lugares = [];
 
 // cargar KML
-omnivore.kml('tu_archivo.kml')
+omnivore.kml('Central Emergencias OFICIAL NO BORRAR.kml')
   .on('ready', function () {
 
     map.fitBounds(this.getBounds());
