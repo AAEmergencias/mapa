@@ -236,3 +236,34 @@ body {
   width: 100%;
   border-radius: 5px;
 }
+
+@media (max-width: 768px) {
+
+  #modalEmergencia {
+    width: 95%;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  #btnNuevo {
+    width: 55px;
+    height: 55px;
+    font-size: 26px;
+  }
+
+  #search {
+    width: 90%;
+    left: 5%;
+  }
+
+  #panel {
+    width: 90%;
+    left: 5%;
+  }
+
+  #dispatchPanel {
+    width: 90%;
+    left: 5%;
+  }
+}
