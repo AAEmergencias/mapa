@@ -212,10 +212,19 @@ input.addEventListener("keydown", function(e) {
   }
 
   if (e.key === "Enter") {
-    if (items[selectedIndex]) {
-      items[selectedIndex].click();
+  if (items[selectedIndex]) {
+
+    let seleccionado = lugares.filter(l =>
+      l.nombre === items[selectedIndex].innerText
+    )[0];
+
+    if (seleccionado) {
+      crearIncidente(seleccionado);
     }
+
+    items[selectedIndex].click();
   }
+}
 
   // ✅ destacar selección
   items.forEach((el, index) => {
@@ -431,3 +440,15 @@ function generarEventos() {
 
   crearIncidente(lugar);
 }
+
+                       map.on("click", function(e) {
+
+  let punto = {
+    nombre: "Incidente manual",
+    coords: e.latlng,
+    layer: L.marker(e.latlng).addTo(map)
+  };
+
+  crearIncidente(punto);
+
+});
