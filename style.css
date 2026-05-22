@@ -95,3 +95,40 @@ body {
   background: #4CAF50;
   color: white;
 }
+
+#dispatchPanel {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  width: 250px;
+  max-height: 300px;
+
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+
+  overflow-y: auto;
+
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.incidente {
+  padding: 8px;
+  margin-bottom: 6px;
+
+  border-radius: 8px;
+  background: #ffe0e0;
+
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.incidente:hover {
+  background: #ffcccc;
+}
+
+.incidente-atendido {
+  background: #d4edda;
+}
