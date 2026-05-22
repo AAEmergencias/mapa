@@ -352,3 +352,15 @@ function crearIncidente(lugar) {
 
   panelIncidentes.prepend(div);
 }
+
+const toggleBtn = document.getElementById("toggleDispatch");
+const contenido = document.getElementById("dispatchContent");
+
+let abierto = true;
+
+toggleBtn.onclick = () => {
+  abierto = !abierto;
+
+  contenido.style.display = abierto ? "block" : "none";
+  toggleBtn.innerText = abierto ? "–" : "+";
+};
