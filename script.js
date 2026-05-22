@@ -137,9 +137,6 @@ fetch('mapa.kml')
           contador.innerText = capas[folder].getLayers().length;
         }
 
-        return marker;
-      },
-
       onEachFeature: function (feature, layer) {
 
         let nombre = feature.properties?.name || "Sin nombre";
