@@ -200,12 +200,58 @@ const unidades = [
 
 const listaUnidades = document.getElementById("listaUnidades");
 
-unidades.forEach(u => {
+unidades.forEach((u, i) => {
+
   let div = document.createElement("div");
   div.className = "unidad";
+
   div.innerHTML = `🚑 <b>${u}</b><br><small>Disponible (6-8)</small>`;
   listaUnidades.appendChild(div);
+
+  // 🔥 asignar coordenada (usa los puntos del mapa)
+  if (lugares[i]) {
+    unidadesCoords[u] = lugares[i].coords;
+  }
 });
+
+// ==========================
+// 📍 COORDENADAS DE UNIDADES
+// ==========================
+let unidadesCoords = {};
+
+// ==========================
+// 📏 DISTANCIA ENTRE PUNTOS
+// ==========================
+function distancia(a, b) {
+  let dx = a.lat - b.lat;
+  let dy = a.lng - b.lng;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+// ==========================
+// 🚑 UNIDAD MÁS CERCANA
+// ==========================
+function unidadMasCercana(destino) {
+
+  let mejor = null;
+  let minDist = Infinity;
+
+  unidades.forEach(u => {
+
+    let coords = unidadesCoords[u];
+    if (!coords) return;
+
+    let d = distancia(coords, destino);
+
+    if (d < minDist) {
+      minDist = d;
+      mejor = u;
+    }
+  });
+
+  return mejor;
+}
+
 
 // ==========================
 // 🚒 ESTADOS
@@ -406,6 +452,12 @@ document.getElementById("crear").onclick = () => {
   };
 
   crearIncidente(incidente);
+  // 🔥 AUTO-ASIGNACIÓN POR CERCANÍA
+let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
+
+if (cercana) {
+  actualizarEstadoUnidad(cercana, "6-3");
+}
 
   modal.style.display = "none";
   overlay.style.display = "none";
