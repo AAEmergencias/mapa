@@ -11,7 +11,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var lugares = [];
 
 // Cargar KML desde tu repo
-var kmlLayer = omnivore.kml('tu_archivo.kml')
+var kmlLayer = omnivore.kml('doc.kml')
   .on('ready', function() {
 
     map.fitBounds(kmlLayer.getBounds());
