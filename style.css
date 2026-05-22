@@ -418,3 +418,10 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+
+#search {
+  position: fixed;
+  top: 10px;
+  left: 340px; /* 👈 para que no quede debajo del panel */
+  z-index: 3000;
+}
