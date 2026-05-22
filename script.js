@@ -364,36 +364,6 @@ input.addEventListener("keydown", function(e) {
 
 });
 
- const unidadSelect = document.getElementById("unidadSelect");
-
-unidades.forEach(u => {
-  let op = document.createElement("option");
-  op.value = u;
-  op.text = u;
-  unidadSelect.appendChild(op);
-});
-
-  document.getElementById("btnDespachar").onclick = () => {
-
-  if (!ubicacionSeleccionada) {
-    alert("Selecciona una ubicación primero");
-    return;
-  }
-
-  let tipo = document.getElementById("tipo").value;
-  let subtipo = document.getElementById("subtipo").value;
-  let unidad = document.getElementById("unidadSelect").value;
-
-  let incidente = {
-    nombre: `${tipo} - ${subtipo}`,
-    coords: ubicacionSeleccionada.coords,
-    layer: ubicacionSeleccionada.layer
-  };
-
-  crearIncidente(incidente);
-
-  actualizarEstadoUnidad(unidad, "6-3");
-};
 const modal = document.getElementById("modalEmergencia");
 const overlay = document.getElementById("overlay");
 
