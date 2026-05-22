@@ -367,7 +367,7 @@ unidades.forEach(u => {
   unidadSelect.appendChild(op);
 });
 
-                       document.getElementById("btnDespachar").onclick = () => {
+  document.getElementById("btnDespachar").onclick = () => {
 
   if (!ubicacionSeleccionada) {
     alert("Selecciona una ubicación primero");
@@ -388,3 +388,4 @@ unidades.forEach(u => {
 
   actualizarEstadoUnidad(unidad, "6-3");
 };
+}
