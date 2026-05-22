@@ -1,5 +1,5 @@
 // ==========================
-// 🗺️ MAPA BASE
+// 🗺️ MAPA
 // ==========================
 var map = L.map('map').setView([-33.45, -70.66], 10);
 
@@ -16,7 +16,6 @@ var mapaSatelite = L.tileLayer(
 
 mapaNormal.addTo(map);
 
-// selector base
 L.control.layers({
   "🗺️ Normal": mapaNormal,
   "🛰️ Satélite": mapaSatelite
@@ -41,11 +40,15 @@ const iconos = {
 };
 
 // ==========================
-// 📂 CAPAS DINÁMICAS
+// 📂 CAPAS + PANEL
 // ==========================
-let capas = {}; // aquí se guardan las carpetas
-let controlCapas = L.control.layers(null, null).addTo(map);
+let capas = {};
+let capasActivas = {};
+let listaCapasDiv = document.getElementById("listaCapas");
 
+// ==========================
+// 🔍 DATOS BUSCADOR
+// ==========================
 let lugares = [];
 
 // ==========================
@@ -65,31 +68,53 @@ fetch('mapa.kml')
       pointToLayer: function (feature, latlng) {
 
         let nombre = feature.properties?.name || "Sin nombre";
-
-        // 🔥 Detectar carpeta (clave PRO)
         let folder = feature.properties?.folder || "Otros";
 
         // Crear capa si no existe
         if (!capas[folder]) {
+
           capas[folder] = L.layerGroup().addTo(map);
-          controlCapas.addOverlay(capas[folder], "📂 " + folder);
+          capasActivas[folder] = true;
+
+          let div = document.createElement("div");
+          div.className = "capa-item capa-activa";
+          div.innerHTML = `<span>${folder}</span><span id="count-${folder}">0</span>`;
+
+          div.onclick = () => {
+            capasActivas[folder] = !capasActivas[folder];
+
+            if (capasActivas[folder]) {
+              map.addLayer(capas[folder]);
+              div.classList.add("capa-activa");
+              map.fitBounds(capas[folder].getBounds());
+            } else {
+              map.removeLayer(capas[folder]);
+              div.classList.remove("capa-activa");
+            }
+          };
+
+          listaCapasDiv.appendChild(div);
         }
 
-        // 🎨 Icono según carpeta
+        // Icono según carpeta
         let texto = folder.toLowerCase();
-
         let icono = iconos.general;
 
         if (texto.includes("compañ") || texto.includes("bombero")) {
           icono = iconos.bombero;
-        } 
-        else if (texto.includes("ruta") || texto.includes("camino")) {
+        } else if (texto.includes("ruta") || texto.includes("camino")) {
           icono = iconos.ruta;
         }
 
         let marker = L.marker(latlng, { icon: icono });
 
         capas[folder].addLayer(marker);
+
+        // contador
+        let contador = document.getElementById(`count-${folder}`);
+        if (contador) {
+          contador.innerText = capas[folder].getLayers().length;
+        }
 
         return marker;
       },
@@ -106,29 +131,22 @@ fetch('mapa.kml')
 
         let coords;
 
-        if (layer.getLatLng) {
-          coords = layer.getLatLng();
-        } else if (layer.getBounds) {
-          coords = layer.getBounds().getCenter();
-        }
+        if (layer.getLatLng) coords = layer.getLatLng();
+        else coords = layer.getBounds().getCenter();
 
-        lugares.push({
-          nombre,
-          coords,
-          layer
-        });
+        lugares.push({ nombre, coords, layer });
       }
 
     });
 
     layer.addTo(map);
-
     map.fitBounds(layer.getBounds());
+
   });
 
 
 // ==========================
-// 🔍 BUSCADOR PRO
+// 🔎 BUSCADOR
 // ==========================
 const input = document.getElementById("search");
 
@@ -168,3 +186,4 @@ input.addEventListener("input", function () {
   });
 
 });
+``
