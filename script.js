@@ -52,7 +52,7 @@ let listaCapasDiv = document.getElementById("listaCapas");
 let lugares = [];
 
 // ==========================
-// 📥 CARGAR KML
+// 📥 CARGAR KML (VERSIÓN LIMPIA)
 // ==========================
 fetch('mapa.kml')
   .then(res => res.text())
@@ -65,33 +65,13 @@ fetch('mapa.kml')
 
     const layer = L.geoJSON(geojson, {
 
-      onEachFeature: function (feature, layer) {
+      // ✅ PUNTOS + ICONOS + CAPAS
+      pointToLayer: function (feature, latlng) {
 
         let nombre = feature.properties?.name || "Sin nombre";
+        let folder = feature.properties?.folder || "Otros";
 
-        layer.bindPopup(`<b>${nombre}</b>`);
-
-        let coords;
-
-        if (layer.getLatLng) coords = layer.getLatLng();
-        else coords = layer.getBounds().getCenter();
-
-        lugares.push({
-          nombre,
-          coords,
-          layer
-        });
-
-      }
-
-    }).addTo(map);
-
-    map.fitBounds(layer.getBounds());
-
-  });
-
-
-        // Crear capa si no existe
+        // crear capa si no existe
         if (!capas[folder]) {
 
           capas[folder] = L.layerGroup().addTo(map);
@@ -117,7 +97,7 @@ fetch('mapa.kml')
           listaCapasDiv.appendChild(div);
         }
 
-        // Icono según carpeta
+        // iconos
         let texto = folder.toLowerCase();
         let icono = iconos.general;
 
@@ -137,6 +117,10 @@ fetch('mapa.kml')
           contador.innerText = capas[folder].getLayers().length;
         }
 
+        return marker;
+      },
+
+      // ✅ POPUPS + DATOS
       onEachFeature: function (feature, layer) {
 
         let nombre = feature.properties?.name || "Sin nombre";
@@ -155,14 +139,12 @@ fetch('mapa.kml')
         lugares.push({ nombre, coords, layer });
       }
 
-    });
+    }).addTo(map);
 
-    layer.addTo(map);
     map.fitBounds(layer.getBounds());
 
   });
-
-
+``
 // ==========================
 // 🔎 BUSCADOR
 // ==========================
