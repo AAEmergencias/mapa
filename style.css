@@ -97,35 +97,49 @@ body {
 }
 
 #dispatchPanel {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
 
-  width: 260px;
-  max-height: 350px;
+  width: 320px;
+  height: 100vh;
 
-  background: #b71c1c; /* ROJO */
+  background: #2b2f3a;
   color: white;
 
-  border-radius: 12px;
-  padding: 10px;
-
   overflow-y: auto;
-
-  z-index: 1000;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  z-index: 2000;
 }
 
-/* header */
 #dispatchHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 15px;
+  background: #1e222a;
+  font-weight: bold;
+}
+
+/* UNIDADES */
+.unidad {
+  padding: 10px;
+  border-bottom: 1px solid #444;
   cursor: pointer;
 }
 
-#dispatchHeader h3 {
-  margin: 0;
+.unidad:hover {
+  background: #3a3f4b;
+}
+
+/* PANEL ESTADOS */
+#panelEstados {
+  padding: 10px;
+  background: #1e222a;
+}
+
+.estado-item {
+  padding: 8px;
+  border-radius: 5px;
+  margin: 4px 0;
+  background: #3a3f4b;
+  cursor: pointer;
 }
 
 /* botón minimizar */
