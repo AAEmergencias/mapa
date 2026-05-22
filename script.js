@@ -438,6 +438,7 @@ document.getElementById("cerrar").onclick = () => {
 };
 
 // CREAR EMERGENCIA
+
 document.getElementById("crear").onclick = () => {
 
   let tipo = document.getElementById("tipo").value;
@@ -450,13 +451,82 @@ document.getElementById("crear").onclick = () => {
   };
 
   crearIncidente(incidente);
-  // 🔥 AUTO-ASIGNACIÓN POR CERCANÍA
+
+
+// 🔥 AUTO-ASIGNACIÓN
 let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
+// ✅ MOSTRAR EN PANEL ACTIVO
+document.getElementById("pTipo").innerText = tipo;
+document.getElementById("pSubtipo").innerText = subtipo;
+document.getElementById("pUbicacion").innerText = ubicacionSeleccionada.nombre;
+
 if (cercana) {
+  document.getElementById("pUnidades").innerText = cercana;
   actualizarEstadoUnidad(cercana, "6-3");
 }
+
 
   modal.style.display = "none";
   overlay.style.display = "none";
 };
+
+// ==========================
+// 🔽 MINIMIZAR PANEL ACTIVO
+// ==========================
+const panelActivo = document.getElementById("panelActivo");
+const headerPanel = document.getElementById("headerPanel");
+
+document.getElementById("minPanel").onclick = () => {
+
+  panelActivo.classList.toggle("panel-min");
+
+  // 🔴 PARPADEO
+  if (panelActivo.classList.contains("panel-min")) {
+    headerPanel.classList.add("blink");
+  } else {
+    headerPanel.classList.remove("blink");
+  }
+};
+
+// ==========================
+// ✅ FINALIZAR EMERGENCIA
+// ==========================
+document.getElementById("btnFinalizar").onclick = () => {
+
+  // limpiar datos
+  document.getElementById("pTipo").innerText = "";
+  document.getElementById("pSubtipo").innerText = "";
+  document.getElementById("pUbicacion").innerText = "";
+  document.getElementById("pUnidades").innerText = "";
+
+  // detener parpadeo
+  document.getElementById("headerPanel").classList.remove("blink");
+
+  alert("✅ Emergencia finalizada");
+};
+
+// ==========================
+// 🖱️ PANEL DRAG
+// ==========================
+let dragging = false;
+let offsetX, offsetY;
+
+const header = document.getElementById("headerPanel");
+
+header.addEventListener("mousedown", (e) => {
+  dragging = true;
+  offsetX = e.clientX - panelActivo.offsetLeft;
+  offsetY = e.clientY - panelActivo.offsetTop;
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!dragging) return;
+
+  panelActivo.style.left = (e.clientX - offsetX) + "px";
+  panelActivo.style.top = (e.clientY - offsetY) + "px";
+});
+
+document.addEventListener("mouseup", () => {
+  dragging = false;
+});
