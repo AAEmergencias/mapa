@@ -45,6 +45,7 @@ const iconos = {
 let lugares = [];
 
 let ubicacionSeleccionada = null;
+let unidadSeleccionada = nu
 
 // ==========================
 // 📥 CARGAR KML (SIN CAPAS)
@@ -158,6 +159,12 @@ unidades.forEach((u, i) => {
   div.className = "unidad";
 
   div.innerHTML = `🚑 <b>${u}</b><br><small>Disponible (6-8)</small>`;
+
+  div.onclick = () => {
+  unidadSeleccionada = u;
+  mostrarMenuEstados();
+};
+  
   listaUnidades.appendChild(div);
 
   // 🔥 asignar coordenada (usa los puntos del mapa)
