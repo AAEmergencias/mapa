@@ -231,38 +231,6 @@ input.addEventListener("keydown", function(e) {
 
 const panelIncidentes = document.getElementById("listaIncidentes");
 
-// ==========================
-// 🚑 UNIDADES FIJAS
-// ==========================
-
-const unidades = [
-  "Brigada La Ermita G21-G245",
-  "Brigada Los Bronces (Planta)",
-  "Brigada Mina LB",
-  "Brigada Mineroducto",
-  "Brigada Las Tortolas",
-  "Sala Primeros Auxilios Perez Caldera",
-  "Policlinico 220",
-  "Policlinico Las Tortolas"
-];
-
-const listaUnidades = document.getElementById("listaUnidades");
-
-// Crear lista en panel
-unidades.forEach(u => {
-
-  let div = document.createElement("div");
-  div.className = "unidad";
-
-  div.innerHTML = `
-    🚑 <b>${u}</b><br>
-    <small>Estado: Disponible (6-8)</small>
-  `;
-
-  listaUnidades.appendChild(div);
-
-});
-
 const estados = {
   "6-3": "En el lugar",
   "6-7": "Situación Controlada",
@@ -295,45 +263,55 @@ const coloresEstado = {
 
 function crearIncidente(lugar) {
 
-  let estadoActual = "6-3"; // iniciar activo
+  let estadoActual = "6-3"; // estado inicial
 
   let div = document.createElement("div");
   div.className = "incidente";
 
+  // 🔥 RENDER 100% SEGURO (dropdown funcional)
   function render() {
 
     div.style.background = coloresEstado[estadoActual];
 
-    div.innerHTML = `
-      <b>${lugar.nombre}</b><br>
-      <small>${estadoActual} - ${estados[estadoActual]}</small><br>
+    div.innerHTML = "";
 
-      <select class="estadoSelect">
-        ${Object.entries(estados).map(([clave, texto]) => `
-          <option value="${clave}" ${clave === estadoActual ? "selected" : ""}>
-            ${clave} - ${texto}
-          </option>
-        `).join("")}
-      </select>
-    `;
-  }
+    // Título
+    let titulo = document.createElement("b");
+    titulo.innerText = lugar.nombre;
+    div.appendChild(titulo);
 
-  render();
+    div.appendChild(document.createElement("br"));
 
-  // CLICK → IR
-  div.onclick = () => {
-    map.setView(lugar.coords, 17);
-    lugar.layer.openPopup();
-  };
+    // Estado
+    let estadoTexto = document.createElement("small");
+    estadoTexto.innerText = `${estadoActual} - ${estados[estadoActual]}`;
+    div.appendChild(estadoTexto);
 
-  // CAMBIO ESTADO
-  div.addEventListener("change", (e) => {
+    div.appendChild(document.createElement("br"));
 
-    if (e.target.classList.contains("estadoSelect")) {
+    // SELECT (CLAVES)
+    let select = document.createElement("select");
+    select.className = "estadoSelect";
 
+    Object.entries(estados).forEach(([clave, texto]) => {
+
+      let option = document.createElement("option");
+      option.value = clave;
+      option.text = `${clave} - ${texto}`;
+
+      if (clave === estadoActual) {
+        option.selected = true;
+      }
+
+      select.appendChild(option);
+    });
+
+    // Evento cambio de estado
+    select.onchange = (e) => {
       estadoActual = e.target.value;
       render();
 
+      // cambiar icono en mapa si existe
       if (lugar.layer.setIcon) {
 
         let iconoNuevo = L.icon({
@@ -345,10 +323,18 @@ function crearIncidente(lugar) {
 
         lugar.layer.setIcon(iconoNuevo);
       }
-    }
+    };
 
-    e.stopPropagation();
-  });
+    div.appendChild(select);
+  }
+
+  render();
+
+  // Click en incidente → ir al mapa
+  div.onclick = () => {
+    map.setView(lugar.coords, 17);
+    lugar.layer.openPopup();
+  };
 
   panelIncidentes.prepend(div);
 }
