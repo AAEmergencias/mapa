@@ -160,10 +160,10 @@ unidades.forEach((u, i) => {
 
   div.innerHTML = `🚑 <b>${u}</b><br><small>Disponible (6-8)</small>`;
 
-  div.onclick = () => {
+  div.addEventListener("click", () => {
   unidadSeleccionada = u;
-  mostrarMenuEstados();
-};
+  mostrarEstadosLateral();
+});
   
   listaUnidades.appendChild(div);
 
@@ -511,16 +511,15 @@ document.addEventListener("mouseup", () => {
 // ==========================
 panelActivo.style.display = "none";
 
-// ==========================
-// 🔒 Mostrar MenusEstados
-// ==========================
 
-function mostrarMenuEstados() {
 
-  const menu = document.getElementById("menuEstados");
-  const lista = document.getElementById("listaEstados");
+function mostrarEstadosLateral() {
 
-  lista.innerHTML = "";
+  const panel = document.getElementById("panelEstados");
+
+  if (!panel) return;
+
+  panel.innerHTML = `<b>Estado unidad:</b><br>${unidadSeleccionada}<br><br>`;
 
   Object.entries(estados).forEach(([clave, texto]) => {
 
@@ -529,25 +528,14 @@ function mostrarMenuEstados() {
     item.innerText = `${clave} - ${texto}`;
 
     item.onclick = () => {
+
       actualizarEstadoUnidad(unidadSeleccionada, clave);
-      menu.style.display = "none";
+
+      panel.style.display = "none";
     };
 
-    lista.appendChild(item);
+    panel.appendChild(item);
   });
 
-  menu.style.display = "block";
+  panel.style.display = "block";
 }
-// ==========================
-// 🔒 Cerrar Menu
-// ==========================
-
-document.addEventListener("click", (e) => {
-
-  const menu = document.getElementById("menuEstados");
-
-  if (!menu.contains(e.target) && !e.target.classList.contains("unidad")) {
-    menu.style.display = "none";
-  }
-
-});
