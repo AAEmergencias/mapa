@@ -408,6 +408,9 @@ document.getElementById("crear").onclick = () => {
 
   crearIncidente(incidente);
 
+// ✅ MOSTRAR PANEL
+panelActivo.style.display = "block";
+
 
 // 🔥 AUTO-ASIGNACIÓN
 let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
@@ -456,8 +459,8 @@ document.getElementById("btnFinalizar").onclick = () => {
   document.getElementById("pUbicacion").innerText = "";
   document.getElementById("pUnidades").innerText = "";
 
-  // detener parpadeo
-  document.getElementById("headerPanel").classList.remove("blink");
+  // ocultar panel
+  panelActivo.style.display = "none";
 
   alert("✅ Emergencia finalizada");
 };
@@ -486,3 +489,10 @@ document.addEventListener("mousemove", (e) => {
 document.addEventListener("mouseup", () => {
   dragging = false;
 });
+
+// ==========================
+// 🔒 OCULTAR PANEL AL INICIO
+// ==========================
+const panelActivo = document.getElementById("panelActivo");
+
+panelActivo.style.display = "none";
