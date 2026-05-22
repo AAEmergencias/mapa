@@ -186,4 +186,59 @@ input.addEventListener("input", function () {
   });
 
 });
-``
+
+// ==========================
+// 🚒 SISTEMA DE DESPACHO
+// ==========================
+
+const panelIncidentes = document.getElementById("listaIncidentes");
+
+function crearIncidente(lugar) {
+
+  let div = document.createElement("div");
+  div.className = "incidente";
+
+  div.innerHTML = `
+    <b>${lugar.nombre}</b><br>
+    <button>Despachar</button>
+  `;
+
+  // CLICK EN INCIDENTE
+  div.onclick = () => {
+    map.setView(lugar.coords, 17);
+    lugar.layer.openPopup();
+  };
+
+  // BOTÓN DESPACHAR
+  let boton = div.querySelector("button");
+
+  boton.onclick = (e) => {
+    e.stopPropagation();
+
+    div.classList.add("incidente-atendido");
+
+    // cambiar icono temporal
+    if (lugar.layer.setIcon) {
+      lugar.layer.setIcon(L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/252025.png',
+        iconSize: [35, 35]
+      }));
+    }
+  };
+
+  panelIncidentes.appendChild(div);
+}
+
+// ==========================
+// 🔥 GENERAR INCIDENTES AUTOMÁTICOS
+// ==========================
+
+// Crear algunos incidentes de prueba
+setTimeout(() => {
+
+  for (let i = 0; i < Math.min(5, lugares.length); i++) {
+    crearIncidente(lugares[i]);
+  }
+
+}, 2000);
+
