@@ -417,3 +417,19 @@ toggleBtn.onclick = () => {
   contenido.style.display = abierto ? "block" : "none";
   toggleBtn.innerText = abierto ? "–" : "+";
 };
+
+// ==========================
+// 🔥 GENERADOR DE INCIDENTES
+// ==========================
+
+function generarEventos() {
+
+  if (lugares.length === 0) return;
+
+  let lugar = lugares[Math.floor(Math.random() * lugares.length)];
+
+  crearIncidente(lugar);
+}
+
+// generar cada 5 segundos
+setInterval(generarEventos, 5000);
