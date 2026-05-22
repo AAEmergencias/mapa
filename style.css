@@ -365,3 +365,17 @@ body {
   50% { background: #ff0000; }
   100% { background: #b71c1c; }
 }
+
+#dispatchPanel {
+  width: 350px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* UNIDADES MÁS GRANDES */
+.unidad {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
