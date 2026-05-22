@@ -3,7 +3,7 @@
 // ==========================
 var map = L.map('map').setView([-33.45, -70.66], 10);
 
-// Base maps
+// Capas base
 var mapaNormal = L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   { maxZoom: 19 }
@@ -40,19 +40,16 @@ const iconos = {
 };
 
 // ==========================
-// 📂 CAPAS + PANEL
+// 📂 CAPAS
 // ==========================
 let capas = {};
 let capasActivas = {};
 let listaCapasDiv = document.getElementById("listaCapas");
 
-// ==========================
-// 🔍 DATOS BUSCADOR
-// ==========================
 let lugares = [];
 
 // ==========================
-// 📥 CARGAR KML (VERSIÓN LIMPIA)
+// 📥 CARGAR KML
 // ==========================
 fetch('mapa.kml')
   .then(res => res.text())
@@ -65,15 +62,12 @@ fetch('mapa.kml')
 
     const layer = L.geoJSON(geojson, {
 
-      // ✅ PUNTOS + ICONOS + CAPAS
       pointToLayer: function (feature, latlng) {
 
         let nombre = feature.properties?.name || "Sin nombre";
         let folder = feature.properties?.folder || "Otros";
 
-        // crear capa si no existe
         if (!capas[folder]) {
-
           capas[folder] = L.layerGroup().addTo(map);
           capasActivas[folder] = true;
 
@@ -97,7 +91,6 @@ fetch('mapa.kml')
           listaCapasDiv.appendChild(div);
         }
 
-        // iconos
         let texto = folder.toLowerCase();
         let icono = iconos.general;
 
@@ -111,7 +104,6 @@ fetch('mapa.kml')
 
         capas[folder].addLayer(marker);
 
-        // contador
         let contador = document.getElementById(`count-${folder}`);
         if (contador) {
           contador.innerText = capas[folder].getLayers().length;
@@ -120,7 +112,6 @@ fetch('mapa.kml')
         return marker;
       },
 
-      // ✅ POPUPS + DATOS
       onEachFeature: function (feature, layer) {
 
         let nombre = feature.properties?.name || "Sin nombre";
@@ -131,10 +122,9 @@ fetch('mapa.kml')
           <small>${folder}</small>
         `);
 
-        let coords;
-
-        if (layer.getLatLng) coords = layer.getLatLng();
-        else coords = layer.getBounds().getCenter();
+        let coords = layer.getLatLng
+          ? layer.getLatLng()
+          : layer.getBounds().getCenter();
 
         lugares.push({ nombre, coords, layer });
       }
@@ -144,12 +134,11 @@ fetch('mapa.kml')
     map.fitBounds(layer.getBounds());
 
   });
-``
+
 // ==========================
 // 🔎 BUSCADOR
 // ==========================
 const input = document.getElementById("search");
-
 const resultBox = document.createElement("div");
 resultBox.id = "results";
 document.body.appendChild(resultBox);
@@ -173,74 +162,50 @@ input.addEventListener("input", function () {
     l.nombre.toLowerCase().includes(value)
   );
 
-  encontrados.forEach((l, index) => {
+  encontrados.forEach((l) => {
 
     let div = document.createElement("div");
     div.className = "result-item";
     div.innerText = l.nombre;
 
     div.onclick = () => {
-  map.setView(l.coords, 16);
-  l.layer.openPopup();
+      map.setView(l.coords, 16);
+      l.layer.openPopup();
+      crearIncidente(l);
+      resultBox.style.display = "none";
+    };
 
-  // 🚒 CREAR INCIDENTE MANUAL
-  crearIncidente(l);
-
-  resultBox.style.display = "none";
-};
-
-});
-
-
-// ✅ CONTROL CON TECLADO
-input.addEventListener("keydown", function(e) {
-
-  let items = document.querySelectorAll(".result-item");
-
-  if (!items.length) return;
-
-  if (e.key === "ArrowDown") {
-    selectedIndex++;
-    if (selectedIndex >= items.length) selectedIndex = 0;
-    e.preventDefault();
-  }
-
-  if (e.key === "ArrowUp") {
-    selectedIndex--;
-    if (selectedIndex < 0) selectedIndex = items.length - 1;
-    e.preventDefault();
-  }
-
-  if (e.key === "Enter") {
-  if (items[selectedIndex]) {
-
-    let seleccionado = lugares.filter(l =>
-      l.nombre === items[selectedIndex].innerText
-    )[0];
-
-    if (seleccionado) {
-      crearIncidente(seleccionado);
-    }
-
-    items[selectedIndex].click();
-  }
-}
-
-  // ✅ destacar selección
-  items.forEach((el, index) => {
-    el.style.background = index === selectedIndex ? "#ddd" : "";
+    resultBox.appendChild(div);
   });
 
 });
 
+// ==========================
+// 🚑 UNIDADES
+// ==========================
+const unidades = [
+  "Brigada La Ermita G21-G245",
+  "Brigada Los Bronces (Planta)",
+  "Brigada Mina LB",
+  "Brigada Mineroducto",
+  "Brigada Las Tortolas",
+  "Sala Primeros Auxilios Perez Caldera",
+  "Policlinico 220",
+  "Policlinico Las Tortolas"
+];
 
+const listaUnidades = document.getElementById("listaUnidades");
+
+unidades.forEach(u => {
+  let div = document.createElement("div");
+  div.className = "unidad";
+  div.innerHTML = `🚑 <b>${u}</b><br><small>Disponible (6-8)</small>`;
+  listaUnidades.appendChild(div);
+});
 
 // ==========================
-// 🚒 SISTEMA TIEMPO REAL
+// 🚒 ESTADOS
 // ==========================
-
-const panelIncidentes = document.getElementById("listaIncidentes");
-
 const estados = {
   "6-3": "En el lugar",
   "6-7": "Situación Controlada",
@@ -272,87 +237,8 @@ const coloresEstado = {
 };
 
 // ==========================
-// 🚑 UNIDADES FIJAS
+// 🔄 ACTUALIZAR UNIDAD
 // ==========================
-
-const unidades = [
-  "Brigada La Ermita G21-G245",
-  "Brigada Los Bronces (Planta)",
-  "Brigada Mina LB",
-  "Brigada Mineroducto",
-  "Brigada Las Tortolas",
-  "Sala Primeros Auxilios Perez Caldera",
-  "Policlinico 220",
-  "Policlinico Las Tortolas"
-];
-
-const listaUnidades = document.getElementById("listaUnidades");
-
-// crear lista en panel
-unidades.forEach(u => {
-
-  let div = document.createElement("div");
-  div.className = "unidad";
-
-  div.innerHTML = `
-    🚑 <b>${u}</b><br>
-    <small>Estado: Disponible (6-8)</small>
-  `;
-
-  listaUnidades.appendChild(div);
-});
-
-function crearIncidente(lugar) {
-
-  let estadoActual = "6-3"; // estado incidente
-  let unidadAsignada = "Sin asignar";
-
-  let div = document.createElement("div");
-  div.className = "incidente";
-
-  function render() {
-
-    div.style.background = coloresEstado[estadoActual];
-    div.innerHTML = "";
-
-    // 🔥 TÍTULO
-    let titulo = document.createElement("b");
-    titulo.innerText = lugar.nombre;
-    div.appendChild(titulo);
-
-    div.appendChild(document.createElement("br"));
-
-    // 🔥 ESTADO INCIDENTE
-    let estadoTexto = document.createElement("small");
-    estadoTexto.innerText = `${estadoActual} - ${estados[estadoActual]}`;
-    div.appendChild(estadoTexto);
-
-    div.appendChild(document.createElement("br"));
-
-    // 🔥 SELECT ESTADO
-    let selectEstado = document.createElement("select");
-
-    Object.entries(estados).forEach(([clave, texto]) => {
-      let option = document.createElement("option");
-      option.value = clave;
-      option.text = `${clave} - ${texto}`;
-      if (clave === estadoActual) option.selected = true;
-      selectEstado.appendChild(option);
-    });
-
-    selectEstado.onchange = (e) => {
-      estadoActual = e.target.value;
-      render();
-    };
-
-    div.appendChild(selectEstado);
-
-    div.appendChild(document.createElement("br"));
-
-    // ==========================
-    // 🚑 SELECT UNIDAD
-    // ==========================
-    
 function actualizarEstadoUnidad(nombreUnidad, estado) {
 
   let unidadesHTML = document.querySelectorAll(".unidad");
@@ -366,89 +252,67 @@ function actualizarEstadoUnidad(nombreUnidad, estado) {
         <small>${estado} - ${estados[estado]}</small>
       `;
 
-      // colorear según estado
       div.style.background = coloresEstado[estado];
     }
 
   });
 }
-    
-    let selectUnidad = document.createElement("select");
 
-    let optionDefault = document.createElement("option");
-    optionDefault.text = "Asignar unidad...";
-    optionDefault.disabled = true;
-    optionDefault.selected = unidadAsignada === "Sin asignar";
-    selectUnidad.appendChild(optionDefault);
+// ==========================
+// 🚒 CREAR INCIDENTE
+// ==========================
+const panelIncidentes = document.getElementById("listaIncidentes");
+
+function crearIncidente(lugar) {
+
+  let estadoActual = "6-3";
+  let unidadAsignada = "Sin asignar";
+
+  let div = document.createElement("div");
+  div.className = "incidente";
+
+  function render() {
+
+    div.style.background = coloresEstado[estadoActual];
+    div.innerHTML = "";
+
+    div.innerHTML += `<b>${lugar.nombre}</b><br>`;
+    div.innerHTML += `<small>${estadoActual} - ${estados[estadoActual]}</small><br>`;
+
+    let selectUnidad = document.createElement("select");
 
     unidades.forEach(u => {
       let op = document.createElement("option");
       op.value = u;
       op.text = u;
-      if (u === unidadAsignada) op.selected = true;
       selectUnidad.appendChild(op);
     });
 
     selectUnidad.onchange = (e) => {
       unidadAsignada = e.target.value;
-
-      // 🔥 actualizar unidad en lista
       actualizarEstadoUnidad(unidadAsignada, estadoActual);
-
-      render();
     };
 
     div.appendChild(selectUnidad);
-
-    // 🔥 mostrar unidad seleccionada
-    let unidadTexto = document.createElement("small");
-    unidadTexto.innerText = `Unidad: ${unidadAsignada}`;
-    div.appendChild(unidadTexto);
   }
 
   render();
 
-  // click → ir al mapa
   div.onclick = () => {
-    map.setView(lugar.coords, 17);
-    lugar.layer.openPopup();
+    map.setView(lugar.coords, 16);
   };
 
   panelIncidentes.prepend(div);
 }
-const toggleBtn = document.getElementById("toggleDispatch");
-const contenido = document.getElementById("dispatchContent");
-
-let abierto = true;
-
-toggleBtn.onclick = () => {
-  abierto = !abierto;
-
-  contenido.style.display = abierto ? "block" : "none";
-  toggleBtn.innerText = abierto ? "–" : "+";
-};
 
 // ==========================
-// 🔥 GENERADOR DE INCIDENTES
+// 🖱️ CLICK EN MAPA
 // ==========================
-
-function generarEventos() {
-
-  if (lugares.length === 0) return;
-
-  let lugar = lugares[Math.floor(Math.random() * lugares.length)];
-
-  crearIncidente(lugar);
-}
-
-                       map.on("click", function(e) {
-
+map.on("click", function(e) {
   let punto = {
     nombre: "Incidente manual",
     coords: e.latlng,
     layer: L.marker(e.latlng).addTo(map)
   };
-
   crearIncidente(punto);
-
 });
