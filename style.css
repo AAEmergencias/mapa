@@ -300,3 +300,68 @@ body {
 
   font-size: 13px;
 }
+
+#panelActivo {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+
+  width: 300px;
+
+  background: white;
+  border-radius: 12px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  z-index: 4000;
+}
+
+/* HEADER */
+#headerPanel {
+  background: #c62828;
+  color: white;
+  padding: 10px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  justify-content: space-between;
+  cursor: move;
+}
+
+/* CONTENIDO */
+#contenidoPanel {
+  padding: 10px;
+}
+
+.seccion {
+  margin-bottom: 10px;
+  background: #f5f5f5;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* BOTÓN FINALIZAR */
+#btnFinalizar {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* MINIMIZADO */
+.panel-min {
+  height: 40px;
+  overflow: hidden;
+}
+
+/* PARPADEO ROJO */
+.blink {
+  animation: blinkAnim 1s infinite;
+}
+
+@keyframes blinkAnim {
+  0% { background: #b71c1c; }
+  50% { background: #ff0000; }
+  100% { background: #b71c1c; }
+}
