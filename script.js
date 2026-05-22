@@ -48,6 +48,8 @@ let listaCapasDiv = document.getElementById("listaCapas");
 
 let lugares = [];
 
+let ubicacionSeleccionada = null;
+
 // ==========================
 // 📥 CARGAR KML
 // ==========================
@@ -169,16 +171,18 @@ input.addEventListener("input", function () {
     div.innerText = l.nombre;
 
     div.onclick = () => {
-  map.setView(l.coords, 16);
-  l.layer.openPopup();
+      map.setView(l.coords, 16);
+      l.layer.openPopup();
 
-  // ✅ SOLO SELECCIONA (NO CREA INCIDENTE)
-  let ubicacionSeleccionada = null;
+      ubicacionSeleccionada = l;
 
-  resultBox.style.display = "none";
-};
+      resultBox.style.display = "none";
+    };
 
-});
+    resultBox.appendChild(div); // 👈 FALTABA ESTO
+  });
+
+}); // 👈 ESTE ES EL QUE TE FALTABA
 
 // ==========================
 // 🚑 UNIDADES
