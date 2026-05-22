@@ -430,8 +430,3 @@ function generarEventos() {
 
   crearIncidente(lugar);
 }
-
-setTimeout(() => {
-  crearIncidente(lugares[0]);
-}, 2000);
-
