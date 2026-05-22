@@ -398,19 +398,24 @@ const modal = document.getElementById("modalEmergencia");
 const overlay = document.getElementById("overlay");
 
 // ABRIR MODAL
-document.getElementById("btnNuevo").onclick = () => {
+setTimeout(() => {
 
-  if (!ubicacionSeleccionada) {
-    alert("Selecciona una ubicación en el mapa primero");
-    return;
-  }
+  document.getElementById("btnNuevo").onclick = () => {
 
-  document.getElementById("ubicacion").value =
-    ubicacionSeleccionada.nombre;
+    if (!ubicacionSeleccionada) {
+      alert("Selecciona una ubicación primero");
+      return;
+    }
 
-  modal.style.display = "block";
-  overlay.style.display = "block";
-};
+    document.getElementById("ubicacion").value =
+      ubicacionSeleccionada?.nombre || "";
+
+    modal.style.display = "block";
+    overlay.style.display = "block";
+
+  };
+
+}, 500);
 
 // CERRAR
 document.getElementById("cerrar").onclick = () => {
