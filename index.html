@@ -4,31 +4,41 @@
   <meta charset="UTF-8">
   <title>Central Emergencias</title>
 
-  <!-- Leaflet -->
+  <!-- ✅ Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 
-  <!-- CSS -->
+  <!-- ✅ Tu CSS -->
   <link rel="stylesheet" href="style.css"/>
+
 </head>
 
 <body>
 
+<!-- 🔍 BUSCADOR -->
 <input id="search" placeholder="Buscar ubicación..." />
 
+<!-- 📂 PANEL DE CAPAS -->
 <div id="panel">
   <h3>Capas</h3>
   <div id="listaCapas"></div>
 </div>
 
+<!-- 🚒 PANEL DE DESPACHO -->
+<div id="dispatchPanel">
+  <h3>🚒 Despacho</h3>
+  <div id="listaIncidentes"></div>
+</div>
+
+<!-- 🗺️ MAPA -->
 <div id="map"></div>
 
-<!-- Leaflet -->
+<!-- ✅ Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-<!-- toGeoJSON -->
+<!-- ✅ toGeoJSON -->
 <script src="https://unpkg.com/@tmcw/togeojson@4.1.0/dist/togeojson.umd.js"></script>
 
-<!-- JS -->
+<!-- ✅ Tu script principal -->
 <script src="script.js"></script>
 
 </body>
