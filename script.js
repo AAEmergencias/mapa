@@ -180,13 +180,14 @@ input.addEventListener("input", function () {
     div.innerText = l.nombre;
 
     div.onclick = () => {
-      map.setView(l.coords, 16);
-      l.layer.openPopup();
-      resultBox.style.display = "none";
-    };
+  map.setView(l.coords, 16);
+  l.layer.openPopup();
 
-    resultBox.appendChild(div);
-  });
+  // 🚒 CREAR INCIDENTE MANUAL
+  crearIncidente(l);
+
+  resultBox.style.display = "none";
+};
 
 });
 
