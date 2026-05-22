@@ -42,10 +42,6 @@ const iconos = {
 // ==========================
 // 📂 CAPAS
 // ==========================
-let capas = {};
-let capasActivas = {};
-let listaCapasDiv = document.getElementById("listaCapas");
-
 let lugares = [];
 
 let ubicacionSeleccionada = null;
