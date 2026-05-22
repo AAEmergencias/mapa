@@ -344,7 +344,9 @@ input.addEventListener("keydown", function(e) {
     )[0];
 
     if (seleccionado) {
-      crearIncidente(seleccionado);
+      // ❌ antes creaba incidente automático
+      // ✅ ahora solo selecciona
+      ubicacionSeleccionada = seleccionado;
     }
 
     items[selectedIndex].click();
@@ -388,4 +390,4 @@ unidades.forEach(u => {
 
   actualizarEstadoUnidad(unidad, "6-3");
 };
-}
+
