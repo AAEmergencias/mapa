@@ -15,36 +15,66 @@
 <!-- 🔍 BUSCADOR -->
 <input id="search" placeholder="Buscar ubicación..." />
 
-<!-- 📂 CAPAS -->
-<div id="panel">
-  <h3>Capas</h3>
-  <div id="listaCapas"></div>
-</div>
-
-<!-- 🚒 DESPACHO -->
+<!-- 🚒 ESTADO DEL MATERIAL -->
 <div id="dispatchPanel">
   <div id="dispatchHeader">
     <h3>🚒 Estado del Material</h3>
     <button id="toggleDispatch">–</button>
   </div>
 
-  <div id="panelEmergencias">
-  <h3>🚨 Emergencias Activas</h3>
-  <div id="listaEmergencias"></div>
-</div>
-
   <div id="dispatchContent">
     <div id="listaUnidades"></div>
   </div>
 </div>
 
-<!-- ✅ BOTÓN FLOTANTE (+) -->
+<!-- 🚨 EMERGENCIAS ACTIVAS (LISTA SIMPLE) -->
+<div id="panelEmergencias">
+  <h3>🚨 Emergencias Activas</h3>
+  <div id="listaEmergencias"></div>
+</div>
+
+<!-- 🔴 PANEL PROFESIONAL EMERGENCIA ACTIVA -->
+<div id="panelActivo">
+
+  <div id="headerPanel">
+    🚨 Emergencia Activa
+    <div>
+      <button id="minPanel">–</button>
+    </div>
+  </div>
+
+  <div id="contenidoPanel">
+
+    <div class="seccion">
+      <b>Datos generales</b><br>
+      Tipo: <span id="pTipo"></span><br>
+      Subtipo: <span id="pSubtipo"></span><br>
+      Ubicación: <span id="pUbicacion"></span><br>
+    </div>
+
+    <div class="seccion">
+      🚑 Unidades asignadas:
+      <div id="pUnidades"></div>
+    </div>
+
+    <div class="seccion">
+      📝 Notas:
+      <textarea id="pNotas"></textarea>
+    </div>
+
+    <button id="btnFinalizar">Finalizar Emergencia</button>
+
+  </div>
+
+</div>
+
+<!-- ✅ BOTÓN FLOTANTE -->
 <button id="btnNuevo">+</button>
 
-<!-- ✅ FONDO OSCURO -->
+<!-- ✅ OVERLAY -->
 <div id="overlay"></div>
 
-<!-- ✅ MODAL NUEVA EMERGENCIA -->
+<!-- ✅ MODAL CREAR EMERGENCIA -->
 <div id="modalEmergencia">
 
   <h2>🚨 Nueva Emergencia</h2>
