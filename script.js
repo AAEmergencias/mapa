@@ -188,46 +188,118 @@ input.addEventListener("input", function () {
 });
 
 // ==========================
-// 🚒 SISTEMA DE DESPACHO
+// 🚒 SISTEMA DE DESPACHO PRO
 // ==========================
 
 const panelIncidentes = document.getElementById("listaIncidentes");
 
+// Estados reales
+const estados = {
+  "6-3": "En el lugar",
+  "6-7": "Situación Controlada",
+  "6-8": "Disponible",
+  "6-9": "Se Retira",
+  "6-10": "En Base",
+  "6-11": "En Panne",
+  "6-12": "Sufre Colisión",
+  "6-13": "Otros Trámites",
+  "6-14": "Servicentro",
+  "6-15": "Centro Asistencial",
+  "6-18": "Ingresa a Túnel",
+  "6-19": "Sale del túnel"
+};
+
+// Colores por estado
+const coloresEstado = {
+  "6-3": "#ff9800",
+  "6-7": "#4CAF50",
+  "6-8": "#2196F3",
+  "6-9": "#9C27B0",
+  "6-10": "#607D8B",
+  "6-11": "#f44336",
+  "6-12": "#b71c1c",
+  "6-13": "#795548",
+  "6-14": "#3F51B5",
+  "6-15": "#009688",
+  "6-18": "#ff5722",
+  "6-19": "#8bc34a"
+};
+
 function crearIncidente(lugar) {
+
+  let estadoActual = "6-8"; // disponible por defecto
 
   let div = document.createElement("div");
   div.className = "incidente";
 
-  div.innerHTML = `
-    <b>${lugar.nombre}</b><br>
-    <button>Despachar</button>
-  `;
+  render();
 
-  // CLICK EN INCIDENTE
+  function render() {
+
+    div.style.background = coloresEstado[estadoActual];
+
+    div.innerHTML = `
+      <b>${lugar.nombre}</b><br>
+      <small>${estadoActual} - ${estados[estadoActual]}</small><br>
+
+      <select class="estadoSelect">
+        ${Object.entries(estados).map(([clave, texto]) => 
+          `<option value="${clave}" ${clave === estadoActual ? "selected" : ""}>
+            ${clave} - ${texto}
+          </option>`
+        ).join("")}
+      </select>
+    `;
+  }
+
+  // CLICK → IR AL LUGAR
   div.onclick = () => {
     map.setView(lugar.coords, 17);
     lugar.layer.openPopup();
   };
 
-  // BOTÓN DESPACHAR
-  let boton = div.querySelector("button");
+  // EVENTO DE CAMBIO DE ESTADO
+  div.addEventListener("change", (e) => {
 
-  boton.onclick = (e) => {
-    e.stopPropagation();
+    if (e.target.classList.contains("estadoSelect")) {
 
-    div.classList.add("incidente-atendido");
+      estadoActual = e.target.value;
 
-    // cambiar icono temporal
-    if (lugar.layer.setIcon) {
-      lugar.layer.setIcon(L.icon({
-        iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/252025.png',
-        iconSize: [35, 35]
-      }));
+      // actualizar visual
+      render();
+
+      // cambiar icono (ej: emergencia crítica)
+      if (lugar.layer.setIcon) {
+
+        let iconoNuevo = L.icon({
+          iconUrl: estadoActual === "6-11" || estadoActual === "6-12"
+            ? 'https://cdn-icons-png.flaticon.com/512/564/564619.png'
+            : 'https://cdn-icons-png.flaticon.com/512/252/252025.png',
+          iconSize: [35, 35]
+        });
+
+        lugar.layer.setIcon(iconoNuevo);
+      }
     }
-  };
+
+    e.stopPropagation();
+  });
 
   panelIncidentes.appendChild(div);
 }
+
+// ==========================
+// 🔥 CREAR INCIDENTES AUTOMÁTICOS
+// ==========================
+
+setTimeout(() => {
+
+  for (let i = 0; i < Math.min(6, lugares.length); i++) {
+    crearIncidente(lugares[i]);
+  }
+
+}, 1500);
+``
 
 // ==========================
 // 🔥 GENERAR INCIDENTES AUTOMÁTICOS
