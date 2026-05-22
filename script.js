@@ -1,27 +1,25 @@
+// Crear mapa
 var map = L.map('map').setView([-33.45, -70.66], 10);
 
-// mapa base
+// Capa base
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18,
+  maxZoom: 18
 }).addTo(map);
 
+// Array de lugares
 var lugares = [];
 
-// ✅ CARGAR KML REAL
+// ✅ Cargar KML
 fetch('mapa.kml')
   .then(res => res.text())
   .then(kmlText => {
 
-    // parsear XML
     const parser = new DOMParser();
     const kml = parser.parseFromString(kmlText, "text/xml");
 
-    // convertir a GeoJSON
     const geojson = toGeoJSON.kml(kml);
 
-    // dibujar en mapa
     const layer = L.geoJSON(geojson, {
-
       onEachFeature: function (feature, layer) {
 
         let nombre = "Sin nombre";
@@ -36,29 +34,27 @@ fetch('mapa.kml')
 
         if (layer.getLatLng) {
           coords = layer.getLatLng();
-        } else if (layer.getBounds) {
+        } else {
           coords = layer.getBounds().getCenter();
         }
 
-        if (coords) {
-          lugares.push({
-            nombre: nombre,
-            coords: coords,
-            layer: layer
-          });
-        }
+        lugares.push({
+          nombre,
+          coords,
+          layer
+        });
       }
-
     }).addTo(map);
 
     map.fitBounds(layer.getBounds());
-
   });
 
 
-// 🔍 BUSCADOR
+// ✅ BUSCADOR CON RESULTADOS
+
 const input = document.getElementById("search");
 
+// Crear caja de resultados
 const resultBox = document.createElement("div");
 resultBox.id = "results";
 document.body.appendChild(resultBox);
@@ -95,4 +91,3 @@ input.addEventListener("input", function () {
   });
 
 });
-``
