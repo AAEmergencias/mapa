@@ -2,33 +2,55 @@
 var map = L.map('map').setView([-33.45, -70.66], 10);
 
 // 🌍 Mapa normal
-var mapaNormal = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19
-});
-
-// 🛰️ Mapa satelital (ESRI - gratis y bueno)
-var mapaSatelite = L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  {
-    maxZoom: 19
-  }
+var mapaNormal = L.tileLayer(
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  { maxZoom: 19 }
 );
 
-// Agregar por defecto el normal
+// 🛰️ Satelital
+var mapaSatelite = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  { maxZoom: 19 }
+);
+
 mapaNormal.addTo(map);
 
-// ✅ Control para cambiar
-var baseMaps = {
+L.control.layers({
   "🗺️ Normal": mapaNormal,
   "🛰️ Satélite": mapaSatelite
-};
+}).addTo(map);
 
-L.control.layers(baseMaps).addTo(map);
+// 🔥 ICONOS
+var iconoBombero = L.icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/482/482266.png',
+  iconSize: [30, 30]
+});
 
-// Array de lugares
+var iconoRuta = L.icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+  iconSize: [25, 25]
+});
+
+var iconoGeneral = L.icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/854/854878.png',
+  iconSize: [25, 25]
+});
+
+// ✅ CAPAS (filtros)
+var capaBomberos = L.layerGroup().addTo(map);
+var capaRutas = L.layerGroup().addTo(map);
+var capaOtros = L.layerGroup().addTo(map);
+
+L.control.layers(null, {
+  "🚒 Bomberos": capaBomberos,
+  "🛣️ Rutas": capaRutas,
+  "📍 Otros": capaOtros
+}).addTo(map);
+
+// Array buscador
 var lugares = [];
 
-// ✅ Cargar KML
+// Cargar KML
 fetch('mapa.kml')
   .then(res => res.text())
   .then(kmlText => {
@@ -39,13 +61,32 @@ fetch('mapa.kml')
     const geojson = toGeoJSON.kml(kml);
 
     const layer = L.geoJSON(geojson, {
+      pointToLayer: function (feature, latlng) {
+
+        let nombre = feature.properties.name || "";
+
+        let icono = iconoGeneral;
+        let capa = capaOtros;
+
+        // 🔍 Detectar tipo
+        if (nombre.toLowerCase().includes("compañ") || nombre.toLowerCase().includes("bombero")) {
+          icono = iconoBombero;
+          capa = capaBomberos;
+        } else if (nombre.toLowerCase().includes("ruta") || nombre.toLowerCase().includes("camino")) {
+          icono = iconoRuta;
+          capa = capaRutas;
+        }
+
+        let marker = L.marker(latlng, { icon: icono });
+
+        capa.addLayer(marker);
+
+        return marker;
+      },
+
       onEachFeature: function (feature, layer) {
 
-        let nombre = "Sin nombre";
-
-        if (feature.properties) {
-          nombre = feature.properties.name || "Sin nombre";
-        }
+        let nombre = feature.properties.name || "Sin nombre";
 
         layer.bindPopup(`<b>${nombre}</b>`);
 
@@ -63,17 +104,17 @@ fetch('mapa.kml')
           layer
         });
       }
-    }).addTo(map);
 
-    map.fitBounds(layer.getBounds());
+    });
+
+    map.fitBounds(capaOtros.getBounds());
+
   });
 
 
-// ✅ BUSCADOR CON RESULTADOS
-
+// ✅ BUSCADOR PRO
 const input = document.getElementById("search");
 
-// Crear caja de resultados
 const resultBox = document.createElement("div");
 resultBox.id = "results";
 document.body.appendChild(resultBox);
@@ -101,7 +142,7 @@ input.addEventListener("input", function () {
     div.innerText = l.nombre;
 
     div.onclick = () => {
-      map.setView(l.coords, 15);
+      map.setView(l.coords, 16);
       l.layer.openPopup();
       resultBox.style.display = "none";
     };
