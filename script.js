@@ -8,7 +8,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var lugares = [];
 
 // ✅ CARGAR KML REAL
-fetch('Central Emergencias OFICIAL NO BORRAR.kml')
+fetch('mapa.kml')
   .then(res => res.text())
   .then(kmlText => {
 
