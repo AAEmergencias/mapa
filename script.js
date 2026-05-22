@@ -314,7 +314,7 @@ map.on("click", function(e) {
     coords: e.latlng,
     layer: L.marker(e.latlng).addTo(map)
   };
-  crearIncidente(punto);
+  ubicacionSeleccionada = punto;
 });
 
 // ✅ CONTROL CON TECLADO
