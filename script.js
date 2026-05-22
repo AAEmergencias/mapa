@@ -357,3 +357,12 @@ input.addEventListener("keydown", function(e) {
   });
 
 });
+
+ const unidadSelect = document.getElementById("unidadSelect");
+
+unidades.forEach(u => {
+  let op = document.createElement("option");
+  op.value = u;
+  op.text = u;
+  unidadSelect.appendChild(op);
+});
