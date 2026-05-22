@@ -65,10 +65,31 @@ fetch('mapa.kml')
 
     const layer = L.geoJSON(geojson, {
 
-      pointToLayer: function (feature, latlng) {
+      onEachFeature: function (feature, layer) {
 
         let nombre = feature.properties?.name || "Sin nombre";
-        let folder = feature.properties?.folder || "Otros";
+
+        layer.bindPopup(`<b>${nombre}</b>`);
+
+        let coords;
+
+        if (layer.getLatLng) coords = layer.getLatLng();
+        else coords = layer.getBounds().getCenter();
+
+        lugares.push({
+          nombre,
+          coords,
+          layer
+        });
+
+      }
+
+    }).addTo(map);
+
+    map.fitBounds(layer.getBounds());
+
+  });
+
 
         // Crear capa si no existe
         if (!capas[folder]) {
