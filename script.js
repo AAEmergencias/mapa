@@ -1,24 +1,22 @@
 // ==========================
-// 🗺️ CREAR MAPA
+// 🗺️ MAPA BASE
 // ==========================
 var map = L.map('map').setView([-33.45, -70.66], 10);
 
-// 🌍 Mapa normal
+// Base maps
 var mapaNormal = L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   { maxZoom: 19 }
 );
 
-// 🛰️ Satelital
 var mapaSatelite = L.tileLayer(
   'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
   { maxZoom: 19 }
 );
 
-// Activar mapa base
 mapaNormal.addTo(map);
 
-// Control de capas base
+// selector base
 L.control.layers({
   "🗺️ Normal": mapaNormal,
   "🛰️ Satélite": mapaSatelite
@@ -27,39 +25,28 @@ L.control.layers({
 // ==========================
 // 🎨 ICONOS
 // ==========================
-var iconoBombero = L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/482/482266.png',
-  iconSize: [35, 35]
-});
-
-var iconoRuta = L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-  iconSize: [30, 30]
-});
-
-var iconoGeneral = L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/854/854878.png',
-  iconSize: [28, 28]
-});
-
-// ==========================
-// 📂 CAPAS (FILTROS)
-// ==========================
-var capaBomberos = L.layerGroup().addTo(map);
-var capaRutas = L.layerGroup().addTo(map);
-var capaOtros = L.layerGroup().addTo(map);
-
-// Control visible para activar/desactivar
-L.control.layers(null, {
-  "🚒 Bomberos": capaBomberos,
-  "🛣️ Rutas": capaRutas,
-  "📍 Otros": capaOtros
-}).addTo(map);
+const iconos = {
+  bombero: L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/482/482266.png',
+    iconSize: [35, 35]
+  }),
+  ruta: L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+    iconSize: [30, 30]
+  }),
+  general: L.icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/854/854878.png',
+    iconSize: [28, 28]
+  })
+};
 
 // ==========================
-// 🔍 BUSCADOR DATA
+// 📂 CAPAS DINÁMICAS
 // ==========================
-var lugares = [];
+let capas = {}; // aquí se guardan las carpetas
+let controlCapas = L.control.layers(null, null).addTo(map);
+
+let lugares = [];
 
 // ==========================
 // 📥 CARGAR KML
@@ -73,32 +60,36 @@ fetch('mapa.kml')
 
     const geojson = toGeoJSON.kml(kml);
 
-    // ✅ AQUÍ ESTÁ EL FIX DE LOS ICONOS
     const layer = L.geoJSON(geojson, {
 
       pointToLayer: function (feature, latlng) {
 
-        let nombre = feature.properties?.name || "";
+        let nombre = feature.properties?.name || "Sin nombre";
 
-        let icono = iconoGeneral;
-        let capa = capaOtros;
+        // 🔥 Detectar carpeta (clave PRO)
+        let folder = feature.properties?.folder || "Otros";
 
-        let texto = nombre.toLowerCase();
+        // Crear capa si no existe
+        if (!capas[folder]) {
+          capas[folder] = L.layerGroup().addTo(map);
+          controlCapas.addOverlay(capas[folder], "📂 " + folder);
+        }
 
-        // 🔍 DETECCIÓN (puedes ajustar después)
+        // 🎨 Icono según carpeta
+        let texto = folder.toLowerCase();
+
+        let icono = iconos.general;
+
         if (texto.includes("compañ") || texto.includes("bombero")) {
-          icono = iconoBombero;
-          capa = capaBomberos;
-
-        } else if (texto.includes("ruta") || texto.includes("camino")) {
-          icono = iconoRuta;
-          capa = capaRutas;
+          icono = iconos.bombero;
+        } 
+        else if (texto.includes("ruta") || texto.includes("camino")) {
+          icono = iconos.ruta;
         }
 
         let marker = L.marker(latlng, { icon: icono });
 
-        // ✅ IMPORTANTE: AGREGAR A CAPA
-        capa.addLayer(marker);
+        capas[folder].addLayer(marker);
 
         return marker;
       },
@@ -106,8 +97,12 @@ fetch('mapa.kml')
       onEachFeature: function (feature, layer) {
 
         let nombre = feature.properties?.name || "Sin nombre";
+        let folder = feature.properties?.folder || "Otros";
 
-        layer.bindPopup(`<b>${nombre}</b>`);
+        layer.bindPopup(`
+          <b>${nombre}</b><br>
+          <small>${folder}</small>
+        `);
 
         let coords;
 
@@ -126,17 +121,14 @@ fetch('mapa.kml')
 
     });
 
-    // ✅ AGREGAR AL MAPA
     layer.addTo(map);
 
-    // ✅ AJUSTAR VISTA
-    map.fitBounds(capaOtros.getBounds());
-
+    map.fitBounds(layer.getBounds());
   });
 
 
 // ==========================
-// 🔎 BUSCADOR PRO
+// 🔍 BUSCADOR PRO
 // ==========================
 const input = document.getElementById("search");
 
