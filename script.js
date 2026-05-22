@@ -169,14 +169,14 @@ input.addEventListener("input", function () {
     div.innerText = l.nombre;
 
     div.onclick = () => {
-      map.setView(l.coords, 16);
-      l.layer.openPopup();
-      crearIncidente(l);
-      resultBox.style.display = "none";
-    };
+  map.setView(l.coords, 16);
+  l.layer.openPopup();
 
-    resultBox.appendChild(div);
-  });
+  // ✅ SOLO SELECCIONA (NO CREA INCIDENTE)
+  let ubicacionSeleccionada = null;
+
+  resultBox.style.display = "none";
+};
 
 });
 
