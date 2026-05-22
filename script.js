@@ -231,6 +231,37 @@ input.addEventListener("keydown", function(e) {
 
 const panelIncidentes = document.getElementById("listaIncidentes");
 
+// ==========================
+// 🚑 UNIDADES FIJAS
+// ==========================
+
+const unidades = [
+  "Brigada La Ermita G21-G245",
+  "Brigada Los Bronces (Planta)",
+  "Brigada Mina LB",
+  "Brigada Mineroducto",
+  "Brigada Las Tortolas",
+  "Sala Primeros Auxilios Perez Caldera",
+  "Policlinico 220",
+  "Policlinico Las Tortolas"
+];
+
+const listaUnidades = document.getElementById("listaUnidades");
+
+// crear lista en panel
+unidades.forEach(u => {
+
+  let div = document.createElement("div");
+  div.className = "unidad";
+
+  div.innerHTML = `
+    🚑 <b>${u}</b><br>
+    <small>Estado: Disponible (6-8)</small>
+  `;
+
+  listaUnidades.appendChild(div);
+});
+
 const estados = {
   "6-3": "En el lugar",
   "6-7": "Situación Controlada",
