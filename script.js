@@ -510,3 +510,44 @@ document.addEventListener("mouseup", () => {
 // 🔒 OCULTAR PANEL AL INICIO
 // ==========================
 panelActivo.style.display = "none";
+
+// ==========================
+// 🔒 Mostrar MenusEstados
+// ==========================
+
+function mostrarMenuEstados() {
+
+  const menu = document.getElementById("menuEstados");
+  const lista = document.getElementById("listaEstados");
+
+  lista.innerHTML = "";
+
+  Object.entries(estados).forEach(([clave, texto]) => {
+
+    let item = document.createElement("div");
+    item.className = "estado-item";
+    item.innerText = `${clave} - ${texto}`;
+
+    item.onclick = () => {
+      actualizarEstadoUnidad(unidadSeleccionada, clave);
+      menu.style.display = "none";
+    };
+
+    lista.appendChild(item);
+  });
+
+  menu.style.display = "block";
+}
+// ==========================
+// 🔒 Cerrar Menu
+// ==========================
+
+document.addEventListener("click", (e) => {
+
+  const menu = document.getElementById("menuEstados");
+
+  if (!menu.contains(e.target) && !e.target.classList.contains("unidad")) {
+    menu.style.display = "none";
+  }
+
+});
