@@ -291,76 +291,114 @@ unidades.forEach(u => {
 
   listaUnidades.appendChild(div);
 });
+
 function crearIncidente(lugar) {
 
-  let estadoActual = "6-3"; // estado inicial
+  let estadoActual = "6-3"; // estado incidente
+  let unidadAsignada = "Sin asignar";
 
   let div = document.createElement("div");
   div.className = "incidente";
 
-  // 🔥 RENDER 100% SEGURO (dropdown funcional)
   function render() {
 
     div.style.background = coloresEstado[estadoActual];
-
     div.innerHTML = "";
 
-    // Título
+    // 🔥 TÍTULO
     let titulo = document.createElement("b");
     titulo.innerText = lugar.nombre;
     div.appendChild(titulo);
 
     div.appendChild(document.createElement("br"));
 
-    // Estado
+    // 🔥 ESTADO INCIDENTE
     let estadoTexto = document.createElement("small");
     estadoTexto.innerText = `${estadoActual} - ${estados[estadoActual]}`;
     div.appendChild(estadoTexto);
 
     div.appendChild(document.createElement("br"));
 
-    // SELECT (CLAVES)
-    let select = document.createElement("select");
-    select.className = "estadoSelect";
+    // 🔥 SELECT ESTADO
+    let selectEstado = document.createElement("select");
 
     Object.entries(estados).forEach(([clave, texto]) => {
-
       let option = document.createElement("option");
       option.value = clave;
       option.text = `${clave} - ${texto}`;
-
-      if (clave === estadoActual) {
-        option.selected = true;
-      }
-
-      select.appendChild(option);
+      if (clave === estadoActual) option.selected = true;
+      selectEstado.appendChild(option);
     });
 
-    // Evento cambio de estado
-    select.onchange = (e) => {
+    selectEstado.onchange = (e) => {
       estadoActual = e.target.value;
       render();
-
-      // cambiar icono en mapa si existe
-      if (lugar.layer.setIcon) {
-
-        let iconoNuevo = L.icon({
-          iconUrl: estadoActual === "6-11" || estadoActual === "6-12"
-            ? 'https://cdn-icons-png.flaticon.com/512/564/564619.png'
-            : 'https://cdn-icons-png.flaticon.com/512/252/252025.png',
-          iconSize: [35, 35]
-        });
-
-        lugar.layer.setIcon(iconoNuevo);
-      }
     };
 
-    div.appendChild(select);
+    div.appendChild(selectEstado);
+
+    div.appendChild(document.createElement("br"));
+
+    // ==========================
+    // 🚑 SELECT UNIDAD
+    // ==========================
+    
+function actualizarEstadoUnidad(nombreUnidad, estado) {
+
+  let unidadesHTML = document.querySelectorAll(".unidad");
+
+  unidadesHTML.forEach(div => {
+
+    if (div.innerText.includes(nombreUnidad)) {
+
+      div.innerHTML = `
+        🚑 <b>${nombreUnidad}</b><br>
+        <small>${estado} - ${estados[estado]}</small>
+      `;
+
+      // colorear según estado
+      div.style.background = coloresEstado[estado];
+    }
+
+  });
+}
+    
+    let selectUnidad = document.createElement("select");
+
+    let optionDefault = document.createElement("option");
+    optionDefault.text = "Asignar unidad...";
+    optionDefault.disabled = true;
+    optionDefault.selected = unidadAsignada === "Sin asignar";
+    selectUnidad.appendChild(optionDefault);
+
+    unidades.forEach(u => {
+      let op = document.createElement("option");
+      op.value = u;
+      op.text = u;
+      if (u === unidadAsignada) op.selected = true;
+      selectUnidad.appendChild(op);
+    });
+
+    selectUnidad.onchange = (e) => {
+      unidadAsignada = e.target.value;
+
+      // 🔥 actualizar unidad en lista
+      actualizarEstadoUnidad(unidadAsignada, estadoActual);
+
+      render();
+    };
+
+    div.appendChild(selectUnidad);
+
+    // 🔥 mostrar unidad seleccionada
+    let unidadTexto = document.createElement("small");
+    unidadTexto.innerText = `Unidad: ${unidadAsignada}`;
+    div.appendChild(unidadTexto);
   }
 
   render();
 
-  // Click en incidente → ir al mapa
+  // click → ir al mapa
   div.onclick = () => {
     map.setView(lugar.coords, 17);
     lugar.layer.openPopup();
@@ -368,7 +406,6 @@ function crearIncidente(lugar) {
 
   panelIncidentes.prepend(div);
 }
-
 const toggleBtn = document.getElementById("toggleDispatch");
 const contenido = document.getElementById("dispatchContent");
 
