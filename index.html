@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <title>Central Emergencias</title>
 
-  <!-- ✅ Leaflet CSS -->
+  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 
-  <!-- ✅ Tu CSS -->
   <link rel="stylesheet" href="style.css"/>
-
 </head>
 
 <body>
@@ -17,69 +15,72 @@
 <!-- 🔍 BUSCADOR -->
 <input id="search" placeholder="Buscar ubicación..." />
 
-<!-- 📂 PANEL DE CAPAS -->
+<!-- 📂 CAPAS -->
 <div id="panel">
   <h3>Capas</h3>
   <div id="listaCapas"></div>
 </div>
 
-<!-- 🚒 PANEL DE DESPACHO -->
+<!-- 🚒 DESPACHO -->
 <div id="dispatchPanel">
-
   <div id="dispatchHeader">
     <h3>🚒 Despacho</h3>
     <button id="toggleDispatch">–</button>
   </div>
 
   <div id="dispatchContent">
-
-    <!-- UNIDADES -->
     <div id="listaUnidades"></div>
-
-    <!-- INCIDENTES -->
     <div id="listaIncidentes"></div>
-
   </div>
-
 </div>
 
-  <div id="crearEmergencia">
-  <h3>🚨 Crear Emergencia</h3>
+<!-- ✅ BOTÓN FLOTANTE (+) -->
+<button id="btnNuevo">+</button>
 
+<!-- ✅ FONDO OSCURO -->
+<div id="overlay"></div>
+
+<!-- ✅ MODAL NUEVA EMERGENCIA -->
+<div id="modalEmergencia">
+
+  <h2>🚨 Nueva Emergencia</h2>
+
+  <label>Tipo de Emergencia</label>
   <select id="tipo">
+    <option>Seleccione tipo...</option>
     <option>Incendio</option>
     <option>Accidente</option>
     <option>Rescate</option>
   </select>
 
+  <label>Subtipo</label>
   <select id="subtipo">
+    <option>Seleccione subtipo...</option>
     <option>Estructural</option>
     <option>Vehicular</option>
     <option>Industrial</option>
   </select>
 
-  <input id="ubicacionTxt" placeholder="Ubicación"/>
+  <label>📍 Ubicación principal</label>
+  <input id="ubicacion" readonly placeholder="Seleccione ubicación">
 
-  <select id="unidadSelect"></select>
+  <label>Ubicación exacta / referencia</label>
+  <input id="referencia" placeholder="Ej: Km 4.2, Portal 2">
 
-  <button id="btnDespachar">Despachar</button>
+  <label>Notas</label>
+  <textarea id="notas" placeholder="Detalles adicionales..."></textarea>
 
-  <button id="btnNuevoIncidente">+</button>
+  <button id="crear">Crear Emergencia</button>
+  <button id="cerrar">Cancelar</button>
 
 </div>
-  
+
 <!-- 🗺️ MAPA -->
 <div id="map"></div>
 
-<!-- ✅ Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-<!-- ✅ toGeoJSON -->
 <script src="https://unpkg.com/@tmcw/togeojson@4.1.0/dist/togeojson.umd.js"></script>
-
-<!-- ✅ Tu script principal -->
 <script src="script.js"></script>
-  
 
 </body>
 </html>
