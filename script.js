@@ -1,10 +1,29 @@
 // Crear mapa
 var map = L.map('map').setView([-33.45, -70.66], 10);
 
-// Capa base
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18
-}).addTo(map);
+// 🌍 Mapa normal
+var mapaNormal = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19
+});
+
+// 🛰️ Mapa satelital (ESRI - gratis y bueno)
+var mapaSatelite = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  {
+    maxZoom: 19
+  }
+);
+
+// Agregar por defecto el normal
+mapaNormal.addTo(map);
+
+// ✅ Control para cambiar
+var baseMaps = {
+  "🗺️ Normal": mapaNormal,
+  "🛰️ Satélite": mapaSatelite
+};
+
+L.control.layers(baseMaps).addTo(map);
 
 // Array de lugares
 var lugares = [];
