@@ -1,1 +1,25 @@
-aa
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#map {
+  height: 100vh;
+}
+
+#search {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+
+  width: 250px;
+  padding: 10px;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+``
