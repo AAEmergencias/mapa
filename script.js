@@ -47,7 +47,7 @@ let lugares = [];
 let ubicacionSeleccionada = null;
 
 // ==========================
-// 📥 CARGAR KML
+// 📥 CARGAR KML (SIN CAPAS)
 // ==========================
 fetch('mapa.kml')
   .then(res => res.text())
@@ -63,49 +63,9 @@ fetch('mapa.kml')
       pointToLayer: function (feature, latlng) {
 
         let nombre = feature.properties?.name || "Sin nombre";
-        let folder = feature.properties?.folder || "Otros";
 
-        if (!capas[folder]) {
-          capas[folder] = L.layerGroup().addTo(map);
-          capasActivas[folder] = true;
-
-          let div = document.createElement("div");
-          div.className = "capa-item capa-activa";
-          div.innerHTML = `<span>${folder}</span><span id="count-${folder}">0</span>`;
-
-          div.onclick = () => {
-            capasActivas[folder] = !capasActivas[folder];
-
-            if (capasActivas[folder]) {
-              map.addLayer(capas[folder]);
-              div.classList.add("capa-activa");
-              map.fitBounds(capas[folder].getBounds());
-            } else {
-              map.removeLayer(capas[folder]);
-              div.classList.remove("capa-activa");
-            }
-          };
-
-          listaCapasDiv.appendChild(div);
-        }
-
-        let texto = folder.toLowerCase();
-        let icono = iconos.general;
-
-        if (texto.includes("compañ") || texto.includes("bombero")) {
-          icono = iconos.bombero;
-        } else if (texto.includes("ruta") || texto.includes("camino")) {
-          icono = iconos.ruta;
-        }
-
-        let marker = L.marker(latlng, { icon: icono });
-
-        capas[folder].addLayer(marker);
-
-        let contador = document.getElementById(`count-${folder}`);
-        if (contador) {
-          contador.innerText = capas[folder].getLayers().length;
-        }
+        // 👉 marcador directo
+        let marker = L.marker(latlng, { icon: iconos.general });
 
         return marker;
       },
@@ -113,12 +73,8 @@ fetch('mapa.kml')
       onEachFeature: function (feature, layer) {
 
         let nombre = feature.properties?.name || "Sin nombre";
-        let folder = feature.properties?.folder || "Otros";
 
-        layer.bindPopup(`
-          <b>${nombre}</b><br>
-          <small>${folder}</small>
-        `);
+        layer.bindPopup(`<b>${nombre}</b>`);
 
         let coords = layer.getLatLng
           ? layer.getLatLng()
