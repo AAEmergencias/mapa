@@ -394,84 +394,44 @@ unidades.forEach(u => {
 
   actualizarEstadoUnidad(unidad, "6-3");
 };
+const modal = document.getElementById("modalEmergencia");
+const overlay = document.getElementById("overlay");
 
-/* BOTÓN + */
-#btnNuevo {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+// ABRIR MODAL
+document.getElementById("btnNuevo").onclick = () => {
 
-  width: 60px;
-  height: 60px;
+  if (!ubicacionSeleccionada) {
+    alert("Selecciona una ubicación en el mapa primero");
+    return;
+  }
 
-  background: #b71c1c;
-  color: white;
+  document.getElementById("ubicacion").value =
+    ubicacionSeleccionada.nombre;
 
-  border-radius: 50%;
-  border: none;
+  modal.style.display = "block";
+  overlay.style.display = "block";
+};
 
-  font-size: 30px;
-  cursor: pointer;
-  z-index: 2000;
-}
+// CERRAR
+document.getElementById("cerrar").onclick = () => {
+  modal.style.display = "none";
+  overlay.style.display = "none";
+};
 
-/* FONDO OSCURO */
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+// CREAR EMERGENCIA
+document.getElementById("crear").onclick = () => {
 
-  background: rgba(0,0,0,0.5);
-  display: none;
-  z-index: 3000;
-}
+  let tipo = document.getElementById("tipo").value;
+  let subtipo = document.getElementById("subtipo").value;
 
-/* MODAL */
-#modalEmergencia {
-  position: fixed;
+  let incidente = {
+    nombre: `${tipo} - ${subtipo}`,
+    coords: ubicacionSeleccionada.coords,
+    layer: ubicacionSeleccionada.layer
+  };
 
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  crearIncidente(incidente);
 
-  width: 320px;
-  padding: 15px;
-
-  background: white;
-  border-radius: 12px;
-
-  display: none;
-  z-index: 3001;
-
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-}
-
-/* FORM */
-#modalEmergencia input,
-#modalEmergencia select,
-#modalEmergencia textarea {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-}
-
-/* BOTONES */
-#crear {
-  background: #1976D2;
-  color: white;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-#cerrar {
-  background: #ccc;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  border-radius: 5px;
-}
+  modal.style.display = "none";
+  overlay.style.display = "none";
+};
