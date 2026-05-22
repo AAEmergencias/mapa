@@ -1,35 +1,33 @@
-// Crear mapa centrado en Chile
 var map = L.map('map').setView([-33.45, -70.66], 10);
 
-// Capa base liviana (OpenStreetMap)
+// mapa base
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18,
+  maxZoom: 18
 }).addTo(map);
 
-
-// Variable para guardar puntos
 var lugares = [];
 
-// Cargar KML desde tu repo
-var kmlLayer = omnivore.kml('doc.kml')
-  .on('ready', function() {
+// cargar KML
+omnivore.kml('tu_archivo.kml')
+  .on('ready', function () {
 
-    map.fitBounds(kmlLayer.getBounds());
+    map.fitBounds(this.getBounds());
 
-    kmlLayer.eachLayer(function(layer) {
-      
+    this.eachLayer(function (layer) {
+
       if (layer.feature && layer.feature.properties) {
 
         let nombre = layer.feature.properties.name || "Sin nombre";
         let coords = layer.getLatLng();
 
+        layer.bindPopup(`<b>${nombre}</b>`);
+
         lugares.push({
-          nombre: nombre,
-          coords: coords,
-          layer: layer
+          nombre,
+          coords,
+          layer
         });
 
-        layer.bindPopup(`<b>${nombre}</b>`);
       }
 
     });
@@ -38,24 +36,43 @@ var kmlLayer = omnivore.kml('doc.kml')
   .addTo(map);
 
 
-// 🔍 Buscador
-document.getElementById("search").addEventListener("input", function() {
+// 🔍 BUSCADOR CON RESULTADOS
+const input = document.getElementById("search");
 
-  var texto = this.value.toLowerCase();
+// crear contenedor de resultados
+const resultBox = document.createElement("div");
+resultBox.id = "results";
+document.body.appendChild(resultBox);
 
-  lugares.forEach(lugar => {
+input.addEventListener("input", function () {
 
-    if (lugar.nombre.toLowerCase().includes(texto)) {
-      lugar.layer.addTo(map);
+  let value = this.value.toLowerCase();
+  resultBox.innerHTML = "";
 
-      if (texto.length > 2) {
-        map.setView(lugar.coords, 15);
-        lugar.layer.openPopup();
-      }
+  if (value.length === 0) {
+    resultBox.style.display = "none";
+    return;
+  }
 
-    } else {
-      map.removeLayer(lugar.layer);
-    }
+  resultBox.style.display = "block";
+
+  let encontrados = lugares.filter(l =>
+    l.nombre.toLowerCase().includes(value)
+  );
+
+  encontrados.forEach(l => {
+
+    let div = document.createElement("div");
+    div.className = "result-item";
+    div.innerText = l.nombre;
+
+    div.onclick = () => {
+      map.setView(l.coords, 15);
+      l.layer.openPopup();
+      resultBox.style.display = "none";
+    };
+
+    resultBox.appendChild(div);
 
   });
 
