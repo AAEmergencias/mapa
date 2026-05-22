@@ -162,7 +162,7 @@ unidades.forEach((u, i) => {
 
   div.addEventListener("click", () => {
   unidadSeleccionada = u;
-  mostrarEstadosLateral();
+  abrirModalEstados();
 });
   
   listaUnidades.appendChild(div);
@@ -515,8 +515,6 @@ panelActivo.style.display = "none";
 
 function mostrarEstadosLateral() {
 
-  const panel = document.getElementById("panelEstados");
-
   if (!panel) return;
 
   panel.innerHTML = `<b>Estado unidad:</b><br>${unidadSeleccionada}<br><br>`;
@@ -539,3 +537,31 @@ function mostrarEstadosLateral() {
 
   panel.style.display = "block";
 }
+
+function abrirModalEstados() {
+
+  const modal = document.getElementById("modalEstados");
+  const lista = document.getElementById("listaEstadosModal");
+
+  lista.innerHTML = "";
+
+  Object.entries(estados).forEach(([clave, texto]) => {
+
+    let item = document.createElement("div");
+    item.className = "estado-item";
+    item.innerText = `${clave} - ${texto}`;
+
+    item.onclick = () => {
+      actualizarEstadoUnidad(unidadSeleccionada, clave);
+      modal.style.display = "none";
+    };
+
+    lista.appendChild(item);
+  });
+
+  modal.style.display = "flex";
+}
+
+document.getElementById("cerrarEstados").onclick = () => {
+  document.getElementById("modalEstados").style.display = "none";
+};
