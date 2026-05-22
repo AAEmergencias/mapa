@@ -433,3 +433,8 @@ function generarEventos() {
 
 // generar cada 5 segundos
 setInterval(generarEventos, 5000);
+
+setTimeout(() => {
+  crearIncidente(lugares[0]);
+}, 2000);
+
