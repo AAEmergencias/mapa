@@ -419,6 +419,18 @@ document.getElementById("crear").onclick = () => {
   // ✅ crear panel independiente
   crearPanelEmergencia(nueva);
 
+  // ✅ mostrar panel rojo
+panelActivo.style.display = "block";
+
+// ✅ actualizar datos
+document.getElementById("pTipo").innerText = tipo;
+document.getElementById("pSubtipo").innerText = subtipo;
+document.getElementById("pUbicacion").innerText = ubicacionSeleccionada.nombre;
+
+if (cercana) {
+  document.getElementById("pUnidades").innerText = cercana;
+}
+
   // cerrar modal
   modal.style.display = "none";
   overlay.style.display = "none";
