@@ -25,25 +25,19 @@ body {
 
 /* RESULTADOS */
 #results {
-  position: absolute;
+  position: fixed;
   top: 60px;
-  left: 60px;
-
-  width: 260px;
-  max-height: 300px;
+  left: 360px;
+  width: 300px;
 
   background: white;
-  overflow-y: auto;
-
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-
-  z-index: 1000;
-  display: none;
+  border-radius: 8px;
+  z-index: 5000;
 }
 
 .result-item {
-  padding: 10px;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
@@ -275,11 +269,10 @@ body {
 #search {
   position: fixed;
   top: 20px;
-  left: 340px; /* justo despues del panel */
-  width: 280px;
-
+  left: 360px;
   z-index: 5000;
 }
+
 
   #panel {
     width: 90%;
@@ -475,4 +468,8 @@ body {
 #cerrarEstados {
   margin-top: 10px;
   width: 100%;
+}
+
+#map {
+  margin-left: 320px;
 }
