@@ -469,3 +469,15 @@ body {
 #map {
   margin-left: 320px;
 }
+
+#contenedorEmergencias {
+  position: fixed;
+  top: 80px;
+  left: 350px; /* 👈 importante (para que no quede debajo del panel lateral) */
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  z-index: 8000; /* 👈 alto */
+}
