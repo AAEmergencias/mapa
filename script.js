@@ -402,7 +402,6 @@ document.getElementById("cerrar").onclick = () => {
 };
 
 // CREAR EMERGENCIA
-
 document.getElementById("crear").onclick = () => {
 
   let tipo = document.getElementById("tipo").value;
@@ -421,23 +420,6 @@ document.getElementById("crear").onclick = () => {
   crearPanelEmergencia(nueva);
 
   // cerrar modal
-  modal.style.display = "none";
-  overlay.style.display = "none";
-};
-// ✅ MOSTRAR PANEL
-panelActivo.style.display = "block";
-
-// ✅ MOSTRAR EN PANEL ACTIVO
-document.getElementById("pTipo").innerText = tipo;
-document.getElementById("pSubtipo").innerText = subtipo;
-document.getElementById("pUbicacion").innerText = ubicacionSeleccionada.nombre;
-
-if (cercana) {
-  document.getElementById("pUnidades").innerText = cercana;
-  actualizarEstadoUnidad(cercana, "6-3");
-}
-
-
   modal.style.display = "none";
   overlay.style.display = "none";
 };
