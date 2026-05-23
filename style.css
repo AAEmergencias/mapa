@@ -737,3 +737,28 @@ body {
 .estado-item:hover {
   background: #5a6275;
 }
+
+.modal-bases {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 8000;
+}
+
+.modal-bases-content {
+  background: #2b2f3a;
+  color: white;
+
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
