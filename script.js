@@ -408,33 +408,22 @@ document.getElementById("crear").onclick = () => {
   let tipo = document.getElementById("tipo").value;
   let subtipo = document.getElementById("subtipo").value;
 
-  let incidente = {
-    nombre: `${tipo} - ${subtipo}`,
-    coords: ubicacionSeleccionada.coords,
-    layer: ubicacionSeleccionada.layer
-  };
-  
-  crearIncidente(incidente);
-
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
-  
+
   let nueva = {
-  tipo: tipo,
-  subtipo: subtipo,
-  ubicacion: ubicacionSeleccionada.nombre,
-  unidad: cercana || "Sin unidad"
+    tipo: tipo,
+    subtipo: subtipo,
+    ubicacion: ubicacionSeleccionada.nombre,
+    unidad: cercana || "Sin unidad"
+  };
+
+  // ✅ crear panel independiente
+  crearPanelEmergencia(nueva);
+
+  // cerrar modal
+  modal.style.display = "none";
+  overlay.style.display = "none";
 };
-
-emergencias.push(nueva);
-indiceActivo = emergencias.length - 1;
-
-  mostrarEmergenciaActiva();
-  
-  document.getElementById("contadorEmergencias").innerText =
-  `(${indiceActivo + 1}/${emergencias.length})`;
-
-
-
 // ✅ MOSTRAR PANEL
 panelActivo.style.display = "block";
 
