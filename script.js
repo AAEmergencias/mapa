@@ -141,14 +141,14 @@ input.addEventListener("input", function () {
 // 🚑 UNIDADES
 // ==========================
 const unidades = [
-  { nombre: "UIR-E", base: "La Ermita" },
-  { nombre: "B1", base: "Los Bronces" },
-  { nombre: "UIR-M", base: "Mina" },
-  { nombre: "UIR-S", base: "Mineroducto" },
-  { nombre: "B2", base: "Las Tortolas" },
-  { nombre: "S1", base: "Perez Caldera" },
-  { nombre: "S2", base: "Policlinico Las Tortolas" },
-  { nombre: "S3", base: "Policlinico 220" }
+  { nombre: "UIR-E", base: "Brigada La Ermita" },
+  { nombre: "B1", base: " Brigada Los Bronces" },
+  { nombre: "UIR-M", base: " Brigada Mina" },
+  { nombre: "UIR-S", base: "Brigada Mineroducto" },
+  { nombre: "B2", base: "Brigada Las Tortolas" },
+  { nombre: "S1", base: "Policlínico Perez Caldera" },
+  { nombre: "S2", base: "Policlínico Las Tortolas" },
+  { nombre: "S3", base: "SPA 220" }
 ];
 
 const listaUnidades = document.getElementById("listaUnidades");
