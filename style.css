@@ -4,8 +4,17 @@ body {
 }
 
 #map {
-  height: 100vh;
+  height: calc(100vh - 60px); /* ✅ RESTA la barra */
+  margin-top: 60px;
+  margin-left: 320px;
 }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* ✅ elimina scroll general */
+}
+
 
 /* BUSCADOR */
 #search {
