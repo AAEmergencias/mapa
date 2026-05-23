@@ -47,6 +47,10 @@ let lugares = [];
 let ubicacionSeleccionada = null;
 let unidadSeleccionada = null;
 
+let emergencias = [];
+let indiceActivo = 0;
+
+
 // ==========================
 // 📥 CARGAR KML (SIN CAPAS)
 // ==========================
@@ -416,8 +420,22 @@ document.getElementById("crear").onclick = () => {
     coords: ubicacionSeleccionada.coords,
     layer: ubicacionSeleccionada.layer
   };
-
+  
   crearIncidente(incidente);
+
+  let nueva = {
+  tipo: tipo,
+  subtipo: subtipo,
+  ubicacion: ubicacionSeleccionada.nombre,
+  unidad: cercana || "Sin unidad"
+};
+
+emergencias.push(nueva);
+indiceActivo = emergencias.length - 1;
+
+  mostrarEmergenciaActiva();
+
+
 
 // ✅ MOSTRAR PANEL
 panelActivo.style.display = "block";
@@ -565,3 +583,16 @@ function abrirModalEstados() {
 document.getElementById("cerrarEstados").onclick = () => {
   document.getElementById("modalEstados").style.display = "none";
 };
+
+function mostrarEmergenciaActiva() {
+
+  if (emergencias.length === 0) return;
+
+  let e = emergencias[indiceActivo];
+
+  document.getElementById("pTipo").innerText = e.tipo;
+  document.getElementById("pSubtipo").innerText = e.subtipo;
+  document.getElementById("pUbicacion").innerText = e.ubicacion;
+  document.getElementById("pUnidades").innerText = e.unidad;
+
+}
