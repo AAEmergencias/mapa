@@ -166,23 +166,24 @@ body {
 .unidad {
   background: #2e333d;
 
-  padding: 10px;
-  margin-bottom: 6px;
+  padding: 6px;          /* 🔥 más compacto */
+  margin-bottom: 4px;
 
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
 
-  font-size: 14px;  /* 🔥 más grande */
+  font-size: 13px;       /* 🔥 legible pero compacto */
 }
 
 .unidad b {
-  font-size: 15px;
-  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
 }
 
 .unidad small {
-  font-size: 12px;
-  opacity: 0.8;
+  font-size: 11px;
+  line-height: 1.1;
+  display: block;
 }
 
 .incidente {
