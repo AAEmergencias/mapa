@@ -598,4 +598,8 @@ function mostrarEmergenciaActiva() {
   document.getElementById("pUbicacion").innerText = e.ubicacion;
   document.getElementById("pUnidades").innerText = e.unidad;
 
+// ✅ CONTADOR
+  document.getElementById("contadorEmergencias").innerText =
+  `(${indiceActivo + 1}/${emergencias.length})`;
+
 }
