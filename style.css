@@ -505,3 +505,32 @@ body {
     opacity: 1;
   }
 }
+
+.panel-rojo {
+  position: fixed;
+  top: 100px;
+  left: 700px;
+
+  width: 260px;
+  background: white;
+
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+
+  z-index: 9500;
+}
+
+.header-rojo {
+  background: #c62828;
+  color: white;
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+}
+
+.contenido-rojo {
+  padding: 10px;
+}
+
