@@ -577,11 +577,6 @@ function crearPanelEmergencia(data) {
   </div>
 `;
 
-  // cerrar panel
-  panel.querySelector(".cerrarPanel").onclick = () => {
-    panel.remove();
-  };
-
   contenedor.appendChild(panel);
 
   return panel; // ✅ 🔥 ESTA LÍNEA ES LA CLAVE
