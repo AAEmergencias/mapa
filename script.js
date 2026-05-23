@@ -603,3 +603,19 @@ function mostrarEmergenciaActiva() {
   `(${indiceActivo + 1}/${emergencias.length})`;
 
 }
+
+document.addEventListener("keydown", (e) => {
+
+  if (e.key === "Escape") {
+
+    // cerrar modal estados
+    let modalEstados = document.getElementById("modalEstados");
+    if (modalEstados) modalEstados.style.display = "none";
+
+    // cerrar modal crear
+    if (modal) modal.style.display = "none";
+    if (overlay) overlay.style.display = "none";
+
+  }
+
+});
