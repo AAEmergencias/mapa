@@ -434,6 +434,9 @@ emergencias.push(nueva);
 indiceActivo = emergencias.length - 1;
 
   mostrarEmergenciaActiva();
+  
+  document.getElementById("contadorEmergencias").innerText =
+  `(${indiceActivo + 1}/${emergencias.length})`;
 
 
 
