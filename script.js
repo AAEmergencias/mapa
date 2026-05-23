@@ -584,7 +584,10 @@ function crearPanelEmergencia(data) {
   };
 
   contenedor.appendChild(panel);
+
+  return panel; // ✅ 🔥 ESTA LÍNEA ES LA CLAVE
 }
+
 
 function crearPanelRojo(data, panelNegro) {
 
