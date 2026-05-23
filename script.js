@@ -547,3 +547,39 @@ document.addEventListener("keydown", (e) => {
   }
 
 });
+
+// ==========================
+// 🚨 CREAR PANEL EMERGENCIA
+// ==========================
+function crearPanelEmergencia(data) {
+
+  const contenedor = document.getElementById("contenedorEmergencias");
+
+  if (!contenedor) {
+    console.log("❌ No existe contenedorEmergencias en HTML");
+    return;
+  }
+
+  let panel = document.createElement("div");
+  panel.className = "panel-emergencia";
+
+  panel.innerHTML = `
+    <div class="panel-header">
+      🚨 ${data.tipo}
+      <button class="cerrarPanel">X</button>
+    </div>
+
+    <div class="panel-body">
+      <b>${data.subtipo}</b><br>
+      📍 ${data.ubicacion}<br><br>
+      🚑 ${data.unidad}
+    </div>
+  `;
+
+  // cerrar panel
+  panel.querySelector(".cerrarPanel").onclick = () => {
+    panel.remove();
+  };
+
+  contenedor.appendChild(panel);
+}
