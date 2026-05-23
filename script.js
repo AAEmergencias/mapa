@@ -546,7 +546,7 @@ panelActivo.style.display = "none";
   });
 
   panel.style.display = "block";
-}
+
 
 function abrirModalEstados() {
 
