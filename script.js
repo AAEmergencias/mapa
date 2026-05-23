@@ -566,17 +566,18 @@ function crearPanelEmergencia(data) {
   panel.className = "panel-emergencia";
 
   panel.innerHTML = `
-    <div class="panel-header">
-      🚨 ${data.tipo}
-      <button class="cerrarPanel">X</button>
-    </div>
-
-    <div class="panel-body">
-      <b>${data.subtipo}</b><br>
-      📍 ${data.ubicacion}<br><br>
+  <div class="panel-tab">
+    
+    <div class="info">
+      🔥 ${data.tipo}<br>
+      📍 ${data.ubicacion}<br>
       🚑 ${data.unidad}
     </div>
-  `;
+
+    <button class="cerrarPanel">X</button>
+
+  </div>
+`;
 
   // cerrar panel
   panel.querySelector(".cerrarPanel").onclick = () => {
