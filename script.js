@@ -523,27 +523,10 @@ document.addEventListener("mouseup", () => {
 // ==========================
 panelActivo.style.display = "none";
 
-  panel.innerHTML = `<b>Estado unidad:</b><br>${unidadSeleccionada}<br><br>`;
 
-  Object.entries(estados).forEach(([clave, texto]) => {
-
-    let item = document.createElement("div");
-    item.className = "estado-item";
-    item.innerText = `${clave} - ${texto}`;
-
-    item.onclick = () => {
-
-      actualizarEstadoUnidad(unidadSeleccionada, clave);
-
-      panel.style.display = "none";
-    };
-
-    panel.appendChild(item);
-  });
-
-  panel.style.display = "block";
-
-
+// ==========================
+// 🚑 MODAL DE ESTADOS
+// ==========================
 function abrirModalEstados() {
 
   const modal = document.getElementById("modalEstados");
@@ -568,24 +551,25 @@ function abrirModalEstados() {
   modal.style.display = "flex";
 }
 
+
+// ==========================
+// ❌ BOTÓN CERRAR MODAL
+// ==========================
 document.getElementById("cerrarEstados").onclick = () => {
   document.getElementById("modalEstados").style.display = "none";
 };
 
-  document.getElementById("pTipo").innerText = e.tipo;
-  document.getElementById("pSubtipo").innerText = e.subtipo;
-  document.getElementById("pUbicacion").innerText = e.ubicacion;
-  document.getElementById("pUnidades").innerText = e.unidad;
 
+// ==========================
+// ⌨️ ESC PARA CERRAR TODO
+// ==========================
 document.addEventListener("keydown", (e) => {
 
   if (e.key === "Escape") {
 
-    // cerrar modal estados
     let modalEstados = document.getElementById("modalEstados");
     if (modalEstados) modalEstados.style.display = "none";
 
-    // cerrar modal crear
     if (modal) modal.style.display = "none";
     if (overlay) overlay.style.display = "none";
 
