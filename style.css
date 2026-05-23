@@ -9,18 +9,13 @@ body {
 
 /* BUSCADOR */
 #search {
-  position: absolute;
-  top: 15px;
-  left: 60px;
-  z-index: 1000;
+  width: 220px;
+  padding: 8px;
 
-  width: 260px;
-  padding: 10px;
-
-  border-radius: 10px;
+  border-radius: 8px;
   border: none;
 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 /* RESULTADOS */
@@ -266,14 +261,6 @@ body {
     overflow-y: auto;
   }
 
-#search {
-  position: fixed;
-  top: 20px;
-  left: 360px;
-  z-index: 5000;
-}
-
-
   #panel {
     width: 90%;
     left: 5%;
@@ -418,15 +405,6 @@ body {
   cursor: pointer;
 }
 
-#search {
-  position: fixed;
-  top: 15px;
-  left: 340px; /* empujado después del panel */
-  width: 300px;
-
-  z-index: 5000;
-}
-
 #modalEstados {
   position: fixed;
   top: 0;
@@ -467,21 +445,13 @@ body {
 }
 
 #map {
+  margin-top: 60px;
   margin-left: 320px;
 }
 
 #contenedorEmergencias {
-  position: fixed;
-  top: 15px;
-  left: 380px; /* 👈 justo al lado del buscador */
-
   display: flex;
-  flex-direction: row;   /* 👈 en horizontal */
-  flex-wrap: wrap;       /* 👈 baja si no caben */
-
   gap: 10px;
-
-  z-index: 9000;
 }
 
 .panel-emergencia {
