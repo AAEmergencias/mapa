@@ -274,7 +274,6 @@ function actualizarEstadoUnidad(nombreUnidad, estado) {
 // ==========================
 // 🚒 CREAR INCIDENTE
 // ==========================
-const panelEmergencias = document.getElementById("listaEmergencias");
 let incidenteActivoDiv = null;
 
 function crearIncidente(lugar) {
@@ -320,8 +319,6 @@ incidenteActivoDiv = div;
   div.onclick = () => {
     map.setView(lugar.coords, 16);
   };
-
-  panelEmergencias.prepend(div);
 }
 
 // ==========================
@@ -423,6 +420,8 @@ document.getElementById("crear").onclick = () => {
   
   crearIncidente(incidente);
 
+  let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
+  
   let nueva = {
   tipo: tipo,
   subtipo: subtipo,
@@ -442,10 +441,6 @@ indiceActivo = emergencias.length - 1;
 
 // ✅ MOSTRAR PANEL
 panelActivo.style.display = "block";
-
-
-// 🔥 AUTO-ASIGNACIÓN
-let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
 // ✅ MOSTRAR EN PANEL ACTIVO
 document.getElementById("pTipo").innerText = tipo;
@@ -531,12 +526,6 @@ document.addEventListener("mouseup", () => {
 // 🔒 OCULTAR PANEL AL INICIO
 // ==========================
 panelActivo.style.display = "none";
-
-
-
-function mostrarEstadosLateral() {
-
-  if (!panel) return;
 
   panel.innerHTML = `<b>Estado unidad:</b><br>${unidadSeleccionada}<br><br>`;
 
