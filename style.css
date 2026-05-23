@@ -446,9 +446,24 @@ body {
 }
 
 #dispatchPanel {
-  width: 350px;
-  max-height: 90vh;
-  overflow-y: auto;
+  position: fixed;
+  top: 70px;
+  left: 10px;
+
+  width: 330px; /* 🔥 equilibrio perfecto */
+  height: calc(100vh - 80px); /* 🔥 ocupa todo */
+
+  background: #1f232b;
+  color: white;
+
+  border-radius: 12px;
+  padding: 10px;
+
+  overflow: hidden; /* 🔥 NO scroll */
+
+  z-index: 2000;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
 }
 
 /* UNIDADES MÁS GRANDES */
