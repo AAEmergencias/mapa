@@ -618,7 +618,6 @@ panel.innerHTML = `
 
   </div>
 `;
-``
 
   // ✅ CERRAR
   panel.querySelector(".cerrarRojo").onclick = () => {
