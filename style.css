@@ -164,12 +164,19 @@ body {
 
 .unidad {
   background: #2e333d;
-  margin-bottom: 8px;
-  padding: 10px;
-  border-radius: 8px;
 
-  display: flex;
-  flex-direction: column;
+  padding: 6px 8px;     /* 🔥 más chica */
+  margin-bottom: 4px;
+
+  border-radius: 6px;
+  cursor: pointer;
+
+  font-size: 12px;      /* 🔥 texto más pequeño */
+}
+
+.unidad small {
+  font-size: 11px;
+  opacity: 0.8;
 }
 
 .incidente {
