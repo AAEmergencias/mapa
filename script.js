@@ -609,12 +609,14 @@ panel.innerHTML = `
     </div>
 
     <div class="bloque">
-      <div class="titulo">🚑 Unidades asignadas</div>
-      <div class="unidades"></div>  
-      
-      <select class="selectUnidad"></select>  
-      <button class="btnAgregarUnidad">Agregar Unidad</button>
-    </div>
+  <div class="titulo">🚑 Unidades asignadas</div>
+
+  <div class="unidades"></div>
+
+  <select class="selectUnidad"></select>
+  <button class="btnAgregarUnidad">Agregar Unidad</button>
+
+</div>
 
     <div class="bloque">
       <div class="titulo">📝 Notas</div>
@@ -625,6 +627,43 @@ panel.innerHTML = `
 
   </div>
 `;
+
+  // ==========================
+// 🔽 LLENAR SELECT (PASO 2)
+// ==========================
+const select = panel.querySelector(".selectUnidad");
+
+unidades.forEach(u => {
+  let op = document.createElement("option");
+  op.value = u.nombre;
+  op.text = `${u.nombre} - ${u.base}`;
+  select.appendChild(op);
+});
+
+  // ==========================
+// ➕ AGREGAR UNIDAD (PASO 3)
+// ==========================
+const contenedorUnidades = panel.querySelector(".unidades");
+
+panel.querySelector(".btnAgregarUnidad").onclick = () => {
+
+  let nombreUnidad = select.value;
+
+  let unidadData = unidades.find(u => u.nombre === nombreUnidad);
+
+  let div = document.createElement("div");
+  div.className = "unidad-asignada";
+
+  div.innerHTML = `
+    🚑 <b>${unidadData.nombre}</b><br>
+    <small>${unidadData.base}</small>
+  `;
+
+  contenedorUnidades.appendChild(div);
+
+  // 🔥 cambia estado a en servicio
+  actualizarEstadoUnidad(unidadData.nombre, "6-3");
+};
 
   // ✅ CERRAR
   panel.querySelector(".cerrarRojo").onclick = () => {
