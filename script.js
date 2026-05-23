@@ -47,10 +47,6 @@ let lugares = [];
 let ubicacionSeleccionada = null;
 let unidadSeleccionada = null;
 
-let emergencias = [];
-let indiceActivo = 0;
-
-
 // ==========================
 // 📥 CARGAR KML (SIN CAPAS)
 // ==========================
@@ -576,8 +572,6 @@ document.getElementById("cerrarEstados").onclick = () => {
   document.getElementById("modalEstados").style.display = "none";
 };
 
-function mostrarEmergenciaActiva() {
-
   if (emergencias.length === 0) return;
 
   let e = emergencias[indiceActivo];
@@ -586,12 +580,6 @@ function mostrarEmergenciaActiva() {
   document.getElementById("pSubtipo").innerText = e.subtipo;
   document.getElementById("pUbicacion").innerText = e.ubicacion;
   document.getElementById("pUnidades").innerText = e.unidad;
-
-// ✅ CONTADOR
-  document.getElementById("contadorEmergencias").innerText =
-  `(${indiceActivo + 1}/${emergencias.length})`;
-
-}
 
 document.addEventListener("keydown", (e) => {
 
