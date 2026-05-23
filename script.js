@@ -608,3 +608,33 @@ document.addEventListener("keydown", (e) => {
   }
 
 });
+
+// ==========================
+// 🔄 NAVEGAR EMERGENCIAS
+// ==========================
+
+document.getElementById("prevEmergencia").onclick = () => {
+
+  if (emergencias.length === 0) return;
+
+  indiceActivo--;
+
+  if (indiceActivo < 0) {
+    indiceActivo = emergencias.length - 1;
+  }
+
+  mostrarEmergenciaActiva();
+};
+
+document.getElementById("nextEmergencia").onclick = () => {
+
+  if (emergencias.length === 0) return;
+
+  indiceActivo++;
+
+  if (indiceActivo >= emergencias.length) {
+    indiceActivo = 0;
+  }
+
+  mostrarEmergenciaActiva();
+};
