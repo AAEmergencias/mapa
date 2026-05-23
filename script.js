@@ -533,10 +533,11 @@ function abrirModalEstados() {
 // ==========================
 // ❌ BOTÓN CERRAR MODAL
 // ==========================
-document.getElementById("cerrarEstados").onclick = () => {
-  document.getElementById("modalEstados").style.display = "none";
-};
-
+document.addEventListener("click", (e) => {
+  if (e.target && e.target.id === "cerrarEstados") {
+    document.getElementById("modalEstados").style.display = "none";
+  }
+});
 
 // ==========================
 // ⌨️ ESC PARA CERRAR TODO
