@@ -574,8 +574,6 @@ function crearPanelEmergencia(data) {
       🚑 ${data.unidad}
     </div>
 
-    <button class="cerrarPanel">X</button>
-
   </div>
 `;
 
@@ -588,7 +586,6 @@ function crearPanelEmergencia(data) {
 
   return panel; // ✅ 🔥 ESTA LÍNEA ES LA CLAVE
 }
-
 
 function crearPanelRojo(data, panelNegro) {
 
