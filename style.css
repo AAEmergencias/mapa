@@ -508,15 +508,12 @@ body {
 
 .panel-rojo {
   position: fixed;
-  top: 100px;
-  left: 700px;
-
+  top: 120px;
+  left: 600px;
   width: 260px;
   background: white;
-
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-
   z-index: 9500;
 }
 
@@ -524,13 +521,22 @@ body {
   background: #c62828;
   color: white;
   padding: 10px;
-
+  cursor: move;
   display: flex;
   justify-content: space-between;
-  border-radius: 10px 10px 0 0;
 }
 
-.contenido-rojo {
-  padding: 10px;
+.minimizado {
+  height: 40px;
+  overflow: hidden;
 }
 
+.blink {
+  animation: blinkAnim 1s infinite;
+}
+
+@keyframes blinkAnim {
+  0% { background: #b71c1c; }
+  50% { background: #ff0000; }
+  100% { background: #b71c1c; }
+}
