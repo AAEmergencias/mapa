@@ -416,26 +416,15 @@ document.getElementById("crear").onclick = () => {
     unidad: cercana || "Sin unidad"
   };
 
-  // ✅ crear panel independiente
-  crearPanelEmergencia(nueva);
-  crearPanelRojo(nueva);
+  // ✅ crear paneles
+  let panelNegro = crearPanelEmergencia(nueva);
+  let panelRojo = crearPanelRojo(nueva, panelNegro);
 
-  // ✅ mostrar panel rojo
-panelActivo.style.display = "block";
-
-// ✅ actualizar datos
-document.getElementById("pTipo").innerText = tipo;
-document.getElementById("pSubtipo").innerText = subtipo;
-document.getElementById("pUbicacion").innerText = ubicacionSeleccionada.nombre;
-
-if (cercana) {
-  document.getElementById("pUnidades").innerText = cercana;
-}
-
-  // cerrar modal
+  // ✅ cerrar modal (IMPORTANTE)
   modal.style.display = "none";
   overlay.style.display = "none";
 };
+
 
 // ==========================
 // 🔽 MINIMIZAR PANEL ACTIVO
@@ -597,7 +586,7 @@ function crearPanelEmergencia(data) {
   contenedor.appendChild(panel);
 }
 
-function crearPanelRojo(data) {
+function crearPanelRojo(data, panelNegro) {
 
   let panel = document.createElement("div");
   panel.className = "panel-rojo";
@@ -605,6 +594,7 @@ function crearPanelRojo(data) {
   panel.innerHTML = `
     <div class="header-rojo">
       🚨 Emergencia Activa
+      <button class="minRojo">–</button>
       <button class="cerrarRojo">X</button>
     </div>
 
@@ -624,11 +614,54 @@ function crearPanelRojo(data) {
     </div>
   `;
 
-  // cerrar panel
-  panel.querySelector(".cerrarRojo").onclick = () => panel.remove();
+  // ✅ CERRAR
+  panel.querySelector(".cerrarRojo").onclick = () => {
+    panel.remove();
+    if (panelNegro) panelNegro.remove();
+  };
 
-  // finalizar
-  panel.querySelector(".btnFinalizar").onclick = () => panel.remove();
+  // ✅ FINALIZAR (cierra ambos)
+  panel.querySelector(".btnFinalizar").onclick = () => {
+    panel.remove();
+    if (panelNegro) panelNegro.remove();
+  };
+
+  // ✅ MINIMIZAR + PARPADEO
+  const header = panel.querySelector(".header-rojo");
+  const btnMin = panel.querySelector(".minRojo");
+
+  btnMin.onclick = () => {
+    panel.classList.toggle("minimizado");
+
+    if (panel.classList.contains("minimizado")) {
+      header.classList.add("blink");
+    } else {
+      header.classList.remove("blink");
+    }
+  };
+
+  // ✅ DRAG (MOVER PANEL)
+  let dragging = false;
+  let offsetX, offsetY;
+
+  header.addEventListener("mousedown", (e) => {
+    dragging = true;
+    offsetX = e.clientX - panel.offsetLeft;
+    offsetY = e.clientY - panel.offsetTop;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+
+    panel.style.left = (e.clientX - offsetX) + "px";
+    panel.style.top = (e.clientY - offsetY) + "px";
+  });
+
+  document.addEventListener("mouseup", () => {
+    dragging = false;
+  });
 
   document.body.appendChild(panel);
+
+  return panel;
 }
