@@ -418,6 +418,7 @@ document.getElementById("crear").onclick = () => {
 
   // ✅ crear panel independiente
   crearPanelEmergencia(nueva);
+  crearPanelRojo(nueva);
 
   // ✅ mostrar panel rojo
 panelActivo.style.display = "block";
@@ -594,4 +595,40 @@ function crearPanelEmergencia(data) {
   };
 
   contenedor.appendChild(panel);
+}
+
+function crearPanelRojo(data) {
+
+  let panel = document.createElement("div");
+  panel.className = "panel-rojo";
+
+  panel.innerHTML = `
+    <div class="header-rojo">
+      🚨 Emergencia Activa
+      <button class="cerrarRojo">X</button>
+    </div>
+
+    <div class="contenido-rojo">
+      <b>Datos generales</b><br>
+      Tipo: ${data.tipo}<br>
+      Subtipo: ${data.subtipo}<br>
+      Ubicación: ${data.ubicacion}<br><br>
+
+      🚑 Unidades asignadas:
+      <div class="unidades">${data.unidad}</div>
+
+      📝 Notas:
+      <textarea></textarea>
+
+      <button class="btnFinalizar">Finalizar</button>
+    </div>
+  `;
+
+  // cerrar panel
+  panel.querySelector(".cerrarRojo").onclick = () => panel.remove();
+
+  // finalizar
+  panel.querySelector(".btnFinalizar").onclick = () => panel.remove();
+
+  document.body.appendChild(panel);
 }
