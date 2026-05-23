@@ -504,6 +504,11 @@ panelActivo.style.display = "none";
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
+function cerrarModalEstados() {
+  const modal = document.getElementById("modalEstados");
+  if (modal) modal.style.display = "none";
+}
+
 function abrirModalEstados() {
 
   const modal = document.getElementById("modalEstados");
@@ -518,10 +523,15 @@ function abrirModalEstados() {
     item.innerText = `${clave} - ${texto}`;
 
     item.onclick = () => {
-      actualizarEstadoUnidad(unidadSeleccionada, clave);
-      modal.style.display = "none";
-      console.log(unidadSeleccionada);
-    };
+
+  if (clave === "6-10") {
+    abrirModalBases(unidadSeleccionada);
+  } else {
+    actualizarEstadoUnidad(unidadSeleccionada, clave);
+  }
+
+  cerrarModalEstados();
+};
 
     lista.appendChild(item);
   });
@@ -529,31 +539,67 @@ function abrirModalEstados() {
   modal.style.display = "flex";
 }
 
+// ==========================
+// 🏠 MODAL BASES (PASO 4)
+// ==========================
+const bases = [
+  "Base Mina",
+  "Base 220",
+  "Base Los Bronces",
+  "Base Perez Caldera",
+  "Base Ermita",
+  "Base STP",
+  "Base Tortolas",
+  "Base Poli Tortolas"
+];
 
-// ==========================
-// ❌ BOTÓN CERRAR MODAL
-// ==========================
+function abrirModalBases(unidad) {
+
+  let modal = document.createElement("div");
+  modal.className = "modal-bases";
+
+  modal.innerHTML = `
+    <div class="modal-bases-content">
+      <h3>🏠 Seleccionar Base</h3>
+      <div class="listaBases"></div>
+      <button class="cerrarBases">Cancelar</button>
+    </div>
+  `;
+
+  const lista = modal.querySelector(".listaBases");
+
+  bases.forEach(base => {
+    let item = document.createElement("div");
+    item.className = "estado-item";
+    item.innerText = base;
+
+    item.onclick = () => {
+      actualizarEstadoUnidad(unidad, "6-10");
+      console.log(unidad + " → " + base);
+      modal.remove();
+    };
+
+    lista.appendChild(item);
+  });
+
+  modal.querySelector(".cerrarBases").onclick = () => {
+    modal.remove();
+  };
+
+  document.body.appendChild(modal);
+}
+
+// ✅ CIERRE UNIVERSAL
 document.addEventListener("click", (e) => {
   if (e.target && e.target.id === "cerrarEstados") {
-    document.getElementById("modalEstados").style.display = "none";
+    cerrarModalEstados();
   }
 });
 
-// ==========================
-// ⌨️ ESC PARA CERRAR TODO
-// ==========================
 document.addEventListener("keydown", (e) => {
-
   if (e.key === "Escape") {
-
-    let modalEstados = document.getElementById("modalEstados");
-    if (modalEstados) modalEstados.style.display = "none";
-
-    if (modal) modal.style.display = "none";
-    if (overlay) overlay.style.display = "none";
-
+    cerrarModalEstados();
   }
-
 });
 
 // ==========================
