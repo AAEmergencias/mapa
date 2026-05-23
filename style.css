@@ -504,25 +504,39 @@ body {
     opacity: 1;
   }
 }
-
 .panel-rojo {
   position: fixed;
   top: 120px;
   left: 600px;
-  width: 260px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+
+  width: 280px;
+  background: #f8f9fb;
+
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+  overflow: hidden;
   z-index: 9500;
 }
 
 .header-rojo {
-  background: #c62828;
+  background: linear-gradient(90deg, #c62828, #e53935);
   color: white;
+
   padding: 10px;
-  cursor: move;
+
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  font-weight: bold;
+  font-size: 14px;
+
+  cursor: move;
+}
+
+.header-rojo .acciones button {
+  margin-left: 5px;
 }
 
 .minimizado {
@@ -560,3 +574,52 @@ body {
 
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
+
+.contenido-rojo {
+  padding: 12px;
+  font-size: 13px;
+}
+
+.bloque {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.titulo {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.contenido-rojo textarea {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+.btnFinalizar {
+  width: 100%;
+  padding: 10px;
+
+  background: linear-gradient(90deg, #d32f2f, #ff5252);
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-weight: bold;
+  cursor: pointer;
+
+  margin-top: 10px;
+
+  transition: 0.2s;
+}
+
+.btnFinalizar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+}
+
