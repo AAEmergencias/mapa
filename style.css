@@ -6,9 +6,8 @@ body {
 #map {
   position: fixed;
   top: 60px;       /* debajo de la barra */
-  left: 320px;     /* deja espacio al panel lateral */
-
-  width: calc(100% - 320px);
+  left: 240px;     /* deja espacio al panel lateral */
+  width: calc(100% - 240px);
   height: calc(100vh - 60px);
 }
 
@@ -165,18 +164,22 @@ body {
 .unidad {
   background: #2e333d;
 
-  padding: 6px 8px;     /* 🔥 más chica */
+  padding: 7px;
   margin-bottom: 4px;
 
   border-radius: 6px;
   cursor: pointer;
 
-  font-size: 12px;      /* 🔥 texto más pequeño */
+  font-size: 12px;
+}
+
+.unidad b {
+  font-size: 13px;
 }
 
 .unidad small {
-  font-size: 11px;
-  opacity: 0.8;
+  font-size: 10px;
+  opacity: 0.7;
 }
 
 .incidente {
@@ -447,23 +450,23 @@ body {
 
 #dispatchPanel {
   position: fixed;
-  top: 70px;
-  left: 10px;
+  top: 60px;      /* justo bajo la barra superior */
+  left: 0;        /* 🔥 pegado completamente al borde */
 
-  width: 330px; /* 🔥 equilibrio perfecto */
-  height: calc(100vh - 80px); /* 🔥 ocupa todo */
+  width: 240px;   /* 🔥 más angosto */
+  height: calc(100vh - 60px); /* 🔥 ocupa TODA la altura */
 
   background: #1f232b;
   color: white;
 
-  border-radius: 12px;
+  border-radius: 0; /* 🔥 elimina bordes redondeados */
   padding: 10px;
 
-  overflow: hidden; /* 🔥 NO scroll */
+  overflow: hidden; /* ❌ sin scroll */
 
   z-index: 2000;
 
-  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+  box-shadow: 3px 0 10px rgba(0,0,0,0.4); /* sombra lateral */
 }
 
 /* UNIDADES MÁS GRANDES */
