@@ -224,17 +224,53 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 320px;
-  padding: 15px;
+  width: 340px;
+  padding: 20px;
 
-  background: white;
-  border-radius: 12px;
+  background: #f8f9fb;
+  border-radius: 14px;
 
   display: none;
   z-index: 3001;
 
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 }
+
+
+#modalEmergencia h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+#modalEmergencia label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+#modalEmergencia input,
+#modalEmergencia select,
+#modalEmergencia textarea {
+  width: 100%;
+  padding: 8px;
+
+  border-radius: 6px;
+  border: 1px solid #ccc;
+
+  font-size: 13px;
+
+  box-sizing: border-box;
+}
+
+#modalEmergencia textarea {
+  resize: none;
+}
+
 
 /* FORM */
 #modalEmergencia input,
@@ -247,21 +283,45 @@ body {
 
 /* BOTONES */
 #crear {
-  background: #1976D2;
+  background: linear-gradient(90deg, #1976D2, #42a5f5);
   color: white;
+
   border: none;
   padding: 10px;
+
   width: 100%;
-  margin-bottom: 5px;
-  border-radius: 5px;
+  margin-top: 15px;
+
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+#crear:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 #cerrar {
-  background: #ccc;
+  background: #ddd;
+  color: #333;
+
   border: none;
   padding: 10px;
+
   width: 100%;
-  border-radius: 5px;
+  margin-top: 8px;
+
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+#cerrar:hover {
+  background: #ccc;
 }
 
 @media (max-width: 768px) {
