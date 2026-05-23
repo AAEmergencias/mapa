@@ -141,14 +141,14 @@ input.addEventListener("input", function () {
 // 🚑 UNIDADES
 // ==========================
 const unidades = [
-  "Brigada La Ermita G21-G245",
-  "Brigada Los Bronces (Planta)",
-  "Brigada Mina LB",
-  "Brigada Mineroducto",
-  "Brigada Las Tortolas",
-  "Sala Primeros Auxilios Perez Caldera",
-  "Policlinico 220",
-  "Policlinico Las Tortolas"
+  { nombre: "UIR-E", base: "La Ermita" },
+  { nombre: "B1", base: "Los Bronces" },
+  { nombre: "UIR-M", base: "Mina" },
+  { nombre: "UIR-S", base: "Mineroducto" },
+  { nombre: "B2", base: "Las Tortolas" },
+  { nombre: "S1", base: "Perez Caldera" },
+  { nombre: "S2", base: "Policlinico Las Tortolas" },
+  { nombre: "S3", base: "Policlinico 220" }
 ];
 
 const listaUnidades = document.getElementById("listaUnidades");
@@ -158,7 +158,11 @@ unidades.forEach((u, i) => {
   let div = document.createElement("div");
   div.className = "unidad";
 
-  div.innerHTML = `🚑 <b>${u}</b><br><small>Disponible (6-8)</small>`;
+  div.innerHTML = `
+  🚑 <b>${u.nombre}</b><br>
+  <small>Base: ${u.base}</small><br>
+  <small>Disponible (6-8)</small>
+`;
 
   div.addEventListener("click", () => {
   unidadSeleccionada = u;
@@ -297,8 +301,8 @@ incidenteActivoDiv = div;
 
     unidades.forEach(u => {
       let op = document.createElement("option");
-      op.value = u;
-      op.text = u;
+      op.value = u.nombre;
+      op.text = `${u.nombre} - ${u.base}`;
       selectUnidad.appendChild(op);
     });
 
@@ -606,7 +610,10 @@ panel.innerHTML = `
 
     <div class="bloque">
       <div class="titulo">🚑 Unidades asignadas</div>
-      <div class="unidades">${data.unidad}</div>
+      <div class="unidades"></div>  
+      
+      <select class="selectUnidad"></select>  
+      <button class="btnAgregarUnidad">Agregar Unidad</button>
     </div>
 
     <div class="bloque">
