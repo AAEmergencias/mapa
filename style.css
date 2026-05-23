@@ -274,10 +274,14 @@ body {
     font-size: 26px;
   }
 
-  #search {
-    width: 90%;
-    left: 5%;
-  }
+#search {
+  position: fixed;
+  top: 20px;
+  left: 340px; /* justo despues del panel */
+  width: 280px;
+
+  z-index: 5000;
+}
 
   #panel {
     width: 90%;
@@ -453,18 +457,21 @@ body {
 }
 
 #modalContenido {
-  background: white;
+  background: #2b2f3a;   /* fondo oscuro */
+  color: white;          /* texto visible */
+
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
+  width: 320px;
 }
 
 .estado-item {
-  padding: 10px;
-  margin: 5px 0;
-  background: #eee;
-  border-radius: 6px;
-  cursor: pointer;
+  background: #3a3f4b;
+  color: white;
+}
+
+.estado-item:hover {
+  background: #4c5362;
 }
 
 #cerrarEstados {
