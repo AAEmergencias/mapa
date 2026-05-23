@@ -473,11 +473,35 @@ body {
 #contenedorEmergencias {
   position: fixed;
   top: 80px;
-  left: 350px; /* 👈 importante (para que no quede debajo del panel lateral) */
+  left: 380px; /* 👈 MÁS A LA DERECHA */
 
   display: flex;
   flex-direction: column;
   gap: 10px;
 
-  z-index: 8000; /* 👈 alto */
+  z-index: 9000;
+}
+
+.panel-emergencia {
+  width: 280px;
+  background: #1f232b;
+  color: white;
+
+  border-radius: 10px;
+  padding: 10px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+
+  animation: aparecer 0.2s ease;
+}
+
+@keyframes aparecer {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
