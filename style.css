@@ -472,18 +472,20 @@ body {
 
 #contenedorEmergencias {
   position: fixed;
-  top: 80px;
-  left: 380px; /* 👈 MÁS A LA DERECHA */
+  top: 15px;
+  left: 380px; /* 👈 justo al lado del buscador */
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;   /* 👈 en horizontal */
+  flex-wrap: wrap;       /* 👈 baja si no caben */
+
   gap: 10px;
 
   z-index: 9000;
 }
 
 .panel-emergencia {
-  width: 280px;
+  width: 260px;
   background: #1f232b;
   color: white;
 
@@ -492,7 +494,13 @@ body {
 
   box-shadow: 0 5px 20px rgba(0,0,0,0.6);
 
-  animation: aparecer 0.2s ease;
+  font-size: 13px;
+
+  transition: 0.2s;
+}
+
+.panel-emergencia:hover {
+  transform: translateY(-3px);
 }
 
 @keyframes aparecer {
