@@ -587,28 +587,38 @@ function crearPanelRojo(data, panelNegro) {
   let panel = document.createElement("div");
   panel.className = "panel-rojo";
 
-  panel.innerHTML = `
-    <div class="header-rojo">
-      🚨 Emergencia Activa
+panel.innerHTML = `
+  <div class="header-rojo">
+    🚨 Emergencia Activa
+    <div class="acciones">
       <button class="minRojo">–</button>
       <button class="cerrarRojo">X</button>
     </div>
+  </div>
 
-    <div class="contenido-rojo">
-      <b>Datos generales</b><br>
-      Tipo: ${data.tipo}<br>
-      Subtipo: ${data.subtipo}<br>
-      Ubicación: ${data.ubicacion}<br><br>
+  <div class="contenido-rojo">
 
-      🚑 Unidades asignadas:
-      <div class="unidades">${data.unidad}</div>
-
-      📝 Notas:
-      <textarea></textarea>
-
-      <button class="btnFinalizar">Finalizar</button>
+    <div class="bloque">
+      <div class="titulo">Datos generales</div>
+      <div><b>Tipo:</b> ${data.tipo}</div>
+      <div><b>Ubicación:</b> ${data.ubicacion}</div>
     </div>
-  `;
+
+    <div class="bloque">
+      <div class="titulo">🚑 Unidades asignadas</div>
+      <div class="unidades">${data.unidad}</div>
+    </div>
+
+    <div class="bloque">
+      <div class="titulo">📝 Notas</div>
+      <textarea placeholder="Agregar información..."></textarea>
+    </div>
+
+    <button class="btnFinalizar">Finalizar Emergencia</button>
+
+  </div>
+`;
+``
 
   // ✅ CERRAR
   panel.querySelector(".cerrarRojo").onclick = () => {
