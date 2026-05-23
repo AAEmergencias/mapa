@@ -180,23 +180,27 @@ body {
 
 /* BOTÓN + */
 #btnNuevo {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  position: fixed;  /* 🔥 importante (no absolute) */
+  bottom: 25px;
+  right: 25px;
 
   width: 60px;
   height: 60px;
 
-  background: #b71c1c;
+  background: #d32f2f;
   color: white;
 
   border-radius: 50%;
   border: none;
 
-  font-size: 30px;
+  font-size: 28px;
   cursor: pointer;
-  z-index: 2000;
+
+  z-index: 9999; /* 🔥 que quede arriba de todo */
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
+
 
 /* FONDO OSCURO */
 #overlay {
@@ -266,12 +270,6 @@ body {
     height: auto;
     max-height: 90vh;
     overflow-y: auto;
-  }
-
-  #btnNuevo {
-    width: 55px;
-    height: 55px;
-    font-size: 26px;
   }
 
 #search {
