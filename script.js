@@ -572,10 +572,6 @@ document.getElementById("cerrarEstados").onclick = () => {
   document.getElementById("modalEstados").style.display = "none";
 };
 
-  if (emergencias.length === 0) return;
-
-  let e = emergencias[indiceActivo];
-
   document.getElementById("pTipo").innerText = e.tipo;
   document.getElementById("pSubtipo").innerText = e.subtipo;
   document.getElementById("pUbicacion").innerText = e.ubicacion;
@@ -596,33 +592,3 @@ document.addEventListener("keydown", (e) => {
   }
 
 });
-
-// ==========================
-// 🔄 NAVEGAR EMERGENCIAS
-// ==========================
-
-document.getElementById("prevEmergencia").onclick = () => {
-
-  if (emergencias.length === 0) return;
-
-  indiceActivo--;
-
-  if (indiceActivo < 0) {
-    indiceActivo = emergencias.length - 1;
-  }
-
-  mostrarEmergenciaActiva();
-};
-
-document.getElementById("nextEmergencia").onclick = () => {
-
-  if (emergencias.length === 0) return;
-
-  indiceActivo++;
-
-  if (indiceActivo >= emergencias.length) {
-    indiceActivo = 0;
-  }
-
-  mostrarEmergenciaActiva();
-};
