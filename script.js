@@ -165,7 +165,7 @@ unidades.forEach((u, i) => {
 `;
 
   div.addEventListener("click", () => {
-  unidadSeleccionada = u;
+  unidadSeleccionada = u.nombre; // 🔥 IMPORTANTE
   abrirModalEstados();
 });
   
@@ -520,6 +520,7 @@ function abrirModalEstados() {
     item.onclick = () => {
       actualizarEstadoUnidad(unidadSeleccionada, clave);
       modal.style.display = "none";
+      console.log(unidadSeleccionada);
     };
 
     lista.appendChild(item);
