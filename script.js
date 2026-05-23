@@ -500,45 +500,6 @@ document.addEventListener("mouseup", () => {
 // ==========================
 panelActivo.style.display = "none";
 
-
-// ==========================
-// 🚑 MODAL DE ESTADOS
-// ==========================
-function cerrarModalEstados() {
-  const modal = document.getElementById("modalEstados");
-  if (modal) modal.style.display = "none";
-}
-
-function abrirModalEstados() {
-
-  const modal = document.getElementById("modalEstados");
-  const lista = document.getElementById("listaEstadosModal");
-
-  lista.innerHTML = "";
-
-  Object.entries(estados).forEach(([clave, texto]) => {
-
-    let item = document.createElement("div");
-    item.className = "estado-item";
-    item.innerText = `${clave} - ${texto}`;
-
-    item.onclick = () => {
-
-  if (clave === "6-10") {
-    abrirModalBases(unidadSeleccionada);
-  } else {
-    actualizarEstadoUnidad(unidadSeleccionada, clave);
-  }
-
-  cerrarModalEstados();
-};
-
-    lista.appendChild(item);
-  });
-
-  modal.style.display = "flex";
-}
-
 // ==========================
 // 🏠 MODAL BASES (PASO 4)
 // ==========================
@@ -588,6 +549,49 @@ function abrirModalBases(unidad) {
 
   document.body.appendChild(modal);
 }
+
+// ==========================
+// 🚑 MODAL DE ESTADOS
+// ==========================
+function cerrarModalEstados() {
+  const modal = document.getElementById("modalEstados");
+  if (modal) modal.style.display = "none";
+}
+
+function abrirModalEstados() {
+
+  const modal = document.getElementById("modalEstados");
+  const lista = document.getElementById("listaEstadosModal");
+
+  lista.innerHTML = "";
+
+  Object.entries(estados).forEach(([clave, texto]) => {
+
+    let item = document.createElement("div");
+    item.className = "estado-item";
+    item.innerText = `${clave} - ${texto}`;
+
+    item.onclick = () => {
+
+if (clave === "6-10") {
+
+  cerrarModalEstados();             // 🔥 primero cerrar
+  abrirModalBases(unidadSeleccionada); // 🔥 luego abrir
+
+} else {
+
+  actualizarEstadoUnidad(unidadSeleccionada, clave);
+  cerrarModalEstados();
+
+}
+
+    lista.appendChild(item);
+  });
+
+  modal.style.display = "flex";
+}
+
+
 
 // ✅ CIERRE UNIVERSAL
 document.addEventListener("click", (e) => {
