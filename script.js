@@ -1211,3 +1211,25 @@ panel.querySelector(".btnFinalizar").onclick = () => {
 
   return panel;
 }
+
+document.getElementById("exportar").onclick = () => {
+
+  if (historialEmergencias.length === 0) {
+    alert("No hay emergencias registradas");
+    return;
+  }
+
+  let csv = "Tipo,Subtipo,Ubicacion,Fecha\n";
+
+  historialEmergencias.forEach(e => {
+    csv += `${e.tipo},${e.subtipo},${e.ubicacion},${e.fecha}\n`;
+  });
+
+  let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+
+  let link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "historial_emergencias.csv";
+
+  link.click();
+};
