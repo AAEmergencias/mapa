@@ -125,6 +125,23 @@ fetch('mapa.kml')
 
     map.fitBounds(layer.getBounds());
 
+    Object.entries(unidadesCoords).forEach(([nombre, coords]) => {
+
+  let icono = nombre.startsWith("S")
+    ? iconos.ambulancia
+    : iconos.bomberos;
+
+  let marker = L.marker([coords.lat, coords.lng], {
+    icon: icono
+  })
+  .addTo(map)
+  .bindPopup("🚑 Unidad: " + nombre);
+
+  // 🔥 guardar marcador
+  marcadoresUnidades[nombre] = marker;
+
+});
+
   });
 
 // ==========================
@@ -222,6 +239,22 @@ const basesCoords = {
 
 };
 
+const unidadesCoords = {
+
+  "UIR-E": { lat: -33.36836139874689, lng: -70.39767004182966 },
+  "B1": { lat: -33.14653728758808, lng: -70.28561289858193 },
+  "UIR-M": { lat: -33.159893229696756, lng: -70.29362741286191 },
+  "UIR-S": { lat: -33.19520696657682, lng: -70.56769606817501 },
+  "B2": { lat: -33.145535121031365, lng: -70.69935782523045 },
+
+  "S1": { lat: -33.19056101322309, lng: -70.3392088172074 },
+  "S2": { lat: -33.145579475013996, lng: -70.69949327677081 },
+  "S3": { lat: -33.14678123106413, lng: -70.28585898284963 }
+
+};
+
+
+
 const listaUnidades = document.getElementById("listaUnidades");
 
 unidades.forEach((u, i) => {
@@ -274,7 +307,11 @@ if (nombreUnidad.includes("S")) {
   icono = iconos.bomberos;
 }
 
-let marker = L.marker([lat, lng], { icon: icono }).addTo(map);
+let key = nombreUnidad.split(" ")[0]; // UIR-E, B1, etc
+
+let marker = marcadoresUnidades[key];
+
+if (!marker) return;
 
   marcadoresUnidades[nombreUnidad] = marker;
 
@@ -1098,7 +1135,10 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
   // ✅ actualizar estado
   actualizarEstadoUnidad(unidadData.nombre, "6-T");
 
-  let origen = basesCoords[unidadData.base.trim()];
+  let key = nombreUnidad.split(" ")[0]; // 👈 importante
+
+let origen = unidadesCoords[key];
+let destino = ubicacionSeleccionada.coords;
 let destino = ubicacionSeleccionada.coords;
 
 if (origen && destino) {
