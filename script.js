@@ -569,7 +569,7 @@ function abrirModalEstados() {
     };
 
   
-/ ✅ 🔥 AQUI EL FIX REAL
+// ✅ 🔥 AQUI EL FIX REAL
   const btnCerrar = document.getElementById("cerrarEstados");
 
   if (btnCerrar) {
