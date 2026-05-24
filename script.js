@@ -559,6 +559,17 @@ if (btnCerrar) {
 }
 
 // ==========================
+// ❌ CERRAR MODAL ESTADOS
+// ==========================
+function cerrarModalEstados() {
+  const modal = document.getElementById("modalEstados");
+
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
+
+// ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
 function abrirModalEstados() {
@@ -598,20 +609,11 @@ function abrirModalEstados() {
   modal.style.display = "flex";
 }
 
-// ✅ CIERRE UNIVERSAL
 document.addEventListener("click", (e) => {
   if (e.target && e.target.id === "cerrarEstados") {
     cerrarModalEstados();
   }
 });
-
-const btnCerrarEstados = document.getElementById("cerrarEstados");
-
-if (btnCerrarEstados) {
-  btnCerrarEstados.onclick = () => {
-    cerrarModalEstados();
-  };
-}
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
