@@ -539,6 +539,15 @@ if (btnCerrar) {
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
+
+
+function cerrarModalEstados() {
+  const modal = document.getElementById("modalEstados");
+
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
 function abrirModalEstados() {
 
   const modal = document.getElementById("modalEstados");
@@ -575,11 +584,9 @@ function abrirModalEstados() {
   // ✅ 🔥 AQUI EL FIX REAL
   const btnCerrar = document.getElementById("cerrarEstados");
 
-  if (btnCerrar) {
-    btnCerrar.onclick = () => {
-      cerrarModalEstados();
-    };
-  }
+  if (typeof cerrarModalEstados === "function") {
+  cerrarModalEstados();
+}
 
   modal.style.display = "flex";
 }
