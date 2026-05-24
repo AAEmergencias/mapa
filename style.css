@@ -762,3 +762,17 @@ body {
   border-radius: 10px;
   width: 300px;
 }
+
+.btnConfirmar {
+  background: #d32f2f;
+  color: white;
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btnConfirmar:hover {
+  background: #b71c1c;
+}
