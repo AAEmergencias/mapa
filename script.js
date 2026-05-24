@@ -460,12 +460,13 @@ let offsetX, offsetY;
 
 const header = document.getElementById("headerPanel");
 
-header.addEventListener("mousedown", (e) => {
-  dragging = true;
-  offsetX = e.clientX - panelActivo.offsetLeft;
-  offsetY = e.clientY - panelActivo.offsetTop;
-});
-
+if (header && panelActivo) {
+  header.addEventListener("mousedown", (e) => {
+    dragging = true;
+    offsetX = e.clientX - panelActivo.offsetLeft;
+    offsetY = e.clientY - panelActivo.offsetTop;
+  });
+}
 document.addEventListener("mousemove", (e) => {
   if (!dragging) return;
 
@@ -480,7 +481,9 @@ document.addEventListener("mouseup", () => {
 // ==========================
 // 🔒 OCULTAR PANEL AL INICIO
 // ==========================
-panelActivo.style.display = "none";
+if (panelActivo) {
+  panelActivo.style.display = "none";
+}
 
 // ==========================
 // 🏠 MODAL BASES (PASO 4)
