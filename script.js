@@ -186,14 +186,14 @@ if (titulo) {
 // 🚑 UNIDADES
 // ==========================
 const unidades = [
-  { nombre: "UIR-E", base: "Brigada La Ermita" },
-  { nombre: "B1", base: " Brigada Los Bronces" },
-  { nombre: "UIR-M", base: " Brigada Mina" },
-  { nombre: "UIR-S", base: "Brigada Mineroducto" },
-  { nombre: "B2", base: "Brigada Las Tortolas" },
-  { nombre: "S1", base: "Policlínico Perez Caldera" },
-  { nombre: "S2", base: "Policlínico Las Tortolas" },
-  { nombre: "S3", base: "SPA 220" }
+  { nombre: "UIR-E / Ermita", base: "Brigada La Ermita" },
+  { nombre: "B1 / Bronces", base: " Brigada Los Bronces" },
+  { nombre: "UIR-M / Mina", base: " Brigada Mina" },
+  { nombre: "UIR-S / STP", base: "Brigada Mineroducto" },
+  { nombre: "B2 / Tórtolas", base: "Brigada Las Tortolas" },
+  { nombre: "S1 / Pérez Caldera", base: "Policlínico Perez Caldera" },
+  { nombre: "S2 / Poli Tórtolsa", base: "Policlínico Las Tortolas" },
+  { nombre: "S3 / 220", base: "SPA 220" }
 ];
 
 const listaUnidades = document.getElementById("listaUnidades");
