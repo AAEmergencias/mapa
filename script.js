@@ -548,6 +548,48 @@ if (btnCerrar) {
   document.body.appendChild(modal);
 }
 
+function abrirModalNotas(unidad, estado) {
+
+  let modal = document.createElement("div");
+  modal.className = "modal-bases";
+
+  modal.innerHTML = `
+    <div class="modal-bases-content">
+      <h3>📝 Ingresar Nota</h3>
+
+      <textarea id="notaTexto" placeholder="Ej: En reconocimiento de área..." style="width:100%; height:80px; margin-bottom:10px;"></textarea>
+
+      <button class="guardarNota">Guardar</button>
+      <button class="cerrarBases">Cancelar</button>
+    </div>
+  `;
+
+  const btnGuardar = modal.querySelector(".guardarNota");
+  const btnCerrar = modal.querySelector(".cerrarBases");
+  const textarea = modal.querySelector("#notaTexto");
+
+  if (btnGuardar) {
+    btnGuardar.onclick = () => {
+
+      let nota = textarea.value || "Sin detalle";
+
+      actualizarEstadoUnidad(unidad, estado);
+
+      console.log(unidad + " → NOTA: " + nota);
+
+      modal.remove();
+    };
+  }
+
+  if (btnCerrar) {
+    btnCerrar.onclick = () => {
+      modal.remove();
+    };
+  }
+
+  document.body.appendChild(modal);
+}
+
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
