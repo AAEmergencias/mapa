@@ -568,8 +568,11 @@ function abrirModalEstados() {
 
     };
 
-  
-// ✅ 🔥 AQUI EL FIX REAL
+    lista.appendChild(item);
+
+  });
+
+  // ✅ 🔥 AQUI EL FIX REAL
   const btnCerrar = document.getElementById("cerrarEstados");
 
   if (btnCerrar) {
