@@ -330,7 +330,7 @@ const subtiposPorTipo = {
     "Colisión vehículos livanos fuera de las instalaciones",
     "Volcamiento equipo minero",
     "Volcamiento vehículos pesados",
-    "Volcamiento vehículos livianos"
+    "Volcamiento vehículos livianos",
     "Volcamiento vehículos pesados fuera de las instalaciones",
     "Volcamiento vehículos livianos fuera de las instalaciones"
   ],
@@ -345,7 +345,7 @@ const subtiposPorTipo = {
     "Rescate vertical",
     "Rescate espacio confinados",
     "Atropello",
-    "Caída de particulas"
+    "Caída de particulas",
     "Otros no categorizados"
   ],
 
@@ -380,7 +380,7 @@ const subtiposPorTipo = {
     "Médico"
   ],
 
-  "Sismico": [
+  "Sísmico": [
     "Sismo leve",
     "Sismo moderado",
     "Terremoto grave"
@@ -393,11 +393,11 @@ const subtiposPorTipo = {
     "Ola de calor",
     "Viento blanco",
     "Aluvión",
-    "Crecida de rios"
+    "Crecida de rios",
     "Inundación de instalaciones"
   ],
 
-  "Geologico": [
+  "Geológico": [
     "Deslizamiento de terreno",
     "Remoción en masa",
     "Falla geotécnica",
