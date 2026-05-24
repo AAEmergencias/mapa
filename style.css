@@ -789,3 +789,25 @@ body {
 .cerrarBases:hover {
   background: #333;
 }
+
+.btn-rojo {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background: #e53935; /* 🔴 rojo */
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-rojo:hover {
+  background: #c62828; /* 🔥 rojo más oscuro */
+}
