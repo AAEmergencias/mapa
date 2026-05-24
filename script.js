@@ -344,7 +344,9 @@ function unidadMasCercana(destino) {
 
   unidades.forEach(u => {
 
-    let coords = unidadesCoords[u];
+    let key = u.nombre.split(" ")[0];
+let coords = unidadesCoords[key];
+
     if (!coords) return;
 
     let d = distancia(coords, destino);
@@ -701,8 +703,6 @@ document.getElementById("crear").onclick = () => {
 
   let tipo = document.getElementById("tipo").value;
   let subtipo = document.getElementById("subtipo").value;
-  let historialEmergencias = [];
-  let emergenciaActiva = null;
 
   // 🔥 AQUÍ PEGA ESTO
   emergenciaActiva = {
@@ -1147,8 +1147,6 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
   if (!unidadesAsignadas.includes(nombreUnidad)) {
     unidadesAsignadas.push(nombreUnidad);
   }
-
-  let key = nombreUnidad.split(" ")[0];
 
 if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
   emergenciaActiva.unidades.push(key);
