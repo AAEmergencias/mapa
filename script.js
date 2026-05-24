@@ -27,13 +27,11 @@ L.control.layers({
 const iconos = {
 
   // 📍 PIN NORMAL
-  general: new L.Icon({
-    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    shadowSize: [41, 41]
-  }),
+ general: new L.Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/149/149059.png',
+  iconSize: [28, 28],
+  iconAnchor: [14, 28]
+}),
 
   // 🔴 EMERGENCIA
   emergencia: new L.Icon({
@@ -53,14 +51,14 @@ const iconos = {
 
   // 🚒 Carro bomba
   bomberos: new L.Icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/482/482266.png',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/2820/2820482.png',
     iconSize: [30, 30],
     iconAnchor: [15, 30]
   }),
 
   // 🚑 Ambulancia
   ambulancia: new L.Icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/2967/2967350.png',
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/996/996785.png',
     iconSize: [30, 30],
     iconAnchor: [15, 30]
   })
