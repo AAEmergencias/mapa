@@ -69,6 +69,7 @@ const iconos = {
 // 📂 CAPAS
 // ==========================
 let historialEmergencias = [];
+let emergenciaActiva = null;
 let lugares = [];
 
 let ubicacionSeleccionada = null;
@@ -695,13 +696,24 @@ document.getElementById("crear").onclick = () => {
 
   let tipo = document.getElementById("tipo").value;
   let subtipo = document.getElementById("subtipo").value;
+  let historialEmergencias = [];
+  let emergenciaActiva = null;
 
-  historialEmergencias.push({
-  tipo: tipo,
-  subtipo: subtipo,
-  ubicacion: ubicacionSeleccionada?.nombre || "Sin ubicación",
-  fecha: new Date().toLocaleString()
-});
+  // 🔥 AQUÍ PEGA ESTO
+  emergenciaActiva = {
+    tipo: tipo,
+    subtipo: subtipo,
+    ubicacion: ubicacionSeleccionada?.nombre || "Sin ubicación",
+    unidades: [],
+    tiempos: {
+      "6-3": "",
+      "6-7": "",
+      "6-8": "",
+      "6-9": "",
+      "6-10": ""
+    },
+    fecha: new Date().toLocaleDateString()
+  };
 
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
