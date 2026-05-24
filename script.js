@@ -566,7 +566,7 @@ function abrirModalNotas(unidad, estado) {
 
       <textarea id="notaTexto" placeholder="Ej: En reconocimiento de área..." style="width:100%; height:80px; margin-bottom:10px;"></textarea>
 
-      <button class="guardarNota">Guardar</button>
+      <button class="btn-rojo guardarNota">Guardar</button>
       <button class="cerrarBases">Cancelar</button>
     </div>
   `;
