@@ -553,11 +553,6 @@ function abrirModalBases(unidad) {
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
-function cerrarModalEstados() {
-  const modal = document.getElementById("modalEstados");
-  if (modal) modal.style.display = "none";
-}
-
 function abrirModalEstados() {
 
   const modal = document.getElementById("modalEstados");
@@ -573,20 +568,24 @@ function abrirModalEstados() {
 
     item.onclick = () => {
 
-if (clave === "6-10") {
+      if (clave === "6-10") {
 
-  cerrarModalEstados();             // 🔥 primero cerrar
-  abrirModalBases(unidadSeleccionada); // 🔥 luego abrir
+        cerrarModalEstados();
+        abrirModalBases(unidadSeleccionada);
 
-} else {
+      } else {
 
-  actualizarEstadoUnidad(unidadSeleccionada, clave);
-  cerrarModalEstados();
+        actualizarEstadoUnidad(unidadSeleccionada, clave);
+        cerrarModalEstados();
 
-}
+      }
 
+    };
+
+    // ✅ ✅ ✅ AQUÍ VA (FUERA DEL onclick)
     lista.appendChild(item);
-  };
+
+  });
 
   modal.style.display = "flex";
 }
