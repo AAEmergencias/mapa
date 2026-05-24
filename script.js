@@ -34,9 +34,11 @@ const iconos = {
     iconSize: [30, 30]
   }),
   general: L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/854/854878.png',
-    iconSize: [28, 28]
-  })
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32] // 🔥 importante para que el pin toque el punto exacto
+})
+
 };
 
 // ==========================
