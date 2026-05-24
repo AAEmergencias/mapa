@@ -597,6 +597,47 @@ function abrirModalNotas(unidad, estado) {
   document.body.appendChild(modal);
 }
 
+function abrirConfirmacionFinalizar(panel, panelNegro) {
+
+  let modal = document.createElement("div");
+  modal.className = "modal-bases";
+
+  modal.innerHTML = `
+    <div class="modal-bases-content">
+      <h3>⚠️ Confirmar acción</h3>
+
+      <p>¿Seguro que deseas finalizar la emergencia?</p>
+
+      <button class="btnConfirmar">FINALIZAR</button>
+      <button class="cerrarBases">CANCELAR</button>
+    </div>
+  `;
+
+  const btnConfirmar = modal.querySelector(".btnConfirmar");
+  const btnCancelar = modal.querySelector(".cerrarBases");
+
+  if (btnConfirmar) {
+    btnConfirmar.onclick = () => {
+
+      // ✅ cerrar panel rojo
+      if (panel) panel.remove();
+
+      // ✅ cerrar panel negro
+      if (panelNegro) panelNegro.remove();
+
+      modal.remove();
+    };
+  }
+
+  if (btnCancelar) {
+    btnCancelar.onclick = () => {
+      modal.remove();
+    };
+  }
+
+  document.body.appendChild(modal);
+}
+
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
@@ -786,10 +827,10 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
   };
 
   // ✅ FINALIZAR (cierra ambos)
-  panel.querySelector(".btnFinalizar").onclick = () => {
-    panel.remove();
-    if (panelNegro) panelNegro.remove();
-  };
+panel.querySelector(".btnFinalizar").onclick = () => {
+  abrirConfirmacionFinalizar(panel, panelNegro);
+};
+
 
   // ✅ MINIMIZAR + PARPADEO
   const header = panel.querySelector(".header-rojo");
