@@ -543,9 +543,13 @@ function abrirModalBases(unidad) {
     lista.appendChild(item);
   });
 
-  modal.querySelector(".cerrarBases").onclick = () => {
+  const btnCerrar = modal.querySelector(".cerrarBases");
+
+if (btnCerrar) {
+  btnCerrar.onclick = () => {
     modal.remove();
   };
+}
 
   document.body.appendChild(modal);
 }
@@ -596,6 +600,14 @@ document.addEventListener("click", (e) => {
     cerrarModalEstados();
   }
 });
+
+const btnCerrarEstados = document.getElementById("cerrarEstados");
+
+if (btnCerrarEstados) {
+  btnCerrarEstados.onclick = () => {
+    cerrarModalEstados();
+  };
+}
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
