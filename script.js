@@ -944,6 +944,12 @@ function abrirConfirmacionFinalizar(panel, panelNegro) {
   if (btnConfirmar) {
     btnConfirmar.onclick = () => {
 
+      // ✅ guardar emergencia en historial
+if (emergenciaActiva) {
+  historialEmergencias.push(emergenciaActiva);
+  emergenciaActiva = null;
+}
+
       // ✅ cerrar panel rojo
       if (panel) panel.remove();
 
@@ -1242,17 +1248,19 @@ document.getElementById("exportar").onclick = () => {
     return;
   }
 
-  let csv = "Tipo,Subtipo,Ubicacion,Fecha\n";
+  let csv = "Tipo,Subtipo,Ubicacion,Unidades,Hora 6-3,Hora 6-7,Hora 6-8,Hora 6-9,Hora 6-10,Fecha\n";
 
   historialEmergencias.forEach(e => {
-    csv += `${e.tipo},${e.subtipo},${e.ubicacion},${e.fecha}\n`;
+
+    csv += `${e.tipo},${e.subtipo},${e.ubicacion},"${e.unidades.join(" - ")}",${e.tiempos["6-3"]},${e.tiempos["6-7"]},${e.tiempos["6-8"]},${e.tiempos["6-9"]},${e.tiempos["6-10"]},${e.fecha}\n`;
+
   });
 
   let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
 
   let link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "historial_emergencias.csv";
+  link.download = "reporte_emergencias.csv";
 
   link.click();
 };
