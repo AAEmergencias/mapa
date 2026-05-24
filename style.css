@@ -791,23 +791,19 @@ body {
 }
 
 .btn-rojo {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-
-  background: #e53935; /* 🔴 rojo */
+  padding: 10px 15px;
+  background: #e53935;
   color: white;
 
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
 
-  font-size: 14px;
   font-weight: bold;
-
   cursor: pointer;
-  transition: background 0.2s ease;
+
+  transition: 0.2s;
 }
 
 .btn-rojo:hover {
-  background: #c62828; /* 🔥 rojo más oscuro */
+  background: #c62828;
 }
