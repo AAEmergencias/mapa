@@ -162,6 +162,18 @@ input.addEventListener("input", function () {
 
 }); // 👈 ESTE ES EL QUE TE FALTABA
 
+const titulo = document.getElementById("titulo");
+
+if (titulo) {
+  titulo.style.cursor = "pointer"; // 👈 para que se vea clickeable
+
+  titulo.onclick = () => {
+    location.reload(); // 🔥 recarga la página
+  };
+}
+
+
+
 // ==========================
 // 🚑 UNIDADES
 // ==========================
