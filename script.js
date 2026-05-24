@@ -537,17 +537,6 @@ if (btnCerrar) {
 }
 
 // ==========================
-// ❌ CERRAR MODAL ESTADOS
-// ==========================
-function cerrarModalEstados() {
-  const modal = document.getElementById("modalEstados");
-
-  if (modal) {
-    modal.style.display = "none";
-  }
-}
-
-// ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
 function abrirModalEstados() {
@@ -579,19 +568,18 @@ function abrirModalEstados() {
 
     };
 
-    // ✅ ✅ ✅ AQUÍ VA (FUERA DEL onclick)
-    lista.appendChild(item);
+  
+/ ✅ 🔥 AQUI EL FIX REAL
+  const btnCerrar = document.getElementById("cerrarEstados");
 
-  });
+  if (btnCerrar) {
+    btnCerrar.onclick = () => {
+      cerrarModalEstados();
+    };
+  }
 
   modal.style.display = "flex";
 }
-
-document.addEventListener("click", (e) => {
-  if (e.target && e.target.id === "cerrarEstados") {
-    cerrarModalEstados();
-  }
-});
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
