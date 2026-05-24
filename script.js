@@ -332,7 +332,7 @@ const subtiposPorTipo = {
     "Volcamiento vehículos pesados",
     "Volcamiento vehículos livianos"
     "Volcamiento vehículos pesados fuera de las instalaciones",
-    "Volcamiento vehículos livianos fuera de las instalaciones",
+    "Volcamiento vehículos livianos fuera de las instalaciones"
   ],
 
   "Rescate": [
