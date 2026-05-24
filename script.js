@@ -49,7 +49,7 @@ const iconos = {
     shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41]
-  })
+  }),
 
   // 🚒 Carro bomba
   bomberos: new L.Icon({
