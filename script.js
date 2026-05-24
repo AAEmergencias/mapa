@@ -168,8 +168,16 @@ if (titulo) {
   titulo.style.cursor = "pointer"; // 👈 para que se vea clickeable
 
   titulo.onclick = () => {
-    location.reload(); // 🔥 recarga la página
-  };
+
+  // ✅ volver al mapa inicial
+  map.setView([-33.45, -70.66], 10);
+
+  // ✅ cerrar modales abiertos
+  cerrarModalEstados();
+
+  document.querySelectorAll(".modal-bases").forEach(m => m.remove());
+
+};
 }
 
 
