@@ -252,7 +252,7 @@ const coloresEstado = {
 // ==========================
 // 🔄 ACTUALIZAR UNIDAD
 // ==========================
-function actualizarEstadoUnidad(nombreUnidad, estado, nuevaBase = null) {
+function actualizarEstadoUnidad(nombreUnidad, estado, nuevaBase = null, nota = "") {
 
   let unidadesHTML = document.querySelectorAll(".unidad");
 
@@ -260,13 +260,18 @@ function actualizarEstadoUnidad(nombreUnidad, estado, nuevaBase = null) {
 
     if (div.innerText.includes(nombreUnidad)) {
 
-      let textoBase = nuevaBase 
-        ? `<small>Base: ${nuevaBase}</small><br>`
+      let baseTexto = nuevaBase 
+        ? `<small>Base: ${nuevaBase}</small><br>` 
+        : "";
+
+      let notaTexto = nota 
+        ? `<small>📝 ${nota}</small><br>` 
         : "";
 
       div.innerHTML = `
         🚑 <b>${nombreUnidad}</b><br>
-        ${textoBase}
+        ${baseTexto}
+        ${notaTexto}
         <small>${estado} - ${estados[estado]}</small>
       `;
 
@@ -617,17 +622,23 @@ function abrirModalEstados() {
 
     item.onclick = () => {
 
-      if (clave === "6-10") {
+     if (clave === "6-10") {
 
-        cerrarModalEstados();
-        abrirModalBases(unidadSeleccionada);
+  cerrarModalEstados();
+  abrirModalBases(unidadSeleccionada);
 
-      } else {
+} else if (clave === "6-13") {
 
-        actualizarEstadoUnidad(unidadSeleccionada, clave);
-        cerrarModalEstados();
+  cerrarModalEstados();
+  abrirModalNotas(unidadSeleccionada, clave); // 👈 NUEVO
 
-      }
+} else {
+
+  actualizarEstadoUnidad(unidadSeleccionada, clave);
+  cerrarModalEstados();
+
+}
+
 
     };
 
