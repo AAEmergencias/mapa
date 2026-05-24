@@ -51,6 +51,20 @@ const iconos = {
     iconAnchor: [12, 41]
   })
 
+  // 🚒 Carro bomba
+  bomberos: new L.Icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/482/482266.png',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30]
+  }),
+
+  // 🚑 Ambulancia
+  ambulancia: new L.Icon({
+    iconUrl: 'https://cdn-icons-png.flaticon.com/512/2967/2967350.png',
+    iconSize: [30, 30],
+    iconAnchor: [15, 30]
+  })
+
 };
 
 // ==========================
@@ -253,7 +267,16 @@ function moverUnidad(nombreUnidad, origen, destino) {
   let lat = origen.lat;
   let lng = origen.lng;
 
-  let marker = L.marker([lat, lng], { icon: iconos.general }).addTo(map);
+ let icono = iconos.general;
+
+// 🚑 distinguir por nombre
+if (nombreUnidad.includes("S")) {
+  icono = iconos.ambulancia;
+} else {
+  icono = iconos.bomberos;
+}
+
+let marker = L.marker([lat, lng], { icon: icono }).addTo(map);
 
   marcadoresUnidades[nombreUnidad] = marker;
 
