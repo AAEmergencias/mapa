@@ -586,12 +586,10 @@ if (clave === "6-10") {
 }
 
     lista.appendChild(item);
-  });
+  };
 
   modal.style.display = "flex";
 }
-
-
 
 // ✅ CIERRE UNIVERSAL
 document.addEventListener("click", (e) => {
