@@ -530,6 +530,11 @@ const subtiposPorTipo = {
 // ==========================
 function actualizarEstadoUnidad(nombreUnidad, estado, nuevaBase = null, nota = "") {
 
+  // 🔥 guardar hora del estado
+if (emergenciaActiva && emergenciaActiva.tiempos[estado] !== undefined) {
+  emergenciaActiva.tiempos[estado] = new Date().toLocaleTimeString();
+}
+
   let unidadesHTML = document.querySelectorAll(".unidad");
 
   unidadesHTML.forEach(div => {
@@ -1136,6 +1141,12 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
   if (!unidadesAsignadas.includes(nombreUnidad)) {
     unidadesAsignadas.push(nombreUnidad);
   }
+
+  let key = nombreUnidad.split(" ")[0];
+
+if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
+  emergenciaActiva.unidades.push(key);
+}
 
   let div = document.createElement("div");
   div.className = "unidad-asignada";
