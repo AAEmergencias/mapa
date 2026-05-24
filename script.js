@@ -220,6 +220,7 @@ function unidadMasCercana(destino) {
 // 🚒 ESTADOS
 // ==========================
 const estados = {
+  "6-T": "En Trayecto",
   "6-3": "En el lugar",
   "6-7": "Situación Controlada",
   "6-8": "Disponible",
@@ -235,6 +236,7 @@ const estados = {
 };
 
 const coloresEstado = {
+  "6-T": "#FFC107", // amarillo tipo tránsito
   "6-3": "#ff9800",
   "6-7": "#4CAF50",
   "6-8": "#2196F3",
@@ -774,7 +776,7 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
   contenedorUnidades.appendChild(div);
 
   // 🔥 cambia estado a en servicio
-  actualizarEstadoUnidad(unidadData.nombre, "6-3");
+  actualizarEstadoUnidad(unidadData.nombre, "6-T");
 };
 
   // ✅ CERRAR
