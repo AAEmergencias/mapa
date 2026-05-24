@@ -807,3 +807,7 @@ body {
 .btn-rojo:hover {
   background: #c62828;
 }
+
+.modal-bases-content button {
+  margin-right: 10px;
+}
