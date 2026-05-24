@@ -316,13 +316,23 @@ const subtiposPorTipo = {
     "Choque equipos mineros",
     "Choque vehículos pesados",
     "Choque vehículos livianos",
+    "Choque vehículos pesados fuera de las instalaciones",
+    "Choque vehículos livianos fuera de las instalaciones",
     "Desbarrancamiento equipos mineros",
     "Desbarrancamiento vehículos pesados",
     "Desbarrancamiento vehículos livianos",
+    "Desbarrancamiento vehículos pesados fuera de las intalaciones",
+    "Desbarrancamiento vehículos livianos fuera de las instalaciones",
     "Colisión equipo minero",
+    "Colisión vehículos pesados",
+    "Colisión vehícculos livianos",
+    "Colisión vehículos pesados fuera de las instalaciones",
+    "Colisión vehículos livanos fuera de las instalaciones",
     "Volcamiento equipo minero",
     "Volcamiento vehículos pesados",
     "Volcamiento vehículos livianos"
+    "Volcamiento vehículos pesados fuera de las instalaciones",
+    "Volcamiento vehículos livianos fuera de las instalaciones",
   ],
 
   "Rescate": [
@@ -330,10 +340,12 @@ const subtiposPorTipo = {
     "Caída diferente nivel",
     "Derrumbe",
     "Atrapamiento",
+    "Perdida de conciencia",
     "Encerramiento en ascensor",
     "Rescate vertical",
     "Rescate espacio confinados",
     "Atropello",
+    "Caída de particulas"
     "Otros no categorizados"
   ],
 
@@ -341,7 +353,8 @@ const subtiposPorTipo = {
     "Problemas de salud",
     "Fractura",
     "Esguince",
-    "Desmayo",
+    "Desmayo / Inconciente",
+    "Crisis de Pánico / Ansiedad",
     "PCR",
     "Corte",
     "Perdida de memoria",
@@ -355,9 +368,16 @@ const subtiposPorTipo = {
   ],
 
   "Simulacros": [
-    "Simulacro documental",
-    "Simulacro proceso",
-    "Simulacro divisional"
+    "Simulacro documental/Proceso/Divicional",
+    "Incendio",
+    "Vehícular",
+    "Rescate",
+    "Hazmat",
+    "Sísmico",
+    "Meteorológico",
+    "Geológico",
+    "Ambiental",
+    "Médico"
   ],
 
   "Sismico": [
@@ -374,6 +394,7 @@ const subtiposPorTipo = {
     "Viento blanco",
     "Aluvión",
     "Crecida de rios"
+    "Inundación de instalaciones"
   ],
 
   "Geologico": [
@@ -394,7 +415,8 @@ const subtiposPorTipo = {
     "Limpieza de rodados",
     "Activación alarma SPCI",
     "Contacto eléctrico",
-    "Desperfecto mecánico",
+    "Desperfecto mecánico Ruta G21-G245",
+    "Desperfecto mecánico Ruta STP-OLB",
     "Rescate animal",
     "Olor no determinado",
     "Daño infraestructura",
