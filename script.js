@@ -429,24 +429,28 @@ document.getElementById("crear").onclick = () => {
   overlay.style.display = "none";
 };
 
-
 // ==========================
-// 🔽 MINIMIZAR PANEL ACTIVO
+// 🔽 MINIMIZAR PANEL ACTIVO (SEGURO)
 // ==========================
 const panelActivo = document.getElementById("panelActivo");
 const headerPanel = document.getElementById("headerPanel");
+const btnMinPanel = document.getElementById("minPanel");
 
-document.getElementById("minPanel").onclick = () => {
+if (btnMinPanel && panelActivo && headerPanel) {
 
-  panelActivo.classList.toggle("panel-min");
+  btnMinPanel.onclick = () => {
 
-  // 🔴 PARPADEO
-  if (panelActivo.classList.contains("panel-min")) {
-    headerPanel.classList.add("blink");
-  } else {
-    headerPanel.classList.remove("blink");
-  }
-};
+    panelActivo.classList.toggle("panel-min");
+
+    if (panelActivo.classList.contains("panel-min")) {
+      headerPanel.classList.add("blink");
+    } else {
+      headerPanel.classList.remove("blink");
+    }
+
+  };
+
+}
 
 // ==========================
 // ✅ FINALIZAR EMERGENCIA
