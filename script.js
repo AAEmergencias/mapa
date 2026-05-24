@@ -196,6 +196,20 @@ const unidades = [
   { nombre: "S3 / 220", base: "SPA 220" }
 ];
 
+const basesCoords = {
+
+  "Brigada La Ermita": { lat: -33.36836139874689, lng: -70.39767004182966 },
+  "Brigada Los Bronces": { lat: -33.14653728758808, lng: -70.28561289858193 },
+  "Brigada Mina": { lat: -33.159893229696756, lng: -70.29362741286191 },
+  "Brigada Mineroducto": { lat: -33.19520696657682, lng: -70.56769606817501 },
+  "Brigada Las Tortolas": { lat: -33.145535121031365, lng: -70.69935782523045 },
+
+  "Policlínico Perez Caldera": { lat: -33.19056101322309, lng: -70.3392088172074 },
+  "Policlínico Las Tortolas": { lat: -33.145579475013996, lng: -70.69949327677081 },
+  "SPA 220": { lat: -33.14678123106413, lng: -70.28585898284963 }
+
+};
+
 const listaUnidades = document.getElementById("listaUnidades");
 
 unidades.forEach((u, i) => {
@@ -215,11 +229,7 @@ unidades.forEach((u, i) => {
 });
   
   listaUnidades.appendChild(div);
-
-  // 🔥 asignar coordenada (usa los puntos del mapa)
-  if (lugares[i]) {
-    unidadesCoords[u] = lugares[i].coords;
-  }
+  
 });
 
 // ==========================
@@ -234,6 +244,39 @@ function distancia(a, b) {
   let dx = a.lat - b.lat;
   let dy = a.lng - b.lng;
   return Math.sqrt(dx * dx + dy * dy);
+}
+
+let marcadoresUnidades = {};
+
+function moverUnidad(nombreUnidad, origen, destino) {
+
+  let lat = origen.lat;
+  let lng = origen.lng;
+
+  let marker = L.marker([lat, lng], { icon: iconos.general }).addTo(map);
+
+  marcadoresUnidades[nombreUnidad] = marker;
+
+  let pasos = 60;
+  let pasoActual = 0;
+
+  let deltaLat = (destino.lat - origen.lat) / pasos;
+  let deltaLng = (destino.lng - origen.lng) / pasos;
+
+  let intervalo = setInterval(() => {
+
+    lat += deltaLat;
+    lng += deltaLng;
+
+    marker.setLatLng([lat, lng]);
+
+    pasoActual++;
+
+    if (pasoActual >= pasos) {
+      clearInterval(intervalo);
+    }
+
+  }, 150);
 }
 
 // ==========================
@@ -1033,6 +1076,15 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   // ✅ actualizar estado
   actualizarEstadoUnidad(unidadData.nombre, "6-T");
+
+  let origen = basesCoords[unidadData.base.trim()];
+let destino = ubicacionSeleccionada.coords;
+
+if (origen && destino) {
+  moverUnidad(unidadData.nombre, origen, destino);
+}
+
+  
 
   // 🔥 ✅ ACTUALIZAR PANEL NEGRO
   if (panelNegro) {
