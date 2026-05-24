@@ -776,3 +776,16 @@ body {
 .btnConfirmar:hover {
   background: #b71c1c;
 }
+
+.cerrarBases {
+  background: #555;       /* gris oscuro elegante */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cerrarBases:hover {
+  background: #333;
+}
