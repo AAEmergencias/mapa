@@ -278,11 +278,6 @@ unidades.forEach((u, i) => {
 });
 
 // ==========================
-// 📍 COORDENADAS DE UNIDADES
-// ==========================
-let unidadesCoords = {};
-
-// ==========================
 // 📏 DISTANCIA ENTRE PUNTOS
 // ==========================
 function distancia(a, b) {
@@ -313,7 +308,7 @@ let marker = marcadoresUnidades[key];
 
 if (!marker) return;
 
-  marcadoresUnidades[nombreUnidad] = marker;
+  marcadoresUnidades[key] = marker;
 
   let pasos = 60;
   let pasoActual = 0;
@@ -1138,7 +1133,6 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
   let key = nombreUnidad.split(" ")[0]; // 👈 importante
 
 let origen = unidadesCoords[key];
-let destino = ubicacionSeleccionada.coords;
 let destino = ubicacionSeleccionada.coords;
 
 if (origen && destino) {
