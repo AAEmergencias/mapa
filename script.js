@@ -693,21 +693,15 @@ function abrirModalEstados() {
 
   });
 
-  // ✅ 🔥 AQUI EL FIX REAL
+  
+// ✅ 🔥 ESTE ES EL PASO CLAVE
   const btnCerrar = document.getElementById("cerrarEstados");
 
-  if (typeof cerrarModalEstados === "function") {
-  cerrarModalEstados();
-}
-
-  // ✅ CONECTAR BOTÓN CERRAR
-const btnCerrar = document.getElementById("cerrarEstados");
-
-if (btnCerrar) {
-  btnCerrar.onclick = () => {
-    cerrarModalEstados();
-  };
-}
+  if (btnCerrar) {
+    btnCerrar.onclick = () => {
+      cerrarModalEstados();
+    };
+  }
 
   modal.style.display = "flex";
 }
