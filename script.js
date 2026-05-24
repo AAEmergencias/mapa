@@ -296,6 +296,115 @@ const coloresEstado = {
   "6-19": "#8bc34a"
 };
 
+const subtiposPorTipo = {
+
+  "Incendio": [
+    "Amago de incendio equipos mineros",
+    "Amago de incendio en vehículos pesados",
+    "Amago de incendio en vehículos livianos",
+    "Amago de incendio instalaciones industriales",
+    "Incendio en equipos mineros",
+    "Incendio en vehículos pesado",
+    "Incendio en vehículos livianos",
+    "Incendio instalaciones",
+    "Incendio fuera de las instalaciones",
+    "Incendio Forestal",
+    "Pastizales y/o Basura"
+  ],
+
+  "Vehicular": [
+    "Choque equipos mineros",
+    "Choque vehículos pesados",
+    "Choque vehículos livianos",
+    "Desbarrancamiento equipos mineros",
+    "Desbarrancamiento vehículos pesados",
+    "Desbarrancamiento vehículos livianos",
+    "Colisión equipo minero",
+    "Volcamiento equipo minero",
+    "Volcamiento vehículos pesados",
+    "Volcamiento vehículos livianos"
+  ],
+
+  "Rescate": [
+    "Caída mismo nivel",
+    "Caída diferente nivel",
+    "Derrumbe",
+    "Atrapamiento",
+    "Encerramiento en ascensor",
+    "Rescate vertical",
+    "Rescate espacio confinados",
+    "Atropello",
+    "Otros no categorizados"
+  ],
+
+  "Medico": [
+    "Problemas de salud",
+    "Fractura",
+    "Esguince",
+    "Desmayo",
+    "PCR",
+    "Corte",
+    "Perdida de memoria",
+    "Otros no categorizados"
+  ],
+
+  "Hazmat": [
+    "Derrame de sustancias peligrosas",
+    "Fuga de sustancias peligrosas",
+    "Incidente con sustancias peligrosas"
+  ],
+
+  "Simulacros": [
+    "Simulacro documental",
+    "Simulacro proceso",
+    "Simulacro divisional"
+  ],
+
+  "Sismico": [
+    "Sismo leve",
+    "Sismo moderado",
+    "Terremoto grave"
+  ],
+
+  "Meteorologico": [
+    "Tormenta eléctrica",
+    "Nevadas intensas",
+    "Lluvias torrenciales",
+    "Ola de calor",
+    "Viento blanco",
+    "Aluvión",
+    "Crecida de rios"
+  ],
+
+  "Geologico": [
+    "Deslizamiento de terreno",
+    "Remoción en masa",
+    "Falla geotécnica",
+    "Caída de rocas",
+    "Inestabilidad de taludes"
+  ],
+
+  "Ambiental": [
+    "Material particulado",
+    "Contaminación agua",
+    "Afectación flora/fauna"
+  ],
+
+  "Otros": [
+    "Limpieza de rodados",
+    "Activación alarma SPCI",
+    "Contacto eléctrico",
+    "Desperfecto mecánico",
+    "Rescate animal",
+    "Olor no determinado",
+    "Daño infraestructura",
+    "Caída de árbol",
+    "Interrupción eléctrica",
+    "Otras no categorizadas"
+  ]
+
+};
+
 // ==========================
 // 🔄 ACTUALIZAR UNIDAD
 // ==========================
@@ -477,14 +586,42 @@ document.getElementById("crear").onclick = () => {
     unidad: cercana || "Sin unidad"
   };
 
-  // ✅ crear paneles
   let panelNegro = crearPanelEmergencia(nueva);
   let panelRojo = crearPanelRojo(nueva, panelNegro);
 
-  // ✅ cerrar modal (IMPORTANTE)
   modal.style.display = "none";
   overlay.style.display = "none";
 };
+
+// ✅ ✅ ✅ AQUÍ VA EL PASO 3 🔥🔥🔥
+const tipoSelect = document.getElementById("tipo");
+const subtipoSelect = document.getElementById("subtipo");
+
+if (tipoSelect && subtipoSelect) {
+
+  tipoSelect.addEventListener("change", () => {
+
+    let tipo = tipoSelect.value;
+
+    subtipoSelect.innerHTML = '<option>Seleccione subtipo...</option>';
+
+    if (subtiposPorTipo[tipo]) {
+
+      subtiposPorTipo[tipo].forEach(sub => {
+
+        let op = document.createElement("option");
+        op.value = sub;
+        op.text = sub;
+
+        subtipoSelect.appendChild(op);
+
+      });
+
+    }
+
+  });
+
+}
 
 // ==========================
 // 🔽 MINIMIZAR PANEL ACTIVO (SEGURO)
