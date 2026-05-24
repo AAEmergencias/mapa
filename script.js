@@ -21,7 +21,7 @@ L.control.layers({
   "🛰️ Satélite": mapaSatelite
 }).addTo(map);
 
-// ==========================
+// ==========================f
 // 🎨 ICONOS
 // ==========================
 const iconos = {
@@ -799,12 +799,20 @@ unidades.forEach(u => {
 // ➕ AGREGAR UNIDAD (PASO 3)
 // ==========================
 const contenedorUnidades = panel.querySelector(".unidades");
+  let unidadesAsignadas = [];
 
 panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   let nombreUnidad = select.value;
 
   let unidadData = unidades.find(u => u.nombre === nombreUnidad);
+
+  if (!unidadData) return;
+
+  // ✅ evitar duplicados
+  if (!unidadesAsignadas.includes(nombreUnidad)) {
+    unidadesAsignadas.push(nombreUnidad);
+  }
 
   let div = document.createElement("div");
   div.className = "unidad-asignada";
@@ -816,8 +824,18 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   contenedorUnidades.appendChild(div);
 
-  // 🔥 cambia estado a en servicio
+  // ✅ actualizar estado
   actualizarEstadoUnidad(unidadData.nombre, "6-T");
+
+  // 🔥 ✅ ACTUALIZAR PANEL NEGRO
+  if (panelNegro) {
+    panelNegro.querySelector(".info").innerHTML = `
+      🔥 ${data.tipo}<br>
+      📍 ${data.ubicacion}<br>
+      🚑 ${unidadesAsignadas.join(", ")}
+    `;
+  }
+
 };
 
   // ✅ CERRAR
