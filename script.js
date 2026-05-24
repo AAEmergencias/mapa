@@ -700,6 +700,15 @@ function abrirModalEstados() {
   cerrarModalEstados();
 }
 
+  // ✅ CONECTAR BOTÓN CERRAR
+const btnCerrar = document.getElementById("cerrarEstados");
+
+if (btnCerrar) {
+  btnCerrar.onclick = () => {
+    cerrarModalEstados();
+  };
+}
+
   modal.style.display = "flex";
 }
 
