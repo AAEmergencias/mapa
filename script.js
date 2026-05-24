@@ -252,7 +252,7 @@ const coloresEstado = {
 // ==========================
 // 🔄 ACTUALIZAR UNIDAD
 // ==========================
-function actualizarEstadoUnidad(nombreUnidad, estado) {
+function actualizarEstadoUnidad(nombreUnidad, estado, nuevaBase = null) {
 
   let unidadesHTML = document.querySelectorAll(".unidad");
 
@@ -260,8 +260,13 @@ function actualizarEstadoUnidad(nombreUnidad, estado) {
 
     if (div.innerText.includes(nombreUnidad)) {
 
+      let textoBase = nuevaBase 
+        ? `<small>Base: ${nuevaBase}</small><br>`
+        : "";
+
       div.innerHTML = `
         🚑 <b>${nombreUnidad}</b><br>
+        ${textoBase}
         <small>${estado} - ${estados[estado]}</small>
       `;
 
@@ -519,11 +524,15 @@ function abrirModalBases(unidad) {
     item.className = "estado-item";
     item.innerText = base;
 
-    item.onclick = () => {
-      actualizarEstadoUnidad(unidad, "6-10");
-      console.log(unidad + " → " + base);
-      modal.remove();
-    };
+item.onclick = () => {
+
+  actualizarEstadoUnidad(unidad, "6-10", base); // 👈 PASAMOS LA BASE
+
+  console.log(unidad + " → " + base);
+
+  modal.remove();
+};
+
 
     lista.appendChild(item);
   });
