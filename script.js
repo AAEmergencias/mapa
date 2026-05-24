@@ -622,7 +622,7 @@ function abrirModalEstados() {
 
     item.onclick = () => {
 
-     if (clave === "6-10") {
+    if (clave === "6-10") {
 
   cerrarModalEstados();
   abrirModalBases(unidadSeleccionada);
@@ -630,7 +630,12 @@ function abrirModalEstados() {
 } else if (clave === "6-13") {
 
   cerrarModalEstados();
-  abrirModalNotas(unidadSeleccionada, clave); // 👈 NUEVO
+  abrirModalNotas(unidadSeleccionada, clave);
+
+} else if (clave === "6-15") {
+
+  cerrarModalEstados();
+  abrirModalNotas(unidadSeleccionada, clave); // 👈 MISMA LÓGICA
 
 } else {
 
@@ -638,7 +643,6 @@ function abrirModalEstados() {
   cerrarModalEstados();
 
 }
-
 
     };
 
