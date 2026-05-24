@@ -578,7 +578,7 @@ function abrirModalNotas(unidad, estado) {
 
       let nota = textarea.value || "Sin detalle";
 
-      actualizarEstadoUnidad(unidad, estado);
+     actualizarEstadoUnidad(unidad, estado, null, nota);
 
       console.log(unidad + " → NOTA: " + nota);
 
