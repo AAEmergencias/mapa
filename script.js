@@ -68,6 +68,7 @@ const iconos = {
 // ==========================
 // 📂 CAPAS
 // ==========================
+let historialEmergencias = [];
 let lugares = [];
 
 let ubicacionSeleccionada = null;
@@ -694,6 +695,13 @@ document.getElementById("crear").onclick = () => {
 
   let tipo = document.getElementById("tipo").value;
   let subtipo = document.getElementById("subtipo").value;
+
+  historialEmergencias.push({
+  tipo: tipo,
+  subtipo: subtipo,
+  ubicacion: ubicacionSeleccionada?.nombre || "Sin ubicación",
+  fecha: new Date().toLocaleString()
+});
 
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
