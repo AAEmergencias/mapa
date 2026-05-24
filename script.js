@@ -25,19 +25,31 @@ L.control.layers({
 // 🎨 ICONOS
 // ==========================
 const iconos = {
-  bombero: L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/482/482266.png',
-    iconSize: [35, 35]
+
+  // 📍 PIN NORMAL
+  general: new L.Icon({
+    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    shadowSize: [41, 41]
   }),
-  ruta: L.icon({
-    iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-    iconSize: [30, 30]
+
+  // 🔴 EMERGENCIA
+  emergencia: new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
   }),
-  general: L.icon({
-  iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-  iconSize: [32, 32],
-  iconAnchor: [16, 32] // 🔥 importante para que el pin toque el punto exacto
-})
+
+  // 🔵 BASE
+  base: new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
+  })
 
 };
 
@@ -63,15 +75,26 @@ fetch('mapa.kml')
 
     const layer = L.geoJSON(geojson, {
 
-      pointToLayer: function (feature, latlng) {
+     pointToLayer: function (feature, latlng) {
 
-        let nombre = feature.properties?.name || "Sin nombre";
+  let nombre = feature.properties?.name || "Sin nombre";
 
-        // 👉 marcador directo
-        let marker = L.marker(latlng, { icon: iconos.general });
+  let icono = iconos.general;
 
-        return marker;
-      },
+  // 🔵 SI ES BASE
+  if (nombre.toLowerCase().includes("base")) {
+    icono = iconos.base;
+  }
+
+  // 🔴 SI ES EMERGENCIA
+  if (nombre.toLowerCase().includes("emergencia")) {
+    icono = iconos.emergencia;
+  }
+
+  let marker = L.marker(latlng, { icon: icono });
+
+  return marker;
+},
 
       onEachFeature: function (feature, layer) {
 
@@ -342,7 +365,7 @@ map.on("click", function(e) {
   let punto = {
     nombre: "Incidente manual",
     coords: e.latlng,
-    layer: L.marker(e.latlng).addTo(map)
+  layer: L.marker(e.latlng, { icon: iconos.emergencia }).addTo(map)
   };
   ubicacionSeleccionada = punto;
 });
