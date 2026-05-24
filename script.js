@@ -453,28 +453,6 @@ if (btnMinPanel && panelActivo && headerPanel) {
 }
 
 // ==========================
-// ✅ FINALIZAR EMERGENCIA
-// ==========================
-document.getElementById("btnFinalizar").onclick = () => {
-
-  // ✅ eliminar tarjeta del panel
-  if (incidenteActivoDiv) {
-    incidenteActivoDiv.remove();
-    incidenteActivoDiv = null;
-  }
-
-  // ✅ limpiar panel activo
-  document.getElementById("pTipo").innerText = "";
-  document.getElementById("pSubtipo").innerText = "";
-  document.getElementById("pUbicacion").innerText = "";
-  document.getElementById("pUnidades").innerText = "";
-  document.getElementById("pNotas").value = "";
-
-  // ✅ ocultar panel
-  panelActivo.style.display = "none";
-
-};
-// ==========================
 // 🖱️ PANEL DRAG
 // ==========================
 let dragging = false;
