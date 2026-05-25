@@ -174,11 +174,9 @@ let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
 
 console.log("📋 Partes:", partes);
 
-let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
-
-console.log("📋 Partes:", partes);
-
 let divPartes = document.getElementById("partes");
+
+divPartes.innerHTML = "";
 
 if (partes.length === 0) {
   divPartes.innerHTML = "Sin partes cerrados";
@@ -190,15 +188,14 @@ if (partes.length === 0) {
     div.className = "item";
 
     div.innerHTML = `
-      📅 ${p.fecha}<br>
-      🚒 ${p.tipo} - ${p.subtipo}<br>
-      📍 ${p.lugar}<br>
-      👤 ${p.operador}
+      📅 ${p.fecha || "-"}<br>
+      🚒 ${p.tipo || "-"} - ${p.subtipo || "-"}<br>
+      📍 ${p.lugar || "-"}<br>
+      👤 ${p.operador || "-"}
     `;
 
     divPartes.appendChild(div);
   });
-  
 }
 
 document.getElementById("exportarPartes").onclick = () => {
