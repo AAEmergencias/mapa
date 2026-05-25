@@ -334,9 +334,14 @@ if (!marker) return;
 
     pasoActual++;
 
-    if (pasoActual >= pasos) {
-      clearInterval(intervalo);
-    }
+   if (pasoActual >= pasos) {
+  clearInterval(intervalo);
+
+  unidadesCoords[key] = {
+    lat: lat,
+    lng: lng
+  };
+}
 
   }, 150);
 }
@@ -875,7 +880,12 @@ item.onclick = () => {
   let marker = marcadoresUnidades[key];
   if (!marker) return;
 
-  let origen = marker.getLatLng();
+ let pos = marker.getLatLng();
+
+let origen = {
+  lat: pos.lat,
+  lng: pos.lng
+};
 
   let baseReal = baseActualUnidad[key];
   let destino = basesCoords[baseReal];
