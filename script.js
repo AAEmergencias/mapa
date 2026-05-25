@@ -304,7 +304,11 @@ if (nombreUnidad.includes("S")) {
   icono = iconos.bomberos;
 }
 
-let key = nombreUnidad.split(" ")[0]; // UIR-E, B1, etc
+let key = nombreUnidad.split(" ")[0];
+
+if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
+  emergenciaActiva.unidades.push(key);
+}
 
 let marker = marcadoresUnidades[key];
 
@@ -1164,8 +1168,6 @@ if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
 
   // ✅ actualizar estado
   actualizarEstadoUnidad(unidadData.nombre, "6-T");
-
-  let key = nombreUnidad.split(" ")[0]; // 👈 importante
 
 let origen = unidadesCoords[key];
 let destino = ubicacionSeleccionada.coords;
