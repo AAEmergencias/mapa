@@ -225,3 +225,6 @@ document.getElementById("exportarPartes").onclick = () => {
   link.click();
 };
 
+document.getElementById("actualizar").onclick = () => {
+  location.reload();
+};
