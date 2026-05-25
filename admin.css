@@ -84,3 +84,38 @@ button:hover {
   font-weight: bold;
   margin-top: 5px;
 }
+
+.card h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #cbd5f5;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  transition: 0.2s;
+}
+
+#historial {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#ultimos15 {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+header button {
+  background: #475569;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+header button:hover {
+  background: #64748b;
+}
+
