@@ -35,11 +35,19 @@ function convertirFecha(fecha) {
   return `${partes[2]}-${partes[1]}-${partes[0]}`;
 }
 
-function formatearHora(hora) {
+function formatearHora(hora) {function formatearHora(hora)!hora) return "";
 
-  if (!hora) return "";
+  // convertir formato "6:38:27 p. m."
+  let limpio = hora.replace("p. m.", "PM").replace("a. m.", "AM");
 
-  return hora.substring(0, 5);
+  let fecha = new Date("1970-01-01 " + limpio);
+
+  if (isNaN(fecha)) return "";
+
+  let h = fecha.getHours().toString().padStart(2, "0");
+  let m = fecha.getMinutes().toString().padStart(2, "0");
+
+  return `${h}:${m}`;
 }
 
 function convertirFecha(fecha) {
