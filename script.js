@@ -1320,3 +1320,13 @@ let csv = "N°;Tipo;Subtipo;Ubicacion;Unidades;Hora 6-3;Hora 6-7;Hora 6-8;Hora 6
   link.click();
 };
 
+document.getElementById("irAdmin").onclick = () => {
+  window.open("admin.html", "_blank");
+};
+
+document.getElementById("cerrarParte").onclick = () => {
+  window.open(
+    "https://forms.cloud.microsoft/pages/responsepage.aspx?id=nfZkKMN3vk-7wJdQIFI5Gl9nUF50UzpDmGuCMdlHAT9UMVRTT1Y0RFlVQ1BORjRTRVNWWlpUWktGRy4u&route=shorturl",
+    "_blank"
+  );
+};
