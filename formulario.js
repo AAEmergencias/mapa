@@ -130,9 +130,14 @@ document.addEventListener("DOMContentLoaded", () => {
     claveSelect.appendChild(opt);
   });
 
-  claveSelect.onchange = () => {
-    tipoAtencion.value = claves[claveSelect.value];
-  };
+  claveSelect.addEventListener("change", () => {
+
+  let valor = claveSelect.value;
+
+  console.log("CLAVE seleccionada:", valor);
+
+  tipoAtencion.value = claves[valor] || "";
+});
 
   tipoAtencion.oninput = () => {
     let match = Object.entries(claves).find(
@@ -162,9 +167,14 @@ document.addEventListener("DOMContentLoaded", () => {
     pueSelect.appendChild(opt);
   });
 
-  pueSelect.onchange = () => {
-    descPue.value = pues[pueSelect.value];
-  };
+  pueSelect.addEventListener("change", () => {
+
+  let valor = pueSelect.value;
+
+  console.log("PUE seleccionado:", valor);
+
+  descPue.value = pues[valor] || "";
+});
 
 });
 
