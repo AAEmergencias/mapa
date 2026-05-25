@@ -1430,3 +1430,9 @@ function mostrarSelectorEmergencias(lista) {
 
   document.body.appendChild(modal);
 }
+
+emergenciaActiva.horaActivacion = new Date().toLocaleTimeString("es-CL", {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false
+});
