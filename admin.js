@@ -25,6 +25,108 @@ let ultimos15 = historial.filter(e => {
     ? e.fecha.split("/")
     : e.fecha.split("-");
 
+  let porMes = {};
+
+historial.forEach(e => {
+  if (!e.fecha) return;
+
+  let partesFecha = e.fecha.includes("/") ? e.fecha.split("/") : e.fecha.split("-");
+  let mes = partesFecha[1];
+
+  porMes[mes] = (porMes[mes] || 0) + 1;
+});
+
+new Chart(document.getElementById("graficoMes"), {
+  type: "bar",
+  data: {
+    labels: Object.keys(porMes),
+    datasets: [{
+      label: "Emergencias",
+      data: Object.values(porMes),
+      backgroundColor: "#3b82f6"
+    }]
+  }
+});
+
+  let porFaena = {};
+
+partes.forEach(p => {
+  if (!p.faena) return;
+  porFaena[p.faena] = (porFaena[p.faena] || 0) + 1;
+});
+
+new Chart(document.getElementById("graficoFaena"), {
+  type: "pie",
+  data: {
+    labels: Object.keys(porFaena),
+    datasets: [{
+      data: Object.values(porFaena),
+      backgroundColor: ["#ef4444","#22c55e","#3b82f6","#f59e0b"]
+    }]
+  }
+});
+
+  let porTipo = {};
+
+historial.forEach(e => {
+  if (!e.tipo) return;
+  porTipo[e.tipo] = (porTipo[e.tipo] || 0) + 1;
+});
+
+new Chart(document.getElementById("graficoTipo"), {
+  type: "bar",
+  data: {
+    labels: Object.keys(porTipo),
+    datasets: [{
+      label: "Tipos",
+      data: Object.values(porTipo),
+      backgroundColor: "#ef4444"
+    }]
+  }
+});
+
+  let porEmpresa = {};
+
+partes.forEach(p => {
+  if (!p.empresa) return;
+  porEmpresa[p.empresa] = (porEmpresa[p.empresa] || 0) + 1;
+});
+
+new Chart(document.getElementById("graficoEmpresa"), {
+  type: "bar",
+  data: {
+    labels: Object.keys(porEmpresa),
+    datasets: [{
+      label: "Empresas",
+      data: Object.values(porEmpresa),
+      backgroundColor: "#8b5cf6"
+    }]
+  }
+});
+
+  let porPUE = {};
+
+partes.forEach(p => {
+  if (!p.pue) return;
+  porPUE[p.pue] = (porPUE[p.pue] || 0) + 1;
+});
+
+new Chart(document.getElementById("graficoPUE"), {
+  type: "bar",
+  data: {
+    labels: Object.keys(porPUE),
+    datasets: [{
+      label: "PUE",
+      data: Object.values(porPUE),
+      backgroundColor: "#10b981"
+    }]
+  },
+  options: {
+    indexAxis: 'y'
+  }
+});
+  
+
   if (partes.length !== 3) return false;
 
   let fecha = new Date(
