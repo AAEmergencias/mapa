@@ -44,7 +44,13 @@
     <div class="grid">
       <input type="text" id="lugar" placeholder="Lugar">
       <input type="text" id="comuna" placeholder="Comuna">
-      <input type="text" id="faena" placeholder="Faena">
+      <select id="faena">
+  <option value="">Faena</option>
+  <option>Los Bronces</option>
+  <option>STP</option>
+  <option>Las Tórtolas</option>
+  <option>Ruta G21/245</option>
+</select>
     </div>
   </div>
 
@@ -69,11 +75,22 @@
     <div class="grid">
       <input type="text" id="brigada" placeholder="Brigada">
       <input type="text" id="vehiculo" placeholder="Vehículo">
-      <select id="ambulancia">
-        <option value="">Ambulancia</option>
-        <option>Si</option>
-        <option>No</option>
-      </select>
+     <select id="ambulancia">
+  <option value="">Ambulancia</option>
+  <option>Si asiste</option>
+  <option>No asiste</option>
+</select>
+
+<select id="servicioMedico">
+  <option value="">Servicio Médico</option>
+  <option>Pérez Caldera</option>
+  <option>SPA 220</option>
+  <option>Tórtolas</option>
+  <option>Otro</option>
+</select>
+
+<input type="text" id="otroServicio" placeholder="Especificar servicio" style="display:none;">
+
     </div>
   </div>
 
