@@ -76,6 +76,6 @@ localStorage.setItem("historialEmergencias", JSON.stringify(historial));
   localStorage.setItem("partesEmergencia", JSON.stringify(partes));
 
   alert("✅ Parte guardado");
-
-  document.getElementById("formParte").reset();
+document.getElementById("formParte").reset();
+window.close();
 };
