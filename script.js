@@ -306,10 +306,6 @@ if (nombreUnidad.includes("S")) {
 
 let key = nombreUnidad.split(" ")[0];
 
-if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
-  emergenciaActiva.unidades.push(key);
-}
-
 let marker = marcadoresUnidades[key];
 
 if (!marker) return;
@@ -1142,33 +1138,36 @@ const contenedorUnidades = panel.querySelector(".unidades");
 panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   let nombreUnidad = select.value;
+let unidadData = unidades.find(u => u.nombre === nombreUnidad);
+if (!unidadData) return;
 
-  let unidadData = unidades.find(u => u.nombre === nombreUnidad);
+let key = nombreUnidad.split(" ")[0];
 
-  if (!unidadData) return;
-
-  // ✅ evitar duplicados
-  if (!unidadesAsignadas.includes(nombreUnidad)) {
-    unidadesAsignadas.push(nombreUnidad);
-  }
-
+// guardar en historial
 if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
   emergenciaActiva.unidades.push(key);
 }
 
-  let div = document.createElement("div");
-  div.className = "unidad-asignada";
+// UI
+if (!unidadesAsignadas.includes(nombreUnidad)) {
+  unidadesAsignadas.push(nombreUnidad);
+}
 
-  div.innerHTML = `
-    🚑 <b>${unidadData.nombre}</b><br>
-    <small>${unidadData.base}</small>
-  `;
+// crear visual
+let div = document.createElement("div");
+div.className = "unidad-asignada";
 
-  contenedorUnidades.appendChild(div);
+div.innerHTML = `
+  🚑 <b>${unidadData.nombre}</b><br>
+  <small>${unidadData.base}</small>
+`;
 
-  // ✅ actualizar estado
-  actualizarEstadoUnidad(unidadData.nombre, "6-T");
+contenedorUnidades.appendChild(div);
 
+// estado
+actualizarEstadoUnidad(unidadData.nombre, "6-T");
+
+// movimiento
 let origen = unidadesCoords[key];
 let destino = ubicacionSeleccionada.coords;
 
@@ -1176,15 +1175,12 @@ if (origen && destino) {
   moverUnidad(unidadData.nombre, origen, destino);
 }
 
-  
-
-  // 🔥 ✅ ACTUALIZAR PANEL NEGRO
-  if (panelNegro) {
-    panelNegro.querySelector(".info").innerHTML = `
-      🔥 ${data.tipo}<br>
-      📍 ${data.ubicacion}<br>
-      🚑 ${unidadesAsignadas.join(", ")}
-    `;
+// panel negro
+panelNegro.querySelector(".info").innerHTML = `
+  🔥 ${data.tipo}<br>
+  📍 ${data.ubicacion}<br>
+  🚑 ${unidadesAsignadas.join(", ")}
+`;
   }
 
 };
