@@ -866,7 +866,12 @@ item.onclick = () => {
   if (!marker) return;
 
   let origen = marker.getLatLng();
-  let destino = basesCoords[base];
+
+  // 🔥 BASE CORRECTA
+  let unidadData = unidades.find(u => u.nombre === unidad);
+  let baseReal = unidadData?.base?.trim();
+
+  let destino = basesCoords[baseReal];
 
   if (destino) {
     moverUnidad(unidad, origen, destino);
