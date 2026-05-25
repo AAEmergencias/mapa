@@ -997,6 +997,23 @@ function abrirConfirmacionFinalizar(panel, panelNegro) {
       // ✅ guardar emergencia en historial
 if (emergenciaActiva) {
   emergenciaActiva.finalizada = true;
+// ✅ FECHA
+emergenciaActiva.fecha = new Date().toLocaleDateString();
+
+// ✅ HORA ACTIVACIÓN (inicio despacho)
+emergenciaActiva.horaActivacion = emergenciaActiva.tiempos?.["6-3"] || "";
+
+// ✅ HORA LEVANTAMIENTO (6-7)
+emergenciaActiva.horaCierre = emergenciaActiva.tiempos?.["6-7"] || "";
+
+// ✅ UBICACIÓN
+emergenciaActiva.ubicacion = emergenciaActiva.ubicacion || "";
+
+// ✅ BRIGADA Y VEHÍCULO
+emergenciaActiva.brigada = emergenciaActiva.unidades?.[0] || "";
+emergenciaActiva.vehiculo = emergenciaActiva.unidades?.[0] || "";
+
+  
   historialEmergencias.push(emergenciaActiva);
   localStorage.setItem(
   "historialEmergencias",
