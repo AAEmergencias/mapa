@@ -62,6 +62,17 @@ document.getElementById("formParte").onsubmit = (e) => {
 
   partes.push(parte);
 
+  // 🔐 marcar emergencia como cerrada
+let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
+
+historial.forEach(e => {
+  if (e.id === emergencia.id) {
+    e.cerrada = true;
+  }
+});
+
+localStorage.setItem("historialEmergencias", JSON.stringify(historial));
+
   localStorage.setItem("partesEmergencia", JSON.stringify(partes));
 
   alert("✅ Parte guardado");
