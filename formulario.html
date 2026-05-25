@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Parte de Emergencia</title>
-
-<link rel="stylesheet" href="formulario.css">
-
+<html langstylesheet" href="formulario.css"><html lang="es">
 </head>
 
 <body>
@@ -14,129 +8,215 @@
 
 <form id="formParte" class="form-container">
 
-  <!-- 🔧 BLOQUE 1 -->
-  <div class="bloque">
-    <h3>📅 Datos Generales</h3>
+<!-- ✅ DATOS GENERALES -->
+<div class="bloque">
+  <h3>📅 Datos Generales</h3>
 
-    <div class="grid">
+  <div class="grid">
+
+    <div>
+      <label>Fecha</label>
       <input type="date" id="fecha">
-      <input type="time" id="horaActivacion" placeholder="Hora Activación">
-      <input type="time" id="horaCierre" placeholder="Hora Levantamiento">
-    </div>
-  </div>
-
-  <!-- 🔥 BLOQUE 2 -->
-  <div class="bloque">
-    <h3>🚒 Emergencia</h3>
-
-    <div class="grid">
-      <input type="text" id="tipo" placeholder="Tipo">
-      <input type="text" id="subtipo" placeholder="Subtipo">
     </div>
 
-    <textarea id="descripcion" placeholder="Descripción"></textarea>
+    <div>
+      <label>Hora de Activación</label>
+      <input type="time" id="horaActivacion">
+    </div>
+
+    <div>
+      <label>Hora de Levantamiento</label>
+      <input type="time" id="horaCierre">
+    </div>
+
+  </div>
+</div>
+
+<!-- ✅ EMERGENCIA -->
+<div class="bloque">
+  <h3>🚒 Emergencia</h3>
+
+  <div class="grid">
+
+    <div>
+      <label>Tipo</label>
+      <input type="text" id="tipo" readonly>
+    </div>
+
+    <div>
+      <label>Subtipo</label>
+      <input type="text" id="subtipo" readonly>
+    </div>
+
   </div>
 
-  <!-- 📍 UBICACIÓN -->
-  <div class="bloque">
-    <h3>📍 Ubicación</h3>
+  <label>Descripción</label>
+  <textarea id="descripcion"></textarea>
+</div>
 
-    <div class="grid">
-      <input type="text" id="lugar" placeholder="Lugar">
-      <input type="text" id="comuna" placeholder="Comuna">
+<!-- ✅ UBICACIÓN -->
+<div class="bloque">
+  <h3>📍 Ubicación</h3>
+
+  <div class="grid">
+
+    <div>
+      <label>Lugar</label>
+      <input type="text" id="lugar">
+    </div>
+
+    <div>
+      <label>Comuna</label>
+      <input type="text" id="comuna">
+    </div>
+
+    <div>
+      <label>Faena</label>
       <select id="faena">
-  <option value="">Faena</option>
-  <option>Los Bronces</option>
-  <option>STP</option>
-  <option>Las Tórtolas</option>
-  <option>Ruta G21/245</option>
-</select>
-    </div>
-  </div>
-
-  <!-- 🏢 EMPRESA -->
-  <div class="bloque">
-    <h3>🏢 Afectación</h3>
-
-    <div class="grid">
-      <input type="text" id="empresa" placeholder="Empresa">
-      <select id="impacto">
-        <option value="">Impacto</option>
-        <option value="Operaciones">Operaciones</option>
-        <option value="Comunidad">Comunidad</option>
+        <option value="">Seleccionar</option>
+        <option>Los Bronces</option>
+        <option>STP</option>
+        <option>Las Tórtolas</option>
+        <option>Ruta G21/245</option>
       </select>
     </div>
+
   </div>
+</div>
 
-  <!-- 🚑 RESPUESTA -->
-  <div class="bloque">
-    <h3>🚑 Respuesta</h3>
+<!-- ✅ AFECTACIÓN -->
+<div class="bloque">
+  <h3>🏢 Afectación</h3>
 
-    <div class="grid">
-      <input type="text" id="brigada" placeholder="Brigada">
-      <input type="text" id="vehiculo" placeholder="Vehículo">
-     <select id="ambulancia">
-  <option value="">Ambulancia</option>
-  <option>Si asiste</option>
-  <option>No asiste</option>
-</select>
+  <div class="grid">
 
-<select id="servicioMedico">
-  <option value="">Servicio Médico</option>
-  <option>Pérez Caldera</option>
-  <option>SPA 220</option>
-  <option>Tórtolas</option>
-  <option>Otro</option>
-</select>
-
-<input type="text" id="otroServicio" placeholder="Especificar servicio" style="display:none;">
-
+    <div>
+      <label>Empresa</label>
+      <input type="text" id="empresa">
     </div>
+
+    <div>
+      <label>Impacto</label>
+      <select id="impacto">
+        <option value="">Seleccionar</option>
+        <option>Operaciones</option>
+        <option>Comunidad</option>
+      </select>
+    </div>
+
+  </div>
+</div>
+
+<!-- ✅ RESPUESTA -->
+<div class="bloque">
+  <h3>🚑 Respuesta</h3>
+
+  <div class="grid">
+
+    <div>
+      <label>Brigada</label>
+      <input type="text" id="brigada">
+    </div>
+
+    <div>
+      <label>Vehículo</label>
+      <input type="text" id="vehiculo">
+    </div>
+
+    <div>
+      <label>Ambulancia</label>
+      <select id="ambulancia">
+        <option value="">Seleccionar</option>
+        <option>Si asiste</option>
+        <option>No asiste</option>
+      </select>
+    </div>
+
   </div>
 
-  <!-- 🏥 PACIENTES -->
+  <div>
+    <label>Servicio Médico</label>
+    <select id="servicioMedico">
+      <option value="">Seleccionar</option>
+      <option>Pérez Caldera</option>
+      <option>SPA 220</option>
+      <option>Tórtolas</option>
+      <option>Otro</option>
+    </select>
+  </div>
+
+  <input type="text" id="otroServicio" placeholder="Especificar" style="display:none;">
+</div>
+
+<!-- ✅ ATENCIÓN -->
 <div class="bloque">
   <h3>🏥 Atención</h3>
 
   <div class="grid">
-    <input type="number" id="pacientes" placeholder="Cantidad de pacientes">
-    
-    <select id="existeAtencion">
-      <option value="">¿Existe atención?</option>
-      <option value="SI">Sí</option>
-      <option value="NO">No</option>
-    </select>
 
-    <input type="text" id="tipoAtencion" placeholder="Tipo de atención">
-  <select id="clave"></select>
-<input type="text" id="tipoAtencion" placeholder="Tipo de atención">
+    <div>
+      <label>¿Existe atención?</label>
+      <select id="existeAtencion">
+        <option value="">Seleccionar</option>
+        <option>SI</option>
+        <option>NO</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Cantidad de pacientes</label>
+      <input type="number" id="pacientes">
+    </div>
+
+    <div>
+      <label>Clave</label>
+      <select id="clave"></select>
+    </div>
+
+    <div>
+      <label>Tipo de Atención</label>
+      <input type="text" id="tipoAtencion">
+    </div>
+
+    <div>
+      <label>PUE</label>
+      <select id="pue"></select>
+    </div>
+
   </div>
 
-  <!-- ✅ Servicio Médico -->
-  <input type="text" id="servicioMedico" placeholder="Servicio Médico que asiste">
-
-  
-<select id="pue"></select>
-<textarea id="descPue"></textarea>
+  <label>Descripción PUE</label>
+  <textarea id="descPue"></textarea>
 
 </div>
 
-  <!-- 🔐 CIERRE -->
-  <div class="bloque">
-    <h3>🔐 Cierre</h3>
+<!-- ✅ CIERRE -->
+<div class="bloque">
+  <h3>🔐 Cierre</h3>
 
-    <div class="grid">
-      <input type="text" id="anexo3" placeholder="Anexo 3">
-      <input type="text" id="operador" placeholder="Operador">
+  <div class="grid">
+
+    <div>
+      <label>Anexo 3</label>
+      <input type="text" id="anexo3">
     </div>
-  </div>
 
-  <button type="submit" class="btnGuardar">💾 Guardar Parte</button>
+    <div>
+      <label>Operador</label>
+      <input type="text" id="operador">
+    </div>
+
+  </div>
+</div>
+
+<button type="submit" class="btnGuardar">💾 Guardar Parte</button>
 
 </form>
-
 
 <script src="formulario.js"></script>
 
 </body>
 </html>
+<head>
+<meta charset="UTF-8">
+<title>Parte de Emergencia</title>
