@@ -113,12 +113,66 @@ document.addEventListener("DOMContentLoaded", () => {
   // 🔑 CLAVES
   // ==========================
 
-  const claves = {
-    "ALFA 10B": "Atrapamiento",
-    "ALFA 5": "Fractura",
-    "BRAVO 2": "Desmayo",
-    "CHARLIE 5": "Paro Cardíaco"
-  };
+ const claves = {
+
+  "ALFA 1": "PARO CARDIO RESPIRATORIO",
+  "ALFA 2": "OBSTRUCCIÓN DE LA VÍA AEREA",
+  "ALFA 2 A": "VÍA AÉREA LIBERADA",
+  "ALFA 2 B": "VÍA AÉREA NO LIBERADA",
+  "ALFA 3": "POLITRAUMATIZADO SEVERO",
+  "ALFA 4": "POLITRAUMATIZADO LEVE",
+  "ALFA 5": "SHOCK ANAFILÁCTICO",
+  "ALFA 6": "SHOCK HIPOVOLÉMICO",
+  "ALFA 6 A": "HEMORRAGIA EXANGUINANTE",
+  "ALFA 6 B": "HEMORRAGIA CONTENIDA",
+  "ALFA 7": "TRAUMATISMO CRÁNEO Y CARA",
+  "ALFA 7 A": "TEC",
+  "ALFA 7 B": "TRAUMATISMO OCULAR",
+  "ALFA 7 C": "TRAUMATISMO MANDIBULAR",
+  "ALFA 7 D": "TRAUMATISMO NASAL",
+  "ALFA 8": "AFECCIONES ESPINALES",
+  "ALFA 8 A": "TRAUMATISMO CERVICAL",
+  "ALFA 8 B": "TRAUMATISMO DORSAL",
+  "ALFA 8 C": "TRAUMATISMO LUMBAR",
+  "ALFA 8 D": "MORBILIDAD ESPINAL",
+  "ALFA 9": "AFECCIONES TORÁCICAS",
+  "ALFA 9 A": "TÓRAX ABIERTO",
+  "ALFA 9 B": "TÓRAX CERRADO",
+  "ALFA 9 C": "INFARTO / ARRITMIA",
+  "ALFA 9 D": "MORBILIDAD CARDIACA",
+  "ALFA 9 E": "MORBILIDAD PULMONAR",
+  "ALFA 10": "MIEMBROS SUPERIORES",
+  "ALFA 10 A": "FRACTURA EXTREMIDAD SUPERIOR",
+  "ALFA 10 B": "ATRAPAMIENTO",
+  "ALFA 10 C": "LESIÓN EXTREMIDAD SUPERIOR",
+  "ALFA 11": "AFECCIONES ABDOMINALES",
+  "ALFA 11 A": "ABD. ABIERTO",
+  "ALFA 11 B": "ABD. CERRADO",
+  "ALFA 11 C": "MORBILIDAD ABDOMINAL",
+  "ALFA 12": "TRAUMATISMO PÉLVICO",
+  "ALFA 12 A": "PÉLVICO ABIERTO",
+  "ALFA 12 B": "PÉLVICO CERRADO",
+  "ALFA 12 C": "LESIONES GENITALES",
+  "ALFA 12 D": "MORBILIDAD GINECOLÓGICA",
+  "ALFA 13": "MIEMBROS INFERIORES",
+  "ALFA 13 A": "FRACTURA EXTREMIDAD INFERIOR",
+  "ALFA 13 B": "ATRAPAMIENTO",
+  "ALFA 13 C": "LESIÓN EXTREMIDAD INFERIOR",
+  "ALFA 14": "QUEMADURAS",
+  "ALFA 15": "ALTERACIÓN NEUROLÓGICA",
+  "ALFA 15 A": "LIPOTIMIA",
+  "ALFA 15 B": "DESMAYO",
+  "ALFA 15 C": "CONVULSIONES",
+  "ALFA 15 D": "ACV",
+  "ALFA 15 E": "MORBILIDAD NEUROLÓGICA",
+  "ALFA 16": "SALUD MENTAL",
+  "ALFA 16 A": "CRISIS DE PÁNICO",
+  "ALFA 16 B": "IDEACIÓN SUICIDA",
+  "ALFA 17": "MAL DE MONTAÑA",
+  "ALFA 18": "FALLECIMIENTO",
+  "N/A": "NO APLICA",
+  "OTRO": "OTRO CASO"
+};
 
   let claveSelect = document.getElementById("clave");
   let tipoAtencion = document.getElementById("tipoAtencion");
@@ -134,13 +188,11 @@ document.addEventListener("DOMContentLoaded", () => {
 claveSelect.dispatchEvent(new Event("change"));
 
   claveSelect.addEventListener("change", () => {
-
   let valor = claveSelect.value;
-
-  console.log("CLAVE seleccionada:", valor);
-
   tipoAtencion.value = claves[valor] || "";
 });
+
+  claveSelect.dispatchEvent(new Event("change"));
 
   tipoAtencion.oninput = () => {
     let match = Object.entries(claves).find(
@@ -155,22 +207,64 @@ claveSelect.dispatchEvent(new Event("change"));
   // ==========================
 
   const pues = {
-    "PUE 21": "Interacción no controlada persona - equipo fijo",
-    "PUE 12": "Caída a distinto nivel",
-    "PUE 5": "Contacto con energía"
-  };
+   const pues = {
+  "PUE 1": "Accidente, colisión, choque o desbarrancamiento de equipo minero",
+  "PUE 2": "Derrame o contaminación a cursos de agua cercanos",
+  "PUE 3": "Colapso del botadero San Francisco",
+  "PUE 4": "Pérdida de contención de H2S",
+  "PUE 5": "Pérdida de contención STP, STR, SAR",
+  "PUE 7": "Falla en muro Tranque Pérez Caldera",
+  "PUE 8": "Falla en muro Tranque Las Tórtolas",
+  "PUE 9": "Colapso geomecánico de bancos",
+  "PUE 10": "Incendio Planta San Francisco",
+  "PUE 11": "Riesgos naturales con afectación",
+  "PUE 12": "Caída de persona desde altura",
+  "PUE 13": "Colapso estructural",
+  "PUE 14": "Falla Molino SAG",
+  "PUE 15": "Paralización por conflictos",
+  "PUE 16": "Incendio sistema Overland",
+  "PUE 17": "Incendio en vehículos",
+  "PUE 18": "Caída de rocas en mina",
+  "PUE 19": "Choque vehículo liviano",
+  "PUE 20": "Choque vehículo pesado",
+  "PUE 21": "Interacción no controlada persona - equipo fijo",
+  "PUE 22": "Incendio instalaciones/campamento",
+  "PUE 24": "Interacción persona-equipo móvil",
+  "PUE 25": "Liberación energía estanques",
+  "PUE 26": "Explosión neumático equipo minero",
+  "PUE 27": "Electrocución",
+  "PUE 29": "Atrapamiento chancado",
+  "PUE 30": "Golpes en maniobras de izaje",
+  "PUE 31": "Falta de oxígeno (Espacio confinado)",
+  "PUE 32": "Accidente con explosivos",
+  "PUE 35": "Energía mecánica descontrolada",
+  "PUE 37": "Energía hidráulica descontrolada",
+  "PUE 41": "Restricción por agua",
+  "PUE 43": "Golpe por barra de perforación",
+  "PUE 44": "Contaminación Río Blanco",
+  "PUE 45": "Infiltración napas",
+  "PUE 46": "Accidente aéreo helicóptero",
+  "PUE 51": "Exposición sustancias peligrosas",
+  "PUE 52": "Flyrock",
+  "PUE 58": "Incendio equipo minero",
+  "PUE 63": "Incumplimiento ambiental",
+  "PUE 66": "Pérdida de producción por agua",
+  "PUE 67": "Material particulado sobre límite",
+  "PUE 68": "Inmersión en líquidos",
+  "N/A": "NO APLICA"
+};
 
   let pueSelect = document.getElementById("pue");
   let descPue = document.getElementById("descPue");
 
-  Object.keys(pues).forEach(p => {
-    let opt = document.createElement("option");
-    opt.value = p;
-    opt.textContent = p;
-    pueSelect.appendChild(opt);
-  });
+ Object.keys(pues).forEach(p => {
+  let opt = document.createElement("option");
+  opt.value = p;
+  opt.textContent = p;
+  pueSelect.appendChild(opt);
+});
 
-  // 🔥 activar automáticamente
+// 🔥 ESTA ES LA LÍNEA CLAVE
 pueSelect.dispatchEvent(new Event("change"));
 
   pueSelect.addEventListener("change", () => {
