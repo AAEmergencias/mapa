@@ -119,3 +119,14 @@ header button:hover {
   background: #64748b;
 }
 
+#resetBtn {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+
+  width: 15px;
+  height: 15px;
+
+  opacity: 0.2; /* casi invisible */
+  border-radius: 50%;
+}
