@@ -1338,7 +1338,7 @@ document.getElementById("cerrarParte").onclick = () => {
   let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 
   // ✅ filtrar solo finalizadas
-  let finalizadas = historial.filter(e => e.finalizada);
+ let finalizadas = historial.filter(e => e.finalizada && !e.cerrada);
 
   // ❌ ninguna
   if (finalizadas.length === 0) {
