@@ -227,6 +227,10 @@ const unidades = [
   { nombre: "S3 / 220", base: "SPA 220" }
 ];
 
+
+// ✅ PRIMERO CREAS EL OBJETO
+let baseActualUnidad = {};
+
 unidades.forEach(u => {
   let key = u.nombre.split(" ")[0];
   baseActualUnidad[key] = u.base.trim();
@@ -259,8 +263,6 @@ const unidadesCoords = {
   "S3": { lat: -33.14678123106413, lng: -70.28585898284963 }
 
 };
-
-let baseActualUnidad = {};
 
 const listaUnidades = document.getElementById("listaUnidades");
 
