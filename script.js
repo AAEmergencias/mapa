@@ -997,6 +997,10 @@ function abrirConfirmacionFinalizar(panel, panelNegro) {
       // ✅ guardar emergencia en historial
 if (emergenciaActiva) {
   historialEmergencias.push(emergenciaActiva);
+  localStorage.setItem(
+  "historialEmergencias",
+  JSON.stringify(historialEmergencias)
+);
   emergenciaActiva = null;
 }
       
