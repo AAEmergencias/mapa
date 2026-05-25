@@ -250,6 +250,17 @@ const basesCoords = {
 
 };
 
+const baseMap = {
+  "Base Mina": "Brigada Mina",
+  "Base 220": "SPA 220",
+  "Base Los Bronces": "Brigada Los Bronces",
+  "Base Perez Caldera": "Policlínico Perez Caldera",
+  "Base Ermita": "Brigada La Ermita",
+  "Base STP": "Brigada Mineroducto",
+  "Base Tortolas": "Brigada Las Tortolas",
+  "Base Poli Tortolas": "Policlínico Las Tortolas"
+};
+
 const unidadesCoords = {
 
   "UIR-E": { lat: -33.36836139874689, lng: -70.39767004182966 },
@@ -874,30 +885,33 @@ item.onclick = () => {
 
   let key = unidad.split(" ")[0];
 
-  // ✅ guardar nueva base asignada
-  baseActualUnidad[key] = base;
+  // ✅ traducir base
+  let baseReal = baseMap[base];
+
+  // ✅ guardar base correcta
+  baseActualUnidad[key] = baseReal;
 
   let marker = marcadoresUnidades[key];
   if (!marker) return;
 
- let pos = marker.getLatLng();
+  let pos = marker.getLatLng();
 
-let origen = {
-  lat: pos.lat,
-  lng: pos.lng
-};
+  let origen = {
+    lat: pos.lat,
+    lng: pos.lng
+  };
 
-  let baseReal = baseActualUnidad[key];
   let destino = basesCoords[baseReal];
 
-  if (destino) {
-    moverUnidad(unidad, origen, destino);
+  if (!destino) {
+    console.log("❌ base no encontrada:", baseReal);
+    return;
   }
+
+  moverUnidad(unidad, origen, destino);
 
   modal.remove();
 };
-
-
 
     lista.appendChild(item);
   });
