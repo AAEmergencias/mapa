@@ -837,3 +837,39 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.4);
 }
+
+#cerrarParte, #irAdmin {
+  width: calc(100% - 20px);
+  margin: 10px;
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  color: white;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+/* ✅ BOTÓN CERRAR (rojo controlado) */
+#cerrarParte {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+#cerrarParte:hover {
+  transform: translateY(-2px);
+}
+
+/* ✅ ADMIN (verde tipo dashboard) */
+#irAdmin {
+  background: linear-gradient(135deg, #059669, #047857);
+}
+
+#irAdmin:hover {
+  transform: translateY(-2px);
+}
+
