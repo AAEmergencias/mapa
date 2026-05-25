@@ -115,3 +115,34 @@ serv.onchange = () => {
   }
 };
 
+const claves = {
+  "ALFA 10B": "Atrapamiento",
+  "ALFA 5": "Fractura",
+  "BRAVO 2": "Desmayo",
+  "CHARLIE 5": "Paro Cardíaco"
+};
+
+let claveSelect = document.getElementById("clave");
+let tipoAtencion = document.getElementById("tipoAtencion");
+
+// llenar dropdown
+Object.keys(claves).forEach(c => {
+  let opt = document.createElement("option");
+  opt.value = c;
+  opt.textContent = c;
+  claveSelect.appendChild(opt);
+});
+
+// clave → tipo
+claveSelect.onchange = () => {
+  tipoAtencion.value = claves[claveSelect.value];
+};
+
+// texto → clave
+tipoAtencion.oninput = () => {
+  let match = Object.entries(claves).find(
+    ([k, v]) => v.toLowerCase().includes(tipoAtencion.value.toLowerCase())
+  );
+
+  if (match) claveSelect.value = match[0];
+};
