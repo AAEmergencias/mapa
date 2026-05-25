@@ -91,3 +91,27 @@ localStorage.setItem("historialEmergencias", JSON.stringify(historial));
 document.getElementById("formParte").reset();
 window.close();
 };
+
+let amb = document.getElementById("ambulancia");
+let serv = document.getElementById("servicioMedico");
+let otro = document.getElementById("otroServicio");
+
+// ocultar servicio si no hay ambulancia
+amb.onchange = () => {
+  if (amb.value === "No asiste") {
+    serv.style.display = "none";
+    otro.style.display = "none";
+  } else {
+    serv.style.display = "block";
+  }
+};
+
+// mostrar campo "otro"
+serv.onchange = () => {
+  if (serv.value === "Otro") {
+    otro.style.display = "block";
+  } else {
+    otro.style.display = "none";
+  }
+};
+
