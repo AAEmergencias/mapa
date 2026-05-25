@@ -69,6 +69,7 @@ const iconos = {
 // 📂 CAPAS
 // ==========================
 let historialEmergencias = [];
+let contadorEmergencias = 1;
 let emergenciaActiva = null;
 let lugares = [];
 
@@ -728,20 +729,22 @@ document.getElementById("crear").onclick = () => {
   let subtipo = document.getElementById("subtipo").value;
 
   // 🔥 AQUÍ PEGA ESTO
-  emergenciaActiva = {
-    tipo: tipo,
-    subtipo: subtipo,
-    ubicacion: ubicacionSeleccionada?.nombre || "Sin ubicación",
-    unidades: [],
-    tiempos: {
-      "6-3": "",
-      "6-7": "",
-      "6-8": "",
-      "6-9": "",
-      "6-10": ""
-    },
-    fecha: new Date().toLocaleDateString()
-  };
+emergenciaActiva = {
+  id: contadorEmergencias++,
+  tipo: tipo,
+  subtipo: subtipo,
+  ubicacion: ubicacionSeleccionada?.nombre || "Sin ubicación",
+  unidades: [],
+  tiempos: {
+    "6-3": "",
+    "6-7": "",
+    "6-8": "",
+    "6-9": "",
+    "6-10": ""
+  },
+  fecha: new Date().toLocaleDateString(),
+  notas: "" // ✅ NUEVO
+};
 
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
@@ -1156,7 +1159,7 @@ panel.innerHTML = `
 
     <div class="bloque">
       <div class="titulo">📝 Notas</div>
-      <textarea placeholder="Agregar información..."></textarea>
+      <textarea class="campoNotas" placeholder="Agregar información..."></textarea>
     </div>
 
     <button class="btnFinalizar">Finalizar Emergencia</button>
@@ -1180,6 +1183,14 @@ unidades.forEach(u => {
 // ➕ AGREGAR UNIDAD (PASO 3)
 // ==========================
 const contenedorUnidades = panel.querySelector(".unidades");
+const campoNotas = panel.querySelector(".campoNotas");
+
+campoNotas.addEventListener("input", () => {
+  if (emergenciaActiva) {
+    emergenciaActiva.notas = campoNotas.value;
+  }
+});
+  
   let unidadesAsignadas = [];
 
 panel.querySelector(".btnAgregarUnidad").onclick = () => {
@@ -1292,11 +1303,11 @@ document.getElementById("exportar").onclick = () => {
     return;
   }
 
-  let csv = "Tipo,Subtipo,Ubicacion,Unidades,Hora 6-3,Hora 6-7,Hora 6-8,Hora 6-9,Hora 6-10,Fecha\n";
+let csv = "N°;Tipo;Subtipo;Ubicacion;Unidades;Hora 6-3;Hora 6-7;Hora 6-8;Hora 6-9;Hora 6-10;Fecha;Notas\n";
 
   historialEmergencias.forEach(e => {
 
-    csv += `${e.tipo},${e.subtipo},${e.ubicacion},"${e.unidades.join(" - ")}",${e.tiempos["6-3"]},${e.tiempos["6-7"]},${e.tiempos["6-8"]},${e.tiempos["6-9"]},${e.tiempos["6-10"]},${e.fecha}\n`;
+    csv += `${e.id};${e.tipo};${e.subtipo};${e.ubicacion};"${e.unidades.join(" - ")}";${e.tiempos["6-3"]};${e.tiempos["6-7"]};${e.tiempos["6-8"]};${e.tiempos["6-9"]};${e.tiempos["6-10"]};${e.fecha};"${e.notas}"\n`;
 
   });
 
@@ -1308,3 +1319,4 @@ document.getElementById("exportar").onclick = () => {
 
   link.click();
 };
+
