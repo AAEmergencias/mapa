@@ -177,3 +177,25 @@ console.log("📋 Partes:", partes);
 let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
 
 console.log("📋 Partes:", partes);
+
+let divPartes = document.getElementById("partes");
+
+if (partes.length === 0) {
+  divPartes.innerHTML = "Sin partes cerrados";
+} else {
+
+  partes.slice().reverse().forEach(p => {
+
+    let div = document.createElement("div");
+    div.className = "item";
+
+    div.innerHTML = `
+      📅 ${p.fecha}<br>
+      🚒 ${p.tipo} - ${p.subtipo}<br>
+      📍 ${p.lugar}<br>
+      👤 ${p.operador}
+    `;
+
+    divPartes.appendChild(div);
+  });
+}
