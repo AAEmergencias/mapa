@@ -59,3 +59,14 @@ textarea {
 .btnGuardar:hover {
   transform: translateY(-2px);
 }
+
+.grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {label: 12px;
+  margin-bottom: 4px;
+  color: #cbd5f5;
+}
+
