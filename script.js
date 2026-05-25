@@ -1138,49 +1138,50 @@ const contenedorUnidades = panel.querySelector(".unidades");
 panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   let nombreUnidad = select.value;
-let unidadData = unidades.find(u => u.nombre === nombreUnidad);
-if (!unidadData) return;
+  let unidadData = unidades.find(u => u.nombre === nombreUnidad);
+  if (!unidadData) return;
 
-let key = nombreUnidad.split(" ")[0];
+  let key = nombreUnidad.split(" ")[0];
 
-// guardar en historial
-if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
-  emergenciaActiva.unidades.push(key);
-}
+  // ✅ guardar en historial
+  if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
+    emergenciaActiva.unidades.push(key);
+  }
 
-// UI
-if (!unidadesAsignadas.includes(nombreUnidad)) {
-  unidadesAsignadas.push(nombreUnidad);
-}
+  // ✅ evitar duplicados UI
+  if (!unidadesAsignadas.includes(nombreUnidad)) {
+    unidadesAsignadas.push(nombreUnidad);
+  }
 
-// crear visual
-let div = document.createElement("div");
-div.className = "unidad-asignada";
+  // ✅ crear visual
+  let div = document.createElement("div");
+  div.className = "unidad-asignada";
 
-div.innerHTML = `
-  🚑 <b>${unidadData.nombre}</b><br>
-  <small>${unidadData.base}</small>
-`;
+  div.innerHTML = `
+    🚑 <b>${unidadData.nombre}</b><br>
+    <small>${unidadData.base}</small>
+  `;
 
-contenedorUnidades.appendChild(div);
+  contenedorUnidades.appendChild(div);
 
-// estado
-actualizarEstadoUnidad(unidadData.nombre, "6-T");
+  // ✅ cambiar estado
+  actualizarEstadoUnidad(unidadData.nombre, "6-T");
 
-// movimiento
-let origen = unidadesCoords[key];
-let destino = ubicacionSeleccionada.coords;
+  // ✅ mover unidad
+  let origen = unidadesCoords[key];
+  let destino = ubicacionSeleccionada.coords;
 
-if (origen && destino) {
-  moverUnidad(unidadData.nombre, origen, destino);
-}
+  if (origen && destino) {
+    moverUnidad(unidadData.nombre, origen, destino);
+  }
 
-// panel negro
-panelNegro.querySelector(".info").innerHTML = `
-  🔥 ${data.tipo}<br>
-  📍 ${data.ubicacion}<br>
-  🚑 ${unidadesAsignadas.join(", ")}
-`;
+  // ✅ actualizar panel negro
+  if (panelNegro) {
+    panelNegro.querySelector(".info").innerHTML = `
+      🔥 ${data.tipo}<br>
+      📍 ${data.ubicacion}<br>
+      🚑 ${unidadesAsignadas.join(", ")}
+    `;
   }
 
 };
