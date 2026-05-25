@@ -130,6 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
     claveSelect.appendChild(opt);
   });
 
+  // 🔥 activar automáticamente
+claveSelect.dispatchEvent(new Event("change"));
+
   claveSelect.addEventListener("change", () => {
 
   let valor = claveSelect.value;
@@ -166,6 +169,9 @@ document.addEventListener("DOMContentLoaded", () => {
     opt.textContent = p;
     pueSelect.appendChild(opt);
   });
+
+  // 🔥 activar automáticamente
+pueSelect.dispatchEvent(new Event("change"));
 
   pueSelect.addEventListener("change", () => {
 
