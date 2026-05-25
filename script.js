@@ -858,12 +858,23 @@ function abrirModalBases(unidad) {
 
 item.onclick = () => {
 
-  actualizarEstadoUnidad(unidad, "6-10", base); // 👈 PASAMOS LA BASE
+  actualizarEstadoUnidad(unidad, "6-10", base);
 
-  console.log(unidad + " → " + base);
+  let key = unidad.split(" ")[0];
+
+  let marker = marcadoresUnidades[key];
+  if (!marker) return;
+
+  let origen = marker.getLatLng();
+  let destino = basesCoords[base];
+
+  if (destino) {
+    moverUnidad(unidad, origen, destino);
+  }
 
   modal.remove();
 };
+
 
 
     lista.appendChild(item);
