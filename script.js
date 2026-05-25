@@ -996,6 +996,7 @@ function abrirConfirmacionFinalizar(panel, panelNegro) {
 
       // ✅ guardar emergencia en historial
 if (emergenciaActiva) {
+  emergenciaActiva.finalizada = true;
   historialEmergencias.push(emergenciaActiva);
   localStorage.setItem(
   "historialEmergencias",
@@ -1334,7 +1335,24 @@ document.getElementById("irAdmin").onclick = () => {
 
 document.getElementById("cerrarParte").onclick = () => {
 
-  if (!confirm("Vas a cerrar el parte en el sistema oficial ¿Continuar?")) return;
+  let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 
-  window.open("formulario.html", "_blank");
+  // ✅ filtrar solo finalizadas
+  let finalizadas = historial.filter(e => e.finalizada);
+
+  // ❌ ninguna
+  if (finalizadas.length === 0) {
+    alert("❌ No hay emergencias finalizadas para cerrar");
+    return;
+  }
+
+  // ✅ solo una
+  if (finalizadas.length === 1) {
+    localStorage.setItem("emergenciaSeleccionada", JSON.stringify(finalizadas[0]));
+    window.open("formulario.html", "_blank");
+    return;
+  }
+
+  // ✅ varias → mostrar selector
+  mostrarSelectorEmergencias(finalizadas);
 };
