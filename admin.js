@@ -1,1 +1,1 @@
-<script src="admin.js"></script>
+console.log("✅ admin.js funcionando");
