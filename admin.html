@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Administrador</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1e293b;
+      color: white;
+    }
+
+    header {
+      background-color: #0f172a;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-volver {
+      background: #334155;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .seccion {
+      margin-bottom: 25px;
+      background: #334155;
+      border-radius: 12px;
+      padding: 15px;
+    }
+
+    .seccion h2 {
+      margin-top: 0;
+      font-size: 16px;
+      border-bottom: 1px solid #475569;
+      padding-bottom: 5px;
+    }
+
+    .item {
+      padding: 8px;
+      border-bottom: 1px solid #475569;
+      font-size: 13px;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .badge {
+      background: #1e40af;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 11px;
+      margin-right: 5px;
+    }
+
+    .empty {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  📊 Panel Administrador
+
+  <button class="btn-volver" onclick="window.close()">
+    ⬅ Volver
+  </button>
+</header>
+
+<div class="container">
+
+  <!-- 📅 ÚLTIMOS 15 DÍAS -->
+  <div class="seccion">
+    <h2>📅 Bitácora últimos 15 días</h2>
+    <div id="ultimos15"></div>
+  </div>
+
+  <!-- 📂 HISTORIAL COMPLETO -->
+  <div class="seccion">
+    <h2>📂 Historial completo</h2>
+    <div id="historial"></div>
+  </div>
+
+</div>
+
+<script>
+
+// ✅ obtener historial
+let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
+
+// ✅ fecha actual
+let hoy = new Date();
+
+// ==========================
+// 📅 FILTRAR ÚLTIMOS 15 DÍAS
+// ==========================
+let ultimos15 = historial.filter(e => {
+  let partes = e.fecha.split("/");
+  let fecha = new Date(partes[2], partes[1] - 1, partes[0]);
+
+  let diff = (hoy - fecha) / (1000 * 60 * 60 * 24);
+
+  return diff <= 15;
+});
+
+// ==========================
+// 📌 RENDER ÚLTIMOS 15
+// ==========================
+const div15 = document.getElementById("ultimos15");
+
+if (ultimos15.length === 0) {
+  div15.innerHTML = '<div class="empty">Sin registros recientes</div>';
+} else {
+  ultimos15.reverse().forEach(e => {
+    let div = document.createElement("div");
+    div.className = "item";
+
+    div.innerHTML = `
+      <span class="badge">#${e.id}</span>
+      ${e.tipo} - ${e.subtipo}<br>
+      📍 ${e.ubicacion}<br>
+      🕒 ${e.fecha}
+    `;
+
+    div15.appendChild(div);
+  });
+}
+
+// ==========================
+// 📂 HISTORIAL COMPLETO
+// ==========================
+const divHist = document.getElementById("historial");
+
+if (historial.length === 0) {
+  divHist.innerHTML = '<div class="empty">Sin emergencias registradas</div>';
+} else {
+  historial.slice().reverse().forEach(e => {
+    let div = document.createElement("div");
+    div.className = "item";
+
+    div.innerHTML = `
+      <span class="badge">#${e.id}</span>
+      ${e.tipo} (${e.subtipo}) - ${e.ubicacion}<br>
+      📅 ${e.fecha}
+    `;
+
+    divHist.appendChild(div);
+  });
+}
+
+</script>
+
+</body>
+</html>
