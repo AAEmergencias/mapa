@@ -2,17 +2,44 @@ let emergencia = JSON.parse(localStorage.getItem("emergenciaSeleccionada"));
 
 if (emergencia) {
 
-  // ✅ Tipo
-  document.getElementById("tipo").value = emergencia.tipo || "";
-
-  // ✅ Subtipo
-  document.getElementById("subtipo").value = emergencia.subtipo || "";
-
-  // ✅ Fecha formateada
+  // ✅ FECHA
   if (emergencia.fecha) {
     document.getElementById("fecha").value = convertirFecha(emergencia.fecha);
   }
 
+  // ✅ HORAS
+  document.getElementById("horaActivacion").value = formatearHora(emergencia.horaActivacion);
+  document.getElementById("horaCierre").value = formatearHora(emergencia.horaCierre);
+
+  // ✅ TIPO / SUBTIPO
+  document.getElementById("tipo").value = emergencia.tipo || "";
+  document.getElementById("subtipo").value = emergencia.subtipo || "";
+
+  // ✅ UBICACIÓN
+  document.getElementById("lugar").value = emergencia.ubicacion || "";
+
+  // ✅ RESPUESTA
+  document.getElementById("brigada").value = emergencia.brigada || "";
+  document.getElementById("vehiculo").value = emergencia.vehiculo || "";
+
+}
+
+function convertirFecha(fecha) {
+
+  let partes = fecha.includes("/")
+    ? fecha.split("/")
+    : fecha.split("-");
+
+  if (partes.length !== 3) return "";
+
+  return `${partes[2]}-${partes[1]}-${partes[0]}`;
+}
+
+function formatearHora(hora) {
+
+  if (!hora) return "";
+
+  return hora.substring(0, 5);
 }
 
 function convertirFecha(fecha) {
