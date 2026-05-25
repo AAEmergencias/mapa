@@ -999,7 +999,11 @@ if (emergenciaActiva) {
   historialEmergencias.push(emergenciaActiva);
   emergenciaActiva = null;
 }
-
+      
+localStorage.setItem(
+  "historialEmergencias",
+  JSON.stringify(historialEmergencias)
+);
       // ✅ cerrar panel rojo
       if (panel) panel.remove();
 
