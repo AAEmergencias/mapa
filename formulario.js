@@ -146,3 +146,25 @@ tipoAtencion.oninput = () => {
 
   if (match) claveSelect.value = match[0];
 };
+
+const pues = {const pues "PUE 21": "Interacción no controlada persona - equipo fijo",
+  "PUE 12": "Caída a distinto nivel",
+  "PUE 5": "Contacto con energía"
+};
+
+let pueSelect = document.getElementById("pue");
+let descPue = document.getElementById("descPue");
+
+// llenar dropdown
+Object.keys(pues).forEach(p => {
+  let opt = document.createElement("option");
+  opt.value = p;
+  opt.textContent = p;
+  pueSelect.appendChild(opt);
+});
+
+// autocompletar descripción
+pueSelect.onchange = () => {
+  descPue.value = pues[pueSelect.value];
+};
+
