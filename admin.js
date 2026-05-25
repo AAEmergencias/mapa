@@ -207,17 +207,43 @@ document.getElementById("exportarPartes").onclick = () => {
     return;
   }
 
-  let csv = "Fecha;Hora Activacion;Tipo;Subtipo;Lugar;Empresa;Brigada;Vehiculo;Ambulancia;Pacientes;Operador\n";
+  // ✅ CABECERA COMPLETA
+  let csv = "N°;Fecha;Hora activación;Hora levantamiento;Tipo;Subtipo;Descripción del evento;Lugar;Comuna;Faena;Empresa Afectada;Faena / Comunidad;Brigada;Vehículo;Ambulancia;Servicio Médico;Existe atención;Cantidad pacientes;Clave;Tipo atención;PUE;Descripción PUE;Operador\n";
 
-  partes.forEach(p => {
-    csv += `${p.fecha};${p.horaActivacion};${p.tipo};${p.subtipo};${p.lugar};${p.empresa};${p.brigada};${p.vehiculo};${p.ambulancia};${p.pacientes};${p.operador}\n`;
+  partes.forEach((p, index) => {
+
+    csv += `${index + 1};`
+      + `${p.fecha || ""};`
+      + `${p.horaActivacion || ""};`
+      + `${p.horaCierre || ""};`
+      + `${p.tipo || ""};`
+      + `${p.subtipo || ""};`
+      + `"${p.descripcion || ""}";`
+      + `${p.lugar || ""};`
+      + `${p.comuna || ""};`
+      + `${p.faena || ""};`
+      + `${p.empresa || ""};`
+      + `${p.impacto || ""};`
+      + `${p.brigada || ""};`
+      + `${p.vehiculo || ""};`
+      + `${p.ambulancia || ""};`
+      + `${p.servicioMedico || ""};`
+      + `${p.tipoAtencion ? "SI" : "NO"};`
+      + `${p.pacientes || "0"};`
+      + `${p.clave || ""};`
+      + `${p.tipoAtencion || ""};`
+      + `${p.pue || ""};`
+      + `"${p.descripcionPue || ""}";`
+      + `${p.operador || ""}\n`;
+
   });
 
+  // ✅ CREAR ARCHIVO
   let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
 
   let link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "partes_emergencia.csv";
+  link.download = "partes_emergencia_completo.csv";
 
   link.click();
 };
