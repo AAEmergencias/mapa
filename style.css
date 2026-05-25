@@ -466,7 +466,7 @@ body {
   border-radius: 0; /* 🔥 elimina bordes redondeados */
   padding: 10px;
 
-  overflow: hidden; /* ❌ sin scroll */
+  overflow-y: auto;
 
   z-index: 2000;
 
