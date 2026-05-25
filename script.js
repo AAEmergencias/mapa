@@ -1336,8 +1336,5 @@ document.getElementById("cerrarParte").onclick = () => {
 
   if (!confirm("Vas a cerrar el parte en el sistema oficial ¿Continuar?")) return;
 
-  window.open(
-    "https://forms.cloud.microsoft/pages/responsepage.aspx?id=nfZkKMN3vk-7wJdQIFI5Gl9nUF50UzpDmGuCMdlHAT9UMVRTT1Y0RFlVQ1BORjRTRVNWWlpUWktGRy4u&route=shorturl",
-    "_blank"
-  );
+  window.open("formulario.html", "_blank");
 };
