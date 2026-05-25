@@ -228,7 +228,7 @@ document.getElementById("exportarPartes").onclick = () => {
       + `${p.vehiculo || ""};`
       + `${p.ambulancia || ""};`
       + `${p.servicioMedico || ""};`
-      + `${p.existeAtencion || ""}
+      + `${p.existeAtencion || ""};`
       + `${p.pacientes || "0"};`
       + `${p.clave || ""};`
       + `${p.tipoAtencion || ""};`
