@@ -78,3 +78,9 @@ button {
 button:hover {
   background: #64748b;
 }
+
+.card div {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 5px;
+}
