@@ -118,3 +118,54 @@ if (historial.length === 0) {
     divHist.appendChild(div);
   });
 }
+
+document.getElementById("resetBtn").onclick = () => {
+
+  // 🔑 PEDIR CLAVE
+  let clave = prompt("Ingrese clave de administrador:");
+
+  if (clave !== "1234") {
+    alert("❌ Clave incorrecta");
+    return;
+  }
+
+  // ⚠️ CONFIRMAR
+  let confirmar = confirm("Esto eliminará TODO el historial y dejará el dashboard en 0 ¿Continuar?");
+  if (!confirmar) return;
+
+  // 🧹 BORRAR LOCALSTORAGE
+  localStorage.removeItem("historialEmergencias");
+
+  // 🧠 LIMPIAR DATOS EN MEMORIA
+  historial = [];
+
+  // 📊 RESETEAR KPIs
+  document.getElementById("total").innerText = 0;
+  document.getElementById("ultimosCount").innerText = 0;
+  document.getElementById("totalUnidades").innerText = 0;
+
+  // 📅 LIMPIAR BITÁCORA
+  document.getElementById("ultimos15").innerHTML = "Sin datos";
+
+  // 📂 LIMPIAR HISTORIAL
+  document.getElementById("historial").innerHTML = "Sin datos";
+
+  // 📈 LIMPIAR GRÁFICO
+  if (window.miGrafico) {
+    window.miGrafico.destroy();
+  }
+
+window.miGrafico = new Chart(document.getElementById("graficoTipos"), {
+    type: "bar",
+    data: {
+      labels: [],
+      datasets: [{
+        label: "Emergencias",
+        data: [],
+        backgroundColor: "#ef4444"
+      }]
+    }
+  });
+
+  alert("✅ Dashboard reiniciado correctamente");
+};
