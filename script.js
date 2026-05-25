@@ -227,6 +227,11 @@ const unidades = [
   { nombre: "S3 / 220", base: "SPA 220" }
 ];
 
+unidades.forEach(u => {
+  let key = u.nombre.split(" ")[0];
+  baseActualUnidad[key] = u.base.trim();
+});
+
 const basesCoords = {
 
   "Brigada La Ermita": { lat: -33.36836139874689, lng: -70.39767004182966 },
@@ -255,7 +260,7 @@ const unidadesCoords = {
 
 };
 
-
+let baseActualUnidad = {};
 
 const listaUnidades = document.getElementById("listaUnidades");
 
@@ -862,15 +867,15 @@ item.onclick = () => {
 
   let key = unidad.split(" ")[0];
 
+  // ✅ guardar nueva base asignada
+  baseActualUnidad[key] = base;
+
   let marker = marcadoresUnidades[key];
   if (!marker) return;
 
   let origen = marker.getLatLng();
 
-  // 🔥 BASE CORRECTA
-  let unidadData = unidades.find(u => u.nombre === unidad);
-  let baseReal = unidadData?.base?.trim();
-
+  let baseReal = baseActualUnidad[key];
   let destino = basesCoords[baseReal];
 
   if (destino) {
