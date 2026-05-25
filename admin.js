@@ -169,3 +169,7 @@ window.miGrafico = new Chart(document.getElementById("graficoTipos"), {
 
   alert("✅ Dashboard reiniciado correctamente");
 };
+
+let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+
+console.log("📋 Partes:", partes);
