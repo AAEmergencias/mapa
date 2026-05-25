@@ -1,1 +1,64 @@
-a
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Parte de Emergencia</title>
+
+<link rel="stylesheet" href="formulario.css">
+
+</head>
+
+<body>
+
+<h2>📋 Parte de Emergencia</h2>
+
+<form id="formParte">
+
+<input type="date" id="fecha">
+<input type="time" id="horaActivacion">
+<input type="time" id="horaCierre">
+
+<input type="text" id="tipo" placeholder="Tipo Emergencia">
+<input type="text" id="subtipo" placeholder="Subtipo">
+
+<textarea id="descripcion" placeholder="Descripción"></textarea>
+
+<input type="text" id="lugar" placeholder="Lugar">
+<input type="text" id="comuna" placeholder="Comuna">
+<input type="text" id="faena" placeholder="Faena">
+
+<input type="text" id="empresa" placeholder="Empresa Afectada">
+
+<select id="impacto">
+  <option value="">Impacto</option>
+  <option value="Operaciones">Operaciones</option>
+  <option value="Comunidad">Comunidad</option>
+</select>
+
+<input type="text" id="brigada" placeholder="Brigada">
+<input type="text" id="vehiculo" placeholder="Vehiculo">
+
+<select id="ambulancia">
+  <option value="">Ambulancia</option>
+  <option value="No">No</option>
+  <option value="Si">Si</option>
+</select>
+
+<input type="text" id="tipoAtencion" placeholder="Tipo Atención">
+<input type="number" id="pacientes" placeholder="Cantidad pacientes">
+
+<input type="text" id="pue" placeholder="PUE">
+<textarea id="descPue" placeholder="Descripción PUE"></textarea>
+
+<input type="text" id="anexo3" placeholder="Anexo 3">
+<input type="text" id="operador" placeholder="Operador cierre">
+
+<button type="submit">💾 Guardar Parte</button>
+
+</form>
+
+<script src="formulario.js"></script>
+
+</body>
+</html>
+``
