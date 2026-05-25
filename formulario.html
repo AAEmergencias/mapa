@@ -78,17 +78,28 @@
   </div>
 
   <!-- 🏥 PACIENTES -->
-  <div class="bloque">
-    <h3>🏥 Atención</h3>
+<div class="bloque">
+  <h3>🏥 Atención</h3>
 
-    <div class="grid">
-      <input type="number" id="pacientes" placeholder="Pacientes">
-      <input type="text" id="tipoAtencion" placeholder="Tipo Atención">
-      <input type="text" id="pue" placeholder="PUE">
-    </div>
+  <div class="grid">
+    <input type="number" id="pacientes" placeholder="Cantidad de pacientes">
+    
+    <select id="existeAtencion">
+      <option value="">¿Existe atención?</option>
+      <option value="SI">Sí</option>
+      <option value="NO">No</option>
+    </select>
 
-    <textarea id="descPue" placeholder="Descripción PUE"></textarea>
+    <input type="text" id="tipoAtencion" placeholder="Tipo de atención">
+    <input type="text" id="clave" placeholder="Clave de atención">
+    <input type="text" id="pue" placeholder="PUE">
   </div>
+
+  <!-- ✅ Servicio Médico -->
+  <input type="text" id="servicioMedico" placeholder="Servicio Médico que asiste">
+
+  <textarea id="descPue" placeholder="Descripción PUE"></textarea>
+</div>
 
   <!-- 🔐 CIERRE -->
   <div class="bloque">
