@@ -206,8 +206,8 @@ claveSelect.dispatchEvent(new Event("change"));
   // ⚠️ PUE
   // ==========================
 
-  const pues = {
-   const pues = {
+  const pue = {
+   const pue = {
   "PUE 1": "Accidente, colisión, choque o desbarrancamiento de equipo minero",
   "PUE 2": "Derrame o contaminación a cursos de agua cercanos",
   "PUE 3": "Colapso del botadero San Francisco",
@@ -257,7 +257,7 @@ claveSelect.dispatchEvent(new Event("change"));
   let pueSelect = document.getElementById("pue");
   let descPue = document.getElementById("descPue");
 
- Object.keys(pues).forEach(p => {
+ Object.keys(pue).forEach(p => {
   let opt = document.createElement("option");
   opt.value = p;
   opt.textContent = p;
@@ -273,7 +273,7 @@ pueSelect.dispatchEvent(new Event("change"));
 
   console.log("PUE seleccionado:", valor);
 
-  descPue.value = pues[valor] || "";
+  descPue.value = pue[valor] || "";
 });
 
 });
