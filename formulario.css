@@ -1,19 +1,23 @@
 body {
   background: #1e293b;
   color: white;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   padding: 20px;
 }
 
+/* TÍTULO */
 h2 {
+  text-align: center;
   margin-bottom: 20px;
 }
 
+/* CONTENEDOR */
 .form-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
+/* BLOQUES */
 .bloque {
   background: #334155;
   padding: 15px;
@@ -26,21 +30,39 @@ h2 {
   margin-bottom: 10px;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 
-input, select, textarea {
-  width: 100%;
+/* INPUT GROUP */
+.grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* LABEL */
+label {
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #cbd5f5;
+}
+
+/* INPUTS */
+input,
+select,
+textarea {
   padding: 8px;
   border-radius: 6px;
   border: none;
+  width: 100%;
 }
 
 textarea {
   margin-top: 10px;
+  height: 70px;
   resize: none;
 }
 
@@ -48,7 +70,7 @@ textarea {
 .btnGuardar {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(90deg, #d32f2f, #ff5252);
+  background: linear-gradient(90deg, #dc2626, #ef4444);
   border: none;
   border-radius: 10px;
   color: white;
@@ -60,19 +82,7 @@ textarea {
   transform: translateY(-2px);
 }
 
-.grid div {
-  display: flex;
-  flex-direction: column;
+/* OCULTOS */
+#otroServicio {
+  margin-top: 10px;
 }
-
-label {label: 12px;
-  margin-bottom: 4px;
-  color: #cbd5f5;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-}
-
