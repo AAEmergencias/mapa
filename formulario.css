@@ -70,3 +70,9 @@ label {label: 12px;
   color: #cbd5f5;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
