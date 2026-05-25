@@ -206,8 +206,7 @@ claveSelect.dispatchEvent(new Event("change"));
   // ⚠️ PUE
   // ==========================
 
-  const pue = {
-   const pue = {
+  const PUE = {
   "PUE 1": "Accidente, colisión, choque o desbarrancamiento de equipo minero",
   "PUE 2": "Derrame o contaminación a cursos de agua cercanos",
   "PUE 3": "Colapso del botadero San Francisco",
@@ -254,17 +253,24 @@ claveSelect.dispatchEvent(new Event("change"));
   "N/A": "NO APLICA"
 };
 
-  let pueSelect = document.getElementById("pue");
-  let descPue = document.getElementById("descPue");
+ let pueSelect = document.getElementById("pue");
+let descPue = document.getElementById("descPue");
 
- Object.keys(pue).forEach(p => {
+// llenar dropdown
+Object.keys(PUE).forEach(p => {
   let opt = document.createElement("option");
   opt.value = p;
   opt.textContent = p;
   pueSelect.appendChild(opt);
 });
 
-// 🔥 ESTA ES LA LÍNEA CLAVE
+// evento automático
+pueSelect.addEventListener("change", () => {
+  let valor = pueSelect.value;
+  descPue.value = PUE[valor] || "";
+});
+
+// 🔥 activar al cargar
 pueSelect.dispatchEvent(new Event("change"));
 
   pueSelect.addEventListener("change", () => {
