@@ -173,3 +173,7 @@ window.miGrafico = new Chart(document.getElementById("graficoTipos"), {
 let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
 
 console.log("📋 Partes:", partes);
+
+let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+
+console.log("📋 Partes:", partes);
