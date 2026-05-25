@@ -1356,3 +1356,60 @@ document.getElementById("cerrarParte").onclick = () => {
   // ✅ varias → mostrar selector
   mostrarSelectorEmergencias(finalizadas);
 };
+
+function mostrarSelectorEmergencias(lista) {
+
+  let modal = document.createElement("div");
+
+  modal.style.position = "fixed";
+  modal.style.top = "0";
+  modal.style.left = "0";
+  modal.style.width = "100%";
+  modal.style.height = "100%";
+  modal.style.background = "rgba(0,0,0,0.6)";
+  modal.style.display = "flex";
+  modal.style.alignItems = "center";
+  modal.style.justifyContent = "center";
+  modal.style.zIndex = "9999";
+
+  let contenido = document.createElement("div");
+
+  contenido.style.background = "#2b2f3a";
+  contenido.style.padding = "20px";
+  contenido.style.borderRadius = "10px";
+  contenido.style.width = "320px";
+  contenido.style.color = "white";
+
+  contenido.innerHTML = "<h3>Selecciona emergencia</h3>";
+
+  lista.forEach(e => {
+
+    let item = document.createElement("div");
+
+    item.style.padding = "10px";
+    item.style.margin = "5px 0";
+    item.style.background = "#3a3f4b";
+    item.style.cursor = "pointer";
+    item.style.borderRadius = "6px";
+
+    item.innerHTML = `
+      #${e.id} - ${e.tipo}<br>
+      📅 ${e.fecha}
+    `;
+
+    item.onclick = () => {
+
+      localStorage.setItem("emergenciaSeleccionada", JSON.stringify(e));
+
+      modal.remove();
+
+      window.open("formulario.html", "_blank");
+    };
+
+    contenido.appendChild(item);
+  });
+
+  modal.appendChild(contenido);
+
+  document.body.appendChild(modal);
+}
