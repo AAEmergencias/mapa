@@ -198,4 +198,30 @@ if (partes.length === 0) {
 
     divPartes.appendChild(div);
   });
+  
 }
+
+document.getElementById("exportarPartes").onclick = () => {
+
+  let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+
+  if (partes.length === 0) {
+    alert("No hay partes");
+    return;
+  }
+
+  let csv = "Fecha;Hora Activacion;Tipo;Subtipo;Lugar;Empresa;Brigada;Vehiculo;Ambulancia;Pacientes;Operador\n";
+
+  partes.forEach(p => {
+    csv += `${p.fecha};${p.horaActivacion};${p.tipo};${p.subtipo};${p.lugar};${p.empresa};${p.brigada};${p.vehiculo};${p.ambulancia};${p.pacientes};${p.operador}\n`;
+  });
+
+  let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+
+  let link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "partes_emergencia.csv";
+
+  link.click();
+};
+
