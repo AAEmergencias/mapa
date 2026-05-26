@@ -6,6 +6,11 @@ console.log("✅ admin.js funcionando");
 let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
 
+// ✅ OBTENER ÚLTIMA EMERGENCIA
+let ultima = partes
+  .filter(p => p.fecha) // solo registros válidos
+  .sort((a,b) => new Date(b.fecha) - new Date(a.fecha))[0];
+
 console.log("📊 Historial:", historial);
 console.log("📋 Partes:", partes);
 
@@ -21,6 +26,8 @@ let emergenciasCompletas = partes.filter(p => let emergenciasCompletas = partes 
 );
 
 document.getElementById("totalPartes").innerText = partes.length;
+
+document.getElementById("totalCompletas").innerText = emergenciasCompletas.length;
 
 // ==========================
 // 📅 ÚLTIMOS 15 DÍAS
@@ -309,3 +316,4 @@ function actualizarBrigada() {
   crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
   crear("graficoPUE", porPUE, "bar", "#10b981", true);
 }
+
