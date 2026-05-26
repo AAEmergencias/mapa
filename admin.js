@@ -80,9 +80,6 @@ new Chart(document.getElementById("graficoPUE"), {
   }
 });
   
-
-  if (partes.length !== 3) return false;
-
   let fecha = new Date(
     parseInt(partes[2]),
     parseInt(partes[1]) - 1,
