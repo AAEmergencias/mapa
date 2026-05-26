@@ -25,65 +25,19 @@ let ultimos15 = historial.filter(e => {
     ? e.fecha.split("/")
     : e.fecha.split("-");
 
-  let porMes = {};
+  if (partes.length !== 3) return false;
 
-historial.forEach(e => {
-  if (!e.fecha) return;
+  let fecha = new Date(
+    parseInt(partes[2]),
+    parseInt(partes[1]) - 1,
+    parseInt(partes[0])
+  );
 
-  let partesFecha = e.fecha.includes("/") ? e.fecha.split("/") : e.fecha.split("-");
-  let mes = partesFecha[1];
+  let diff = (hoy - fecha) / (1000 * 60 * 60 * 24);
 
-  porMes[mes] = (porMes[mes] || 0) + 1;
+  return diff <= 15;
 });
 
-new Chart(document.getElementById("graficoMes"), {
-  type: "bar",
-  data: {
-    labels: Object.keys(porMes),
-    datasets: [{
-      label: "Emergencias",
-      data: Object.values(porMes),
-      backgroundColor: "#3b82f6"
-    }]
-  }
-});
-
-  let porFaena = {};
-
-partes.forEach(p => {
-  if (!p.faena) return;
-  porFaena[p.faena] = (porFaena[p.faena] || 0) + 1;
-});
-
-new Chart(document.getElementById("graficoFaena"), {
-  type: "pie",
-  data: {
-    labels: Object.keys(porFaena),
-    datasets: [{
-      data: Object.values(porFaena),
-      backgroundColor: ["#ef4444","#22c55e","#3b82f6","#f59e0b"]
-    }]
-  }
-});
-
-  let porTipo = {};
-
-historial.forEach(e => {
-  if (!e.tipo) return;
-  porTipo[e.tipo] = (porTipo[e.tipo] || 0) + 1;
-});
-
-new Chart(document.getElementById("graficoTipo"), {
-  type: "bar",
-  data: {
-    labels: Object.keys(porTipo),
-    datasets: [{
-      label: "Tipos",
-      data: Object.values(porTipo),
-      backgroundColor: "#ef4444"
-    }]
-  }
-});
 
   let porEmpresa = {};
 
@@ -426,7 +380,7 @@ filtrados.forEach(p => {
 });
 
 
-filtrados.forEach(p => {
+ffiltrados.forEach(p => {
 
 function verBrigada() {
 
@@ -439,9 +393,6 @@ function verBrigada() {
   });
 
   alert(JSON.stringify(datos, null, 2));
-}
-
-  console.log(datos);
 }
 
 function verMedico() {
