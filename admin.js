@@ -76,11 +76,19 @@ divHist.innerHTML = historial.map(e => `
 // ==========================
 // ✅ FILTRO REAL (IMPORTANTE)
 // ==========================
+const BRIGADAS_VALIDAS = ["B1", "UIR-M", "UIR-E", "B2", "UIR-S"];
+
 function esReal(p) {
   return p.brigada && p.ambulancia === "Si asiste";
 }
 
 let partesReales = partes.filter(esReal);
+
+// ✅ FILTRO SOLO BRIGADAS REALES
+let soloBrigada = partesReales.filter(p =>
+  BRIGADAS_VALIDAS.includes(p.brigada)
+);
+
 
 // ==========================
 // 🎛 FILTROS
