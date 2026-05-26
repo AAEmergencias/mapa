@@ -130,3 +130,27 @@ header button:hover {
   opacity: 0.2; /* casi invisible */
   border-radius: 50%;
 }
+
+.gridGraficos {.gridGra;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+canvas {
+  width: 100%;
+  max-height: 250px;
+}
+
+.card.full {
+  grid-column: span 2;
+}
+
+.card.full canvas {
+  max-height: 400px;
+}
