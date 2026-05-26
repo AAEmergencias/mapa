@@ -365,3 +365,26 @@ function togglePartes() {
 }
 
 document.getElementById("totalPartes").textContent = partes.length;
+
+function esReal(p) {
+  return p.brigada && p.ambulancia === "Si asiste";
+}
+let partesReales = partes.filter(esReal);
+
+let mesFiltro = document.getElementById("filtroMes").value;
+let anioFiltro = document.getElementById("filtroAnio").value;
+
+let filtrados = partesReales.filter(p => {
+
+  if (!p.fecha) return false;
+
+  let f = p.fecha.split("-");
+  let anio = f[0];
+  let mes = f[1];
+
+  if (mesFiltro && mes !== mesFiltro) return false;
+  if (anioFiltro && anio !== anioFiltro) return false;
+
+  return true;
+});
+
