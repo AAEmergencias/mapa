@@ -388,3 +388,40 @@ let filtrados = partesReales.filter(p => {
   return true;
 });
 
+let porMes = {};
+
+filtrados.forEach(p => {
+  let mes = p.fecha.split("-")[1];
+  porMes[mes] = (porMes[mes] || 0) + 1;
+});
+
+let porFaena = {};
+
+filtrados.forEach(p => {
+  porFaena[p.faena] = (porFaena[p.faena] || 0) + 1;
+});
+
+let porTipo = {};
+
+filtrados.forEach(p => {
+  porTipo[p.tipo] = (porTipo[p.tipo] || 0) + 1;
+});
+
+let porSubtipo = {};let porSubtrados.forEach(p => {
+  porSubtipo[p.subtipo] = (porSubtipo[p.subtipo] || 0) + 1;
+});
+
+let porEmpresa = {};let porEmpresa =.forEach(p => {
+  porEmpresa[p.empresa] = (porEmpresa[p.empresa] || 0) + 1;
+});
+
+let porPUE = {};let por  porPUE[p.pue] = (porPUE[p.pue] || 0) + 1;
+});
+
+filtrados.forEach(p => {
+
+
+
+
+
+
