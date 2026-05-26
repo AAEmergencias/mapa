@@ -182,9 +182,7 @@ crear("graficoPUE", porPUE, "bar", "#10b981", true);
 // 🔘 BOTONES
 // ==========================
 function verBrigada() {
-
-  let datos = contar(partesReales, "brigada");
-  alert(JSON.stringify(datos, null, 2));
+  actualizarBrigada();
 }
 
 function verMedico() {
