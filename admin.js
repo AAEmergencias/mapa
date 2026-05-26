@@ -89,6 +89,7 @@ let mesFiltro = document.getElementById("filtroMes").value;
 let anioFiltro = document.getElementById("filtroAnio").value;
 
 let filtrados = partesReales.filter(p => {
+  console.log("FILTRADOS:", filtrados);
 
   if (!p.fecha) return false;
 
@@ -131,9 +132,16 @@ let porPUE = contar(filtrados, "pue");
 // ==========================
 function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
 
-  if (!document.getElementById(id)) return;
+  let canvas = document.getElementById(id);
+  if (!canvas) return;
 
-  new Chart(document.getElementById(id), {
+  // 🔥 si no hay datos → no dibuja
+  if (Object.keys(datos).length === 0) {
+    console.warn("⚠️ sin datos para:", id);
+    return;
+  }
+
+  new Chart(canvas, {
     type,
     data: {
       labels: Object.keys(datos),
@@ -143,8 +151,12 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
       }]
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       indexAxis: horizontal ? "y" : "x",
-      plugins: { legend: { display: tipo === "pie" } }
+      plugins: {
+        legend: { display: tipo === "pie" }
+      }
     }
   });
 }
