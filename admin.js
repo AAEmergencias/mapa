@@ -299,3 +299,5 @@ function actualizarBrigada() {
   crear("graficoPUE", porPUE, "bar", "#10b981", true);
 }
 
+function verGeneral() {
+  actualizarDashboard();
