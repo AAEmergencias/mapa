@@ -181,6 +181,10 @@ crear("graficoPUE", porPUE, "bar", "#10b981", true);
 // ==========================
 // 🔘 BOTONES
 // ==========================
+function verGeneral() {
+  actualizarDashboard();
+}
+
 function verBrigada() {
   actualizarBrigada();
 }
@@ -298,6 +302,3 @@ function actualizarBrigada() {
   crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
   crear("graficoPUE", porPUE, "bar", "#10b981", true);
 }
-
-function verGeneral() {
-  actualizarDashboard();
