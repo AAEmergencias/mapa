@@ -353,3 +353,13 @@ document.getElementById("exportarPartes").onclick = () => {
 document.getElementById("actualizar").onclick = () => {
   location.reload();
 };
+
+function togglePartes() {
+  let div = document.getElementById("partes");
+
+  if (div.style.display === "none") {
+    div.style.display = "block";
+  } else {
+    div.style.display = "none";
+  }
+}
