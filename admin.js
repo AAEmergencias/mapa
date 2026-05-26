@@ -407,16 +407,24 @@ filtrados.forEach(p => {
   porTipo[p.tipo] = (porTipo[p.tipo] || 0) + 1;
 });
 
-let porSubtipo = {};let porSubtrados.forEach(p => {
+let porSubtipo = {};
+
+filtrados.forEach(p => {
   porSubtipo[p.subtipo] = (porSubtipo[p.subtipo] || 0) + 1;
 });
 
-let porEmpresa = {};let porEmpresa =.forEach(p => {
+let porEmpresa = {};
+
+filtrados.forEach(p => {
   porEmpresa[p.empresa] = (porEmpresa[p.empresa] || 0) + 1;
 });
 
-let porPUE = {};let por  porPUE[p.pue] = (porPUE[p.pue] || 0) + 1;
+let porPUE = {};
+
+filtrados.forEach(p => {
+  porPUE[p.pue] = (porPUE[p.pue] || 0) + 1;
 });
+
 
 filtrados.forEach(p => {
 
