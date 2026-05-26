@@ -12,7 +12,14 @@ console.log("📋 Partes:", partes);
 // ==========================
 // 📊 KPIs
 // ==========================
-document.getElementById("total").innerText = historial.length;
+let totalGeneral = partes.filter(p =>
+  p.brigada || p.servicioMedico
+);
+
+document.getElementById("total").innerText = totalGeneral.length;
+let emergenciasCompletas = partes.filter(p => let emergenciasCompletas = partes p.brigada && p.servicioMedico
+);
+
 document.getElementById("totalPartes").innerText = partes.length;
 
 // ==========================
