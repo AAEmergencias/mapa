@@ -1,16 +1,19 @@
 console.log("✅ admin.js funcionando");
 
 // ==========================
-// 📦 CARGAR HISTORIAL
+// 📦 DATOS
 // ==========================
 let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
+let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
 
-console.log("📊 Datos:", historial);
+console.log("📊 Historial:", historial);
+console.log("📋 Partes:", partes);
 
 // ==========================
-// 📊 KPI TOTAL
+// 📊 KPIs
 // ==========================
 document.getElementById("total").innerText = historial.length;
+document.getElementById("totalPartes").innerText = partes.length;
 
 // ==========================
 // 📅 ÚLTIMOS 15 DÍAS
@@ -21,304 +24,67 @@ let ultimos15 = historial.filter(e => {
 
   if (!e.fecha) return false;
 
-  let partes = e.fecha.includes("/")
-    ? e.fecha.split("/")
-    : e.fecha.split("-");
+  let p = e.fecha.includes("/") ? e.fecha.split("/") : e.fecha.split("-");
 
-  if (partes.length !== 3) return false;
+  if (p.length !== 3) return false;
 
-  let fecha = new Date(
-    parseInt(partes[2]),
-    parseInt(partes[1]) - 1,
-    parseInt(partes[0])
-  );
-
+  let fecha = new Date(p[2], p[1] - 1, p[0]);
   let diff = (hoy - fecha) / (1000 * 60 * 60 * 24);
 
   return diff <= 15;
 });
 
-
-  let porEmpresa = {};
-
-partes.forEach(p => {
-  if (!p.empresa) return;
-  porEmpresa[p.empresa] = (porEmpresa[p.empresa] || 0) + 1;
-});
-
-new Chart(document.getElementById("graficoEmpresa"), {
-  type: "bar",
-  data: {
-    labels: Object.keys(porEmpresa),
-    datasets: [{
-      label: "Empresas",
-      data: Object.values(porEmpresa),
-      backgroundColor: "#8b5cf6"
-    }]
-  }
-});
-
-  let porPUE = {};
-
-partes.forEach(p => {
-  if (!p.pue) return;
-  porPUE[p.pue] = (porPUE[p.pue] || 0) + 1;
-});
-
-new Chart(document.getElementById("graficoPUE"), {
-  type: "bar",
-  data: {
-    labels: Object.keys(porPUE),
-    datasets: [{
-      label: "PUE",
-      data: Object.values(porPUE),
-      backgroundColor: "#10b981"
-    }]
-  },
-  options: {
-    indexAxis: 'y'
-  }
-});
-  
-  let fecha = new Date(
-    parseInt(partes[2]),
-    parseInt(partes[1]) - 1,
-    parseInt(partes[0])
-  );
-
-  let diff = (hoy - fecha) / (1000 * 60 * 60 * 24);
-
-// mostrar contador
 document.getElementById("ultimosCount").innerText = ultimos15.length;
 
 // ==========================
-// 🚑 UNIDADES UTILIZADAS
+// 🚑 UNIDADES
 // ==========================
-let unidadesSet = new Set();
+let unidades = new Set();
 
 historial.forEach(e => {
   if (!e.unidades) return;
-  e.unidades.forEach(u => unidadesSet.add(u));
+  e.unidades.forEach(u => unidades.add(u));
 });
 
-document.getElementById("totalUnidades").innerText = unidadesSet.size;
+document.getElementById("totalUnidades").innerText = unidades.size;
 
 // ==========================
-// 📈 GRÁFICO POR TIPO
+// 📋 PARTES LISTADO
 // ==========================
-let conteoTipos = {};
+let divPartes = document.getElementById("partes");
 
-historial.forEach(e => {
-  if (!e.tipo) return;
-  conteoTipos[e.tipo] = (conteoTipos[e.tipo] || 0) + 1;
-});
-
-new Chart(document.getElementById("graficoTipos"), {
-  type: "bar",
-  data: {
-    labels: Object.keys(conteoTipos),
-    datasets: [{
-      label: "Emergencias",
-      data: Object.values(conteoTipos),
-      backgroundColor: "#ef4444"
-    }]
-  }
-});
+divPartes.innerHTML = partes.length === 0
+  ? "Sin partes"
+  : partes.map(p => `
+      📅 ${p.fecha}<br>
+      🚒 ${p.tipo} - ${p.subtipo}<br>
+      📍 ${p.lugar}<br>
+      👤 ${p.operador}
+    `).join("<hr>");
 
 // ==========================
-// 📅 RENDER ÚLTIMOS 15
-// ==========================
-let div15 = document.getElementById("ultimos15");
-
-if (ultimos15.length === 0) {
-  div15.innerHTML = "No hay emergencias recientes";
-} else {
-  ultimos15.slice().reverse().forEach(e => {
-    let div = document.createElement("div");
-    div.className = "item";
-
-    div.innerHTML = `
-      #${e.id} - ${e.tipo} (${e.subtipo})<br>
-      📍 ${e.ubicacion}<br>
-      📅 ${e.fecha}
-    `;
-
-    div15.appendChild(div);
-  });
-}
-
-// ==========================
-// 📂 HISTORIAL COMPLETO
+// 📅 HISTORIAL
 // ==========================
 let divHist = document.getElementById("historial");
 
-if (historial.length === 0) {
-  divHist.innerHTML = "No hay emergencias registradas";
-} else {
-  historial.slice().reverse().forEach(e => {
-    let div = document.createElement("div");
-    div.className = "item";
+divHist.innerHTML = historial.map(e => `
+  #${e.id} - ${e.tipo}<br>
+  📍 ${e.ubicacion}<br>
+  📅 ${e.fecha}
+`).join("<hr>");
 
-    div.innerHTML = `
-      #${e.id} - ${e.tipo}<br>
-      📍 ${e.ubicacion}<br>
-      📅 ${e.fecha}
-    `;
-
-    divHist.appendChild(div);
-  });
-}
-
-document.getElementById("resetBtn").onclick = () => {
-
-  // 🔑 PEDIR CLAVE
-  let clave = prompt("Ingrese clave de administrador:");
-
-  if (clave !== "1234") {
-    alert("❌ Clave incorrecta");
-    return;
-  }
-
-  // ⚠️ CONFIRMAR
-  let confirmar = confirm("Esto eliminará TODO el historial y dejará el dashboard en 0 ¿Continuar?");
-  if (!confirmar) return;
-
-  // 🧹 BORRAR LOCALSTORAGE
-  localStorage.removeItem("historialEmergencias");
-
-  // 🧠 LIMPIAR DATOS EN MEMORIA
-  historial = [];
-
-  // 📊 RESETEAR KPIs
-  document.getElementById("total").innerText = 0;
-  document.getElementById("ultimosCount").innerText = 0;
-  document.getElementById("totalUnidades").innerText = 0;
-
-  // 📅 LIMPIAR BITÁCORA
-  document.getElementById("ultimos15").innerHTML = "Sin datos";
-
-  // 📂 LIMPIAR HISTORIAL
-  document.getElementById("historial").innerHTML = "Sin datos";
-
-  // 📈 LIMPIAR GRÁFICO
-  if (window.miGrafico) {
-    window.miGrafico.destroy();
-  }
-
-window.miGrafico = new Chart(document.getElementById("graficoTipos"), {
-    type: "bar",
-    data: {
-      labels: [],
-      datasets: [{
-        label: "Emergencias",
-        data: [],
-        backgroundColor: "#ef4444"
-      }]
-    }
-  });
-
-  alert("✅ Dashboard reiniciado correctamente");
-};
-
-let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
-
-console.log("📋 Partes:", partes);
-
-let divPartes = document.getElementById("partes");
-
-divPartes.innerHTML = "";
-
-if (partes.length === 0) {
-  divPartes.innerHTML = "Sin partes cerrados";
-} else {
-
-  partes.slice().reverse().forEach(p => {
-
-    let div = document.createElement("div");
-    div.className = "item";
-
-    div.innerHTML = `
-      📅 ${p.fecha || "-"}<br>
-      🚒 ${p.tipo || "-"} - ${p.subtipo || "-"}<br>
-      📍 ${p.lugar || "-"}<br>
-      👤 ${p.operador || "-"}
-    `;
-
-    divPartes.appendChild(div);
-  });
-}
-
-document.getElementById("exportarPartes").onclick = () => {
-
-  let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
-
-  if (partes.length === 0) {
-    alert("No hay partes");
-    return;
-  }
-
-  // ✅ CABECERA COMPLETA
-  let csv = "N°;Fecha;Hora activación;Hora levantamiento;Tipo;Subtipo;Descripción del evento;Lugar;Comuna;Faena;Empresa Afectada;Faena / Comunidad;Brigada;Vehículo;Ambulancia;Servicio Médico;Existe atención;Cantidad pacientes;Clave;Tipo atención;PUE;Descripción PUE;Operador\n";
-
-  partes.forEach((p, index) => {
-
-    csv += `${index + 1};`
-      + `${p.fecha || ""};`
-      + `${p.horaActivacion || ""};`
-      + `${p.horaCierre || ""};`
-      + `${p.tipo || ""};`
-      + `${p.subtipo || ""};`
-      + `"${p.descripcion || ""}";`
-      + `${p.lugar || ""};`
-      + `${p.comuna || ""};`
-      + `${p.faena || ""};`
-      + `${p.empresa || ""};`
-      + `${p.impacto || ""};`
-      + `${p.brigada || ""};`
-      + `${p.vehiculo || ""};`
-      + `${p.ambulancia || ""};`
-      + `${p.servicioMedico || ""};`
-      + `${p.existeAtencion || ""};`
-      + `${p.pacientes || "0"};`
-      + `${p.clave || ""};`
-      + `${p.tipoAtencion || ""};`
-      + `${p.pue || ""};`
-      + `"${p.descripcionPue || ""}";`
-      + `${p.operador || ""}\n`;
-
-  });
-
-  // ✅ CREAR ARCHIVO
-  let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-
-  let link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "partes_emergencia_completo.csv";
-
-  link.click();
-};
-
-document.getElementById("actualizar").onclick = () => {
-  location.reload();
-};
-
-function togglePartes() {
-  let div = document.getElementById("partes");
-
-  if (div.style.display === "none") {
-    div.style.display = "block";
-  } else {
-    div.style.display = "none";
-  }
-}
-
-document.getElementById("totalPartes").textContent = partes.length;
-
+// ==========================
+// ✅ FILTRO REAL (IMPORTANTE)
+// ==========================
 function esReal(p) {
   return p.brigada && p.ambulancia === "Si asiste";
 }
+
 let partesReales = partes.filter(esReal);
 
+// ==========================
+// 🎛 FILTROS
+// ==========================
 let mesFiltro = document.getElementById("filtroMes").value;
 let anioFiltro = document.getElementById("filtroAnio").value;
 
@@ -336,68 +102,87 @@ let filtrados = partesReales.filter(p => {
   return true;
 });
 
+// ==========================
+// 📊 GENERAR DATOS
+// ==========================
+function contar(data, campo) {
+  let res = {};
+  data.forEach(p => {
+    if (!p[campo]) return;
+    res[p[campo]] = (res[p[campo]] || 0) + 1;
+  });
+  return res;
+}
+
 let porMes = {};
-
 filtrados.forEach(p => {
-  let mes = p.fecha.split("-")[1];
-  porMes[mes] = (porMes[mes] || 0) + 1;
+  let m = p.fecha.split("-")[1];
+  porMes[m] = (porMes[m] || 0) + 1;
 });
 
-let porFaena = {};
+let porFaena = contar(filtrados, "faena");
+let porTipo = contar(filtrados, "tipo");
+let porSubtipo = contar(filtrados, "subtipo");
+let porEmpresa = contar(filtrados, "empresa");
+let porPUE = contar(filtrados, "pue");
 
-filtrados.forEach(p => {
-  porFaena[p.faena] = (porFaena[p.faena] || 0) + 1;
-});
+// ==========================
+// 📈 CREAR GRÁFICOS
+// ==========================
+function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
 
-let porTipo = {};
+  if (!document.getElementById(id)) return;
 
-filtrados.forEach(p => {
-  porTipo[p.tipo] = (porTipo[p.tipo] || 0) + 1;
-});
+  new Chart(document.getElementById(id), {
+    type,
+    data: {
+      labels: Object.keys(datos),
+      datasets: [{
+        data: Object.values(datos),
+        backgroundColor: color
+      }]
+    },
+    options: {
+      indexAxis: horizontal ? "y" : "x",
+      plugins: { legend: { display: tipo === "pie" } }
+    }
+  });
+}
 
-let porSubtipo = {};
+crear("graficoMes", porMes);
+crear("graficoFaena", porFaena, "pie");
+crear("graficoTipo", porTipo, "bar", "#ef4444");
+crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
+crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
+crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
-filtrados.forEach(p => {
-  porSubtipo[p.subtipo] = (porSubtipo[p.subtipo] || 0) + 1;
-});
-
-let porEmpresa = {};
-
-filtrados.forEach(p => {
-  porEmpresa[p.empresa] = (porEmpresa[p.empresa] || 0) + 1;
-});
-
-let porPUE = {};
-
-filtrados.forEach(p => {
-  porPUE[p.pue] = (porPUE[p.pue] || 0) + 1;
-});
-
-
-ffiltrados.forEach(p => {
-
+// ==========================
+// 🔘 BOTONES
+// ==========================
 function verBrigada() {
 
-  let datos = {};
-
-  partesReales.forEach(p => {
-    if (!p.brigada) return;
-
-    datos[p.brigada] = (datos[p.brigada] || 0) + 1;
-  });
-
+  let datos = contar(partesReales, "brigada");
   alert(JSON.stringify(datos, null, 2));
 }
 
 function verMedico() {
 
-  let datos = {};
-
-  partesReales.forEach(p => {
-    if (!p.servicioMedico) return;
-
-    datos[p.servicioMedico] = (datos[p.servicioMedico] || 0) + 1;
-  });
-
+  let datos = contar(partesReales, "servicioMedico");
   alert(JSON.stringify(datos, null, 2));
+}
+
+// ==========================
+// 🔄 ACTUALIZAR
+// ==========================
+document.getElementById("actualizar").onclick = () => location.reload();
+
+document.getElementById("filtroMes").onchange = () => location.reload();
+document.getElementById("filtroAnio").onchange = () => location.reload();
+
+// ==========================
+// 📋 TOGGLE PARTES
+// ==========================
+function togglePartes() {
+  let d = document.getElementById("partes");
+  d.style.display = d.style.display === "none" ? "block" : "none";
 }
