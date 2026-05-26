@@ -65,18 +65,6 @@ let ultimos15 = historial.filter(e => {
 document.getElementById("ultimosCount").innerText = ultimos15.length;
 
 // ==========================
-// 🚑 UNIDADES
-// ==========================
-let unidades = new Set();
-
-historial.forEach(e => {
-  if (!e.unidades) return;
-  e.unidades.forEach(u => unidades.add(u));
-});
-
-document.getElementById("totalUnidades").innerText = unidades.size;
-
-// ==========================
 // 📋 PARTES LISTADO
 // ==========================
 let divPartes = document.getElementById("partes");
