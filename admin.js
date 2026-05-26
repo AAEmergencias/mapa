@@ -144,7 +144,7 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
   }
 
   new Chart(canvas, {
-    type,
+    type: tipo,
     data: {
       labels: Object.keys(datos),
       datasets: [{
