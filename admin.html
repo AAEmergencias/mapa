@@ -43,11 +43,6 @@
 
 </div>
 
-  <div class="seccion">
-  <h3>📋 Partes Cerrados</h3>
-  <div id="partes"></div>
-</div>
-
 <!-- ✅ GRÁFICOS -->
 
 <div class="seccion">
@@ -85,6 +80,14 @@
 <div class="seccion">
   <h3>📂 Historial completo</h3>
   <div id="historial"></div>
+</div>
+
+  <div class="seccion">
+  <h3 onclick="togglePartes()" style="cursor:pointer;">
+    📋 Partes Cerrados (click para abrir)
+  </h3>
+
+  <div id="partes" style="display:none;"></div>
 </div>
 
   <button id="exportarPartes">📄 Exportar Partes</button>
