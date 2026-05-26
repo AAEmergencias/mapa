@@ -420,8 +420,20 @@ let porPUE = {};let por  porPUE[p.pue] = (porPUE[p.pue] || 0) + 1;
 
 filtrados.forEach(p => {
 
+function verBrigada() {
 
+  let datos partesReales.forEach(p => {  let datos = {};
+    datos[p.brigada] = (datos[p.brigada] || 0) + 1;
+  });
 
+  console.log(datos);
+}
 
+function verMedico() {function verMedico  let datos = {};
 
+  partesReales.forEach(p => {
+    datos[p.servicioMedico] = (datos[p.servicioMedico] || 0) + 1;
+  });
 
+  console.log(datos);
+}
