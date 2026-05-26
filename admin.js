@@ -430,18 +430,29 @@ filtrados.forEach(p => {
 
 function verBrigada() {
 
-  let datos partesReales.forEach(p => {  let datos = {};
+  let datos = {};
+
+  partesReales.forEach(p => {
+    if (!p.brigada) return;
+
     datos[p.brigada] = (datos[p.brigada] || 0) + 1;
   });
+
+  alert(JSON.stringify(datos, null, 2));
+}
 
   console.log(datos);
 }
 
-function verMedico() {function verMedico  let datos = {};
+function verMedico() {
+
+  let datos = {};
 
   partesReales.forEach(p => {
+    if (!p.servicioMedico) return;
+
     datos[p.servicioMedico] = (datos[p.servicioMedico] || 0) + 1;
   });
 
-  console.log(datos);
+  alert(JSON.stringify(datos, null, 2));
 }
