@@ -91,9 +91,6 @@ new Chart(document.getElementById("graficoPUE"), {
 
   let diff = (hoy - fecha) / (1000 * 60 * 60 * 24);
 
-  return diff <= 15;
-});
-
 // mostrar contador
 document.getElementById("ultimosCount").innerText = ultimos15.length;
 
