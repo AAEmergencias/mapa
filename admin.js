@@ -363,3 +363,5 @@ function togglePartes() {
     div.style.display = "none";
   }
 }
+
+document.getElementById("totalPartes").textContent = partes.length;
