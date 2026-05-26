@@ -89,7 +89,6 @@ let mesFiltro = document.getElementById("filtroMes").value;
 let anioFiltro = document.getElementById("filtroAnio").value;
 
 let filtrados = partesReales.filter(p => {
-  console.log("FILTRADOS:", filtrados);
 
   if (!p.fecha) return false;
 
@@ -102,6 +101,9 @@ let filtrados = partesReales.filter(p => {
 
   return true;
 });
+
+// ✅ LOG correcto (fuera del filter)
+console.log("FILTRADOS:", filtrados);
 
 // ==========================
 // 📊 GENERAR DATOS
