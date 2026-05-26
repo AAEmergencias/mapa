@@ -253,3 +253,49 @@ function togglePartes() {
   let d = document.getElementById("partes");
   d.style.display = d.style.display === "none" ? "block" : "none";
 }
+
+function actualizarBrigada() {
+
+  let mesFiltro = document.getElementById("filtroMes").value;
+  let anioFiltro = document.getElementById("filtroAnio").value;
+
+  let filtrados = soloBrigada.filter(p => {
+
+    if (!p.fecha) return false;
+
+    let f = p.fecha.split("-");
+    let anio = f[0];
+    let mes = f[1];
+
+    if (mesFiltro && mes !== mesFiltro) return false;
+    if (anioFiltro && anio !== anioFiltro) return false;
+
+    return true;
+  });
+
+  let porMes = {};
+  filtrados.forEach(p => {
+    let m = p.fecha.split("-")[1];
+    porMes[m] = (porMes[m] || 0) + 1;
+  });
+
+  let porFaena = contar(filtrados, "faena");
+  let porTipo = contar(filtrados, "tipo");
+  let porSubtipo = contar(filtrados, "subtipo");
+  let porEmpresa = contar(filtrados, "empresa");
+  let porPUE = contar(filtrados, "pue");
+
+  // 🧹 eliminar gráficos anteriores
+  Chart.helpers.each(Chart.instances, function(inst) {
+    inst.destroy();
+  });
+
+  // 📊 crear gráficos SOLO brigada
+  crear("graficoMes", porMes);
+  crear("graficoFaena", porFaena, "pie");
+  crear("graficoTipo", porTipo, "bar", "#ef4444");
+  crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
+  crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
+  crear("graficoPUE", porPUE, "bar", "#10b981", true);
+}
+
