@@ -60,13 +60,6 @@ if (ultima) {
 
 }
 
-document.getElementById("ultimaEmergencia").innerHTML = `
-  📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
-  📍 ${ultima.lugar || "-"}<br>
-  🚒 ${ultima.tipo || "-"}<br>
-  📝 ${descripcion}
-`;
-
 console.log("📊 Historial:", historial);
 console.log("📋 Partes:", partes);
 
