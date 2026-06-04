@@ -92,6 +92,14 @@ divHist.innerHTML = historial.map(e => `
 `).join("<hr>");
 
 // ==========================
+// 🎛 FILTROS
+// ==========================
+let mesFiltro = document.getElementById("filtroMes").value;
+let anioFiltro = document.getElementById("filtroAnio").value;
+
+let filtrados = partesReales.filter(p => {
+
+  // ==========================
 // ✅ FILTRO REAL (IMPORTANTE)
 // ==========================
 const BRIGADAS_VALIDAS = ["B1", "UIR-M", "UIR-E", "B2", "UIR-S"];
@@ -106,27 +114,6 @@ let partesReales = partes.filter(esReal);
 let soloBrigada = partesReales.filter(p =>
   BRIGADAS_VALIDAS.includes(p.brigada)
 );
-
-
-// ==========================
-// 🎛 FILTROS
-// ==========================
-let mesFiltro = document.getElementById("filtroMes").value;
-let anioFiltro = document.getElementById("filtroAnio").value;
-
-let filtrados = partesReales.filter(p => {
-
-  if (!p.fecha) return false;
-
-  let f = p.fecha.split("-");
-  let anio = f[0];
-  let mes = f[1];
-
-  if (mesFiltro && mes !== mesFiltro) return false;
-  if (anioFiltro && anio !== anioFiltro) return false;
-
-  return true;
-});
 
 // ✅ LOG correcto (fuera del filter)
 console.log("FILTRADOS:", filtrados);
