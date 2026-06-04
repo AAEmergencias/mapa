@@ -104,18 +104,6 @@ function contar(data, campo) {
   return res;
 }
 
-let porMes = {};
-filtrados.forEach(p => {
-  let m = p.fecha.split("-")[1];
-  porMes[m] = (porMes[m] || 0) + 1;
-});
-
-let porFaena = contar(filtrados, "faena");
-let porTipo = contar(filtrados, "tipo");
-let porSubtipo = contar(filtrados, "subtipo");
-let porEmpresa = contar(filtrados, "empresa");
-let porPUE = contar(filtrados, "pue");
-
 // ==========================
 // 📈 CREAR GRÁFICOS
 // ==========================
