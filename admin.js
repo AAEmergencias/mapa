@@ -307,4 +307,3 @@ function actualizarBrigada() {
   crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
   crear("graficoPUE", porPUE, "bar", "#10b981", true);
 }
-
