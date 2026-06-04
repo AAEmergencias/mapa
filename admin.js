@@ -40,6 +40,26 @@ if (ultima) {
     ? ultima.descripcion
     : "Sin descripción";
 
+  // ✅ MOSTRAR INFO
+  document.getElementById("ultimaEmergencia").innerHTML = `
+    📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
+    📍 ${ultima.lugar || "-"}<br>
+    🚒 ${ultima.tipo || "-"}<br>
+    📝 ${descripcion}
+  `;
+
+  // 🔥 AQUÍ VA LA ALERTA
+  let ahora = new Date();
+  let fechaUltima = new Date(ultima.fecha + " " + (ultima.hora || "00:00"));
+  let diffMin = (ahora - fechaUltima) / (1000 * 60);
+
+  if (diffMin < 60) {
+    document.getElementById("ultimaEmergencia").style.color = "#ef4444";
+  }
+
+}
+
+
 document.getElementById("ultimaEmergencia").innerHTML = `
   📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
   📍 ${ultima.lugar || "-"}<br>
@@ -324,13 +344,4 @@ function actualizarMedico() {
   crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
   crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
   crear("graficoPUE", porPUE, "bar", "#10b981", true);
-}
-
-let ahora = new Date();
-let fechaUltima = new Date(ultima.fecha + " " + (ultima.hora || "00:00"));
-
-let diffMin = (ahora - fechaUltima) / (1000 * 60);
-
-if (diffMin < 60) {
-  document.getElementById("ultimaEmergencia").style.color = "#ef4444";
 }
