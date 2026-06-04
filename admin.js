@@ -62,27 +62,6 @@ document.getElementById("totalPartes").innerText = partes.length;
 
 
 // ==========================
-// 📅 ÚLTIMOS 15 DÍAS
-// ==========================
-let hoy = new Date();
-
-let ultimos15 = historial.filter(e => {
-
-  if (!e.fecha) return false;
-
-  let p = e.fecha.includes("/") ? e.fecha.split("/") : e.fecha.split("-");
-
-  if (p.length !== 3) return false;
-
-  let fecha = new Date(p[2], p[1] - 1, p[0]);
-  let diff = (hoy - fecha) / (1000 * 60 * 60 * 24);
-
-  return diff <= 15;
-});
-
-document.getElementById("ultimosCount").innerText = ultimos15.length;
-
-// ==========================
 // 📋 PARTES LISTADO
 // ==========================
 let divPartes = document.getElementById("partes");
