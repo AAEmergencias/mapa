@@ -87,6 +87,11 @@ button:hover {
   transition: 0.2s;
 }
 
+.card:hover::before {
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+
 #historial {
   max-height: 300px;
   overflow-y: auto;
@@ -213,9 +218,12 @@ canvas {
 }
 
 #ultimaEmergencia {
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: left;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+#ultimaEmergencia br {
+  margin-bottom: 6px;
 }
 
 .grid .card {
@@ -246,4 +254,19 @@ canvas {
 
 .card:nth-child(4)::before {
   background: #ef4444; /* rojo */
+}
+
+.grid {
+  background: rgba(255,255,255,0.02);
+  padding: 15px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.card:nth-child(3) {
+  background: linear-gradient(135deg, #1f2a3a, #223548);
+}
+
+.grid .card {
+  backdrop-filter: blur(4px);
 }
