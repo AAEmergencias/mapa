@@ -325,3 +325,12 @@ function actualizarMedico() {
   crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
   crear("graficoPUE", porPUE, "bar", "#10b981", true);
 }
+
+let ahora = new Date();
+let fechaUltima = new Date(ultima.fecha + " " + (ultima.hora || "00:00"));
+
+let diffMin = (ahora - fechaUltima) / (1000 * 60);
+
+if (diffMin < 60) {
+  document.getElementById("ultimaEmergencia").style.color = "#ef4444";
+}
