@@ -219,6 +219,17 @@ function togglePartes() {
   d.style.display = d.style.display === "none" ? "block" : "none";
 }
 
+function toggleHistorial() {
+  let d = document.getElementById("historial");
+
+  if (d.style.display === "none") {
+    d.style.display = "block";
+  } else {
+    d.style.display = "none";
+  }
+}
+
+
 function actualizarBrigada() {
 
   let mesFiltro = document.getElementById("filtroMes").value;
