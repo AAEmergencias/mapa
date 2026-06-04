@@ -36,11 +36,12 @@ let ultima = partes
 
 if (ultima) {
 
+  // ✅ CREAR DESCRIPCIÓN
   let descripcion = ultima.descripcion && ultima.descripcion.trim() !== ""
     ? ultima.descripcion
     : "Sin descripción";
 
-  // ✅ MOSTRAR INFO
+  // ✅ MOSTRAR DATOS
   document.getElementById("ultimaEmergencia").innerHTML = `
     📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
     📍 ${ultima.lugar || "-"}<br>
@@ -48,7 +49,7 @@ if (ultima) {
     📝 ${descripcion}
   `;
 
-  // 🔥 AQUÍ VA LA ALERTA
+  // ✅ ALERTA POR RECENCIA
   let ahora = new Date();
   let fechaUltima = new Date(ultima.fecha + " " + (ultima.hora || "00:00"));
   let diffMin = (ahora - fechaUltima) / (1000 * 60);
@@ -58,7 +59,6 @@ if (ultima) {
   }
 
 }
-
 
 document.getElementById("ultimaEmergencia").innerHTML = `
   📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
