@@ -24,8 +24,15 @@ let soloBrigada = partesReales.filter(p =>
 
 // ✅ OBTENER ÚLTIMA EMERGENCIA
 let ultima = partes
-  .filter(p => p.fecha) // solo registros válidos
-  .sort((a,b) => new Date(b.fecha) - new Date(a.fecha))[0];
+  .filter(p => p.fecha)
+  .sort((a, b) => {
+
+    let fechaA = new Date(a.fecha + " " + (a.hora || "00:00"));
+    let fechaB = new Date(b.fecha + " " + (b.hora || "00:00"));
+
+    return fechaB - fechaA;
+  })[0];
+
 
 if (ultima) {
 
@@ -33,13 +40,12 @@ if (ultima) {
     ? ultima.descripcion
     : "Sin descripción";
 
-  document.getElementById("ultimaEmergencia").innerHTML = `
-    📅 ${ultima.fecha}<br>
-    📍 ${ultima.lugar || "-"}<br>
-    🚒 ${ultima.tipo || "-"}<br>
-    📝 ${descripcion}
-  `;
-}
+document.getElementById("ultimaEmergencia").innerHTML = `
+  📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
+  📍 ${ultima.lugar || "-"}<br>
+  🚒 ${ultima.tipo || "-"}<br>
+  📝 ${descripcion}
+`;
 
 console.log("📊 Historial:", historial);
 console.log("📋 Partes:", partes);
