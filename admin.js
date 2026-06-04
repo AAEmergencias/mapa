@@ -36,11 +36,14 @@ let totalGeneral = partes.filter(p =>
 );
 
 document.getElementById("total").innerText = totalGeneral.length;
-let emergenciasCompletas = partes.filter(p => let emergenciasCompletas = partes p.brigada && p.servicioMedico);
+let emergenciasCompletas = partes.filter(p =>
+  p.brigada && p.servicioMedico
+);
+
+document.getElementById("totalCompletas").innerText = emergenciasCompletas.length;
 
 document.getElementById("totalPartes").innerText = partes.length;
 
-document.getElementById("totalCompletas").innerText = emergenciasCompletas.length;
 
 // ==========================
 // 📅 ÚLTIMOS 15 DÍAS
