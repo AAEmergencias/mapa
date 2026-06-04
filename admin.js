@@ -92,9 +92,6 @@ divHist.innerHTML = historial.map(e => `
 let mesFiltro = document.getElementById("filtroMes").value;
 let anioFiltro = document.getElementById("filtroAnio").value;
 
-// ✅ LOG correcto (fuera del filter)
-console.log("FILTRADOS:", filtrados);
-
 // ==========================
 // 📊 GENERAR DATOS
 // ==========================
