@@ -138,13 +138,6 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
   });
 }
 
-crear("graficoMes", porMes);
-crear("graficoFaena", porFaena, "pie");
-crear("graficoTipo", porTipo, "bar", "#ef4444");
-crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
-crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
-crear("graficoPUE", porPUE, "bar", "#10b981", true);
-
 // ==========================
 // 🔘 BOTONES
 // ==========================
