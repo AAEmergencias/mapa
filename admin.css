@@ -24,9 +24,9 @@ header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  margin-bottom: 25px;
-}
 
+  align-items: stretch;
+}
 
 /* SECCIONES */
 .seccion {
@@ -71,9 +71,9 @@ button:hover {
 }
 
 .card div {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .card h3 {
@@ -132,14 +132,25 @@ header button:hover {
 .card {
   background: #1f2a3a;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 14px;
+
+  /* 🔥 BORDE PRINCIPAL */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* 🔥 sombra suave */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.25s ease;
 }
 
 .card:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+
+  /* 🔥 borde iluminado */
+  border: 1px solid rgba(59, 130, 246, 0.6);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
 .card h3 {
@@ -211,4 +222,28 @@ canvas {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.card::before {
+  content: "";
+  display: block;
+  height: 4px;
+  border-radius: 12px 12px 0 0;
+  margin: -20px -20px 10px -20px;
+}
+
+.card:nth-child(1)::before {
+  background: #f59e0b; /* naranja */
+}
+
+.card:nth-child(2)::before {
+  background: #3b82f6; /* azul */
+}
+
+.card:nth-child(3)::before {
+  background: #10b981; /* verde */
+}
+
+.card:nth-child(4)::before {
+  background: #ef4444; /* rojo */
 }
