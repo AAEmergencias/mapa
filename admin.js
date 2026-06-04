@@ -6,6 +6,22 @@ console.log("✅ admin.js funcionando");
 let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
 
+// ==========================
+// ✅ FILTRO REAL (IMPORTANTE)
+// ==========================
+const BRIGADAS_VALIDAS = ["B1", "UIR-M", "UIR-E", "B2", "UIR-S"];
+
+function esReal(p) {
+  return p.brigada && p.ambulancia === "Si asiste";
+}
+
+let partesReales = partes.filter(esReal);
+
+// ✅ FILTRO SOLO BRIGADAS REALES
+let soloBrigada = partesReales.filter(p =>
+  BRIGADAS_VALIDAS.includes(p.brigada)
+);
+
 // ✅ OBTENER ÚLTIMA EMERGENCIA
 let ultima = partes
   .filter(p => p.fecha) // solo registros válidos
@@ -96,24 +112,6 @@ divHist.innerHTML = historial.map(e => `
 // ==========================
 let mesFiltro = document.getElementById("filtroMes").value;
 let anioFiltro = document.getElementById("filtroAnio").value;
-
-let filtrados = partesReales.filter(p => {
-
-  // ==========================
-// ✅ FILTRO REAL (IMPORTANTE)
-// ==========================
-const BRIGADAS_VALIDAS = ["B1", "UIR-M", "UIR-E", "B2", "UIR-S"];
-
-function esReal(p) {
-  return p.brigada && p.ambulancia === "Si asiste";
-}
-
-let partesReales = partes.filter(esReal);
-
-// ✅ FILTRO SOLO BRIGADAS REALES
-let soloBrigada = partesReales.filter(p =>
-  BRIGADAS_VALIDAS.includes(p.brigada)
-);
 
 // ✅ LOG correcto (fuera del filter)
 console.log("FILTRADOS:", filtrados);
@@ -208,19 +206,20 @@ function actualizarDashboard() {
   let mesFiltro = document.getElementById("filtroMes").value;
   let anioFiltro = document.getElementById("filtroAnio").value;
 
-  let filtrados = partesReales.filter(p => {
+let filtrados = partesReales.filter(p => {
 
-    if (!p.fecha) return false;
+  if (!p.fecha) return false;
 
-    let f = p.fecha.split("-");
-    let anio = f[0];
-    let mes = f[1];
+  let f = p.fecha.split("-");
+  let anio = f[0];
+  let mes = f[1];
 
-    if (mesFiltro && mes !== mesFiltro) return false;
-    if (anioFiltro && anio !== anioFiltro) return false;
+  if (mesFiltro && mes !== mesFiltro) return false;
+  if (anioFiltro && anio !== anioFiltro) return false;
 
-    return true;
-  });
+  return true;
+});
+
 
   // recalcular datos
   let porMes = {};
