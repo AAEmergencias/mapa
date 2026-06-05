@@ -26,18 +26,32 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("brigada").value = emergencia.brigada || "";
 let vehiculos = [];
 
-// ✅ brigada (ej: UIR-E, B1, etc)
+// ✅ agregar brigada(s)
 if (emergencia.brigada) {
-  vehiculos.push(emergencia.brigada);
+
+  if (Array.isArray(emergencia.brigada)) {
+    vehiculos.push(...emergencia.brigada);
+  } else {
+    vehiculos.push(emergencia.brigada);
+  }
 }
 
-// ✅ ambulancia (ej: S1, S2)
+// ✅ agregar ambulancia(s)
 if (emergencia.ambulancia && emergencia.ambulancia !== "No asiste") {
 
-  // ⚠️ IMPORTANTE: si es "Si asiste" no sirve
-  if (emergencia.ambulancia !== "Si asiste") {
-    vehiculos.push(emergencia.ambulancia);
+  if (Array.isArray(emergencia.ambulancia)) {
+    vehiculos.push(...emergencia.ambulancia);
+  } else {
+
+    // evitar valores incorrectos como "Si asiste"
+    if (emergencia.ambulancia !== "Si asiste") {
+      vehiculos.push(emergencia.ambulancia);
+    }
   }
+}
+
+// ✅ mostrar TODO junto
+document.getElementById("vehiculo").value = vehiculos.join(", ");
 }
 
 // ✅ mostrar en campo
