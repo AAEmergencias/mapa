@@ -135,9 +135,10 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
 
   // 🔥 si no hay datos → no dibuja
   if (Object.keys(datos).length === 0) {
-    console.warn("⚠️ sin datos para:", id);
-    return;
-  }
+  canvas.parentElement.innerHTML = "⚠️ Sin datos disponibles";
+  return;
+}
+
 
   new Chart(canvas, {
     type: tipo,
@@ -204,7 +205,7 @@ function actualizarDashboard() {
   let mesFiltro = document.getElementById("filtroMes").value;
   let anioFiltro = document.getElementById("filtroAnio").value;
 
-let filtrados = partesReales.filter(p => {
+let filtrados = partes.filter(p => {
 
   if (!p.fecha) return false;
 
