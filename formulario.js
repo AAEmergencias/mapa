@@ -26,9 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("brigada").value = emergencia.brigada || "";
 let vehiculos = [];
 
-// ✅ agregar brigada(s)
+// ✅ brigada
 if (emergencia.brigada) {
-
   if (Array.isArray(emergencia.brigada)) {
     vehiculos.push(...emergencia.brigada);
   } else {
@@ -36,27 +35,21 @@ if (emergencia.brigada) {
   }
 }
 
-// ✅ agregar ambulancia(s)
+// ✅ ambulancia
 if (emergencia.ambulancia && emergencia.ambulancia !== "No asiste") {
-
   if (Array.isArray(emergencia.ambulancia)) {
     vehiculos.push(...emergencia.ambulancia);
   } else {
-
-    // evitar valores incorrectos como "Si asiste"
     if (emergencia.ambulancia !== "Si asiste") {
       vehiculos.push(emergencia.ambulancia);
     }
   }
 }
 
-// ✅ mostrar TODO junto
+// ✅ mostrar resultado final
 document.getElementById("vehiculo").value = vehiculos.join(", ");
 }
 
-// ✅ mostrar en campo
-document.getElementById("vehiculo").value = vehiculos.join(", ");
-  }
 
   // ✅ cargar ambulancia desde emergencia
 if (emergencia.ambulancia) {
