@@ -400,6 +400,13 @@ function actualizarTodo() {
     }
   }
 
-  // 📊 actualizar gráficos según vista actual
+// ✅ actualizar según vista actual
+if (vistaActual === "general") {
   actualizarDashboard();
+}
+else if (vistaActual === "brigada") {
+  actualizarBrigada();
+}
+else if (vistaActual === "medico") {
+  actualizarMedico();
 }
