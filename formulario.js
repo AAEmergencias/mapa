@@ -27,6 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("vehiculo").value = emergencia.vehiculo || "";
   }
 
+  // ✅ cargar ambulancia desde emergencia
+if (emergencia.ambulancia) {
+
+  let ambSelect = document.getElementById("ambulancia");
+
+  ambSelect.value = emergencia.ambulancia;
+
+  // ✅ disparar lógica automática
+  ambSelect.dispatchEvent(new Event("change"));
+}
+
   // ==========================
   // 🧠 FUNCIONALIDAD FORMULARIO
   // ==========================
@@ -92,14 +103,32 @@ document.addEventListener("DOMContentLoaded", () => {
   let serv = document.getElementById("servicioMedico");
   let otro = document.getElementById("otroServicio");
 
-  amb.onchange = () => {
-    if (amb.value === "No asiste") {
-      serv.style.display = "none";
-      otro.style.display = "none";
-    } else {
-      serv.style.display = "block";
-    }
-  };
+  // ✅ MAPEO DE AMBULANCIAS A MÉDICO
+const MEDICOS = {
+  "S1": "Pérez Caldera",
+  "S2": "Poli Tórtolas",
+  "S3": "220"
+};
+
+amb.onchange = () => {
+
+  let val = amb.value;
+
+  if (!val || val === "No asiste") {
+    serv.value = "";
+    serv.style.display = "none";
+    otro.style.display = "none";
+    return;
+  }
+
+  // ✅ mostrar servicio médico
+  serv.style.display = "block";
+
+  // ✅ autocompletar nombre
+  if (MEDICOS[val]) {
+    serv.value = MEDICOS[val];
+  }
+};
 
   serv.onchange = () => {
     if (serv.value === "Otro") {
