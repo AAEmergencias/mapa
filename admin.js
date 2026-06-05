@@ -237,24 +237,22 @@ let porMedico = {
   "Sí asiste": medicoSI,
   "No asiste": medicoNO
 };
-  
-  let porPUE = contar(filtrados, "pue");
 
-  // 🔥 limpiar gráficos anteriores
-  Chart.helpers.each(Chart.instances, function(inst) {
-    inst.destroy();
-  });
+let porPUE = contar(filtrados, "pue");
 
-  // 🔥 recrearlos
-  crear("graficoMes", porMes);
-  crear("graficoFaena", porFaena, "pie");
-  crear("graficoTipo", porTipo, "bar", "#ef4444");
-  crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
-  crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
-  crear("graficoMedico", porMedico, "pie", ["#10b981", "#ef4444"]);
-  crear("graficoPUE", porPUE, "bar", "#10b981", true);
-}
+// 🧹 limpiar primero
+Chart.helpers.each(Chart.instances, function(inst) {
+  inst.destroy();
+});
 
+// 📊 crear después
+crear("graficoMes", porMes);
+crear("graficoFaena", porFaena, "pie");
+crear("graficoTipo", porTipo, "bar", "#ef4444");
+crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
+crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
+crear("graficoMedico", porMedico, "pie");  aquí
+crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
 document.getElementById("filtroMes").onchange = actualizarDashboard;
 document.getElementById("filtroAnio").onchange = actualizarDashboard;
