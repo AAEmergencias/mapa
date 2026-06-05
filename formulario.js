@@ -45,13 +45,10 @@ document.getElementById("vehiculo").value = vehiculos.join(", ");
 
   // ✅ cargar ambulancia desde emergencia
 if (emergencia.ambulancia) {
-
   let ambSelect = document.getElementById("ambulancia");
-
   ambSelect.value = emergencia.ambulancia;
-
-  // ✅ disparar lógica automática
   ambSelect.dispatchEvent(new Event("change"));
+  }
 }
 
   // ==========================
@@ -309,11 +306,15 @@ Object.keys(PUE).forEach(p => {
   pueSelect.appendChild(opt);
 });
 
-// evento automático
+// ✅ UN SOLO evento
 pueSelect.addEventListener("change", () => {
   let valor = pueSelect.value;
+  console.log("PUE seleccionado:", valor);
   descPue.value = PUE[valor] || "";
 });
+
+// ✅ activar al cargar
+pueSelect.dispatchEvent(new Event("change"));
 
 // 🔥 activar al cargar
 pueSelect.dispatchEvent(new Event("change"));
@@ -350,4 +351,5 @@ function formatearHora(hora) {
   let m = fecha.getMinutes().toString().padStart(2, "0");
 
   return `${h}:${m}`;
-}
+
+  });
