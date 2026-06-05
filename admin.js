@@ -133,27 +133,27 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
   let canvas = document.getElementById(id);
   if (!canvas) return;
 
-  // 🔥 si no hay datos → no dibuja
-if (Object.keys(datos).length === 0) {
-  let ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   let parent = canvas.parentElement;
 
-  // evitar duplicar mensaje
-  if (!parent.querySelector(".sin-datos")) {
-    let msg = document.createElement("div");
-    msg.className = "sin-datos";
-    msg.innerText = "⚠️ Sin datos disponibles";
-    msg.style.textAlign = "center";
-    msg.style.color = "#fbbf24";
-    msg.style.marginTop = "20px";
-    parent.appendChild(msg);
+  // ✅ eliminar mensaje viejo
+  let msg = parent.querySelector(".sin-datos");
+  if (msg) msg.remove();
+
+  // 🔥 si no hay datos
+  if (Object.keys(datos).length === 0) {
+    let ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    let nuevoMsg = document.createElement("div");
+    nuevoMsg.className = "sin-datos";
+    nuevoMsg.innerText = "⚠️ Sin datos disponibles";
+    nuevoMsg.style.textAlign = "center";
+    nuevoMsg.style.color = "#fbbf24";
+    nuevoMsg.style.marginTop = "20px";
+
+    parent.appendChild(nuevoMsg);
+    return;
   }
-
-  return;
-}
-
 
   new Chart(canvas, {
     type: tipo,
