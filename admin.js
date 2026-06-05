@@ -177,6 +177,25 @@ function verMedico() {
   actualizarMedico();
 }
 
+function actualizarBotones() {
+
+  // quitar clase activa a todos
+  document.getElementById("btnGeneral").classList.remove("activo");
+  document.getElementById("btnBrigada").classList.remove("activo");
+  document.getElementById("btnMedico").classList.remove("activo");
+
+  // activar el actual
+  if (vistaActual === "general") {
+    document.getElementById("btnGeneral").classList.add("activo");
+  }
+  else if (vistaActual === "brigada") {
+    document.getElementById("btnBrigada").classList.add("activo");
+  }
+  else if (vistaActual === "medico") {
+    document.getElementById("btnMedico").classList.add("activo");
+  }
+}
+
 // ==========================
 // 🔄 ACTUALIZAR
 // ==========================
@@ -437,6 +456,9 @@ else if (vistaActual === "brigada") {
 else if (vistaActual === "medico") {
   actualizarMedico();
 }
+
+// ✅ activar botón correspondiente
+actualizarBotones();
 
 }
 
