@@ -222,6 +222,9 @@ function actualizarDashboard() {
 
 let filtrados = partes.filter(p => {
 
+  // ✅ SOLO emergencias completas
+  if (!(p.brigada && p.servicioMedico)) return false;
+
   if (!p.fecha) return false;
 
   let f = p.fecha.split("-");
@@ -303,19 +306,23 @@ function actualizarBrigada() {
   let mesFiltro = document.getElementById("filtroMes").value;
   let anioFiltro = document.getElementById("filtroAnio").value;
 
-  let filtrados = soloBrigada.filter(p => {
+let filtrados = partes.filter(p => {
 
-    if (!p.fecha) return false;
+  // ✅ solo brigada válida
+  if (!BRIGADAS_VALIDAS.includes(p.brigada)) return false;
 
-    let f = p.fecha.split("-");
-    let anio = f[0];
-    let mes = f[1];
+  if (!p.fecha) return false;
 
-    if (mesFiltro && mes !== mesFiltro) return false;
-    if (anioFiltro && anio !== anioFiltro) return false;
+  let f = p.fecha.split("-");
+  let anio = f[0];
+  let mes = f[1];
 
-    return true;
-  });
+  if (mesFiltro && mes !== mesFiltro) return false;
+  if (anioFiltro && anio !== anioFiltro) return false;
+
+  return true;
+});
+
 
   let porMes = {};
   filtrados.forEach(p => {
@@ -357,7 +364,9 @@ function actualizarMedico() {
   let mesFiltro = document.getElementById("filtroMes").value;
   let anioFiltro = document.getElementById("filtroAnio").value;
 
-  let soloMedico = partes.filter(p => p.servicioMedico);
+let soloMedico = partes.filter(p =>
+  ["S1", "S2", "S3"].includes(p.ambulancia)
+);
 
   let filtrados = soloMedico.filter(p => {
 
