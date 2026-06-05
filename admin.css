@@ -115,16 +115,9 @@ header button:hover {
   background: #64748b;
 }
 
-#resetBtn {
-  position: fixed;
-  bottom: 5px;
-  right: 5px;
-
-  width: 15px;
-  height: 15px;
-
-  opacity: 0.2; /* casi invisible */
-  border-radius: 50%;
+#adminReset:hover {
+  opacity: 1;
+  transform: scale(1.3);
 }
 
 /* ✅ GRID DE GRÁFICOS */
