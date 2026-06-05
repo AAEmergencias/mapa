@@ -251,8 +251,9 @@ crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
 crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
-crear("graficoMedico", porMedico, "pie");  aquí
+crear("graficoMedico", porMedico, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
+}
 
 document.getElementById("filtroMes").onchange = actualizarDashboard;
 document.getElementById("filtroAnio").onchange = actualizarDashboard;
@@ -318,21 +319,21 @@ let porMedico = {
   "No asiste": medicoNO
 };
 
+let porPUE = contar(filtrados, "pue");
+
+// 🧹 destruir primero
+Chart.helpers.each(Chart.instances, function(inst) {
+  inst.destroy();
+});
+
+// 📊 crear después
+crear("graficoMes", porMes);
+crear("graficoFaena", porFaena, "pie");
+crear("graficoTipo", porTipo, "bar", "#ef4444");
+crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
+crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porMedico, "pie");
-  let porPUE = contar(filtrados, "pue");
-
-  // 🧹 eliminar gráficos anteriores
-  Chart.helpers.each(Chart.instances, function(inst) {
-    inst.destroy();
-  });
-
-  // 📊 crear gráficos SOLO brigada
-  crear("graficoMes", porMes);
-  crear("graficoFaena", porFaena, "pie");
-  crear("graficoTipo", porTipo, "bar", "#ef4444");
-  crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
-  crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
-  crear("graficoPUE", porPUE, "bar", "#10b981", true);
+crear("graficoPUE", porPUE, "bar", "#10b981", true);
 }
 
 function actualizarMedico() {
