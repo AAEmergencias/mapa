@@ -24,7 +24,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ✅ RESPUESTA
     document.getElementById("brigada").value = emergencia.brigada || "";
-    document.getElementById("vehiculo").value = emergencia.vehiculo || "";
+let vehiculos = [];
+
+// ✅ brigada (ej: UIR-E, B1, etc)
+if (emergencia.brigada) {
+  vehiculos.push(emergencia.brigada);
+}
+
+// ✅ ambulancia (ej: S1, S2)
+if (emergencia.ambulancia && emergencia.ambulancia !== "No asiste") {
+
+  // ⚠️ IMPORTANTE: si es "Si asiste" no sirve
+  if (emergencia.ambulancia !== "Si asiste") {
+    vehiculos.push(emergencia.ambulancia);
+  }
+}
+
+// ✅ mostrar en campo
+document.getElementById("vehiculo").value = vehiculos.join(", ");
   }
 
   // ✅ cargar ambulancia desde emergencia
