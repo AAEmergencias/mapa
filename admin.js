@@ -5,6 +5,8 @@ console.log("✅ admin.js funcionando");
 // ==========================
 let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+let vistaActual = "general";
+
 
 // ==========================
 // ✅ FILTRO REAL (IMPORTANTE)
@@ -161,14 +163,17 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
 // 🔘 BOTONES
 // ==========================
 function verGeneral() {
-actualizarTodo();
+  vistaActual = "general";
+  actualizarTodo();
 }
 
 function verBrigada() {
+  vistaActual = "brigada";
   actualizarBrigada();
 }
 
 function verMedico() {
+  vistaActual = "medico";
   actualizarMedico();
 }
 
