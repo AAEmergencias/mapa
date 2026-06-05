@@ -375,21 +375,22 @@ let porMedico = {
   "No asiste": medicoNO
 };
 
+let porPUE = contar(filtrados, "pue");
+
+// 🧹 primero destruir
+Chart.helpers.each(Chart.instances, function(inst) {
+  inst.destroy();
+});
+
+// 📊 luego crear TODOS
+crear("graficoMes", porMes);
+crear("graficoFaena", porFaena, "pie");
+crear("graficoTipo", porTipo, "bar", "#ef4444");
+crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
+crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porMedico, "pie");
-  let porPUE = contar(filtrados, "pue");
+crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
-  // limpiar gráficos anteriores
-  Chart.helpers.each(Chart.instances, function(inst) {
-    inst.destroy();
-  });
-
-  // crear gráficos SOLO médico
-  crear("graficoMes", porMes);
-  crear("graficoFaena", porFaena, "pie");
-  crear("graficoTipo", porTipo, "bar", "#ef4444");
-  crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
-  crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
-  crear("graficoPUE", porPUE, "bar", "#10b981", true);
 }
 
 function actualizarTodo() {
