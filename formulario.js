@@ -23,32 +23,24 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("lugar").value = emergencia.ubicacion || "";
 
     // ✅ RESPUESTA
-    document.getElementById("brigada").value = emergencia.brigada || "";
+    document.getElementById("brigada").value = Array.isArray(emergencia.unidades)
+  ? emergencia.unidades.filter(u => !u.startsWith("S")).join(", ")
+  : (emergencia.brigada || "");
+
 let vehiculos = [];
 
-// ✅ brigada
-if (emergencia.brigada) {
-  if (Array.isArray(emergencia.brigada)) {
-    vehiculos.push(...emergencia.brigada);
+// ✅ usar directamente las unidades despachadas
+if (emergencia.unidades) {
+
+  if (Array.isArray(emergencia.unidades)) {
+    vehiculos = emergencia.unidades;
   } else {
-    vehiculos.push(emergencia.brigada);
+    vehiculos = [emergencia.unidades];
   }
 }
 
-// ✅ ambulancia
-if (emergencia.ambulancia && emergencia.ambulancia !== "No asiste") {
-  if (Array.isArray(emergencia.ambulancia)) {
-    vehiculos.push(...emergencia.ambulancia);
-  } else {
-    if (emergencia.ambulancia !== "Si asiste") {
-      vehiculos.push(emergencia.ambulancia);
-    }
-  }
-}
-
-// ✅ mostrar resultado final
+// ✅ mostrar TODAS las unidades
 document.getElementById("vehiculo").value = vehiculos.join(", ");
-}
 
 
   // ✅ cargar ambulancia desde emergencia
