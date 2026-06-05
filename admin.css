@@ -271,3 +271,11 @@ canvas {
 .card:nth-child(3)::before {
   background: #10b981;
 }
+
+button.activo {
+  background: #3b82f6;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(59,130,246,0.6);
+  transform: scale(1.05);
+}
