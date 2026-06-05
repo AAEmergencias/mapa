@@ -352,4 +352,4 @@ function formatearHora(hora) {
 
   return `${h}:${m}`;
 
-  });
+  };
