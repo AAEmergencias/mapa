@@ -439,3 +439,26 @@ else if (vistaActual === "medico") {
 }
 
 }
+
+document.getElementById("adminReset").onclick = () => {
+
+  let clave = prompt("🔐 Ingrese contraseña de administrador");
+
+  if (clave !== "1234") {
+    alert("❌ Acceso denegado");
+    return;
+  }
+
+  let confirmar = confirm("⚠️ ¿Seguro que deseas borrar TODOS los datos?");
+
+  if (!confirmar) return;
+
+  // 🧨 borrar datos
+  localStorage.removeItem("partesEmergencia");
+  localStorage.removeItem("historialEmergencias");
+
+  alert("✅ Datos eliminados correctamente");
+
+  // 🔄 refrescar todo
+  location.reload();
+};
