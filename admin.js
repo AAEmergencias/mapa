@@ -211,6 +211,14 @@ let filtrados = partesReales.filter(p => {
   let porTipo = contar(filtrados, "tipo");
   let porSubtipo = contar(filtrados, "subtipo");
   let porEmpresa = contar(filtrados, "empresa");
+let medicoSI = filtrados.filter(p => p.servicioMedico).length;
+let medicoNO = filtrados.filter(p => !p.servicioMedico).length;
+
+let porMedico = {
+  "Sí asiste": medicoSI,
+  "No asiste": medicoNO
+};
+  
   let porPUE = contar(filtrados, "pue");
 
   // 🔥 limpiar gráficos anteriores
@@ -224,6 +232,7 @@ let filtrados = partesReales.filter(p => {
   crear("graficoTipo", porTipo, "bar", "#ef4444");
   crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
   crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
+  crear("graficoMedico", porMedico, "pie", ["#10b981", "#ef4444"]);
   crear("graficoPUE", porPUE, "bar", "#10b981", true);
 }
 
@@ -284,6 +293,15 @@ function actualizarBrigada() {
   let porTipo = contar(filtrados, "tipo");
   let porSubtipo = contar(filtrados, "subtipo");
   let porEmpresa = contar(filtrados, "empresa");
+  let medicoSI = filtrados.filter(p => p.servicioMedico).length;
+let medicoNO = filtrados.filter(p => !p.servicioMedico).length;
+
+let porMedico = {
+  "Sí asiste": medicoSI,
+  "No asiste": medicoNO
+};
+
+crear("graficoMedico", porMedico, "pie");
   let porPUE = contar(filtrados, "pue");
 
   // 🧹 eliminar gráficos anteriores
@@ -331,6 +349,15 @@ function actualizarMedico() {
   let porTipo = contar(filtrados, "tipo");
   let porSubtipo = contar(filtrados, "subtipo");
   let porEmpresa = contar(filtrados, "empresa");
+  let medicoSI = filtrados.filter(p => p.servicioMedico).length;
+let medicoNO = filtrados.filter(p => !p.servicioMedico).length;
+
+let porMedico = {
+  "Sí asiste": medicoSI,
+  "No asiste": medicoNO
+};
+
+crear("graficoMedico", porMedico, "pie");
   let porPUE = contar(filtrados, "pue");
 
   // limpiar gráficos anteriores
