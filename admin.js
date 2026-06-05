@@ -410,3 +410,5 @@ else if (vistaActual === "brigada") {
 else if (vistaActual === "medico") {
   actualizarMedico();
 }
+
+}
