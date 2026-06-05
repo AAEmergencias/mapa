@@ -344,10 +344,16 @@ function actualizarMedico() {
 
 function actualizarTodo() {
 
-  // 🔄 recargar datos desde localStorage
+  // 🔄 recargar datos
   partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
 
-  // ✅ recalcular KPIs
+  // ✅ recalcular derivados
+  partesReales = partes.filter(esReal);
+  soloBrigada = partesReales.filter(p =>
+    BRIGADAS_VALIDAS.includes(p.brigada)
+  );
+
+  // ✅ KPIs
   let totalGeneral = partes.filter(p => p.brigada || p.servicioMedico);
   document.getElementById("total").innerText = totalGeneral.length;
 
@@ -356,7 +362,7 @@ function actualizarTodo() {
 
   document.getElementById("totalPartes").innerText = partes.length;
 
-  // ✅ recalcular última emergencia
+  // ✅ ÚLTIMA EMERGENCIA
   let ultima = partes
     .filter(p => p.fecha)
     .sort((a, b) => {
@@ -389,6 +395,6 @@ function actualizarTodo() {
     }
   }
 
-  // 📊 refrescar gráficos
+  // 📊 actualizar gráficos según vista actual
   actualizarDashboard();
 }
