@@ -169,12 +169,12 @@ function verGeneral() {
 
 function verBrigada() {
   vistaActual = "brigada";
-  actualizarBrigada();
+  actualizarTodo(); ✅
 }
 
 function verMedico() {
   vistaActual = "medico";
-  actualizarMedico();
+  actualizarTodo(); ✅
 }
 
 function actualizarBotones() {
