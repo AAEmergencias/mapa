@@ -161,7 +161,7 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
 // 🔘 BOTONES
 // ==========================
 function verGeneral() {
-  actualizarDashboard();
+actualizarTodo();
 }
 
 function verBrigada() {
@@ -226,10 +226,10 @@ let filtrados = partesReales.filter(p => {
 document.getElementById("filtroMes").onchange = actualizarDashboard;
 document.getElementById("filtroAnio").onchange = actualizarDashboard;
 
-actualizarDashboard();
+actualizarTodo();
 
 // ✅ BOTÓN ACTUALIZAR (SIN RECARGA)
-document.getElementById("actualizar").onclick = actualizarDashboard;
+document.getElementById("actualizar").onclick = actualizarTodo;
 
 // ==========================
 // 📋 TOGGLE PARTES
@@ -340,4 +340,55 @@ function actualizarMedico() {
   crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
   crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
   crear("graficoPUE", porPUE, "bar", "#10b981", true);
+}
+
+function actualizarTodo() {
+
+  // 🔄 recargar datos desde localStorage
+  partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+
+  // ✅ recalcular KPIs
+  let totalGeneral = partes.filter(p => p.brigada || p.servicioMedico);
+  document.getElementById("total").innerText = totalGeneral.length;
+
+  let emergenciasCompletas = partes.filter(p => p.brigada && p.servicioMedico);
+  document.getElementById("totalCompletas").innerText = emergenciasCompletas.length;
+
+  document.getElementById("totalPartes").innerText = partes.length;
+
+  // ✅ recalcular última emergencia
+  let ultima = partes
+    .filter(p => p.fecha)
+    .sort((a, b) => {
+      let fechaA = new Date(a.fecha + " " + (a.hora || "00:00"));
+      let fechaB = new Date(b.fecha + " " + (b.hora || "00:00"));
+      return fechaB - fechaA;
+    })[0];
+
+  if (ultima) {
+
+    let descripcion = ultima.descripcion && ultima.descripcion.trim() !== ""
+      ? ultima.descripcion
+      : "Sin descripción";
+
+    document.getElementById("ultimaEmergencia").innerHTML = `
+      📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
+      📍 ${ultima.lugar || "-"}<br>
+      🚒 ${ultima.tipo || "-"}<br>
+      📝 ${descripcion}
+    `;
+
+    let ahora = new Date();
+    let fechaUltima = new Date(ultima.fecha + " " + (ultima.hora || "00:00"));
+    let diffMin = (ahora - fechaUltima) / (1000 * 60);
+
+    if (diffMin < 60) {
+      document.getElementById("ultimaEmergencia").style.color = "#ef4444";
+    } else {
+      document.getElementById("ultimaEmergencia").style.color = "#10b981";
+    }
+  }
+
+  // 📊 refrescar gráficos
+  actualizarDashboard();
 }
