@@ -327,9 +327,6 @@ pueSelect.dispatchEvent(new Event("change"));
   descPue.value = pue[valor] || "";
 });
 
-});
-
-
 // ==========================
 // 🧠 FUNCIONES
 // ==========================
