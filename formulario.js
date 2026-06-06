@@ -112,42 +112,7 @@ if (emergencia.unidades) {
 }
 
 // ✅ mostrar TODAS las unidades
-document.getElementById("vehiculo").value = vehiculos.join(", ");
-
-    let ambulancias = [];
-
-// ✅ buscar S1, S2, S3 dentro de unidades
-if (emergencia.unidades) {
-
-  let lista = Array.isArray(emergencia.unidades)
-    ? emergencia.unidades
-    : [emergencia.unidades];
-
-  lista.forEach(u => {
-    if (u.startsWith("S")) {
-      ambulancias.push(u);
-    }
-  });
-}
-
-    let ambSelect = document.getElementById("ambulancia");
-let servSelect = document.getElementById("servicioMedico");
-
-// ✅ si hay ambulancias
-if (ambulancias.length > 0) {
-
-ambSelect.value = ambulancias.join(", ");
-
-  let nombres = ambulancias.map(a => MEDICOS[a] || a);
-  servSelect.value = nombres.join(", ");
-
-} else {
-
-  // ✅ si no hay
-  ambSelect.value = "No asiste";
-  servSelect.value = "";
-}
-    
+document.getElementById("vehiculo").value = vehiculos.join(", ");    
 
   // ✅ cargar ambulancia desde emergencia
 if (emergencia.ambulancia) {
@@ -222,13 +187,6 @@ if (emergencia.ambulancia) {
   let amb = document.getElementById("ambulancia");
   let serv = document.getElementById("servicioMedico");
   let otro = document.getElementById("otroServicio");
-
-  // ✅ MAPEO DE AMBULANCIAS A MÉDICO
-const MEDICOS = {
-  "S1": "Pérez Caldera",
-  "S2": "Poli Tórtolas",
-  "S3": "220"
-};
 
 amb.onchange = () => {
 
