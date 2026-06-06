@@ -23,9 +23,32 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("lugar").value = emergencia.ubicacion || "";
 
     // ✅ RESPUESTA
-    document.getElementById("brigada").value = Array.isArray(emergencia.unidades)
-  ? emergencia.unidades.filter(u => !u.startsWith("S")).join(", ")
-  : (emergencia.brigada || "");
+
+    const BRIGADAS_NOMBRE = {
+  "UIR-M": "BRIGADA MINA",
+  "UIR-S": "BRIGADA STP",
+  "UIR-E": "BRIGADA ERMITA",
+  "B1": "BRIGADA BRONCES",
+  "B2": "BRIGADA TORTOLAS"
+};
+let brigadas = [];
+
+// ✅ obtener solo vehículos de brigada (no S1, S2, S3)
+if (emergencia.unidades) {
+
+  let lista = Array.isArray(emergencia.unidades)
+    ? emergencia.unidades
+    : [emergencia.unidades];
+
+  lista.forEach(u => {
+    if (!u.startsWith("S") && BRIGADAS_NOMBRE[u]) {
+      brigadas.push(BRIGADAS_NOMBRE[u]);
+    }
+  });
+}
+
+// ✅ mostrar nombre real
+document.getElementById("brigada").value = brigadas.join(", ");
 
 let vehiculos = [];
 
