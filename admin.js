@@ -3,8 +3,8 @@ console.log("✅ admin.js funcionando");
 // ==========================
 // 📦 DATOS
 // ==========================
-let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+let ultima = partes[partes.length - 1];
 let vistaActual = "general";
 
 
@@ -45,11 +45,12 @@ if (ultima) {
 
   // ✅ MOSTRAR DATOS
   document.getElementById("ultimaEmergencia").innerHTML = `
-    📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
-    📍 ${ultima.lugar || "-"}<br>
-    🚒 ${ultima.tipo || "-"}<br>
-    📝 ${descripcion}
-  `;
+    let ultimaHTML = `
+  📅 ${ultima.fecha || "--"} ⏱ ${ultima.horaActivacion || "--"}<br>
+  📍 ${ultima.lugar || "Sin ubicación"}<br>
+  🚒 ${ultima.tipo || "Sin tipo"}<br>
+  📝 ${ultima.descripcion || "Sin descripción"}
+`;
 
   // ✅ ALERTA POR RECENCIA
   let ahora = new Date();
