@@ -186,6 +186,7 @@ if (emergencia.ambulancia) {
       ambulancia: document.getElementById("ambulancia").value,
 
       servicioMedico: document.getElementById("servicioMedico").value,
+      ambulanciaExterna: document.getElementById("ambulanciaExterna").value,
       clave: document.getElementById("clave").value,
       existeAtencion: document.getElementById("existeAtencion").value,
 
