@@ -337,5 +337,7 @@ function formatearHora(hora) {
   let m = fecha.getMinutes().toString().padStart(2, "0");
 
   return `${h}:${m}`;
+}
 
- });
+// ✅ cerrar todo el script
+});
