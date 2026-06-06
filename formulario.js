@@ -41,37 +41,27 @@ const MEDICOS = {
 let ambulancias = [];
 let nombresMedicos = [];
 
-if (emergencia.unidades) {
+let lista = Array.isArray(emergencia.unidades)
+  ? emergencia.unidades
+  : [emergencia.unidades];
 
-  let lista = Array.isArray(emergencia.unidades)
-    ? emergencia.unidades
-    : [emergencia.unidades];
+// ✅ detectar internas
+lista.forEach(u => {
+  if (u.startsWith("S")) {
+    ambulancias.push(u);
 
-  lista.forEach(u => {
-
-    // ✅ detectar ambulancias internas
-    if (u.startsWith("S")) {
-      ambulancias.push(u);
-
-      if (MEDICOS[u]) {
-        nombresMedicos.push(MEDICOS[u]);
-      } else {
-        nombresMedicos.push(u); // fallback
-      }
+    if (MEDICOS[u]) {
+      nombresMedicos.push(MEDICOS[u]);
     }
+  }
+});
 
-    // ✅ detectar externas (SAMU u otras)
-    else if (
-      u.toUpperCase().includes("SAMU") ||
-      u.toUpperCase().includes("ACHS") ||
-      u.toUpperCase().includes("MUTUAL") ||
-      u.toUpperCase().includes("EXTERNA")
-    ) {
-      ambulancias.push(u);
-      nombresMedicos.push(u);
-    }
+// ✅ detectar externa ingresada manualmente
+let externa = document.getElementById("ambulanciaExterna").value;
 
-  });
+if (externa && externa.trim() !== "") {
+  ambulancias.push(externa);
+  nombresMedicos.push(externa);
 }
 
 // ✅ limpiar duplicados
@@ -81,18 +71,14 @@ nombresMedicos = [...new Set(nombresMedicos)];
 let ambSelect = document.getElementById("ambulancia");
 let servInput = document.getElementById("servicioMedico");
 
-// ✅ lógica final
+// ✅ resultado
 if (ambulancias.length > 0) {
-
   ambSelect.value = "Si asiste";
   servInput.value = nombresMedicos.join(", ");
-
 } else {
-
   ambSelect.value = "No asiste";
   servInput.value = "";
 }
-
 
 let brigadas = [];
 
