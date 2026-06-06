@@ -63,6 +63,9 @@ input, select, textarea {
   border-radius: 10px;
   padding: 10px 14px;
   font-size: 14px;
+  color: #1e293b; /* ✅ texto oscuro visible */
+  font-weight: 500; /* ✅ más legible */
+
 
   /* ✅ clave para separarlos */
   box-sizing: border-box;
