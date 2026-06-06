@@ -299,6 +299,9 @@ claveSelect.dispatchEvent(new Event("change"));
   tipoAtencion.value = claves[valor] || "";
 });
 
+// ✅ activar automático al cargar
+claveSelect.dispatchEvent(new Event("change"));
+
   tipoAtencion.oninput = () => {
     let match = Object.entries(claves).find(
       ([k, v]) => v.toLowerCase().includes(tipoAtencion.value.toLowerCase())
