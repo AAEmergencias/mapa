@@ -25,7 +25,7 @@ let soloBrigada = partesReales.filter(p =>
 );
 
 // ✅ OBTENER ÚLTIMA EMERGENCIA
-let ultima = partes
+let ultima = partes[partes.length - 1];
   .filter(p => p.fecha)
   .sort((a, b) => {
 
