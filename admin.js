@@ -4,7 +4,6 @@ console.log("✅ admin.js funcionando");
 // 📦 DATOS
 // ==========================
 let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
-let ultima = partes[partes.length - 1];
 let vistaActual = "general";
 
 
@@ -25,9 +24,6 @@ let soloBrigada = partesReales.filter(p =>
 );
 
 // ✅ OBTENER ÚLTIMA EMERGENCIA
-let ultima = partes[partes.length - 1];
-  .filter(p => p.fecha)
-  .sort((a, b) => {
 
     let fechaA = new Date(a.fecha + " " + (a.hora || "00:00"));
     let fechaB = new Date(b.fecha + " " + (b.hora || "00:00"));
@@ -439,38 +435,31 @@ function actualizarTodo() {
 
   document.getElementById("totalPartes").innerText = partes.length;
 
-  // ✅ ÚLTIMA EMERGENCIA
-  let ultima = partes
-    .filter(p => p.fecha)
-    .sort((a, b) => {
-      let fechaA = new Date(a.fecha + " " + (a.hora || "00:00"));
-      let fechaB = new Date(b.fecha + " " + (b.hora || "00:00"));
-      return fechaB - fechaA;
-    })[0];
+  // ✅ ÚLTIMA EMERGENCIA (CORRECTO)
+let ultima = partes.length > 0
+  ? partes[partes.length - 1]
+  : null;
 
-  if (ultima) {
+if (ultima) {
 
-    let descripcion = ultima.descripcion && ultima.descripcion.trim() !== ""
-      ? ultima.descripcion
-      : "Sin descripción";
+  let descripcion = ultima.descripcion && ultima.descripcion.trim() !== ""
+    ? ultima.descripcion
+    : "Sin descripción";
 
-    document.getElementById("ultimaEmergencia").innerHTML = `
-      📅 ${ultima.fecha} ⏱️ ${ultima.hora || "--"}<br>
-      📍 ${ultima.lugar || "-"}<br>
-      🚒 ${ultima.tipo || "-"}<br>
-      📝 ${descripcion}
-    `;
+  document.getElementById("ultimaEmergencia").innerHTML = `
+    📅 ${ultima.fecha || "--"} ⏱ ${ultima.horaActivacion || "--"} - ${ultima.horaCierre || "--"}<br>
+    📍 ${ultima.lugar || "-"}<br>
+    🚒 ${ultima.tipo || "-"}<br>
+    📝 ${descripcion}
+  `;
 
-    let ahora = new Date();
-    let fechaUltima = new Date(ultima.fecha + " " + (ultima.hora || "00:00"));
-    let diffMin = (ahora - fechaUltima) / (1000 * 60);
+  let ahora = new Date();
+  let fechaUltima = new Date(ultima.fecha + " " + (ultima.horaActivacion || "00:00"));
+  let diffMin = (ahora - fechaUltima) / (1000 * 60);
 
-    if (diffMin < 60) {
-      document.getElementById("ultimaEmergencia").style.color = "#ef4444";
-    } else {
-      document.getElementById("ultimaEmergencia").style.color = "#10b981";
-    }
-  }
+  document.getElementById("ultimaEmergencia").style.color =
+    diffMin < 60 ? "#ef4444" : "#10b981";
+}
 
 // ✅ actualizar según vista actual
 if (vistaActual === "general") {
