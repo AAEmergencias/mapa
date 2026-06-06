@@ -95,12 +95,9 @@ let servSelect = document.getElementById("servicioMedico");
 // ✅ si hay ambulancias
 if (ambulancias.length > 0) {
 
-  // ✅ marcar “Si asiste”
-  ambSelect.value = "Si asiste";
+ambSelect.value = ambulancias.join(", ");
 
-  // ✅ cargar nombres médicos
   let nombres = ambulancias.map(a => MEDICOS[a] || a);
-
   servSelect.value = nombres.join(", ");
 
 } else {
