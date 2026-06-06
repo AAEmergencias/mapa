@@ -8,7 +8,9 @@ body {
 /* TÍTULO */
 h2 {
   text-align: center;
-  margin-bottom: 20px;
+  color: white;
+  font-size: 24px; /* ✅ más grande */
+  margin-bottom: 25px;
 }
 
 /* CONTENEDOR */
@@ -28,9 +30,10 @@ h2 {
   border: 1px solid rgba(255,255,255,0.08);
 }
 
-.bloque h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
+h3 {
+  color: #ffffff;
+  font-size: 18px; /* ✅ más grande */
+  margin-bottom: 15px;
 }
 
 /* GRID */
@@ -51,15 +54,16 @@ h2 {
 label {
   display: block;
   margin-bottom: 6px;
-  font-size: 13px;
-  color: #cbd5e1;
+  font-size: 14px; /* ✅ más grande */
+  color: #e2e8f0; /* ✅ más blanco */
+  font-weight: 600; /* ✅ más fuerte */
 }
 
 /* INPUTS */
 input, select, textarea {
   width: 100%;
-  background: #e5e7eb; /* gris suave (NO blanco) */
-  border: 2px solid #1f2a3a; /* separa visualmente */
+  background: #f8fafc; /* ✅ más claro y limpio */
+  border: 1px solid #cbd5e1; /* ✅ borde suave visible */
   border-radius: 10px;
   padding: 10px 14px;
   font-size: 14px;
@@ -96,4 +100,8 @@ textarea {
 /* OCULTOS */
 #otroServicio {
   margin-top: 10px;
+}
+
+input::placeholder {
+  color: #94a3b8; /* ✅ gris elegante */
 }
