@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   "B2": "BRIGADA TORTOLAS"
 };
 
- const MEDICOS = {
+const MEDICOS = {
   "S1": "Pérez Caldera",
   "S2": "Tórtolas",
   "S3": "SPA 220"
@@ -48,29 +48,43 @@ if (emergencia.unidades) {
     : [emergencia.unidades];
 
   lista.forEach(u => {
+
+    // ✅ detectar ambulancias internas
     if (u.startsWith("S")) {
       ambulancias.push(u);
 
       if (MEDICOS[u]) {
         nombresMedicos.push(MEDICOS[u]);
+      } else {
+        nombresMedicos.push(u); // fallback
       }
     }
+
+    // ✅ detectar externas (SAMU u otras)
+    else if (
+      u.toUpperCase().includes("SAMU") ||
+      u.toUpperCase().includes("ACHS") ||
+      u.toUpperCase().includes("MUTUAL") ||
+      u.toUpperCase().includes("EXTERNA")
+    ) {
+      ambulancias.push(u);
+      nombresMedicos.push(u);
+    }
+
   });
 }
 
-// ✅ remover duplicados (muy importante)
+// ✅ limpiar duplicados
 ambulancias = [...new Set(ambulancias)];
 nombresMedicos = [...new Set(nombresMedicos)];
 
 let ambSelect = document.getElementById("ambulancia");
 let servInput = document.getElementById("servicioMedico");
 
-// ✅ marcar asistencia
+// ✅ lógica final
 if (ambulancias.length > 0) {
 
   ambSelect.value = "Si asiste";
-
-  // ✅ mostrar nombres médicos
   servInput.value = nombresMedicos.join(", ");
 
 } else {
@@ -78,6 +92,7 @@ if (ambulancias.length > 0) {
   ambSelect.value = "No asiste";
   servInput.value = "";
 }
+
 
 let brigadas = [];
 
