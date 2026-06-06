@@ -234,8 +234,6 @@ claveSelect.dispatchEvent(new Event("change"));
   tipoAtencion.value = claves[valor] || "";
 });
 
-  claveSelect.dispatchEvent(new Event("change"));
-
   tipoAtencion.oninput = () => {
     let match = Object.entries(claves).find(
       ([k, v]) => v.toLowerCase().includes(tipoAtencion.value.toLowerCase())
@@ -306,7 +304,7 @@ Object.keys(PUE).forEach(p => {
   pueSelect.appendChild(opt);
 });
 
-// ✅ UN SOLO evento
+// ✅ UN SOLO evento limpio
 pueSelect.addEventListener("change", () => {
   let valor = pueSelect.value;
   console.log("PUE seleccionado:", valor);
@@ -315,19 +313,7 @@ pueSelect.addEventListener("change", () => {
 
 // ✅ activar al cargar
 pueSelect.dispatchEvent(new Event("change"));
-
-// 🔥 activar al cargar
-pueSelect.dispatchEvent(new Event("change"));
-
-  pueSelect.addEventListener("change", () => {
-
-  let valor = pueSelect.value;
-
-  console.log("PUE seleccionado:", valor);
-
-  descPue.value = pue[valor] || "";
-});
-
+  
 // ==========================
 // 🧠 FUNCIONES
 // ==========================
@@ -352,4 +338,4 @@ function formatearHora(hora) {
 
   return `${h}:${m}`;
 
-  };
+ });
