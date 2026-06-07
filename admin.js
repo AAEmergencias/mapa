@@ -551,9 +551,11 @@ function editarParte(index) {
 
   let parteSeleccionado = partes[index];
 
+  // ✅ limpiar emergencia vieja
+  localStorage.removeItem("emergenciaSeleccionada");
+
   // ✅ guardar parte para editar
   localStorage.setItem("parteEditar", JSON.stringify(parteSeleccionado));
 
-  // ✅ abrir formulario
   window.open("formulario.html", "_blank");
 }
