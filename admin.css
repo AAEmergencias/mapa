@@ -287,9 +287,15 @@ button.activo {
 }
 
 .grafico-container {
-  background: #f8fafc; /* ✅ fondo claro */
+  background: #f8fafc;           /* fondo claro */
   border-radius: 12px;
   padding: 15px;
-  border: 2px solid #1e3a8a; /* azul */
+  border: 2px solid #1e3a8a;     /* azul */
+  margin-bottom: 20px;
 }
 
+/* altura para que no queden aplastados */
+canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
