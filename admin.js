@@ -272,7 +272,7 @@ function actualizarBrigada() {
 let filtrados = partes.filter(p => {
 
   // ✅ solo brigada válida
-  if (!BRIGADAS_VALIDAS.includes(p.brigada)) return false;
+if (!p.brigada || !p.brigada.includes("BRIGADA")) return false;
 
   if (!p.fecha) return false;
 
@@ -328,7 +328,7 @@ function actualizarMedico() {
   let anioFiltro = document.getElementById("filtroAnio").value;
 
 let soloMedico = partes.filter(p =>
-  ["S1", "S2", "S3"].includes(p.ambulancia)
+  p.servicioMedico && p.servicioMedico !== ""
 );
 
   let filtrados = soloMedico.filter(p => {
