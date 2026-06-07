@@ -161,16 +161,18 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
     type: tipo,
     data: {
       labels: Object.keys(datos),
-  datasets: [{
+datasets: [{
   data: Object.values(datos),
 
   backgroundColor: tipo === "pie"
-    ? ["#1e3a8a", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd"]
-    : "#1e3a8a",
+    ? ["#1d4ed8", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd"]
+    : "#1e40af",
 
   borderRadius: 6,
-  barPercentage: 0.5,
-  categoryPercentage: 0.6
+
+  // ✅ 👇 ESTE ES EL PASO 5
+  borderColor: "#ffffff",
+  borderWidth: tipo === "pie" ? 2 : 0
 }]
     },
 options: {
@@ -186,7 +188,7 @@ options: {
     title: {
       display: true,
       text: id.replace("grafico", "").toUpperCase(),
-      color: "#1e3a8a",
+      color: "#1e40af",
       font: {
         size: 16,
         weight: "bold"
@@ -197,9 +199,9 @@ options: {
 scales: tipo !== "pie" ? {
       x: {
         ticks: {
-          color: "#1e3a8a",
-          font: { weight: "bold" }
-        },
+  color: "#1e293b",
+  font: { weight: "bold" }
+}
         grid: { display: false }
       },
       y: {
