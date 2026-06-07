@@ -203,9 +203,11 @@ localStorage.setItem("partesEmergencia", JSON.stringify(partes));
 
     let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 
-    historial.forEach(e => {
-      if (e.id === emergencia.id) e.cerrada = true;
-    });
+if (!editando && emergencia) {
+  historial.forEach(e => {
+    if (e.id === emergencia.id) e.cerrada = true;
+  });
+}
 
     localStorage.setItem("historialEmergencias", JSON.stringify(historial));
     localStorage.setItem("partesEmergencia", JSON.stringify(partes));
