@@ -45,122 +45,92 @@ if (parteEditar) {
 
 if (!parteEditar && emergencia) {
 
-    // ✅ FECHA
-    if (emergencia.fecha) {
-      document.getElementById("fecha").value = convertirFecha(emergencia.fecha);
-    }
-
-    // ✅ HORAS
-    document.getElementById("horaActivacion").value = formatearHora(emergencia.horaActivacion);
-    document.getElementById("horaCierre").value = formatearHora(emergencia.horaCierre);
-
-    // ✅ TIPO
-    document.getElementById("tipo").value = emergencia.tipo || "";
-    document.getElementById("subtipo").value = emergencia.subtipo || "";
-
-    // ✅ UBICACIÓN
-    document.getElementById("lugar").value = emergencia.ubicacion || "";
-
-   }
-
-    // ✅ RESPUESTA
-  
-    const BRIGADAS_NOMBRE = {
-  "UIR-M": "BRIGADA MINA",
-  "UIR-S": "BRIGADA STP",
-  "UIR-E": "BRIGADA ERMITA",
-  "B1": "BRIGADA BRONCES",
-  "B2": "BRIGADA TORTOLAS"
-};
-
-const MEDICOS = {
-  "S1": "Pérez Caldera",
-  "S2": "Tórtolas",
-  "S3": "SPA 220"
-};
-
-let ambulancias = [];
-let nombresMedicos = [];
-
-let lista = Array.isArray(emergencia.unidades)
-  ? emergencia.unidades
-  : [emergencia.unidades];
-
-// ✅ detectar internas
-lista.forEach(u => {
-  if (u.startsWith("S")) {
-    ambulancias.push(u);
-
-    if (MEDICOS[u]) {
-      nombresMedicos.push(MEDICOS[u]);
-    }
+  // ✅ FECHA
+  if (emergencia.fecha) {
+    document.getElementById("fecha").value = convertirFecha(emergencia.fecha);
   }
 
-});
+  // ✅ HORAS
+  document.getElementById("horaActivacion").value = formatearHora(emergencia.horaActivacion);
+  document.getElementById("horaCierre").value = formatearHora(emergencia.horaCierre);
 
-// ✅ detectar externa ingresada manualmente
-let externa = document.getElementById("ambulanciaExterna").value;
+  // ✅ TIPO
+  document.getElementById("tipo").value = emergencia.tipo || "";
+  document.getElementById("subtipo").value = emergencia.subtipo || "";
 
-if (externa && externa.trim() !== "") {
-  ambulancias.push(externa);
-  nombresMedicos.push(externa);
-}
+  // ✅ UBICACIÓN
+  document.getElementById("lugar").value = emergencia.ubicacion || "";
 
-// ✅ limpiar duplicados
-ambulancias = [...new Set(ambulancias)];
-nombresMedicos = [...new Set(nombresMedicos)];
+  // ✅ RESPUESTA (TODO DENTRO DEL IF)
 
-let ambSelect = document.getElementById("ambulancia");
-let servInput = document.getElementById("servicioMedico");
+  const BRIGADAS_NOMBRE = {
+    "UIR-M": "BRIGADA MINA",
+    "UIR-S": "BRIGADA STP",
+    "UIR-E": "BRIGADA ERMITA",
+    "B1": "BRIGADA BRONCES",
+    "B2": "BRIGADA TORTOLAS"
+  };
 
-// ✅ resultado
-if (ambulancias.length > 0) {
-  ambSelect.value = "Si asiste";
-  servInput.value = nombresMedicos.join(", ");
-} else {
-  ambSelect.value = "No asiste";
-  servInput.value = "";
-}
+  const MEDICOS = {
+    "S1": "Pérez Caldera",
+    "S2": "Tórtolas",
+    "S3": "SPA 220"
+  };
 
-let brigadas = [];
-
-// ✅ obtener solo vehículos de brigada (no S1, S2, S3)
-if (emergencia.unidades) {
+  let ambulancias = [];
+  let nombresMedicos = [];
 
   let lista = Array.isArray(emergencia.unidades)
     ? emergencia.unidades
     : [emergencia.unidades];
 
   lista.forEach(u => {
-    if (!u.startsWith("S") && BRIGADAS_NOMBRE[u]) {
-      brigadas.push(BRIGADAS_NOMBRE[u]);
+    if (u.startsWith("S")) {
+      ambulancias.push(u);
+      if (MEDICOS[u]) nombresMedicos.push(MEDICOS[u]);
     }
   });
-}
 
-// ✅ mostrar nombre real
-document.getElementById("brigada").value = brigadas.join(", ");
+  ambulancias = [...new Set(ambulancias)];
+  nombresMedicos = [...new Set(nombresMedicos)];
 
-let vehiculos = [];
-
-// ✅ usar directamente las unidades despachadas
-if (emergencia.unidades) {
-
-  if (Array.isArray(emergencia.unidades)) {
-    vehiculos = emergencia.unidades;
-  } else {
-    vehiculos = [emergencia.unidades];
-  }
-}
-
-// ✅ mostrar TODAS las unidades
-document.getElementById("vehiculo").value = vehiculos.join(", ");    
-
-  // ✅ cargar ambulancia desde emergencia
-if (emergencia.ambulancia) {
   let ambSelect = document.getElementById("ambulancia");
-  ambSelect.value = emergencia.ambulancia;
-  ambSelect.dispatchEvent(new Event("change"));
+  let servInput = document.getElementById("servicioMedico");
+
+  if (ambulancias.length > 0) {
+    ambSelect.value = "Si asiste";
+    servInput.value = nombresMedicos.join(", ");
+  } else {
+    ambSelect.value = "No asiste";
+    servInput.value = "";
+  }
+
+  let brigadas = [];
+
+  if (emergencia.unidades) {
+    let lista = Array.isArray(emergencia.unidades)
+      ? emergencia.unidades
+      : [emergencia.unidades];
+
+    lista.forEach(u => {
+      if (!u.startsWith("S") && BRIGADAS_NOMBRE[u]) {
+        brigadas.push(BRIGADAS_NOMBRE[u]);
+      }
+    });
+  }
+
+  document.getElementById("brigada").value = brigadas.join(", ");
+
+  let vehiculos = Array.isArray(emergencia.unidades)
+    ? emergencia.unidades
+    : [emergencia.unidades];
+
+  document.getElementById("vehiculo").value = vehiculos.join(", ");
+
+  if (emergencia.ambulancia) {
+    let ambSelect = document.getElementById("ambulancia");
+    ambSelect.value = emergencia.ambulancia;
+    ambSelect.dispatchEvent(new Event("change"));
   }
 }
 
