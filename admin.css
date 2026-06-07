@@ -279,3 +279,9 @@ button.activo {
   box-shadow: 0 0 10px rgba(59,130,246,0.6);
   transform: scale(1.05);
 }
+
+#partes {
+  max-height: 300px;     /* ✅ altura máxima */
+  overflow-y: auto;      /* ✅ scroll vertical */
+  padding-right: 8px;    /* ✅ espacio para scrollbar */
+}
