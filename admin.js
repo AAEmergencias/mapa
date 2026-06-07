@@ -49,11 +49,15 @@ let divPartes = document.getElementById("partes");
 
 divPartes.innerHTML = partes.length === 0
   ? "Sin partes"
-  : partes.map(p => `
+  : partes.map((p, index) => `
       📅 ${p.fecha}<br>
-      🚒 ${p.tipo} - ${p.subtipo}<br>
+      🚒 ${p.tipo}<br>
       📍 ${p.lugar}<br>
-      👤 ${p.operador}
+
+      <button onclick="editarParte(${index})">
+        ✏️ Editar Parte
+      </button>
+
     `).join("<hr>");
 
 // ==========================
@@ -465,3 +469,16 @@ document.getElementById("adminReset").onclick = () => {
   // 🔄 refrescar todo
   location.reload();
 };
+
+function editarParte(index) {
+
+  let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+
+  let parteSeleccionado = partes[index];
+
+  // ✅ guardar parte para editar
+  localStorage.setItem("parteEditar", JSON.stringify(parteSeleccionado));
+
+  // ✅ abrir formulario
+  window.open("formulario.html", "_blank");
+}
