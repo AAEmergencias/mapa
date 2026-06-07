@@ -192,20 +192,22 @@ options: {
     }
   },
 
-  scales: tipo !== "pie" ? {
-    x: {
-      ticks: {
-        color: "#1e3a8a",
-        font: { weight: "bold" }
+scales: tipo !== "pie" ? {
+      x: {
+        ticks: {
+          color: "#1e3a8a",
+          font: { weight: "bold" }
+        },
+        grid: { display: false }
       },
-      grid: { display: false }
-    },
-    y: {
-      ticks: {
-        color: "#64748b"
+      y: {
+        ticks: {
+          color: "#64748b"
+        }
       }
-    }
-  } : {}
+    } : {}
+  }
+});
 }
 
 // ==========================
