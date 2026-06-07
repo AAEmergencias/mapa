@@ -161,15 +161,17 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
     type: tipo,
     data: {
       labels: Object.keys(datos),
-      datasets: [{
-        data: Object.values(datos),
-        backgroundColor: tipo === "pie"
-  ? ["#1e3a8a", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd"]
-  : "#1e3a8a",
+  datasets: [{
+  data: Object.values(datos),
 
-borderRadius: 6
+  backgroundColor: tipo === "pie"
+    ? ["#1e3a8a", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd"]
+    : "#1e3a8a",
 
-      }]
+  borderRadius: 6,
+  barPercentage: 0.5,
+  categoryPercentage: 0.6
+}]
     },
 options: {
   responsive: true,
@@ -201,10 +203,13 @@ scales: tipo !== "pie" ? {
         grid: { display: false }
       },
       y: {
-        ticks: {
-          color: "#64748b"
-        }
-      }
+  beginAtZero: true,
+  ticks: {
+    stepSize: 1,
+    precision: 0,
+    color: "#64748b"
+  }
+}
     } : {}
   }
 });
