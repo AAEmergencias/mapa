@@ -35,6 +35,20 @@ const pluginLabels = {
 };
 
 Chart.register(pluginLabels);
+
+const COLORES = [
+  "#3b82f6", // azul
+  "#ef4444", // rojo
+  "#10b981", // verde
+  "#f59e0b", // amarillo
+  "#8b5cf6", // morado
+  "#06b6d4", // celeste
+  "#22c55e", // verde claro
+  "#e11d48", // rojo fuerte
+  "#f97316", // naranja
+  "#6366f1"  // índigo
+];
+
 // ==========================
 // 📦 DATOS
 // ==========================
@@ -161,18 +175,14 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
     type: tipo,
     data: {
       labels: Object.keys(datos),
+      
 datasets: [{
   data: Object.values(datos),
-
-  backgroundColor: tipo === "pie"
-    ? ["#1d4ed8", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd"]
-    : "#1e40af",
-
+  backgroundColor: Object.keys(datos).map((_, i) => COLORES[i % COLORES.length]),
   borderRadius: 6,
-
-  // ✅ 👇 ESTE ES EL PASO 5
   borderColor: "#ffffff",
-  borderWidth: tipo === "pie" ? 2 : 0
+  borderWidth: tipo === "pie" ? 2 : 0,
+  hoverOffset: 8
 }]
     },
 options: {
