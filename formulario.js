@@ -43,9 +43,7 @@ if (parteEditar) {
 
   console.log("EMERGENCIA:", emergencia);
 
-let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
-
-if (!parteEditar && emergencia)
+if (!parteEditar && emergencia) {
 
     // ✅ FECHA
     if (emergencia.fecha) {
@@ -95,6 +93,7 @@ lista.forEach(u => {
       nombresMedicos.push(MEDICOS[u]);
     }
   }
+
 });
 
 // ✅ detectar externa ingresada manualmente
