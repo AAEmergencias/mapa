@@ -50,11 +50,14 @@ header {
 /* GRÁFICOS */
 canvas {
   width: 100% !important;
-  height: 250px !important;
-  background: #0f172a;
+  height: 180px !important; /* 🔥 MÁS PEQUEÑO */
+  max-width: 90%;
+  margin: 0 auto;
+  background: #ffffff;
   border-radius: 10px;
-  padding: 10px;
+  padding: 8px;
 }
+
 
 /* BOTONES */
 button {
@@ -129,7 +132,7 @@ header button:hover {
 
 .card {
   background: #1f2a3a;
-  padding: 20px;
+  padding: 12px;
   border-radius: 14px;
 
   /* 🔥 BORDE PRINCIPAL */
@@ -177,11 +180,6 @@ header button:hover {
 
 .card:nth-child(4) div {
   color: #ef4444; /* rojo */
-}
-
-canvas {
-  width: 100% !important;
-  height: 280px !important;
 }
 
 .card.full {
@@ -294,22 +292,15 @@ button.activo {
   margin-bottom: 20px;
 }
 
-/* altura para que no queden aplastados */
-canvas {
-  width: 100% !important;
-  height: 300px !important;
-}
 
 .card h4 {
+  color: #ffffff; /* ✅ blanco */
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
-  margin-bottom: 10px;
-  color: #1e3a8a;
+  margin-bottom: 8px;
 }
 
-canvas {
-  background: #ffffff; /* ✅ FONDO BLANCO */
-  border-radius: 10px;
-  padding: 10px;
+.card canvas {
+  display: block;
 }
