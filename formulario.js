@@ -205,7 +205,6 @@ if (emergencia.ambulancia) {
 
     let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
     let editando = JSON.parse(localStorage.getItem("parteEditar"));
-let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
 
 if (editando) {
 
