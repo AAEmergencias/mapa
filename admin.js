@@ -23,33 +23,6 @@ let soloBrigada = partesReales.filter(p =>
   BRIGADAS_VALIDAS.includes(p.brigada)
 );
 
-
-if (ultima) {
-
-  // ✅ CREAR DESCRIPCIÓN
-  let descripcion = ultima.descripcion && ultima.descripcion.trim() !== ""
-    ? ultima.descripcion
-    : "Sin descripción";
-
-  // ✅ MOSTRAR DATOS
-  document.getElementById("ultimaEmergencia").innerHTML = `
-    let ultimaHTML = `
-  📅 ${ultima.fecha || "--"} ⏱ ${ultima.horaActivacion || "--"}<br>
-  📍 ${ultima.lugar || "Sin ubicación"}<br>
-  🚒 ${ultima.tipo || "Sin tipo"}<br>
-  📝 ${ultima.descripcion || "Sin descripción"}
-`;
-
-  // ✅ ALERTA POR RECENCIA
-  let ahora = new Date();
-  let fechaUltima = new Date(ultima.fecha + " " + (ultima.hora || "00:00"));
-  let diffMin = (ahora - fechaUltima) / (1000 * 60);
-
-  if (diffMin < 60) {
-    document.getElementById("ultimaEmergencia").style.color = "#ef4444";
-  }
-
-console.log("📊 Historial:", historial);
 console.log("📋 Partes:", partes);
 
 // ==========================
