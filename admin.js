@@ -201,7 +201,7 @@ scales: tipo !== "pie" ? {
         ticks: {
   color: "#1e293b",
   font: { weight: "bold" }
-}
+},
         grid: { display: false }
       },
       y: {
