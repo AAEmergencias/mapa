@@ -49,8 +49,6 @@ if (ultima) {
     document.getElementById("ultimaEmergencia").style.color = "#ef4444";
   }
 
-}
-
 console.log("📊 Historial:", historial);
 console.log("📋 Partes:", partes);
 
