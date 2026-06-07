@@ -43,7 +43,9 @@ if (parteEditar) {
 
   console.log("EMERGENCIA:", emergencia);
 
-  if (emergencia) {
+let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
+
+if (!parteEditar && emergencia)
 
     // ✅ FECHA
     if (emergencia.fecha) {
