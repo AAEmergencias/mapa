@@ -1,5 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
+
+if (parteEditar) {
+
+  document.getElementById("fecha").value = parteEditar.fecha || "";
+  document.getElementById("horaActivacion").value = parteEditar.horaActivacion || "";
+  document.getElementById("horaCierre").value = parteEditar.horaCierre || "";
+
+  document.getElementById("tipo").value = parteEditar.tipo || "";
+  document.getElementById("subtipo").value = parteEditar.subtipo || "";
+  document.getElementById("descripcion").value = parteEditar.descripcion || "";
+
+  document.getElementById("lugar").value = parteEditar.lugar || "";
+
+  document.getElementById("empresa").value = parteEditar.empresa || "";
+  document.getElementById("impacto").value = parteEditar.impacto || "";
+
+  document.getElementById("brigada").value = parteEditar.brigada || "";
+  document.getElementById("vehiculo").value = parteEditar.vehiculo || "";
+
+  document.getElementById("ambulancia").value = parteEditar.ambulancia || "";
+  document.getElementById("servicioMedico").value = parteEditar.servicioMedico || "";
+
+  document.getElementById("clave").value = parteEditar.clave || "";
+  document.getElementById("tipoAtencion").value = parteEditar.tipoAtencion || "";
+
+  document.getElementById("pue").value = parteEditar.pue || "";
+  document.getElementById("descPue").value = parteEditar.descripcionPue || "";
+
+  document.getElementById("operador").value = parteEditar.operador || "";
+}
+
   let emergencia = JSON.parse(localStorage.getItem("emergenciaSeleccionada"));
 
   console.log("EMERGENCIA:", emergencia);
@@ -165,7 +197,30 @@ if (emergencia.ambulancia) {
     };
 
     let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
-    partes.push(parte);
+    let editando = JSON.parse(localStorage.getItem("parteEditar"));
+let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+
+if (editando) {
+
+  let index = partes.findIndex(p =>
+    p.fecha === editando.fecha &&
+    p.horaActivacion === editando.horaActivacion
+  );
+
+  if (index !== -1) {
+    partes[index] = parte;
+  }
+
+  localStorage.removeItem("parteEditar");
+
+} else {
+
+  partes.push(parte);
+
+}
+
+localStorage.setItem("partesEmergencia", JSON.stringify(partes));
+
 
     let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 
