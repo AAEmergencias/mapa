@@ -128,7 +128,8 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
       labels: Object.keys(datos),
       datasets: [{
         data: Object.values(datos),
-        backgroundColor: color
+        backgroundColor: "#1e3a8a",
+borderRadius: 6
       }]
     },
     options: {
