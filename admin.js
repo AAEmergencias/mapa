@@ -1,5 +1,40 @@
 console.log("✅ admin.js funcionando");
 
+const pluginLabels = {
+  id: 'labelsTop',
+  afterDatasetsDraw(chart) {
+
+    const { ctx } = chart;
+
+    chart.data.datasets.forEach((dataset, i) => {
+
+      const meta = chart.getDatasetMeta(i);
+
+      meta.data.forEach((bar, index) => {
+
+        const value = dataset.data[index];
+
+        ctx.fillStyle = "#1e3a8a";
+        ctx.font = "bold 12px Arial";
+        ctx.textAlign = "center";
+
+        // ✅ vertical
+        if (chart.config.type === "bar" && chart.options.indexAxis !== "y") {
+          ctx.fillText(value, bar.x, bar.y - 5);
+        }
+
+        // ✅ horizontal
+        if (chart.options.indexAxis === "y") {
+          ctx.textAlign = "left";
+          ctx.fillText(value, bar.x + 10, bar.y + 4);
+        }
+
+      });
+    });
+  }
+};
+
+Chart.register(pluginLabels);
 // ==========================
 // 📦 DATOS
 // ==========================
@@ -128,19 +163,49 @@ function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
       labels: Object.keys(datos),
       datasets: [{
         data: Object.values(datos),
-        backgroundColor: "#1e3a8a",
+        backgroundColor: tipo === "pie"
+  ? ["#1e3a8a", "#2563eb", "#3b82f6", "#60a5fa", "#93c5fd"]
+  : "#1e3a8a",
+
 borderRadius: 6
+
       }]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      indexAxis: horizontal ? "y" : "x",
-      plugins: {
-        legend: { display: tipo === "pie" }
+options: {
+  responsive: true,
+  maintainAspectRatio: false,
+  indexAxis: horizontal ? "y" : "x",
+
+  plugins: {
+    legend: {
+      display: tipo === "pie"
+    },
+
+    title: {
+      display: true,
+      text: id.replace("grafico", "").toUpperCase(),
+      color: "#1e3a8a",
+      font: {
+        size: 16,
+        weight: "bold"
       }
     }
-  });
+  },
+
+  scales: tipo !== "pie" ? {
+    x: {
+      ticks: {
+        color: "#1e3a8a",
+        font: { weight: "bold" }
+      },
+      grid: { display: false }
+    },
+    y: {
+      ticks: {
+        color: "#64748b"
+      }
+    }
+  } : {}
 }
 
 // ==========================
