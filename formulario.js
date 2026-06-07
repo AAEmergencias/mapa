@@ -61,8 +61,10 @@ if (!parteEditar && emergencia) {
     // ✅ UBICACIÓN
     document.getElementById("lugar").value = emergencia.ubicacion || "";
 
-    // ✅ RESPUESTA
+   }
 
+    // ✅ RESPUESTA
+  
     const BRIGADAS_NOMBRE = {
   "UIR-M": "BRIGADA MINA",
   "UIR-S": "BRIGADA STP",
