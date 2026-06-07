@@ -299,3 +299,11 @@ canvas {
   width: 100% !important;
   height: 300px !important;
 }
+
+.card h4 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #1e3a8a;
+}
