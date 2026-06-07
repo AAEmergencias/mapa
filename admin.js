@@ -59,13 +59,16 @@ divPartes.innerHTML = partes.length === 0
 // ==========================
 // 📅 HISTORIAL
 // ==========================
+let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 let divHist = document.getElementById("historial");
 
-divHist.innerHTML = historial.map(e => `
-  #${e.id} - ${e.tipo}<br>
-  📍 ${e.ubicacion}<br>
-  📅 ${e.fecha}
-`).join("<hr>");
+divHist.innerHTML = historial.length === 0
+  ? "Sin historial"
+  : historial.map(e => `
+      #${e.id} - ${e.tipo}<br>
+      📍 ${e.ubicacion}<br>
+      📅 ${e.fecha}
+    `).join("<hr>");
 
 // ==========================
 // 🎛 FILTROS
