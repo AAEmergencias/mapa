@@ -23,14 +23,6 @@ let soloBrigada = partesReales.filter(p =>
   BRIGADAS_VALIDAS.includes(p.brigada)
 );
 
-// ✅ OBTENER ÚLTIMA EMERGENCIA
-
-    let fechaA = new Date(a.fecha + " " + (a.hora || "00:00"));
-    let fechaB = new Date(b.fecha + " " + (b.hora || "00:00"));
-
-    return fechaB - fechaA;
-  })[0];
-
 
 if (ultima) {
 
