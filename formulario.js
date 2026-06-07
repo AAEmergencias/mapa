@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
+let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
+
+console.log("📦 Parte a editar:", parteEditar); // ✅ para verificar
 
 if (parteEditar) {
 
+  // ✅ llenar campos básicos
   document.getElementById("fecha").value = parteEditar.fecha || "";
   document.getElementById("horaActivacion").value = parteEditar.horaActivacion || "";
   document.getElementById("horaCierre").value = parteEditar.horaCierre || "";
@@ -13,6 +16,8 @@ if (parteEditar) {
   document.getElementById("descripcion").value = parteEditar.descripcion || "";
 
   document.getElementById("lugar").value = parteEditar.lugar || "";
+  document.getElementById("comuna").value = parteEditar.comuna || "";
+  document.getElementById("faena").value = parteEditar.faena || "";
 
   document.getElementById("empresa").value = parteEditar.empresa || "";
   document.getElementById("impacto").value = parteEditar.impacto || "";
@@ -22,6 +27,7 @@ if (parteEditar) {
 
   document.getElementById("ambulancia").value = parteEditar.ambulancia || "";
   document.getElementById("servicioMedico").value = parteEditar.servicioMedico || "";
+  document.getElementById("ambulanciaExterna").value = parteEditar.ambulanciaExterna || "";
 
   document.getElementById("clave").value = parteEditar.clave || "";
   document.getElementById("tipoAtencion").value = parteEditar.tipoAtencion || "";
@@ -30,6 +36,7 @@ if (parteEditar) {
   document.getElementById("descPue").value = parteEditar.descripcionPue || "";
 
   document.getElementById("operador").value = parteEditar.operador || "";
+
 }
 
   let emergencia = JSON.parse(localStorage.getItem("emergenciaSeleccionada"));
