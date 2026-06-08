@@ -352,20 +352,16 @@ document.getElementById("actualizar").onclick = actualizarTodo;
 // 📋 TOGGLE PARTES
 // ==========================
 window.toggleHistorial = function() {
-  let d = document.getElementById("partes");
-  d.style.display = d.style.display === "none" ? "block" : "none";
-}
-
-function toggleHistorial() {
   let d = document.getElementById("historial");
 
-  if (d.style.display === "none") {
-    d.style.display = "block";
-  } else {
-    d.style.display = "none";
-  }
-}
+  d.style.display = d.style.display === "none" ? "block" : "none";
+};
 
+window.togglePartes = function() {
+  let d = document.getElementById("partes");
+
+  d.style.display = d.style.display === "none" ? "block" : "none";
+};
 
 function actualizarBrigada() {
 
