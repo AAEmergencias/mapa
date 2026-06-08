@@ -244,17 +244,17 @@ scales: tipo !== "pie" ? {
 // ==========================
 // 🔘 BOTONES
 // ==========================
-function verGeneral() {
+window.verGeneral = function() {
   vistaActual = "general";
 cargarPartes();
 }
 
-function verBrigada() {
+window.verBrigada = function() {
   vistaActual = "brigada";
  cargarPartes();
 }
 
-function verMedico() {
+window.verMedico = function() {
   vistaActual = "medico";
   cargarPartes();
 }
@@ -351,7 +351,7 @@ document.getElementById("actualizar").onclick = actualizarTodo;
 // ==========================
 // 📋 TOGGLE PARTES
 // ==========================
-function togglePartes() {
+window.toggleHistorial = function() {
   let d = document.getElementById("partes");
   d.style.display = d.style.display === "none" ? "block" : "none";
 }
