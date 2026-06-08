@@ -199,7 +199,7 @@ if (editando) {
 
 }
 
-localStorage.setItem("partesEmergencia", JSON.stringify(partes));
+await addDoc(collection(db, "partes"), parte);
 
 
     let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
