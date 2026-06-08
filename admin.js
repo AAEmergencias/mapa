@@ -53,8 +53,21 @@ const COLORES = [
 // ==========================
 // 📦 DATOS
 // ==========================
-let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
+let partes = [];
 let vistaActual = "general";
+
+async function cargarPartes() {
+
+  partes = [];
+
+  const querySnapshot = await getDocs(collection(db, "partes"));
+
+  querySnapshot.forEach((doc) => {
+    partes.push(doc.data());
+  });
+
+cargarPartes();
+}
 
 
 // ==========================
@@ -233,17 +246,17 @@ scales: tipo !== "pie" ? {
 // ==========================
 function verGeneral() {
   vistaActual = "general";
-  actualizarTodo();
+cargarPartes();
 }
 
 function verBrigada() {
   vistaActual = "brigada";
-  actualizarTodo(); 
+ cargarPartes();
 }
 
 function verMedico() {
   vistaActual = "medico";
-  actualizarTodo(); 
+  cargarPartes();
 }
 
 function actualizarBotones() {
@@ -330,7 +343,7 @@ crear("graficoPUE", porPUE, "bar", "#10b981", true);
 document.getElementById("filtroMes").onchange = actualizarDashboard;
 document.getElementById("filtroAnio").onchange = actualizarDashboard;
 
-actualizarTodo();
+cargarPartes();
 
 // ✅ BOTÓN ACTUALIZAR (SIN RECARGA)
 document.getElementById("actualizar").onclick = actualizarTodo;
