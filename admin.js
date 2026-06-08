@@ -65,8 +65,8 @@ async function cargarPartes() {
   querySnapshot.forEach((doc) => {
     partes.push(doc.data());
   });
-
-cargarPartes();
+  
+actualizarTodo();
 }
 
 
@@ -486,9 +486,6 @@ crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
 function actualizarTodo() {
 
-  // 🔄 recargar datos
-  partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
-
   // ✅ recalcular derivados
   partesReales = partes.filter(esReal);
   soloBrigada = partesReales.filter(p =>
@@ -571,9 +568,8 @@ document.getElementById("adminReset").onclick = () => {
 
 function editarParte(index) {
 
-  let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
-
-  let parteSeleccionado = partes[index];
+// usar variable global partes
+let parteSeleccionado = partes[index];
 
   // ✅ limpiar emergencia vieja
   localStorage.removeItem("emergenciaSeleccionada");
