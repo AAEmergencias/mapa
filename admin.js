@@ -63,8 +63,17 @@ async function cargarPartes() {
   const querySnapshot = await getDocs(collection(db, "partes"));
 
   querySnapshot.forEach((doc) => {
-    partes.push(doc.data());
-  });
+  partes.push(doc.data());
+});
+
+// ✅ ORDENAR POR FECHA + HORA (ÚLTIMA ARRIBA)
+partes.sort((a, b) => {
+
+  let fechaA = new Date(a.fecha + " " + (a.horaActivacion || "00:00"));
+  let fechaB = new Date(b.fecha + " " + (b.horaActivacion || "00:00"));
+
+  return fechaB - fechaA; // 🔥 más reciente primero
+});
   
 actualizarTodo();
 }
@@ -499,7 +508,7 @@ function actualizarTodo() {
 
   // ✅ ÚLTIMA EMERGENCIA (CORRECTO)
 let ultima = partes.length > 0
-  ? partes[partes.length - 1]
+  ? partes[0]  // ✅ ahora sí es la más reciente
   : null;
 
 if (ultima) {
