@@ -1,3 +1,4 @@
+import { db, collection, addDoc } from "./firebase.js";
 document.addEventListener("DOMContentLoaded", () => {
 
 let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
