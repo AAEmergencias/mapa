@@ -139,7 +139,7 @@ if (!parteEditar && emergencia) {
   // 🧠 FUNCIONALIDAD FORMULARIO
   // ==========================
 
-  document.getElementById("formParte").onsubmit = (e) => {
+document.getElementById("formParte").onsubmit = async (e) => {
     e.preventDefault();
 
     let parte = {
@@ -200,7 +200,6 @@ if (editando) {
 }
 
 await addDoc(collection(db, "partes"), parte);
-
 
     let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 
