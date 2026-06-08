@@ -1,3 +1,4 @@
+import { db, collection, getDocs } from "./firebase.js";
 console.log("✅ admin.js funcionando");
 
 const pluginLabels = {
