@@ -20,15 +20,29 @@ const pluginLabels = {
         ctx.textAlign = "center";
 
         // ✅ vertical
-        if (chart.config.type === "bar" && chart.options.indexAxis !== "y") {
-          ctx.fillText(value, bar.x, bar.y - 5);
-        }
+       if (chart.config.type === "bar" && chart.options.indexAxis !== "y") {
+
+  // ✅ centro vertical de la barra
+  let centroY = (bar.y + bar.base) / 2;
+
+  ctx.fillStyle = "#ffffff"; // blanco para que se vea
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillText(value, bar.x, centroY);
+}
 
         // ✅ horizontal
-        if (chart.options.indexAxis === "y") {
-          ctx.textAlign = "left";
-          ctx.fillText(value, bar.x + 10, bar.y + 4);
-        }
+      if (chart.options.indexAxis === "y") {
+
+  let centroX = (bar.x + bar.base) / 2;
+
+  ctx.fillStyle = "#ffffff";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillText(value, centroX, bar.y);
+}
 
       });
     });
