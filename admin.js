@@ -355,7 +355,16 @@ document.getElementById("filtroAnio").onchange = actualizarDashboard;
 cargarPartes();
 
 // ✅ BOTÓN ACTUALIZAR (SIN RECARGA)
-document.getElementById("actualizar").onclick = actualizarTodo;
+document.getElementById("actualizar").onclick = async () => {
+
+  let btn = document.getElementById("actualizar");
+
+  btn.innerText = "⏳ Cargando...";
+
+  await cargarPartes();
+
+  btn.innerText = "🔄 Actualizar";
+};
 
 // ==========================
 // 📋 TOGGLE PARTES
