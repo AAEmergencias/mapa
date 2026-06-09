@@ -126,7 +126,7 @@ header button:hover {
 /* ✅ GRID DE GRÁFICOS */
 .gridGraficos {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 🔥 2 columnas */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -317,7 +317,6 @@ button.activo {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  grid-column: span 2; /* 🔥 clave */
 }
 
 #graficosSubtipos .card {
