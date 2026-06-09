@@ -79,6 +79,21 @@ const MESES = {
   "12": "Diciembre"
 };
 
+const ORDEN_MESES = [
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre"
+];
+
 // ==========================
 // 📦 DATOS
 // ==========================
@@ -373,7 +388,16 @@ Chart.helpers.each(Chart.instances, function(inst) {
 });
 
 // 📊 crear después
-crear("graficoMes", porMes);
+// ✅ ORDENAR MESES
+let porMesOrdenado = {};
+
+ORDEN_MESES.forEach(mes => {
+  if (porMes[mes]) {
+    porMesOrdenado[mes] = porMes[mes];
+  }
+});
+
+crear("graficoMes", porMesOrdenado);
 crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
 crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
@@ -468,7 +492,7 @@ Chart.helpers.each(Chart.instances, function(inst) {
 });
 
 // 📊 crear después
-crear("graficoMes", porMes);
+crear("graficoMes", porMesOrdenado);
 crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
 crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
@@ -530,7 +554,7 @@ Chart.helpers.each(Chart.instances, function(inst) {
 });
 
 // 📊 luego crear TODOS
-crear("graficoMes", porMes);
+crear("graficoMes", porMesOrdenado);
 crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
 crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
