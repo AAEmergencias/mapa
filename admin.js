@@ -357,6 +357,16 @@ let porMedico = {
 
 let porPUE = contar(filtrados, "pue");
 
+  let asistenciaSI = filtrados.filter(p => p.brigada && p.brigada !== "").length;
+let asistenciaNO = filtrados.filter(p => !p.brigada || p.brigada === "").length;
+
+  crear("graficoAsistencia", porAsistencia, "pie");
+
+let porAsistencia = {
+  "Con Brigada": asistenciaSI,
+  "Sin Brigada": asistenciaNO
+};
+
 // 🧹 limpiar primero
 Chart.helpers.each(Chart.instances, function(inst) {
   inst.destroy();
@@ -378,6 +388,10 @@ crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porMedico, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
+
+let contenedor = document.getElementById("graficosSubtipos");
+if (contenedor) contenedor.innerHTML = "";
+
 }
 
 document.getElementById("filtroMes").onchange = actualizarDashboard;
@@ -480,6 +494,42 @@ crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porMedico, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
+
+  let tipos = {};
+
+filtrados.forEach(p => {
+
+  if (!p.tipo || !p.subtipo) return;
+
+  if (!tipos[p.tipo]) {
+    tipos[p.tipo] = {};
+  }
+
+  tipos[p.tipo][p.subtipo] =
+    (tipos[p.tipo][p.subtipo] || 0) + 1;
+});
+
+
+let contenedor = document.getElementById("graficosSubtipos");
+contenedor.innerHTML = "";
+
+Object.keys(tipos).forEach((tipo, i) => {
+
+  let id = "graficoSubtipo_" + i;
+
+  let div = document.createElement("div");
+  div.className = "card";
+
+  div.innerHTML = `
+    <h4>📂 ${tipo}</h4>
+    <canvas id="${id}"></canvas>
+  `;
+
+  contenedor.appendChild(div);
+
+  crear(id, tipos[tipo], "bar");
+});
+  
 }
 
 function actualizarMedico() {
@@ -549,6 +599,9 @@ crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porMedico, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
+
+ let contenedor = document.getElementById("graficosSubtipos");
+if (contenedor) contenedor.innerHTML = "";
 
 }
 
