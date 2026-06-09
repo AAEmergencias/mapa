@@ -515,10 +515,9 @@ filtrados.forEach(p => {
     (tipos[p.tipo][p.subtipo] || 0) + 1;
 });
 
-let contenedor = document.getElementById("graficosSubtipos");
-contenedor.innerHTML = "";
+let contenedor = document.querySelector(".gridGraficos"); // 🔥 CLAVE
 
-Object.keys(tipos).sort().forEach((tipo, i) => {
+Object.keys(tipos).forEach((tipo, i) => {
 
   let id = "graficoSubtipo_" + i;
 
@@ -530,7 +529,7 @@ Object.keys(tipos).sort().forEach((tipo, i) => {
     <canvas id="${id}"></canvas>
   `;
 
-  contenedor.appendChild(div);
+  contenedor.appendChild(div); // 🔥 AHORA VA DIRECTO AL GRID
 
   crear(id, tipos[tipo], "bar");
 });
