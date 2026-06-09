@@ -487,17 +487,13 @@ let porAsistencia = {
   "Sin Brigada": asistenciaNO
 };
 
-  crear("graficoAsistencia", porAsistencia, "pie");
-
 // 🧹 destruir primero
 Chart.helpers.each(Chart.instances, function(inst) {
   inst.destroy();
 });
 
-// 📊 crear después
+// ✅ crear TODOS después
 crear("graficoAsistencia", porAsistencia, "pie");
-
-// 📊 crear después
 crear("graficoMes", porMesOrdenado);
 crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
@@ -539,6 +535,8 @@ Object.keys(tipos).sort().forEach((tipo, i) => {
   crear(id, tipos[tipo], "bar");
 });
 
+  }
+  
 
 function actualizarMedico() {
 
