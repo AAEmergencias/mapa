@@ -306,5 +306,6 @@ button.activo {
 }
 
 #panelBrigada {
-  display: none;
+  display: contents; /* 🔥 magia */
 }
+
