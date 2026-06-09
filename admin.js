@@ -64,6 +64,21 @@ const COLORES = [
   "#6366f1"  // índigo
 ];
 
+const MESES = {
+  "01": "Enero",
+  "02": "Febrero",
+  "03": "Marzo",
+  "04": "Abril",
+  "05": "Mayo",
+  "06": "Junio",
+  "07": "Julio",
+  "08": "Agosto",
+  "09": "Septiembre",
+  "10": "Octubre",
+  "11": "Noviembre",
+  "12": "Diciembre"
+};
+
 // ==========================
 // 📦 DATOS
 // ==========================
@@ -328,11 +343,15 @@ let filtrados = partes.filter(p => {
 
 
   // recalcular datos
-  let porMes = {};
-  filtrados.forEach(p => {
-    let m = p.fecha.split("-")[1];
-    porMes[m] = (porMes[m] || 0) + 1;
-  });
+let porMes = {};
+filtrados.forEach(p => {
+
+  let m = p.fecha.split("-")[1];
+
+  let nombreMes = MESES[m] || m;
+
+  porMes[nombreMes] = (porMes[nombreMes] || 0) + 1;
+});
 
   let porFaena = contar(filtrados, "faena");
   let porTipo = contar(filtrados, "tipo");
@@ -418,11 +437,16 @@ if (!p.brigada || p.brigada.trim() === "") return false;
 });
 
 
-  let porMes = {};
-  filtrados.forEach(p => {
-    let m = p.fecha.split("-")[1];
-    porMes[m] = (porMes[m] || 0) + 1;
-  });
+let porMes = {};
+filtrados.forEach(p => {
+
+  let m = p.fecha.split("-")[1];
+
+  let nombreMes = MESES[m] || m;
+
+  porMes[nombreMes] = (porMes[nombreMes] || 0) + 1;
+});
+
 
   let porFaena = contar(filtrados, "faena");
   let porTipo = contar(filtrados, "tipo");
@@ -475,12 +499,16 @@ let filtrados = partes.filter(p => {
   return true;
 });
 
+let porMes = {};
+filtrados.forEach(p => {
 
-  let porMes = {};
-  filtrados.forEach(p => {
-    let m = p.fecha.split("-")[1];
-    porMes[m] = (porMes[m] || 0) + 1;
-  });
+  let m = p.fecha.split("-")[1];
+
+  let nombreMes = MESES[m] || m;
+
+  porMes[nombreMes] = (porMes[nombreMes] || 0) + 1;
+});
+
 
   let porFaena = contar(filtrados, "faena");
   let porTipo = contar(filtrados, "tipo");
