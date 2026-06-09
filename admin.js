@@ -157,39 +157,6 @@ document.getElementById("totalCompletas").innerText = emergenciasCompletas.lengt
 
 document.getElementById("totalPartes").innerText = partes.length;
 
-
-// ==========================
-// 📋 PARTES LISTADO
-// ==========================
-let divPartes = document.getElementById("partes");
-
-divPartes.innerHTML = partes.length === 0
-  ? "Sin partes"
-  : partes.map((p, index) => `
-      📅 ${p.fecha}<br>
-      🚒 ${p.tipo}<br>
-      📍 ${p.lugar}<br>
-
-      <button onclick="editarParte(${index})">
-        ✏️ Editar Parte
-      </button>
-
-    `).join("<hr>");
-
-// ==========================
-// 📅 HISTORIAL
-// ==========================
-let divHist = document.getElementById("historial");
-
-divHist.innerHTML = partes.length === 0
-  ? "Sin historial"
-  : partes.map(p => `
-      📅 ${p.fecha}<br>
-      🚒 ${p.tipo} - ${p.subtipo}<br>
-      📍 ${p.lugar}<br>
-      📝 ${p.descripcion || "Sin descripción"}
-    `).join("<hr>");
-
 // ==========================
 // 🎛 FILTROS
 // ==========================
@@ -618,6 +585,39 @@ else if (vistaActual === "medico") {
   actualizarMedico();
 }
 
+  // ==========================
+// 📋 PARTES LISTADO
+// ==========================
+let divPartes = document.getElementById("partes");
+
+divPartes.innerHTML = partes.length === 0
+  ? "Sin partes"
+  : partes.map((p, index) => `
+      📅 ${p.fecha}<br>
+      🚒 ${p.tipo}<br>
+      📍 ${p.lugar}<br>
+
+      <button onclick="editarParte(${index})">
+        ✏️ Editar Parte
+      </button>
+    `).join("<hr>");
+
+
+// ==========================
+// 📂 HISTORIAL
+// ==========================
+let divHist = document.getElementById("historial");
+
+divHist.innerHTML = partes.length === 0
+  ? "Sin historial"
+  : partes.map(p => `
+      📅 ${p.fecha}<br>
+      🚒 ${p.tipo} - ${p.subtipo}<br>
+      📍 ${p.lugar}<br>
+      📝 ${p.descripcion || "Sin descripción"}
+    `).join("<hr>");
+
+  
 // ✅ activar botón correspondiente
 actualizarBotones();
 
