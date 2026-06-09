@@ -513,12 +513,13 @@ filtrados.forEach(p => {
 let contenedor = document.getElementById("graficosSubtipos");
 contenedor.innerHTML = "";
 
-Object.keys(tipos).forEach((tipo, i) => {
+Object.keys(tipos).sort().forEach((tipo, i) => {
 
   let id = "graficoSubtipo_" + i;
 
   let div = document.createElement("div");
-  div.className = "card";
+ div.className = "card";
+div.style.marginBottom = "20px";
 
   div.innerHTML = `
     <h4>📂 ${tipo}</h4>
