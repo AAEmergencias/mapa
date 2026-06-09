@@ -646,7 +646,7 @@ document.getElementById("adminReset").onclick = () => {
   location.reload();
 };
 
-function editarParte(index) {
+window.editarParte = function(index) {
 
 // usar variable global partes
 let parteSeleccionado = partes[index];
