@@ -745,39 +745,31 @@ let parteSeleccionado = partes[index];
 
 function mostrarPanelBrigada() {
 
-  let panel = document.getElementById("panelBrigada");
-  let subtipo = document.getElementById("graficoSubtipo")?.parentElement;
+  const panel = document.getElementById("panelBrigada");
+  const subtipo = document.getElementById("graficoSubtipo")?.parentElement;
+
+  // 🔒 PROTECCIÓN
+  if (!panel) {
+    console.warn("⚠️ panelBrigada NO existe en el HTML");
+    return;
+  }
 
   if (vistaActual === "brigada") {
 
     panel.style.display = "grid";
 
-    // ❌ ocultar en brigada
     if (subtipo) subtipo.style.display = "none";
 
-  } 
-  else if (vistaActual === "medico") {
+  } else if (vistaActual === "medico") {
 
     panel.style.display = "none";
 
-    // ❌ ocultar en servicio médico
     if (subtipo) subtipo.style.display = "none";
 
-  } 
-  else {
-
-    panel.style.display = "none";
-
-    // ✅ SOLO visible en consagrado
-    if (subtipo) subtipo.style.display = "block";
-  }
-} {
-
-  let panel = document.getElementById("panelBrigada");
-
-  if (vistaActual === "brigada") {
-    panel.style.display = "grid"; // 🔥 importante usar grid
   } else {
+
     panel.style.display = "none";
+
+    if (subtipo) subtipo.style.display = "block";
   }
 }
