@@ -517,12 +517,15 @@ filtrados.forEach(p => {
 
 let contenedor = document.querySelector(".gridGraficos"); // 🔥 CLAVE
 
+  // 🔥 eliminar TODOS los gráficos dinámicos anteriores
+document.querySelectorAll(".grafico-dinamico").forEach(el => el.remove());
+
 Object.keys(tipos).forEach((tipo, i) => {
 
   let id = "graficoSubtipo_" + i;
 
   let div = document.createElement("div");
-  div.className = "card";
+div.className = "card grafico-dinamico";
 
   div.innerHTML = `
     <h4>📂 ${tipo}</h4>
