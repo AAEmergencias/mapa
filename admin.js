@@ -743,7 +743,7 @@ let parteSeleccionado = partes[index];
   window.open("formulario.html", "_blank");
 }
 
-functionfunction mostrarPanelBrigada() {
+function mostrarPanelBrigada() {
 
   let panel = document.getElementById("panelBrigada");
   let subtipo = document.getElementById("graficoSubtipo")?.parentElement;
