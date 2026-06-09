@@ -304,3 +304,7 @@ button.activo {
 .card canvas {
   height: 320px !important;
 }
+
+#panelBrigada {
+  display: none;
+}
