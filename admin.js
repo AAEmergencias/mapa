@@ -743,7 +743,35 @@ let parteSeleccionado = partes[index];
   window.open("formulario.html", "_blank");
 }
 
-function mostrarPanelBrigada() {
+functionfunction mostrarPanelBrigada() {
+
+  let panel = document.getElementById("panelBrigada");
+  let subtipo = document.getElementById("graficoSubtipo")?.parentElement;
+
+  if (vistaActual === "brigada") {
+
+    panel.style.display = "grid";
+
+    // ❌ ocultar en brigada
+    if (subtipo) subtipo.style.display = "none";
+
+  } 
+  else if (vistaActual === "medico") {
+
+    panel.style.display = "none";
+
+    // ❌ ocultar en servicio médico
+    if (subtipo) subtipo.style.display = "none";
+
+  } 
+  else {
+
+    panel.style.display = "none";
+
+    // ✅ SOLO visible en consagrado
+    if (subtipo) subtipo.style.display = "block";
+  }
+} {
 
   let panel = document.getElementById("panelBrigada");
 
