@@ -481,6 +481,16 @@ let porMedico = {
 
 let porPUE = contar(filtrados, "pue");
 
+  let asistenciaSI = filtrados.filter(p => p.brigada && p.brigada !== "").length;
+let asistenciaNO = filtrados.filter(p => !p.brigada || p.brigada === "").length;
+
+let porAsistencia = {
+  "Con Brigada": asistenciaSI,
+  "Sin Brigada": asistenciaNO
+};
+
+  crear("graficoAsistencia", porAsistencia, "pie");
+
 // 🧹 destruir primero
 Chart.helpers.each(Chart.instances, function(inst) {
   inst.destroy();
@@ -520,6 +530,41 @@ Object.keys(tipos).sort().forEach((tipo, i) => {
   let div = document.createElement("div");
  div.className = "card";
 div.style.marginBottom = "20px";
+
+  div.innerHTML = `
+    <h4>📂 ${tipo}</h4>
+    <canvas id="${id}"></canvas>
+  `;
+
+  contenedor.appendChild(div);
+
+  crear(id, tipos[tipo], "bar");
+});
+
+let tipos = {};
+
+filtrados.forEach(p => {
+
+  if (!p.tipo || !p.subtipo) return;
+
+  if (!tipos[p.tipo]) {
+    tipos[p.tipo] = {};
+  }
+
+  tipos[p.tipo][p.subtipo] =
+    (tipos[p.tipo][p.subtipo] || 0) + 1;
+});
+
+
+let contenedor = document.getElementById("graficosSubtipos");
+contenedor.innerHTML = "";
+
+Object.keys(tipos).forEach((tipo, i) => {
+
+  let id = "graficoSubtipo_" + i;
+
+  let div = document.createElement("div");
+  div.className = "card";
 
   div.innerHTML = `
     <h4>📂 ${tipo}</h4>
@@ -603,7 +648,7 @@ crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
  let contenedor = document.getElementById("graficosSubtipos");
 if (contenedor) contenedor.innerHTML = "";
-
+ 
 }
 
 function actualizarTodo() {
