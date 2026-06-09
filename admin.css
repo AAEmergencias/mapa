@@ -50,7 +50,7 @@ header {
 /* GRÁFICOS */
 canvas {
   width: 100% !important;
-  height: 300px !important; /* 🔥 MÁS PEQUEÑO */
+  height: 340px !important;
   max-width: 90%;
   margin: 0 auto;
   background: #ffffff;
@@ -195,7 +195,7 @@ header button:hover {
 }
 
 .card.full canvas {
-  height: 350px !important;
+  height: 380px !important;
 }
 
 .filtros {
@@ -302,7 +302,5 @@ button.activo {
 }
 
 .card canvas {
-  height: 280px !important;
+  height: 320px !important;
 }
-
-
