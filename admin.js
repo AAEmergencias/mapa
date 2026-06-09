@@ -514,6 +514,13 @@ filtrados.forEach(p => {
   porMes[nombreMes] = (porMes[nombreMes] || 0) + 1;
 });
 
+  let porMesOrdenado = {};
+
+ORDEN_MESES.forEach(mes => {
+  if (porMes[mes]) {
+    porMesOrdenado[mes] = porMes[mes];
+  }
+});
 
   let porFaena = contar(filtrados, "faena");
   let porTipo = contar(filtrados, "tipo");
