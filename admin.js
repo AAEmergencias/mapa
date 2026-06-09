@@ -554,9 +554,6 @@ filtrados.forEach(p => {
 });
 
 
-let contenedor = document.getElementById("graficosSubtipos");
-contenedor.innerHTML = "";
-
 Object.keys(tipos).forEach((tipo, i) => {
 
   let id = "graficoSubtipo_" + i;
