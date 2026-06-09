@@ -309,3 +309,6 @@ button.activo {
   display: contents; /* 🔥 magia */
 }
 
+.card {
+  width: 100%;
+}
