@@ -495,6 +495,9 @@ Chart.helpers.each(Chart.instances, function(inst) {
 });
 
 // 📊 crear después
+crear("graficoAsistencia", porAsistencia, "pie");
+
+// 📊 crear después
 crear("graficoMes", porMesOrdenado);
 crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
@@ -506,7 +509,6 @@ crear("graficoPUE", porPUE, "bar", "#10b981", true);
   let tipos = {};
 
 filtrados.forEach(p => {
-
   if (!p.tipo || !p.subtipo) return;
 
   if (!tipos[p.tipo]) {
@@ -517,7 +519,6 @@ filtrados.forEach(p => {
     (tipos[p.tipo][p.subtipo] || 0) + 1;
 });
 
-
 let contenedor = document.getElementById("graficosSubtipos");
 contenedor.innerHTML = "";
 
@@ -526,8 +527,7 @@ Object.keys(tipos).sort().forEach((tipo, i) => {
   let id = "graficoSubtipo_" + i;
 
   let div = document.createElement("div");
- div.className = "card";
-div.style.marginBottom = "20px";
+  div.className = "card";
 
   div.innerHTML = `
     <h4>📂 ${tipo}</h4>
@@ -539,9 +539,6 @@ div.style.marginBottom = "20px";
   crear(id, tipos[tipo], "bar");
 });
 
-filtrados.forEach(p => {
-  
-}
 
 function actualizarMedico() {
 
