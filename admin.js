@@ -700,9 +700,18 @@ divHist.innerHTML = partes.length === 0
     `).join("<hr>");
 
   
-// ✅ activar botón correspondiente
 actualizarBotones();
-mostrarPanelBrigada();
+
+// ✅ CONTROL SUBTIPO
+const cardSubtipo = document.getElementById("cardSubtipo");
+
+if (cardSubtipo) {
+  if (vistaActual === "general") {
+    cardSubtipo.style.display = "block"; // ✅ se ve
+  } else {
+    cardSubtipo.style.display = "none"; // ❌ se oculta
+  }
+}
   
 }
 
