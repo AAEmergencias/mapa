@@ -541,8 +541,6 @@ div.style.marginBottom = "20px";
   crear(id, tipos[tipo], "bar");
 });
 
-let tipos = {};
-
 filtrados.forEach(p => {
 
   if (!p.tipo || !p.subtipo) return;
