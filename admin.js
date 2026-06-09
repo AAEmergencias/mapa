@@ -641,7 +641,8 @@ divHist.innerHTML = partes.length === 0
   
 // ✅ activar botón correspondiente
 actualizarBotones();
-
+mostrarPanelBrigada();
+  
 }
 
 document.getElementById("adminReset").onclick = () => {
@@ -679,4 +680,15 @@ let parteSeleccionado = partes[index];
   localStorage.setItem("parteEditar", JSON.stringify(parteSeleccionado));
 
   window.open("formulario.html", "_blank");
+}
+
+function mostrarPanelBrigada() {
+
+  let panel = document.getElementById("panelBrigada");
+
+  if (vistaActual === "brigada") {
+    panel.style.display = "grid"; // 🔥 importante usar grid
+  } else {
+    panel.style.display = "none";
+  }
 }
