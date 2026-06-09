@@ -364,7 +364,6 @@ Chart.helpers.each(Chart.instances, function(inst) {
 
 // 📊 crear después
 // ✅ ORDENAR MESES
-let porMesOrdenado = {};
 
 ORDEN_MESES.forEach(mes => {
   if (porMes[mes]) {
