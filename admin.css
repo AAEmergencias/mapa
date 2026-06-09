@@ -125,8 +125,8 @@ header button:hover {
 
 /* ✅ GRID DE GRÁFICOS */
 .gridGraficos {
-  display: grid;                      /* 🔥 clave */
-  grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 🔥 2 columnas */
   gap: 20px;
 }
 
