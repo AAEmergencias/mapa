@@ -357,10 +357,8 @@ let porMedico = {
 
 let porPUE = contar(filtrados, "pue");
 
-  let asistenciaSI = filtrados.filter(p => p.brigada && p.brigada !== "").length;
+let asistenciaSI = filtrados.filter(p => p.brigada && p.brigada !== "").length;
 let asistenciaNO = filtrados.filter(p => !p.brigada || p.brigada === "").length;
-
-  crear("graficoAsistencia", porAsistencia, "pie");
 
 let porAsistencia = {
   "Con Brigada": asistenciaSI,
@@ -542,34 +540,6 @@ div.style.marginBottom = "20px";
 });
 
 filtrados.forEach(p => {
-
-  if (!p.tipo || !p.subtipo) return;
-
-  if (!tipos[p.tipo]) {
-    tipos[p.tipo] = {};
-  }
-
-  tipos[p.tipo][p.subtipo] =
-    (tipos[p.tipo][p.subtipo] || 0) + 1;
-});
-
-
-Object.keys(tipos).forEach((tipo, i) => {
-
-  let id = "graficoSubtipo_" + i;
-
-  let div = document.createElement("div");
-  div.className = "card";
-
-  div.innerHTML = `
-    <h4>📂 ${tipo}</h4>
-    <canvas id="${id}"></canvas>
-  `;
-
-  contenedor.appendChild(div);
-
-  crear(id, tipos[tipo], "bar");
-});
   
 }
 
