@@ -50,7 +50,7 @@ header {
 /* GRÁFICOS */
 canvas {
   width: 100% !important;
-  height: 180px !important; /* 🔥 MÁS PEQUEÑO */
+  height: 300px !important; /* 🔥 MÁS PEQUEÑO */
   max-width: 90%;
   margin: 0 auto;
   background: #ffffff;
@@ -302,5 +302,7 @@ button.activo {
 }
 
 .card canvas {
-  display: block;
+  height: 280px !important;
 }
+
+
