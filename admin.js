@@ -484,13 +484,13 @@ let porMedico = {
 
 let porPUE = contar(filtrados, "pue");
 
-  let asistenciaSI = filtrados.filter(p => p.brigada && p.brigada !== "").length;
-let asistenciaNO = filtrados.filter(p => !p.brigada || p.brigada === "").length;
+// ✅ NUEVO: contar por brigada reales
+let porBrigada = contar(filtrados, "brigada");
 
-let porAsistencia = {
-  "Con Brigada": asistenciaSI,
-  "Sin Brigada": asistenciaNO
-};
+// ✅ ordenar de mayor a menor (opcional pero recomendado)
+porBrigada = Object.fromEntries(
+  Object.entries(porBrigada).sort((a, b) => b[1] - a[1])
+);
 
 // 🧹 destruir primero
 Chart.helpers.each(Chart.instances, function(inst) {
