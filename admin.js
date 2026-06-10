@@ -770,6 +770,22 @@ if (cardSubtipo) {
     cardSubtipo.style.display = "none"; // ❌ se oculta
   }
 }
+
+  // ✅ CONTROL VISUAL SERVICIO MÉDICO
+const cardClaves = document.getElementById("cardClaves");
+const cardTraslados = document.getElementById("cardTraslados");
+
+if (cardClaves && cardTraslados) {
+
+  if (vistaActual === "medico") {
+    cardClaves.style.display = "block";
+    cardTraslados.style.display = "block";
+  } 
+  else {
+    cardClaves.style.display = "none";
+    cardTraslados.style.display = "none";
+  }
+}
   
 }
 
