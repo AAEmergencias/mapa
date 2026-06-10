@@ -364,13 +364,8 @@ let porMedico = {
 
 let porPUE = contar(filtrados, "pue");
 
-let asistenciaSI = filtrados.filter(p => p.brigada && p.brigada !== "").length;
-let asistenciaNO = filtrados.filter(p => !p.brigada || p.brigada === "").length;
-
-let porAsistencia = {
-  "Con Brigada": asistenciaSI,
-  "Sin Brigada": asistenciaNO
-};
+// ✅ NUEVO: contar por brigada real
+let porBrigada = contar(filtrados, "brigada");
 
 // 🧹 limpiar primero
 Chart.helpers.each(Chart.instances, function(inst) {
@@ -503,7 +498,7 @@ Chart.helpers.each(Chart.instances, function(inst) {
 });
 
 // ✅ crear TODOS después
-crear("graficoAsistencia", porAsistencia, "pie");
+crear("graficoAsistencia", porBrigada, "bar");
 crear("graficoMes", porMesOrdenado);
 crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
