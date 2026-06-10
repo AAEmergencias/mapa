@@ -312,3 +312,21 @@ button.activo {
 .grid .card:hover {
   transform: scale(1.03);
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 500px;
+  height: 500px;
+
+  background: url("logo.png") no-repeat center;
+  background-size: contain;
+
+  opacity: 0.04; /* 🔥 muy sutil */
+
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
