@@ -64,14 +64,14 @@ button:hover {
 }
 
 .card div {
-  font-size: 36px;
-  font-weight: bold;
-  margin-top: 10px;
+  font-size: 48px;          /* 🔥 más grande */
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
 .card h3 {
-  margin: 0;
-  font-size: 14px;
+  font-size: 18px;       /* 🔥 más visible */
+  font-weight: 600;
   color: #cbd5f5;
 }
 
@@ -158,19 +158,23 @@ header button:hover {
 }
 
 .card:nth-child(1) div {
-  color: #f59e0b; /* naranja */
+  color: #f59e0b;
+  text-shadow: 0 0 10px rgba(245,158,11,0.6);
 }
 
 .card:nth-child(2) div {
-  color: #3b82f6; /* azul */
+  color: #3b82f6;
+  text-shadow: 0 0 10px rgba(59,130,246,0.6);
 }
 
 .card:nth-child(3) div {
-  color: #10b981; /* verde */
+  color: #10b981;
+  text-shadow: 0 0 10px rgba(16,185,129,0.6);
 }
 
 .card:nth-child(4) div {
-  color: #ef4444; /* rojo */
+  color: #ef4444;
+  text-shadow: 0 0 10px rgba(239,68,68,0.6);
 }
 
 .card.full {
@@ -200,8 +204,9 @@ header button:hover {
 }
 
 #ultimaEmergencia {
-  font-size: 17px;
-  line-height: 1.8;
+  font-size: 20px;
+  line-height: 2;
+  font-weight: 500;
 }
 
 #ultimaEmergencia br {
@@ -209,10 +214,10 @@ header button:hover {
 }
 
 .grid .card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 25px;          /* 🔥 más aire */
+  min-height: 140px;      /* 🔥 altura uniforme */
 }
+
 
 .card::before {
   content: "";
@@ -289,4 +294,16 @@ button.activo {
 
 #graficosSubtipos .card {
   width: 100%;
+}
+
+.grid {
+  gap: 25px;
+}
+
+.grid .card {
+  transition: 0.3s;
+}
+
+.grid .card:hover {
+  transform: scale(1.03);
 }
