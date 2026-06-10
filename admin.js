@@ -227,50 +227,48 @@ options: {
   maintainAspectRatio: false,
   indexAxis: horizontal ? "y" : "x",
 
-plugins: {
-  legend: {
-    display: tipo === "pie",
-    labels: {
-      color: "#ffffff"
-    }
-  }, // ✅ ESTA COMA ES CLAVE
+  plugins: {
+    legend: {
+      display: tipo === "pie",
+      labels: {
+        color: "#ffffff"
+      }
+    },
 
-  title: {
-    display: true,
-    text: id.replace("grafico", "").toUpperCase(),
-    color: "#ffffff",
-    font: {
-      size: 16,
-      weight: "bold"
+    title: {
+      display: true,
+      text: id.replace("grafico", "").toUpperCase(),
+      color: "#ffffff",
+      font: {
+        size: 16,
+        weight: "bold"
+      }
     }
-  }
-}
   },
 
-scales: tipo !== "pie" ? {
-  x: {
-    ticks: {
-      color: "#ffffff",   // ✅ texto eje X blanco
-      font: { weight: "bold" }
+  // ✅ AQUÍ VA scales (dentro de options)
+  scales: tipo !== "pie" ? {
+    x: {
+      ticks: {
+        color: "#ffffff",
+        font: { weight: "bold" }
+      },
+      grid: {
+        color: "rgba(255,255,255,0.08)"
+      }
     },
-    grid: {
-      color: "rgba(255,255,255,0.08)" // líneas suaves
+    y: {
+      beginAtZero: true,
+      ticks: {
+        stepSize: 1,
+        precision: 0,
+        color: "#ffffff"
+      },
+      grid: {
+        color: "rgba(255,255,255,0.08)"
+      }
     }
-  },
-  y: {
-    beginAtZero: true,
-    ticks: {
-      stepSize: 1,
-      precision: 0,
-      color: "#ffffff"   // ✅ texto eje Y blanco
-    },
-    grid: {
-      color: "rgba(255,255,255,0.08)"
-    }
-  }
-} : {}
-  }
-});
+  } : {}
 }
 
 // ==========================
