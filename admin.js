@@ -354,13 +354,22 @@ ORDEN_MESES.forEach(mes => {
   let porTipo = contar(filtrados, "tipo");
   let porSubtipo = contar(filtrados, "subtipo");
   let porEmpresa = contar(filtrados, "empresa");
-let medicoSI = filtrados.filter(p => p.servicioMedico).length;
-let medicoNO = filtrados.filter(p => !p.servicioMedico).length;
+  
+// ✅ NUEVO: ambulancias
+let porAmbulancia = contar(filtrados, "ambulancia");
 
-let porMedico = {
-  "Sí asiste": medicoSI,
-  "No asiste": medicoNO
-};
+// ordenar
+porAmbulancia = Object.fromEntries(
+  Object.entries(porAmbulancia).sort((a, b) => b[1] - a[1])
+);
+
+// ✅ claves alfa
+let porClave = contar(filtrados, "clave");
+
+// ordenar
+porClave = Object.fromEntries(
+  Object.entries(porClave).sort((a, b) => b[1] - a[1])
+);
 
 let porPUE = contar(filtrados, "pue");
 // ✅ NUEVO: contar brigadas en CONSAGRADO
@@ -391,7 +400,7 @@ crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
 crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
-crear("graficoMedico", porMedico, "pie");
+crear("graficoMedico", porAmbulancia, "bar", "#06b6d4", true);
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
 crear("graficoAsistencia", porBrigada, "bar", "#10b981", true);
 
