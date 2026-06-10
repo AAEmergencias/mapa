@@ -127,3 +127,19 @@ textarea {
 input::placeholder {
   color: #94a3b8; /* ✅ gris elegante */
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  height: 450px;
+
+  background: url("logo.png") no-repeat center;
+  background-size: contain;
+
+  opacity: 0.03;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
