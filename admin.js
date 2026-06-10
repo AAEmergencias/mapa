@@ -786,6 +786,19 @@ if (cardClaves && cardTraslados) {
     cardTraslados.style.display = "none";
   }
 }
+
+  // ✅ CONTROL VISUAL ASISTENCIA BRIGADA
+const cardAsistencia = document.getElementById("cardAsistencia");
+
+if (cardAsistencia) {
+
+  if (vistaActual === "medico") {
+    cardAsistencia.style.display = "none"; // ❌ ocultar
+  } else {
+    cardAsistencia.style.display = "block"; // ✅ mostrar
+  }
+
+}
   
 }
 
