@@ -873,3 +873,18 @@ body {
   transform: translateY(-2px);
 }
 
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo img {
+  height: 40px; /* tamaño del logo */
+  filter: drop-shadow(0 0 8px rgba(16,185,129,0.6)); /* glow verde */
+}
+
+.header-logo span {
+  font-size: 18px;
+  font-weight: bold;
+}
