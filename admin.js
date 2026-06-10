@@ -363,9 +363,14 @@ let porMedico = {
 };
 
 let porPUE = contar(filtrados, "pue");
-
-// ✅ NUEVO: contar por brigada real
+// ✅ NUEVO: contar brigadas en CONSAGRADO
 let porBrigada = contar(filtrados, "brigada");
+
+// ✅ ordenar (opcional pero recomendado)
+porBrigada = Object.fromEntries(
+  Object.entries(porBrigada).sort((a, b) => b[1] - a[1])
+);
+
 
 // 🧹 limpiar primero
 Chart.helpers.each(Chart.instances, function(inst) {
@@ -388,6 +393,8 @@ crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porMedico, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
+crear("graficoAsistencia", porBrigada, "bar", "#10b981", true);
+
 
 let contenedor = document.getElementById("graficosSubtipos");
 if (contenedor) contenedor.innerHTML = "";
