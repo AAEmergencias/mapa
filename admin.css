@@ -48,16 +48,6 @@ header {
 }
 
 /* GRÁFICOS */
-canvas {
-  width: 100% !important;
-  height: 340px !important;
-  max-width: 90%;
-  margin: 0 auto;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 8px;
-}
-
 
 /* BOTONES */
 button {
@@ -127,22 +117,20 @@ header button:hover {
 .gridGraficos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
-  gap: 30px;              /* 🔥 MÁS ESPACIO ENTRE CARDS */
-  padding: 10px 5px;      /* 🔥 AIRE LATERAL */
-
+  gap: 30px;
+  padding: 15px;
   align-items: start;
 }
 
 .card {
-  padding: 20px;          /* 🔥 espacio interno */
+  background: #1f2937;
+  padding: 20px;
   border-radius: 12px;
 
   display: flex;
   flex-direction: column;
-  gap: 12px;              /* 🔥 separa título del gráfico */
+  gap: 12px;
 }
-
 
 .card:hover {
   transform: translateY(-4px);
@@ -293,33 +281,17 @@ button.activo {
 
 
 .card h4 {
-  color: #ffffff; /* ✅ blanco */
-  text-align: center;
-  font-size: 15px;
-  font-weight: bold;
+  margin: 0;
   margin-bottom: 10px;
+  text-align: center;
+  color: #fff;
 }
 
 .card canvas {
   width: 100% !important;
-  height: 250px !important;
-
-  margin-top: 5px;        /* 🔥 pequeño respiro */
+  height: 260px !important;   /* 🔥 altura única */
+  display: block;
 }
-
-#panelBrigada {
-  display: contents; /* 🔥 magia */
-}
-
-.card {
-  padding: 20px;          /* 🔥 espacio interno */
-  border-radius: 12px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 12px;              /* 🔥 separa título del gráfico */
-}
-
 
 #graficosSubtipos {
   display: grid;
