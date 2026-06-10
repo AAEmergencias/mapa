@@ -208,20 +208,18 @@ canvas.style.background = "#1f2937"; // ✅ fondo oscuro
   }
 
   new Chart(canvas, {
-    type: tipo,
-    data: {
-      labels: Object.keys(datos),
-      
-datasets: [{
-  data: Object.values(datos),
-  backgroundColor: Object.keys(datos).map((_, i) => COLORES[i % COLORES.length]),
-  borderRadius: 6,
-  borderColor: "#ffffff",
-  borderWidth: tipo === "pie" ? 2 : 0,
-  hoverOffset: 8
-}]
+  type: tipo,
+  data: {
+    labels: Object.keys(datos),
+    datasets: [{
+      data: Object.values(datos),
+      backgroundColor: Object.keys(datos).map((_, i) => COLORES[i % COLORES.length]),
+      borderRadius: 6,
+      borderColor: "#ffffff",
+      borderWidth: tipo === "pie" ? 2 : 0,
+      hoverOffset: 8
+      }]
     },
-    
 options: {
   responsive: true,
   maintainAspectRatio: false,
@@ -230,11 +228,8 @@ options: {
   plugins: {
     legend: {
       display: tipo === "pie",
-      labels: {
-        color: "#ffffff"
-      }
+      labels: { color: "#ffffff" }
     },
-
     title: {
       display: true,
       text: id.replace("grafico", "").toUpperCase(),
@@ -245,7 +240,7 @@ options: {
       }
     }
   },
-
+ 
   // ✅ AQUÍ VA scales (dentro de options)
   scales: tipo !== "pie" ? {
     x: {
@@ -266,11 +261,13 @@ options: {
       },
       grid: {
         color: "rgba(255,255,255,0.08)"
+        }
       }
-    }
-  } : {}
+    } : {}
+  }
+});
 }
-
+  
 // ==========================
 // 🔘 BOTONES
 // ==========================
