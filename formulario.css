@@ -103,6 +103,27 @@ textarea {
   margin-top: 10px;
 }
 
+.logo-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.logo-header img {
+  height: 60px; /* 🔥 tamaño del logo */
+  filter: drop-shadow(0 0 10px rgba(16,185,129,0.6)); /* glow verde */
+}
+
+.logo-header h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+}
+
+
 input::placeholder {
   color: #94a3b8; /* ✅ gris elegante */
 }
