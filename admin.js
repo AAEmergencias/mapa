@@ -666,8 +666,11 @@ crear("graficoTraslados", porTraslado, "pie");
 
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
- let contenedor = document.getElementById("graficosSubtipos");
+let contenedor = document.getElementById("graficosSubtipos");
 if (contenedor) contenedor.innerHTML = "";
+
+  // ❌ ELIMINAR gráficos dinámicos (IMPORTANTE)
+document.querySelectorAll(".grafico-dinamico").forEach(el => el.remove());
  
 }
 
