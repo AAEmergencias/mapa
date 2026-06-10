@@ -15,51 +15,50 @@
 
 <header>
 
-  <div style="display:flex; align-items:center; gap:12px;">
-    <img src="logo.png" style="height:40px;">
-    <span>📊 Panel Administrador</span>
+  <!-- 🔵 IZQUIERDA (logo + título) -->
+  <div class="header-left">
+    <img src="logo.png">
+    <span class="titulo">📊 Panel Administrador</span>
   </div>
 
-  <div class="filtros">
+  <!-- 🟡 CENTRO (filtros + vistas) -->
+  <div class="header-center">
 
- <select id="filtroMes">
-  <option value="">Mes</option>
-  <option value="01">Enero</option>
-  <option value="02">Febrero</option>
-  <option value="03">Marzo</option>
-  <option value="04">Abril</option>
-  <option value="05">Mayo</option>
-  <option value="06">Junio</option>
-  <option value="07">Julio</option>
-  <option value="08">Agosto</option>
-  <option value="09">Septiembre</option>
-  <option value="10">Octubre</option>
-  <option value="11">Noviembre</option>
-  <option value="12">Diciembre</option>
-</select>
+    <select id="filtroMes">
+      <option value="">Mes</option>
+      <option value="01">Enero</option>
+      <option value="02">Febrero</option>
+      <option value="03">Marzo</option>
+      <option value="04">Abril</option>
+      <option value="05">Mayo</option>
+      <option value="06">Junio</option>
+      <option value="07">Julio</option>
+      <option value="08">Agosto</option>
+      <option value="09">Septiembre</option>
+      <option value="10">Octubre</option>
+      <option value="11">Noviembre</option>
+      <option value="12">Diciembre</option>
+    </select>
 
-  <select id="filtroAnio">
-    <option value="">Año</option>
-    <option>2024</option>
-    <option>2025</option>
-    <option>2026</option>
-  </select>
+    <select id="filtroAnio">
+      <option value="">Año</option>
+      <option>2024</option>
+      <option>2025</option>
+      <option>2026</option>
+    </select>
 
-    <div class="acciones">
+    <button id="btnGeneral" onclick="verGeneral()">📊 Consagrado</button>
+    <button id="btnBrigada" onclick="verBrigada()">🚒 Brigada</button>
+    <button id="btnMedico" onclick="verMedico()">🚑 Servicio Médico</button>
 
-  <button id="btnGeneral" onclick="verGeneral()">📊 Consagrado</button>
-<button id="btnBrigada" onclick="verBrigada()">🚒 Brigada</button>
-<button id="btnMedico" onclick="verMedico()">🚑 Servicio Médico</button>
+  </div>
 
-</div>
-
-</div>
-  
-  📊 Panel Administrador
-  <div>
+  <!-- 🔴 DERECHA (acciones) -->
+  <div class="header-right">
     <button id="actualizar">🔄 Actualizar</button>
     <button onclick="window.close()">⬅ Volver</button>
   </div>
+
 </header>
 
 <div class="container">
