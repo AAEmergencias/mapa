@@ -605,14 +605,46 @@ ORDEN_MESES.forEach(mes => {
   let porTipo = contar(filtrados, "tipo");
   let porSubtipo = contar(filtrados, "subtipo");
   let porEmpresa = contar(filtrados, "empresa");
-  let medicoSI = filtrados.filter(p => p.servicioMedico).length;
-let medicoNO = filtrados.filter(p => !p.servicioMedico).length;
+  
+ // ✅ 1. Ambulancias reales
+let porAmbulancia = contar(filtrados, "ambulancia");
 
-let porMedico = {
-  "Sí asiste": medicoSI,
-  "No asiste": medicoNO
+porAmbulancia = Object.fromEntries(
+  Object.entries(porAmbulancia).sort((a, b) => b[1] - a[1])
+);
+
+// ✅ 2. Claves médicas
+let porClave = contar(filtrados, "clave");
+
+porClave = Object.fromEntries(
+  Object.entries(porClave).sort((a, b) => b[1] - a[1])
+);
+
+// ✅ 3. Traslados (clave 6-15)
+let traslados = filtrados.filter(p => p.clave === "6-15");
+
+let porTraslado = {
+  "Interno": 0,
+  "Externo": 0
 };
 
+traslados.forEach(p => {
+
+  if (!p.lugarTraslado) return;
+
+  let t = p.lugarTraslado.toLowerCase();
+
+  if (
+    t.includes("perez") ||
+    t.includes("220") ||
+    t.includes("tortola")
+  ) {
+    porTraslado["Interno"]++;
+  } else {
+    porTraslado["Externo"]++;
+  }
+});
+  
 let porPUE = contar(filtrados, "pue");
 
 // 🧹 primero destruir
@@ -626,7 +658,12 @@ crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
 crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
-crear("graficoMedico", porMedico, "pie");
+
+// ✅ NUEVOS gráficos médicos
+crear("graficoMedico", porAmbulancia, "bar", "#06b6d4", true);
+crear("graficoClaves", porClave, "bar", "#f59e0b", true);
+crear("graficoTraslados", porTraslado, "pie");
+
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
  let contenedor = document.getElementById("graficosSubtipos");
