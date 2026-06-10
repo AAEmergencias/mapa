@@ -8,9 +8,10 @@ body {
 /* HEADER */
 header {
   background: #0f172a;
-  padding: 15px;
-  font-weight: bold;
+  padding: 12px 20px;
+
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -329,4 +330,61 @@ body::before {
 
   transform: translate(-50%, -50%);
   pointer-events: none;
+}
+
+/* 🔵 IZQUIERDA */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-left img {
+  height: 40px;
+  filter: drop-shadow(0 0 6px rgba(16,185,129,0.6));
+}
+
+.header-left .titulo {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 🟡 CENTRO */
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 🔴 DERECHA */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-center select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #1e293b;
+  color: white;
+  border: 1px solid #475569;
+}
+
+.header-center button {
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.header-center button.activo {
+  background: #3b82f6;
+  box-shadow: 0 0 10px rgba(59,130,246,0.6);
+}
+
+/* Hover suave */
+.header-center button:hover {
+  transform: scale(1.05);
+}
+
+.header-right button:hover {
+  transform: scale(1.05);
 }
