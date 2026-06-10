@@ -180,8 +180,10 @@ function contar(data, campo) {
 // ==========================
 function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
 
-  let canvas = document.getElementById(id);
-  if (!canvas) return;
+ let canvas = document.getElementById(id);
+if (!canvas) return;
+
+canvas.style.background = "#1f2937"; // ✅ fondo oscuro
 
   let parent = canvas.parentElement;
 
@@ -225,38 +227,46 @@ options: {
   indexAxis: horizontal ? "y" : "x",
 
   plugins: {
-    legend: {
-      display: tipo === "pie"
-    },
+  legend: {
+  display: tipo === "pie",
+  labels: {
+    color: "#ffffff"  // ✅ blanco
+  }
+}
 
-    title: {
-      display: true,
-      text: id.replace("grafico", "").toUpperCase(),
-      color: "#1e40af",
-      font: {
-        size: 16,
-        weight: "bold"
-      }
-    }
+ title: {
+  display: true,
+  text: id.replace("grafico", "").toUpperCase(),
+  color: "#ffffff",   // ✅ blanco
+  font: {
+    size: 16,
+    weight: "bold"
+  }
+}
   },
 
 scales: tipo !== "pie" ? {
-      x: {
-        ticks: {
-  color: "#1e293b",
-  font: { weight: "bold" }
-},
-        grid: { display: false }
-      },
-      y: {
-  beginAtZero: true,
-  ticks: {
-    stepSize: 1,
-    precision: 0,
-    color: "#64748b"
+  x: {
+    ticks: {
+      color: "#ffffff",   // ✅ texto eje X blanco
+      font: { weight: "bold" }
+    },
+    grid: {
+      color: "rgba(255,255,255,0.08)" // líneas suaves
+    }
+  },
+  y: {
+    beginAtZero: true,
+    ticks: {
+      stepSize: 1,
+      precision: 0,
+      color: "#ffffff"   // ✅ texto eje Y blanco
+    },
+    grid: {
+      color: "rgba(255,255,255,0.08)"
+    }
   }
-}
-    } : {}
+} : {}
   }
 });
 }
