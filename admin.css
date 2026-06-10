@@ -75,10 +75,11 @@ button:hover {
   letter-spacing: 1px;
 }
 
-.card h3 {
-  font-size: 18px;       /* 🔥 más visible */
+.grid .card h3 {
+  font-size: 20px;
   font-weight: 600;
   color: #cbd5f5;
+  letter-spacing: 0.5px;
 }
 
 .card:hover {
@@ -157,9 +158,11 @@ header button:hover {
   margin-bottom: 10px;
 }
 
-.card div {
-  font-size: 32px;
-  font-weight: bold;
+/* 🔥 KPI GRANDES */
+.grid .card div {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: 2px;
   color: #ffffff;
 }
 
@@ -210,9 +213,9 @@ header button:hover {
 }
 
 #ultimaEmergencia {
-  font-size: 20px;
-  line-height: 2;
-  font-weight: 500;
+  font-size: 24px;
+  line-height: 2.2;
+  font-weight: 600;
 }
 
 #ultimaEmergencia br {
@@ -220,8 +223,8 @@ header button:hover {
 }
 
 .grid .card {
-  padding: 25px;          /* 🔥 más aire */
-  min-height: 140px;      /* 🔥 altura uniforme */
+  padding: 30px;
+  min-height: 160px;
 }
 
 
