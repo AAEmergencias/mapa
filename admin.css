@@ -128,21 +128,13 @@ header button:hover {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+
+  align-items: start;  
 }
 
 .card {
-  background: #1f2a3a;
-  padding: 12px;
-  border-radius: 14px;
-
-  /* 🔥 BORDE PRINCIPAL */
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  /* 🔥 sombra suave */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-
-  text-align: center;
-  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -302,7 +294,8 @@ button.activo {
 }
 
 .card canvas {
-  height: 320px !important;
+  width: 100% !important;
+  height: 260px !important; /* ✅ altura uniforme */
 }
 
 #panelBrigada {
