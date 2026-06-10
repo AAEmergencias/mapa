@@ -80,6 +80,9 @@ button:hover {
   font-weight: 600;
   color: #cbd5f5;
   letter-spacing: 0.5px;
+  text-align: center;
+  width: 100%;
+
 }
 
 .card:hover {
@@ -133,12 +136,13 @@ header button:hover {
   background: #1f2937;
   padding: 20px;
   border-radius: 12px;
-
   display: flex;
   flex-direction: column;
+  justify-content: center;   /* ✅ centra vertical */
+  align-items: center;       /* ✅ centra horizontal */
+  text-align: center;        /* ✅ centra textos */
   gap: 12px;
-
- border: 1px solid rgba(16, 185, 129, 0.5);
+  border: 1px solid rgba(16, 185, 129, 0.5);
   box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
 }
 
@@ -164,6 +168,8 @@ header button:hover {
   font-weight: 900;
   letter-spacing: 2px;
   color: #ffffff;
+  width: 100%;
+  text-align: center;
 }
 
 .card:nth-child(1) div {
@@ -216,6 +222,7 @@ header button:hover {
   font-size: 24px;
   line-height: 2.2;
   font-weight: 600;
+  text-align: center;
 }
 
 #ultimaEmergencia br {
@@ -225,6 +232,7 @@ header button:hover {
 .grid .card {
   padding: 30px;
   min-height: 160px;
+  gap: 15px;
 }
 
 
