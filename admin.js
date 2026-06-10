@@ -221,26 +221,28 @@ datasets: [{
   hoverOffset: 8
 }]
     },
+    
 options: {
   responsive: true,
   maintainAspectRatio: false,
   indexAxis: horizontal ? "y" : "x",
 
-  plugins: {
+plugins: {
   legend: {
-  display: tipo === "pie",
-  labels: {
-    color: "#ffffff"  // ✅ blanco
-  }
-}
+    display: tipo === "pie",
+    labels: {
+      color: "#ffffff"
+    }
+  }, // ✅ ESTA COMA ES CLAVE
 
- title: {
-  display: true,
-  text: id.replace("grafico", "").toUpperCase(),
-  color: "#ffffff",   // ✅ blanco
-  font: {
-    size: 16,
-    weight: "bold"
+  title: {
+    display: true,
+    text: id.replace("grafico", "").toUpperCase(),
+    color: "#ffffff",
+    font: {
+      size: 16,
+      weight: "bold"
+    }
   }
 }
   },
