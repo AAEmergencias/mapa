@@ -127,15 +127,22 @@ header button:hover {
 .gridGraficos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
 
-  align-items: start;  
+  gap: 30px;              /* 🔥 MÁS ESPACIO ENTRE CARDS */
+  padding: 10px 5px;      /* 🔥 AIRE LATERAL */
+
+  align-items: start;
 }
 
 .card {
+  padding: 20px;          /* 🔥 espacio interno */
+  border-radius: 12px;
+
   display: flex;
   flex-direction: column;
+  gap: 12px;              /* 🔥 separa título del gráfico */
 }
+
 
 .card:hover {
   transform: translateY(-4px);
@@ -290,12 +297,14 @@ button.activo {
   text-align: center;
   font-size: 15px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .card canvas {
   width: 100% !important;
-  height: 260px !important; /* ✅ altura uniforme */
+  height: 250px !important;
+
+  margin-top: 5px;        /* 🔥 pequeño respiro */
 }
 
 #panelBrigada {
@@ -303,8 +312,14 @@ button.activo {
 }
 
 .card {
-  width: 100%;
+  padding: 20px;          /* 🔥 espacio interno */
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;              /* 🔥 separa título del gráfico */
 }
+
 
 #graficosSubtipos {
   display: grid;
