@@ -754,13 +754,9 @@ body {
   z-index: 8000;
 }
 
-.modal-bases-content {
-  background: #2b2f3a;
-  color: white;
 
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
+.modal-bases-content {
+  text-align: center;
 }
 
 .btnConfirmar {
@@ -808,8 +804,16 @@ body {
   background: #c62828;
 }
 
+
 .modal-bases-content button {
-  margin-right: 10px;
+  background: #374151;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 #exportar {
@@ -892,25 +896,52 @@ body {
 #buscadorTraslado {
   width: 100%;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
   margin-bottom: 10px;
   font-size: 14px;
+  text-align: center;
 }
 
 #resultadosTraslado {
   max-height: 250px;
   overflow-y: auto;
+  border-radius: 10px;
+  background: #1f2937;
+  padding: 5px;
 }
 
 #resultadosTraslado .estado-item {
   padding: 10px;
-  background: #374151;
   margin: 5px 0;
-  border-radius: 6px;
+  background: #374151;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 #resultadosTraslado .estado-item:hover {
-  background: #4b5563;
+  background: #2563eb;
+}
+
+
+
+/* botón especial */
+.btn-interno {
+  background: #2563eb;
+}
+
+.btn-externo {
+  background: #10b981;
+}
+
+.modal-bases {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-bases-content {
+  width: 320px;
+  max-width: 90%;
 }
