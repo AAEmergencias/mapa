@@ -953,3 +953,23 @@ body {
 .modal-bases-content h3 {
   color: white;
 }
+
+.grupo-botones {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* 🔥 espacio entre botones */
+  margin: 20px 0;
+}
+
+.grupo-botones button {
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal-bases-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
