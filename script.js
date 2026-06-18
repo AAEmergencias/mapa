@@ -1073,17 +1073,26 @@ function mostrarOpcionesTraslado(unidad, tipo) {
         "N/A"
       ];
 
-  modal.innerHTML = `
-    <div class="modal-bases-content">
-      <h3>🏥 Buscar destino</h3>
+modal.innerHTML = `
+  <div class="modal-bases-content">
 
-      <input id="buscadorTraslado" placeholder="Escribe hospital o clínica..." />
+    <h3>🏥 Buscar destino</h3>
 
-      <div id="resultadosTraslado"></div>
+    <input id="buscadorTraslado" placeholder="🔍 Escribe hospital o clínica..." />
 
-      <button class="cerrarBases">Cerrar</button>
-    </div>
-  `;
+    <div id="resultadosTraslado"></div>
+
+    <br>
+
+    <button class="volver">⬅ Volver</button>
+
+  </div>
+`;
+
+  modal.querySelector(".volver").onclick = () => {
+  modal.remove();
+  abrirModalTraslado(unidad);
+};
 
   let input = modal.querySelector("#buscadorTraslado");
   let resultados = modal.querySelector("#resultadosTraslado");
