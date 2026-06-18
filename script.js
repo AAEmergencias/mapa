@@ -878,17 +878,6 @@ modal.innerHTML = `
 
   const lista = modal.querySelector(".listaBases");
 
-  bases.forEach(base => {
-    let item = document.createElement("div");
-    item.className = "estado-item";
-    item.innerText = base;
-
-item.onclick = () => {
-
-  actualizarEstadoUnidad(unidad, "6-10", base);
-
-  let key = unidad.split(" ")[0];
-
   const btnOrigen = modal.querySelector(".btn-origen");
 
 if (btnOrigen) {
@@ -896,35 +885,25 @@ if (btnOrigen) {
 
     let key = unidad.split(" ")[0];
 
-    // ✅ buscar unidad real en tu array
-    let key = unidad.split(" ")[0];
-
-  let unidadData = unidades.find(u => u.nombre.startsWith(key));
-
-    console.log("Unidad detectada:", key);
-console.log("Unidad encontrada:", unidadData);
+    let unidadData = unidades.find(u => u.nombre.startsWith(key));
 
     if (!unidadData) {
-      console.log("❌ No se encontró unidad:", unidad);
+      console.log("❌ No se encontró unidad:", key);
       return;
     }
 
-    // ✅ base original limpia
-  let baseOriginal = unidadData.base.trim();
+    let baseOriginal = unidadData.base.trim();
+    baseOriginal = baseOriginal.replace(/\s+/g, " ");
 
-// ✅ corrección automática (clave)
-// elimina dobles espacios internos
-baseOriginal = baseOriginal.replace(/\s+/g, " ");
+    console.log("✅ Volviendo a base:", baseOriginal);
 
-    console.log("BASE ORIGINAL LIMPIA:", baseOriginal);
-console.log("EXISTE EN basesCoords:", basesCoords[baseOriginal]);
-
-    // ✅ actualizar estado
     actualizarEstadoUnidad(unidad, "6-10", baseOriginal);
 
-    // ✅ mover unidad
     let marker = marcadoresUnidades[key];
-    if (!marker) return;
+    if (!marker) {
+      console.log("❌ Marker no encontrado");
+      return;
+    }
 
     let pos = marker.getLatLng();
 
@@ -936,17 +915,50 @@ console.log("EXISTE EN basesCoords:", basesCoords[baseOriginal]);
     let destino = basesCoords[baseOriginal];
 
     if (!destino) {
-      console.log("❌ base no encontrada en coordenadas:", baseOriginal);
+      console.log("❌ No hay coordenadas para:", baseOriginal);
       return;
     }
 
     moverUnidad(unidad, origen, destino);
 
-    // ✅ actualizar base actual
     baseActualUnidad[key] = baseOriginal;
 
     modal.remove();
   };
+}
+
+  bases.forEach(base => {
+    let item = document.createElement("div");
+    item.className = "estado-item";
+    item.innerText = base;
+
+    item.onclick = () => {
+
+  let key = unidad.split(" ")[0];
+
+  let baseReal = baseMap[base];
+
+  actualizarEstadoUnidad(unidad, "6-10", baseReal);
+
+  let marker = marcadoresUnidades[key];
+  if (!marker) return;
+
+  let pos = marker.getLatLng();
+
+  let origen = {
+    lat: pos.lat,
+    lng: pos.lng
+  };
+
+  let destino = basesCoords[baseReal];
+
+  if (!destino) return;
+
+  moverUnidad(unidad, origen, destino);
+
+  modal.remove();
+};
+
 }
 
 
