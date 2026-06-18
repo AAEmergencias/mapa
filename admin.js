@@ -400,9 +400,9 @@ crear("graficoFaena", porFaena, "pie");
 crear("graficoTipo", porTipo, "bar", "#ef4444");
 crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
-crear("graficoMedico", porAmbulancia, "bar", "#06b6d4", true);
+crear("graficoMedico", porAmbulancia, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
-crear("graficoAsistencia", porBrigada, "bar", "#10b981", true);
+crear("graficoAsistencia", porBrigada, "bar");
 
 
 let contenedor = document.getElementById("graficosSubtipos");
@@ -660,7 +660,7 @@ crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 
 // ✅ NUEVOS gráficos médicos
-crear("graficoMedico", porAmbulancia, "bar", "#06b6d4", true);
+crear("graficoMedico", porAmbulancia, "pie");
 crear("graficoClaves", porClave, "bar", "#f59e0b", true);
 crear("graficoTraslados", porTraslado, "pie");
 
