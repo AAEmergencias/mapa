@@ -867,13 +867,14 @@ function abrirModalBases(unidad) {
   let modal = document.createElement("div");
   modal.className = "modal-bases";
 
-  modal.innerHTML = `
-    <div class="modal-bases-content">
-      <h3>🏠 Seleccionar Base</h3>
-      <div class="listaBases"></div>
-      <button class="cerrarBases">Cancelar</button>
-    </div>
-  `;
+modal.innerHTML = `
+  <div class="modal-bases-content">
+    <h3>🏠 Seleccionar Base</h3>
+    <button class="btn-origen">⬅ Volver a base de origen</button>
+    <div class="listaBases"></div>
+    <button class="cerrarBases">Cancelar</button>
+  </div>
+`;
 
   const lista = modal.querySelector(".listaBases");
 
@@ -887,6 +888,46 @@ item.onclick = () => {
   actualizarEstadoUnidad(unidad, "6-10", base);
 
   let key = unidad.split(" ")[0];
+
+  const btnOrigen = modal.querySelector(".btn-origen");
+
+if (btnOrigen) {
+  btnOrigen.onclick = () => {
+
+    let key = unidad.split(" ")[0];
+
+    // ✅ obtener base original
+    let baseOriginal = unidades.find(u => u.nombre === unidad)?.base;
+
+    if (!baseOriginal) return;
+
+    // ✅ actualizar estado
+    actualizarEstadoUnidad(unidad, "6-10", baseOriginal);
+
+    // ✅ mover unidad
+    let marker = marcadoresUnidades[key];
+    if (!marker) return;
+
+    let pos = marker.getLatLng();
+
+    let origen = {
+      lat: pos.lat,
+      lng: pos.lng
+    };
+
+    let destino = basesCoords[baseOriginal];
+
+    if (!destino) {
+      console.log("❌ base no encontrada:", baseOriginal);
+      return;
+    }
+
+    moverUnidad(unidad, origen, destino);
+
+    modal.remove();
+  };
+}
+
 
   // ✅ traducir base
   let baseReal = baseMap[base];
