@@ -888,3 +888,29 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
+
+#buscadorTraslado {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#resultadosTraslado {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+#resultadosTraslado .estado-item {
+  padding: 10px;
+  background: #374151;
+  margin: 5px 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#resultadosTraslado .estado-item:hover {
+  background: #4b5563;
+}
