@@ -621,7 +621,7 @@ porClave = Object.fromEntries(
 );
 
 // ✅ 3. Traslados (clave 6-15)
-let traslados = filtrados.filter(p => p.clave === "6-15");
+let traslados = filtrados.filter(p => p.lugarTraslado);
 
 let porTraslado = {
   "Interno": 0,
@@ -630,9 +630,9 @@ let porTraslado = {
 
 traslados.forEach(p => {
 
-  if (!p.lugarTraslado) return;
+  let t = (p.lugarTraslado || "").toLowerCase();
 
-  let t = p.lugarTraslado.toLowerCase();
+  if (!t) return;
 
   if (
     t.includes("perez") ||
@@ -644,6 +644,9 @@ traslados.forEach(p => {
     porTraslado["Externo"]++;
   }
 });
+
+  console.log("TRASLADOS FILTRADOS:", traslados);
+console.log("DATA GRAFICO:", porTraslado);
   
 let porPUE = contar(filtrados, "pue");
 
