@@ -896,10 +896,16 @@ if (btnOrigen) {
 
     let key = unidad.split(" ")[0];
 
-    // ✅ obtener base original
-    let baseOriginal = unidades.find(u => u.nombre === unidad)?.base;
+    // ✅ buscar unidad real en tu array
+    let unidadData = unidades.find(u => u.nombre === unidad);
 
-    if (!baseOriginal) return;
+    if (!unidadData) {
+      console.log("❌ No se encontró unidad:", unidad);
+      return;
+    }
+
+    // ✅ base original limpia
+    let baseOriginal = unidadData.base.trim();
 
     // ✅ actualizar estado
     actualizarEstadoUnidad(unidad, "6-10", baseOriginal);
@@ -918,11 +924,14 @@ if (btnOrigen) {
     let destino = basesCoords[baseOriginal];
 
     if (!destino) {
-      console.log("❌ base no encontrada:", baseOriginal);
+      console.log("❌ base no encontrada en coordenadas:", baseOriginal);
       return;
     }
 
     moverUnidad(unidad, origen, destino);
+
+    // ✅ actualizar base actual
+    baseActualUnidad[key] = baseOriginal;
 
     modal.remove();
   };
