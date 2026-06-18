@@ -992,6 +992,33 @@ modal.innerHTML = `
   </div>
 `;
 
+  const btnInterno = modal.querySelector(".btn-interno");
+const btnExterno = modal.querySelector(".btn-externo");
+const btnVolver = modal.querySelector(".volver");
+
+// ✅ validación para evitar error
+if (btnInterno) {
+  btnInterno.onclick = () => {
+    mostrarOpcionesTraslado(unidad, "interno");
+    modal.remove();
+  };
+}
+
+if (btnExterno) {
+  btnExterno.onclick = () => {
+    mostrarOpcionesTraslado(unidad, "externo");
+    modal.remove();
+  };
+}
+
+if (btnVolver) {
+  btnVolver.onclick = () => {
+    modal.remove();
+    abrirModalEstados();
+  };
+}
+
+
   modal.querySelector(".btn-interno").onclick = () => {
     mostrarOpcionesTraslado(unidad, "interno");
     modal.remove();
