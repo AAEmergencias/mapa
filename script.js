@@ -1649,29 +1649,30 @@ function mostrarSelectorEmergencias(lista) {
 
   contenido.innerHTML = "<h3>Selecciona emergencia</h3>";
 
-  lista.forEach(e => {
+lista.forEach(e => {
 
-    let item = document.createElement("div");
+  let item = document.createElement("div");
 
-    item.style.padding = "10px";
-    item.style.margin = "5px 0";
-    item.style.background = "#3a3f4b";
-    item.style.cursor = "pointer";
-    item.style.borderRadius = "6px";
+  item.style.padding = "10px";
+  item.style.margin = "5px 0";
+  item.style.background = "#3a3f4b";
+  item.style.cursor = "pointer";
+  item.style.borderRadius = "6px";
 
-    item.innerHTML = `
-      #${e.id} - ${e.tipo}<br>
-      📅 ${e.fecha}
-    `;
+  item.innerHTML = `
+    #${e.id} - ${e.tipo}<br>
+    📅 ${e.fecha}
+  `;
 
-item.onclick = () => {
+  item.onclick = () => {
+    localStorage.setItem("emergenciaSeleccionada", JSON.stringify(e));
+    modal.remove();
+  };
 
-  localStorage.setItem("emergenciaSeleccionada", JSON.stringify(e));
+  contenido.appendChild(item);
 
-  modal.remove();
+});
 
-}};
-
-    modal.appendChild(contenido);
+// ✅ IMPORTANTE (fuera del forEach)
+modal.appendChild(contenido);
 document.body.appendChild(modal);
-
