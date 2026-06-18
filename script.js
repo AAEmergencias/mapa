@@ -1670,7 +1670,7 @@ item.onclick = () => {
 
   modal.remove();
 
-};
+}};
 
     modal.appendChild(contenido);
 document.body.appendChild(modal);
