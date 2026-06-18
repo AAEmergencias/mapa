@@ -959,9 +959,6 @@ if (btnOrigen) {
   modal.remove();
 };
 
-}
-
-
   // ✅ traducir base
   let baseReal = baseMap[base];
 
