@@ -1010,112 +1010,119 @@ function mostrarOpcionesTraslado(unidad, tipo) {
   let modal = document.createElement("div");
   modal.className = "modal-bases";
 
-  let lista = [];
-
-  if (tipo === "interno") {
-
-    lista = [
-      "Policlínico Pérez Caldera",
-      "Policlínico Las Tórtolas",
-      "SPA 220"
-    ];
-
-  } else {
-
-    lista = [
-      "Mutual de Seguridad CCHC",
-      "Clinica Hospital del Profesor",
-      "Hospital San José",
-      "Instituto Nacional del Cáncer",
-      "Hospital Clínico Universidad de Chile",
-      "Hospital Roberto del Río",
-      "Clínica Dávila",
-      "Hospital Psiquiátrico Dr. José Horwitz",
-      "Hospital Clínico San Borja Arriarán",
-      "Instituto Traumatológico",
-      "Hospital San Juan de Dios",
-      "Posta Central",
-      "Hospital Clínico de la Universidad Católica",
-      "Instituto de Seguridad del Trabajo (IST)",
-      "Hospital Militar",
-      "Hospital Félix Bulnes",
-      "Hospital Exequiel González Cortés",
-      "Hospital Dr. Lucio Córdova",
-      "Hospital El Pino",
-      "Hospital Del Salvador",
-      "Hospital Luis Calvo Mackenna",
-      "Instituto Nacional del Toráx",
-      "Hospital Del Trabajador (ACHS)",
-      "Clinica Indisa",
-      "Clinica Santa María",
-      "Insituto Oncológico FALP",
-      "Clinica Red Salud",
-      "Hospital Luis Tisné",
-      "Instituto Rehabilitación Pedro Aguirre Cerda",
-      "Hospital Padre Hurtado",
-      "Hospital Dra. Eloísa Díaz",
-      "Clinica BUPA",
-      "Hospital El Carmen",
-      "Clinica Red Salud Maipú",
-      "Hospital Psiquiátrico El Peral",
-      "Hospital Sotero del Río",
-      "Hospital de Carabineros",
-      "Hopsital Clínico de la FACH",
-      "Clínica Universidad de los Andes",
-      "Clínica Las Condes",
-      "Clínica Alemana",
-      "Clínica Tabancura",
-      "Hopsital Nuevo Félix Bulnes",
-      "SPA 220",
-      "Policlínico Pérez Caldera",
-      "Policlínico Tortolas",
-      "Rechaza Atención",
-      "Otras Derivaciones",
-      "N/a"
-    ];
-  }
-
-  let opcionesHTML = lista.map(l => `<div class="estado-item">${l}</div>`).join("");
+  let lista = (tipo === "interno")
+    ? [
+        "Policlínico Pérez Caldera",
+        "Policlínico Las Tórtolas",
+        "SPA 220"
+      ]
+    : [
+        "Mutual de Seguridad CCHC",
+        "Clinica Hospital del Profesor",
+        "Hospital San José",
+        "Instituto Nacional del Cáncer",
+        "Hospital Clínico Universidad de Chile",
+        "Hospital Roberto del Río",
+        "Clínica Dávila",
+        "Hospital Psiquiátrico Dr. José Horwitz",
+        "Hospital Clínico San Borja Arriarán",
+        "Instituto Traumatológico",
+        "Hospital San Juan de Dios",
+        "Posta Central",
+        "Hospital Clínico de la Universidad Católica",
+        "Instituto de Seguridad del Trabajo (IST)",
+        "Hospital Militar",
+        "Hospital Félix Bulnes",
+        "Hospital Exequiel González Cortés",
+        "Hospital Dr. Lucio Córdova",
+        "Hospital El Pino",
+        "Hospital Del Salvador",
+        "Hospital Luis Calvo Mackenna",
+        "Instituto Nacional del Tórax",
+        "Hospital Del Trabajador (ACHS)",
+        "Clinica Indisa",
+        "Clinica Santa María",
+        "Insituto Oncológico FALP",
+        "Clinica Red Salud",
+        "Hospital Luis Tisné",
+        "Instituto Rehabilitación Pedro Aguirre Cerda",
+        "Hospital Padre Hurtado",
+        "Hospital Dra. Eloísa Díaz",
+        "Clinica BUPA",
+        "Hospital El Carmen",
+        "Clinica Red Salud Maipú",
+        "Hospital Psiquiátrico El Peral",
+        "Hospital Sotero del Río",
+        "Hospital de Carabineros",
+        "Hospital Clínico de la FACH",
+        "Clínica Universidad de los Andes",
+        "Clínica Las Condes",
+        "Clínica Alemana",
+        "Clínica Tabancura",
+        "Hospital Nuevo Félix Bulnes",
+        "SPA 220",
+        "Policlínico Pérez Caldera",
+        "Policlínico Tortolas",
+        "Rechaza Atención",
+        "Otras Derivaciones",
+        "N/A"
+      ];
 
   modal.innerHTML = `
     <div class="modal-bases-content">
-      <h3>🏥 Seleccionar destino</h3>
+      <h3>🏥 Buscar destino</h3>
 
-      <div class="listaBases">
-        ${opcionesHTML}
-      </div>
+      <input id="buscadorTraslado" placeholder="Escribe hospital o clínica..." />
+
+      <div id="resultadosTraslado"></div>
 
       <button class="cerrarBases">Cerrar</button>
     </div>
   `;
 
-  modal.querySelectorAll(".estado-item").forEach(item => {
+  let input = modal.querySelector("#buscadorTraslado");
+  let resultados = modal.querySelector("#resultadosTraslado");
 
-    item.onclick = () => {
+  input.addEventListener("input", () => {
 
-      let destino = item.innerText;
+    let texto = input.value.toLowerCase();
 
-      // ✅ CAMBIAR ESTADO
-      actualizarEstadoUnidad(unidad, "6-15", null, destino);
+    resultados.innerHTML = "";
 
-      // ✅ GUARDAR PARA EL DASHBOARD
-      if (emergenciaActiva) {
-        emergenciaActiva.tipoTraslado = tipo;
-        emergenciaActiva.lugarTraslado = destino;
-      }
+    let filtrados = lista.filter(l =>
+      l.toLowerCase().includes(texto)
+    );
 
-      modal.remove();
-    };
+    filtrados.slice(0, 10).forEach(l => {
+
+      let div = document.createElement("div");
+      div.className = "estado-item";
+      div.innerText = l;
+
+      div.onclick = () => {
+
+        actualizarEstadoUnidad(unidad, "6-15", null, l);
+
+        if (emergenciaActiva) {
+          emergenciaActiva.tipoTraslado = tipo;
+          emergenciaActiva.lugarTraslado = l;
+        }
+
+        modal.remove();
+      };
+
+      resultados.appendChild(div);
+    });
 
   });
 
-  modal.querySelector(".cerrarBases").onclick = () => {
-    modal.remove();
-  };
+  modal.querySelector(".cerrarBases").onclick = () => modal.remove();
 
   document.body.appendChild(modal);
-}
 
+  // 🔥 enfocar automáticamente
+  input.focus();
+}
 
 
 function abrirConfirmacionFinalizar(panel, panelNegro) {
