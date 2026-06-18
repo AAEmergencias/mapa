@@ -745,19 +745,29 @@ body {
   width: 100%;
   height: 100%;
 
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6); /* 🔥 OSCURECE EL FONDO */
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  z-index: 8000;
+  z-index: 9999;
 }
 
 
 .modal-bases-content {
+  background: #1f2937;   /* 🔥 fondo oscuro */
+  padding: 20px;
+  border-radius: 14px;
+
+  width: 320px;
+  max-width: 90%;
+
   text-align: center;
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.6); /* 🔥 profundidad */
 }
+
 
 .btnConfirmar {
   background: #d32f2f;
@@ -925,7 +935,6 @@ body {
 }
 
 
-
 /* botón especial */
 .btn-interno {
   background: #2563eb;
@@ -941,7 +950,6 @@ body {
   align-items: center;
 }
 
-.modal-bases-content {
-  width: 320px;
-  max-width: 90%;
+.modal-bases-content h3 {
+  color: white;
 }
