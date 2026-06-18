@@ -748,13 +748,13 @@ emergenciaActiva = {
 
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
- let nueva = {
+let nueva = {
   tipo: tipo,
   subtipo: subtipo,
   ubicacion: ubicacionSeleccionada.nombre,
   unidad: cercana || "Sin unidad",
 
-  // ✅ 🔥 NUEVO (CLAVE)
+  // ✅ 🔥 GUARDAR TRASLADO
   tipoTraslado: emergenciaActiva?.tipoTraslado || "",
   lugarTraslado: emergenciaActiva?.lugarTraslado || ""
 };
