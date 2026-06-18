@@ -1676,3 +1676,5 @@ lista.forEach(e => {
 // ✅ IMPORTANTE (fuera del forEach)
 modal.appendChild(contenido);
 document.body.appendChild(modal);
+
+  }
