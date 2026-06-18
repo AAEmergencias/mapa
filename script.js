@@ -927,68 +927,41 @@ if (btnOrigen) {
   };
 }
 
-  bases.forEach(base => {
-    let item = document.createElement("div");
-    item.className = "estado-item";
-    item.innerText = base;
+bases.forEach(base => {
 
-    item.onclick = () => {
+  let item = document.createElement("div");
+  item.className = "estado-item";
+  item.innerText = base;
 
-  let key = unidad.split(" ")[0];
+  item.onclick = () => {
 
-  let baseReal = baseMap[base];
+    let key = unidad.split(" ")[0];
 
-  actualizarEstadoUnidad(unidad, "6-10", baseReal);
+    let baseReal = baseMap[base];
 
-  let marker = marcadoresUnidades[key];
-  if (!marker) return;
+    actualizarEstadoUnidad(unidad, "6-10", baseReal);
 
-  let pos = marker.getLatLng();
+    let marker = marcadoresUnidades[key];
+    if (!marker) return;
 
-  let origen = {
-    lat: pos.lat,
-    lng: pos.lng
+    let pos = marker.getLatLng();
+
+    let origen = {
+      lat: pos.lat,
+      lng: pos.lng
+    };
+
+    let destino = basesCoords[baseReal];
+
+    if (!destino) return;
+
+    moverUnidad(unidad, origen, destino);
+
+    modal.remove();
   };
 
-  let destino = basesCoords[baseReal];
-
-  if (!destino) return;
-
-  moverUnidad(unidad, origen, destino);
-
-  modal.remove();
-};
-
-  // ✅ traducir base
-  let baseReal = baseMap[base];
-
-  // ✅ guardar base correcta
-  baseActualUnidad[key] = baseReal;
-
-  let marker = marcadoresUnidades[key];
-  if (!marker) return;
-
-  let pos = marker.getLatLng();
-
-  let origen = {
-    lat: pos.lat,
-    lng: pos.lng
-  };
-
-  let destino = basesCoords[baseReal];
-
-  if (!destino) {
-    console.log("❌ base no encontrada:", baseReal);
-    return;
-  }
-
-  moverUnidad(unidad, origen, destino);
-
-  modal.remove();
-};
-
-    lista.appendChild(item);
-  });
+  lista.appendChild(item);
+});
 
   const btnCerrar = modal.querySelector(".cerrarBases");
 
