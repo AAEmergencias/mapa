@@ -1672,12 +1672,6 @@ function mostrarSelectorEmergencias(lista) {
 
       modal.remove();
 
-      window.open("formulario.html", "_blank");
-    };
-
-    contenido.appendChild(item);
-  });
-
   modal.appendChild(contenido);
 
   document.body.appendChild(modal);
