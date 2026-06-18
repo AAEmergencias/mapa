@@ -621,7 +621,9 @@ porClave = Object.fromEntries(
 );
 
 // ✅ 3. Traslados (clave 6-15)
-let traslados = filtrados.filter(p => p.lugarTraslado);
+let traslados = filtrados.filter(p =>
+  p.lugarTraslado || p.tipoTraslado || p.clave === "6-15"
+);
 
 let porTraslado = {
   "Interno": 0,
@@ -630,19 +632,31 @@ let porTraslado = {
 
 traslados.forEach(p => {
 
-  let t = (p.lugarTraslado || "").toLowerCase();
+  // ✅ usar tipo si existe
+  if (p.tipoTraslado) {
 
-  if (!t) return;
+    if (p.tipoTraslado === "interno") {
+      porTraslado["Interno"]++;
+    } else if (p.tipoTraslado === "externo") {
+      porTraslado["Externo"]++;
+    }
 
-  if (
-    t.includes("perez") ||
-    t.includes("220") ||
-    t.includes("tortola")
-  ) {
-    porTraslado["Interno"]++;
   } else {
-    porTraslado["Externo"]++;
+
+    // fallback por texto
+    let t = (p.lugarTraslado || "").toLowerCase();
+
+    if (
+      t.includes("perez") ||
+      t.includes("220") ||
+      t.includes("tortola")
+    ) {
+      porTraslado["Interno"]++;
+    } else {
+      porTraslado["Externo"]++;
+    }
   }
+
 });
 
   console.log("TRASLADOS FILTRADOS:", traslados);
