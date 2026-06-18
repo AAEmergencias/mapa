@@ -977,65 +977,49 @@ function abrirModalTraslado(unidad) {
   let modal = document.createElement("div");
   modal.className = "modal-bases";
 
-modal.innerHTML = `
-  <div class="modal-bases-content">
+  modal.innerHTML = `
+    <div class="modal-bases-content">
 
-    <h3>🚑 Tipo de Traslado</h3>
+      <h3>🚑 Tipo de Traslado</h3>
 
-    <div class="grupo-botones">
-      <button class="btn-interno">🏥 Interno</button>
-      <button class="btn-externo">🚑 Externo</button>
+      <div class="grupo-botones">
+        <button class="btn-interno">🏥 Interno</button>
+        <button class="btn-externo">🚑 Externo</button>
+      </div>
+
+      <button class="volver">⬅ Volver</button>
+
     </div>
-
-    <button class="volver">⬅ Volver</button>
-
-  </div>
-`;
+  `;
 
   const btnInterno = modal.querySelector(".btn-interno");
-const btnExterno = modal.querySelector(".btn-externo");
-const btnVolver = modal.querySelector(".volver");
+  const btnExterno = modal.querySelector(".btn-externo");
+  const btnVolver = modal.querySelector(".volver");
 
-// ✅ validación para evitar error
-if (btnInterno) {
-  btnInterno.onclick = () => {
-    mostrarOpcionesTraslado(unidad, "interno");
-    modal.remove();
-  };
-}
+  if (btnInterno) {
+    btnInterno.onclick = () => {
+      mostrarOpcionesTraslado(unidad, "interno");
+      modal.remove();
+    };
+  }
 
-if (btnExterno) {
-  btnExterno.onclick = () => {
-    mostrarOpcionesTraslado(unidad, "externo");
-    modal.remove();
-  };
-}
+  if (btnExterno) {
+    btnExterno.onclick = () => {
+      mostrarOpcionesTraslado(unidad, "externo");
+      modal.remove();
+    };
+  }
 
-if (btnVolver) {
-  btnVolver.onclick = () => {
-    modal.remove();
-    abrirModalEstados();
-  };
-}
-
-
-  modal.querySelector(".btn-interno").onclick = () => {
-    mostrarOpcionesTraslado(unidad, "interno");
-    modal.remove();
-  };
-
-  modal.querySelector(".btn-externo").onclick = () => {
-    mostrarOpcionesTraslado(unidad, "externo");
-    modal.remove();
-  };
-
-  modal.querySelector(".volver").onclick = () => {
-    modal.remove();
-    abrirModalEstados(); // 🔥 vuelve atrás
-  };
+  if (btnVolver) {
+    btnVolver.onclick = () => {
+      modal.remove();
+      abrirModalEstados();
+    };
+  }
 
   document.body.appendChild(modal);
 }
+
 
 function mostrarOpcionesTraslado(unidad, tipo) {
 
@@ -1156,8 +1140,6 @@ modal.innerHTML = `
     });
 
   });
-
-  modal.querySelector(".cerrarBases").onclick = () => modal.remove();
 
   document.body.appendChild(modal);
 
