@@ -1174,17 +1174,43 @@ modal.innerHTML = `
       div.className = "estado-item";
       div.innerText = l;
 
-      div.onclick = () => {
+     div.onclick = async () => {
 
-        actualizarEstadoUnidad(unidad, "6-15", null, l);
+  // ✅ cambiar estado de la unidad
+  actualizarEstadoUnidad(unidad, "6-15", null, l);
 
-        if (emergenciaActiva) {
-          emergenciaActiva.tipoTraslado = tipo;
-          emergenciaActiva.lugarTraslado = l;
-        }
+  // ✅ guardar en memoria actual (si hay emergencia activa)
+  if (emergenciaActiva) {
+    emergenciaActiva.tipoTraslado = tipo;
+    emergenciaActiva.lugarTraslado = l;
+  }
 
-        modal.remove();
-      };
+  // ✅ 🔥 GUARDAR EN FIREBASE (CLAVE)
+  try {
+
+    await addDoc(collection(db, "traslados"), {
+
+      unidad: unidad,
+      tipoTraslado: tipo,
+      lugarTraslado: l,
+
+      fecha: new Date().toISOString().split("T")[0],
+      hora: new Date().toLocaleTimeString(),
+
+      emergenciaId: emergenciaActiva?.id || null
+
+    });
+
+    console.log("✅ Traslado guardado correctamente");
+
+  } catch (error) {
+
+    console.error("❌ Error guardando traslado:", error);
+
+  }
+
+  modal.remove();
+};
 
       resultados.appendChild(div);
     });
