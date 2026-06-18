@@ -979,12 +979,16 @@ function abrirModalTraslado(unidad) {
 
   modal.innerHTML = `
     <div class="modal-bases-content">
+
       <h3>🚑 Tipo de Traslado</h3>
 
-      <button class="btn-interno">🏥 Traslado Interno</button>
-      <button class="btn-externo">🏥 Traslado Externo</button>
+      <button class="btn-interno">🏥 Interno</button>
+      <button class="btn-externo">🚑 Externo</button>
 
-      <button class="cerrarBases">Cancelar</button>
+      <br><br>
+
+      <button class="volver">⬅ Volver</button>
+
     </div>
   `;
 
@@ -998,8 +1002,9 @@ function abrirModalTraslado(unidad) {
     modal.remove();
   };
 
-  modal.querySelector(".cerrarBases").onclick = () => {
+  modal.querySelector(".volver").onclick = () => {
     modal.remove();
+    abrirModalEstados(); // 🔥 vuelve atrás
   };
 
   document.body.appendChild(modal);
