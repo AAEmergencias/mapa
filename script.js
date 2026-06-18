@@ -748,12 +748,16 @@ emergenciaActiva = {
 
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
-  let nueva = {
-    tipo: tipo,
-    subtipo: subtipo,
-    ubicacion: ubicacionSeleccionada.nombre,
-    unidad: cercana || "Sin unidad"
-  };
+ let nueva = {
+  tipo: tipo,
+  subtipo: subtipo,
+  ubicacion: ubicacionSeleccionada.nombre,
+  unidad: cercana || "Sin unidad",
+
+  // ✅ 🔥 NUEVO (CLAVE)
+  tipoTraslado: emergenciaActiva?.tipoTraslado || "",
+  lugarTraslado: emergenciaActiva?.lugarTraslado || ""
+};
 
   let panelNegro = crearPanelEmergencia(nueva);
   let panelRojo = crearPanelRojo(nueva, panelNegro);
