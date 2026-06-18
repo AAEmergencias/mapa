@@ -897,7 +897,12 @@ if (btnOrigen) {
     let key = unidad.split(" ")[0];
 
     // ✅ buscar unidad real en tu array
-    let unidadData = unidades.find(u => u.nombre === unidad);
+    let key = unidad.split(" ")[0];
+
+  let unidadData = unidades.find(u => u.nombre.startsWith(key));
+
+    console.log("Unidad detectada:", key);
+console.log("Unidad encontrada:", unidadData);
 
     if (!unidadData) {
       console.log("❌ No se encontró unidad:", unidad);
@@ -905,7 +910,14 @@ if (btnOrigen) {
     }
 
     // ✅ base original limpia
-    let baseOriginal = unidadData.base.trim();
+  let baseOriginal = unidadData.base.trim();
+
+// ✅ corrección automática (clave)
+// elimina dobles espacios internos
+baseOriginal = baseOriginal.replace(/\s+/g, " ");
+
+    console.log("BASE ORIGINAL LIMPIA:", baseOriginal);
+console.log("EXISTE EN basesCoords:", basesCoords[baseOriginal]);
 
     // ✅ actualizar estado
     actualizarEstadoUnidad(unidad, "6-10", baseOriginal);
