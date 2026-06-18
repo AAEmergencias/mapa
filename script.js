@@ -977,20 +977,20 @@ function abrirModalTraslado(unidad) {
   let modal = document.createElement("div");
   modal.className = "modal-bases";
 
-  modal.innerHTML = `
-    <div class="modal-bases-content">
+modal.innerHTML = `
+  <div class="modal-bases-content">
 
-      <h3>🚑 Tipo de Traslado</h3>
+    <h3>🚑 Tipo de Traslado</h3>
 
+    <div class="grupo-botones">
       <button class="btn-interno">🏥 Interno</button>
       <button class="btn-externo">🚑 Externo</button>
-
-      <br><br>
-
-      <button class="volver">⬅ Volver</button>
-
     </div>
-  `;
+
+    <button class="volver">⬅ Volver</button>
+
+  </div>
+`;
 
   modal.querySelector(".btn-interno").onclick = () => {
     mostrarOpcionesTraslado(unidad, "interno");
