@@ -1664,13 +1664,14 @@ function mostrarSelectorEmergencias(lista) {
       📅 ${e.fecha}
     `;
 
-    item.onclick = () => {
+item.onclick = () => {
 
-      localStorage.setItem("emergenciaSeleccionada", JSON.stringify(e));
+  localStorage.setItem("emergenciaSeleccionada", JSON.stringify(e));
 
-      modal.remove();
+  modal.remove();
 
-  modal.appendChild(contenido);
+};
 
-  document.body.appendChild(modal);
-}
+    modal.appendChild(contenido);
+document.body.appendChild(modal);
+
