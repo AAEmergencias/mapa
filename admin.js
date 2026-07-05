@@ -561,7 +561,7 @@ div.className = "card grafico-dinamico";
   }
   
 
-function actualizarMedico() {
+async function actualizarMedico() {
 
   let mesFiltro = document.getElementById("filtroMes").value;
   let anioFiltro = document.getElementById("filtroAnio").value;
@@ -620,26 +620,37 @@ porClave = Object.fromEntries(
   Object.entries(porClave).sort((a, b) => b[1] - a[1])
 );
 
-// ✅ 3. Traslados (clave 6-15)
-let traslados = filtrados.filter(p =>
-  p.lugarTraslado || p.tipoTraslado || p.clave === "6-15"
+const snapshotTraslados = await getDocs(
+  collection(db, "traslados")
 );
 
+let traslados = [];
+
+snapshotTraslados.forEach(doc => {
+  traslados.push(doc.data());
+});
+
 let porTraslado = {
-  "Interno": 0,
-  "Externo": 0
+  Interno: 0,
+  Externo: 0
 };
 
-traslados.forEach(p => {
+traslados.forEach(t => {
 
-  // ✅ usar tipo si existe
-  if (p.tipoTraslado) {
+  const tipo = (t.tipoTraslado || "").toLowerCase();
 
-    if (p.tipoTraslado === "interno") {
-      porTraslado["Interno"]++;
-    } else if (p.tipoTraslado === "externo") {
-      porTraslado["Externo"]++;
-    }
+  if (tipo === "interno") {
+    porTraslado.Interno++;
+  }
+
+  if (tipo === "externo") {
+    porTraslado.Externo++;
+  }
+
+});
+
+  console.log("TRASLADOS FIREBASE:", traslados);
+console.log("DATA GRAFICO:", porTraslado);
 
   } else {
 
@@ -690,7 +701,7 @@ document.querySelectorAll(".grafico-dinamico").forEach(el => el.remove());
  
 }
 
-function actualizarTodo() {
+async function actualizarTodo() {
 
   // ✅ recalcular derivados
   partesReales = partes.filter(esReal);
@@ -741,7 +752,7 @@ else if (vistaActual === "brigada") {
   actualizarBrigada();
 }
 else if (vistaActual === "medico") {
-  actualizarMedico();
+  await actualizarMedico();
 }
 
   // ==========================
