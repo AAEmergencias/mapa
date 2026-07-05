@@ -658,9 +658,6 @@ traslados.forEach(p => {
   }
 
 });
-
-  console.log("TRASLADOS FILTRADOS:", traslados);
-console.log("DATA GRAFICO:", porTraslado);
   
 let porPUE = contar(filtrados, "pue");
 
@@ -679,8 +676,10 @@ crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 // ✅ NUEVOS gráficos médicos
 crear("graficoMedico", porAmbulancia, "pie");
 crear("graficoClaves", porClave, "bar", "#f59e0b", true);
+console.log("TRASLADOS FILTRADOS:", traslados);
+console.log("DATA GRAFICO:", porTraslado);
 crear("graficoTraslados", porTraslado, "pie");
-
+ 
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
 let contenedor = document.getElementById("graficosSubtipos");
