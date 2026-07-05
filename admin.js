@@ -1,4 +1,13 @@
-import { db, collection, getDocs } from "./firebase.js";
+import {
+  db,
+  collection,
+  getDocs
+} from "./firebase.js";
+
+import {
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 console.log("✅ admin.js funcionando");
 
 const pluginLabels = {
@@ -963,7 +972,7 @@ if (cardAsistencia) {
   
 }
 
-document.getElementById("adminReset").onclick = () => {
+document.getElementById("adminReset").onclick = async () => {
 
   let clave = prompt("🔐 Ingrese contraseña de administrador");
 
@@ -977,13 +986,48 @@ document.getElementById("adminReset").onclick = () => {
   if (!confirmar) return;
 
   // 🧨 borrar datos
+try {
+
+  // PARTES
+  const partesSnapshot =
+    await getDocs(collection(db, "partes"));
+
+  for (const d of partesSnapshot.docs) {
+
+    await deleteDoc(
+      doc(db, "partes", d.id)
+    );
+
+  }
+
+  // TRASLADOS
+  const trasladosSnapshot =
+    await getDocs(collection(db, "traslados"));
+
+  for (const d of trasladosSnapshot.docs) {
+
+    await deleteDoc(
+      doc(db, "traslados", d.id)
+    );
+
+  }
+
+  // LocalStorage
   localStorage.removeItem("partesEmergencia");
   localStorage.removeItem("historialEmergencias");
 
-  alert("✅ Datos eliminados correctamente");
+  alert("✅ Firestore y LocalStorage eliminados");
 
-  // 🔄 refrescar todo
   location.reload();
+
+}
+catch(error) {
+
+  console.error(error);
+
+  alert("❌ Error eliminando datos");
+
+}
 };
 
 window.editarParte = function(index) {
