@@ -1186,20 +1186,26 @@ modal.innerHTML = `
   // ✅ 🔥 GUARDAR EN FIREBASE (CLAVE)
   try {
 
-    await addDoc(collection(db, "traslados"), {
+    console.log("🚑 GUARDANDO TRASLADO");
 
-      unidad: unidad,
-      tipoTraslado: tipo,
-      lugarTraslado: l,
+console.log({
+  unidad: unidad,
+  tipoTraslado: tipo,
+  lugarTraslado: l
+});
+    
+   await addDoc(collection(db, "traslados"), {
 
-      fecha: new Date().toISOString().split("T")[0],
-      hora: new Date().toLocaleTimeString(),
+  unidad: unidad,
+  tipoTraslado: tipo,
+  lugarTraslado: l,
 
-      emergenciaId: emergenciaActiva?.id || null
+  fecha: new Date().toISOString().split("T")[0],
+  hora: new Date().toLocaleTimeString()
 
-    });
+});
 
-    console.log("✅ Traslado guardado correctamente");
+console.log("✅ TRASLADO GUARDADO");
 
   } catch (error) {
 
