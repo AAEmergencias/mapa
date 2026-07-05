@@ -651,24 +651,6 @@ traslados.forEach(t => {
 
   console.log("TRASLADOS FIREBASE:", traslados);
 console.log("DATA GRAFICO:", porTraslado);
-
-  } else {
-
-    // fallback por texto
-    let t = (p.lugarTraslado || "").toLowerCase();
-
-    if (
-      t.includes("perez") ||
-      t.includes("220") ||
-      t.includes("tortola")
-    ) {
-      porTraslado["Interno"]++;
-    } else {
-      porTraslado["Externo"]++;
-    }
-  }
-
-});
   
 let porPUE = contar(filtrados, "pue");
 
