@@ -651,6 +651,24 @@ traslados.forEach(t => {
 
   console.log("TRASLADOS FIREBASE:", traslados);
 console.log("DATA GRAFICO:", porTraslado);
+
+  let porCentro = {};
+
+traslados.forEach(t => {
+
+  let centro = t.lugarTraslado || "Sin dato";
+
+  porCentro[centro] =
+    (porCentro[centro] || 0) + 1;
+
+});
+
+  porCentro = Object.fromEntries(
+  Object.entries(porCentro)
+    .sort((a, b) => b[1] - a[1])
+);
+
+  console.log("CENTROS:", porCentro);
   
 let porPUE = contar(filtrados, "pue");
 
@@ -672,6 +690,14 @@ crear("graficoClaves", porClave, "bar", "#f59e0b", true);
 console.log("TRASLADOS FILTRADOS:", traslados);
 console.log("DATA GRAFICO:", porTraslado);
 crear("graficoTraslados", porTraslado, "pie");
+
+  crear(
+  "graficoCentrosTraslado",
+  porCentro,
+  "bar",
+  "#ef4444",
+  true
+);
  
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
@@ -786,17 +812,29 @@ if (cardSubtipo) {
   // ✅ CONTROL VISUAL SERVICIO MÉDICO
 const cardClaves = document.getElementById("cardClaves");
 const cardTraslados = document.getElementById("cardTraslados");
+  const cardCentrosTraslado =
+  document.getElementById("cardCentrosTraslado");
 
 if (cardClaves && cardTraslados) {
 
-  if (vistaActual === "medico") {
-    cardClaves.style.display = "block";
-    cardTraslados.style.display = "block";
-  } 
+ if (vistaActual === "medico") {
+
+  cardClaves.style.display = "block";
+  cardTraslados.style.display = "block";
+
+  if (cardCentrosTraslado)
+    cardCentrosTraslado.style.display = "block";
+
+}
   else {
-    cardClaves.style.display = "none";
-    cardTraslados.style.display = "none";
-  }
+
+  cardClaves.style.display = "none";
+  cardTraslados.style.display = "none";
+
+  if (cardCentrosTraslado)
+    cardCentrosTraslado.style.display = "none";
+
+}
 }
 
   // ✅ CONTROL VISUAL ASISTENCIA BRIGADA
