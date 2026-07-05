@@ -652,9 +652,14 @@ traslados.forEach(t => {
   console.log("TRASLADOS FIREBASE:", traslados);
 console.log("DATA GRAFICO:", porTraslado);
 
-  let porCentro = {};
+let porCentro = {};
 
+// ✅ SOLO DERIVACIONES EXTERNAS
 traslados.forEach(t => {
+
+  const tipo = (t.tipoTraslado || "").toLowerCase();
+
+  if (tipo !== "externo") return;
 
   let centro = t.lugarTraslado || "Sin dato";
 
@@ -663,7 +668,7 @@ traslados.forEach(t => {
 
 });
 
-  porCentro = Object.fromEntries(
+ porCentro = Object.fromEntries(
   Object.entries(porCentro)
     .sort((a, b) => b[1] - a[1])
 );
