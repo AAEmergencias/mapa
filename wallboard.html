@@ -1,1 +1,98 @@
-a
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Central de Emergencias - Wallboard</title>
+
+wallboard.css
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+  <!-- KPIs -->
+  <div class="kpis">
+
+    <div class="card">
+      <h3>🚨 Emergencias Activas</h3>
+      <div id="activas">0</div>
+    </div>
+
+    <div class="card">
+      <h3>📋 Total Emergencias</h3>
+      <div id="total">0</div>
+    </div>
+
+    <div class="card">
+      <h3>🚑 Traslados</h3>
+      <div id="traslados">0</div>
+    </div>
+
+    <div class="card">
+      <h3>✅ Partes Cerrados</h3>
+      <div id="cerrados">0</div>
+    </div>
+
+  </div>
+
+  <!-- Emergencia -->
+  <div class="ultima cardGrande">
+
+    <h2>🚨 Última Emergencia</h2>
+
+    <div id="ultimaEmergencia">
+
+      Sin información
+
+    </div>
+
+  </div>
+
+  <!-- Panel Inferior -->
+  <div class="paneles">
+
+    <div class="card">
+      <h2>🚒 Brigadas</h2>
+
+      <div id="brigadas">
+        Sin datos
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🚑 Ambulancias</h2>
+
+      <div id="ambulancias">
+        Sin datos
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🚑 Último Traslado</h2>
+
+      <div id="ultimoTraslado">
+        Sin traslados
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⏱️ Tiempo sin Emergencias</h2>
+
+      <div id="sinEmergencias">
+        Calculando...
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+wallboard.js
+
+</body>
+</html>
