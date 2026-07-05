@@ -1,1 +1,56 @@
+body{
+  margin:0;
+  background:#0f172a;
+  color:white;
+  font-family:Arial, sans-serif;
+}
 
+.contenedor{
+  padding:20px;
+}
+
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.card{
+  background:#1e293b;
+  border-radius:15px;
+  padding:20px;
+  text-align:center;
+  border:1px solid #10b981;
+}
+
+.card div{
+  font-size:48px;
+  font-weight:bold;
+}
+
+.cardGrande{
+  margin-top:20px;
+  background:#1e293b;
+  border-radius:15px;
+  padding:30px;
+  text-align:center;
+  border:1px solid #10b981;
+}
+
+#ultimaEmergencia{
+  font-size:28px;
+  line-height:2;
+}
+
+.paneles{
+  margin-top:20px;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.paneles .card div{
+  font-size:22px;
+  line-height:1.8;
+}
