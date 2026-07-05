@@ -180,8 +180,12 @@ function contar(data, campo) {
 // ==========================
 function crear(id, datos, tipo = "bar", color = "#3b82f6", horizontal = false) {
 
- let canvas = document.getElementById(id);
-if (!canvas) return;
+let canvas = document.getElementById(id);
+
+if (!canvas) {
+  console.log("❌ Canvas no encontrado:", id);
+  return;
+}
 
 canvas.style.background = "#1f2937"; // ✅ fondo oscuro
 
