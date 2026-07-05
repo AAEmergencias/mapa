@@ -730,6 +730,11 @@ crear("graficoTraslados", porTraslado, "pie");
   true
 );
 
+  console.log(
+  "AMBULANCIAS TRASLADO:",
+  porAmbulanciaTraslado
+);
+  
   crear(
   "graficoAmbulanciasTraslado",
   porAmbulanciaTraslado,
