@@ -674,6 +674,32 @@ traslados.forEach(t => {
 );
 
   console.log("CENTROS:", porCentro);
+
+  let porAmbulanciaTraslado = {};
+
+// SOLO EXTERNOS
+traslados.forEach(t => {
+
+  const tipo = (t.tipoTraslado || "").toLowerCase();
+
+  if (tipo !== "externo") return;
+
+  const unidad = t.unidad || "Sin unidad";
+
+  porAmbulanciaTraslado[unidad] =
+    (porAmbulanciaTraslado[unidad] || 0) + 1;
+
+});
+
+  porAmbulanciaTraslado = Object.fromEntries(
+  Object.entries(porAmbulanciaTraslado)
+    .sort((a, b) => b[1] - a[1])
+);
+
+  console.log(
+  "AMBULANCIAS TRASLADO:",
+  porAmbulanciaTraslado
+);
   
 let porPUE = contar(filtrados, "pue");
 
@@ -701,6 +727,14 @@ crear("graficoTraslados", porTraslado, "pie");
   porCentro,
   "bar",
   "#ef4444",
+  true
+);
+
+  crear(
+  "graficoAmbulanciasTraslado",
+  porAmbulanciaTraslado,
+  "bar",
+  "#06b6d4",
   true
 );
  
@@ -817,12 +851,15 @@ if (cardSubtipo) {
   // ✅ CONTROL VISUAL SERVICIO MÉDICO
 const cardClaves = document.getElementById("cardClaves");
 const cardTraslados = document.getElementById("cardTraslados");
-  const cardCentrosTraslado =
+const cardCentrosTraslado =
   document.getElementById("cardCentrosTraslado");
+
+  const cardAmbulanciasTraslado =
+  document.getElementById("cardAmbulanciasTraslado");
 
 if (cardClaves && cardTraslados) {
 
- if (vistaActual === "medico") {
+if (vistaActual === "medico") {
 
   cardClaves.style.display = "block";
   cardTraslados.style.display = "block";
@@ -830,6 +867,8 @@ if (cardClaves && cardTraslados) {
   if (cardCentrosTraslado)
     cardCentrosTraslado.style.display = "block";
 
+  if (cardAmbulanciasTraslado)
+    cardAmbulanciasTraslado.style.display = "block";
 }
   else {
 
@@ -839,8 +878,10 @@ if (cardClaves && cardTraslados) {
   if (cardCentrosTraslado)
     cardCentrosTraslado.style.display = "none";
 
-}
-}
+    if (cardAmbulanciasTraslado)
+  cardAmbulanciasTraslado.style.display = "none";
+
+}}
 
   // ✅ CONTROL VISUAL ASISTENCIA BRIGADA
 const cardAsistencia = document.getElementById("cardAsistencia");
