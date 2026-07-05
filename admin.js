@@ -679,6 +679,41 @@ traslados.forEach(t => {
 
   console.log("CENTROS:", porCentro);
 
+  let porMesTraslado = {};
+
+  traslados.forEach(t => {
+
+  if (!t.fecha) return;
+
+  let mesNumero =
+    t.fecha.split("-")[1];
+
+  let nombreMes =
+    MESES[mesNumero] || mesNumero;
+
+  porMesTraslado[nombreMes] =
+    (porMesTraslado[nombreMes] || 0) + 1;
+
+});
+
+  let porMesTrasladoOrdenado = {};
+
+ORDEN_MESES.forEach(mes => {
+
+  if (porMesTraslado[mes]) {
+
+    porMesTrasladoOrdenado[mes] =
+      porMesTraslado[mes];
+
+  }
+
+});
+
+  console.log(
+  "TRASLADOS POR MES:",
+  porMesTrasladoOrdenado
+);
+
   let porAmbulanciaTraslado = {};
 
 // SOLO EXTERNOS
@@ -746,7 +781,14 @@ crear("graficoTraslados", porTraslado, "pie");
   "#06b6d4",
   true
 );
- 
+
+  crear(
+  "graficoTrasladosMes",
+  porMesTrasladoOrdenado,
+  "bar",
+  "#10b981"
+);
+  
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
 
 let contenedor = document.getElementById("graficosSubtipos");
@@ -858,13 +900,20 @@ if (cardSubtipo) {
 }
 
   // ✅ CONTROL VISUAL SERVICIO MÉDICO
-const cardClaves = document.getElementById("cardClaves");
-const cardTraslados = document.getElementById("cardTraslados");
-const cardCentrosTraslado =
-  document.getElementById("cardCentrosTraslado");
+const cardClaves =
+document.getElementById("cardClaves");
 
-  const cardAmbulanciasTraslado =
-  document.getElementById("cardAmbulanciasTraslado");
+const cardTraslados =
+document.getElementById("cardTraslados");
+
+const cardCentrosTraslado =
+document.getElementById("cardCentrosTraslado");
+
+const cardAmbulanciasTraslado =
+document.getElementById("cardAmbulanciasTraslado");
+
+ const cardTrasladosMes =
+  document.getElementById("cardTrasladosMes"); 
 
 if (cardClaves && cardTraslados) {
 
@@ -878,6 +927,10 @@ if (vistaActual === "medico") {
 
   if (cardAmbulanciasTraslado)
     cardAmbulanciasTraslado.style.display = "block";
+
+  if (cardTrasladosMes)
+  cardTrasladosMes.style.display = "block";
+  
 }
   else {
 
@@ -889,6 +942,9 @@ if (vistaActual === "medico") {
 
     if (cardAmbulanciasTraslado)
   cardAmbulanciasTraslado.style.display = "none";
+
+    if (cardTrasladosMes)
+  cardTrasladosMes.style.display = "none";
 
 }}
 
