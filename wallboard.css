@@ -83,3 +83,35 @@ body{
   margin-bottom:20px;
 
 }
+
+.headerWallboard{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px;
+}
+
+.headerWallboard h1{
+  margin:0;
+  color:#10b981;
+  font-size:38px;
+}
+
+#reloj{
+  font-size:32px;
+  font-weight:bold;
+  color:white;
+}
+
+#bannerEmergencia{
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+#emergenciasActivas{
+  font-size:24px;
+  line-height:2;
+  text-align:center;
+}
