@@ -115,3 +115,15 @@ body{
   line-height:2;
   text-align:center;
 }
+
+.bloqueEmergencias{
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:20px;
+
+  margin-top:20px;
+
+}
