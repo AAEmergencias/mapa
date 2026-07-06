@@ -602,7 +602,9 @@ setDoc(
   doc(db, "estadoOperacional", key),
   {
     unidad: key,
+
     estado: estado,
+
     descripcion: estados[estado],
 
     tipoEmergencia:
@@ -613,7 +615,6 @@ setDoc(
 
     actualizado:
       new Date().toISOString()
-
   }
 );
   
