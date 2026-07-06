@@ -3,90 +3,131 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Central de Emergencias - Wallboard</title>
+  <title>Central de Emergencias - Wallboard</title>
 
-<link rel="stylesheet" href="wallboard.css">
+  <link rel="stylesheet" href="wallboard.css">
 
 </head>
 
 <body>
 
-<div class="contenedor">
-
+  <!-- ENCABEZADO -->
   <div class="headerWallboard">
 
-  <h1>🚨 CENTRAL DE EMERGENCIAS</h1>
+    <h1>🚨 CENTRAL DE EMERGENCIAS</h1>
 
-  <div id="reloj">
-    --:--:--
-  </div>
-
-</div>
-  
-
-  <!-- KPIs -->
-  <div class="kpis">
-
-    <div class="card">
-      <h3>🚨 Emergencias Activas</h3>
-      <div id="activas">0</div>
-    </div>
-
-    <div class="card">
-      <h3>📋 Total Emergencias</h3>
-      <div id="total">0</div>
-    </div>
-
-    <div class="card">
-      <h3>🚑 Traslados</h3>
-      <div id="traslados">0</div>
-    </div>
-
-    <div class="card">
-      <h3>✅ Partes Cerrados</h3>
-      <div id="cerrados">0</div>
+    <div id="reloj">
+      --:--:--
     </div>
 
   </div>
 
-  <div class="ultima cardGrande">
-    <h2>🚨 Última Emergencia</h2>
-    <div id="ultimaEmergencia">
-      Sin información
-    </div>
+  <!-- BANNER -->
+  <div id="bannerEmergencia">
+    Cargando estado...
   </div>
 
-  <div class="paneles">
+  <div class="contenedor">
 
-    <div class="card">
-      <h2>🚒 Brigadas</h2>
-      <div id="brigadas">Sin datos</div>
+    <!-- KPI -->
+    <div class="kpis">
+
+      <div class="card">
+        <h3>🚨 Emergencias Activas</h3>
+        <div id="activas">0</div>
+      </div>
+
+      <div class="card">
+        <h3>📋 Total Emergencias</h3>
+        <div id="total">0</div>
+      </div>
+
+      <div class="card">
+        <h3>🚑 Traslados</h3>
+        <div id="traslados">0</div>
+      </div>
+
+      <div class="card">
+        <h3>✅ Partes Cerrados</h3>
+        <div id="cerrados">0</div>
+      </div>
+
     </div>
 
-    <div class="card">
-      <h2>🚑 Ambulancias</h2>
-      <div id="ambulancias">Sin datos</div>
+    <!-- ÚLTIMA EMERGENCIA -->
+    <div class="ultima cardGrande">
+
+      <h2>🚨 Última Emergencia</h2>
+
+      <div id="ultimaEmergencia">
+        Sin información
+      </div>
+
     </div>
 
-    <div class="card">
-      <h2>🚑 Último Traslado</h2>
-      <div id="ultimoTraslado">Sin traslados</div>
+    <!-- EMERGENCIAS ACTIVAS -->
+    <div class="cardGrande">
+
+      <h2>🚨 Emergencias Activas en Curso</h2>
+
+      <div id="emergenciasActivas">
+        ✅ Sin emergencias activas
+      </div>
+
     </div>
 
-    <div class="card">
-      <h2>⏱️ Tiempo sin Emergencias</h2>
-      <div id="sinEmergencias">Calculando...</div>
+    <!-- FILA INFERIOR -->
+    <div class="paneles">
+
+      <div class="card">
+
+        <h2>🚒 Brigadas</h2>
+
+        <div id="brigadas">
+          Sin datos
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>🚑 Ambulancias</h2>
+
+        <div id="ambulancias">
+          Sin datos
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>🚑 Último Traslado</h2>
+
+        <div id="ultimoTraslado">
+          Sin traslados
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>⏱️ Tiempo sin Emergencias</h2>
+
+        <div id="sinEmergencias">
+          Calculando...
+        </div>
+
+      </div>
+
     </div>
 
   </div>
 
-</div>
-
-<script type="module" src="wallboard.js"></script>
+  <script type="module" src="wallboard.js"></script>
 
 </body>
-</html>
 
+</html>
