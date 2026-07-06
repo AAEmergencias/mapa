@@ -247,20 +247,34 @@ if (listado) {
 
   else {
 
-    listado.innerHTML =
-      emergenciasUnicas.map(e => `
+listado.innerHTML =
+  emergenciasUnicas.map(e => `
 
-        <div style="
-          margin-bottom:20px;
-        ">
+    <div style="
+      margin-bottom:20px;
+      line-height:1.7;
+      text-align:left;
+    ">
 
-          🚨 <b>${e.tipo}</b><br>
+      🚨 <b>${e.tipo}</b><br>
 
-          📍 ${e.ubicacion}
+      📍 ${e.ubicacion}<br>
 
-        </div>
+      🚑 ${
+        e.unidades.length
+          ? e.unidades.join(", ")
+          : "Sin unidad"
+      }<br>
 
-      `).join("");
+      📝 ${
+        e.notas
+          ? e.notas
+          : "Sin observaciones"
+      }
+
+    </div>
+
+  `).join("");
 
   }
 
