@@ -212,17 +212,23 @@ if (listado) {
 
       if (!existe) {
 
-        emergenciasUnicas.push({
+   emergenciasUnicas.push({
 
-          clave,
+  clave,
 
-       tipo:
-  e.tipoEmergencia || "Emergencia",
+  tipo:
+    e.tipoEmergencia || "Emergencia",
 
-ubicacion:
-  e.ubicacion || "Sin ubicación"
+  ubicacion:
+    e.ubicacion || "Sin ubicación",
 
-        });
+  notas:
+    e.notas || "",
+
+  unidades:
+    e.unidadesDespachadas || []
+
+});
 
       }
 
