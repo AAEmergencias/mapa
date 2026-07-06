@@ -38,9 +38,18 @@ async function cargarDatos() {
     collection(db, "estadoOperacional")
   );
 
+    const emergenciasSnapshot =
+  await getDocs(
+    collection(
+      db,
+      "emergenciasActivas"
+    )
+  );
+
     let partes = [];
     let traslados = [];
     let estadosOperacionales = [];
+    let emergenciasActivas = [];
 
     partesSnapshot.forEach(doc => {
 
@@ -68,6 +77,15 @@ async function cargarDatos() {
 
 });
 
+    emergenciasSnapshot.forEach(doc => {
+
+  emergenciasActivas.push({
+    id: doc.id,
+    ...doc.data()
+  });
+
+});
+
     console.log("PARTES:", partes);
     console.log("TRASLADOS:", traslados);
     console.log(
@@ -75,10 +93,16 @@ async function cargarDatos() {
   estadosOperacionales
 );
 
+    console.log(
+  "EMERGENCIAS ACTIVAS:",
+  emergenciasActivas
+);
+
 actualizarPantalla(
   partes,
   traslados,
-  estadosOperacionales
+  estadosOperacionales,
+  emergenciasActivas
 );
 
   }
@@ -100,7 +124,8 @@ actualizarPantalla(
 function actualizarPantalla(
   partes,
   traslados,
-  estadosOperacionales
+  estadosOperacionales,
+  emergenciasActivas
 ) {
 
   // ==========================
@@ -161,41 +186,81 @@ const activas =
     e => estadosActivos.includes(e.estado)
   ).length;
 
-  const listado =
+const listado =
   document.getElementById(
     "listadoEmergenciasActivas"
   );
 
 if (listado) {
 
-  if (activas === 0) {
+  const emergenciasUnicas = [];
+
+  estadosOperacionales.forEach(e => {
+
+    if (
+      ["6-T","6-3","6-7","6-15"]
+      .includes(e.estado)
+    ) {
+
+      const clave =
+        e.tipoEmergencia +
+        "|" +
+        e.ubicacion;
+
+      const existe =
+        emergenciasUnicas.find(
+          x => x.clave === clave
+        );
+
+      if (!existe) {
+
+        emergenciasUnicas.push({
+
+          clave,
+
+          tipo:
+            e.tipoEmergencia ||
+
+            "Emergencia",
+
+          ubicacion:
+            e.ubicacion ||
+
+            "Sin ubicación"
+
+        });
+
+      }
+
+    }
+
+  });
+
+  if (
+    emergenciasUnicas.length === 0
+  ) {
 
     listado.innerHTML =
       "✅ Sin emergencias activas";
 
-  } else {
+  }
 
-    let html = "";
+  else {
 
-    estadosOperacionales.forEach(e => {
+    listado.innerHTML =
+      emergenciasUnicas.map(e => `
 
-      if (
-        e.estado === "6-T" ||
-        e.estado === "6-3" ||
-        e.estado === "6-7" ||
-        e.estado === "6-15"
-      ) {
+        <div style="
+          margin-bottom:20px;
+        ">
 
-        html += `
-          🚨 ${e.unidad}<br>
-          ${e.descripcion}<br><br>
-        `;
+          🚨 <b>${e.tipo}</b><br>
 
-      }
+          📍 ${e.ubicacion}
 
-    });
+        </div>
 
-    listado.innerHTML = html;
+      `).join("");
 
   }
 
