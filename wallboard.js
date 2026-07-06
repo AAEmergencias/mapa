@@ -88,10 +88,6 @@ async function cargarDatos() {
 
     console.log("PARTES:", partes);
     console.log("TRASLADOS:", traslados);
-    console.log(
-  "ESTADOS OPERACIONALES:",
-  estadosOperacionales
-);
 
     console.log(
   "EMERGENCIAS ACTIVAS:",
