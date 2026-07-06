@@ -152,19 +152,14 @@ function actualizarPantalla(
 const estadosActivos = [
   "6-T",
   "6-3",
-  "6-7"
-  "6-8"
-  "6-9"
-  "6-13"
+  "6-7",
+  "6-15"
 ];
 
-const activasLista =
+const activas =
   estadosOperacionales.filter(
     e => estadosActivos.includes(e.estado)
-  );
-
-const activas =
-  activasLista.length;
+  ).length;
 
   // ==========================
   // KPIs
@@ -276,34 +271,6 @@ const activas =
   }
 
   // ==========================
-  // EMERGENCIAS ACTIVAS
-  // ==========================
-
-  const divActivas =
-    document.getElementById(
-      "emergenciasActivas"
-    );
-
-  if (divActivas) {
-
-  if (activasLista.length === 0) {
-
-  divActivas.innerHTML =
-    "✅ Sin emergencias activas";
-
-} else {
-
-  divActivas.innerHTML =
-    activasLista.map(e => `
-
-      🚑 ${e.unidad}<br>
-      🔴 ${e.descripcion}<br><br>
-
-    `).join("");
-
-}
-
-  // ==========================
   // ÚLTIMO TRASLADO
   // ==========================
 
@@ -401,88 +368,42 @@ brigadas.forEach(brigada => {
   if (!estadoActual) {
 
     htmlBrigadas += `
-      ${brigada}
-      🟢 Disponible<br>
+      ${brigada} 🟢 Disponible<br>
     `;
 
     return;
+
   }
 
-else if (
-  estadoActual.estado === "6-9"
-) {
+  switch (estadoActual.estado) {
 
-  htmlBrigadas += `
-    ${brigada}
-    🔵 Se Retira
-    <br>
-  `;
+    case "6-T":
+      htmlBrigadas += `${brigada} 🟠 En Trayecto<br>`;
+      break;
 
-}
-else if (
-  estadoActual.estado === "6-13"
-) {
+    case "6-3":
+      htmlBrigadas += `${brigada} 🔴 En el Lugar<br>`;
+      break;
 
-  htmlBrigadas += `
-    ${brigada}
-    🟣 Otros Trámites
-    <br>
-  `;
+    case "6-7":
+      htmlBrigadas += `${brigada} 🟡 Situación Controlada<br>`;
+      break;
 
-}
-else if (
-  estadoActual.estado === "6-8"
-) {
+    case "6-15":
+      htmlBrigadas += `${brigada} 🏥 Centro Asistencial<br>`;
+      break;
 
-  htmlBrigadas += `
-    ${brigada}
-    🟢 Disponible
-    <br>
-  `;
+    case "6-9":
+      htmlBrigadas += `${brigada} 🔵 Se Retira<br>`;
+      break;
 
-}
+    case "6-13":
+      htmlBrigadas += `${brigada} 🟣 Otros Trámites<br>`;
+      break;
 
-  else if (
-  estadoActual.estado === "6-9"
-) {
-
-  htmlBrigadas += `
-    ${brigada}
-    🔵 Se Retira
-    <br>
-  `;
-
-}
-else if (
-  estadoActual.estado === "6-13"
-) {
-
-  htmlBrigadas += `
-    ${brigada}
-    🟣 Otros Trámites
-    <br>
-  `;
-
-}
-else if (
-  estadoActual.estado === "6-8"
-) {
-
-  htmlBrigadas += `
-    ${brigada}
-    🟢 Disponible
-    <br>
-  `;
-
-}
-
-  else {
-
-    htmlBrigadas += `
-      ${brigada}
-      🟢 Disponible
-      <br>
-    `;
+    default:
+      htmlBrigadas += `${brigada} 🟢 Disponible<br>`;
+      break;
 
   }
 
@@ -514,81 +435,42 @@ ambulancias.forEach(unidad => {
   if (!estadoActual) {
 
     htmlAmbulancias += `
-      ${unidad}
-      🟢 Disponible<br>
+      ${unidad} 🟢 Disponible<br>
     `;
 
     return;
 
   }
 
-  if (
-    estadoActual.estado === "6-T" ||
-    estadoActual.estado === "6-3" ||
-    estadoActual.estado === "6-7"
-  ) {
+  switch (estadoActual.estado) {
 
-    htmlAmbulancias += `
-      ${unidad}
-      🔴 ${estadoActual.descripcion}
-      <br>
-    `;
+    case "6-T":
+      htmlAmbulancias += `${unidad} 🟠 En Trayecto<br>`;
+      break;
 
-  }
+    case "6-3":
+      htmlAmbulancias += `${unidad} 🔴 En el Lugar<br>`;
+      break;
 
-  else if (
-    estadoActual.estado === "6-15"
-  ) {
+    case "6-7":
+      htmlAmbulancias += `${unidad} 🟡 Situación Controlada<br>`;
+      break;
 
-    htmlAmbulancias += `
-      ${unidad}
-      🟡 Centro Asistencial
-      <br>
-    `;
+    case "6-15":
+      htmlAmbulancias += `${unidad} 🏥 Centro Asistencial<br>`;
+      break;
 
-  }
+    case "6-9":
+      htmlAmbulancias += `${unidad} 🔵 Se Retira<br>`;
+      break;
 
-  else if (
-  estadoActual.estado === "6-9"
-) {
+    case "6-13":
+      htmlAmbulancias += `${unidad} 🟣 Otros Trámites<br>`;
+      break;
 
-  htmlAmbulancias += `
-    ${unidad}
-    🔵 Se Retira
-    <br>
-  `;
-
-}
-else if (
-  estadoActual.estado === "6-13"
-) {
-
-  htmlAmbulancias += `
-    ${unidad}
-    🟣 Otros Trámites
-    <br>
-  `;
-
-}
-else if (
-  estadoActual.estado === "6-8"
-) {
-
-  htmlAmbulancias += `
-    ${unidad}
-    🟢 Disponible
-    <br>
-  `;
-
-}  
-
-  else {
-
-    htmlAmbulancias += `
-      ${unidad}
-      🟢 Disponible
-      <br>
-    `;
+    default:
+      htmlAmbulancias += `${unidad} 🟢 Disponible<br>`;
+      break;
 
   }
 
@@ -596,8 +478,7 @@ else if (
 
 document.getElementById(
   "ambulancias"
-).innerHTML =
-  htmlAmbulancias;
+).innerHTML = htmlAmbulancias;
 
   }
 
