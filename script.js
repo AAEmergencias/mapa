@@ -239,6 +239,7 @@ const unidades = [
 
 // ✅ PRIMERO CREAS EL OBJETO
 let baseActualUnidad = {};
+let estadoActualUnidad = {};
 
 unidades.forEach(u => {
   let key = u.nombre.split(" ")[0];
@@ -597,6 +598,9 @@ if (emergenciaActiva && emergenciaActiva.tiempos[estado] !== undefined) {
   
 const key =
   nombreUnidad.split(" ")[0];
+
+  estadoActualUnidad[key] =
+  estado;
 
 setDoc(
   doc(db, "estadoOperacional", key),
@@ -1537,11 +1541,38 @@ unidades.forEach(u => {
 const contenedorUnidades = panel.querySelector(".unidades");
 const campoNotas = panel.querySelector(".campoNotas");
 
-campoNotas.addEventListener("input", () => {
-  if (emergenciaActiva) {
-    emergenciaActiva.notas = campoNotas.value;
-  }
-});
+const btnGuardarNota =
+  panel.querySelector(".btnGuardarNota");
+
+btnGuardarNota.onclick = () => {
+
+  if (!emergenciaActiva) return;
+
+  emergenciaActiva.notas =
+    campoNotas.value;
+
+  emergenciaActiva.unidades.forEach(
+    unidad => {
+
+      actualizarEstadoUnidad(
+        unidad,
+        estadoActualUnidad[unidad] || "6-T"
+      );
+
+    }
+  );
+
+  btnGuardarNota.innerHTML =
+    "✅ Guardado";
+
+  setTimeout(() => {
+
+    btnGuardarNota.innerHTML =
+      "💾 Guardar Nota";
+
+  }, 2000);
+
+};
   
   let unidadesAsignadas = [];
 
