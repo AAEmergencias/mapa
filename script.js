@@ -604,7 +604,16 @@ setDoc(
     unidad: key,
     estado: estado,
     descripcion: estados[estado],
-    actualizado: new Date().toISOString()
+
+    tipoEmergencia:
+      emergenciaActiva?.tipo || "",
+
+    ubicacion:
+      emergenciaActiva?.ubicacion || "",
+
+    actualizado:
+      new Date().toISOString()
+
   }
 );
   
