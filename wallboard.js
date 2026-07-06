@@ -357,31 +357,81 @@ function actualizarPantalla(
   // BRIGADAS
   // ==========================
 
-  document.getElementById(
-    "brigadas"
-  ).innerHTML = `
+const brigadas = [
+  "B1",
+  "B2",
+  "UIR-M",
+  "UIR-E",
+  "UIR-S"
+];
 
-    B1 🟢 Disponible<br>
-    B2 🟢 Disponible<br>
-    UIR-M 🟢 Disponible<br>
-    UIR-E 🟢 Disponible<br>
-    UIR-S 🟢 Disponible
+let htmlBrigadas = "";
 
-  `;
+brigadas.forEach(brigada => {
+
+  const activa = activasLista.find(
+    p => p.brigada === brigada
+  );
+
+  if (activa) {
+
+    htmlBrigadas += `
+      ${brigada} 🔴 En Emergencia<br>
+    `;
+
+  } else {
+
+    htmlBrigadas += `
+      ${brigada} 🟢 Disponible<br>
+    `;
+
+  }
+
+});
+
+document.getElementById(
+  "brigadas"
+).innerHTML = htmlBrigadas;
 
   // ==========================
   // AMBULANCIAS
   // ==========================
 
-  document.getElementById(
-    "ambulancias"
-  ).innerHTML = `
+const ambulancias = [
+  "S1",
+  "S2",
+  "S3"
+];
 
-    S1 🟢 Disponible<br>
-    S2 🟢 Disponible<br>
-    S3 🟢 Disponible
+let htmlAmbulancias = "";
 
-  `;
+ambulancias.forEach(a => {
+
+  const activa = activasLista.find(
+    p =>
+      p.ambulancia === "Si asiste"
+  );
+
+  if (activa) {
+
+    htmlAmbulancias += `
+      ${a} 🟡 En Servicio<br>
+    `;
+
+  } else {
+
+    htmlAmbulancias += `
+      ${a} 🟢 Disponible<br>
+    `;
+
+  }
+
+});
+
+document.getElementById(
+  "ambulancias"
+).innerHTML =
+  htmlAmbulancias;
 
 }
 
