@@ -149,14 +149,22 @@ function actualizarPantalla(
   // EMERGENCIAS ACTIVAS
   // ==========================
 
-  const activasLista =
-    partes.filter(p =>
-      !p.horaCierre ||
-      p.horaCierre.trim() === ""
-    );
+const estadosActivos = [
+  "6-T",
+  "6-3",
+  "6-7"
+  "6-8"
+  "6-9"
+  "6-13"
+];
 
-  const activas =
-    activasLista.length;
+const activasLista =
+  estadosOperacionales.filter(
+    e => estadosActivos.includes(e.estado)
+  );
+
+const activas =
+  activasLista.length;
 
   // ==========================
   // KPIs
@@ -278,26 +286,22 @@ function actualizarPantalla(
 
   if (divActivas) {
 
-    if (activasLista.length === 0) {
+  if (activasLista.length === 0) {
 
-      divActivas.innerHTML =
-        "✅ Sin emergencias activas";
+  divActivas.innerHTML =
+    "✅ Sin emergencias activas";
 
-    }
-    else {
+} else {
 
-      divActivas.innerHTML =
-        activasLista.map(p => `
+  divActivas.innerHTML =
+    activasLista.map(e => `
 
-          🚒 ${p.tipo || "-"}<br>
-          📍 ${p.lugar || "-"}<br>
-          ⏱️ ${p.horaActivacion || "--"}<br><br>
+      🚑 ${e.unidad}<br>
+      🔴 ${e.descripcion}<br><br>
 
-        `).join("");
+    `).join("");
 
-    }
-
-  }
+}
 
   // ==========================
   // ÚLTIMO TRASLADO
@@ -404,31 +408,73 @@ brigadas.forEach(brigada => {
     return;
   }
 
-  if (
-    estadoActual.estado === "6-T" ||
-    estadoActual.estado === "6-3" ||
-    estadoActual.estado === "6-7"
-  ) {
+else if (
+  estadoActual.estado === "6-9"
+) {
 
-    htmlBrigadas += `
-      ${brigada}
-      🔴 ${estadoActual.descripcion}
-      <br>
-    `;
+  htmlBrigadas += `
+    ${brigada}
+    🔵 Se Retira
+    <br>
+  `;
 
-  }
+}
+else if (
+  estadoActual.estado === "6-13"
+) {
+
+  htmlBrigadas += `
+    ${brigada}
+    🟣 Otros Trámites
+    <br>
+  `;
+
+}
+else if (
+  estadoActual.estado === "6-8"
+) {
+
+  htmlBrigadas += `
+    ${brigada}
+    🟢 Disponible
+    <br>
+  `;
+
+}
 
   else if (
-    estadoActual.estado === "6-15"
-  ) {
+  estadoActual.estado === "6-9"
+) {
 
-    htmlBrigadas += `
-      ${brigada}
-      🟡 Centro Asistencial
-      <br>
-    `;
+  htmlBrigadas += `
+    ${brigada}
+    🔵 Se Retira
+    <br>
+  `;
 
-  }
+}
+else if (
+  estadoActual.estado === "6-13"
+) {
+
+  htmlBrigadas += `
+    ${brigada}
+    🟣 Otros Trámites
+    <br>
+  `;
+
+}
+else if (
+  estadoActual.estado === "6-8"
+) {
+
+  htmlBrigadas += `
+    ${brigada}
+    🟢 Disponible
+    <br>
+  `;
+
+}
 
   else {
 
@@ -501,6 +547,40 @@ ambulancias.forEach(unidad => {
     `;
 
   }
+
+  else if (
+  estadoActual.estado === "6-9"
+) {
+
+  htmlAmbulancias += `
+    ${unidad}
+    🔵 Se Retira
+    <br>
+  `;
+
+}
+else if (
+  estadoActual.estado === "6-13"
+) {
+
+  htmlAmbulancias += `
+    ${unidad}
+    🟣 Otros Trámites
+    <br>
+  `;
+
+}
+else if (
+  estadoActual.estado === "6-8"
+) {
+
+  htmlAmbulancias += `
+    ${unidad}
+    🟢 Disponible
+    <br>
+  `;
+
+}  
 
   else {
 
