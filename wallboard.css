@@ -221,3 +221,51 @@ body{
   color: #d1d5db;
 
 }
+
+.unidadesUltima {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin: 8px 0;
+
+}
+
+.tagBrigada {
+
+  background: rgba(239,68,68,.15);
+
+  border: 1px solid #ef4444;
+
+  color: white;
+
+  padding: 4px 8px;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+}
+
+.tagAmbulancia {
+
+  background: rgba(16,185,129,.15);
+
+  border: 1px solid #10b981;
+
+  color: white;
+
+  padding: 4px 8px;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+}
