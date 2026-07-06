@@ -414,12 +414,32 @@ document.getElementById(
       📍 ${ultima.lugar || "-"}
     </div>
 
-    <div>
-  🚑 ${
+  <div class="unidadesUltima">
+
+  ${
     ultima.unidades
-      ? ultima.unidades.join(", ")
+      ? ultima.unidades.map(u => {
+
+          if (u.startsWith("S")) {
+
+            return `
+              <span class="tagAmbulancia">
+                🚑 ${u}
+              </span>
+            `;
+
+          }
+
+          return `
+            <span class="tagBrigada">
+              🚒 ${u}
+            </span>
+          `;
+
+        }).join("")
       : "-"
   }
+
 </div>
 
     <div>
