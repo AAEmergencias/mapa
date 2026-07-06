@@ -1495,10 +1495,24 @@ panel.innerHTML = `
 
 </div>
 
-    <div class="bloque">
-      <div class="titulo">📝 Notas</div>
-      <textarea class="campoNotas" placeholder="Agregar información..."></textarea>
-    </div>
+<div class="bloque">
+
+  <div class="titulo">
+    📝 Notas
+  </div>
+
+  <textarea
+    class="campoNotas"
+    placeholder="Agregar información..."
+  ></textarea>
+
+  <br><br>
+
+  <button class="btnGuardarNota">
+    💾 Guardar Nota
+  </button>
+
+</div>
 
     <button class="btnFinalizar">Finalizar Emergencia</button>
 
