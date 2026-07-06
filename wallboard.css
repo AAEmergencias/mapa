@@ -128,12 +128,18 @@ body{
 
 }
 
-#listadoEmergenciasActivas{
+#listadoEmergenciasActivas {
 
-  font-size:24px;
+  font-size: 18px;
 
-  line-height:1.8;
+  line-height: 1.8;
 
-  text-align:center;
+  padding: 10px;
+
+}
+
+#listadoEmergenciasActivas div {
+
+  text-align: left;
 
 }
