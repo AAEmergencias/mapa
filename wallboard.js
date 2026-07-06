@@ -450,12 +450,12 @@ setInterval(
 
 setInterval(
   cargarDatos,
-  30000
+  60000
 );
 
-// refresco completo cada 5 min
+// refresco completo cada 10 min
 setInterval(() => {
 
   location.reload();
 
-}, 300000);
+}, 600000);
