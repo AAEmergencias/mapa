@@ -70,6 +70,10 @@ async function cargarDatos() {
 
     console.log("PARTES:", partes);
     console.log("TRASLADOS:", traslados);
+    console.log(
+  "ESTADOS OPERACIONALES:",
+  estadosOperacionales
+);
 
 actualizarPantalla(
   partes,
@@ -97,7 +101,7 @@ function actualizarPantalla(
   partes,
   traslados,
   estadosOperacionales
-)
+) {
 
   // ==========================
   // ORDENAR PARTES
@@ -515,6 +519,8 @@ document.getElementById(
 ).innerHTML =
   htmlAmbulancias;
 
+  }
+
 // ==========================
 // INICIO
 // ==========================
@@ -539,8 +545,3 @@ setInterval(() => {
   location.reload();
 
 }, 600000);
-
-console.log(
-  "ESTADOS OPERACIONALES:",
-  estadosOperacionales
-);
