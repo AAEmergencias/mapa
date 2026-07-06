@@ -177,10 +177,37 @@ const estadosActivos = [
   "6-15"
 ];
 
+const emergenciasActivasKPI = [];
+
+estadosOperacionales.forEach(e => {
+
+  if (
+    estadosActivos.includes(e.estado)
+  ) {
+
+    const clave =
+      (e.tipoEmergencia || "") +
+      "|" +
+      (e.ubicacion || "");
+
+    if (
+      !emergenciasActivasKPI.includes(
+        clave
+      )
+    ) {
+
+      emergenciasActivasKPI.push(
+        clave
+      );
+
+    }
+
+  }
+
+});
+
 const activas =
-  estadosOperacionales.filter(
-    e => estadosActivos.includes(e.estado)
-  ).length;
+  emergenciasActivasKPI.length;
 
 const listado =
   document.getElementById(
