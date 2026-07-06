@@ -277,27 +277,31 @@ if (listado) {
 listado.innerHTML =
   emergenciasUnicas.map(e => `
 
-    <div style="
-      margin-bottom:20px;
-      line-height:1.7;
-      text-align:left;
-    ">
+    <div class="cardEmergenciaActiva">
 
-      🚨 <b>${e.tipo}</b><br>
+      <div class="tituloEmergencia">
+        🚨 ${e.tipo}
+      </div>
 
-      📍 ${e.ubicacion}<br>
+      <div>
+        📍 ${e.ubicacion}
+      </div>
 
-      🚑 ${
-        e.unidades.length
-          ? e.unidades.join(", ")
-          : "Sin unidad"
-      }<br>
+      <div>
+        🚑 ${
+          e.unidades.length
+            ? e.unidades.join(", ")
+            : "Sin unidad"
+        }
+      </div>
 
-      📝 ${
-        e.notas
-          ? e.notas
-          : "Sin observaciones"
-      }
+      <div>
+        📝 ${
+          e.notas
+            ? e.notas
+            : "Sin observaciones"
+        }
+      </div>
 
     </div>
 
