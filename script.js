@@ -778,6 +778,24 @@ emergenciaActiva = {
   notas: "" // ✅ NUEVO
 };
 
+addDoc(
+  collection(db, "emergenciasActivas"),
+  {
+    tipo: tipo,
+    subtipo: subtipo,
+
+    ubicacion:
+      ubicacionSeleccionada?.nombre ||
+      "Sin ubicación",
+
+    fecha:
+      new Date().toISOString(),
+
+    estado:
+      "activa"
+  }
+);
+  
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
 let nueva = {
