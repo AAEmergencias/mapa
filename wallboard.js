@@ -6,6 +6,23 @@ import {
 
 console.log("📺 Wallboard iniciado");
 
+// ==========================
+// RELOJ
+// ==========================
+
+function actualizarReloj() {
+
+  const ahora = new Date();
+
+  document.getElementById("reloj").innerHTML =
+    ahora.toLocaleString("es-CL");
+
+}
+
+// ==========================
+// CARGAR DATOS
+// ==========================
+
 async function cargarDatos() {
 
   try {
@@ -20,14 +37,30 @@ async function cargarDatos() {
     let traslados = [];
 
     partesSnapshot.forEach(doc => {
-      partes.push(doc.data());
+
+      partes.push({
+        id: doc.id,
+        ...doc.data()
+      });
+
     });
 
     trasladosSnapshot.forEach(doc => {
-      traslados.push(doc.data());
+
+      traslados.push({
+        id: doc.id,
+        ...doc.data()
+      });
+
     });
 
-    actualizarPantalla(partes, traslados);
+    console.log("PARTES:", partes);
+    console.log("TRASLADOS:", traslados);
+
+    actualizarPantalla(
+      partes,
+      traslados
+    );
 
   }
   catch (error) {
@@ -41,7 +74,14 @@ async function cargarDatos() {
 
 }
 
-function actualizarPantalla(partes, traslados) {
+// ==========================
+// ACTUALIZAR PANTALLA
+// ==========================
+
+function actualizarPantalla(
+  partes,
+  traslados
+) {
 
   // ==========================
   // ORDENAR PARTES
@@ -49,12 +89,14 @@ function actualizarPantalla(partes, traslados) {
 
   partes.sort((a, b) => {
 
-    let fechaA = new Date(
-      a.fecha + " " + (a.horaActivacion || "00:00")
+    const fechaA = new Date(
+      a.fecha + " " +
+      (a.horaActivacion || "00:00")
     );
 
-    let fechaB = new Date(
-      b.fecha + " " + (b.horaActivacion || "00:00")
+    const fechaB = new Date(
+      b.fecha + " " +
+      (b.horaActivacion || "00:00")
     );
 
     return fechaB - fechaA;
@@ -62,26 +104,119 @@ function actualizarPantalla(partes, traslados) {
   });
 
   // ==========================
+  // ORDENAR TRASLADOS
+  // ==========================
+
+  traslados.sort((a, b) => {
+
+    const fechaA = new Date(
+      (a.fecha || "") +
+      " " +
+      (a.hora || "00:00")
+    );
+
+    const fechaB = new Date(
+      (b.fecha || "") +
+      " " +
+      (b.hora || "00:00")
+    );
+
+    return fechaB - fechaA;
+
+  });
+
+  // ==========================
+  // EMERGENCIAS ACTIVAS
+  // ==========================
+
+  const activasLista =
+    partes.filter(p =>
+      !p.horaCierre ||
+      p.horaCierre.trim() === ""
+    );
+
+  const activas =
+    activasLista.length;
+
+  // ==========================
   // KPIs
   // ==========================
 
-  document.getElementById("total").innerText =
-    partes.length;
+  document.getElementById(
+    "activas"
+  ).innerText = activas;
 
-  document.getElementById("traslados").innerText =
-    traslados.length;
+  document.getElementById(
+    "total"
+  ).innerText = partes.length;
 
-  document.getElementById("cerrados").innerText =
-    partes.length;
+  document.getElementById(
+    "traslados"
+  ).innerText = traslados.length;
 
-  // Emergencias activas
-  let activas = partes.filter(p =>
-    !p.horaCierre ||
-    p.horaCierre.trim() === ""
-  ).length;
+  document.getElementById(
+    "cerrados"
+  ).innerText = partes.length;
 
-  document.getElementById("activas").innerText =
-    activas;
+  // ==========================
+  // TARJETA ACTIVA ROJA
+  // ==========================
+
+  const cardActivas =
+    document
+      .getElementById("activas")
+      .parentElement;
+
+  if (activas > 0) {
+
+    cardActivas.style.border =
+      "3px solid #ef4444";
+
+    cardActivas.style.boxShadow =
+      "0 0 25px rgba(239,68,68,.8)";
+
+  }
+  else {
+
+    cardActivas.style.border =
+      "1px solid #10b981";
+
+    cardActivas.style.boxShadow =
+      "none";
+
+  }
+
+  // ==========================
+  // BANNER
+  // ==========================
+
+  const banner =
+    document.getElementById(
+      "bannerEmergencia"
+    );
+
+  if (banner) {
+
+    if (activas > 0) {
+
+      banner.innerHTML =
+        "🚨 EMERGENCIA ACTIVA 🚨";
+
+      banner.style.color =
+        "#ef4444";
+
+    }
+    else {
+
+      banner.innerHTML =
+        "✅ SIN EMERGENCIAS ACTIVAS";
+
+      banner.style.color =
+        "#10b981";
+
+    }
+
+  }
 
   // ==========================
   // ÚLTIMA EMERGENCIA
@@ -89,13 +224,13 @@ function actualizarPantalla(partes, traslados) {
 
   if (partes.length > 0) {
 
-    let ultima = partes[0];
+    const ultima = partes[0];
 
     document.getElementById(
       "ultimaEmergencia"
     ).innerHTML = `
 
-      📅 ${ultima.fecha || "-"}<br>
+      📅 ${ultima.fecha || "-"}<br><br>
 
       ⏱️ ${ultima.horaActivacion || "--"}
       ${ultima.horaCierre
@@ -113,13 +248,45 @@ function actualizarPantalla(partes, traslados) {
   }
 
   // ==========================
+  // EMERGENCIAS ACTIVAS
+  // ==========================
+
+  const divActivas =
+    document.getElementById(
+      "emergenciasActivas"
+    );
+
+  if (divActivas) {
+
+    if (activasLista.length === 0) {
+
+      divActivas.innerHTML =
+        "✅ Sin emergencias activas";
+
+    }
+    else {
+
+      divActivas.innerHTML =
+        activasLista.map(p => `
+
+          🚒 ${p.tipo || "-"}<br>
+          📍 ${p.lugar || "-"}<br>
+          ⏱️ ${p.horaActivacion || "--"}<br><br>
+
+        `).join("");
+
+    }
+
+  }
+
+  // ==========================
   // ÚLTIMO TRASLADO
   // ==========================
 
   if (traslados.length > 0) {
 
-    let ultimo =
-      traslados[traslados.length - 1];
+    const ultimo =
+      traslados[0];
 
     document.getElementById(
       "ultimoTraslado"
@@ -127,20 +294,19 @@ function actualizarPantalla(partes, traslados) {
 
       🚑 ${ultimo.unidad || "-"}<br><br>
 
-      🏥 ${
-        ultimo.lugarTraslado || "-"
-      }<br><br>
+      🏥 ${ultimo.lugarTraslado || "-"}<br><br>
 
-      📍 ${
-        ultimo.tipoTraslado || "-"
-      }
+      📍 ${ultimo.tipoTraslado || "-"}
+
     `;
 
-  } else {
+  }
+  else {
 
     document.getElementById(
       "ultimoTraslado"
-    ).innerHTML = "Sin traslados";
+    ).innerHTML =
+      "Sin traslados";
 
   }
 
@@ -150,23 +316,31 @@ function actualizarPantalla(partes, traslados) {
 
   if (partes.length > 0) {
 
-    let ultima = partes[0];
+    const ultima =
+      partes[0];
 
-    let fechaUltima = new Date(
-      ultima.fecha +
-      " " +
-      (ultima.horaActivacion || "00:00")
-    );
+    const fechaUltima =
+      new Date(
+        ultima.fecha +
+        " " +
+        (ultima.horaActivacion || "00:00")
+      );
 
-    let ahora = new Date();
+    const ahora =
+      new Date();
 
-    let diffMs = ahora - fechaUltima;
+    const diff =
+      ahora - fechaUltima;
 
-    let horas =
-      Math.floor(diffMs / 1000 / 60 / 60);
+    const horas =
+      Math.floor(
+        diff / 1000 / 60 / 60
+      );
 
-    let minutos =
-      Math.floor(diffMs / 1000 / 60) % 60;
+    const minutos =
+      Math.floor(
+        diff / 1000 / 60
+      ) % 60;
 
     document.getElementById(
       "sinEmergencias"
@@ -174,16 +348,18 @@ function actualizarPantalla(partes, traslados) {
 
       ${horas} h<br>
       ${minutos} min
+
     `;
 
   }
 
   // ==========================
-  // ESTADOS BRIGADAS
+  // BRIGADAS
   // ==========================
 
-  document.getElementById("brigadas")
-    .innerHTML = `
+  document.getElementById(
+    "brigadas"
+  ).innerHTML = `
 
     B1 🟢 Disponible<br>
     B2 🟢 Disponible<br>
@@ -194,11 +370,12 @@ function actualizarPantalla(partes, traslados) {
   `;
 
   // ==========================
-  // ESTADOS AMBULANCIAS
+  // AMBULANCIAS
   // ==========================
 
-  document.getElementById("ambulancias")
-    .innerHTML = `
+  document.getElementById(
+    "ambulancias"
+  ).innerHTML = `
 
     S1 🟢 Disponible<br>
     S2 🟢 Disponible<br>
@@ -209,29 +386,26 @@ function actualizarPantalla(partes, traslados) {
 }
 
 // ==========================
-// AUTO REFRESH
+// INICIO
 // ==========================
-
-cargarDatos();
-
-setInterval(() => {
-
-  cargarDatos();
-
-}, 30000);
-
-
-function actualizarReloj(){
-
-  let ahora = new Date();
-
-  document.getElementById("reloj").innerHTML =
-    ahora.toLocaleString("es-CL");
-
-}
 
 actualizarReloj();
 
-setInterval(actualizarReloj,1000);
+cargarDatos();
 
-<div id="bannerEmergencia"></div>
+setInterval(
+  actualizarReloj,
+  1000
+);
+
+setInterval(
+  cargarDatos,
+  30000
+);
+
+// refresco completo cada 5 min
+setInterval(() => {
+
+  location.reload();
+
+}, 300000);
