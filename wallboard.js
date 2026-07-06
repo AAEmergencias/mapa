@@ -161,6 +161,47 @@ const activas =
     e => estadosActivos.includes(e.estado)
   ).length;
 
+  const listado =
+  document.getElementById(
+    "listadoEmergenciasActivas"
+  );
+
+if (listado) {
+
+  if (activas === 0) {
+
+    listado.innerHTML =
+      "✅ Sin emergencias activas";
+
+  } else {
+
+    let html = "";
+
+    estadosOperacionales.forEach(e => {
+
+      if (
+        e.estado === "6-T" ||
+        e.estado === "6-3" ||
+        e.estado === "6-7" ||
+        e.estado === "6-15"
+      ) {
+
+        html += `
+          🚨 ${e.unidad}<br>
+          ${e.descripcion}<br><br>
+        `;
+
+      }
+
+    });
+
+    listado.innerHTML = html;
+
+  }
+
+}
+  
+
   // ==========================
   // KPIs
   // ==========================
