@@ -613,6 +613,12 @@ setDoc(
     ubicacion:
       emergenciaActiva?.ubicacion || "",
 
+    notas:
+      emergenciaActiva?.notas || "",
+
+    unidadesDespachadas:
+      emergenciaActiva?.unidades || [],
+
     actualizado:
       new Date().toISOString()
   }
