@@ -415,6 +415,14 @@ document.getElementById(
     </div>
 
     <div>
+  🚑 ${
+    ultima.unidades
+      ? ultima.unidades.join(", ")
+      : "-"
+  }
+</div>
+
+    <div>
       ⏱️ ${ultima.horaActivacion || "--"}
       ${ultima.horaCierre
         ? " - " + ultima.horaCierre
