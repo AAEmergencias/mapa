@@ -400,24 +400,39 @@ listado.innerHTML =
 
     const ultima = partes[0];
 
-    document.getElementById(
-      "ultimaEmergencia"
-    ).innerHTML = `
+document.getElementById(
+  "ultimaEmergencia"
+).innerHTML = `
 
-      📅 ${ultima.fecha || "-"}<br><br>
+  <div class="cardUltimaEmergencia">
 
+    <div class="tituloUltima">
+      🚒 ${ultima.tipo || "-"}
+    </div>
+
+    <div>
+      📍 ${ultima.lugar || "-"}
+    </div>
+
+    <div>
       ⏱️ ${ultima.horaActivacion || "--"}
       ${ultima.horaCierre
         ? " - " + ultima.horaCierre
-        : ""}
-      <br><br>
+        : ""
+      }
+    </div>
 
-      🚒 ${ultima.tipo || "-"}<br><br>
+    <div>
+      📅 ${ultima.fecha || "-"}
+    </div>
 
-      📍 ${ultima.lugar || "-"}<br><br>
-
+    <div class="notaUltima">
       📝 ${ultima.descripcion || ""}
-    `;
+    </div>
+
+  </div>
+
+`;
 
   }
 
