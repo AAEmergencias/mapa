@@ -33,8 +33,14 @@ async function cargarDatos() {
     const trasladosSnapshot =
       await getDocs(collection(db, "traslados"));
 
+    const estadosSnapshot =
+  await getDocs(
+    collection(db, "estadoOperacional")
+  );
+
     let partes = [];
     let traslados = [];
+    let estadosOperacionales = [];
 
     partesSnapshot.forEach(doc => {
 
@@ -54,13 +60,22 @@ async function cargarDatos() {
 
     });
 
+    estadosSnapshot.forEach(doc => {
+
+  estadosOperacionales.push(
+    doc.data()
+  );
+
+});
+
     console.log("PARTES:", partes);
     console.log("TRASLADOS:", traslados);
 
-    actualizarPantalla(
-      partes,
-      traslados
-    );
+actualizarPantalla(
+  partes,
+  traslados,
+  estadosOperacionales
+);
 
   }
   catch (error) {
@@ -80,8 +95,9 @@ async function cargarDatos() {
 
 function actualizarPantalla(
   partes,
-  traslados
-) {
+  traslados,
+  estadosOperacionales
+)
 
   // ==========================
   // ORDENAR PARTES
@@ -369,20 +385,53 @@ let htmlBrigadas = "";
 
 brigadas.forEach(brigada => {
 
-  const activa = activasLista.find(
-    p => p.brigada === brigada
-  );
+  const estadoActual =
+    estadosOperacionales.find(
+      e => e.unidad === brigada
+    );
 
-  if (activa) {
+  if (!estadoActual) {
 
     htmlBrigadas += `
-      ${brigada} 🔴 En Emergencia<br>
+      ${brigada}
+      🟢 Disponible<br>
     `;
 
-  } else {
+    return;
+  }
+
+  if (
+    estadoActual.estado === "6-T" ||
+    estadoActual.estado === "6-3" ||
+    estadoActual.estado === "6-7"
+  ) {
 
     htmlBrigadas += `
-      ${brigada} 🟢 Disponible<br>
+      ${brigada}
+      🔴 ${estadoActual.descripcion}
+      <br>
+    `;
+
+  }
+
+  else if (
+    estadoActual.estado === "6-15"
+  ) {
+
+    htmlBrigadas += `
+      ${brigada}
+      🟡 Centro Asistencial
+      <br>
+    `;
+
+  }
+
+  else {
+
+    htmlBrigadas += `
+      ${brigada}
+      🟢 Disponible
+      <br>
     `;
 
   }
@@ -405,23 +454,56 @@ const ambulancias = [
 
 let htmlAmbulancias = "";
 
-ambulancias.forEach(a => {
+ambulancias.forEach(unidad => {
 
-  const activa = activasLista.find(
-    p =>
-      p.ambulancia === "Si asiste"
-  );
+  const estadoActual =
+    estadosOperacionales.find(
+      e => e.unidad === unidad
+    );
 
-  if (activa) {
+  if (!estadoActual) {
 
     htmlAmbulancias += `
-      ${a} 🟡 En Servicio<br>
+      ${unidad}
+      🟢 Disponible<br>
     `;
 
-  } else {
+    return;
+
+  }
+
+  if (
+    estadoActual.estado === "6-T" ||
+    estadoActual.estado === "6-3" ||
+    estadoActual.estado === "6-7"
+  ) {
 
     htmlAmbulancias += `
-      ${a} 🟢 Disponible<br>
+      ${unidad}
+      🔴 ${estadoActual.descripcion}
+      <br>
+    `;
+
+  }
+
+  else if (
+    estadoActual.estado === "6-15"
+  ) {
+
+    htmlAmbulancias += `
+      ${unidad}
+      🟡 Centro Asistencial
+      <br>
+    `;
+
+  }
+
+  else {
+
+    htmlAmbulancias += `
+      ${unidad}
+      🟢 Disponible
+      <br>
     `;
 
   }
@@ -432,8 +514,6 @@ document.getElementById(
   "ambulancias"
 ).innerHTML =
   htmlAmbulancias;
-
-}
 
 // ==========================
 // INICIO
@@ -459,3 +539,8 @@ setInterval(() => {
   location.reload();
 
 }, 600000);
+
+console.log(
+  "ESTADOS OPERACIONALES:",
+  estadosOperacionales
+);
