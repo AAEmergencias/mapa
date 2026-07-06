@@ -1,4 +1,11 @@
-import { db, collection, addDoc } from "./firebase.js";
+import {
+  db,
+  collection,
+  addDoc,
+  doc,
+  setDoc
+}
+from "./firebase.js";
 // ==========================
 // 🗺️ MAPA
 // ==========================
@@ -587,6 +594,20 @@ if (emergenciaActiva && emergenciaActiva.tiempos[estado] !== undefined) {
     }
 
   });
+  
+const key =
+  nombreUnidad.split(" ")[0];
+
+setDoc(
+  doc(db, "estadoOperacional", key),
+  {
+    unidad: key,
+    estado: estado,
+    descripcion: estados[estado],
+    actualizado: new Date().toISOString()
+  }
+);
+  
 }
 
 // ==========================
