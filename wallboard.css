@@ -71,3 +71,15 @@ body{
   font-size:22px;
   line-height:1.8;
 }
+
+#bannerEmergencia{
+
+  text-align:center;
+
+  font-size:28px;
+
+  font-weight:bold;
+
+  margin-bottom:20px;
+
+}
