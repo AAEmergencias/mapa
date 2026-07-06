@@ -548,3 +548,64 @@ setInterval(() => {
 
 }, 600000);
 
+
+const listado =
+document.getElementById(
+  "listadoEmergenciasActivas"
+);
+
+if(listado){
+
+  const activasUnicas = [];
+
+  estadosOperacionales.forEach(e => {
+
+    if(
+      ["6-T","6-3","6-7","6-15"]
+      .includes(e.estado)
+    ){
+
+      const clave =
+        e.tipoEmergencia +
+        "|" +
+        e.ubicacion;
+
+      if(
+        !activasUnicas.find(a =>
+          a.clave === clave
+        )
+      ){
+
+        activasUnicas.push({
+          clave,
+          tipo: e.tipoEmergencia,
+          ubicacion: e.ubicacion
+        });
+
+      }
+
+    }
+
+  });
+
+  if(activasUnicas.length === 0){
+
+    listado.innerHTML =
+      "✅ Sin emergencias activas";
+
+  }
+
+  else{
+
+    listado.innerHTML =
+      activasUnicas.map(a => `
+
+        🚨 ${a.tipo}<br>
+
+        📍 ${a.ubicacion}<br><br>
+
+      `).join("");
+
+  }
+
+}
