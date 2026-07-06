@@ -219,3 +219,19 @@ setInterval(() => {
   cargarDatos();
 
 }, 30000);
+
+
+function actualizarReloj(){
+
+  let ahora = new Date();
+
+  document.getElementById("reloj").innerHTML =
+    ahora.toLocaleString("es-CL");
+
+}
+
+actualizarReloj();
+
+setInterval(actualizarReloj,1000);
+
+<div id="bannerEmergencia"></div>
