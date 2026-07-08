@@ -439,30 +439,27 @@ document.getElementById(
       📍 ${ultima.lugar || "-"}
     </div>
 
-  <div class="unidadesUltima">
+<div class="unidadesUltima">
 
   ${
-    ultima.unidades
-      ? ultima.unidades.map(u => {
+    ultima.vehiculo
+      ? `
+        <span class="tagBrigada">
+          🚒 ${ultima.vehiculo}
+        </span>
+      `
+      : ""
+  }
 
-          if (u.startsWith("S")) {
-
-            return `
-              <span class="tagAmbulancia">
-                🚑 ${u}
-              </span>
-            `;
-
-          }
-
-          return `
-            <span class="tagBrigada">
-              🚒 ${u}
-            </span>
-          `;
-
-        }).join("")
-      : "-"
+  ${
+    ultima.ambulancia &&
+    ultima.ambulancia !== "No asiste"
+      ? `
+        <span class="tagAmbulancia">
+          🚑 ${ultima.ambulancia}
+        </span>
+      `
+      : ""
   }
 
 </div>
