@@ -1074,3 +1074,62 @@ function mostrarPanelBrigada() {
     if (subtipo) subtipo.style.display = "block";
   }
 }
+
+document.getElementById(
+  "generarInforme"
+).onclick = generarInformePDF;
+
+async function generarInformePDF() {
+
+  const { jsPDF } = window.jspdf;
+
+  const pdf = new jsPDF(
+    "p",
+    "mm",
+    "a4"
+  );
+
+  let y = 20;
+
+  pdf.setFontSize(22);
+
+  pdf.text(
+    "CENTRAL DE EMERGENCIAS",
+    20,
+    y
+  );
+
+  y += 12;
+
+  pdf.setFontSize(14);
+
+  pdf.text(
+    "Informe Operacional",
+    20,
+    y
+  );
+
+  y += 15;
+
+  pdf.setFontSize(10);
+
+  pdf.text(
+    "Fecha: " +
+    new Date().toLocaleString(),
+    20,
+    y
+  );
+
+  y += 15;
+
+  pdf.text(
+    "Total Emergencias: " +
+    partes.length,
+    20,
+    y
+  );
+
+  pdf.save(
+    "Informe_Operacional.pdf"
+  );
+}
