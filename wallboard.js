@@ -467,9 +467,9 @@ document.getElementById(
   ${
     ultima.vehiculo
       ? `
-        <span class="tagBrigada">
-          🚒 ${ultima.vehiculo}
-        </span>
+      <span class="tagBrigadaHistorica">
+  🚒 ${ultima.vehiculo}
+</span>
       `
       : ""
   }
@@ -478,9 +478,9 @@ document.getElementById(
     ultima.ambulancia &&
     ultima.ambulancia !== "No asiste"
       ? `
-        <span class="tagAmbulancia">
-          🚑 ${ultima.ambulancia}
-        </span>
+        <span class="tagAmbulanciaHistorica">
+  🚑 ${ultima.ambulancia}
+</span>
       `
       : ""
   }
