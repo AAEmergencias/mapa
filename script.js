@@ -1855,17 +1855,45 @@ async function recuperarEmergenciasActivas() {
         )
       );
 
-    snapshot.forEach(docSnap => {
+snapshot.forEach(docSnap => {
 
-      const data =
-        docSnap.data();
+  const data =
+    docSnap.data();
 
-      console.log(
-        "🔥 Recuperando:",
-        data
-      );
+  console.log(
+    "🔥 Recuperando:",
+    data
+  );
 
-    });
+  let nueva = {
+
+    tipo:
+      data.tipo,
+
+    subtipo:
+      data.subtipo,
+
+    ubicacion:
+      data.ubicacion,
+
+    unidad:
+      data.unidades?.join(", ")
+      || "Sin unidad"
+
+  };
+
+  let panelNegro =
+    crearPanelEmergencia(
+      nueva
+    );
+
+  let panelRojo =
+    crearPanelRojo(
+      nueva,
+      panelNegro
+    );
+
+});
 
   } catch (error) {
 
