@@ -1569,6 +1569,24 @@ btnGuardarNota.onclick = () => {
   emergenciaActiva.notas =
     campoNotas.value;
 
+  if (
+  emergenciaActiva.firebaseId
+) {
+
+  updateDoc(
+    doc(
+      db,
+      "emergenciasActivas",
+      emergenciaActiva.firebaseId
+    ),
+    {
+      notas:
+        emergenciaActiva.notas
+    }
+  );
+
+}
+
   emergenciaActiva.unidades.forEach(
     unidad => {
 
