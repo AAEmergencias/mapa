@@ -268,4 +268,40 @@ body{
 
   font-weight: bold;
 
+  .tagBrigadaHistorica {
+
+  background: rgba(16,185,129,0.15);
+
+  border: 1px solid #10b981;
+
+  color: white;
+
+  padding: 4px 10px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+}
+
+  .tagAmbulanciaHistorica {
+
+  background: rgba(16,185,129,0.15);
+
+  border: 1px solid #10b981;
+
+  color: white;
+
+  padding: 4px 10px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+}
+
 }
