@@ -791,7 +791,9 @@ emergenciaActiva = {
 addDoc(
   collection(db, "emergenciasActivas"),
   {
+
     tipo: tipo,
+
     subtipo: subtipo,
 
     ubicacion:
@@ -801,10 +803,25 @@ addDoc(
     fecha:
       new Date().toISOString(),
 
-    estado:
-      "activa"
+    estado: "activa",
+
+    unidades: [],
+
+    notas: ""
+
   }
-);
+
+).then(docRef => {
+
+  emergenciaActiva.firebaseId =
+    docRef.id;
+
+  console.log(
+    "✅ Emergencia guardada:",
+    docRef.id
+  );
+
+});
   
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
