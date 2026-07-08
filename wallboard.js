@@ -443,6 +443,42 @@ listado.innerHTML =
 
     const ultima = partes[0];
 
+    let duracion = "-";
+
+if (
+  ultima.horaActivacion &&
+  ultima.horaCierre
+) {
+
+  const inicio =
+    new Date(
+      `2000-01-01 ${ultima.horaActivacion}`
+    );
+
+  const fin =
+    new Date(
+      `2000-01-01 ${ultima.horaCierre}`
+    );
+
+  const diferencia =
+    fin - inicio;
+
+  const horas =
+    Math.floor(
+      diferencia / 1000 / 60 / 60
+    );
+
+  const minutos =
+    Math.floor(
+      diferencia / 1000 / 60
+    ) % 60;
+
+  duracion =
+    `${horas}h ${minutos}min`;
+
+}
+
+
     console.log(
   "ULTIMA PARTE:",
   ultima
@@ -498,6 +534,10 @@ document.getElementById(
     <div>
       📅 ${ultima.fecha || "-"}
     </div>
+
+    <div>
+  ⌛ ${duracion}
+</div>
 
     <div class="notaUltima">
       📝 ${ultima.descripcion || ""}
