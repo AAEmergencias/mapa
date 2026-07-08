@@ -1842,3 +1842,40 @@ modal.appendChild(contenido);
 document.body.appendChild(modal);
 
   }
+
+async function recuperarEmergenciasActivas() {
+
+  try {
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "emergenciasActivas"
+        )
+      );
+
+    snapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      console.log(
+        "🔥 Recuperando:",
+        data
+      );
+
+    });
+
+  } catch (error) {
+
+    console.error(
+      "❌ Error recuperando emergencias:",
+      error
+    );
+
+  }
+
+}
+
+recuperarEmergenciasActivas();
