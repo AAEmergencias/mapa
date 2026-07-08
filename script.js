@@ -5,7 +5,8 @@ import {
   getDocs,
   doc,
   setDoc,
-  updateDoc
+  updateDoc,
+  deleteDoc
 }
 from "./firebase.js";
 // ==========================
@@ -1354,6 +1355,21 @@ emergenciaActiva.vehiculo = emergenciaActiva.unidades?.[0] || "";
   "historialEmergencias",
   JSON.stringify(historialEmergencias)
 );
+
+  if (
+  emergenciaActiva.firebaseId
+) {
+
+  deleteDoc(
+    doc(
+      db,
+      "emergenciasActivas",
+      emergenciaActiva.firebaseId
+    )
+  );
+
+}
+  
   emergenciaActiva = null;
 }
       
