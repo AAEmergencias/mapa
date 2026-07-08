@@ -268,7 +268,9 @@ body{
 
   font-weight: bold;
 
-  .tagBrigadaHistorica {
+}
+
+.tagBrigadaHistorica {
 
   display: inline-block;
 
@@ -288,7 +290,7 @@ body{
 
 }
 
-  .tagAmbulanciaHistorica {
+.tagAmbulanciaHistorica {
 
   display: inline-block;
 
@@ -305,7 +307,5 @@ body{
   font-size: 14px;
 
   font-weight: bold;
-
-}
 
 }
