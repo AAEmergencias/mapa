@@ -3,7 +3,8 @@ import {
   collection,
   addDoc,
   doc,
-  setDoc
+  setDoc,
+  updateDoc
 }
 from "./firebase.js";
 // ==========================
@@ -1605,6 +1606,26 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
   if (emergenciaActiva && !emergenciaActiva.unidades.includes(key)) {
     emergenciaActiva.unidades.push(key);
   }
+
+  if (
+  emergenciaActiva &&
+  emergenciaActiva.firebaseId
+) {
+
+  updateDoc(
+    doc(
+      db,
+      "emergenciasActivas",
+      emergenciaActiva.firebaseId
+    ),
+    {
+      unidades:
+        emergenciaActiva.unidades
+    }
+  );
+
+}
+  
 
   // ✅ evitar duplicados UI
   if (!unidadesAsignadas.includes(nombreUnidad)) {
