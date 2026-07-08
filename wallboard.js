@@ -307,13 +307,36 @@ listado.innerHTML =
         📍 ${e.ubicacion}
       </div>
 
-      <div>
-        🚑 ${
-          e.unidades.length
-            ? e.unidades.join(", ")
-            : "Sin unidad"
-        }
-      </div>
+     <div class="unidadesUltima">
+
+  ${
+    e.unidades.length
+
+      ? e.unidades.map(u => {
+
+          if (u.startsWith("S")) {
+
+            return `
+              <span class="tagAmbulancia">
+                🚑 ${u}
+              </span>
+            `;
+
+          }
+
+          return `
+            <span class="tagBrigada">
+              🚒 ${u}
+            </span>
+          `;
+
+        }).join("")
+
+      : "Sin unidad"
+
+  }
+
+</div>
 
       <div>
         📝 ${
