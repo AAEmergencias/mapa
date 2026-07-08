@@ -7,7 +7,8 @@ import {
   addDoc,
   getDocs,
   doc,
-  setDoc
+  setDoc,
+  onSnapshot
 }
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
@@ -33,5 +34,6 @@ export {
   addDoc,
   getDocs,
   doc,
-  setDoc
+  setDoc,
+  onSnapshot
 };
