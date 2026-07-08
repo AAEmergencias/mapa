@@ -1,7 +1,8 @@
 import {
   db,
   collection,
-  getDocs
+  getDocs,
+  onSnapshot
 } from "./firebase.js";
 
 console.log("📺 Wallboard iniciado");
@@ -773,14 +774,29 @@ actualizarReloj();
 
 cargarDatos();
 
-setInterval(
-  actualizarReloj,
-  1000
+onSnapshot(
+  collection(db, "partes"),
+  () => cargarDatos()
+);
+
+onSnapshot(
+  collection(db, "traslados"),
+  () => cargarDatos()
+);
+
+onSnapshot(
+  collection(db, "estadoOperacional"),
+  () => cargarDatos()
+);
+
+onSnapshot(
+  collection(db, "emergenciasActivas"),
+  () => cargarDatos()
 );
 
 setInterval(
-  cargarDatos,
-  60000
+  actualizarReloj,
+  1000
 );
 
 // refresco completo cada 10 min
