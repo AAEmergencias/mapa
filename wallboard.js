@@ -550,11 +550,15 @@ document.getElementById(
       partes[0];
 
     const fechaUltima =
-      new Date(
-        ultima.fecha +
-        " " +
-        (ultima.horaActivacion || "00:00")
-      );
+  new Date(
+    ultima.fecha +
+    " " +
+    (
+      ultima.horaCierre ||
+      ultima.horaActivacion ||
+      "00:00"
+    )
+  );
 
     const ahora =
       new Date();
