@@ -27,24 +27,44 @@ async function cargarDatos() {
 
   try {
 
-    const partesSnapshot =
-      await getDocs(collection(db, "partes"));
+ console.log("Leyendo PARTES");
 
-    const trasladosSnapshot =
-      await getDocs(collection(db, "traslados"));
+const partesSnapshot =
+  await getDocs(collection(db, "partes"));
 
-    const estadosSnapshot =
+console.log("✅ PARTES OK");
+
+
+console.log("Leyendo TRASLADOS");
+
+const trasladosSnapshot =
+  await getDocs(collection(db, "traslados"));
+
+console.log("✅ TRASLADOS OK");
+
+
+console.log("Leyendo ESTADOS");
+
+const estadosSnapshot =
   await getDocs(
     collection(db, "estadoOperacional")
   );
 
-    const emergenciasSnapshot =
+console.log("✅ ESTADOS OK");
+
+
+console.log("Leyendo EMERGENCIAS");
+
+const emergenciasSnapshot =
   await getDocs(
     collection(
       db,
       "emergenciasActivas"
     )
   );
+
+console.log("✅ EMERGENCIAS OK");
+``
 
     let partes = [];
     let traslados = [];
