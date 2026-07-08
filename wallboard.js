@@ -420,6 +420,11 @@ listado.innerHTML =
 
     const ultima = partes[0];
 
+    console.log(
+  "ULTIMA PARTE:",
+  ultima
+);
+
 document.getElementById(
   "ultimaEmergencia"
 ).innerHTML = `
