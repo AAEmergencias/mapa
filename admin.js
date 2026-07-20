@@ -1134,15 +1134,46 @@ async function generarInformePDF() {
 // GRAFICO POR MES
 // ==========================
 
-const canvasMes =
-  document.getElementById(
-    "graficoMes"
-  );
+const graficos = [
 
-if (canvasMes) {
+  {
+    id: "graficoMes",
+    titulo: "Emergencias por Mes"
+  },
 
-  const imagenMes =
-    canvasMes.toDataURL(
+  {
+    id: "graficoTipo",
+    titulo: "Emergencias por Tipo"
+  },
+
+  {
+    id: "graficoFaena",
+    titulo: "Emergencias por Faena"
+  },
+
+  {
+    id: "graficoEmpresa",
+    titulo: "Emergencias por Empresa"
+  },
+
+  {
+    id: "graficoMedico",
+    titulo: "Ambulancias"
+  }
+
+];
+
+graficos.forEach(grafico => {
+
+  const canvas =
+    document.getElementById(
+      grafico.id
+    );
+
+  if (!canvas) return;
+
+  const imagen =
+    canvas.toDataURL(
       "image/png"
     );
 
@@ -1151,13 +1182,13 @@ if (canvasMes) {
   pdf.setFontSize(18);
 
   pdf.text(
-    "Emergencias por Mes",
+    grafico.titulo,
     20,
     20
   );
 
   pdf.addImage(
-    imagenMes,
+    imagen,
     "PNG",
     10,
     30,
@@ -1165,12 +1196,54 @@ if (canvasMes) {
     100
   );
 
-}
+});
 
 // ==========================
 // GUARDAR PDF
 // ==========================
 
+pdf.addPage();
+
+pdf.setFontSize(18);
+
+pdf.text(
+  "Detalle de Emergencias",
+  20,
+  20
+);
+
+let fila = 35;
+
+partes.forEach(parte => {
+
+  const texto =
+
+    `${parte.fecha || ""} | ` +
+
+    `${parte.tipo || ""} | ` +
+
+    `${parte.subtipo || ""}`;
+
+  pdf.setFontSize(8);
+
+  pdf.text(
+    texto,
+    10,
+    fila
+  );
+
+  fila += 6;
+
+  if (fila > 280) {
+
+    pdf.addPage();
+
+    fila = 20;
+
+  }
+
+});
+  
 pdf.save(
   "Informe_Operacional.pdf"
 );
