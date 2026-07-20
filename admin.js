@@ -1122,14 +1122,49 @@ async function generarInformePDF() {
 
   y += 15;
 
-  pdf.text(
-    "Total Emergencias: " +
-    partes.length,
-    20,
-    y
+ pdf.text(
+  "Total Emergencias: " +
+  partes.length,
+  20,
+  y
+);
+
+// ==========================
+// 📊 GRÁFICO MES
+// ==========================
+
+const canvasMes =
+  document.getElementById(
+    "graficoMes"
   );
 
-  pdf.save(
-    "Informe_Operacional.pdf"
+if (canvasMes) {
+
+  const imagenMes =
+    canvasMes.toDataURL(
+      "image/png"
+    );
+
+  pdf.addPage();
+
+  pdf.setFontSize(18);
+
+  pdf.text(
+    "Emergencias por Mes",
+    20,
+    20
+  );
+
+  pdf.addImage(
+    imagenMes,
+    "PNG",
+    10,
+    30,
+    190,
+    100
   );
 }
+
+pdf.save(
+  "Informe_Operacional.pdf"
+);
