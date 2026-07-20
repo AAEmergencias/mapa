@@ -1130,7 +1130,8 @@ async function generarInformePDF() {
 );
 
 // ==========================
-// 📊 GRÁFICO MES
+// 📊 PAGINA 2
+// GRAFICO POR MES
 // ==========================
 
 const canvasMes =
@@ -1163,9 +1164,13 @@ if (canvasMes) {
     190,
     100
   );
+
 }
+
+// ==========================
+// GUARDAR PDF
+// ==========================
 
 pdf.save(
   "Informe_Operacional.pdf"
 );
-}
