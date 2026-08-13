@@ -1175,7 +1175,6 @@ if (ultima) {
 // 📊 PAGINA 2
 // GRAFICO POR MES
 // ==========================
-
 const graficos = [
 
   {
