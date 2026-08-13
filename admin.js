@@ -1089,7 +1089,20 @@ async function generarInformePDF() {
     "a4"
   );
 
-  let y = 20;
+  const logo = new Image();
+
+logo.src = "logo.png";
+
+let y = 50;
+
+pdf.addImage(
+  logo,
+  "PNG",
+  75,
+  10,
+  60,
+  25
+);
 
   pdf.setFontSize(22);
 
@@ -1319,7 +1332,53 @@ partes.forEach(parte => {
     fila
   );
 
-  fila += 5;
+fila += 5;
+
+let duracion = "-";
+
+if (
+  parte.horaActivacion &&
+  parte.horaCierre
+) {
+
+  const inicio =
+    new Date(
+      `2000-01-01 ${parte.horaActivacion}`
+    );
+
+  const fin =
+    new Date(
+      `2000-01-01 ${parte.horaCierre}`
+    );
+
+  const diferencia =
+    fin - inicio;
+
+  const horas =
+    Math.floor(
+      diferencia /
+      1000 /
+      60 /
+      60
+    );
+
+  const minutos =
+    Math.floor(
+      diferencia /
+      1000 /
+      60
+    ) % 60;
+
+  duracion =
+    `${horas}h ${minutos}min`;
+
+}
+
+pdf.text(
+  `Duracion: ${duracion}`,
+  10,
+  fila
+);
 
   pdf.text(
     `Descripcion: ${
@@ -1349,6 +1408,27 @@ partes.forEach(parte => {
   }
 
 });
+
+  const totalPaginas =
+  pdf.getNumberOfPages();
+
+for (
+  let i = 1;
+  i <= totalPaginas;
+  i++
+) {
+
+  pdf.setPage(i);
+
+  pdf.setFontSize(8);
+
+  pdf.text(
+    `Pagina ${i} de ${totalPaginas}`,
+    170,
+    290
+  );
+
+}
   
 pdf.save(
   "Informe_Operacional.pdf"
