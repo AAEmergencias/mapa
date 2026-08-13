@@ -1387,6 +1387,109 @@ pdf.text(
   20,
   resumenY
 );
+
+  // ==========================
+// DURACIONES
+// ==========================
+
+let totalMinutos = 0;
+
+let cantidadDuraciones = 0;
+
+let mayorDuracion = 0;
+
+let emergenciaMasLarga = null;
+
+partes.forEach(parte => {
+
+  if (
+    !parte.horaActivacion ||
+    !parte.horaCierre
+  ) return;
+
+  const inicio =
+    new Date(
+      `2000-01-01 ${parte.horaActivacion}`
+    );
+
+  const fin =
+    new Date(
+      `2000-01-01 ${parte.horaCierre}`
+    );
+
+  const diferencia =
+    (fin - inicio) /
+    1000 /
+    60;
+
+  totalMinutos +=
+    diferencia;
+
+  cantidadDuraciones++;
+
+  if (
+    diferencia >
+    mayorDuracion
+  ) {
+
+    mayorDuracion =
+      diferencia;
+
+    emergenciaMasLarga =
+      parte;
+
+  }
+
+});
+
+  const promedioEmergencias =
+  cantidadDuraciones > 0
+
+    ? Math.round(
+        totalMinutos /
+        cantidadDuraciones
+      )
+
+    : 0;
+
+  resumenY += 15;
+
+pdf.text(
+  `Tiempo Promedio: ${
+    promedioEmergencias
+  } min`,
+  20,
+  resumenY
+);
+
+  if (
+  emergenciaMasLarga
+) {
+
+  resumenY += 10;
+
+  pdf.text(
+    `Emergencia Mas Larga: ${
+      emergenciaMasLarga.tipo
+    }`,
+    20,
+    resumenY
+  );
+
+  resumenY += 8;
+
+  pdf.text(
+    `Duracion: ${
+      Math.round(
+        mayorDuracion
+      )
+    } min`,
+    20,
+    resumenY
+  );
+
+}
+  
 // ==========================
 // 📊 PAGINA 2
 // GRAFICO POR MES
