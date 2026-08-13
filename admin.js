@@ -1129,6 +1129,48 @@ async function generarInformePDF() {
   y
 );
 
+  y += 10;
+
+pdf.text(
+  "Partes Cerrados: " +
+  partes.length,
+  20,
+  y
+);
+
+y += 10;
+
+pdf.text(
+  "Vista Actual: " +
+  vistaActual,
+  20,
+  y
+);
+
+const ultima =
+  partes[0];
+
+if (ultima) {
+
+  y += 10;
+
+  pdf.text(
+    "Ultima Emergencia: " +
+    (ultima.tipo || "-"),
+    20,
+    y
+  );
+
+  y += 8;
+
+  pdf.text(
+    "Fecha: " +
+    (ultima.fecha || "-"),
+    20,
+    y
+  );
+
+}
 // ==========================
 // 📊 PAGINA 2
 // GRAFICO POR MES
@@ -1165,36 +1207,28 @@ const graficos = [
 
 graficos.forEach(grafico => {
 
-  const canvas =
-    document.getElementById(
-      grafico.id
-    );
+ const anchoCanvas =
+  canvas.width;
 
-  if (!canvas) return;
+const altoCanvas =
+  canvas.height;
 
-  const imagen =
-    canvas.toDataURL(
-      "image/png"
-    );
+const proporcion =
+  altoCanvas / anchoCanvas;
 
-  pdf.addPage();
+const anchoPDF = 170;
 
-  pdf.setFontSize(18);
+const altoPDF =
+  anchoPDF * proporcion;
 
-  pdf.text(
-    grafico.titulo,
-    20,
-    20
-  );
-
-  pdf.addImage(
-    imagen,
-    "PNG",
-    10,
-    30,
-    190,
-    100
-  );
+pdf.addImage(
+  imagen,
+  "PNG",
+  20,
+  30,
+  anchoPDF,
+  altoPDF
+);
 
 });
 
@@ -1216,25 +1250,76 @@ let fila = 35;
 
 partes.forEach(parte => {
 
-  const texto =
-
-    `${parte.fecha || ""} | ` +
-
-    `${parte.tipo || ""} | ` +
-
-    `${parte.subtipo || ""}`;
-
-  pdf.setFontSize(8);
+  pdf.setFontSize(10);
 
   pdf.text(
-    texto,
+    `Fecha: ${parte.fecha || "-"}`,
     10,
     fila
   );
 
-  fila += 6;
+  fila += 5;
 
-  if (fila > 280) {
+  pdf.text(
+    `Tipo: ${parte.tipo || "-"}`,
+    10,
+    fila
+  );
+
+  fila += 5;
+
+  pdf.text(
+    `Subtipo: ${parte.subtipo || "-"}`,
+    10,
+    fila
+  );
+
+  fila += 5;
+
+  pdf.text(
+    `Ubicacion: ${parte.lugar || "-"}`,
+    10,
+    fila
+  );
+
+  fila += 5;
+
+  pdf.text(
+    `Brigada: ${parte.brigada || "-"}`,
+    10,
+    fila
+  );
+
+  fila += 5;
+
+  pdf.text(
+    `Servicio Medico: ${parte.ambulancia || "-"}`,
+    10,
+    fila
+  );
+
+  fila += 5;
+
+  pdf.text(
+    `Descripcion: ${
+      parte.descripcion || "-"
+    }`,
+    10,
+    fila
+  );
+
+  fila += 10;
+
+  pdf.line(
+    10,
+    fila,
+    190,
+    fila
+  );
+
+  fila += 10;
+
+  if (fila > 260) {
 
     pdf.addPage();
 
