@@ -1184,6 +1184,101 @@ if (ultima) {
   );
 
 }
+
+  // ==========================
+// RESUMEN EJECUTIVO
+// ==========================
+
+pdf.addPage();
+
+pdf.setFontSize(20);
+
+pdf.text(
+  "RESUMEN EJECUTIVO",
+  20,
+  20
+);
+
+let resumenY = 40;
+
+// Emergencias por tipo
+let porTipo = {};
+
+partes.forEach(parte => {
+
+  const tipo =
+    parte.tipo || "Sin Tipo";
+
+  porTipo[tipo] =
+    (porTipo[tipo] || 0) + 1;
+
+});
+
+pdf.setFontSize(12);
+
+pdf.text(
+  `Total Emergencias: ${partes.length}`,
+  20,
+  resumenY
+);
+
+resumenY += 15;
+
+Object.entries(porTipo)
+.forEach(([tipo, cantidad]) => {
+
+  pdf.text(
+    `${tipo}: ${cantidad}`,
+    20,
+    resumenY
+  );
+
+  resumenY += 8;
+
+});
+
+// Brigadas
+const conBrigada =
+  partes.filter(
+    p => p.brigada
+  ).length;
+
+resumenY += 10;
+
+pdf.text(
+  `Con Brigada: ${conBrigada}`,
+  20,
+  resumenY
+);
+
+// Servicio Médico
+const conMedico =
+  partes.filter(
+    p =>
+      p.ambulancia &&
+      p.ambulancia !==
+      "No asiste"
+  ).length;
+
+resumenY += 10;
+
+pdf.text(
+  `Con Servicio Medico: ${conMedico}`,
+  20,
+  resumenY
+);
+
+resumenY += 10;
+
+pdf.text(
+  `Sin Servicio Medico: ${
+    partes.length -
+    conMedico
+  }`,
+  20,
+  resumenY
+);
+
 // ==========================
 // 📊 PAGINA 2
 // GRAFICO POR MES
