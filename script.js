@@ -1356,6 +1356,11 @@ emergenciaActiva.vehiculo = emergenciaActiva.unidades?.[0] || "";
   JSON.stringify(historialEmergencias)
 );
 
+  console.log(
+  "ID FIREBASE:",
+  emergenciaActiva.firebaseId
+);
+
   if (
   emergenciaActiva.firebaseId
 ) {
@@ -1883,6 +1888,9 @@ snapshot.forEach(docSnap => {
 
   let nueva = {
 
+    firebaseId:
+      docSnap.id,
+
     tipo:
       data.tipo,
 
@@ -1908,6 +1916,28 @@ snapshot.forEach(docSnap => {
       nueva,
       panelNegro
     );
+
+  emergenciaActiva = {
+
+    firebaseId:
+      docSnap.id,
+
+    tipo:
+      data.tipo,
+
+    subtipo:
+      data.subtipo,
+
+    ubicacion:
+      data.ubicacion,
+
+    unidades:
+      data.unidades || [],
+
+    notas:
+      data.notas || ""
+
+  };
 
 });
 
