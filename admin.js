@@ -1222,6 +1222,34 @@ pdf.text(
   resumenY
 );
 
+  const fechas =
+  partes
+    .map(p => p.fecha)
+    .filter(Boolean)
+    .sort();
+
+if (fechas.length > 0) {
+
+  resumenY += 10;
+
+  pdf.text(
+    `Periodo Analizado:`,
+    20,
+    resumenY
+  );
+
+  resumenY += 8;
+
+  pdf.text(
+    `${fechas[0]} al ${
+      fechas[fechas.length - 1]
+    }`,
+    20,
+    resumenY
+  );
+
+}
+
 resumenY += 15;
 
 Object.entries(porTipo)
