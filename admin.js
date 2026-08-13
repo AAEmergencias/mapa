@@ -1279,6 +1279,79 @@ pdf.text(
   resumenY
 );
 
+  // ==========================
+// BRIGADA MAS UTILIZADA
+// ==========================
+
+let brigadas = {};
+
+partes.forEach(parte => {
+
+  const brigada =
+    parte.brigada || "Sin Brigada";
+
+  brigadas[brigada] =
+    (brigadas[brigada] || 0) + 1;
+
+});
+
+const brigadaTop =
+  Object.entries(brigadas)
+  .sort((a,b) => b[1] - a[1])[0];
+
+resumenY += 15;
+
+pdf.text(
+  `Brigada mas utilizada: ${
+    brigadaTop
+      ? brigadaTop[0]
+      : "-"
+  }`,
+  20,
+  resumenY
+);
+
+  // ==========================
+// AMBULANCIA MAS UTILIZADA
+// ==========================
+
+let ambulancias = {};
+
+partes.forEach(parte => {
+
+  const ambulancia =
+    parte.ambulancia || "Sin Ambulancia";
+
+  ambulancias[ambulancia] =
+    (ambulancias[ambulancia] || 0) + 1;
+
+});
+
+const ambulanciaTop =
+  Object.entries(ambulancias)
+  .sort((a,b) => b[1] - a[1])[0];
+
+resumenY += 10;
+
+pdf.text(
+  `Ambulancia mas utilizada: ${
+    ambulanciaTop
+      ? ambulanciaTop[0]
+      : "-"
+  }`,
+  20,
+  resumenY
+);
+
+  resumenY += 10;
+
+pdf.text(
+  `Ultima Emergencia: ${
+    ultima?.tipo || "-"
+  }`,
+  20,
+  resumenY
+);
 // ==========================
 // 📊 PAGINA 2
 // GRAFICO POR MES
