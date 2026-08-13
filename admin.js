@@ -1185,7 +1185,7 @@ if (ultima) {
 
 }
 
-  // ==========================
+// ==========================
 // RESUMEN EJECUTIVO
 // ==========================
 
@@ -1197,6 +1197,90 @@ pdf.text(
   "RESUMEN EJECUTIVO",
   20,
   20
+);
+
+  // ==========================
+// KPI CARDS
+// ==========================
+
+pdf.setDrawColor(60,60,60);
+
+pdf.rect(
+  20,
+  30,
+  40,
+  25
+);
+
+pdf.rect(
+  70,
+  30,
+  40,
+  25
+);
+
+pdf.rect(
+  120,
+  30,
+  40,
+  25
+);
+
+pdf.rect(
+  170,
+  30,
+  25,
+  25
+);
+
+  pdf.setFontSize(10);
+
+pdf.text(
+  "TOTAL",
+  30,
+  38
+);
+
+pdf.text(
+  `${partes.length}`,
+  35,
+  48
+);
+
+  pdf.text(
+  "BRIGADA",
+  78,
+  38
+);
+
+pdf.text(
+  `${conBrigada}`,
+  88,
+  48
+);
+
+  pdf.text(
+  "MEDICO",
+  130,
+  38
+);
+
+pdf.text(
+  `${conMedico}`,
+  138,
+  48
+);
+
+  pdf.text(
+  "PROM.",
+  173,
+  38
+);
+
+pdf.text(
+  `${promedioEmergencias}`,
+  173,
+  48
 );
 
 let resumenY = 40;
