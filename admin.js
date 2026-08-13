@@ -1207,28 +1207,50 @@ const graficos = [
 
 graficos.forEach(grafico => {
 
- const anchoCanvas =
-  canvas.width;
+  const canvas =
+    document.getElementById(
+      grafico.id
+    );
 
-const altoCanvas =
-  canvas.height;
+  if (!canvas) return;
 
-const proporcion =
-  altoCanvas / anchoCanvas;
+  const imagen =
+    canvas.toDataURL(
+      "image/png"
+    );
 
-const anchoPDF = 170;
+  pdf.addPage();
 
-const altoPDF =
-  anchoPDF * proporcion;
+  pdf.setFontSize(18);
 
-pdf.addImage(
-  imagen,
-  "PNG",
-  20,
-  30,
-  anchoPDF,
-  altoPDF
-);
+  pdf.text(
+    grafico.titulo,
+    20,
+    20
+  );
+
+  const anchoCanvas =
+    canvas.width;
+
+  const altoCanvas =
+    canvas.height;
+
+  const proporcion =
+    altoCanvas / anchoCanvas;
+
+  const anchoPDF = 170;
+
+  const altoPDF =
+    anchoPDF * proporcion;
+
+  pdf.addImage(
+    imagen,
+    "PNG",
+    20,
+    30,
+    anchoPDF,
+    altoPDF
+  );
 
 });
 
