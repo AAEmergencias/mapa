@@ -1319,8 +1319,13 @@ let ambulancias = {};
 
 partes.forEach(parte => {
 
+  if (
+    !parte.ambulancia ||
+    parte.ambulancia === "No asiste"
+  ) return;
+
   const ambulancia =
-    parte.ambulancia || "Sin Ambulancia";
+    parte.ambulancia;
 
   ambulancias[ambulancia] =
     (ambulancias[ambulancia] || 0) + 1;
@@ -1328,8 +1333,10 @@ partes.forEach(parte => {
 });
 
 const ambulanciaTop =
-  Object.entries(ambulancias)
-  .sort((a,b) => b[1] - a[1])[0];
+  Object.keys(ambulancias).length > 0
+    ? Object.entries(ambulancias)
+        .sort((a,b) => b[1] - a[1])[0]
+    : null;
 
 resumenY += 10;
 
