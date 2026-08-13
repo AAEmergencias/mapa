@@ -1375,20 +1375,22 @@ if (
 }
 
 pdf.text(
+  `Descripcion: ${
+    parte.descripcion || "-"
+  }`,
+  10,
+  fila
+);
+
+fila += 5;
+
+pdf.text(
   `Duracion: ${duracion}`,
   10,
   fila
 );
 
-  pdf.text(
-    `Descripcion: ${
-      parte.descripcion || "-"
-    }`,
-    10,
-    fila
-  );
-
-  fila += 10;
+fila += 10;
 
   pdf.line(
     10,
