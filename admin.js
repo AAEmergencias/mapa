@@ -1122,6 +1122,16 @@ pdf.addImage(
     y
   );
 
+  y += 8;
+
+pdf.setFontSize(10);
+
+pdf.text(
+  "Informe Ejecutivo de Gestion de Emergencias",
+  20,
+  y
+);
+
   y += 15;
 
   pdf.setFontSize(10);
@@ -1717,6 +1727,70 @@ fila += 10;
 
 });
 
+  // ==========================
+// CONCLUSIONES
+// ==========================
+
+pdf.addPage();
+
+pdf.setFontSize(20);
+
+pdf.text(
+  "CONCLUSIONES OPERACIONALES",
+  20,
+  20
+);
+
+let conclusionY = 40;
+
+const tipoMasFrecuente =
+  Object.entries(porTipo)
+  .sort((a,b) => b[1] - a[1])[0];
+
+pdf.setFontSize(12);
+
+pdf.text(
+  `• Se registraron ${partes.length} emergencias durante el periodo analizado.`,
+  20,
+  conclusionY
+);
+
+conclusionY += 15;
+
+pdf.text(
+  `• El tipo mas frecuente fue ${tipoMasFrecuente[0]} con ${tipoMasFrecuente[1]} eventos.`,
+  20,
+  conclusionY
+);
+
+conclusionY += 15;
+
+pdf.text(
+  `• La brigada con mayor participacion fue ${brigadaTop[0]}.`,
+  20,
+  conclusionY
+);
+
+conclusionY += 15;
+
+pdf.text(
+  `• El tiempo promedio de respuesta fue de ${promedioEmergencias} minutos.`,
+  20,
+  conclusionY
+);
+
+conclusionY += 15;
+
+if (emergenciaMasLarga) {
+
+  pdf.text(
+    `• La emergencia mas extensa fue ${emergenciaMasLarga.tipo} con ${Math.round(mayorDuracion)} minutos.`,
+    20,
+    conclusionY
+  );
+
+}
+
   const totalPaginas =
   pdf.getNumberOfPages();
 
@@ -1738,8 +1812,13 @@ for (
 
 }
   
+const fechaActual =
+  new Date()
+    .toISOString()
+    .split("T")[0];
+
 pdf.save(
-  "Informe_Operacional.pdf"
+  `Informe_Operacional_${fechaActual}.pdf`
 );
 
   }
