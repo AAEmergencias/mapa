@@ -65,7 +65,6 @@ const emergenciasSnapshot =
   );
 
 console.log("✅ EMERGENCIAS OK");
-``
 
     let partes = [];
     let traslados = [];
@@ -202,64 +201,21 @@ const listado =
 if (listado) {
 
   const emergenciasUnicas =
-  emergenciasActivas.map(e => ({
+    emergenciasActivas.map(e => ({
 
-    tipo:
-      e.tipo || "Emergencia",
+      tipo:
+        e.tipo || "Emergencia",
 
-    ubicacion:
-      e.ubicacion || "Sin ubicación",
+      ubicacion:
+        e.ubicacion || "Sin ubicación",
 
-    notas:
-      e.notas || "",
+      notas:
+        e.notas || "",
 
-    unidades:
-      e.unidades || []
+      unidades:
+        e.unidades || []
 
-  }));
-
-  console.log("EMERGENCIA:", e);
-
-    if (
-      ["6-T","6-3","6-7","6-15"]
-      .includes(e.estado)
-    ) {
-
-      const clave =
-  (e.tipoEmergencia || "") +
-  "|" +
-  (e.ubicacion || "");
-
-      const existe =
-        emergenciasUnicas.find(
-          x => x.clave === clave
-        );
-
-      if (!existe) {
-
-   emergenciasUnicas.push({
-
-  clave,
-
-  tipo:
-    e.tipoEmergencia || "Emergencia",
-
-  ubicacion:
-    e.ubicacion || "Sin ubicación",
-
-  notas:
-    e.notas || "",
-
-  unidades:
-    e.unidadesDespachadas || []
-
-});
-
-      }
-
-    }
-
-  });
+    }));
 
   if (
     emergenciasUnicas.length === 0
@@ -272,61 +228,60 @@ if (listado) {
 
   else {
 
-listado.innerHTML =
-  emergenciasUnicas.map(e => `
+    listado.innerHTML =
+      emergenciasUnicas.map(e => `
 
-    <div class="cardEmergenciaActiva">
+        <div class="cardEmergenciaActiva">
 
-      <div class="tituloEmergencia">
-        🚨 ${e.tipo}
-      </div>
+          <div class="tituloEmergencia">
+            🚨 ${e.tipo}
+          </div>
 
-      <div>
-        📍 ${e.ubicacion}
-      </div>
+          <div>
+            📍 ${e.ubicacion}
+          </div>
 
-     <div class="unidadesUltima">
+          <div class="unidadesUltima">
 
-  ${
-    e.unidades.length
+            ${
+              e.unidades.length
 
-      ? e.unidades.map(u => {
+                ? e.unidades.map(u => {
 
-          if (u.startsWith("S")) {
+                    if (u.startsWith("S")) {
 
-            return `
-              <span class="tagAmbulancia">
-                🚑 ${u}
-              </span>
-            `;
+                      return `
+                        <span class="tagAmbulancia">
+                          🚑 ${u}
+                        </span>
+                      `;
 
-          }
+                    }
 
-          return `
-            <span class="tagBrigada">
-              🚒 ${u}
-            </span>
-          `;
+                    return `
+                      <span class="tagBrigada">
+                        🚒 ${u}
+                      </span>
+                    `;
 
-        }).join("")
+                  }).join("")
 
-      : "Sin unidad"
+                : "Sin unidad"
+            }
 
-  }
+          </div>
 
-</div>
+          <div>
+            📝 ${
+              e.notas
+                ? e.notas
+                : "Sin observaciones"
+            }
+          </div>
 
-      <div>
-        📝 ${
-          e.notas
-            ? e.notas
-            : "Sin observaciones"
-        }
-      </div>
+        </div>
 
-    </div>
-
-  `).join("");
+      `).join("");
 
   }
 
