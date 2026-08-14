@@ -823,7 +823,7 @@ if (
 
   // 🔥 AQUÍ PEGA ESTO
 emergenciaActiva = {
-  id: contadorEmergencias++,
+  id: crypto.randomUUID(),
   tipo: tipo,
   subtipo: subtipo,
   ubicacion: ubicacionSeleccionada?.nombre || "Sin ubicación",
@@ -840,8 +840,14 @@ emergenciaActiva = {
 };
 
 addDoc(
-  collection(db, "emergenciasActivas"),
+  collection(
+    db,
+    "emergenciasActivas"
+  ),
   {
+
+    emergenciaId:
+      emergenciaId,
 
     tipo: tipo,
 
@@ -861,8 +867,8 @@ addDoc(
     notas: ""
 
   }
-
-).then(docRef => {
+)
+  .then(docRef => {
 
   emergenciaActiva.firebaseId =
     docRef.id;
@@ -1872,6 +1878,11 @@ document.getElementById("cerrarParte").onclick = () => {
   // ✅ filtrar solo finalizadas
  let finalizadas = historial.filter(e => e.finalizada && !e.cerrada);
 
+  console.log(
+  "📋 Emergencias finalizadas disponibles:",
+  finalizadas
+);
+
   // ❌ ninguna
   if (finalizadas.length === 0) {
     alert("❌ No hay emergencias finalizadas para cerrar");
@@ -1884,6 +1895,11 @@ document.getElementById("cerrarParte").onclick = () => {
     window.open("formulario.html", "_blank");
     return;
   }
+
+  console.log(
+  "📋 Emergencias finalizadas:",
+  finalizadas
+);
 
   // ✅ varias → mostrar selector
   mostrarSelectorEmergencias(finalizadas);
@@ -1916,6 +1932,13 @@ function mostrarSelectorEmergencias(lista) {
 
 lista.forEach(e => {
 
+  console.log(
+  "📂 Emergencia mostrada:",
+  e.id,
+  e.tipo,
+  e.fecha
+);
+
   let item = document.createElement("div");
 
   item.style.padding = "10px";
@@ -1929,10 +1952,23 @@ lista.forEach(e => {
     📅 ${e.fecha}
   `;
 
-  item.onclick = () => {
-    localStorage.setItem("emergenciaSeleccionada", JSON.stringify(e));
-    modal.remove();
-  };
+ item.onclick = () => {
+
+  console.log(
+    "✅ Abriendo emergencia:",
+    e.id,
+    e.tipo,
+    e.fecha
+  );
+
+  localStorage.setItem(
+    "emergenciaSeleccionada",
+    JSON.stringify(e)
+  );
+
+  modal.remove();
+
+};
 
   contenido.appendChild(item);
 
@@ -2010,27 +2046,31 @@ snapshot.forEach(docSnap => {
       panelNegro
     );
 
-  emergenciaActiva = {
+ emergenciaActiva = {
 
-    firebaseId:
-      docSnap.id,
+  id:
+    data.emergenciaId,
 
-    tipo:
-      data.tipo,
+  firebaseId:
+    docSnap.id,
 
-    subtipo:
-      data.subtipo,
+  tipo:
+    data.tipo,
 
-    ubicacion:
-      data.ubicacion,
+  subtipo:
+    data.subtipo,
 
-    unidades:
-      data.unidades || [],
+  ubicacion:
+    data.ubicacion,
 
-    notas:
-      data.notas || ""
+  unidades:
+    data.unidades || [],
 
-  };
+  notas:
+    data.notas || ""
+
+};
+
 
 });
 
