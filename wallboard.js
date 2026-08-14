@@ -617,6 +617,26 @@ brigadas.forEach(brigada => {
       htmlBrigadas += `${brigada} 🟣 Otros Trámites<br>`;
       break;
 
+      case "6-11":
+  htmlBrigadas += `${brigada} 🔴 En Panne<br>`;
+  break;
+
+case "6-12":
+  htmlBrigadas += `${brigada} 🚧 Sufre Colisión<br>`;
+  break;
+
+case "6-14":
+  htmlBrigadas += `${brigada} ⛽ Servicentro<br>`;
+  break;
+
+case "6-18":
+  htmlBrigadas += `${brigada} 🚇 Ingresa a Túnel<br>`;
+  break;
+
+case "6-19":
+  htmlBrigadas += `${brigada} 🚇 Sale del Túnel<br>`;
+  break;
+
     default:
       htmlBrigadas += `${brigada} 🟢 Disponible<br>`;
       break;
@@ -687,6 +707,26 @@ ambulancias.forEach(unidad => {
     default:
       htmlAmbulancias += `${unidad} 🟢 Disponible<br>`;
       break;
+
+      case "6-11":
+  htmlAmbulancias += `${unidad} 🔴 En Panne<br>`;
+  break;
+
+case "6-12":
+  htmlAmbulancias += `${unidad} 🚧 Sufre Colisión<br>`;
+  break;
+
+case "6-14":
+  htmlAmbulancias += `${unidad} ⛽ Servicentro<br>`;
+  break;
+
+case "6-18":
+  htmlAmbulancias += `${unidad} 🚇 Ingresa a Túnel<br>`;
+  break;
+
+case "6-19":
+  htmlAmbulancias += `${unidad} 🚇 Sale del Túnel<br>`;
+  break;
 
   }
 
