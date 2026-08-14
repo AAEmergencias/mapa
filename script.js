@@ -1413,13 +1413,33 @@ emergenciaActiva.vehiculo = emergenciaActiva.unidades?.[0] || "";
   emergenciaActiva.firebaseId
 ) {
 
-  deleteDoc(
-    doc(
-      db,
-      "emergenciasActivas",
-      emergenciaActiva.firebaseId
-    )
+    console.log(
+  "🗑️ Eliminando:",
+  emergenciaActiva.firebaseId
+);
+
+deleteDoc(
+  doc(
+    db,
+    "emergenciasActivas",
+    emergenciaActiva.firebaseId
+  )
+)
+.then(() => {
+
+  console.log(
+    "✅ Emergencia eliminada de Firestore"
   );
+
+})
+.catch(error => {
+
+  console.error(
+    "❌ Error eliminando emergencia:",
+    error
+  );
+
+});
 
 }
   
