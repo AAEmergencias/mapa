@@ -1602,10 +1602,13 @@ unidades.forEach(u => {
   // ==========================
 // ➕ AGREGAR UNIDAD (PASO 3)
 // ==========================
-const contenedorUnidades = panel.querySelector(".unidades");
-const campoNotas = panel.querySelector(".campoNotas");
+const contenedorUnidades =
+  panel.querySelector(".unidades");
 
-  campoNotas.addEventListener("input", () => {
+const campoNotas =
+  panel.querySelector(".campoNotas");
+
+campoNotas.addEventListener("input", () => {
 
   if (!emergenciaActiva) return;
 
@@ -1625,22 +1628,22 @@ btnGuardarNota.onclick = () => {
     campoNotas.value;
 
   if (
-  emergenciaActiva.firebaseId
-) {
+    emergenciaActiva.firebaseId
+  ) {
 
-  updateDoc(
-    doc(
-      db,
-      "emergenciasActivas",
-      emergenciaActiva.firebaseId
-    ),
-    {
-      notas:
-        emergenciaActiva.notas
-    }
-  );
+    updateDoc(
+      doc(
+        db,
+        "emergenciasActivas",
+        emergenciaActiva.firebaseId
+      ),
+      {
+        notas:
+          emergenciaActiva.notas
+      }
+    );
 
-}
+  }
 
   emergenciaActiva.unidades.forEach(
     unidad => {
