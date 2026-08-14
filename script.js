@@ -773,6 +773,30 @@ document.getElementById("crear").onclick = () => {
   let tipo = document.getElementById("tipo").value;
   let subtipo = document.getElementById("subtipo").value;
 
+  if (
+  !tipo ||
+  tipo === "Seleccione tipo..."
+) {
+
+  alert(
+    "⚠️ Debe seleccionar un tipo de emergencia"
+  );
+
+  return;
+}
+
+if (
+  !subtipo ||
+  subtipo === "Seleccione subtipo..."
+) {
+
+  alert(
+    "⚠️ Debe seleccionar un subtipo"
+  );
+
+  return;
+}
+
   // 🔥 AQUÍ PEGA ESTO
 emergenciaActiva = {
   id: contadorEmergencias++,
@@ -1880,6 +1904,19 @@ snapshot.forEach(docSnap => {
 
   const data =
     docSnap.data();
+
+  if (
+  data.tipo === "Seleccione tipo..." ||
+  data.subtipo === "Seleccione subtipo..."
+) {
+
+  console.warn(
+    "⚠️ Emergencia inválida ignorada:",
+    docSnap.id
+  );
+
+  return;
+}
 
   console.log(
     "🔥 Recuperando:",
