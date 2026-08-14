@@ -191,44 +191,8 @@ function actualizarPantalla(
   // EMERGENCIAS ACTIVAS
   // ==========================
 
-const estadosActivos = [
-  "6-T",
-  "6-3",
-  "6-7",
-  "6-15"
-];
-
-const emergenciasActivasKPI = [];
-
-estadosOperacionales.forEach(e => {
-
-  if (
-    estadosActivos.includes(e.estado)
-  ) {
-
-    const clave =
-      (e.tipoEmergencia || "") +
-      "|" +
-      (e.ubicacion || "");
-
-    if (
-      !emergenciasActivasKPI.includes(
-        clave
-      )
-    ) {
-
-      emergenciasActivasKPI.push(
-        clave
-      );
-
-    }
-
-  }
-
-});
-
-const activas =
-  emergenciasActivasKPI.length;
+  const activas =
+  emergenciasActivas.length;
 
 const listado =
   document.getElementById(
@@ -237,9 +201,22 @@ const listado =
 
 if (listado) {
 
-  const emergenciasUnicas = [];
+  const emergenciasUnicas =
+  emergenciasActivas.map(e => ({
 
-  estadosOperacionales.forEach(e => {
+    tipo:
+      e.tipo || "Emergencia",
+
+    ubicacion:
+      e.ubicacion || "Sin ubicación",
+
+    notas:
+      e.notas || "",
+
+    unidades:
+      e.unidades || []
+
+  }));
 
   console.log("EMERGENCIA:", e);
 
