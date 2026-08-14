@@ -292,8 +292,12 @@ const listaUnidades = document.getElementById("listaUnidades");
 
 unidades.forEach((u, i) => {
 
-  let div = document.createElement("div");
-  div.className = "unidad";
+ let div = document.createElement("div");
+
+div.className = "unidad";
+
+div.dataset.unidad =
+  u.nombre.split(" ")[0];
 
   div.innerHTML = `
   🚑 <b>${u.nombre}</b><br>
@@ -583,7 +587,13 @@ if (emergenciaActiva && emergenciaActiva.tiempos[estado] !== undefined) {
 
   unidadesHTML.forEach(div => {
 
-    if (div.innerText.includes(nombreUnidad)) {
+ const key =
+  nombreUnidad.split(" ")[0];
+
+if (
+  div.dataset.unidad === key
+)
+    {
 
       let baseTexto = nuevaBase 
         ? `<small>Base: ${nuevaBase}</small><br>` 
