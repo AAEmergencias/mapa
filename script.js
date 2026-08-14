@@ -1605,6 +1605,15 @@ unidades.forEach(u => {
 const contenedorUnidades = panel.querySelector(".unidades");
 const campoNotas = panel.querySelector(".campoNotas");
 
+  campoNotas.addEventListener("input", () => {
+
+  if (!emergenciaActiva) return;
+
+  emergenciaActiva.notas =
+    campoNotas.value;
+
+});
+
 const btnGuardarNota =
   panel.querySelector(".btnGuardarNota");
 
