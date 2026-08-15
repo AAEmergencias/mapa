@@ -882,9 +882,12 @@ addDoc(
 
   }
 )
-  .then(docRef => {
+.then(docRef => {
 
   emergenciaActiva.firebaseId =
+    docRef.id;
+
+  emergenciaPanel.firebaseId =
     docRef.id;
 
   console.log(
@@ -908,7 +911,12 @@ let nueva = {
 };
 
   let panelNegro = crearPanelEmergencia(nueva);
-  let panelRojo = crearPanelRojo(nueva, panelNegro);
+ let panelRojo =
+  crearPanelRojo(
+    nueva,
+    panelNegro,
+    emergenciaActiva
+  );
 
   modal.style.display = "none";
   overlay.style.display = "none";
@@ -1609,11 +1617,15 @@ function crearPanelEmergencia(data) {
   return panel; // ✅ 🔥 ESTA LÍNEA ES LA CLAVE
 }
 
-function crearPanelRojo(data, panelNegro) {
+function crearPanelRojo(
+  data,
+  panelNegro,
+  emergenciaData
+)
 
-  const emergenciaPanel = {
-  ...emergenciaActiva
-};
+
+ const emergenciaPanel =
+  emergenciaData;
 
   let panel = document.createElement("div");
   panel.className = "panel-rojo";
