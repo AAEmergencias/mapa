@@ -1417,7 +1417,12 @@ emergenciaActiva.ubicacion = emergenciaActiva.ubicacion || "";
 emergenciaActiva.brigada = emergenciaActiva.unidades?.[0] || "";
 emergenciaActiva.vehiculo = emergenciaActiva.unidades?.[0] || "";
 
-  
+  console.log(
+  "📝 Guardando emergencia en historial:",
+  emergenciaActiva
+);
+
+
   historialEmergencias.push(emergenciaActiva);
   localStorage.setItem(
   "historialEmergencias",
