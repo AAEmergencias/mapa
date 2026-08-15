@@ -1966,11 +1966,13 @@ lista.forEach(e => {
   item.style.cursor = "pointer";
   item.style.borderRadius = "6px";
 
-  item.innerHTML = `
-    #${e.id} - ${e.tipo}<br>
+item.innerHTML = `
+    🚨 ${e.tipo}<br>
+    <small>${e.subtipo || ""}</small><br>
+    📍 ${e.ubicacion || "Sin ubicación"}<br>
     📅 ${e.fecha}
-  `;
-
+`;
+  
  item.onclick = () => {
 
   console.log(
