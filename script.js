@@ -1380,7 +1380,7 @@ function abrirConfirmacionFinalizar(
   panel,
   panelNegro,
   emergenciaPanel
-)
+) {
 
   let modal = document.createElement("div");
   modal.className = "modal-bases";
@@ -1487,6 +1487,8 @@ if (emergenciaPanel) {
   
   emergenciaActiva = null;
 }
+    }
+  }
       
 localStorage.setItem(
   "historialEmergencias",
