@@ -361,6 +361,27 @@ document.getElementById("formParte").onsubmit = async (e) => {
       pacientes: document.getElementById("pacientes").value,
       tipoAtencion: document.getElementById("tipoAtencion").value,
 
+      existeTraslado:
+  document.getElementById("existeTraslado").value,
+
+tipoTraslado:
+  document.getElementById("tipoTraslado").value,
+
+centroDestino:
+  document.getElementById("centroDestino").value,
+
+empresaAfectada:
+  document.getElementById("empresaAfectada").value,
+
+nombrePaciente:
+  document.getElementById("nombrePaciente").value,
+
+edadPaciente:
+  document.getElementById("edadPaciente").value,
+
+antiguedadLaboral:
+  document.getElementById("antiguedadLaboral").value,
+
       pue: document.getElementById("pue").value,
       descripcionPue: document.getElementById("descPue").value,
 
