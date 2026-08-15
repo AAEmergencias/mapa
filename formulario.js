@@ -42,11 +42,104 @@ if (parteEditar) {
 
   let emergencia = JSON.parse(localStorage.getItem("emergenciaSeleccionada"));
 
-  const tipoSelect =
+  const subtiposPorTipo = {
+
+  "Incendio": [
+    "Amago de incendio equipos mineros",
+    "Amago de incendio en vehículos pesados",
+    "Amago de incendio en vehículos livianos",
+    "Amago de incendio instalaciones industriales",
+    "Incendio en equipos mineros",
+    "Incendio en vehículos pesado",
+    "Incendio en vehículos livianos",
+    "Incendio instalaciones",
+    "Incendio fuera de las instalaciones",
+    "Incendio Forestal",
+    "Pastizales y/o Basura"
+  ],
+
+  "Vehicular": [
+    "Choque equipos mineros",
+    "Choque vehículos pesados",
+    "Choque vehículos livianos",
+    "Choque vehículos pesados fuera de las instalaciones",
+    "Choque vehículos livianos fuera de las instalaciones",
+    "Desbarrancamiento equipos mineros",
+    "Desbarrancamiento vehículos pesados",
+    "Desbarrancamiento vehículos livianos",
+    "Volcamiento equipo minero",
+    "Volcamiento vehículos pesados",
+    "Volcamiento vehículos livianos"
+  ],
+
+  "Rescate": [
+    "Caída mismo nivel",
+    "Caída diferente nivel",
+    "Derrumbe",
+    "Atrapamiento",
+    "Perdida de conciencia"
+  ],
+
+  "Medico": [
+    "Problemas de salud",
+    "Fractura",
+    "Esguince",
+    "PCR"
+  ],
+
+  "Hazmat": [
+    "Derrame de sustancias peligrosas",
+    "Fuga de sustancias peligrosas",
+    "Incidente con sustancias peligrosas"
+  ]
+
+};
+
+
+const tipoSelect =
   document.getElementById("tipo");
 
 const subtipoSelect =
   document.getElementById("subtipo");
+
+  Object.keys(subtiposPorTipo)
+.forEach(tipo => {
+
+  let op =
+    document.createElement("option");
+
+  op.value = tipo;
+  op.textContent = tipo;
+
+  tipoSelect.appendChild(op);
+
+});
+
+  tipoSelect.addEventListener(
+  "change",
+  () => {
+
+    subtipoSelect.innerHTML = "";
+
+    const lista =
+      subtiposPorTipo[
+        tipoSelect.value
+      ] || [];
+
+    lista.forEach(sub => {
+
+      let op =
+        document.createElement("option");
+
+      op.value = sub;
+      op.textContent = sub;
+
+      subtipoSelect.appendChild(op);
+
+    });
+
+  }
+);
 
   console.log("EMERGENCIA:", emergencia);
 
@@ -62,8 +155,17 @@ if (!parteEditar && emergencia) {
   document.getElementById("horaCierre").value = formatearHora(emergencia.horaCierre);
 
   // ✅ TIPO
-  document.getElementById("tipo").value = emergencia.tipo || "";
-  document.getElementById("subtipo").value = emergencia.subtipo || "";
+  document.getElementById("tipo").value =
+  emergencia.tipo || "";
+
+// Cargar lista de subtipos
+document.getElementById("tipo")
+  .dispatchEvent(
+    new Event("change")
+  );
+
+document.getElementById("subtipo").value =
+  emergencia.subtipo || "";
   
   // ✅ NOTAS DE LA EMERGENCIA
 document.getElementById("descripcion").value =
