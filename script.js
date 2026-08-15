@@ -1982,6 +1982,11 @@ lista.forEach(e => {
 
   modal.remove();
 
+   window.open(
+"formulario.html",
+"_blank"
+);
+
 };
 
   contenido.appendChild(item);
