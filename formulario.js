@@ -58,6 +58,10 @@ if (!parteEditar && emergencia) {
   // ✅ TIPO
   document.getElementById("tipo").value = emergencia.tipo || "";
   document.getElementById("subtipo").value = emergencia.subtipo || "";
+  
+  // ✅ NOTAS DE LA EMERGENCIA
+document.getElementById("descripcion").value =
+  emergencia.notas || "";
 
   // ✅ UBICACIÓN
   document.getElementById("lugar").value = emergencia.ubicacion || "";
