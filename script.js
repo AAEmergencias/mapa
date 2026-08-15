@@ -821,13 +821,23 @@ if (
   return;
 }
 
-  // 🔥 AQUÍ PEGA ESTO
+const emergenciaId =
+  crypto.randomUUID();
+
 emergenciaActiva = {
-  id: crypto.randomUUID(),
+
+  id: emergenciaId,
+
   tipo: tipo,
+
   subtipo: subtipo,
-  ubicacion: ubicacionSeleccionada?.nombre || "Sin ubicación",
+
+  ubicacion:
+    ubicacionSeleccionada?.nombre ||
+    "Sin ubicación",
+
   unidades: [],
+
   tiempos: {
     "6-3": "",
     "6-7": "",
@@ -835,8 +845,12 @@ emergenciaActiva = {
     "6-9": "",
     "6-10": ""
   },
-  fecha: new Date().toLocaleDateString(),
-  notas: "" // ✅ NUEVO
+
+  fecha:
+    new Date().toLocaleDateString(),
+
+  notas: ""
+
 };
 
 addDoc(
