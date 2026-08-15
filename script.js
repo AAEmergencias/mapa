@@ -1376,7 +1376,11 @@ console.log("✅ TRASLADO GUARDADO");
 }
 
 
-function abrirConfirmacionFinalizar(panel, panelNegro) {
+function abrirConfirmacionFinalizar(
+  panel,
+  panelNegro,
+  emergenciaPanel
+)
 
   let modal = document.createElement("div");
   modal.className = "modal-bases";
@@ -1399,72 +1403,85 @@ function abrirConfirmacionFinalizar(panel, panelNegro) {
     btnConfirmar.onclick = () => {
 
       // ✅ guardar emergencia en historial
-if (emergenciaActiva) {
-  emergenciaActiva.finalizada = true;
-// ✅ FECHA
-emergenciaActiva.fecha = new Date().toLocaleDateString();
+if (emergenciaPanel) {
 
-// ✅ HORA ACTIVACIÓN (inicio despacho)
-emergenciaActiva.horaActivacion = emergenciaActiva.tiempos?.["6-3"] || "";
+  emergenciaPanel.finalizada = true;
 
-// ✅ HORA LEVANTAMIENTO (6-7)
-emergenciaActiva.horaCierre = emergenciaActiva.tiempos?.["6-7"] || "";
+  // ✅ FECHA
+  emergenciaPanel.fecha =
+    new Date().toLocaleDateString();
 
-// ✅ UBICACIÓN
-emergenciaActiva.ubicacion = emergenciaActiva.ubicacion || "";
+  // ✅ HORA ACTIVACIÓN
+  emergenciaPanel.horaActivacion =
+    emergenciaPanel.tiempos?.["6-3"] || "";
 
-// ✅ BRIGADA Y VEHÍCULO
-emergenciaActiva.brigada = emergenciaActiva.unidades?.[0] || "";
-emergenciaActiva.vehiculo = emergenciaActiva.unidades?.[0] || "";
+  // ✅ HORA LEVANTAMIENTO
+  emergenciaPanel.horaCierre =
+    emergenciaPanel.tiempos?.["6-7"] || "";
+
+  // ✅ UBICACIÓN
+  emergenciaPanel.ubicacion =
+    emergenciaPanel.ubicacion || "";
+
+  // ✅ BRIGADA Y VEHÍCULO
+  emergenciaPanel.brigada =
+    emergenciaPanel.unidades?.[0] || "";
+
+  emergenciaPanel.vehiculo =
+    emergenciaPanel.unidades?.[0] || "";
 
   console.log(
-  "📝 Guardando emergencia en historial:",
-  emergenciaActiva
-);
+    "📝 Guardando emergencia en historial:",
+    emergenciaPanel
+  );
 
+  historialEmergencias.push(
+    emergenciaPanel
+  );
 
-  historialEmergencias.push(emergenciaActiva);
   localStorage.setItem(
-  "historialEmergencias",
-  JSON.stringify(historialEmergencias)
-);
+    "historialEmergencias",
+    JSON.stringify(historialEmergencias)
+  );
 
   console.log(
-  "ID FIREBASE:",
-  emergenciaActiva.firebaseId
-);
+    "ID FIREBASE:",
+    emergenciaPanel.firebaseId
+  );
 
   if (
-  emergenciaActiva.firebaseId
-) {
+    emergenciaPanel.firebaseId
+  ) {
 
     console.log(
-  "🗑️ Eliminando:",
-  emergenciaActiva.firebaseId
-);
+      "🗑️ Eliminando:",
+      emergenciaPanel.firebaseId
+    );
 
-deleteDoc(
-  doc(
-    db,
-    "emergenciasActivas",
-    emergenciaActiva.firebaseId
-  )
-)
-.then(() => {
+    deleteDoc(
+      doc(
+        db,
+        "emergenciasActivas",
+        emergenciaPanel.firebaseId
+      )
+    )
+    .then(() => {
 
-  console.log(
-    "✅ Emergencia eliminada de Firestore"
-  );
+      console.log(
+        "✅ Emergencia eliminada de Firestore"
+      );
 
-})
-.catch(error => {
+    })
+    .catch(error => {
 
-  console.error(
-    "❌ Error eliminando emergencia:",
-    error
-  );
+      console.error(
+        "❌ Error eliminando emergencia:",
+        error
+      );
 
-});
+    });
+
+  }
 
 }
   
@@ -1601,6 +1618,10 @@ function crearPanelEmergencia(data) {
 }
 
 function crearPanelRojo(data, panelNegro) {
+
+  const emergenciaPanel = {
+  ...emergenciaActiva
+};
 
   let panel = document.createElement("div");
   panel.className = "panel-rojo";
@@ -1818,7 +1839,13 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   // ✅ FINALIZAR (cierra ambos)
 panel.querySelector(".btnFinalizar").onclick = () => {
-  abrirConfirmacionFinalizar(panel, panelNegro);
+
+  abrirConfirmacionFinalizar(
+    panel,
+    panelNegro,
+    emergenciaPanel
+  );
+
 };
 
 
