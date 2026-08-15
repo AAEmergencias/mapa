@@ -1396,123 +1396,113 @@ function abrirConfirmacionFinalizar(
     </div>
   `;
 
-  const btnConfirmar = modal.querySelector(".btnConfirmar");
-  const btnCancelar = modal.querySelector(".cerrarBases");
+  const btnConfirmar =
+    modal.querySelector(".btnConfirmar");
+
+  const btnCancelar =
+    modal.querySelector(".cerrarBases");
 
   if (btnConfirmar) {
+
     btnConfirmar.onclick = () => {
 
-      // ✅ guardar emergencia en historial
-if (emergenciaPanel) {
+      if (emergenciaPanel) {
 
-  emergenciaPanel.finalizada = true;
+        emergenciaPanel.finalizada = true;
 
-  // ✅ FECHA
-  emergenciaPanel.fecha =
-    new Date().toLocaleDateString();
+        emergenciaPanel.fecha =
+          new Date().toLocaleDateString();
 
-  // ✅ HORA ACTIVACIÓN
-  emergenciaPanel.horaActivacion =
-    emergenciaPanel.tiempos?.["6-3"] || "";
+        emergenciaPanel.horaActivacion =
+          emergenciaPanel.tiempos?.["6-3"] || "";
 
-  // ✅ HORA LEVANTAMIENTO
-  emergenciaPanel.horaCierre =
-    emergenciaPanel.tiempos?.["6-7"] || "";
+        emergenciaPanel.horaCierre =
+          emergenciaPanel.tiempos?.["6-7"] || "";
 
-  // ✅ UBICACIÓN
-  emergenciaPanel.ubicacion =
-    emergenciaPanel.ubicacion || "";
+        emergenciaPanel.ubicacion =
+          emergenciaPanel.ubicacion || "";
 
-  // ✅ BRIGADA Y VEHÍCULO
-  emergenciaPanel.brigada =
-    emergenciaPanel.unidades?.[0] || "";
+        emergenciaPanel.brigada =
+          emergenciaPanel.unidades?.[0] || "";
 
-  emergenciaPanel.vehiculo =
-    emergenciaPanel.unidades?.[0] || "";
+        emergenciaPanel.vehiculo =
+          emergenciaPanel.unidades?.[0] || "";
 
-  console.log(
-    "📝 Guardando emergencia en historial:",
-    emergenciaPanel
-  );
+        console.log(
+          "📝 Guardando emergencia:",
+          emergenciaPanel
+        );
 
-  historialEmergencias.push(
-    emergenciaPanel
-  );
+        historialEmergencias.push(
+          emergenciaPanel
+        );
 
-  localStorage.setItem(
-    "historialEmergencias",
-    JSON.stringify(historialEmergencias)
-  );
+        localStorage.setItem(
+          "historialEmergencias",
+          JSON.stringify(historialEmergencias)
+        );
 
-  console.log(
-    "ID FIREBASE:",
-    emergenciaPanel.firebaseId
-  );
+        if (
+          emergenciaPanel.firebaseId
+        ) {
 
-  if (
-    emergenciaPanel.firebaseId
-  ) {
+          console.log(
+            "🗑️ Eliminando:",
+            emergenciaPanel.firebaseId
+          );
 
-    console.log(
-      "🗑️ Eliminando:",
-      emergenciaPanel.firebaseId
-    );
+          deleteDoc(
+            doc(
+              db,
+              "emergenciasActivas",
+              emergenciaPanel.firebaseId
+            )
+          )
+          .then(() => {
 
-    deleteDoc(
-      doc(
-        db,
-        "emergenciasActivas",
-        emergenciaPanel.firebaseId
-      )
-    )
-    .then(() => {
+            console.log(
+              "✅ Emergencia eliminada"
+            );
 
-      console.log(
-        "✅ Emergencia eliminada de Firestore"
-      );
+          })
+          .catch(error => {
 
-    })
-    .catch(error => {
+            console.error(
+              "❌ Error eliminando:",
+              error
+            );
 
-      console.error(
-        "❌ Error eliminando emergencia:",
-        error
-      );
+          });
 
-    });
+        }
 
-  }
+      }
 
-}
-  
-  emergenciaActiva = null;
-}
-    }
-  }
-      
-localStorage.setItem(
-  "historialEmergencias",
-  JSON.stringify(historialEmergencias)
-);
-      // ✅ cerrar panel rojo
-      if (panel) panel.remove();
+      if (panel) {
+        panel.remove();
+      }
 
-      // ✅ cerrar panel negro
-      if (panelNegro) panelNegro.remove();
+      if (panelNegro) {
+        panelNegro.remove();
+      }
 
       modal.remove();
+
     };
+
   }
 
   if (btnCancelar) {
+
     btnCancelar.onclick = () => {
       modal.remove();
     };
+
   }
 
   document.body.appendChild(modal);
-}
 
+}
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
