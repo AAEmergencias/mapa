@@ -42,6 +42,12 @@ if (parteEditar) {
 
   let emergencia = JSON.parse(localStorage.getItem("emergenciaSeleccionada"));
 
+  const tipoSelect =
+  document.getElementById("tipo");
+
+const subtipoSelect =
+  document.getElementById("subtipo");
+
   console.log("EMERGENCIA:", emergencia);
 
 if (!parteEditar && emergencia) {
