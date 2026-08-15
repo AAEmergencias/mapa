@@ -67,9 +67,18 @@ if (parteEditar) {
     "Desbarrancamiento equipos mineros",
     "Desbarrancamiento vehículos pesados",
     "Desbarrancamiento vehículos livianos",
+    "Desbarrancamiento vehículos pesados fuera de las intalaciones",
+    "Desbarrancamiento vehículos livianos fuera de las instalaciones",
+    "Colisión equipo minero",
+    "Colisión vehículos pesados",
+    "Colisión vehícculos livianos",
+    "Colisión vehículos pesados fuera de las instalaciones",
+    "Colisión vehículos livanos fuera de las instalaciones",
     "Volcamiento equipo minero",
     "Volcamiento vehículos pesados",
-    "Volcamiento vehículos livianos"
+    "Volcamiento vehículos livianos",
+    "Volcamiento vehículos pesados fuera de las instalaciones",
+    "Volcamiento vehículos livianos fuera de las instalaciones"
   ],
 
   "Rescate": [
@@ -77,20 +86,89 @@ if (parteEditar) {
     "Caída diferente nivel",
     "Derrumbe",
     "Atrapamiento",
-    "Perdida de conciencia"
+    "Perdida de conciencia",
+    "Encerramiento en ascensor",
+    "Rescate vertical",
+    "Rescate espacio confinados",
+    "Atropello",
+    "Caída de particulas",
+    "Otros no categorizados"
   ],
 
   "Medico": [
     "Problemas de salud",
     "Fractura",
     "Esguince",
-    "PCR"
+    "Desmayo / Inconciente",
+    "Crisis de Pánico / Ansiedad",
+    "PCR",
+    "Corte",
+    "Perdida de memoria",
+    "Otros no categorizados"
   ],
 
   "Hazmat": [
     "Derrame de sustancias peligrosas",
     "Fuga de sustancias peligrosas",
     "Incidente con sustancias peligrosas"
+  ],
+
+  "Simulacros": [
+    "Simulacro documental/Proceso/Divicional",
+    "Incendio",
+    "Vehícular",
+    "Rescate",
+    "Hazmat",
+    "Sísmico",
+    "Meteorológico",
+    "Geológico",
+    "Ambiental",
+    "Médico"
+  ],
+
+  "Sísmico": [
+    "Sismo leve",
+    "Sismo moderado",
+    "Terremoto grave"
+  ],
+
+  "Meteorologico": [
+    "Tormenta eléctrica",
+    "Nevadas intensas",
+    "Lluvias torrenciales",
+    "Ola de calor",
+    "Viento blanco",
+    "Aluvión",
+    "Crecida de rios",
+    "Inundación de instalaciones"
+  ],
+
+  "Geológico": [
+    "Deslizamiento de terreno",
+    "Remoción en masa",
+    "Falla geotécnica",
+    "Caída de rocas",
+    "Inestabilidad de taludes"
+  ],
+
+  "Ambiental": [
+    "Material particulado",
+    "Contaminación agua",
+    "Afectación flora/fauna"
+  ],
+
+  "Otros": [
+    "Limpieza de rodados",
+    "Activación alarma SPCI",
+    "Contacto eléctrico",
+    "Desperfecto mecánico Ruta G21-G245",
+    "Desperfecto mecánico Ruta STP-OLB",
+    "Rescate animal",
+    "Olor no determinado",
+    "Daño infraestructura",
+    "Caída de árbol",
+    "Interrupción eléctrica",
+    "Otras no categorizadas"
   ]
 
 };
