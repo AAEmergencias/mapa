@@ -887,9 +887,6 @@ addDoc(
   emergenciaActiva.firebaseId =
     docRef.id;
 
-  emergenciaPanel.firebaseId =
-    docRef.id;
-
   console.log(
     "✅ Emergencia guardada:",
     docRef.id
@@ -911,6 +908,7 @@ let nueva = {
 };
 
   let panelNegro = crearPanelEmergencia(nueva);
+  
  let panelRojo =
   crearPanelRojo(
     nueva,
@@ -1621,7 +1619,7 @@ function crearPanelRojo(
   data,
   panelNegro,
   emergenciaData
-)
+) {
 
 
  const emergenciaPanel =
@@ -2097,11 +2095,37 @@ snapshot.forEach(docSnap => {
       nueva
     );
 
-  let panelRojo =
-    crearPanelRojo(
-      nueva,
-      panelNegro
-    );
+  let emergenciaRecuperada = {
+
+  id:
+    data.emergenciaId,
+
+  firebaseId:
+    docSnap.id,
+
+  tipo:
+    data.tipo,
+
+  subtipo:
+    data.subtipo,
+
+  ubicacion:
+    data.ubicacion,
+
+  unidades:
+    data.unidades || [],
+
+  notas:
+    data.notas || ""
+
+};
+
+let panelRojo =
+  crearPanelRojo(
+    nueva,
+    panelNegro,
+    emergenciaRecuperada
+  );
 
  emergenciaActiva = {
 
