@@ -1,9 +1,19 @@
-import { db, collection, addDoc } from "./firebase.js";
+import {
+  db,
+  collection,
+  addDoc,
+  updateDoc,
+  doc
+} from "./firebase.js";
+
 document.addEventListener("DOMContentLoaded", () => {
 
 let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
 
-console.log("📦 Parte a editar:", parteEditar); // ✅ para verificar
+console.log(
+  "PARTE EDITAR:",
+  parteEditar
+);
 
 if (parteEditar) {
 
@@ -410,7 +420,33 @@ if (editando) {
 
 }
 
-await addDoc(collection(db, "partes"), parte);
+if (editando && editando.id) {
+
+  await updateDoc(
+    doc(
+      db,
+      "partes",
+      editando.id
+    ),
+    parte
+  );
+
+  console.log(
+    "✅ Parte actualizado"
+  );
+
+} else {
+
+  await addDoc(
+    collection(db, "partes"),
+    parte
+  );
+
+  console.log(
+    "✅ Parte nuevo creado"
+  );
+
+}
 
     let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 
