@@ -115,8 +115,7 @@ body{
 #emergenciasActivas{
   font-size:24px;
   line-height:2;
-  text-align:left;
-  padding-left:20px;
+  text-align:center;
 }
 
 .bloqueEmergencias{
@@ -130,9 +129,11 @@ body{
 }
 
 #listadoEmergenciasActivas {
-  flex:1;
+
+  text-align:center;
   max-height:420px;
   overflow-y:auto;
+
 }
 
 #listadoEmergenciasActivas div {
