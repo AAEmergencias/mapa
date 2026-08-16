@@ -1893,30 +1893,6 @@ panel.querySelector(".btnFinalizar").onclick = () => {
   return panel;
 }
 
-document.getElementById("exportar").onclick = () => {
-
-  if (historialEmergencias.length === 0) {
-    alert("No hay emergencias registradas");
-    return;
-  }
-
-let csv = "N°;Tipo;Subtipo;Ubicacion;Unidades;Hora 6-3;Hora 6-7;Hora 6-8;Hora 6-9;Hora 6-10;Fecha;Notas\n";
-
-  historialEmergencias.forEach(e => {
-
-    csv += `${e.id};${e.tipo};${e.subtipo};${e.ubicacion};"${e.unidades.join(" - ")}";${e.tiempos["6-3"]};${e.tiempos["6-7"]};${e.tiempos["6-8"]};${e.tiempos["6-9"]};${e.tiempos["6-10"]};${e.fecha};"${e.notas}"\n`;
-
-  });
-
-  let blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-
-  let link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "reporte_emergencias.csv";
-
-  link.click();
-};
-
 document.getElementById("irAdmin").onclick = () => {
   window.open("admin.html", "_blank");
 };
