@@ -687,6 +687,12 @@ body {
   border-radius: 6px;
   border: 1px solid #ccc;
   resize: none;
+  box-sizing: border-box;
+}
+
+.contenido-rojo select {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .btnFinalizar {
