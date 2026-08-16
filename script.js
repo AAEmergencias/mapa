@@ -2166,4 +2166,52 @@ let panelRojo =
 
 }
 
+async function recuperarEstadosOperacionales() {
+
+  try {
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "estadoOperacional"
+        )
+      );
+
+    snapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      console.log(
+        "🚒 Recuperando estado:",
+        data
+      );
+
+      let unidadCompleta =
+        unidades.find(u =>
+          u.nombre.startsWith(data.unidad)
+        );
+
+      if (!unidadCompleta) return;
+
+      actualizarEstadoUnidad(
+        unidadCompleta.nombre,
+        data.estado
+      );
+
+    });
+
+  } catch (error) {
+
+    console.error(
+      "❌ Error recuperando estados:",
+      error
+    );
+
+  }
+
+}
+
+recuperarEstadosOperacionales();
 recuperarEmergenciasActivas();
