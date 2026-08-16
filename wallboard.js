@@ -564,6 +564,16 @@ document.getElementById(
   // BRIGADAS
   // ==========================
 
+  const nombresBrigadas = {
+
+  "B1": "Bronces",
+  "B2": "Tórtolas",
+  "UIR-M": "Mina",
+  "UIR-E": "Ermita",
+  "UIR-S": "STP"
+
+};
+
 const brigadas = [
   
 "B1",
@@ -585,8 +595,8 @@ brigadas.forEach(brigada => {
   if (!estadoActual) {
 
     htmlBrigadas += `
-      ${brigada} 🟢 Disponible<br>
-    `;
+  ${brigada} - ${nombresBrigadas[brigada]} 🟢 Disponible<br>
+`;
 
     return;
 
@@ -595,51 +605,52 @@ brigadas.forEach(brigada => {
   switch (estadoActual.estado) {
 
     case "6-T":
-      htmlBrigadas += `${brigada} 🟠 En Trayecto<br>`;
+     htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🟠 En Trayecto<br>`;
       break;
 
     case "6-3":
-      htmlBrigadas += `${brigada} 🔴 En el Lugar<br>`;
+     htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🔴 En el Lugar<br>`;
       break;
 
     case "6-7":
-      htmlBrigadas += `${brigada} 🟡 Situación Controlada<br>`;
+    htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]}  🟡 Situación Controlada<br>`;
       break;
 
     case "6-15":
-      htmlBrigadas += `${brigada} 🏥 Centro Asistencial<br>`;
+      htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🏥 Centro Asistencial<br>`;
       break;
 
     case "6-9":
-      htmlBrigadas += `${brigada} 🔵 Se Retira<br>`;
+     htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🔵 Se Retira<br>`;
       break;
 
     case "6-13":
-      htmlBrigadas += `${brigada} 🟣 Otros Trámites<br>`;
+     htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🟣 Otros Trámites<br>`;
       break;
 
       case "6-11":
-  htmlBrigadas += `${brigada} 🔴 En Panne<br>`;
+  htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]}  🔴 En Panne<br>`;
   break;
 
 case "6-12":
-  htmlBrigadas += `${brigada} 🚧 Sufre Colisión<br>`;
+  htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🚧 Sufre Colisión<br>`;
   break;
 
 case "6-14":
-  htmlBrigadas += `${brigada} ⛽ Servicentro<br>`;
+ htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]}  ⛽ Servicentro<br>`;
   break;
 
 case "6-18":
-  htmlBrigadas += `${brigada} 🚇 Ingresa a Túnel<br>`;
+ htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]}  🚇 Ingresa a Túnel<br>`;
   break;
 
 case "6-19":
-  htmlBrigadas += `${brigada} 🚇 Sale del Túnel<br>`;
+ htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🚇 Sale del Túnel<br>`;
   break;
 
     default:
-      htmlBrigadas += `${brigada} 🟢 Disponible<br>`;
+ htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🟢 Disponible<br>
+`;
       break;
 
   }
@@ -653,6 +664,14 @@ document.getElementById(
   // ==========================
   // AMBULANCIAS
   // ==========================
+
+  const nombresAmbulancias = {
+
+  "S1": "Pérez Caldera",
+  "S2": "Poli Tórtolas",
+  "S3": "SPA 220"
+
+};
 
 const ambulancias = [
   
@@ -684,51 +703,51 @@ ambulancias.forEach(unidad => {
   switch (estadoActual.estado) {
 
     case "6-T":
-      htmlAmbulancias += `${unidad} 🟠 En Trayecto<br>`;
+    htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} 🟠 En Trayecto<br>`;
       break;
 
     case "6-3":
-      htmlAmbulancias += `${unidad} 🔴 En el Lugar<br>`;
+      htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} 🔴 En el Lugar<br>`;
       break;
 
     case "6-7":
-      htmlAmbulancias += `${unidad} 🟡 Situación Controlada<br>`;
+     htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]}  🟡 Situación Controlada<br>`;
       break;
 
     case "6-15":
-      htmlAmbulancias += `${unidad} 🏥 Centro Asistencial<br>`;
+     htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]}  🏥 Centro Asistencial<br>`;
       break;
 
     case "6-9":
-      htmlAmbulancias += `${unidad} 🔵 Se Retira<br>`;
+    htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]}  🔵 Se Retira<br>`;
       break;
 
     case "6-13":
-      htmlAmbulancias += `${unidad} 🟣 Otros Trámites<br>`;
+      htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} 🟣 Otros Trámites<br>`;
       break;
 
     default:
-      htmlAmbulancias += `${unidad} 🟢 Disponible<br>`;
+   htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} 🟢 Disponible<br>`;
       break;
 
       case "6-11":
-  htmlAmbulancias += `${unidad} 🔴 En Panne<br>`;
+ htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} 🔴 En Panne<br>`;
   break;
 
 case "6-12":
-  htmlAmbulancias += `${unidad} 🚧 Sufre Colisión<br>`;
+  htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} 🚧 Sufre Colisión<br>`;
   break;
 
 case "6-14":
-  htmlAmbulancias += `${unidad} ⛽ Servicentro<br>`;
+htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} ⛽ Servicentro<br>`;
   break;
 
 case "6-18":
-  htmlAmbulancias += `${unidad} 🚇 Ingresa a Túnel<br>`;
+ htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} 🚇 Ingresa a Túnel<br>`;
   break;
 
 case "6-19":
-  htmlAmbulancias += `${unidad} 🚇 Sale del Túnel<br>`;
+htmlAmbulancias += `${unidad} - ${nombresAmbulancias[unidad]} 🚇 Sale del Túnel<br>`;
   break;
 
   }
