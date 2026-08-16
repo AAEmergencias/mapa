@@ -1651,7 +1651,9 @@ panel.innerHTML = `
   <div class="unidades"></div>
 
   <select class="selectUnidad"></select>
-  <button class="btnAgregarUnidad">Agregar Unidad</button>
+ <button class="btnAgregarUnidad">
+  ➕ Agregar Unidad
+</button>
 
 </div>
 
