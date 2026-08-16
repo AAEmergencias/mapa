@@ -564,14 +564,14 @@ document.getElementById(
   // BRIGADAS
   // ==========================
 
-const brigadas = [
+const brigadas = {
   
 "B1": "Bronces",
 "B2": "Tórtolas",
 "UIR-M": "Mina",
 "UIR-E": "Ermita",
 "UIR-S": "STP"
-];
+ };
 
 let htmlBrigadas = "";
 
@@ -654,13 +654,13 @@ document.getElementById(
   // AMBULANCIAS
   // ==========================
 
-const ambulancias = [
+const ambulancias = {
   
 "S1": "Pérez Caldera",
 "S2": "Poli Tórtolas",
 "S3": "SPA 220"
   
-];
+ };
 
 let htmlAmbulancias = "";
 
