@@ -713,6 +713,46 @@ body {
   transition: 0.2s;
 }
 
+.btnAgregarUnidad,
+.btnGuardarNota {
+
+  width: 100%;
+
+  padding: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #2563eb,
+    #3b82f6
+  );
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  margin-top: 10px;
+
+  transition: 0.2s;
+
+}
+
+.btnAgregarUnidad:hover,
+.btnGuardarNota:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 12px
+    rgba(0,0,0,0.3);
+
+}
+
 .btnFinalizar:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 12px rgba(0,0,0,0.3);
