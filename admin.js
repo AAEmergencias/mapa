@@ -115,8 +115,16 @@ async function cargarPartes() {
 
   const querySnapshot = await getDocs(collection(db, "partes"));
 
-  querySnapshot.forEach((doc) => {
-  partes.push(doc.data());
+querySnapshot.forEach((docSnap) => {
+
+  partes.push({
+
+    id: docSnap.id,
+
+    ...docSnap.data()
+
+  });
+
 });
 
 // ✅ ORDENAR POR FECHA + HORA (ÚLTIMA ARRIBA)
