@@ -613,18 +613,6 @@ if (
     }
 
   });
-
-  if (
-  estadoActualUnidad[
-    key + "_recuperando"
-  ]
-) {
-
-  delete estadoActualUnidad[
-    key + "_recuperando"
-  ];
-
-}
   
 const key =
   nombreUnidad.split(" ")[0];
@@ -648,13 +636,29 @@ const key =
   }
 );
 
-  if (
+if (
   estadoActualUnidad[
     key + "_recuperando"
   ]
 ) {
+
+  delete estadoActualUnidad[
+    key + "_recuperando"
+  ];
+
   return;
+
 }
+
+  console.log(
+  "🔥 GUARDANDO:",
+  {
+    unidad: key,
+    estado,
+    nota
+  }
+);
+
 
 setDoc(
   doc(db, "estadoOperacional", key),
@@ -1185,6 +1189,12 @@ function abrirModalNotas(unidad, estado) {
     btnGuardar.onclick = () => {
 
       let nota = textarea.value || "Sin detalle";
+
+      console.log(
+  "📝 NOTA INGRESADA:",
+  nota
+);
+
 
      actualizarEstadoUnidad(unidad, estado, null, nota);
 
