@@ -97,6 +97,11 @@ console.log("✅ EMERGENCIAS OK");
 
 });
 
+    console.log(
+  "ESTADOS OPERACIONALES:",
+  estadosOperacionales
+);
+
     emergenciasSnapshot.forEach(doc => {
 
   emergenciasActivas.push({
