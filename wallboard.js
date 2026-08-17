@@ -491,17 +491,20 @@ document.getElementById(
     const ultimo =
       traslados[0];
 
-    document.getElementById(
-      "ultimoTraslado"
-    ).innerHTML = `
+   document.getElementById(
+  "ultimoTraslado"
+).innerHTML = `
 
-      🚑 ${ultimo.unidad || "-"}<br><br>
+  <b>🚑 Unidad:</b><br>
+  ${ultimo.unidad || "-"}<br><br>
 
-      🏥 ${ultimo.lugarTraslado || "-"}<br><br>
+  <b>🏥 Destino:</b><br>
+  ${ultimo.lugarTraslado || "-"}<br><br>
 
-      📍 ${ultimo.tipoTraslado || "-"}
+  <b>📍 Tipo:</b><br>
+  ${ultimo.tipoTraslado || "-"}
 
-    `;
+`;
 
   }
   else {
