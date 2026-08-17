@@ -574,10 +574,12 @@ document.getElementById(
 
 function crearFilaUnidad(
   nombre,
-  estado
+  estado,
+  nota = ""
 ) {
 
   return `
+
     <div class="filaUnidad">
 
       <div class="nombreUnidad">
@@ -588,7 +590,18 @@ function crearFilaUnidad(
         ${estado}
       </div>
 
+      ${
+        nota
+          ? `
+            <div class="notaUnidad">
+              📝 ${nota}
+            </div>
+          `
+          : ""
+      }
+
     </div>
+
   `;
 
 }
@@ -788,11 +801,14 @@ ambulancias.forEach(unidad => {
       break;
 
     case "6-15":
-        htmlAmbulancias += crearFilaUnidad(
+
+htmlAmbulancias += crearFilaUnidad(
   `${unidad} - ${nombresAmbulancias[unidad]}`,
-  "🏥 Centro Asistencial"
-  );    
-      break;
+  "🏥 Centro Asistencial",
+  estadoActual.notas || ""
+);
+
+break;
 
     case "6-9":
        htmlAmbulancias += crearFilaUnidad(
@@ -801,12 +817,15 @@ ambulancias.forEach(unidad => {
     );  
       break;
 
-    case "6-13":
-     htmlAmbulancias += crearFilaUnidad(
+   case "6-13":
+
+htmlAmbulancias += crearFilaUnidad(
   `${unidad} - ${nombresAmbulancias[unidad]}`,
-       "🟣 Otros Trámites"
-    );
-      break;
+  "🟣 Otros Trámites",
+  estadoActual.notas || ""
+);
+
+break;
 
     default:
     htmlAmbulancias += crearFilaUnidad(
