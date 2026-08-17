@@ -643,8 +643,7 @@ setDoc(
     ubicacion:
       emergenciaActiva?.ubicacion || "",
 
-    notas:
-      emergenciaActiva?.notas || "",
+    notas: nota || "",
 
     unidadesDespachadas:
       emergenciaActiva?.unidades || [],
