@@ -618,12 +618,14 @@ brigadas.forEach(brigada => {
 
 if (!estadoActual) {
 
-  htmlBrigadas += `
-    ${brigada} - ${nombresBrigadas[brigada]} 🟢 Disponible<br>
-  `;
+  htmlBrigadas += crearFilaUnidad(
+    `${brigada} - ${nombresBrigadas[brigada]}`,
+    "🟢 Disponible"
+  );
 
   return;
 }
+
 
   switch (estadoActual.estado) {
 
@@ -705,10 +707,11 @@ htmlBrigadas += crearFilaUnidad(
   break;
 
     default:
- htmlBrigadas += `${brigada} - ${nombresBrigadas[brigada]} 🟢 Disponible<br>
-`;
-      break;
-
+  htmlBrigadas += crearFilaUnidad(
+    `${brigada} - ${nombresBrigadas[brigada]}`,
+    "🟢 Disponible"
+  );
+  break;
   }
 
 });
