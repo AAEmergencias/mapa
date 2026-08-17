@@ -319,3 +319,25 @@ body{
   width:100%;
 
 }
+
+.filaUnidad {
+
+  margin-bottom: 12px;
+
+}
+
+.nombreUnidad {
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+}
+
+.estadoUnidad {
+
+  font-size: 16px;
+
+  color: #d1d5db;
+
+}
