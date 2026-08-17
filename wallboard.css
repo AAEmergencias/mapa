@@ -353,3 +353,19 @@ body{
   font-style: italic;
 
 }
+
+.filaUnidad {
+
+  padding-bottom: 12px;
+
+  margin-bottom: 12px;
+
+border-bottom: 1px solid #334155;
+
+}
+
+.filaUnidad:last-child {
+
+  border-bottom: none;
+
+}
