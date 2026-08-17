@@ -299,10 +299,9 @@ div.className = "unidad";
 div.dataset.unidad =
   u.nombre.split(" ")[0];
 
-  div.innerHTML = `
+div.innerHTML = `
   🚑 <b>${u.nombre}</b><br>
-  <small>Base: ${u.base}</small><br>
-  <small>Disponible (6-8)</small>
+  <small>⏳ Cargando estado...</small>
 `;
 
   div.addEventListener("click", () => {
