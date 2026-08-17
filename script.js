@@ -620,6 +620,14 @@ const key =
   estadoActualUnidad[key] =
   estado;
 
+  if (nota) {
+
+  estadoActualUnidad[
+    key + "_nota"
+  ] = nota;
+
+}
+
   console.log(
   "🔥 Guardando Firestore:",
   {
@@ -643,7 +651,10 @@ setDoc(
     ubicacion:
       emergenciaActiva?.ubicacion || "",
 
-    notas: nota || "",
+    notas:
+  nota ||
+  estadoActualUnidad[key + "_nota"] ||
+  "",
 
     unidadesDespachadas:
       emergenciaActiva?.unidades || [],
