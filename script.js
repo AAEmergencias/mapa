@@ -613,6 +613,18 @@ if (
     }
 
   });
+
+  if (
+  estadoActualUnidad[
+    key + "_recuperando"
+  ]
+) {
+
+  delete estadoActualUnidad[
+    key + "_recuperando"
+  ];
+
+}
   
 const key =
   nombreUnidad.split(" ")[0];
@@ -635,6 +647,14 @@ const key =
     estado: estado
   }
 );
+
+  if (
+  estadoActualUnidad[
+    key + "_recuperando"
+  ]
+) {
+  return;
+}
 
 setDoc(
   doc(db, "estadoOperacional", key),
@@ -2182,10 +2202,16 @@ async function recuperarEstadosOperacionales() {
 
       if (!unidadCompleta) return;
 
+      estadoActualUnidad[
+  data.unidad + "_recuperando"
+] = true;
+      
       actualizarEstadoUnidad(
-        unidadCompleta.nombre,
-        data.estado
-      );
+  unidadCompleta.nombre,
+  data.estado,
+  null,
+  data.notas || ""
+);
 
     });
 
