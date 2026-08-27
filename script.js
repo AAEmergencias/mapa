@@ -1,12 +1,23 @@
 import {
+
   db,
+  auth,
+
   collection,
   addDoc,
   getDocs,
+  getDoc,
+
   doc,
   setDoc,
   updateDoc,
-  deleteDoc
+  deleteDoc,
+
+  onSnapshot,
+
+  onAuthStateChanged,
+  signOut
+
 }
 from "./firebase.js";
 // ==========================
@@ -2238,3 +2249,68 @@ async function recuperarEstadosOperacionales() {
 
 recuperarEstadosOperacionales();
 recuperarEmergenciasActivas();
+
+// ==========================
+// 👤 USUARIO LOGEADO
+// ==========================
+
+onAuthStateChanged(
+  auth,
+  async (user) => {
+
+    if (!user) {
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+    const usuarioDoc =
+      await getDoc(
+        doc(
+          db,
+          "usuarios",
+          user.email
+        )
+      );
+
+    if (!usuarioDoc.exists())
+      return;
+
+    const datos =
+      usuarioDoc.data();
+
+    document.getElementById(
+      "nombreUsuario"
+    ).innerHTML =
+      "👤 " + datos.nombre;
+
+    document.getElementById(
+      "turnoUsuario"
+    ).innerHTML =
+      "📟 Turno " +
+      (datos.turno || "-");
+
+    document.getElementById(
+      "rolUsuario"
+    ).innerHTML =
+      datos.rol.toUpperCase();
+
+  }
+);
+
+document
+  .getElementById(
+    "cerrarSesion"
+  )
+  .onclick =
+async () => {
+
+  await signOut(auth);
+
+  window.location.href =
+    "login.html";
+
+};
