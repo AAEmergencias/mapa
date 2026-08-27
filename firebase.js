@@ -41,19 +41,24 @@ const auth = getAuth(app);
 
 // ✅ EXPORTAR funciones
 export {
+
   db,
   auth,
 
   collection,
   addDoc,
   getDocs,
+  getDoc,
+
   doc,
   setDoc,
   updateDoc,
   deleteDoc,
+
   onSnapshot,
 
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged
+
 };
