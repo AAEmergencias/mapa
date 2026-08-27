@@ -1095,3 +1095,15 @@ body {
   cursor: pointer;
 
 }
+
+#turnoUsuario {
+
+  color: #38bdf8;
+
+  font-size: 13px;
+
+  margin-bottom: 6px;
+
+  font-weight: bold;
+
+}
