@@ -1035,3 +1035,63 @@ body {
 .btn-origen:hover {
   background: #1d4ed8;
 }
+
+#panelUsuario {
+
+  margin: 15px;
+
+  padding: 12px;
+
+  background: #1e293b;
+
+  border-radius: 10px;
+
+  text-align: center;
+
+  border: 1px solid #334155;
+
+}
+
+#nombreUsuario {
+
+  font-weight: bold;
+
+  color: white;
+
+  margin-bottom: 5px;
+
+}
+
+#rolUsuario {
+
+  color: #94a3b8;
+
+  font-size: 13px;
+
+  margin-bottom: 10px;
+
+}
+
+#cerrarSesion {
+
+  width: 100%;
+
+  padding: 10px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: linear-gradient(
+    90deg,
+    #dc2626,
+    #ef4444
+  );
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
