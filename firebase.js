@@ -14,6 +14,14 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
 
 // ✅ TU CONFIG (la que ya tienes)
 const firebaseConfig = {
@@ -28,10 +36,13 @@ const firebaseConfig = {
 // ✅ INICIALIZAR FIREBASE
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 // ✅ EXPORTAR funciones
 export {
   db,
+  auth,
+
   collection,
   addDoc,
   getDocs,
@@ -39,5 +50,9 @@ export {
   setDoc,
   updateDoc,
   deleteDoc,
-  onSnapshot
+  onSnapshot,
+
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
 };
