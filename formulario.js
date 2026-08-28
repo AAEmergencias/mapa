@@ -34,8 +34,14 @@ console.log(
   "PARTE EDITAR:",
   parteEditar
 );
+  
+  const datos =
+  parteEditar || parteVer;
 
-if (parteEditar || parteVer) {
+if (
+  (parteEditar || parteVer)
+  && !emergencia
+) {
 
   const datos =
     parteEditar || parteVer;
@@ -86,8 +92,6 @@ if (parteEditar || parteVer) {
 }
 
 }
-
-  let emergencia = JSON.parse(localStorage.getItem("emergenciaSeleccionada"));
 
   const subtiposPorTipo = {
 
