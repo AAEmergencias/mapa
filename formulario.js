@@ -16,6 +16,20 @@ let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
   )
 );
 
+  let emergencia =
+  JSON.parse(
+    localStorage.getItem(
+      "emergenciaSeleccionada"
+    )
+  );
+
+  if (emergencia) {
+
+  parteVer = null;
+
+}
+
+
 console.log(
   "PARTE EDITAR:",
   parteEditar
