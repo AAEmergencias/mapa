@@ -36,25 +36,36 @@ async function cargar() {
     const p =
       docSnap.data();
 
-    html += `
-      <div class="card">
+   html += `
+<div class="card">
 
-        <b>📅 ${p.fecha || "-"}</b>
-        <br><br>
+  <div class="card-header">
 
-        🚒 ${p.tipo || "-"}
-        <br>
+    <div>
 
-        📂 ${p.subtipo || "-"}
-        <br>
+      <b>📅 ${p.fecha || "-"}</b>
 
-        📍 ${p.lugar || "-"}
-        <br>
+    </div>
 
-        📝 ${p.descripcion || "Sin descripción"}
+    <button class="btnVerParte">
+      👁 Ver Parte
+    </button>
 
-      </div>
-    `;
+  </div>
+
+  🚒 ${p.tipo || "-"}
+  <br>
+
+  📂 ${p.subtipo || "-"}
+  <br>
+
+  📍 ${p.lugar || "-"}
+  <br>
+
+  📝 ${p.descripcion || "Sin descripción"}
+
+</div>
+`;
 
   });
 
