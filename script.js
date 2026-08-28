@@ -2276,55 +2276,53 @@ onAuthStateChanged(
         )
       );
 
-    console.log(
-  "📧 Correo:",
-  user.email
-);
+    if (!usuarioDoc.exists()) {
+      return;
+    }
 
-console.log(
-  "📄 Existe documento:",
-  usuarioDoc.exists()
-);
+    const datos =
+      usuarioDoc.data();
 
-    if(usuarioDoc.exists()){
+    // 👤 Mostrar usuario
 
-  console.log(
-    usuarioDoc.data()
-  );
+    document.getElementById(
+      "nombreUsuario"
+    ).innerHTML =
+      "👤 " + datos.nombre;
 
-}
+    document.getElementById(
+      "turnoUsuario"
+    ).innerHTML =
+      "📟 Turno " +
+      (datos.turno || "-");
 
-   const datos =
-  usuarioDoc.data();
+    document.getElementById(
+      "rolUsuario"
+    ).innerHTML =
+      datos.rol.toUpperCase();
 
-    console.log(
-  "👤 Usuario:",
-  datos.nombre
-);
+    // 🔐 Control acceso admin
 
-console.log(
-  "🔑 Rol:",
-  datos.rol
-);
+    const btnAdmin =
+      document.getElementById(
+        "irAdmin"
+      );
 
-const btnAdmin =
-  document.getElementById(
-    "irAdmin"
-  );
+    if (
+      datos.rol?.toLowerCase().trim() ===
+      "operador"
+    ) {
 
-if (
-  datos.rol?.toLowerCase().trim() ===
-  "operador"
-)
-{
-  btnAdmin.style.display =
-    "none";
-} {
+      btnAdmin.style.display =
+        "none";
 
-  btnAdmin.style.display =
-    "none";
+    }
+    else {
 
-}
+      btnAdmin.style.display =
+        "block";
+
+    }
 
   }
 );
