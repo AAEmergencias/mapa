@@ -1107,3 +1107,27 @@ body {
   font-weight: bold;
 
 }
+
+#verHistorial {
+
+  width: 90%;
+
+  margin: 10px auto;
+
+  display: block;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
