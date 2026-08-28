@@ -2279,33 +2279,32 @@ onAuthStateChanged(
     if (!usuarioDoc.exists())
       return;
 
-    const datos =
-      usuarioDoc.data();
+   const datos =
+  usuarioDoc.data();
 
-    document.getElementById(
-      "nombreUsuario"
-    ).innerHTML =
-      "👤 " + datos.nombre;
+    console.log(
+  "👤 Usuario:",
+  datos.nombre
+);
 
-    document.getElementById(
-      "turnoUsuario"
-    ).innerHTML =
-      "📟 Turno " +
-      (datos.turno || "-");
+console.log(
+  "🔑 Rol:",
+  datos.rol
+);
 
-    document.getElementById(
-      "rolUsuario"
-    ).innerHTML =
-      datos.rol.toUpperCase();
-
-    const btnAdmin =
+const btnAdmin =
   document.getElementById(
     "irAdmin"
   );
 
 if (
-  datos.rol === "operador"
-) {
+  datos.rol?.toLowerCase().trim() ===
+  "operador"
+)
+{
+  btnAdmin.style.display =
+    "none";
+} {
 
   btnAdmin.style.display =
     "none";
