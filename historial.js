@@ -1,3 +1,5 @@
+console.log("✅ historial.js cargado");
+
 import {
 
   db,
