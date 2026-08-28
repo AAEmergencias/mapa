@@ -16,13 +16,19 @@ const contenedor =
 
 async function cargar() {
 
+  console.log("✅ buscando partes...");
+
   const snapshot =
     await getDocs(
-      collection(
-        db,
-        "partes"
-      )
+      collection(db, "partes")
     );
+
+  console.log(
+    "📋 cantidad documentos:",
+    snapshot.size
+  );
+
+}
 
   let html = "";
 
