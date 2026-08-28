@@ -1,26 +1,18 @@
 body {
 
-  margin: 0;
-  padding: 20px;
-
   background: #111827;
+
   color: white;
 
   font-family: Arial, sans-serif;
+
+  padding: 20px;
 
 }
 
 h1 {
 
   text-align: center;
-  margin-bottom: 20px;
-
-}
-
-#historial {
-
-  max-width: 1200px;
-  margin: auto;
 
 }
 
@@ -28,31 +20,12 @@ h1 {
 
   background: #1f2937;
 
-  border: 1px solid #334155;
-
   border-radius: 12px;
 
-  padding: 16px;
+  padding: 15px;
 
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 
-  box-shadow: 0 2px 6px rgba(0,0,0,.25);
-
-}
-
-.card:hover {
-
-  border-color: #3b82f6;
-
-}
-
-.fecha {
-
-  color: #60a5fa;
-
-  font-weight: bold;
-  font-size: 18px;
-
-  margin-bottom: 10px;
+  border: 1px solid #334155;
 
 }
