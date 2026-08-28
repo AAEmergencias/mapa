@@ -2303,26 +2303,26 @@ onAuthStateChanged(
 
     // 🔐 Control acceso admin
 
-    const btnAdmin =
-      document.getElementById(
-        "irAdmin"
-      );
+   const btnAdmin =
+  document.getElementById(
+    "irAdmin"
+  );
 
-    if (
-      datos.rol?.toLowerCase().trim() ===
-      "operador"
-    ) {
+if (
+  datos.rol?.toLowerCase().trim() ===
+  "operador"
+) {
 
-      btnAdmin.style.display =
-        "none";
+  btnAdmin.style.display =
+    "none";
 
-    }
-    else {
+}
+else {
 
-      btnAdmin.style.display =
-        "block";
+  btnAdmin.style.display =
+    "block";
 
-    }
+}
 
   }
 );
