@@ -2298,6 +2298,20 @@ onAuthStateChanged(
     ).innerHTML =
       datos.rol.toUpperCase();
 
+    const btnAdmin =
+  document.getElementById(
+    "irAdmin"
+  );
+
+if (
+  datos.rol === "operador"
+) {
+
+  btnAdmin.style.display =
+    "none";
+
+}
+
   }
 );
 
