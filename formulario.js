@@ -10,43 +10,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
 
+  let parteVer = JSON.parse(
+  localStorage.getItem(
+    "parteVer"
+  )
+);
+
 console.log(
   "PARTE EDITAR:",
   parteEditar
 );
 
-if (parteEditar) {
+if (parteEditar || parteVer) {
+
+  const datos =
+    parteEditar || parteVer;
 
   // ✅ llenar campos básicos
-  document.getElementById("fecha").value = parteEditar.fecha || "";
-  document.getElementById("horaActivacion").value = parteEditar.horaActivacion || "";
-  document.getElementById("horaCierre").value = parteEditar.horaCierre || "";
+  document.getElementById("fecha").value = datos.fecha || "";
+  document.getElementById("horaActivacion").value = datos.horaActivacion || "";
+  document.getElementById("horaCierre").value = datos.horaCierre || "";
 
-  document.getElementById("tipo").value = parteEditar.tipo || "";
-  document.getElementById("subtipo").value = parteEditar.subtipo || "";
-  document.getElementById("descripcion").value = parteEditar.descripcion || "";
+  document.getElementById("tipo").value = datos.tipo || "";
+  document.getElementById("subtipo").value = datos.subtipo || "";
+  document.getElementById("descripcion").value = datos.descripcion || "";
 
-  document.getElementById("lugar").value = parteEditar.lugar || "";
-  document.getElementById("comuna").value = parteEditar.comuna || "";
-  document.getElementById("faena").value = parteEditar.faena || "";
+  document.getElementById("lugar").value = datos.lugar || "";
+  document.getElementById("comuna").value = datos.comuna || "";
+  document.getElementById("faena").value = datos.faena || "";
 
-  document.getElementById("empresa").value = parteEditar.empresa || "";
-  document.getElementById("impacto").value = parteEditar.impacto || "";
+  document.getElementById("empresa").value = datos.empresa || "";
+  document.getElementById("impacto").value = datos.impacto || "";
 
-  document.getElementById("brigada").value = parteEditar.brigada || "";
-  document.getElementById("vehiculo").value = parteEditar.vehiculo || "";
+  document.getElementById("brigada").value = datos.brigada || "";
+  document.getElementById("vehiculo").value = datos.vehiculo || "";
 
-  document.getElementById("ambulancia").value = parteEditar.ambulancia || "";
-  document.getElementById("servicioMedico").value = parteEditar.servicioMedico || "";
-  document.getElementById("ambulanciaExterna").value = parteEditar.ambulanciaExterna || "";
+  document.getElementById("ambulancia").value = datos.ambulancia || "";
+  document.getElementById("servicioMedico").value = datos.servicioMedico || "";
+  document.getElementById("ambulanciaExterna").value = datos.ambulanciaExterna || "";
 
-  document.getElementById("clave").value = parteEditar.clave || "";
-  document.getElementById("tipoAtencion").value = parteEditar.tipoAtencion || "";
+  document.getElementById("clave").value = datos.clave || "";
+  document.getElementById("tipoAtencion").value = datos.tipoAtencion || "";
 
-  document.getElementById("pue").value = parteEditar.pue || "";
-  document.getElementById("descPue").value = parteEditar.descripcionPue || "";
+  document.getElementById("pue").value = datos.pue || "";
+  document.getElementById("descPue").value = datos.descripcionPue || "";
 
-  document.getElementById("operador").value = parteEditar.operador || "";
+  document.getElementById("operador").value = datos.operador || "";
+
+  if (parteVer) {
+
+  document
+    .querySelectorAll(
+      "input, select, textarea"
+    )
+    .forEach(campo => {
+
+      campo.disabled = true;
+
+    });
+
+}
 
 }
 
@@ -339,6 +362,22 @@ document.getElementById("descripcion").value =
   // 🧠 FUNCIONALIDAD FORMULARIO
   // ==========================
 
+  if (parteVer) {
+
+  const btnGuardar =
+    document.querySelector(
+      'button[type="submit"]'
+    );
+
+  if (btnGuardar) {
+
+    btnGuardar.style.display =
+      "none";
+
+  }
+
+}
+  
 document.getElementById("formParte").onsubmit = async (e) => {
     e.preventDefault();
 
