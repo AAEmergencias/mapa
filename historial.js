@@ -94,10 +94,6 @@ window.verParte = function(indice){
     partes[indice];
 
   localStorage.removeItem(
-    "emergenciaSeleccionada"
-  );
-
-  localStorage.removeItem(
     "parteEditar"
   );
 
@@ -112,4 +108,3 @@ window.verParte = function(indice){
   );
 
 };
-
