@@ -1,11 +1,7 @@
-console.log("✅ historial.js cargado");
-
 import {
-
   db,
   collection,
   getDocs
-
 }
 from "./firebase.js";
 
@@ -16,11 +12,16 @@ const contenedor =
 
 async function cargar() {
 
-  console.log("✅ buscando partes...");
+  console.log(
+    "✅ buscando partes..."
+  );
 
   const snapshot =
     await getDocs(
-      collection(db, "partes")
+      collection(
+        db,
+        "partes"
+      )
     );
 
   console.log(
@@ -28,13 +29,12 @@ async function cargar() {
     snapshot.size
   );
 
-}
-
   let html = "";
 
-  snapshot.forEach(doc => {
+  snapshot.forEach(docSnap => {
 
-    const p = doc.data();
+    const p =
+      docSnap.data();
 
     html += `
       <div class="card">
@@ -51,10 +51,7 @@ async function cargar() {
         📍 ${p.lugar || "-"}
         <br>
 
-        📝 ${
-          p.descripcion ||
-          "Sin descripción"
-        }
+        📝 ${p.descripcion || "Sin descripción"}
 
       </div>
     `;
