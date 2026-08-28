@@ -93,13 +93,22 @@ window.verParte = function(indice){
   const parte =
     partes[indice];
 
-  console.log(
-    "📋 Parte seleccionado:",
-    parte
+  localStorage.removeItem(
+    "emergenciaSeleccionada"
   );
 
-  alert(
-    "Próximamente abrirá el parte completo"
+  localStorage.removeItem(
+    "parteEditar"
+  );
+
+  localStorage.setItem(
+    "parteVer",
+    JSON.stringify(parte)
+  );
+
+  window.open(
+    "formulario.html",
+    "_blank"
   );
 
 };
