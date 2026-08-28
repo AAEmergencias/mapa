@@ -1947,6 +1947,18 @@ document.getElementById("irAdmin").onclick = () => {
   window.open("admin.html", "_blank");
 };
 
+document.getElementById(
+  "verHistorial"
+).onclick = () => {
+
+  window.open(
+    "historial.html",
+    "_blank"
+  );
+
+};
+
+
 document.getElementById("cerrarParte").onclick = () => {
 
   let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
