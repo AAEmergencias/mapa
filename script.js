@@ -1961,6 +1961,10 @@ document.getElementById(
 
 document.getElementById("cerrarParte").onclick = () => {
 
+  localStorage.removeItem(
+  "parteVer"
+);
+
   let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 
   // ✅ filtrar solo finalizadas
