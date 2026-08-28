@@ -10,6 +10,8 @@ const contenedor =
     "historial"
   );
 
+let partes = [];
+
 async function cargar() {
 
   console.log(
@@ -31,10 +33,14 @@ async function cargar() {
 
   let html = "";
 
-  snapshot.forEach(docSnap => {
+ let indice = 0;
+
+snapshot.forEach(docSnap => {
 
     const p =
       docSnap.data();
+
+  partes.push(p);
 
    html += `
 <div class="card">
@@ -47,9 +53,13 @@ async function cargar() {
 
     </div>
 
-    <button class="btnVerParte">
-      👁 Ver Parte
-    </button>
+  <button
+  class="btnVerParte"
+  onclick="verParte(${indice})">
+
+  👁 Ver Parte
+
+</button>
 
   </div>
 
@@ -67,6 +77,8 @@ async function cargar() {
 </div>
 `;
 
+indice++;
+  
   });
 
   contenedor.innerHTML =
@@ -75,3 +87,20 @@ async function cargar() {
 }
 
 cargar();
+
+window.verParte = function(indice){
+
+  const parte =
+    partes[indice];
+
+  console.log(
+    "📋 Parte seleccionado:",
+    parte
+  );
+
+  alert(
+    "Próximamente abrirá el parte completo"
+  );
+
+};
+
