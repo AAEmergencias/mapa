@@ -2276,8 +2276,23 @@ onAuthStateChanged(
         )
       );
 
-    if (!usuarioDoc.exists())
-      return;
+    console.log(
+  "📧 Correo:",
+  user.email
+);
+
+console.log(
+  "📄 Existe documento:",
+  usuarioDoc.exists()
+);
+
+    if(usuarioDoc.exists()){
+
+  console.log(
+    usuarioDoc.data()
+  );
+
+}
 
    const datos =
   usuarioDoc.data();
