@@ -73,6 +73,20 @@ partes.push(p);
 
 });
 
+  partes.sort((a, b) => {
+
+  const fechaHoraA = new Date(
+    `${a.fecha} ${a.horaActivacion || "00:00"}`
+  );
+
+  const fechaHoraB = new Date(
+    `${b.fecha} ${b.horaActivacion || "00:00"}`
+  );
+
+  return fechaHoraB - fechaHoraA;
+
+});
+
 renderizarPartes(partes); 
   
 }
