@@ -107,3 +107,30 @@ h1 {
   margin-bottom:20px;
 
 }
+
+#fechaDesde,
+#fechaHasta{
+
+  padding:10px;
+
+  border:none;
+
+  border-radius:8px;
+
+}
+
+#btnFiltrar{
+
+  background:#2563eb;
+
+  color:white;
+
+  border:none;
+
+  border-radius:8px;
+
+  padding:10px 20px;
+
+  cursor:pointer;
+
+}
