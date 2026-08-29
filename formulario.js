@@ -262,6 +262,13 @@ const subtipoSelect =
 
 });
 
+  console.log(
+  "TIPOS CARGADOS:",
+  [...tipoSelect.options].map(
+    o => o.value
+  )
+);
+
   tipoSelect.addEventListener(
   "change",
   () => {
@@ -322,8 +329,18 @@ console.log(
   document.getElementById("horaCierre").value = formatearHora(emergencia.horaCierre);
 
   // ✅ TIPO
-document.getElementById("tipo").value =
+tipoSelect.value =
   emergencia.tipo || "";
+
+console.log(
+  "TIPO CARGADO:",
+  emergencia.tipo
+);
+
+console.log(
+  "TIPO EN SELECT:",
+  tipoSelect.value
+);
 
 document.getElementById("tipo")
   .dispatchEvent(
@@ -332,12 +349,20 @@ document.getElementById("tipo")
 
 setTimeout(() => {
 
-  document.getElementById(
-    "subtipo"
-  ).value =
+  subtipoSelect.value =
     emergencia.subtipo || "";
 
-}, 50);
+  console.log(
+    "SUBTIPO QUE LLEGA:",
+    emergencia.subtipo
+  );
+
+  console.log(
+    "SUBTIPO SELECCIONADO:",
+    subtipoSelect.value
+  );
+
+}, 500);
   
   // ✅ NOTAS DE LA EMERGENCIA
 document.getElementById("descripcion").value =
