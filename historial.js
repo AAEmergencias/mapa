@@ -72,13 +72,13 @@ function renderizarPartes(lista){
           <b>📅 ${p.fecha || "-"}</b>
         </div>
 
-        <button
+     <button
   class="btnVerParte"
-  onclick="verPartePorId('${p.id}')
+  onclick="verPartePorId('${p.id}')">
 
-          👁 Ver Parte
+  👁 Ver Parte
 
-        </button>
+</button>
 
       </div>
 
