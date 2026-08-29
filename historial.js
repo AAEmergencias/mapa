@@ -106,6 +106,20 @@ function renderizarPartes(lista){
       📍 ${p.lugar || "-"}
       <br>
 
+
+🚑 Brigada:
+${p.brigada || "-"}
+
+<br>
+
+🏥 Ambulancia:
+${p.ambulancia || "-"}
+
+<br>
+
+👨 Operador:
+${p.operador || "-"}
+
       📝 ${p.descripcion || "Sin descripción"}
 
     </div>
