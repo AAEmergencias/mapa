@@ -16,23 +16,38 @@ let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
   )
 );
 
-  let emergencia =
+ let emergencia =
   JSON.parse(
     localStorage.getItem(
       "emergenciaSeleccionada"
     )
   );
 
-  if (emergencia) {
+// ✅ SOLO anular lectura
+// cuando se viene desde cerrar parte
+
+if (
+  emergencia &&
+  !parteEditar
+) {
 
   parteVer = null;
 
 }
 
-
 console.log(
   "PARTE EDITAR:",
   parteEditar
+);
+
+console.log(
+  "PARTE VER:",
+  parteVer
+);
+
+console.log(
+  "EMERGENCIA:",
+  emergencia
 );
   
   const datos =
