@@ -120,6 +120,8 @@ ${p.ambulancia || "-"}
 👨 Operador:
 ${p.operador || "-"}
 
+<br>
+
       📝 ${p.descripcion || "Sin descripción"}
 
     </div>
