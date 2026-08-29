@@ -1105,16 +1105,31 @@ catch(error) {
 
 window.editarParte = function(index) {
 
-// usar variable global partes
-let parteSeleccionado = partes[index];
+  // ✅ limpiar modo lectura
+  localStorage.removeItem(
+    "parteVer"
+  );
 
-  // ✅ limpiar emergencia vieja
-  localStorage.removeItem("emergenciaSeleccionada");
+  // ✅ limpiar emergencia activa
+  localStorage.removeItem(
+    "emergenciaSeleccionada"
+  );
 
-  // ✅ guardar parte para editar
-  localStorage.setItem("parteEditar", JSON.stringify(parteSeleccionado));
+  let parteSeleccionado =
+    partes[index];
 
-  window.open("formulario.html", "_blank");
+  localStorage.setItem(
+    "parteEditar",
+    JSON.stringify(
+      parteSeleccionado
+    )
+  );
+
+  window.open(
+    "formulario.html",
+    "_blank"
+  );
+
 }
 
 function mostrarPanelBrigada() {
