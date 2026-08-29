@@ -307,6 +307,11 @@ console.log(
   emergencia
 );
 
+  console.log(
+  "PROPIEDADES:",
+  Object.keys(emergencia)
+);
+
   // ✅ FECHA
   if (emergencia.fecha) {
     document.getElementById("fecha").value = convertirFecha(emergencia.fecha);
