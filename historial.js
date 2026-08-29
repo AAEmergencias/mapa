@@ -10,6 +10,12 @@ const contenedor =
     "historial"
   );
 
+const buscador =
+  document.getElementById(
+    "buscador"
+  );
+
+
 let partes = [];
 
 async function cargar() {
@@ -86,6 +92,52 @@ indice++;
 
 }
 
+function renderizarPartes(lista){
+
+  let html = "";
+
+  lista.forEach((p, indice) => {
+
+    html += `
+    <div class="card">
+
+      <div class="card-header">
+
+        <div>
+          <b>📅 ${p.fecha || "-"}</b>
+        </div>
+
+        <button
+          class="btnVerParte"
+          onclick="verParte(${indice})">
+
+          👁 Ver Parte
+
+        </button>
+
+      </div>
+
+      🚒 ${p.tipo || "-"}
+      <br>
+
+      📂 ${p.subtipo || "-"}
+      <br>
+
+      📍 ${p.lugar || "-"}
+      <br>
+
+      📝 ${p.descripcion || "Sin descripción"}
+
+    </div>
+    `;
+
+  });
+
+  contenedor.innerHTML =
+    html;
+
+}
+
 cargar();
 
 window.verParte = function(indice){
@@ -120,3 +172,62 @@ window.verParte = function(indice){
   );
 
 };
+
+buscador.addEventListener(
+  "input",
+  () => {
+
+    const texto =
+      buscador.value
+      .toLowerCase()
+      .trim();
+
+    const filtrados =
+      partes.filter(p => {
+
+        return (
+
+          (p.tipo || "")
+            .toLowerCase()
+            .includes(texto)
+
+          ||
+
+          (p.subtipo || "")
+            .toLowerCase()
+            .includes(texto)
+
+          ||
+
+          (p.lugar || "")
+            .toLowerCase()
+            .includes(texto)
+
+          ||
+
+          (p.empresa || "")
+            .toLowerCase()
+            .includes(texto)
+
+          ||
+
+          (p.operador || "")
+            .toLowerCase()
+            .includes(texto)
+
+          ||
+
+          (p.descripcion || "")
+            .toLowerCase()
+            .includes(texto)
+
+        );
+
+      });
+
+    renderizarPartes(
+      filtrados
+    );
+
+  }
+);
