@@ -92,7 +92,10 @@ if (
 
   document.getElementById("operador").value = datos.operador || "";
 
-  if (parteVer) {
+ if (
+  parteVer &&
+  !parteEditar
+) {
 
   document
     .querySelectorAll(
@@ -395,7 +398,10 @@ document.getElementById("descripcion").value =
   // 🧠 FUNCIONALIDAD FORMULARIO
   // ==========================
 
-  if (parteVer) {
+if (
+  parteVer &&
+  !parteEditar
+) {
 
   const btnGuardar =
     document.querySelector(
