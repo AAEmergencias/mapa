@@ -77,6 +77,47 @@ renderizarPartes(partes);
   
 }
 
+function formatearFecha(fecha){
+
+  if (!fecha) return "-";
+
+  const dias = [
+
+    "Domingo",
+    "Lunes",
+    "Martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado"
+
+  ];
+
+  const f =
+    new Date(fecha);
+
+  if (isNaN(f))
+    return fecha;
+
+  const diaSemana =
+    dias[f.getDay()];
+
+  const dia =
+    String(f.getDate())
+      .padStart(2, "0");
+
+  const mes =
+    String(f.getMonth() + 1)
+      .padStart(2, "0");
+
+  const anio =
+    f.getFullYear();
+
+  return `${diaSemana} ${dia}/${mes}/${anio}`;
+
+}
+
+
 function renderizarPartes(lista){
 
   let html = "";
@@ -89,7 +130,7 @@ function renderizarPartes(lista){
       <div class="card-header">
 
         <div>
-          <b>📅 ${p.fecha || "-"}</b>
+     <b>📅 ${formatearFecha(p.fecha)}</b>
         </div>
 
      <button
