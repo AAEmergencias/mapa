@@ -1489,6 +1489,11 @@ function abrirConfirmacionFinalizar(
           emergenciaPanel
         );
 
+        console.log(
+  "EMERGENCIA FINALIZADA:",
+  emergenciaPanel
+);
+
         historialEmergencias.push(
           emergenciaPanel
         );
