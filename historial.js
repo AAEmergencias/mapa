@@ -15,6 +15,21 @@ const buscador =
     "buscador"
   );
 
+const fechaDesde =
+  document.getElementById(
+    "fechaDesde"
+  );
+
+const fechaHasta =
+  document.getElementById(
+    "fechaHasta"
+  );
+
+const btnFiltrar =
+  document.getElementById(
+    "btnFiltrar"
+  );
+
 
 let partes = [];
 
@@ -220,6 +235,50 @@ buscador.addEventListener(
             .includes(texto)
 
         );
+
+      });
+
+    renderizarPartes(
+      filtrados
+    );
+
+  }
+);
+
+btnFiltrar.addEventListener(
+  "click",
+  () => {
+
+    const desde =
+      fechaDesde.value;
+
+    const hasta =
+      fechaHasta.value;
+
+    let filtrados =
+      partes.filter(p => {
+
+        if (!p.fecha)
+          return false;
+
+        const fecha =
+          p.fecha;
+
+        if (
+          desde &&
+          fecha < desde
+        ) {
+          return false;
+        }
+
+        if (
+          hasta &&
+          fecha > hasta
+        ) {
+          return false;
+        }
+
+        return true;
 
       });
 
