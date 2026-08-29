@@ -37,59 +37,24 @@ async function cargar() {
     snapshot.size
   );
 
-  let html = "";
-
- let indice = 0;
+ partes = [];
 
 snapshot.forEach(docSnap => {
 
-    const p =
-      docSnap.data();
+ const p = {
 
-  partes.push(p);
+  id: docSnap.id,
 
-   html += `
-<div class="card">
+  ...docSnap.data()
 
-  <div class="card-header">
+};
 
-    <div>
+partes.push(p);
 
-      <b>📅 ${p.fecha || "-"}</b>
+});
 
-    </div>
-
-  <button
-  class="btnVerParte"
-  onclick="verParte(${indice})">
-
-  👁 Ver Parte
-
-</button>
-
-  </div>
-
-  🚒 ${p.tipo || "-"}
-  <br>
-
-  📂 ${p.subtipo || "-"}
-  <br>
-
-  📍 ${p.lugar || "-"}
-  <br>
-
-  📝 ${p.descripcion || "Sin descripción"}
-
-</div>
-`;
-
-indice++;
+renderizarPartes(partes); 
   
-  });
-
-  contenedor.innerHTML =
-    html;
-
 }
 
 function renderizarPartes(lista){
@@ -108,8 +73,8 @@ function renderizarPartes(lista){
         </div>
 
         <button
-          class="btnVerParte"
-          onclick="verParte(${indice})">
+  class="btnVerParte"
+  onclick="verPartePorId('${p.id}')
 
           👁 Ver Parte
 
@@ -160,6 +125,39 @@ window.verParte = function(indice){
   );
 
   // ✅ guardar modo lectura
+
+  localStorage.setItem(
+    "parteVer",
+    JSON.stringify(parte)
+  );
+
+  window.open(
+    "formulario.html",
+    "_blank"
+  );
+
+};
+
+window.verPartePorId = function(id){
+
+  const parte =
+    partes.find(
+      p => p.id === id
+    );
+
+  if (!parte) return;
+
+  localStorage.removeItem(
+    "parteEditar"
+  );
+
+  localStorage.removeItem(
+    "emergenciaSeleccionada"
+  );
+
+  localStorage.removeItem(
+    "parteVer"
+  );
 
   localStorage.setItem(
     "parteVer",
