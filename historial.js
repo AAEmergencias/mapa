@@ -93,9 +93,21 @@ window.verParte = function(indice){
   const parte =
     partes[indice];
 
+  // ✅ limpiar cualquier modo anterior
+
   localStorage.removeItem(
     "parteEditar"
   );
+
+  localStorage.removeItem(
+    "emergenciaSeleccionada"
+  );
+
+  localStorage.removeItem(
+    "parteVer"
+  );
+
+  // ✅ guardar modo lectura
 
   localStorage.setItem(
     "parteVer",
