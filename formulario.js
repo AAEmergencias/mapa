@@ -322,17 +322,22 @@ console.log(
   document.getElementById("horaCierre").value = formatearHora(emergencia.horaCierre);
 
   // ✅ TIPO
-  document.getElementById("tipo").value =
+document.getElementById("tipo").value =
   emergencia.tipo || "";
 
-// Cargar lista de subtipos
 document.getElementById("tipo")
   .dispatchEvent(
     new Event("change")
   );
 
-document.getElementById("subtipo").value =
-  emergencia.subtipo || "";
+setTimeout(() => {
+
+  document.getElementById(
+    "subtipo"
+  ).value =
+    emergencia.subtipo || "";
+
+}, 50);
   
   // ✅ NOTAS DE LA EMERGENCIA
 document.getElementById("descripcion").value =
