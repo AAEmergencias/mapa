@@ -134,3 +134,15 @@ h1 {
   cursor:pointer;
 
 }
+
+#contadorResultados{
+
+  text-align:center;
+
+  color:#94a3b8;
+
+  margin-bottom:15px;
+
+  font-size:14px;
+
+}
