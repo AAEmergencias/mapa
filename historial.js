@@ -15,6 +15,11 @@ const buscador =
     "buscador"
   );
 
+const contadorResultados =
+  document.getElementById(
+    "contadorResultados"
+  );
+
 const fechaDesde =
   document.getElementById(
     "fechaDesde"
@@ -129,6 +134,18 @@ ${p.operador || "-"}
 
   });
 
+contadorResultados.innerHTML =
+
+  `📊 ${lista.length} resultado${
+    lista.length === 1
+      ? ""
+      : "s"
+  } encontrado${
+    lista.length === 1
+      ? ""
+      : "s"
+  }`;
+  
   contenedor.innerHTML =
     html;
 
