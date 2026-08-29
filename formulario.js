@@ -292,6 +292,21 @@ const subtipoSelect =
 
 if (!parteEditar && emergencia) {
 
+  console.log(
+  "TIPO:",
+  emergencia.tipo
+);
+
+console.log(
+  "SUBTIPO:",
+  emergencia.subtipo
+);
+
+console.log(
+  "EMERGENCIA COMPLETA:",
+  emergencia
+);
+
   // ✅ FECHA
   if (emergencia.fecha) {
     document.getElementById("fecha").value = convertirFecha(emergencia.fecha);
