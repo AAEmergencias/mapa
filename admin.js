@@ -257,6 +257,57 @@ function contar(data, campo) {
   return res;
 }
 
+function calcularHorarios(data) {
+
+  let resultado = {
+
+    madrugada: 0,
+
+    manana: 0,
+
+    tarde: 0,
+
+    noche: 0
+
+  };
+
+  data.forEach(p => {
+
+    if (!p.horaActivacion)
+      return;
+
+    const hora =
+      parseInt(
+        p.horaActivacion.split(":")[0]
+      );
+
+    if (hora >= 0 && hora <= 5) {
+
+      resultado.madrugada++;
+
+    }
+    else if (hora >= 6 && hora <= 11) {
+
+      resultado.manana++;
+
+    }
+    else if (hora >= 12 && hora <= 17) {
+
+      resultado.tarde++;
+
+    }
+    else {
+
+      resultado.noche++;
+
+    }
+
+  });
+
+  return resultado;
+
+}
+
 // ==========================
 // 📈 CREAR GRÁFICOS
 // ==========================
@@ -438,6 +489,12 @@ ORDEN_MESES.forEach(mes => {
   
   let porFaena = contar(filtrados, "faena");
   let porTipo = contar(filtrados, "tipo");
+
+  const horarios =
+  calcularHorarios(
+    filtrados
+  );
+  
   let porSubtipo = contar(filtrados, "subtipo");
   let porEmpresa = contar(filtrados, "empresa");
   
@@ -489,6 +546,73 @@ crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porAmbulancia, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
 crear("graficoAsistencia", porBrigada, "bar");
+
+  const divHorarios =
+  document.getElementById(
+    "resumenHorarios"
+  );
+
+if (divHorarios) {
+
+  divHorarios.innerHTML = `
+
+  <div class="itemResumen">
+    <span>🌙 Madrugada</span>
+    <b>${horarios.madrugada}</b>
+  </div>
+
+  <div class="itemResumen">
+    <span>☀️ Mañana</span>
+    <b>${horarios.manana}</b>
+  </div>
+
+  <div class="itemResumen">
+    <span>🌤️ Tarde</span>
+    <b>${horarios.tarde}</b>
+  </div>
+
+  <div class="itemResumen">
+    <span>🌃 Noche</span>
+    <b>${horarios.noche}</b>
+  </div>
+
+  `;
+
+}
+
+  const divTipos =
+  document.getElementById(
+    "resumenTipos"
+  );
+
+if (divTipos) {
+
+  let htmlTipos = "";
+
+  Object.entries(porTipo)
+
+    .sort((a, b) => b[1] - a[1])
+
+    .forEach(([tipo, cantidad]) => {
+
+      htmlTipos += `
+
+      <div class="itemResumen">
+
+        <span>${tipo}</span>
+
+        <b>${cantidad}</b>
+
+      </div>
+
+      `;
+
+    });
+
+  divTipos.innerHTML =
+    htmlTipos;
+
+}
 
 
 let contenedor = document.getElementById("graficosSubtipos");
