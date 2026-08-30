@@ -447,10 +447,6 @@ const NOMBRES_HORARIO = {
 
   const ICONOS_TIPO = {
 
-    const tipoTop =
-  Object.entries(porTipo)
-    .sort((a,b) => b[1] - a[1])[0];
-
     "Incendio": "🔥",
     "Vehicular": "🚗",
     "Rescate": "🧗",
@@ -464,6 +460,10 @@ const NOMBRES_HORARIO = {
     "Otros": "📦"
 
   };
+
+      const tipoTop =
+  Object.entries(porTipo)
+    .sort((a,b) => b[1] - a[1])[0];
 
   const divTipos =
     document.getElementById(
