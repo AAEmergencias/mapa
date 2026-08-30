@@ -66,8 +66,22 @@ if (
   document.getElementById("horaActivacion").value = datos.horaActivacion || "";
   document.getElementById("horaCierre").value = datos.horaCierre || "";
 
-  document.getElementById("tipo").value = datos.tipo || "";
-  document.getElementById("subtipo").value = datos.subtipo || "";
+  document.getElementById("tipo").value =
+  datos.tipo || "";
+
+document.getElementById("tipo")
+  .dispatchEvent(
+    new Event("change")
+  );
+
+setTimeout(() => {
+
+  document.getElementById(
+    "subtipo"
+  ).value =
+    datos.subtipo || "";
+
+}, 100);
   document.getElementById("descripcion").value = datos.descripcion || "";
 
   document.getElementById("lugar").value = datos.lugar || "";
