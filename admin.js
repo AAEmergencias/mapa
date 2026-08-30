@@ -1201,12 +1201,43 @@ if (ultima) {
     ? ultima.descripcion
     : "Sin descripción";
 
-  document.getElementById("ultimaEmergencia").innerHTML = `
-    📅 ${ultima.fecha || "--"} ⏱ ${ultima.horaActivacion || "--"} - ${ultima.horaCierre || "--"}<br>
-    📍 ${ultima.lugar || "-"}<br>
-    🚒 ${ultima.tipo || "-"}<br>
-    📝 ${descripcion}
-  `;
+  document.getElementById(
+  "ultimaEmergencia"
+).innerHTML = `
+
+<div class="ultimaLugar">
+
+  📍 ${ultima.lugar || "-"}
+
+</div>
+
+<div class="ultimaTipo">
+
+  🚨 ${ultima.tipo || "-"}
+
+</div>
+
+<div class="ultimaSubtipo">
+
+  📂 ${ultima.subtipo || "-"}
+
+</div>
+
+<div class="ultimaFecha">
+
+  📅 ${ultima.fecha || "-"}
+
+</div>
+
+<div class="ultimaHora">
+
+  ⏱ ${ultima.horaActivacion || "--"}
+  -
+  ${ultima.horaCierre || "--"}
+
+</div>
+
+`;
 
   let ahora = new Date();
   let fechaUltima = new Date(ultima.fecha + " " + (ultima.horaActivacion || "00:00"));
