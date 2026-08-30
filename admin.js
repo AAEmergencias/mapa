@@ -1214,16 +1214,16 @@ document.getElementById(
 </div>
 
 <div class="ultimaSubtipo">
-  ${ultima.subtipo || "-"}
+  📂 ${ultima.subtipo || "-"}
 </div>
 
 <div class="ultimaInfo">
-  ${ultima.fecha || "-"} |
-  ${ultima.horaActivacion || "--"}
+  📅 ${ultima.fecha || "-"}
+  &nbsp;|&nbsp;
+  ⏱ ${ultima.horaActivacion || "--"}
 </div>
 
 `;
-
   let ahora = new Date();
   let fechaUltima = new Date(ultima.fecha + " " + (ultima.horaActivacion || "00:00"));
   let diffMin = (ahora - fechaUltima) / (1000 * 60);
