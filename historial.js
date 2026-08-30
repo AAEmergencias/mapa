@@ -57,6 +57,16 @@ async function cargar() {
     snapshot.size
   );
 
+  snapshot.forEach(docSnap => {
+
+  console.log(
+    "DOCUMENTO:",
+    docSnap.id,
+    docSnap.data()
+  );
+
+});
+
  partes = [];
 
 snapshot.forEach(docSnap => {
