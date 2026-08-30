@@ -147,24 +147,36 @@ h1 {
 
 }
 
+.encabezadoHistorial{
+
+  position: relative;
+
+  width: 100%;
+
+  margin-bottom: 20px;
+
+}
+
 .tituloHistorial{
 
-  display:flex;
+  text-align: center;
 
-  align-items:center;
-
-  justify-content:center;
-
-  gap:15px;
-
-  margin-bottom:20px;
+  color: white;
 
 }
 
 .logoHistorial{
 
-  height:70px;
+  position: absolute;
 
-  width:auto;
+  left: 20px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  height: 70px;
+
+  width: auto;
 
 }
