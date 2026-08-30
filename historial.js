@@ -106,7 +106,6 @@ function formatearFecha(fecha){
   if (!fecha) return "-";
 
   const dias = [
-
     "Domingo",
     "Lunes",
     "Martes",
@@ -114,33 +113,36 @@ function formatearFecha(fecha){
     "Jueves",
     "Viernes",
     "Sábado"
-
   ];
 
-  const f =
-    new Date(fecha);
+  const partes =
+    fecha.split("-");
 
-  if (isNaN(f))
+  if (partes.length !== 3)
     return fecha;
+
+  const anio =
+    Number(partes[0]);
+
+  const mes =
+    Number(partes[1]) - 1;
+
+  const dia =
+    Number(partes[2]);
+
+  const f =
+    new Date(
+      anio,
+      mes,
+      dia
+    );
 
   const diaSemana =
     dias[f.getDay()];
 
-  const dia =
-    String(f.getDate())
-      .padStart(2, "0");
-
-  const mes =
-    String(f.getMonth() + 1)
-      .padStart(2, "0");
-
-  const anio =
-    f.getFullYear();
-
-  return `${diaSemana} ${dia}/${mes}/${anio}`;
+  return `${diaSemana} ${partes[2]}/${partes[1]}/${partes[0]}`;
 
 }
-
 
 function renderizarPartes(lista){
 
