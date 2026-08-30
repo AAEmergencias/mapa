@@ -163,14 +163,22 @@ header button:hover {
 }
 
 /* 🔥 KPI GRANDES */
-.grid .card div {
+.grid .card > div:not(#ultimaEmergencia) {
+
   font-size: 64px;
+
   font-weight: 900;
+
   letter-spacing: 2px;
+
   color: #ffffff;
+
   width: 100%;
+
   text-align: center;
+
 }
+`
 
 .card:nth-child(1) div {
   color: #f59e0b;
