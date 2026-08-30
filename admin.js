@@ -308,6 +308,146 @@ function calcularHorarios(data) {
 
 }
 
+function actualizarResumenes(data) {
+
+  const horarios =
+    calcularHorarios(data);
+
+  const porTipo =
+    contar(data, "tipo");
+
+  // ==========================
+  // HORARIOS
+  // ==========================
+
+  const divHorarios =
+    document.getElementById(
+      "resumenHorarios"
+    );
+
+  if (divHorarios) {
+
+    divHorarios.innerHTML = `
+
+      <div class="itemResumen">
+
+        <span>
+          🌙 Madrugada
+          <small>
+            00:00 - 05:59
+          </small>
+        </span>
+
+        <b>${horarios.madrugada}</b>
+
+      </div>
+
+      <div class="itemResumen">
+
+        <span>
+          ☀️ Mañana
+          <small>
+            06:00 - 11:59
+          </small>
+        </span>
+
+        <b>${horarios.manana}</b>
+
+      </div>
+
+      <div class="itemResumen">
+
+        <span>
+          🌤️ Tarde
+          <small>
+            12:00 - 17:59
+          </small>
+        </span>
+
+        <b>${horarios.tarde}</b>
+
+      </div>
+
+      <div class="itemResumen">
+
+        <span>
+          🌃 Noche
+          <small>
+            18:00 - 23:59
+          </small>
+        </span>
+
+        <b>${horarios.noche}</b>
+
+      </div>
+
+    `;
+
+  }
+
+  // ==========================
+  // TIPOS
+  // ==========================
+
+  const ICONOS_TIPO = {
+
+    "Incendio": "🔥",
+    "Vehicular": "🚗",
+    "Rescate": "🧗",
+    "Medico": "🏥",
+    "Hazmat": "☣️",
+    "Simulacros": "🎯",
+    "Sísmico": "🌎",
+    "Meteorologico": "🌧️",
+    "Geológico": "⛰️",
+    "Ambiental": "🌱",
+    "Otros": "📦"
+
+  };
+
+  const divTipos =
+    document.getElementById(
+      "resumenTipos"
+    );
+
+  if (divTipos) {
+
+    let htmlTipos = "";
+
+    Object.entries(porTipo)
+      .sort((a, b) => b[1] - a[1])
+      .forEach(([tipo, cantidad]) => {
+
+        htmlTipos += `
+
+        <div class="itemResumen">
+
+          <span>
+
+            ${
+              ICONOS_TIPO[tipo]
+              || "🚨"
+            }
+
+            ${tipo}
+
+          </span>
+
+          <b>${cantidad}</b>
+
+        </div>
+
+        `;
+
+      });
+
+    divTipos.innerHTML =
+      htmlTipos;
+
+  }
+
+}
+
 // ==========================
 // 📈 CREAR GRÁFICOS
 // ==========================
