@@ -146,3 +146,25 @@ h1 {
   font-size:14px;
 
 }
+
+.tituloHistorial{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:15px;
+
+  margin-bottom:20px;
+
+}
+
+.logoHistorial{
+
+  height:70px;
+
+  width:auto;
+
+}
