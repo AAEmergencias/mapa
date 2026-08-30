@@ -34,21 +34,6 @@ if (
   parteVer = null;
 
 }
-
-console.log(
-  "PARTE EDITAR:",
-  parteEditar
-);
-
-console.log(
-  "PARTE VER:",
-  parteVer
-);
-
-console.log(
-  "EMERGENCIA:",
-  emergencia
-);
   
   const datos =
   parteEditar || parteVer;
@@ -262,13 +247,7 @@ const subtipoSelect =
 
 });
 
-  console.log(
-  "TIPOS CARGADOS:",
-  [...tipoSelect.options].map(
-    o => o.value
-  )
-);
-
+  
   tipoSelect.addEventListener(
   "change",
   () => {
@@ -330,36 +309,11 @@ if (
   subtipoSelect.value =
     datos.subtipo || "";
 
-  console.log(
-    "✅ Subtipo cargado:",
-    datos.subtipo
-  );
 
 } 
 
-  console.log("EMERGENCIA:", emergencia);
 
 if (!parteEditar && emergencia) {
-
-  console.log(
-  "TIPO:",
-  emergencia.tipo
-);
-
-console.log(
-  "SUBTIPO:",
-  emergencia.subtipo
-);
-
-console.log(
-  "EMERGENCIA COMPLETA:",
-  emergencia
-);
-
-  console.log(
-  "PROPIEDADES:",
-  Object.keys(emergencia)
-);
 
   // ✅ FECHA
   if (emergencia.fecha) {
@@ -374,16 +328,6 @@ console.log(
 tipoSelect.value =
   emergencia.tipo || "";
 
-console.log(
-  "TIPO CARGADO:",
-  emergencia.tipo
-);
-
-console.log(
-  "TIPO EN SELECT:",
-  tipoSelect.value
-);
-
 document.getElementById("tipo")
   .dispatchEvent(
     new Event("change")
@@ -394,15 +338,6 @@ setTimeout(() => {
   subtipoSelect.value =
     emergencia.subtipo || "";
 
-  console.log(
-    "SUBTIPO QUE LLEGA:",
-    emergencia.subtipo
-  );
-
-  console.log(
-    "SUBTIPO SELECCIONADO:",
-    subtipoSelect.value
-  );
 
 }, 500);
   
@@ -601,19 +536,12 @@ if (editando && editando.id) {
     parte
   );
 
-  console.log(
-    "✅ Parte actualizado"
-  );
 
 } else {
 
   await addDoc(
     collection(db, "partes"),
     parte
-  );
-
-  console.log(
-    "✅ Parte nuevo creado"
   );
 
 }
@@ -828,7 +756,6 @@ Object.keys(PUE).forEach(p => {
 // ✅ UN SOLO evento limpio
 pueSelect.addEventListener("change", () => {
   let valor = pueSelect.value;
-  console.log("PUE seleccionado:", valor);
   descPue.value = PUE[valor] || "";
 });
 
