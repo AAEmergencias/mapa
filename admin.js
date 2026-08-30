@@ -313,6 +313,34 @@ function actualizarResumenes(data) {
   const horarios =
     calcularHorarios(data);
 
+  const horarioTop =
+  Object.entries(horarios)
+    .sort((a,b) => b[1] - a[1])[0];
+
+  const ICONOS_HORARIO = {
+
+  madrugada: "🌙",
+
+  manana: "☀️",
+
+  tarde: "🌤️",
+
+  noche: "🌃"
+
+};
+
+const NOMBRES_HORARIO = {
+
+  madrugada: "Madrugada",
+
+  manana: "Mañana",
+
+  tarde: "Tarde",
+
+  noche: "Noche"
+
+};
+
   const porTipo =
     contar(data, "tipo");
 
@@ -328,6 +356,34 @@ function actualizarResumenes(data) {
   if (divHorarios) {
 
     divHorarios.innerHTML = `
+
+    <div class="itemResumenTop">
+
+  <span>
+
+    ⏰ Horario más frecuente
+
+  </span>
+
+  <b>
+
+    ${
+      ICONOS_HORARIO[
+        horarioTop[0]
+      ]
+    }
+
+    ${
+      NOMBRES_HORARIO[
+        horarioTop[0]
+      ]
+    }
+
+    (${horarioTop[1]})
+
+  </b>
+
+</div>
 
       <div class="itemResumen">
 
@@ -391,6 +447,10 @@ function actualizarResumenes(data) {
 
   const ICONOS_TIPO = {
 
+    const tipoTop =
+  Object.entries(porTipo)
+    .sort((a,b) => b[1] - a[1])[0];
+
     "Incendio": "🔥",
     "Vehicular": "🚗",
     "Rescate": "🧗",
@@ -412,7 +472,33 @@ function actualizarResumenes(data) {
 
   if (divTipos) {
 
-    let htmlTipos = "";
+let htmlTipos = `
+
+<div class="itemResumenTop">
+
+  <span>
+
+    🏆 Tipo más frecuente
+
+  </span>
+
+  <b>
+
+    ${
+      ICONOS_TIPO[
+        tipoTop[0]
+      ] || "🚨"
+    }
+
+    ${tipoTop[0]}
+
+    (${tipoTop[1]})
+
+  </b>
+
+</div>
+
+`;
 
     Object.entries(porTipo)
       .sort((a, b) => b[1] - a[1])
