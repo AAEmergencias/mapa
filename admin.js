@@ -1201,6 +1201,19 @@ if (ultima) {
     ? ultima.descripcion
     : "Sin descripción";
 
+  let fechaFormateada = "-";
+
+if (ultima.fecha) {
+
+  const partesFecha =
+    ultima.fecha.split("-");
+
+  fechaFormateada =
+    `${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`;
+
+}
+  
+
 document.getElementById(
   "ultimaEmergencia"
 ).innerHTML = `
@@ -1218,9 +1231,13 @@ document.getElementById(
 </div>
 
 <div class="ultimaInfo">
-  📅 ${ultima.fecha || "-"}
-  &nbsp;|&nbsp;
+
+  📅 ${fechaFormateada}
+
+  |
+
   ⏱ ${ultima.horaActivacion || "--"}
+
 </div>
 
 `;
