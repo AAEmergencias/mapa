@@ -286,52 +286,60 @@ window.verPartePorId = function(id){
 
 };
 
+function normalizarTexto(texto){
+
+  return (texto || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+}
+
 buscador.addEventListener(
   "input",
   () => {
 
     const texto =
-      buscador.value
-      .toLowerCase()
-      .trim();
+      normalizarTexto(
+        buscador.value.trim()
+      );
 
     const filtrados =
       partes.filter(p => {
 
         return (
 
-          (p.tipo || "")
-            .toLowerCase()
+          normalizarTexto(p.tipo)
             .includes(texto)
 
           ||
 
-          (p.subtipo || "")
-            .toLowerCase()
+          normalizarTexto(p.subtipo)
             .includes(texto)
 
           ||
 
-          (p.lugar || "")
-            .toLowerCase()
+          normalizarTexto(p.lugar)
             .includes(texto)
 
           ||
 
-          (p.empresa || "")
-            .toLowerCase()
+          normalizarTexto(p.empresa)
             .includes(texto)
 
           ||
 
-          (p.operador || "")
-            .toLowerCase()
+          normalizarTexto(p.operador)
             .includes(texto)
 
           ||
 
-          (p.descripcion || "")
-            .toLowerCase()
+          normalizarTexto(p.descripcion)
+            .includes(texto)
+
+          ||
+
+          normalizarTexto(p.brigada)
             .includes(texto)
 
         );
