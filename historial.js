@@ -38,6 +38,10 @@ const btnFiltrar =
 
 let partes = [];
 
+let paginaActual = 1;
+
+const registrosPorPagina = 15;
+
 async function cargar() {
 
   console.log(
@@ -146,9 +150,22 @@ function formatearFecha(fecha){
 
 function renderizarPartes(lista){
 
+  const inicio =
+  (paginaActual - 1) *
+  registrosPorPagina;
+
+const fin =
+  inicio + registrosPorPagina;
+
+const pagina =
+  lista.slice(
+    inicio,
+    fin
+  );
+
   let html = "";
 
-  lista.forEach((p, indice) => {
+  pagina.forEach((p, indice) => {
 
     html += `
     <div class="card">
@@ -212,6 +229,42 @@ contadorResultados.innerHTML =
       ? ""
       : "s"
   }`;
+
+  const totalPaginas =
+  Math.ceil(
+    lista.length /
+    registrosPorPagina
+  );
+
+html += `
+<div class="paginacion">
+
+  <button
+    onclick="paginaAnterior()"
+    ${paginaActual === 1
+      ? "disabled"
+      : ""}
+  >
+    ◀ Anterior
+  </button>
+
+  <span>
+    Página ${paginaActual}
+    de
+    ${totalPaginas || 1}
+  </span>
+
+  <button
+    onclick="paginaSiguiente()"
+    ${paginaActual >= totalPaginas
+      ? "disabled"
+      : ""}
+  >
+    Siguiente ▶
+  </button>
+
+</div>
+`;
   
   contenedor.innerHTML =
     html;
@@ -254,6 +307,47 @@ window.verParte = function(indice){
 };
 
 window.verPartePorId = function(id){
+
+  window.paginaAnterior =
+  function(){
+
+    if(
+      paginaActual > 1
+    ){
+
+      paginaActual--;
+
+      renderizarPartes(
+        partes
+      );
+
+    }
+
+};
+
+window.paginaSiguiente =
+  function(){
+
+    const totalPaginas =
+      Math.ceil(
+        partes.length /
+        registrosPorPagina
+      );
+
+    if(
+      paginaActual <
+      totalPaginas
+    ){
+
+      paginaActual++;
+
+      renderizarPartes(
+        partes
+      );
+
+    }
+
+};
 
   const parte =
     partes.find(
