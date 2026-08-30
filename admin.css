@@ -69,8 +69,8 @@ button:hover {
   background: #64748b;
 }
 
-.card div {
-  font-size: 48px;          /* 🔥 más grande */
+.card > div:not(#ultimaEmergencia) {
+  font-size: 48px;
   font-weight: 800;
   letter-spacing: 1px;
 }
@@ -235,12 +235,6 @@ header button:hover {
   gap: 10px;
 }
 
-#ultimaEmergencia {
-  font-size: 24px;
-  line-height: 2.2;
-  font-weight: 600;
-  text-align: center;
-}
 
 #ultimaEmergencia br {
   margin-bottom: 6px;
@@ -573,37 +567,23 @@ body::before {
 }
 
 .ultimaLugar{
-
-  font-size:16px;
-
+  font-size:20px;
   font-weight:700;
-
   color:#10b981;
-
 }
 
 .ultimaTipo{
-
-  font-size:15px;
-
+  font-size:18px;
   font-weight:700;
-
   color:#f59e0b;
-
 }
 
 .ultimaSubtipo{
-
-  font-size:13px;
-
+  font-size:15px;
   color:#cbd5e1;
-
 }
 
 .ultimaInfo{
-
-  font-size:12px;
-
+  font-size:13px;
   color:#94a3b8;
-
 }
