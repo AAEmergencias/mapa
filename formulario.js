@@ -69,19 +69,28 @@ if (
   document.getElementById("tipo").value =
   datos.tipo || "";
 
-document.getElementById("tipo")
-  .dispatchEvent(
-    new Event("change")
-  );
+const listaSubtipos =
+  subtiposPorTipo[
+    datos.tipo
+  ] || [];
 
-setTimeout(() => {
+subtipoSelect.innerHTML = "";
 
-  document.getElementById(
-    "subtipo"
-  ).value =
-    datos.subtipo || "";
+listaSubtipos.forEach(sub => {
 
-}, 100);
+  let op =
+    document.createElement("option");
+
+  op.value = sub;
+  op.textContent = sub;
+
+  subtipoSelect.appendChild(op);
+
+});
+
+subtipoSelect.value =
+  datos.subtipo || "";
+  
   document.getElementById("descripcion").value = datos.descripcion || "";
 
   document.getElementById("lugar").value = datos.lugar || "";
@@ -308,6 +317,48 @@ const subtipoSelect =
 
   }
 );
+
+  // ✅ cargar datos al abrir desde historial
+
+if (
+  (parteEditar || parteVer)
+  && !emergencia
+) {
+
+  const datos =
+    parteEditar || parteVer;
+
+  tipoSelect.value =
+    datos.tipo || "";
+
+  subtipoSelect.innerHTML = "";
+
+  const listaSubtipos =
+    subtiposPorTipo[
+      datos.tipo
+    ] || [];
+
+  listaSubtipos.forEach(sub => {
+
+    let op =
+      document.createElement("option");
+
+    op.value = sub;
+    op.textContent = sub;
+
+    subtipoSelect.appendChild(op);
+
+  });
+
+  subtipoSelect.value =
+    datos.subtipo || "";
+
+  console.log(
+    "✅ Subtipo cargado:",
+    datos.subtipo
+  );
+
+} 
 
   console.log("EMERGENCIA:", emergencia);
 
