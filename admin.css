@@ -481,3 +481,42 @@ body::before {
   color:#94a3b8;
 
 }
+
+.itemResumenTop{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:12px;
+
+  padding-bottom:12px;
+
+  border-bottom:
+
+    2px solid rgba(
+      16,
+      185,
+      129,
+      .25
+    );
+
+}
+
+.itemResumenTop span{
+
+  font-weight:bold;
+
+  color:#cbd5f5;
+
+}
+
+.itemResumenTop b{
+
+  color:#fbbf24;
+
+  font-size:15px;
+
+}
