@@ -1201,40 +1201,25 @@ if (ultima) {
     ? ultima.descripcion
     : "Sin descripción";
 
-  document.getElementById(
+document.getElementById(
   "ultimaEmergencia"
 ).innerHTML = `
 
 <div class="ultimaLugar">
-
   📍 ${ultima.lugar || "-"}
-
 </div>
 
 <div class="ultimaTipo">
-
-  🚨 ${ultima.tipo || "-"}
-
+  🔥 ${ultima.tipo || "-"}
 </div>
 
 <div class="ultimaSubtipo">
-
-  📂 ${ultima.subtipo || "-"}
-
+  ${ultima.subtipo || "-"}
 </div>
 
-<div class="ultimaFecha">
-
-  📅 ${ultima.fecha || "-"}
-
-</div>
-
-<div class="ultimaHora">
-
-  ⏱ ${ultima.horaActivacion || "--"}
-  -
-  ${ultima.horaCierre || "--"}
-
+<div class="ultimaInfo">
+  ${ultima.fecha || "-"} |
+  ${ultima.horaActivacion || "--"}
 </div>
 
 `;
