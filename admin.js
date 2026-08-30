@@ -554,29 +554,61 @@ crear("graficoAsistencia", porBrigada, "bar");
 
 if (divHorarios) {
 
-  divHorarios.innerHTML = `
+divHorarios.innerHTML = `
 
-  <div class="itemResumen">
-    <span>🌙 Madrugada</span>
-    <b>${horarios.madrugada}</b>
-  </div>
+<div class="itemResumen">
 
-  <div class="itemResumen">
-    <span>☀️ Mañana</span>
-    <b>${horarios.manana}</b>
-  </div>
+  <span>
+    🌙 Madrugada
+    <small>
+      00:00 - 05:59
+    </small>
+  </span>
 
-  <div class="itemResumen">
-    <span>🌤️ Tarde</span>
-    <b>${horarios.tarde}</b>
-  </div>
+  <b>${horarios.madrugada}</b>
 
-  <div class="itemResumen">
-    <span>🌃 Noche</span>
-    <b>${horarios.noche}</b>
-  </div>
+</div>
 
-  `;
+<div class="itemResumen">
+
+  <span>
+    ☀️ Mañana
+    <small>
+      06:00 - 11:59
+    </small>
+  </span>
+
+  <b>${horarios.manana}</b>
+
+</div>
+
+<div class="itemResumen">
+
+  <span>
+    🌤️ Tarde
+    <small>
+      12:00 - 17:59
+    </small>
+  </span>
+
+  <b>${horarios.tarde}</b>
+
+</div>
+
+<div class="itemResumen">
+
+  <span>
+    🌃 Noche
+    <small>
+      18:00 - 23:59
+    </small>
+  </span>
+
+  <b>${horarios.noche}</b>
+
+</div>
+
+`;
 
 }
 
@@ -586,6 +618,22 @@ if (divHorarios) {
   );
 
 if (divTipos) {
+
+  const ICONOS_TIPO = {
+
+  "Incendio": "🔥",
+  "Vehicular": "🚗",
+  "Rescate": "🧗",
+  "Medico": "🏥",
+  "Hazmat": "☣️",
+  "Simulacros": "🎯",
+  "Sísmico": "🌎",
+  "Meteorologico": "🌧️",
+  "Geológico": "⛰️",
+  "Ambiental": "🌱",
+  "Otros": "📦"
+
+};
 
   let htmlTipos = "";
 
@@ -597,15 +645,24 @@ if (divTipos) {
 
       htmlTipos += `
 
-      <div class="itemResumen">
+<div class="itemResumen">
 
-        <span>${tipo}</span>
+  <span>
 
-        <b>${cantidad}</b>
+    ${
+      ICONOS_TIPO[tipo]
+      || "🚨"
+    }
 
-      </div>
+    ${tipo}
 
-      `;
+  </span>
+
+  <b>${cantidad}</b>
+
+</div>
+
+`;
 
     });
 
