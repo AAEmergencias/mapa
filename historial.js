@@ -308,47 +308,6 @@ window.verParte = function(indice){
 
 window.verPartePorId = function(id){
 
-  window.paginaAnterior =
-  function(){
-
-    if(
-      paginaActual > 1
-    ){
-
-      paginaActual--;
-
-      renderizarPartes(
-        partes
-      );
-
-    }
-
-};
-
-window.paginaSiguiente =
-  function(){
-
-    const totalPaginas =
-      Math.ceil(
-        partes.length /
-        registrosPorPagina
-      );
-
-    if(
-      paginaActual <
-      totalPaginas
-    ){
-
-      paginaActual++;
-
-      renderizarPartes(
-        partes
-      );
-
-    }
-
-};
-
   const parte =
     partes.find(
       p => p.id === id
@@ -377,6 +336,36 @@ window.paginaSiguiente =
     "formulario.html",
     "_blank"
   );
+
+};
+
+window.paginaAnterior = function(){
+
+  if (paginaActual > 1) {
+
+    paginaActual--;
+
+    renderizarPartes(partes);
+
+  }
+
+};
+
+window.paginaSiguiente = function(){
+
+  const totalPaginas =
+    Math.ceil(
+      partes.length /
+      registrosPorPagina
+    );
+
+  if (paginaActual < totalPaginas) {
+
+    paginaActual++;
+
+    renderizarPartes(partes);
+
+  }
 
 };
 
