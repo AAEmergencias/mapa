@@ -180,34 +180,33 @@ header button:hover {
 }
 
 
-.card:nth-child(1) > div:not(#ultimaEmergencia) {
+.grid .card:nth-child(1) > div:not(#ultimaEmergencia){
 
-  color: #f59e0b;
+  color:#f59e0b;
 
   text-shadow:
     0 0 10px rgba(
       245,
       158,
       11,
-      0.6
+      .6
     );
 
 }
 
-.card:nth-child(2) > div {
+.grid .card:nth-child(2) > div:not(#ultimaEmergencia){
 
-  color: #3b82f6;
+  color:#3b82f6;
 
   text-shadow:
     0 0 10px rgba(
       59,
       130,
       246,
-      0.6
+      .6
     );
 
 }
-
 .card:nth-child(3) > div:not(#ultimaEmergencia) {
 
   color: #10b981;
@@ -222,16 +221,16 @@ header button:hover {
 
 }
 
-.card:nth-child(4) > div {
+.grid .card:nth-child(4) > div:not(#ultimaEmergencia){
 
-  color: #ef4444;
+  color:#ef4444;
 
   text-shadow:
     0 0 10px rgba(
       239,
       68,
       68,
-      0.6
+      .6
     );
 
 }
