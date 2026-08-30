@@ -469,3 +469,15 @@ body::before {
   color: #10b981;
 
 }
+
+.itemResumen small{
+
+  display:block;
+
+  margin-top:2px;
+
+  font-size:11px;
+
+  color:#94a3b8;
+
+}
