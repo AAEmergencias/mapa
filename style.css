@@ -1073,7 +1073,6 @@ body {
 }
 
 #cerrarSesion,
-#btnCambiarPassword,
 #guardarPassword,
 #cerrarPassword {
 
@@ -1095,6 +1094,7 @@ body {
 
 }
 
+
 #cerrarSesion {
 
   background: linear-gradient(
@@ -1113,6 +1113,26 @@ body {
     #dc2626,
     #ef4444
   );
+
+}
+
+#guardarPassword {
+
+  background: linear-gradient(
+    90deg,
+    #2563eb,
+    #3b82f6
+  );
+
+}
+
+#guardarPassword:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 12px
+    rgba(0,0,0,0.3);
 
 }
 
@@ -1187,13 +1207,25 @@ body {
 
   cursor: pointer;
 
+  box-shadow:
+    0 4px 10px
+    rgba(0,0,0,0.3);
+
+  transition:
+    all 0.2s ease;
+
 }
 
 #btnCambiarPassword:hover {
 
   transform: translateY(-2px);
 
+  box-shadow:
+    0 6px 14px
+    rgba(0,0,0,0.4);
+
 }
+
 
 #modalPassword{
 
