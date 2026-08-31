@@ -1758,6 +1758,49 @@ unidades.forEach(u => {
 const contenedorUnidades =
   panel.querySelector(".unidades");
 
+  contenedorUnidades.innerHTML = `
+
+<div>
+
+  <div class="tituloGrupo">
+    🚒 UIR
+  </div>
+
+  <div
+    class="grupoUnidades"
+    id="grupoUIR">
+  </div>
+
+</div>
+
+<div>
+
+  <div class="tituloGrupo">
+    🚒 Carros Bomba
+  </div>
+
+  <div
+    class="grupoUnidades"
+    id="grupoBomba">
+  </div>
+
+</div>
+
+<div>
+
+  <div class="tituloGrupo">
+    🚑 Servicio Médico
+  </div>
+
+  <div
+    class="grupoUnidades"
+    id="grupoMedico">
+  </div>
+
+</div>
+
+`;
+
 const campoNotas =
   panel.querySelector(".campoNotas");
 
@@ -1862,15 +1905,53 @@ panel.querySelector(".btnAgregarUnidad").onclick = () => {
   }
 
   // ✅ crear visual
-  let div = document.createElement("div");
-  div.className = "unidad-asignada";
+  const codigo =
+  nombreUnidad.split(" ")[0];
 
-  div.innerHTML = `
-    🚑 <b>${unidadData.nombre}</b><br>
-    <small>${unidadData.base}</small>
-  `;
+let div =
+  document.createElement(
+    "div"
+  );
 
-  contenedorUnidades.appendChild(div);
+div.className =
+  "unidad-asignada";
+
+div.textContent =
+  codigo;
+
+ if (
+  codigo.startsWith("UIR")
+) {
+
+  panel.querySelector(
+    "#grupoUIR"
+  ).appendChild(div);
+
+}
+
+else if (
+
+  codigo.startsWith("B")
+
+) {
+
+  panel.querySelector(
+    "#grupoBomba"
+  ).appendChild(div);
+
+}
+
+else if (
+
+  codigo.startsWith("S")
+
+) {
+
+  panel.querySelector(
+    "#grupoMedico"
+  ).appendChild(div);
+
+}
 
   // ✅ cambiar estado
   actualizarEstadoUnidad(unidadData.nombre, "6-T");
