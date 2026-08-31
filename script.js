@@ -2417,9 +2417,15 @@ snapshot.forEach(docSnap => {
 }
 
   console.log(
-    "🔥 Recuperando:",
-    data
-  );
+  "🔥 Recuperando:",
+  data
+);
+
+console.log(
+  "🚑 Unidades recuperadas:",
+  data.unidades
+);
+
 
   let nueva = {
 
