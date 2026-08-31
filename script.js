@@ -1841,6 +1841,23 @@ boton.onclick = () => {
         codigo
       );
 
+      const unidadCompleta =
+  unidades.find(
+    u =>
+      u.nombre.startsWith(
+        codigo
+      )
+  );
+
+if (unidadCompleta) {
+
+  actualizarEstadoUnidad(
+    unidadCompleta.nombre,
+    "6-T"
+  );
+
+}
+
     }
 
   }
