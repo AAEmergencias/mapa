@@ -1865,6 +1865,25 @@ if (unidadCompleta) {
     "6-T"
   );
 
+  const origen =
+  unidadesCoords[codigo];
+
+const destino =
+  ubicacionSeleccionada?.coords;
+
+if (
+  origen &&
+  destino
+) {
+
+  moverUnidad(
+    unidadCompleta.nombre,
+    origen,
+    destino
+  );
+
+}
+
 }
 
     }
@@ -1892,6 +1911,27 @@ else {
       unidadCompleta.nombre,
       "6-10"
     );
+
+    const origen =
+  unidadesCoords[codigo];
+
+const destino =
+  basesCoords[
+    unidadCompleta.base.trim()
+  ];
+
+if (
+  origen &&
+  destino
+) {
+
+  moverUnidad(
+    unidadCompleta.nombre,
+    origen,
+    destino
+  );
+
+}
 
   }
 
