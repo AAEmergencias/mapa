@@ -1920,6 +1920,8 @@ btnGuardarNota.onclick = () => {
   
   let unidadesAsignadas = [];
 
+  /*
+
 panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   let nombreUnidad = select.value;
@@ -2028,6 +2030,8 @@ else if (
   }
 
 };
+
+*/
 
 
   // ✅ CERRAR
