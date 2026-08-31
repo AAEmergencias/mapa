@@ -593,8 +593,17 @@ function actualizarEstadoUnidad(nombreUnidad, estado, nuevaBase = null, nota = "
 );
 
   // 🔥 guardar hora del estado
-if (emergenciaActiva && emergenciaActiva.tiempos[estado] !== undefined) {
-  emergenciaActiva.tiempos[estado] = new Date().toLocaleTimeString();
+if (emergenciaActiva) {
+
+  if (!emergenciaActiva.tiempos) {
+
+    emergenciaActiva.tiempos = {};
+
+  }
+
+  emergenciaActiva.tiempos[estado] =
+    new Date().toLocaleTimeString();
+
 }
 
   let unidadesHTML = document.querySelectorAll(".unidad");
