@@ -19,10 +19,14 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword
+
 }
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
 
 // ✅ TU CONFIG (la que ya tienes)
 const firebaseConfig = {
@@ -59,6 +63,10 @@ export {
 
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword
 
 };
