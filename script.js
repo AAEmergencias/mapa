@@ -1828,6 +1828,22 @@ unidades.forEach(unidad => {
   boton.textContent =
     codigo;
 
+  if (
+
+  emergenciaData &&
+  emergenciaData.unidades &&
+  emergenciaData.unidades.includes(
+    codigo
+  )
+
+) {
+
+  boton.classList.add(
+    "unidadSeleccionada"
+  );
+
+}
+
 boton.onclick = () => {
 
   const seleccionada =
