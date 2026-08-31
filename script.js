@@ -1773,12 +1773,22 @@ panel.innerHTML = `
 const contenedorUnidades =
   panel.querySelector(".unidades");
 
-  const grupoUIR =
+ const grupoUIR =
   panel.querySelector(
     "#grupoUIR"
   );
 
-  console.log(
+const grupoBomba =
+  panel.querySelector(
+    "#grupoBomba"
+  );
+
+const grupoMedico =
+  panel.querySelector(
+    "#grupoMedico"
+  );
+
+console.log(
   "UIR:",
   grupoUIR
 );
@@ -1792,16 +1802,6 @@ console.log(
   "MEDICO:",
   grupoMedico
 );
-
-const grupoBomba =
-  panel.querySelector(
-    "#grupoBomba"
-  );
-
-const grupoMedico =
-  panel.querySelector(
-    "#grupoMedico"
-  );
 
 unidades.forEach(unidad => {
 
@@ -1854,49 +1854,6 @@ unidades.forEach(unidad => {
   }
 
 });
-
-  contenedorUnidades.innerHTML = `
-
-<div>
-
-  <div class="tituloGrupo">
-    🚒 UIR
-  </div>
-
-  <div
-    class="grupoUnidades"
-    id="grupoUIR">
-  </div>
-
-</div>
-
-<div>
-
-  <div class="tituloGrupo">
-    🚒 Carros Bomba
-  </div>
-
-  <div
-    class="grupoUnidades"
-    id="grupoBomba">
-  </div>
-
-</div>
-
-<div>
-
-  <div class="tituloGrupo">
-    🚑 Servicio Médico
-  </div>
-
-  <div
-    class="grupoUnidades"
-    id="grupoMedico">
-  </div>
-
-</div>
-
-`;
 
 const campoNotas =
   panel.querySelector(".campoNotas");
@@ -1963,7 +1920,6 @@ btnGuardarNota.onclick = () => {
   
   let unidadesAsignadas = [];
 
-/*
 panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   let nombreUnidad = select.value;
@@ -2090,7 +2046,6 @@ panel.querySelector(".btnFinalizar").onclick = () => {
   );
 
 };
-*/
 
   // ✅ MINIMIZAR + PARPADEO
   const header = panel.querySelector(".header-rojo");
