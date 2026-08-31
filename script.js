@@ -16,7 +16,11 @@ import {
   onSnapshot,
 
   onAuthStateChanged,
-  signOut
+  signOut,
+
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  updatePassword
 
 }
 from "./firebase.js";
@@ -2363,5 +2367,135 @@ async () => {
 
   window.location.href =
     "login.html";
+
+};
+
+// ==========================
+// 🔑 CAMBIAR CONTRASEÑA
+// ==========================
+
+const modalPassword =
+  document.getElementById(
+    "modalPassword"
+  );
+
+document.getElementById(
+  "btnCambiarPassword"
+).onclick = () => {
+
+  modalPassword.style.display =
+    "flex";
+
+};
+
+document.getElementById(
+  "cerrarPassword"
+).onclick = () => {
+
+  modalPassword.style.display =
+    "none";
+
+};
+
+document.getElementById(
+  "guardarPassword"
+).onclick = async () => {
+
+  const actual =
+    document.getElementById(
+      "claveActual"
+    ).value;
+
+  const nueva =
+    document.getElementById(
+      "claveNueva"
+    ).value;
+
+  const confirmar =
+    document.getElementById(
+      "claveConfirmar"
+    ).value;
+
+  // =====================
+  // VALIDACIONES
+  // =====================
+
+  if (nueva !== confirmar) {
+
+    alert(
+      "❌ Las contraseñas no coinciden"
+    );
+
+    return;
+
+  }
+
+  if (nueva.length < 6) {
+
+    alert(
+      "❌ La contraseña debe tener al menos 6 caracteres"
+    );
+
+    return;
+
+  }
+
+  try {
+
+    const credencial =
+      EmailAuthProvider.credential(
+
+        auth.currentUser.email,
+
+        actual
+
+      );
+
+    await reauthenticateWithCredential(
+
+      auth.currentUser,
+
+      credencial
+
+    );
+
+    await updatePassword(
+
+      auth.currentUser,
+
+      nueva
+
+    );
+
+    alert(
+      "✅ Contraseña actualizada correctamente"
+    );
+
+    modalPassword.style.display =
+      "none";
+
+    document.getElementById(
+      "claveActual"
+    ).value = "";
+
+    document.getElementById(
+      "claveNueva"
+    ).value = "";
+
+    document.getElementById(
+      "claveConfirmar"
+    ).value = "";
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+    alert(
+      "❌ Contraseña actual incorrecta"
+    );
+
+  }
 
 };
