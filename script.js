@@ -1819,6 +1819,14 @@ unidades.forEach(unidad => {
   boton.textContent =
     codigo;
 
+  boton.onclick = () => {
+
+  boton.classList.toggle(
+    "unidadSeleccionada"
+  );
+
+};
+
   if (
     codigo.startsWith("UIR")
   ) {
