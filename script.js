@@ -1819,10 +1819,44 @@ unidades.forEach(unidad => {
   boton.textContent =
     codigo;
 
-  boton.onclick = () => {
+boton.onclick = () => {
 
-  boton.classList.toggle(
-    "unidadSeleccionada"
+  const seleccionada =
+    boton.classList.toggle(
+      "unidadSeleccionada"
+    );
+
+  if (!emergenciaActiva)
+    return;
+
+  if (seleccionada) {
+
+    if (
+      !emergenciaActiva.unidades.includes(
+        codigo
+      )
+    ) {
+
+      emergenciaActiva.unidades.push(
+        codigo
+      );
+
+    }
+
+  }
+
+  else {
+
+    emergenciaActiva.unidades =
+      emergenciaActiva.unidades.filter(
+        u => u !== codigo
+      );
+
+  }
+
+  console.log(
+    "🚑 Unidades:",
+    emergenciaActiva.unidades
   );
 
 };
