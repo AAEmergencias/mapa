@@ -1704,15 +1704,42 @@ panel.innerHTML = `
       <div><b>Ubicación:</b> ${data.ubicacion}</div>
     </div>
 
-    <div class="bloque">
-  <div class="titulo">🚑 Unidades asignadas</div>
+<div class="bloque">
 
-  <div class="unidades"></div>
+  <div class="titulo">
+    🚑 Unidades asignadas
+  </div>
 
-  <select class="selectUnidad"></select>
- <button class="btnAgregarUnidad">
-  ➕ Agregar Unidad
-</button>
+  <div class="unidades">
+
+    <div class="tituloGrupo">
+      🚒 UIR
+    </div>
+
+    <div
+      class="grupoUnidades"
+      id="grupoUIR">
+    </div>
+
+    <div class="tituloGrupo">
+      🚒 Carros Bomba
+    </div>
+
+    <div
+      class="grupoUnidades"
+      id="grupoBomba">
+    </div>
+
+    <div class="tituloGrupo">
+      🚑 Servicio Médico
+    </div>
+
+    <div
+      class="grupoUnidades"
+      id="grupoMedico">
+    </div>
+
+  </div>
 
 </div>
 
@@ -1741,22 +1768,77 @@ panel.innerHTML = `
 `;
 
   // ==========================
-// 🔽 LLENAR SELECT (PASO 2)
-// ==========================
-const select = panel.querySelector(".selectUnidad");
-
-unidades.forEach(u => {
-  let op = document.createElement("option");
-  op.value = u.nombre;
-  op.text = `${u.nombre} - ${u.base}`;
-  select.appendChild(op);
-});
-
-  // ==========================
 // ➕ AGREGAR UNIDAD (PASO 3)
 // ==========================
 const contenedorUnidades =
   panel.querySelector(".unidades");
+
+  const grupoUIR =
+  panel.querySelector(
+    "#grupoUIR"
+  );
+
+const grupoBomba =
+  panel.querySelector(
+    "#grupoBomba"
+  );
+
+const grupoMedico =
+  panel.querySelector(
+    "#grupoMedico"
+  );
+
+unidades.forEach(unidad => {
+
+  const codigo =
+    unidad.nombre.split(" ")[0];
+
+  let boton =
+    document.createElement(
+      "button"
+    );
+
+  boton.className =
+    "btnUnidad";
+
+  boton.textContent =
+    codigo;
+
+  if (
+    codigo.startsWith("UIR")
+  ) {
+
+    grupoUIR.appendChild(
+      boton
+    );
+
+  }
+
+  else if (
+
+    codigo.startsWith("B")
+
+  ) {
+
+    grupoBomba.appendChild(
+      boton
+    );
+
+  }
+
+  else if (
+
+    codigo.startsWith("S")
+
+  ) {
+
+    grupoMedico.appendChild(
+      boton
+    );
+
+  }
+
+});
 
   contenedorUnidades.innerHTML = `
 
