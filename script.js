@@ -1859,6 +1859,20 @@ boton.onclick = () => {
     emergenciaActiva.unidades
   );
 
+  if (panelNegro) {
+
+  panelNegro.querySelector(
+    ".info"
+  ).innerHTML = `
+
+    🔥 ${data.tipo}<br>
+    📍 ${data.ubicacion}<br>
+    🚑 ${emergenciaActiva.unidades.join(", ") || "Sin unidades"}
+
+  `;
+
+}
+
 };
 
   if (
