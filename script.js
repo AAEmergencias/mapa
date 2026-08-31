@@ -1778,6 +1778,21 @@ const contenedorUnidades =
     "#grupoUIR"
   );
 
+  console.log(
+  "UIR:",
+  grupoUIR
+);
+
+console.log(
+  "BOMBA:",
+  grupoBomba
+);
+
+console.log(
+  "MEDICO:",
+  grupoMedico
+);
+
 const grupoBomba =
   panel.querySelector(
     "#grupoBomba"
