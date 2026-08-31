@@ -1395,3 +1395,13 @@ body {
     rgba(0,0,0,.12);
 
 }
+
+.unidadSeleccionada {
+
+  background: #d32f2f !important;
+
+  color: white !important;
+
+  border-color: #b71c1c;
+
+}
