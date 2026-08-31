@@ -1948,6 +1948,7 @@ btnGuardarNota.onclick = () => {
   
   let unidadesAsignadas = [];
 
+/*
 panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   let nombreUnidad = select.value;
@@ -2057,6 +2058,7 @@ else if (
 
 };
 
+
   // ✅ CERRAR
   panel.querySelector(".cerrarRojo").onclick = () => {
     panel.remove();
@@ -2073,7 +2075,7 @@ panel.querySelector(".btnFinalizar").onclick = () => {
   );
 
 };
-
+*/
 
   // ✅ MINIMIZAR + PARPADEO
   const header = panel.querySelector(".header-rojo");
