@@ -58,7 +58,7 @@ href="logo.png">
   📈 Ir a Admin
 </button>
 
-  <div id="panelUsuario">
+<div id="panelUsuario">
 
   <div id="nombreUsuario">
     👤 Usuario
@@ -71,6 +71,10 @@ href="logo.png">
   <div id="rolUsuario">
     Rol
   </div>
+
+  <button id="btnCambiarPassword">
+    🔑 Cambiar Contraseña
+  </button>
 
   <button id="cerrarSesion">
     🚪 Cerrar Sesión
@@ -146,6 +150,43 @@ href="logo.png">
 
 <!-- 🗺️ MAPA -->
 <div id="map"></div>
+
+  <!-- 🔑 MODAL CAMBIAR CONTRASEÑA -->
+
+<div id="modalPassword">
+
+  <div class="modalPasswordContenido">
+
+    <h3>
+      🔑 Cambiar Contraseña
+    </h3>
+
+    <input
+      type="password"
+      id="claveActual"
+      placeholder="Contraseña actual">
+
+    <input
+      type="password"
+      id="claveNueva"
+      placeholder="Nueva contraseña">
+
+    <input
+      type="password"
+      id="claveConfirmar"
+      placeholder="Confirmar contraseña">
+
+    <button id="guardarPassword">
+      ✅ Guardar
+    </button>
+
+    <button id="cerrarPassword">
+      ❌ Cancelar
+    </button>
+
+  </div>
+
+</div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://unpkg.com/@tmcw/togeojson@4.1.0/dist/togeojson.umd.js"></script>
