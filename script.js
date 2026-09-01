@@ -250,7 +250,7 @@ const unidades = [
   { nombre: "UIR-S / STP", base: "Brigada Mineroducto" },
   { nombre: "B2 / Tórtolas", base: "Brigada Las Tortolas" },
   { nombre: "S1 / Pérez Caldera", base: "Policlínico Perez Caldera" },
-  { nombre: "S2 / Poli Tórtolsa", base: "Policlínico Las Tortolas" },
+  { nombre: "S2 / Poli Tórtolas", base: "Policlínico Las Tortolas" },
   { nombre: "S3 / 220", base: "SPA 220" }
 ];
 
