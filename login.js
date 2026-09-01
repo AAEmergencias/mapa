@@ -1,14 +1,20 @@
 import {
-  auth,
-  db,
-  signInWithEmailAndPassword,
-  doc,
-  getDocs,
-  collection,
-  updateDoc
-}
-from "./firebase.js";
 
+  auth,
+
+  db,
+
+  signInWithEmailAndPassword,
+
+  doc,
+
+  getDocs,
+
+  collection
+
+}
+
+from "./firebase.js";
 
 const btnLogin =
   document.getElementById(
@@ -40,19 +46,6 @@ async () => {
       correo,
       password
     );
-
-    await updateDoc(
-  doc(
-    db,
-    "usuarios",
-    correo
-  ),
-  {
-    ultimoAcceso:
-      new Date().toISOString()
-  }
-);
-    
 
     localStorage.setItem(
       "usuarioCorreo",

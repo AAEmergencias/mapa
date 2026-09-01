@@ -2765,40 +2765,24 @@ onAuthStateChanged(
 
     // 🔐 Control acceso admin
 
-const btnAdmin =
-document.getElementById("irAdmin");
+   const btnAdmin =
+  document.getElementById(
+    "irAdmin"
+  );
 
-const btnUsuarios =
-document.getElementById("irUsuarios");
-
-const rol =
-datos.rol?.toLowerCase().trim();
-
-if (rol === "operador") {
+if (
+  datos.rol?.toLowerCase().trim() ===
+  "operador"
+) {
 
   btnAdmin.style.display =
-  "none";
-
-  btnUsuarios.style.display =
-  "none";
+    "none";
 
 }
-else if (rol === "admin") {
+else {
 
   btnAdmin.style.display =
-  "block";
-
-  btnUsuarios.style.display =
-  "none";
-
-}
-else if (rol === "superadmin") {
-
-  btnAdmin.style.display =
-  "block";
-
-  btnUsuarios.style.display =
-  "block";
+    "block";
 
 }
 
@@ -2946,16 +2930,5 @@ document.getElementById(
     );
 
   }
-
-};
-
-document.getElementById(
-  "irUsuarios"
-).onclick = () => {
-
-  window.open(
-    "usuarios.html",
-    "_blank"
-  );
 
 };
