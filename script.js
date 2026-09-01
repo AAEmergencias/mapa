@@ -1716,10 +1716,17 @@ panel.innerHTML = `
 <div class="bloque">
 
   <div class="titulo">
-    🚑 Unidades asignadas
+    🚑 Unidades Despachadas
   </div>
 
+  <div
+    class="unidadesDespachadas">
+  </div>
+
+  <hr class="separadorDespacho">
+
   <div class="unidades">
+
 
     <div class="tituloGrupo">
       🚒 UIR
