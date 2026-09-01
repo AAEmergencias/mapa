@@ -1720,8 +1720,9 @@ panel.innerHTML = `
   </div>
 
   <div
-    class="unidadesDespachadas">
-  </div>
+  class="unidadesDespachadas"
+  id="unidadesDespachadas">
+</div>
 
   <hr class="separadorDespacho">
 
@@ -1804,6 +1805,11 @@ const grupoMedico =
     "#grupoMedico"
   );
 
+  const contenedorDespachadas =
+  panel.querySelector(
+    "#unidadesDespachadas"
+  );
+
 console.log(
   "UIR:",
   grupoUIR
@@ -1872,6 +1878,10 @@ boton.onclick = () => {
       emergenciaActiva.unidades.push(
         codigo
       );
+
+      contenedorDespachadas.appendChild(
+  boton
+);
 
       console.log(
   "🔥 Guardando unidades:",
@@ -1957,6 +1967,36 @@ else {
     emergenciaActiva.unidades.filter(
       u => u !== codigo
     );
+
+  if (
+  codigo.startsWith("UIR")
+) {
+
+  grupoUIR.appendChild(
+    boton
+  );
+
+}
+
+else if (
+  codigo.startsWith("B")
+) {
+
+  grupoBomba.appendChild(
+    boton
+  );
+
+}
+
+else if (
+  codigo.startsWith("S")
+) {
+
+  grupoMedico.appendChild(
+    boton
+  );
+
+}
 
   console.log(
   "🔥 Quitando unidad:",
