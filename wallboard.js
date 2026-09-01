@@ -102,14 +102,31 @@ console.log("✅ EMERGENCIAS OK");
   estadosOperacionales
 );
 
-    emergenciasSnapshot.forEach(doc => {
+ emergenciasSnapshot.forEach(doc => {
+
+  const data = doc.data();
+
+  console.log(
+    "🚨 DOCUMENTO FIREBASE:"
+  );
+
+  console.log(data);
+
+  console.log(
+    "🚑 UNIDADES FIREBASE:"
+  );
+
+  console.log(
+    data.unidades
+  );
 
   emergenciasActivas.push({
     id: doc.id,
-    ...doc.data()
+    ...data
   });
 
 });
+
 
     console.log("PARTES:", partes);
     console.log("TRASLADOS:", traslados);
