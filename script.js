@@ -2770,19 +2770,40 @@ onAuthStateChanged(
     "irAdmin"
   );
 
-if (
-  datos.rol?.toLowerCase().trim() ===
-  "operador"
-) {
+const btnAdmin =
+document.getElementById("irAdmin");
+
+const btnUsuarios =
+document.getElementById("irUsuarios");
+
+const rol =
+datos.rol?.toLowerCase().trim();
+
+if (rol === "operador") {
 
   btnAdmin.style.display =
-    "none";
+  "none";
+
+  btnUsuarios.style.display =
+  "none";
 
 }
-else {
+else if (rol === "admin") {
 
   btnAdmin.style.display =
-    "block";
+  "block";
+
+  btnUsuarios.style.display =
+  "none";
+
+}
+else if (rol === "superadmin") {
+
+  btnAdmin.style.display =
+  "block";
+
+  btnUsuarios.style.display =
+  "block";
 
 }
 
@@ -2930,5 +2951,16 @@ document.getElementById(
     );
 
   }
+
+};
+
+document.getElementById(
+  "irUsuarios"
+).onclick = () => {
+
+  window.open(
+    "usuarios.html",
+    "_blank"
+  );
 
 };
