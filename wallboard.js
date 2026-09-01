@@ -119,6 +119,15 @@ console.log("✅ EMERGENCIAS OK");
   emergenciasActivas
 );
 
+    emergenciasActivas.forEach(e => {
+
+  console.log(
+    "🚑 WALLBOARD RECIBE:",
+    e.unidades
+  );
+
+});
+
 actualizarPantalla(
   partes,
   traslados,
