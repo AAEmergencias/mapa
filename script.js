@@ -2765,11 +2765,6 @@ onAuthStateChanged(
 
     // 🔐 Control acceso admin
 
-   const btnAdmin =
-  document.getElementById(
-    "irAdmin"
-  );
-
 const btnAdmin =
 document.getElementById("irAdmin");
 
