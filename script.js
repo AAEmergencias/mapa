@@ -1866,6 +1866,44 @@ boton.onclick = () => {
         codigo
       );
 
+      console.log(
+  "🔥 Guardando unidades:",
+  emergenciaActiva.unidades
+);
+
+if (
+  emergenciaActiva.firebaseId
+) {
+
+  updateDoc(
+    doc(
+      db,
+      "emergenciasActivas",
+      emergenciaActiva.firebaseId
+    ),
+    {
+      unidades:
+        emergenciaActiva.unidades
+    }
+  )
+  .then(() => {
+
+    console.log(
+      "✅ Firebase actualizado"
+    );
+
+  })
+  .catch(error => {
+
+    console.error(
+      "❌ Error Firebase:",
+      error
+    );
+
+  });
+
+}
+
       const unidadCompleta =
   unidades.find(
     u =>
@@ -1912,6 +1950,44 @@ else {
     emergenciaActiva.unidades.filter(
       u => u !== codigo
     );
+
+  console.log(
+  "🔥 Quitando unidad:",
+  emergenciaActiva.unidades
+);
+
+if (
+  emergenciaActiva.firebaseId
+) {
+
+  updateDoc(
+    doc(
+      db,
+      "emergenciasActivas",
+      emergenciaActiva.firebaseId
+    ),
+    {
+      unidades:
+        emergenciaActiva.unidades
+    }
+  )
+  .then(() => {
+
+    console.log(
+      "✅ Firebase actualizado"
+    );
+
+  })
+  .catch(error => {
+
+    console.error(
+      "❌ Error Firebase:",
+      error
+    );
+
+  });
+
+}
 
   const unidadCompleta =
     unidades.find(
