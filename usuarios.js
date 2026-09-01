@@ -36,7 +36,7 @@ html += `
 
 <b>${u.nombre}</b><br>
 
-📧 ${u.correo}<br>
+📧 ${docSnap.id}<br>
 
 👤 ${u.rol}<br>
 
