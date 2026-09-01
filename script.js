@@ -1879,6 +1879,16 @@ boton.onclick = () => {
         codigo
       );
 
+      console.log(
+  "🔥 UNIDADES ARRAY:",
+  emergenciaActiva.unidades
+);
+
+console.log(
+  "🔥 FIREBASE ID:",
+  emergenciaActiva.firebaseId
+);
+
       contenedorDespachadas.appendChild(
   boton
 );
@@ -1906,14 +1916,14 @@ if (
   .then(() => {
 
     console.log(
-      "✅ Firebase actualizado"
+      "✅ FIREBASE ACTUALIZADO"
     );
 
   })
   .catch(error => {
 
     console.error(
-      "❌ Error Firebase:",
+      "❌ ERROR FIREBASE",
       error
     );
 
