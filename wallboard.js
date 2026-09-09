@@ -639,14 +639,48 @@ document.getElementById(
         diff / 1000 / 60
       ) % 60;
 
-    document.getElementById(
-      "sinEmergencias"
-    ).innerHTML = `
+   const dias =
+  Math.floor(horas / 24);
 
-      ${horas} h<br>
-      ${minutos} min
+const horasRestantes =
+  horas % 24;
 
-    `;
+document.getElementById(
+  "sinEmergencias"
+).innerHTML = `
+
+<div class="contadorAeropuerto">
+
+  <div class="bloqueTiempo">
+    <div class="numeroTiempo">
+      ${String(dias).padStart(2, "0")}
+    </div>
+    <div class="textoTiempo">
+      DÍAS
+    </div>
+  </div>
+
+  <div class="bloqueTiempo">
+    <div class="numeroTiempo">
+      ${String(horasRestantes).padStart(2, "0")}
+    </div>
+    <div class="textoTiempo">
+      HRS
+    </div>
+  </div>
+
+  <div class="bloqueTiempo">
+    <div class="numeroTiempo">
+      ${String(minutos).padStart(2, "0")}
+    </div>
+    <div class="textoTiempo">
+      MIN
+    </div>
+  </div>
+
+</div>
+
+`;
 
   }
 
