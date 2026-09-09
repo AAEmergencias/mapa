@@ -683,6 +683,18 @@ document.getElementById(
     </div>
   </div>
 
+  <div class="bloqueTiempo">
+
+  <div class="numeroTiempo">
+    ${String(segundos).padStart(2, "0")}
+  </div>
+
+  <div class="textoTiempo">
+    SEG
+  </div>
+
+</div>
+
 </div>
 
 `;
