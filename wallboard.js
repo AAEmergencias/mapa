@@ -639,6 +639,11 @@ document.getElementById(
         diff / 1000 / 60
       ) % 60;
 
+    const segundos =
+  Math.floor(
+    diff / 1000
+  ) % 60;
+
    const dias =
   Math.floor(horas / 24);
 
