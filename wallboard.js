@@ -323,6 +323,34 @@ if (listado) {
   // KPIs
   // ==========================
 
+  let totalEmergencias = 0;
+
+partes.forEach(parte => {
+
+  const vehiculo =
+    parte.vehiculo || "";
+
+  const ambulancia =
+    parte.ambulancia || "";
+
+  const existeBrigada =
+    vehiculo.trim() !== "";
+
+  const existeAmbulancia =
+    ambulancia.trim() !== "" &&
+    ambulancia !== "No asiste";
+
+  if (
+    existeBrigada &&
+    existeAmbulancia
+  ) {
+
+    totalEmergencias++;
+
+  }
+
+});
+
   document.getElementById(
     "activas"
   ).innerText = activas;
@@ -335,9 +363,10 @@ if (listado) {
     "traslados"
   ).innerText = traslados.length;
 
-  document.getElementById(
-    "cerrados"
-  ).innerText = partes.length;
+document.getElementById(
+  "cerrados"
+).innerText =
+  totalEmergencias;
 
   // ==========================
   // TARJETA ACTIVA ROJA
