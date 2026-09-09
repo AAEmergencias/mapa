@@ -2481,9 +2481,23 @@ lista.forEach(e => {
 
 item.innerHTML = `
     🚨 ${e.tipo}<br>
-    <small>${e.subtipo || ""}</small><br>
-    📍 ${e.ubicacion || "Sin ubicación"}<br>
-    📅 ${e.fecha}
+
+    <small>
+      ${e.subtipo || ""}
+    </small><br>
+
+    🕒 ${
+      e.horaActivacion || "--:--"
+    }<br>
+
+    📍 ${
+      e.ubicacion ||
+      "Sin ubicación"
+    }<br>
+
+    📅 ${
+      e.fecha || "-"
+    }
 `;
   
  item.onclick = () => {
