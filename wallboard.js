@@ -7,6 +7,9 @@ import {
 
 console.log("📺 Wallboard iniciado");
 
+let ultimaFechaEmergencia = null;
+
+
 // ==========================
 // RELOJ
 // ==========================
@@ -622,6 +625,9 @@ document.getElementById(
     )
   );
 
+    ultimaFechaEmergencia =
+  fechaUltima;
+
     const ahora =
       new Date();
 
@@ -1029,6 +1035,84 @@ document.getElementById(
 
   }
 
+function actualizarTiempoSinEmergencias() {
+
+  if (!ultimaFechaEmergencia)
+    return;
+
+  const ahora = new Date();
+
+  const diff =
+    ahora - ultimaFechaEmergencia;
+
+  const dias =
+    Math.floor(
+      diff / 1000 / 60 / 60 / 24
+    );
+
+  const horas =
+    Math.floor(
+      diff / 1000 / 60 / 60
+    ) % 24;
+
+  const minutos =
+    Math.floor(
+      diff / 1000 / 60
+    ) % 60;
+
+  const segundos =
+    Math.floor(
+      diff / 1000
+    ) % 60;
+
+  document.getElementById(
+    "sinEmergencias"
+  ).innerHTML = `
+
+<div class="contadorAeropuerto">
+
+  <div class="bloqueTiempo">
+    <div class="numeroTiempo">
+      ${String(dias).padStart(2, "0")}
+    </div>
+    <div class="textoTiempo">
+      DÍAS
+    </div>
+  </div>
+
+  <div class="bloqueTiempo">
+    <div class="numeroTiempo">
+      ${String(horas).padStart(2, "0")}
+    </div>
+    <div class="textoTiempo">
+      HRS
+    </div>
+  </div>
+
+  <div class="bloqueTiempo">
+    <div class="numeroTiempo">
+      ${String(minutos).padStart(2, "0")}
+    </div>
+    <div class="textoTiempo">
+      MIN
+    </div>
+  </div>
+
+  <div class="bloqueTiempo">
+    <div class="numeroTiempo">
+      ${String(segundos).padStart(2, "0")}
+    </div>
+    <div class="textoTiempo">
+      SEG
+    </div>
+  </div>
+
+</div>
+
+`;
+
+}
+
 // ==========================
 // INICIO
 // ==========================
@@ -1059,6 +1143,11 @@ onSnapshot(
 
 setInterval(
   actualizarReloj,
+  1000
+);
+
+setInterval(
+  actualizarTiempoSinEmergencias,
   1000
 );
 
