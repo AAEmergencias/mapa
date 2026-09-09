@@ -435,7 +435,6 @@ document.getElementById(
   if (partes.length > 0) {
 
     const ultima = partes[0];
-
     let duracion = "-";
 
 if (
@@ -657,43 +656,61 @@ document.getElementById(
 <div class="contadorAeropuerto">
 
   <div class="bloqueTiempo">
+
     <div class="numeroTiempo">
       ${String(dias).padStart(2, "0")}
     </div>
+
     <div class="textoTiempo">
       DÍAS
     </div>
+
   </div>
 
+
   <div class="bloqueTiempo">
+
     <div class="numeroTiempo">
-      ${String(horasRestantes).padStart(2, "0")}
+      ${String(
+        horasRestantes
+      ).padStart(2, "0")}
     </div>
+
     <div class="textoTiempo">
       HRS
     </div>
+
   </div>
 
+
   <div class="bloqueTiempo">
+
     <div class="numeroTiempo">
-      ${String(minutos).padStart(2, "0")}
+      ${String(
+        minutos
+      ).padStart(2, "0")}
     </div>
+
     <div class="textoTiempo">
       MIN
     </div>
+
   </div>
+
 
   <div class="bloqueTiempo">
 
-  <div class="numeroTiempo">
-    ${String(segundos).padStart(2, "0")}
-  </div>
+    <div class="numeroTiempo">
+      ${String(
+        segundos
+      ).padStart(2, "0")}
+    </div>
 
-  <div class="textoTiempo">
-    SEG
-  </div>
+    <div class="textoTiempo">
+      SEG
+    </div>
 
-</div>
+  </div>
 
 </div>
 
