@@ -293,3 +293,45 @@ document
 
     }
   );
+
+document.addEventListener(
+  "click",
+  async (e) => {
+
+    if (
+      e.target.id ===
+      "guardarRol"
+    ) {
+
+      const correo =
+        e.target.dataset.correo;
+
+      const nuevoRol =
+        document.getElementById(
+          "rolUsuario"
+        ).value;
+
+      await updateDoc(
+
+        doc(
+          db,
+          "usuarios",
+          correo
+        ),
+
+        {
+          rol: nuevoRol
+        }
+
+      );
+
+      alert(
+        "✅ Rol actualizado"
+      );
+
+      location.reload();
+
+    }
+
+  }
+);
