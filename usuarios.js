@@ -408,3 +408,31 @@ document.addEventListener(
 
   }
 );
+
+document.getElementById(
+  "btnNuevoUsuario"
+).addEventListener(
+  "click",
+  () => {
+
+    document.getElementById(
+      "modalNuevoUsuario"
+    ).style.display =
+      "flex";
+
+  }
+);
+
+document.getElementById(
+  "cerrarNuevoUsuario"
+).addEventListener(
+  "click",
+  () => {
+
+    document.getElementById(
+      "modalNuevoUsuario"
+    ).style.display =
+      "none";
+
+  }
+);
