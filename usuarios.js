@@ -93,7 +93,15 @@ const usuariosSnapshot =
     )
   );
 
-listaUsuarios.innerHTML += `
+listaUsuarios.innerHTML = "";
+
+usuariosSnapshot.forEach(
+  usuario => {
+
+    const data =
+      usuario.data();
+
+    listaUsuarios.innerHTML += `
 
 <tr>
 
