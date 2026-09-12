@@ -358,3 +358,53 @@ document.addEventListener(
 
   }
 );
+
+document.addEventListener(
+  "click",
+  async (e) => {
+
+    if (
+      e.target.id ===
+      "toggleActivo"
+    ) {
+
+      const correo =
+        e.target.dataset.correo;
+
+      const activoActual =
+        e.target.dataset.activo;
+
+      const nuevoEstado =
+        activoActual !== "true";
+
+      await updateDoc(
+
+        doc(
+          db,
+          "usuarios",
+          correo
+        ),
+
+        {
+          activo:
+            nuevoEstado
+        }
+
+      );
+
+      alert(
+
+        nuevoEstado
+
+          ? "✅ Usuario activado"
+
+          : "🔒 Usuario desactivado"
+
+      );
+
+      location.reload();
+
+    }
+
+  }
+);
