@@ -98,6 +98,8 @@ localStorage.setItem(
   correo
 );
 
+    mensaje.innerHTML = "";
+
 window.location.href =
   "index.html";
 
