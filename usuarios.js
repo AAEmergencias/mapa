@@ -159,3 +159,89 @@ usuariosSnapshot.forEach(
 
       }
 );
+
+document.addEventListener(
+  "click",
+  (e) => {
+
+    if (
+      e.target.classList.contains(
+        "btnVer"
+      )
+    ) {
+
+      const nombre =
+        e.target.dataset.nombre;
+
+      const correo =
+        e.target.dataset.correo;
+
+      const rol =
+        e.target.dataset.rol;
+
+      const turno =
+        e.target.dataset.turno;
+
+      const activo =
+        e.target.dataset.activo;
+
+      document.getElementById(
+        "detalleUsuario"
+      ).innerHTML = `
+
+        <p>
+          <b>Nombre:</b>
+          ${nombre}
+        </p>
+
+        <p>
+          <b>Correo:</b>
+          ${correo}
+        </p>
+
+        <p>
+          <b>Rol:</b>
+          ${rol}
+        </p>
+
+        <p>
+          <b>Turno:</b>
+          ${turno}
+        </p>
+
+        <p>
+          <b>Estado:</b>
+          ${
+            activo === "true"
+              ? "✅ Activo"
+              : "❌ Inactivo"
+          }
+        </p>
+
+      `;
+
+      document.getElementById(
+        "modalUsuario"
+      ).style.display =
+        "flex";
+
+    }
+
+  }
+);
+
+document
+  .getElementById(
+    "cerrarModal"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      document.getElementById(
+        "modalUsuario"
+      ).style.display =
+        "none";
+
+    }
+  );
