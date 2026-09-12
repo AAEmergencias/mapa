@@ -151,3 +151,21 @@ h1 {
     cursor: pointer;
 
 }
+
+#guardarRol {
+
+  background: #10b981;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 15px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  margin-top: 10px;
+
+}
