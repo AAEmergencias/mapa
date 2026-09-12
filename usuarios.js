@@ -6,10 +6,14 @@ import {
   onAuthStateChanged,
 
   doc,
-  getDoc
+  getDoc,
+
+  collection,
+  getDocs
 
 }
 from "./firebase.js";
+
 
 console.log(
   "👑 Gestión de Usuarios iniciada"
@@ -75,6 +79,68 @@ onAuthStateChanged(
     console.log(
       "✅ SuperAdmin autorizado"
     );
+
+    const listaUsuarios =
+  document.getElementById(
+    "listaUsuarios"
+  );
+
+const usuariosSnapshot =
+  await getDocs(
+    collection(
+      db,
+      "usuarios"
+    )
+  );
+
+listaUsuarios.innerHTML = "";
+
+usuariosSnapshot.forEach(
+  usuario => {
+
+    const data =
+      usuario.data();
+
+    listaUsuarios.innerHTML += `
+
+      <div class="usuarioCard">
+
+        <b>
+          ${data.nombre || "-"}
+        </b>
+
+        <br>
+
+        📧 ${
+          usuario.id
+        }
+
+        <br>
+
+        👑 ${
+          data.rol || "-"
+        }
+
+        <br>
+
+        📟 Turno ${
+          data.turno || "-"
+        }
+
+        <br>
+
+        ${
+          data.activo
+            ? "✅ Activo"
+            : "❌ Inactivo"
+        }
+
+      </div>
+
+    `;
+
+  }
+);
 
   }
 );
