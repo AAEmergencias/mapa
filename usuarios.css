@@ -39,3 +39,39 @@ h1 {
   margin-bottom: 10px;
 
 }
+
+#tablaUsuarios {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+}
+
+#tablaUsuarios th {
+
+    background: #10b981;
+
+    color: white;
+
+    padding: 12px;
+
+    text-align: left;
+
+}
+
+#tablaUsuarios td {
+
+    padding: 12px;
+
+    border-bottom: 1px solid #334155;
+
+}
+
+#tablaUsuarios tr:hover {
+
+    background: #1e293b;
+
+}
