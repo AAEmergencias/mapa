@@ -132,9 +132,21 @@ usuariosSnapshot.forEach(
     <td>
 
     <button
-      class="btnAccion">
-      Ver
-    </button>
+  class="btnAccion btnVer"
+
+  data-nombre="${data.nombre}"
+
+  data-correo="${usuario.id}"
+
+  data-rol="${data.rol}"
+
+  data-turno="${data.turno}"
+
+  data-activo="${data.activo}"
+
+>
+  Ver
+</button>
 
 </td>
 
