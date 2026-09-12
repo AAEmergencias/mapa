@@ -115,3 +115,25 @@ window.location.href =
   }
 
 };
+
+document.getElementById(
+  "correo"
+).addEventListener(
+  "input",
+  () => {
+
+    mensaje.innerHTML = "";
+
+  }
+);
+
+document.getElementById(
+  "password"
+).addEventListener(
+  "input",
+  () => {
+
+    mensaje.innerHTML = "";
+
+  }
+);
