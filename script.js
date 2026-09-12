@@ -2759,16 +2759,17 @@ onAuthStateChanged(
     const datos =
       usuarioDoc.data();
 
-    if (!datos.activo) {
+   if (!datos.activo) {
+
+  await signOut(auth);
 
   alert(
     "⛔ Usuario deshabilitado. Contacte al SuperAdmin."
   );
 
-  await signOut(auth);
-
-  window.location.href =
-    "login.html";
+  window.location.replace(
+    "login.html"
+  );
 
   return;
 
