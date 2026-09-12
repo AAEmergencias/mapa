@@ -283,13 +283,15 @@ h1 {
 
     background: #1e293b;
 
-    padding: 25px;
+    padding: 30px;
 
     border-radius: 12px;
 
-    width: 400px;
+    width: 500px;
 
     border: 1px solid #10b981;
+
+    box-sizing: border-box;
 
 }
 
@@ -298,14 +300,30 @@ h1 {
 
     width: 100%;
 
-    padding: 10px;
+    padding: 12px;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
     border: 1px solid #334155;
 
     background: #0f172a;
 
     color: white;
+
+    box-sizing: border-box;
+
+    font-size: 15px;
+
+}
+
+.contenedorBotonesUsuario {
+
+    display: flex;
+
+    gap: 10px;
+
+    justify-content: center;
+
+    margin-top: 10px;
 
 }
