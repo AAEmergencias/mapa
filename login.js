@@ -77,6 +77,18 @@ if (!datos.activo) {
   mensaje.innerHTML =
     "⛔ Usuario deshabilitado";
 
+  document.getElementById(
+    "correo"
+  ).value = "";
+
+  document.getElementById(
+    "password"
+  ).value = "";
+
+  document.getElementById(
+    "correo"
+  ).focus();
+
   return;
 
 }
