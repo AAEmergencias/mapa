@@ -93,54 +93,37 @@ const usuariosSnapshot =
     )
   );
 
-listaUsuarios.innerHTML = "";
+listaUsuarios.innerHTML += `
 
-usuariosSnapshot.forEach(
-  usuario => {
+<tr>
 
-    const data =
-      usuario.data();
+    <td>
+        ${data.nombre || "-"}
+    </td>
 
-    listaUsuarios.innerHTML += `
+    <td>
+        ${usuario.id}
+    </td>
 
-      <div class="usuarioCard">
+    <td>
+        ${data.rol || "-"}
+    </td>
 
-        <b>
-          ${data.nombre || "-"}
-        </b>
+    <td>
+        ${data.turno || "-"}
+    </td>
 
-        <br>
-
-        📧 ${
-          usuario.id
-        }
-
-        <br>
-
-        👑 ${
-          data.rol || "-"
-        }
-
-        <br>
-
-        📟 Turno ${
-          data.turno || "-"
-        }
-
-        <br>
-
+    <td>
         ${
           data.activo
             ? "✅ Activo"
             : "❌ Inactivo"
         }
+    </td>
 
-      </div>
+</tr>
 
-    `;
-
-  }
-);
+`;
 
   }
 );
