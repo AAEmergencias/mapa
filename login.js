@@ -2,10 +2,12 @@ import {
 
   auth,
   db,
+
   signInWithEmailAndPassword,
+  signOut,
+
   doc,
-  getDocs,
-  collection
+  getDoc
 
 }
 from "./firebase.js";
@@ -115,7 +117,9 @@ document.getElementById(
   "input",
   () => {
 
-    mensaje.innerHTML = "";
+    document.getElementById(
+      "mensaje"
+    ).innerHTML = "";
 
   }
 );
@@ -126,7 +130,9 @@ document.getElementById(
   "input",
   () => {
 
-    mensaje.innerHTML = "";
+    document.getElementById(
+      "mensaje"
+    ).innerHTML = "";
 
   }
 );
