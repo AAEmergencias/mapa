@@ -327,3 +327,39 @@ h1 {
     margin-top: 10px;
 
 }
+
+#crearUsuario {
+
+    background: #10b981;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
+
+#cerrarNuevoUsuario {
+
+    background: #ef4444;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+}
