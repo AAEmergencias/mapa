@@ -19,3 +19,23 @@ h1 {
   margin-bottom: 20px;
 
 }
+
+#listaUsuarios {
+
+  margin-top: 20px;
+
+}
+
+.usuarioCard {
+
+  background: #1e293b;
+
+  border: 1px solid #10b981;
+
+  border-radius: 10px;
+
+  padding: 15px;
+
+  margin-bottom: 10px;
+
+}
