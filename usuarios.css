@@ -169,3 +169,39 @@ h1 {
   margin-top: 10px;
 
 }
+
+#rolUsuario {
+
+  background: #0f172a;
+
+  color: white;
+
+  border: 1px solid #10b981;
+
+  border-radius: 6px;
+
+  padding: 8px 10px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+#rolUsuario:hover {
+
+  border-color: #34d399;
+
+}
+
+#rolUsuario:focus {
+
+  outline: none;
+
+  box-shadow:
+    0 0 8px rgba(16,185,129,.5);
+
+}
+
