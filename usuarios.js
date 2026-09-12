@@ -129,6 +129,15 @@ usuariosSnapshot.forEach(
         }
     </td>
 
+    <td>
+
+    <button
+      class="btnAccion">
+      Ver
+    </button>
+
+</td>
+
 </tr>
 
 `;
