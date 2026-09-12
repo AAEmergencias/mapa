@@ -121,3 +121,33 @@ h1 {
     align-items: center;
 
 }
+
+#contenidoModal {
+
+    background: #1e293b;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    width: 400px;
+
+    border: 1px solid #10b981;
+
+}
+
+#cerrarModal {
+
+    background: #ef4444;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 15px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+}
