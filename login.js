@@ -42,18 +42,52 @@ async () => {
   try {
 
     await signInWithEmailAndPassword(
-      auth,
-      correo,
-      password
-    );
+  auth,
+  correo,
+  password
+);
 
-    localStorage.setItem(
-      "usuarioCorreo",
+const usuarioDoc =
+  await getDoc(
+    doc(
+      db,
+      "usuarios",
       correo
-    );
+    )
+  );
 
-    window.location.href =
-      "index.html";
+if (!usuarioDoc.exists()) {
+
+  await signOut(auth);
+
+  mensaje.innerHTML =
+    "❌ Usuario no registrado";
+
+  return;
+
+}
+
+const datos =
+  usuarioDoc.data();
+
+if (!datos.activo) {
+
+  await signOut(auth);
+
+  mensaje.innerHTML =
+    "⛔ Usuario deshabilitado";
+
+  return;
+
+}
+
+localStorage.setItem(
+  "usuarioCorreo",
+  correo
+);
+
+window.location.href =
+  "index.html";
 
   }
 
