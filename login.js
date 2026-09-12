@@ -1,21 +1,14 @@
 import {
 
   auth,
-
   db,
-
   signInWithEmailAndPassword,
-
   doc,
-
   getDocs,
-
   collection
 
 }
-
 from "./firebase.js";
-
 const btnLogin =
   document.getElementById(
     "btnLogin"
