@@ -266,6 +266,29 @@ document.addEventListener(
   💾 Guardar Rol
 </button>
 
+<br><br>
+
+<button
+
+  id="toggleActivo"
+
+  data-correo="${correo}"
+
+  data-activo="${activo}"
+
+>
+
+  ${
+    activo === "true"
+
+    ? "🔒 Desactivar Usuario"
+
+    : "✅ Activar Usuario"
+
+  }
+
+</button>
+
       `;
 
       document.getElementById(
