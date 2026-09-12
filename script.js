@@ -2759,6 +2759,21 @@ onAuthStateChanged(
     const datos =
       usuarioDoc.data();
 
+    if (!datos.activo) {
+
+  alert(
+    "⛔ Usuario deshabilitado. Contacte al SuperAdmin."
+  );
+
+  await signOut(auth);
+
+  window.location.href =
+    "login.html";
+
+  return;
+
+}
+
     // 👤 Mostrar usuario
 
     document.getElementById(
