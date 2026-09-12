@@ -9,7 +9,9 @@ import {
   getDoc,
 
   collection,
-  getDocs
+  getDocs,
+
+  updateDoc
 
 }
 from "./firebase.js";
@@ -199,10 +201,45 @@ document.addEventListener(
           ${correo}
         </p>
 
-        <p>
-          <b>Rol:</b>
-          ${rol}
-        </p>
+       <p>
+
+  <b>Rol:</b>
+
+  <select id="rolUsuario">
+
+      <option
+        value="operador"
+        ${
+          rol === "operador"
+            ? "selected"
+            : ""
+        }>
+        Operador
+      </option>
+
+      <option
+        value="admin"
+        ${
+          rol === "admin"
+            ? "selected"
+            : ""
+        }>
+        Admin
+      </option>
+
+      <option
+        value="superadmin"
+        ${
+          rol === "superadmin"
+            ? "selected"
+            : ""
+        }>
+        SuperAdmin
+      </option>
+
+  </select>
+
+</p>
 
         <p>
           <b>Turno:</b>
@@ -217,6 +254,17 @@ document.addEventListener(
               : "❌ Inactivo"
           }
         </p>
+
+        <br>
+
+<button
+  id="guardarRol"
+
+  data-correo="${correo}"
+
+>
+  💾 Guardar Rol
+</button>
 
       `;
 
