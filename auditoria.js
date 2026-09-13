@@ -135,7 +135,12 @@ snapshot.forEach(docSnap => {
     ${data.usuario || "-"}
   </td>
 
-  <td class="accion">
+  <td
+  class="accion"
+
+  data-accion="${data.accion || ""}"
+
+>
 
   ${data.accion || "-"}
 
