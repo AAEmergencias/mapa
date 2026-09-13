@@ -14,6 +14,8 @@ import {
 }
 from "./firebase.js";
 
+let auditoriaCompleta = [];
+
 console.log(
   "📋 Bitácora Operacional cargada"
 );
@@ -110,6 +112,8 @@ snapshot.forEach(docSnap => {
     a.timestamp
 
 );
+
+  auditoriaCompleta = registros;
 
 
  registros.forEach(
