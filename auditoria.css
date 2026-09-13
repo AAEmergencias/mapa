@@ -103,3 +103,37 @@ h1 {
     color: #22c55e;
 
 }
+
+#filtrosAuditoria {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+.filtroBtn {
+
+    background: #1e293b;
+
+    color: white;
+
+    border: 1px solid #10b981;
+
+    border-radius: 8px;
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+
+}
+
+.filtroBtn:hover {
+
+    background: #10b981;
+
+}
