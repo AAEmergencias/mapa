@@ -185,3 +185,23 @@ h1 {
     }
 
 }
+
+#encabezadoImpresion {
+
+    display: none;
+
+}
+
+@media print {
+
+    #encabezadoImpresion {
+
+        display: block;
+
+        margin-bottom: 20px;
+
+        color: black;
+
+    }
+
+}
