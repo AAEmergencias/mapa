@@ -2280,9 +2280,11 @@ btnGuardarNota.onclick = () => {
     unidad => {
 
       actualizarEstadoUnidad(
-        unidad,
-        estadoActualUnidad[unidad] || "6-T"
-      );
+  unidad,
+  estadoActualUnidad[unidad] || "6-T",
+  null,
+  emergenciaActiva.notas || ""
+);
 
     }
   );
