@@ -162,3 +162,70 @@ snapshot.forEach(docSnap => {
 
 }
 
+document.getElementById(
+  "buscadorAuditoria"
+).addEventListener(
+  "input",
+  (e) => {
+
+    const texto =
+      e.target.value
+        .toLowerCase();
+
+    const lista =
+      document.getElementById(
+        "listaAuditoria"
+      );
+
+    lista.innerHTML = "";
+
+    auditoriaCompleta
+      .filter(item => {
+
+        return JSON.stringify(item)
+          .toLowerCase()
+          .includes(texto);
+
+      })
+      .forEach(data => {
+
+        lista.innerHTML += `
+
+<tr>
+
+  <td>
+    ${data.fecha || "-"}
+  </td>
+
+  <td>
+    ${data.hora || "-"}
+  </td>
+
+  <td>
+    ${data.usuario || "-"}
+  </td>
+
+  <td>
+    ${data.accion || "-"}
+  </td>
+
+  <td>
+
+    ${data.detalle || "-"}
+
+    ${
+      data.nota
+        ? `<br><small>📝 ${data.nota}</small>`
+        : ""
+    }
+
+  </td>
+
+</tr>
+
+`;
+
+      });
+
+  }
+);
