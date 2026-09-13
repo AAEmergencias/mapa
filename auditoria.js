@@ -245,9 +245,70 @@ document.querySelectorAll(
     "click",
     () => {
 
-      console.log(
-        "Filtro:",
-        boton.dataset.filtro
+      const filtro =
+        boton.dataset.filtro;
+
+      const lista =
+        document.getElementById(
+          "listaAuditoria"
+        );
+
+      lista.innerHTML = "";
+
+      const registrosFiltrados =
+
+        filtro === "todos"
+
+          ? auditoriaCompleta
+
+          : auditoriaCompleta.filter(
+              item =>
+                item.accion === filtro
+            );
+
+      registrosFiltrados.forEach(
+        data => {
+
+          lista.innerHTML += `
+
+<tr>
+
+  <td>
+    ${data.fecha || "-"}
+  </td>
+
+  <td>
+    ${data.hora || "-"}
+  </td>
+
+  <td>
+    ${data.usuario || "-"}
+  </td>
+
+  <td
+    class="accion"
+    data-accion="${data.accion || ""}"
+  >
+    ${data.accion || "-"}
+  </td>
+
+  <td>
+
+    ${data.detalle || "-"}
+
+    ${
+      data.nota
+        ? `<br><small>📝 ${data.nota}</small>`
+        : ""
+    }
+
+  </td>
+
+</tr>
+
+`;
+
+        }
       );
 
     }
