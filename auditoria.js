@@ -92,7 +92,27 @@ async function cargarAuditoria() {
       )
     );
 
-  snapshot.forEach(
+  const registros = [];
+
+snapshot.forEach(docSnap => {
+
+  registros.push(
+    docSnap.data()
+  );
+
+});
+
+  registros.sort(
+
+  (a, b) =>
+
+    b.timestamp -
+    a.timestamp
+
+);
+
+
+  registros.forEach(
     docSnap => {
 
       const data =
