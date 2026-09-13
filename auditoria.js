@@ -236,3 +236,21 @@ document.getElementById(
 
   }
 );
+
+document.querySelectorAll(
+  ".filtroBtn"
+).forEach(boton => {
+
+  boton.addEventListener(
+    "click",
+    () => {
+
+      console.log(
+        "Filtro:",
+        boton.dataset.filtro
+      );
+
+    }
+  );
+
+});
