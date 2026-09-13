@@ -331,3 +331,14 @@ boton.classList.add(
   );
 
 });
+
+document.getElementById(
+  "btnImprimirAuditoria"
+).addEventListener(
+  "click",
+  () => {
+
+    window.print();
+
+  }
+);
