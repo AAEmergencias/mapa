@@ -679,7 +679,11 @@ if (
   {
     unidad: key,
     estado,
-    nota
+    nota,
+    notaGuardada:
+      estadoActualUnidad[
+        key + "_nota"
+      ]
   }
 );
 
