@@ -112,12 +112,9 @@ snapshot.forEach(docSnap => {
 );
 
 
-  registros.forEach(
-    docSnap => {
-
-      const data =
-        docSnap.data();
-
+ registros.forEach(
+  data => {
+    
       lista.innerHTML += `
 
 <tr>
