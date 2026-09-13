@@ -85,3 +85,9 @@ h1 {
     color: #ef4444;
 
 }
+
+.accion[data-accion="Cambio Estado Unidad"] {
+
+    color: #f59e0b;
+
+}
