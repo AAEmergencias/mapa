@@ -1600,6 +1600,48 @@ function abrirConfirmacionFinalizar(
   emergenciaPanel
 );
 
+        addDoc(
+
+  collection(
+    db,
+    "auditoriaOperacional"
+  ),
+
+  {
+
+    usuario:
+      auth.currentUser?.email || "",
+
+    accion:
+      "Emergencia Finalizada",
+
+    detalle:
+      emergenciaPanel.tipo +
+      " - " +
+      (
+        emergenciaPanel.ubicacion ||
+        "Sin ubicación"
+      ),
+
+    unidades:
+      emergenciaPanel.unidades?.join(", ")
+      || "Sin unidades",
+
+    fecha:
+      new Date()
+        .toLocaleDateString(),
+
+    hora:
+      new Date()
+        .toLocaleTimeString(),
+
+    timestamp:
+      Date.now()
+
+  }
+
+);
+
         historialEmergencias.push(
           emergenciaPanel
         );
