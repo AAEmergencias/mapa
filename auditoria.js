@@ -16,6 +16,9 @@ from "./firebase.js";
 
 let auditoriaCompleta = [];
 
+let filtroActual =
+  "Todas las acciones";
+
 console.log(
   "📋 Bitácora Operacional cargada"
 );
@@ -264,6 +267,11 @@ boton.classList.add(
       const filtro =
         boton.dataset.filtro;
 
+      filtroActual =
+  filtro === "todos"
+    ? "Todas las acciones"
+    : filtro;
+
       const lista =
         document.getElementById(
           "listaAuditoria"
@@ -337,6 +345,23 @@ document.getElementById(
 ).addEventListener(
   "click",
   () => {
+
+    document.getElementById(
+      "fechaImpresion"
+    ).innerHTML =
+
+      "Emitido: " +
+
+      new Date()
+        .toLocaleString();
+
+    document.getElementById(
+      "filtroImpresion"
+    ).innerHTML =
+
+      "Filtro aplicado: " +
+
+      filtroActual;
 
     window.print();
 
