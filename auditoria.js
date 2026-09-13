@@ -245,6 +245,22 @@ document.querySelectorAll(
     "click",
     () => {
 
+      document
+  .querySelectorAll(
+    ".filtroBtn"
+  )
+  .forEach(btn => {
+
+    btn.classList.remove(
+      "filtroActivo"
+    );
+
+  });
+
+boton.classList.add(
+  "filtroActivo"
+);
+
       const filtro =
         boton.dataset.filtro;
 
