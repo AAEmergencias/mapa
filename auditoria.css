@@ -137,3 +137,13 @@ h1 {
     background: #10b981;
 
 }
+
+.filtroActivo {
+
+    background: #10b981 !important;
+
+    color: white;
+
+    font-weight: bold;
+
+}
