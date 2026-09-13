@@ -79,3 +79,9 @@ h1 {
     font-weight: bold;
 
 }
+
+.accion[data-accion="Emergencia Creada"] {
+
+    color: #ef4444;
+
+}
