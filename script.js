@@ -939,7 +939,8 @@ addDoc(
 
   }
 )
-.then(docRef => {
+  
+.then(async docRef => {
 
   emergenciaActiva.firebaseId =
     docRef.id;
@@ -949,8 +950,45 @@ addDoc(
     docRef.id
   );
 
+  await addDoc(
+
+    collection(
+      db,
+      "auditoriaOperacional"
+    ),
+
+    {
+
+      usuario:
+        auth.currentUser?.email || "",
+
+      accion:
+        "Emergencia Creada",
+
+      detalle:
+        tipo +
+        " - " +
+        (
+          ubicacionSeleccionada?.nombre ||
+          "Sin ubicación"
+        ),
+
+      fecha:
+        new Date()
+          .toLocaleDateString(),
+
+      hora:
+        new Date()
+          .toLocaleTimeString(),
+
+      timestamp:
+        Date.now()
+
+    }
+
+  );
+
 });
-  
   let cercana = unidadMasCercana(ubicacionSeleccionada.coords);
 
 let nueva = {
