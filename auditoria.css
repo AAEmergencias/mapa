@@ -173,3 +173,15 @@ h1 {
     background: #2563eb;
 
 }
+
+@media print {
+
+    #buscadorAuditoria,
+    #filtrosAuditoria,
+    #btnImprimirAuditoria {
+
+        display: none !important;
+
+    }
+
+}
