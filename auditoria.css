@@ -51,3 +51,25 @@ h1 {
     background: #1e293b;
 
 }
+
+#buscadorAuditoria {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 20px;
+
+    border-radius: 8px;
+
+    border: 1px solid #10b981;
+
+    background: #1e293b;
+
+    color: white;
+
+    box-sizing: border-box;
+
+    font-size: 15px;
+
+}
