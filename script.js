@@ -1517,6 +1517,44 @@ console.log({
 
 console.log("✅ TRASLADO GUARDADO");
 
+    await addDoc(
+
+  collection(
+    db,
+    "auditoriaOperacional"
+  ),
+
+  {
+
+    usuario:
+      auth.currentUser?.email || "",
+
+    accion:
+      "Traslado Registrado",
+
+    detalle:
+      unidad +
+      " → " +
+      l,
+
+    tipoTraslado:
+      tipo,
+
+    fecha:
+      new Date()
+        .toLocaleDateString(),
+
+    hora:
+      new Date()
+        .toLocaleTimeString(),
+
+    timestamp:
+      Date.now()
+
+  }
+
+);
+
   } catch (error) {
 
     console.error("❌ Error guardando traslado:", error);
