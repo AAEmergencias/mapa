@@ -1,0 +1,53 @@
+body {
+
+    margin: 0;
+
+    padding: 20px;
+
+    background: #0f172a;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+}
+
+h1 {
+
+    color: #10b981;
+
+}
+
+#tablaAuditoria {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+}
+
+#tablaAuditoria th {
+
+    background: #10b981;
+
+    padding: 12px;
+
+    text-align: left;
+
+}
+
+#tablaAuditoria td {
+
+    padding: 12px;
+
+    border-bottom: 1px solid #334155;
+
+}
+
+#tablaAuditoria tr:hover {
+
+    background: #1e293b;
+
+}
