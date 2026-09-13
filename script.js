@@ -711,6 +711,47 @@ setDoc(
       new Date().toISOString()
   }
 );
+
+  addDoc(
+
+  collection(
+    db,
+    "auditoriaOperacional"
+  ),
+
+  {
+
+    usuario:
+      auth.currentUser?.email || "",
+
+    accion:
+      "Cambio Estado Unidad",
+
+    detalle:
+      nombreUnidad +
+      " → " +
+      estado +
+      " (" +
+      estados[estado] +
+      ")",
+
+    nota:
+      nota || "",
+
+    fecha:
+      new Date()
+        .toLocaleDateString(),
+
+    hora:
+      new Date()
+        .toLocaleTimeString(),
+
+    timestamp:
+      Date.now()
+
+  }
+
+);
   
 }
 
