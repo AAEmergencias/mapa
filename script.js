@@ -712,6 +712,16 @@ setDoc(
   }
 );
 
+  const notaAuditoria =
+
+  nota ||
+
+  estadoActualUnidad[
+    key + "_nota"
+  ] ||
+
+  "";
+
   addDoc(
 
   collection(
@@ -736,7 +746,7 @@ setDoc(
       ")",
 
     nota:
-      nota || "",
+  notaAuditoria,
 
     fecha:
       new Date()
