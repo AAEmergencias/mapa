@@ -2554,8 +2554,14 @@ panel.querySelector(".btnFinalizar").onclick = () => {
   return panel;
 }
 
-document.getElementById("irAdmin").onclick = () => {
-  window.open("admin.html", "_blank");
+document.getElementById(
+  "irAdmin"
+).onclick = () => {
+ 
+  window.open(
+    "admin.html",
+    "_blank"
+  );
 };
 
 document.getElementById(
@@ -2574,6 +2580,17 @@ document.getElementById(
       ? "none"
 
       : "flex";
+
+};
+
+document.getElementById(
+  "btnPanelAdmin"
+).onclick = () => {
+
+  window.open(
+    "admin.html",
+    "_blank"
+  );
 
 };
 
