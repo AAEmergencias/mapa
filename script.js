@@ -2960,6 +2960,7 @@ recuperarEstadosOperacionales();
 recuperarEmergenciasActivas();
 
 probarFirestoreUnidades();
+probarFirestoreBases();
 
 async function probarFirestoreUnidades() {
 
@@ -2996,6 +2997,47 @@ async function probarFirestoreUnidades() {
 
     console.error(
       "❌ Error leyendo unidades:",
+      error
+    );
+
+  }
+
+}
+
+async function probarFirestoreBases() {
+
+  try {
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "bases"
+        )
+      );
+
+    console.log(
+      "🏠 BASES FIRESTORE"
+    );
+
+    snapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      console.log(
+        data.nombre,
+        data.ubicacion
+      );
+
+    });
+
+  }
+
+  catch(error) {
+
+    console.error(
+      "❌ Error leyendo bases:",
       error
     );
 
