@@ -61,7 +61,11 @@ async function cargarUnidades() {
 
             lista.innerHTML += `
 
-<tr>
+<tr class="${
+  data.activa
+    ? ""
+    : "unidadInactiva"
+}">
 
   <td>
     ${data.codigo || "-"}
