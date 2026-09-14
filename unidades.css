@@ -205,3 +205,16 @@ h1 {
     font-weight: bold;
 
 }
+
+.unidadInactiva {
+
+    opacity: 0.55;
+
+}
+
+.unidadInactiva td {
+
+    color: #94a3b8;
+
+}
+
