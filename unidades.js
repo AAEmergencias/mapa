@@ -167,18 +167,7 @@ if (!docUnidad)
 ).value =
   (data.categorias || [])
     .join(", ");
-
-    
-  .forEach(chk => {
-
-    chk.checked =
-
-      (data.categorias || [])
-        .includes(
-          chk.value
-        );
-
-  });
+      
       document.getElementById(
   "activaUnidad"
 ).checked =
@@ -224,8 +213,8 @@ document.getElementById(
   ).value = "";
 
   document.getElementById(
-    "categoriaUnidad"
-  ).value = "";
+    "capacidadesUnidad"
+).value = "";
 
   document.getElementById(
     "modalUnidad"
@@ -262,21 +251,26 @@ document.getElementById(
       "baseUnidad"
     ).value.trim();
 
-  const categorias =
+ const categorias =
 
-  [...document
-    .querySelectorAll(
-      ".chkCategoria:checked"
-    )]
+  document
+    .getElementById(
+      "capacidadesUnidad"
+    )
+    .value
 
-  .map(chk => chk.value);
+    .split(",")
+
+    .map(x => x.trim())
+
+    .filter(x => x);
 
   const activa =
   document.getElementById(
     "activaUnidad"
   ).checked;
 
-    if (
+   if (
 
     !codigo ||
 
@@ -284,9 +278,9 @@ document.getElementById(
 
     !base ||
 
-    !categoria
+    categorias.length === 0
 
-  ) {
+) {
 
     alert(
       "⚠️ Complete todos los campos"
