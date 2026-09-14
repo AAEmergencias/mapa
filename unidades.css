@@ -189,3 +189,19 @@ h1 {
     background: #d97706;
 
 }
+
+#labelActivaUnidad {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: white;
+
+    margin-bottom: 15px;
+
+    font-weight: bold;
+
+}
