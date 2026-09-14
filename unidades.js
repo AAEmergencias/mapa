@@ -165,6 +165,11 @@ if (!docUnidad)
     .join(", ");
 
       document.getElementById(
+  "activaUnidad"
+).checked =
+  data.activa ?? true;
+
+      document.getElementById(
   "modalUnidad"
 ).style.display =
   "flex";
@@ -180,6 +185,10 @@ document.getElementById(
 ).onclick = () => {
 
   unidadEditando = null;
+
+  document.getElementById(
+  "activaUnidad"
+).checked = true;
 
   document.getElementById(
   "tituloModalUnidad"
@@ -243,6 +252,11 @@ document.getElementById(
       "categoriaUnidad"
     ).value.trim();
 
+  const activa =
+  document.getElementById(
+    "activaUnidad"
+  ).checked;
+
     if (
 
     !codigo ||
@@ -277,7 +291,7 @@ document.getElementById(
 
       base,
 
-      activa: true,
+      activa: activa,
 
       categorias: [
         categoria
