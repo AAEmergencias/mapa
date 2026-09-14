@@ -85,6 +85,19 @@ async function cargarUnidades() {
     }
   </td>
 
+  <td>
+
+  <button
+    class="btnEditarUnidad"
+    data-codigo="${data.codigo}"
+  >
+
+    ✏️
+
+  </button>
+
+</td>
+
 </tr>
 
 `;
