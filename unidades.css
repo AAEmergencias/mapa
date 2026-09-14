@@ -218,3 +218,22 @@ h1 {
 
 }
 
+#categoriasUnidad {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+
+}
+
+#categoriasUnidad label {
+
+    color: white;
+
+    font-weight: bold;
+
+}
