@@ -2559,6 +2559,47 @@ document.getElementById("irAdmin").onclick = () => {
 };
 
 document.getElementById(
+  "menuHerramientas"
+).onclick = () => {
+
+  const submenu =
+    document.getElementById(
+      "submenuHerramientas"
+    );
+
+  submenu.style.display =
+
+    submenu.style.display === "flex"
+
+      ? "none"
+
+      : "flex";
+
+};
+
+document.getElementById(
+  "btnUsuarios"
+).onclick = () => {
+
+  window.open(
+    "usuarios.html",
+    "_blank"
+  );
+
+};
+
+document.getElementById(
+  "btnBitacora"
+).onclick = () => {
+
+  window.open(
+    "auditoria.html",
+    "_blank"
+  );
+
+};
+
+document.getElementById(
   "verHistorial"
 ).onclick = () => {
 
