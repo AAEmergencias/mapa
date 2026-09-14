@@ -3033,18 +3033,76 @@ onAuthStateChanged(
     "irAdmin"
   );
 
-if (
-  datos.rol?.toLowerCase().trim() ===
-  "operador"
-) {
+    const menuHerramientas =
+  document.getElementById(
+    "menuHerramientas"
+  );
+
+const btnUsuarios =
+  document.getElementById(
+    "btnUsuarios"
+  );
+
+const btnBitacora =
+  document.getElementById(
+    "btnBitacora"
+  );
+
+const btnPanelAdmin =
+  document.getElementById(
+    "btnPanelAdmin"
+  );
+    
+
+const rol =
+  datos.rol
+    ?.toLowerCase()
+    .trim();
+
+if (rol === "operador") {
 
   btnAdmin.style.display =
     "none";
 
+  menuHerramientas.style.display =
+    "none";
+
 }
-else {
+
+else if (rol === "admin") {
 
   btnAdmin.style.display =
+    "none";
+
+  menuHerramientas.style.display =
+    "block";
+
+  btnPanelAdmin.style.display =
+    "block";
+
+  btnUsuarios.style.display =
+    "none";
+
+  btnBitacora.style.display =
+    "none";
+
+}
+
+else if (rol === "superadmin") {
+
+  btnAdmin.style.display =
+    "none";
+
+  menuHerramientas.style.display =
+    "block";
+
+  btnPanelAdmin.style.display =
+    "block";
+
+  btnUsuarios.style.display =
+    "block";
+
+  btnBitacora.style.display =
     "block";
 
 }
