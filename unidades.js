@@ -92,3 +92,22 @@ async function cargarUnidades() {
 
 }
 
+document.getElementById(
+  "btnNuevaUnidad"
+).onclick = () => {
+
+  document.getElementById(
+    "modalUnidad"
+  ).style.display = "flex";
+
+};
+
+document.getElementById(
+  "cerrarModalUnidad"
+).onclick = () => {
+
+  document.getElementById(
+    "modalUnidad"
+  ).style.display = "none";
+
+};
