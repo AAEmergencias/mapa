@@ -162,12 +162,20 @@ if (!docUnidad)
 ).value =
   data.base || "";
 
-      document.getElementById(
-  "categoriaUnidad"
-).value =
-  (data.categorias || [])
-    .join(", ");
+      document
+  .querySelectorAll(
+    ".chkCategoria"
+  )
+  .forEach(chk => {
 
+    chk.checked =
+
+      (data.categorias || [])
+        .includes(
+          chk.value
+        );
+
+  });
       document.getElementById(
   "activaUnidad"
 ).checked =
@@ -251,10 +259,14 @@ document.getElementById(
       "baseUnidad"
     ).value.trim();
 
-  const categoria =
-    document.getElementById(
-      "categoriaUnidad"
-    ).value.trim();
+  const categorias =
+
+  [...document
+    .querySelectorAll(
+      ".chkCategoria:checked"
+    )]
+
+  .map(chk => chk.value);
 
   const activa =
   document.getElementById(
@@ -297,9 +309,8 @@ document.getElementById(
 
       activa: activa,
 
-      categorias: [
-        categoria
-      ]
+      categorias:
+  categorias
 
     }
   );
