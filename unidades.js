@@ -139,6 +139,11 @@ if (!docUnidad)
   codigo;
 
       document.getElementById(
+  "tituloModalUnidad"
+).innerText =
+  "✏️ Editar Unidad";
+
+      document.getElementById(
   "codigoUnidad"
 ).value =
   data.codigo || "";
@@ -175,6 +180,12 @@ document.getElementById(
 ).onclick = () => {
 
   unidadEditando = null;
+
+  document.getElementById(
+  "tituloModalUnidad"
+).innerText =
+  "🚒 Nueva Unidad";
+  
 
   document.getElementById(
     "codigoUnidad"
