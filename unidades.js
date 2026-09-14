@@ -119,10 +119,51 @@ async function cargarUnidades() {
 
     btn.onclick = () => {
 
-      alert(
-        btn.dataset.codigo
-      );
+      const codigo =
+  btn.dataset.codigo;
 
+const docUnidad =
+  snapshot.docs.find(
+    d =>
+      d.data().codigo ===
+      codigo
+  );
+
+if (!docUnidad)
+  return;
+
+      const data =
+  docUnidad.data();
+
+      unidadEditando =
+  codigo;
+
+      document.getElementById(
+  "codigoUnidad"
+).value =
+  data.codigo || "";
+
+      document.getElementById(
+  "nombreUnidad"
+).value =
+  data.nombre || "";
+
+      document.getElementById(
+  "baseUnidad"
+).value =
+  data.base || "";
+
+      document.getElementById(
+  "categoriaUnidad"
+).value =
+  (data.categorias || [])
+    .join(", ");
+
+      document.getElementById(
+  "modalUnidad"
+).style.display =
+  "flex";
+      
     };
 
   });
