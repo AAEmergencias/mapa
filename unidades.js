@@ -162,10 +162,13 @@ if (!docUnidad)
 ).value =
   data.base || "";
 
-      document
-  .querySelectorAll(
-    ".chkCategoria"
-  )
+     document.getElementById(
+  "capacidadesUnidad"
+).value =
+  (data.categorias || [])
+    .join(", ");
+
+    
   .forEach(chk => {
 
     chk.checked =
