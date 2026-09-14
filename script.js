@@ -243,7 +243,7 @@ if (titulo) {
 // ==========================
 // 🚑 UNIDADES
 // ==========================
-const unidades = [
+const unidadesRespaldo = [
   { nombre: "UIR-E / Ermita", base: "Brigada La Ermita" },
   { nombre: "B1 / Bronces", base: " Brigada Los Bronces" },
   { nombre: "UIR-M / Mina", base: " Brigada Mina" },
@@ -2960,6 +2960,55 @@ recuperarEstadosOperacionales();
 recuperarEmergenciasActivas();
 
 probarFirestoreUnidades();
+cargarUnidadesFirestore();
+
+async function cargarUnidadesFirestore() {
+
+  try {
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "unidades"
+        )
+      );
+
+    unidades = [];
+
+    snapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      unidades.push({
+
+        nombre:
+          data.nombre,
+
+        base:
+          data.base
+
+      });
+
+    });
+
+    console.log(
+      "✅ Unidades cargadas:",
+      unidades
+    );
+
+  }
+
+  catch(error) {
+
+    console.error(
+      error
+    );
+
+  }
+
+}
 
 async function probarFirestoreUnidades() {
 
