@@ -186,6 +186,14 @@ h1 {
 
 }
 
+#logoBitacora {
+
+    width: 90px;
+
+    height: 90px;
+
+}
+
 #encabezadoImpresion {
 
     display: none;
