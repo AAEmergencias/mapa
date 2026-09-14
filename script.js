@@ -243,7 +243,7 @@ if (titulo) {
 // ==========================
 // 🚑 UNIDADES
 // ==========================
-const unidadesRespaldo = [
+const unidades = [
   { nombre: "UIR-E / Ermita", base: "Brigada La Ermita" },
   { nombre: "B1 / Bronces", base: " Brigada Los Bronces" },
   { nombre: "UIR-M / Mina", base: " Brigada Mina" },
