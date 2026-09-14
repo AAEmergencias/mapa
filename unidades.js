@@ -111,6 +111,22 @@ async function cargarUnidades() {
   "Botones editar listos"
 );
 
+  document
+  .querySelectorAll(
+    ".btnEditarUnidad"
+  )
+  .forEach(btn => {
+
+    btn.onclick = () => {
+
+      alert(
+        btn.dataset.codigo
+      );
+
+    };
+
+  });
+
 }
 
 document.getElementById(
