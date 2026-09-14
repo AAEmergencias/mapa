@@ -129,3 +129,39 @@ h1 {
     cursor: pointer;
 
 }
+
+#modalUnidadContenido input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-bottom: 10px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    border: none;
+
+}
+
+#guardarUnidad {
+
+    width: 100%;
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    margin-bottom: 10px;
+
+}
