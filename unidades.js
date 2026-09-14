@@ -16,6 +16,8 @@ import {
 }
 from "./firebase.js";
 
+let unidadEditando = null;
+
 onAuthStateChanged(
   auth,
   async (user) => {
@@ -105,11 +107,33 @@ async function cargarUnidades() {
     }
   );
 
+  console.log(
+  "Botones editar listos"
+);
+
 }
 
 document.getElementById(
   "btnNuevaUnidad"
 ).onclick = () => {
+
+  unidadEditando = null;
+
+  document.getElementById(
+    "codigoUnidad"
+  ).value = "";
+
+  document.getElementById(
+    "nombreUnidad"
+  ).value = "";
+
+  document.getElementById(
+    "baseUnidad"
+  ).value = "";
+
+  document.getElementById(
+    "categoriaUnidad"
+  ).value = "";
 
   document.getElementById(
     "modalUnidad"
