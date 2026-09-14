@@ -1468,3 +1468,41 @@ body {
     background: #10b981;
 
 }
+
+#submenuHerramientas {
+
+    display: none;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 10px;
+
+}
+
+#submenuHerramientas button {
+
+    background: #1e293b;
+
+    color: white;
+
+    border: 1px solid #10b981;
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    width: 100%;
+
+}
+
+#submenuHerramientas button:hover {
+
+    background: #10b981;
+
+}
