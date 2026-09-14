@@ -2959,6 +2959,50 @@ async function recuperarEstadosOperacionales() {
 recuperarEstadosOperacionales();
 recuperarEmergenciasActivas();
 
+probarFirestoreUnidades();
+
+async function probarFirestoreUnidades() {
+
+  try {
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "unidades"
+        )
+      );
+
+    console.log(
+      "🚒 UNIDADES FIRESTORE"
+    );
+
+    snapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      console.log(
+        data.codigo,
+        data.nombre,
+        data.base
+      );
+
+    });
+
+  }
+
+  catch(error) {
+
+    console.error(
+      "❌ Error leyendo unidades:",
+      error
+    );
+
+  }
+
+}
+
 // ==========================
 // 👤 USUARIO LOGEADO
 // ==========================
