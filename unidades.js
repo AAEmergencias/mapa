@@ -9,7 +9,9 @@ import {
   getDoc,
 
   collection,
-  getDocs
+  getDocs,
+
+  setDoc
 
 }
 from "./firebase.js";
@@ -111,3 +113,82 @@ document.getElementById(
   ).style.display = "none";
 
 };
+
+document.getElementById(
+  "guardarUnidad"
+).onclick = async () => {
+
+    const codigo =
+    document.getElementById(
+      "codigoUnidad"
+    ).value.trim();
+
+  const nombre =
+    document.getElementById(
+      "nombreUnidad"
+    ).value.trim();
+
+  const base =
+    document.getElementById(
+      "baseUnidad"
+    ).value.trim();
+
+  const categoria =
+    document.getElementById(
+      "categoriaUnidad"
+    ).value.trim();
+
+    if (
+
+    !codigo ||
+
+    !nombre ||
+
+    !base ||
+
+    !categoria
+
+  ) {
+
+    alert(
+      "⚠️ Complete todos los campos"
+    );
+
+    return;
+
+  }
+
+    await setDoc(
+    doc(
+      db,
+      "unidades",
+      codigo
+    ),
+    {
+
+      codigo,
+
+      nombre,
+
+      base,
+
+      activa: true,
+
+      categorias: [
+        categoria
+      ]
+
+    }
+  );
+
+    alert(
+    "✅ Unidad creada"
+  );
+
+    document.getElementById(
+    "modalUnidad"
+  ).style.display = "none";
+
+    cargarUnidades();
+
+  };
