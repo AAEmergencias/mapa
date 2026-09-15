@@ -3210,6 +3210,14 @@ console.log(
 );
 
         console.log(
+  "¿R1 existe en unidadesCoords?"
+);
+        
+        console.log(
+  unidadesCoords["R1"]
+);
+
+        console.log(
   "🚒 UIR-M actual:"
 );
 
