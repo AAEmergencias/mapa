@@ -2964,6 +2964,106 @@ probarFirestoreBases();
 
 buscarGeoPointR1();
 
+async function obtenerCoordenadasUnidad(
+  codigo
+) {
+
+  if (
+    unidadesCoords[codigo]
+  ) {
+
+    return unidadesCoords[codigo];
+
+  }
+
+  const unidadesSnapshot =
+    await getDocs(
+      collection(
+        db,
+        "unidades"
+      )
+    );
+
+  let unidad = null;
+
+  unidadesSnapshot.forEach(
+    docSnap => {
+
+      const data =
+        docSnap.data();
+
+      if (
+        data.codigo === codigo
+      ) {
+
+        unidad = data;
+
+      }
+
+    }
+  );
+
+  if (!unidad)
+    return null;
+
+  const basesSnapshot =
+    await getDocs(
+      collection(
+        db,
+        "bases"
+      )
+    );
+
+  let coords = null;
+
+  basesSnapshot.forEach(
+    docSnap => {
+
+      const data =
+        docSnap.data();
+
+      if (
+        data.nombre ===
+        unidad.base
+      ) {
+
+        coords = {
+
+          lat:
+            data.ubicacion.latitude,
+
+          lng:
+            data.ubicacion.longitude
+
+        };
+
+      }
+
+    }
+  );
+
+  return coords;
+
+}
+
+async function probarCoordenadasR1() {
+
+  const resultado =
+
+    await obtenerCoordenadasUnidad(
+      "R1"
+    );
+
+  console.log(
+    "🎯 Resultado Final:"
+  );
+
+  console.log(
+    resultado
+  );
+
+}
+
 async function probarFirestoreUnidades() {
 
   try {
