@@ -2964,6 +2964,8 @@ probarFirestoreBases();
 
 buscarGeoPointR1();
 
+probarCoordenadasR1();
+
 async function obtenerCoordenadasUnidad(
   codigo
 ) {
