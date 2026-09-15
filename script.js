@@ -2962,7 +2962,7 @@ recuperarEmergenciasActivas();
 probarFirestoreUnidades();
 probarFirestoreBases();
 
-buscarBaseR1();
+buscarGeoPointR1();
 
 async function probarFirestoreUnidades() {
 
@@ -3075,6 +3075,82 @@ async function buscarBaseR1() {
         console.log(
           "Base:",
           data.base
+        );
+
+      }
+
+    });
+
+  }
+
+  catch(error) {
+
+    console.error(
+      error
+    );
+
+  }
+
+}
+
+async function buscarGeoPointR1() {
+
+  try {
+
+    const unidadesSnapshot =
+      await getDocs(
+        collection(
+          db,
+          "unidades"
+        )
+      );
+
+    const basesSnapshot =
+      await getDocs(
+        collection(
+          db,
+          "bases"
+        )
+      );
+
+    let baseR1 = null;
+
+    unidadesSnapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      if (
+        data.codigo === "R1"
+      ) {
+
+        baseR1 =
+          data.base;
+
+      }
+
+    });
+
+    console.log(
+      "🚒 Base de R1:",
+      baseR1
+    );
+
+    basesSnapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      if (
+        data.nombre === baseR1
+      ) {
+
+        console.log(
+          "📍 GeoPoint encontrado:"
+        );
+
+        console.log(
+          data.ubicacion
         );
 
       }
