@@ -3092,6 +3092,20 @@ async function probarCoordenadasR1() {
   resultadoB1
 );
 
+  const resultadoH1 =
+
+  await obtenerCoordenadasUnidad(
+    "H1"
+  );
+
+  console.log(
+  "🚒 Coordenadas H1:"
+);
+
+  console.log(
+  resultadoH1
+);
+
 }
 
 async function probarFirestoreUnidades() {
