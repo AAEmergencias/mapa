@@ -3150,8 +3150,18 @@ async function buscarGeoPointR1() {
         );
 
         console.log(
-          data.ubicacion
-        );
+  data.ubicacion
+);
+
+console.log(
+  "LAT:",
+  data.ubicacion.latitude
+);
+
+console.log(
+  "LNG:",
+  data.ubicacion.longitude
+);
 
       }
 
