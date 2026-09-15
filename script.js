@@ -2962,6 +2962,8 @@ recuperarEmergenciasActivas();
 probarFirestoreUnidades();
 probarFirestoreBases();
 
+buscarBaseR1();
+
 async function probarFirestoreUnidades() {
 
   try {
@@ -3038,6 +3040,52 @@ async function probarFirestoreBases() {
 
     console.error(
       "❌ Error leyendo bases:",
+      error
+    );
+
+  }
+
+}
+
+async function buscarBaseR1() {
+
+  try {
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "unidades"
+        )
+      );
+
+    snapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      if (
+        data.codigo === "R1"
+      ) {
+
+        console.log(
+          "🚒 R1 encontrada"
+        );
+
+        console.log(
+          "Base:",
+          data.base
+        );
+
+      }
+
+    });
+
+  }
+
+  catch(error) {
+
+    console.error(
       error
     );
 
