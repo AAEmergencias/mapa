@@ -3191,7 +3191,23 @@ console.log(
 
     coordenadasR1
 
-});   
+});  
+
+    const unidadVirtual = {
+
+  codigo: "R1",
+
+  coords: coordenadasR1
+
+};
+
+        console.log(
+  "🚒 Unidad Virtual:"
+);
+
+        console.log(
+  unidadVirtual
+);
 
       }
 
