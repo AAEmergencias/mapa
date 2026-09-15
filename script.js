@@ -3078,7 +3078,19 @@ async function probarCoordenadasR1() {
   resultadoUIRM
 );
 
-  
+  const resultadoB1 =
+
+  await obtenerCoordenadasUnidad(
+    "B1"
+  );
+
+  console.log(
+  "🚒 Coordenadas B1:"
+);
+
+  console.log(
+  resultadoB1
+);
 
 }
 
