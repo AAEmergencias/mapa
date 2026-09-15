@@ -3098,13 +3098,23 @@ async function probarCoordenadasR1() {
     "H1"
   );
 
-  console.log(
+console.log(
   "🚒 Coordenadas H1:"
 );
 
+if (resultadoH1) {
+
   console.log(
-  resultadoH1
-);
+    resultadoH1
+  );
+
+} else {
+
+  console.log(
+    "❌ Unidad no encontrada"
+  );
+
+}
 
 }
 
