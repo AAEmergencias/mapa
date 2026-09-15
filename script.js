@@ -3064,6 +3064,22 @@ async function probarCoordenadasR1() {
     resultado
   );
 
+  const resultadoUIRM =
+
+  await obtenerCoordenadasUnidad(
+    "UIR-M"
+  );
+
+  console.log(
+  "🚒 Coordenadas UIR-M:"
+);
+
+  console.log(
+  resultadoUIRM
+);
+
+  
+
 }
 
 async function probarFirestoreUnidades() {
