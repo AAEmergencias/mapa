@@ -3163,6 +3163,24 @@ console.log(
   data.ubicacion.longitude
 );
 
+const coordenadasR1 = {
+
+  lat:
+    data.ubicacion.latitude,
+
+  lng:
+    data.ubicacion.longitude
+
+};
+
+console.log(
+  "🚒 Coordenadas R1:"
+);
+
+console.log(
+  coordenadasR1
+);   
+
       }
 
     });
