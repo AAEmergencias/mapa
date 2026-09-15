@@ -3225,6 +3225,25 @@ console.log(
   unidadesCoords["UIR-M"]
 );
         
+       console.log(
+  "¿Son iguales?"
+);
+
+        console.log(
+
+  coordenadasR1.lat ===
+  unidadesCoords["UIR-M"].lat
+
+);
+
+        console.log(
+
+  coordenadasR1.lng ===
+  unidadesCoords["UIR-M"].lng
+
+);
+
+        
 
       }
 
