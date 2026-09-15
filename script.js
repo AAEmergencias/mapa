@@ -3179,7 +3179,19 @@ console.log(
 
 console.log(
   coordenadasR1
-);   
+);
+
+    console.log(
+  "✅ Formato compatible con unidadesCoords"
+);
+
+    console.log({
+
+  R1:
+
+    coordenadasR1
+
+});   
 
       }
 
