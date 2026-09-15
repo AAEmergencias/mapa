@@ -3209,6 +3209,15 @@ console.log(
   unidadVirtual
 );
 
+        console.log(
+  "🚒 UIR-M actual:"
+);
+
+        console.log(
+  unidadesCoords["UIR-M"]
+);
+        
+
       }
 
     });
