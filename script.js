@@ -3124,6 +3124,16 @@ console.log(
   unidadesFirestore[0]
 );
 
+    console.log(
+  "🚒 Buscando R1:"
+);
+
+console.log(
+  buscarUnidadFirestore(
+    "R1"
+  )
+);
+
   }
 
   catch(error) {
@@ -3134,6 +3144,20 @@ console.log(
     );
 
   }
+
+}
+
+function buscarUnidadFirestore(
+  codigo
+) {
+
+  return unidadesFirestore.find(
+
+    unidad =>
+
+      unidad.codigo === codigo
+
+  );
 
 }
 
