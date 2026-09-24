@@ -401,6 +401,12 @@ function unidadMasCercana(destino) {
     let key = u.nombre.split(" ")[0];
 let coords = unidadesCoords[key];
 
+    console.log(
+  "📍 Unidad evaluada:",
+  key,
+  coords
+);
+
     if (!coords) return;
 
     let d = distancia(coords, destino);
