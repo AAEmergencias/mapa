@@ -3134,6 +3134,16 @@ console.log(
   )
 );
 
+    console.log(
+  "🚒 Buscando H1:"
+);
+
+console.log(
+  buscarUnidadFirestore(
+    "H1"
+  )
+);
+
   }
 
   catch(error) {
