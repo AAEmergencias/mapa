@@ -434,7 +434,13 @@ console.log(
 );
 
     
-let coords = unidadesCoords[key];
+// let coords = unidadesCoords[key];
+
+    let coords =
+
+  await obtenerCoordenadasUnidad(
+    key
+  );
 
     console.log(
   "📍 Unidad evaluada:",
