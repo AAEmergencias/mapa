@@ -103,6 +103,7 @@ let ubicacionSeleccionada = null;
 let unidadSeleccionada = null;
 
 let unidadesFirestore = [];
+let unidadesDinamicas = [];
 
 // ==========================
 // 📥 CARGAR KML (SIN CAPAS)
@@ -3143,6 +3144,29 @@ console.log(
     "H1"
   )
 );
+
+    unidadesDinamicas =
+
+  unidadesFirestore.map(
+    unidad => ({
+
+      nombre:
+        unidad.nombre,
+
+      base:
+        unidad.base
+
+    })
+  );
+
+    console.log(
+  "🚒 UNIDADES DINÁMICAS:"
+);
+
+console.table(
+  unidadesDinamicas
+);
+
 
   }
 
