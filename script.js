@@ -3167,6 +3167,16 @@ console.table(
   unidadesDinamicas
 );
 
+    console.log(
+  "📦 Unidades estáticas:",
+  unidades.length
+);
+
+console.log(
+  "🚒 Unidades dinámicas:",
+  unidadesDinamicas.length
+);
+
 
   }
 
