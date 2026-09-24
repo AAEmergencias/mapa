@@ -3177,6 +3177,31 @@ console.log(
   unidadesDinamicas.length
 );
 
+    const diferencia =
+
+  unidadesFirestore.filter(
+
+    unidadFirestore =>
+
+      !unidades.some(
+
+        unidadLocal =>
+
+          unidadLocal.nombre ===
+          unidadFirestore.nombre
+
+      )
+
+  );
+
+    console.log(
+  "🚨 Diferencias:"
+);
+
+console.table(
+  diferencia
+);
+
 
   }
 
