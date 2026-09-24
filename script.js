@@ -416,6 +416,18 @@ function unidadMasCercana(destino) {
   obtenerUnidadesActivas().forEach(u => {
 
     let key = u.nombre.split(" ")[0];
+
+    console.log(
+  "🔍 Nombre completo:",
+  u.nombre
+);
+
+console.log(
+  "🔑 Key:",
+  key
+);
+
+    
 let coords = unidadesCoords[key];
 
     console.log(
