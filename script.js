@@ -2965,12 +2965,12 @@ async function recuperarEstadosOperacionales() {
 recuperarEstadosOperacionales();
 recuperarEmergenciasActivas();
 
-probarFirestoreUnidades();
-probarFirestoreBases();
-
+// probarFirestoreUnidades();
+// probarFirestoreBases();
 // buscarGeoPointR1();
+// probarCoordenadasR1();
 
-probarCoordenadasR1();
+cargarUnidadesFirestore();
 
 async function obtenerCoordenadasUnidad(
   codigo
@@ -3069,6 +3069,56 @@ async function probarCoordenadasR1() {
   console.log(
     resultadoR1
   );
+
+}
+
+async function cargarUnidadesFirestore() {
+
+  try {
+
+    const snapshot = await getDocs(
+      collection(
+        db,
+        "unidades"
+      )
+    );
+
+    const unidadesFirestore = [];
+
+    snapshot.forEach(docSnap => {
+
+      const data = docSnap.data();
+
+      unidadesFirestore.push({
+
+        codigo: data.codigo,
+
+        nombre: data.nombre,
+
+        base: data.base
+
+      });
+
+    });
+
+    console.log(
+      "🚒 UNIDADES DESDE FIRESTORE"
+    );
+
+    console.table(
+      unidadesFirestore
+    );
+
+  }
+
+  catch(error) {
+
+    console.error(
+      "❌ Error cargando unidades:",
+      error
+    );
+
+  }
 
 }
 
