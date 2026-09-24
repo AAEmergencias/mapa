@@ -419,7 +419,7 @@ async function unidadMasCercana(destino) {
   let mejor = null;
   let minDist = Infinity;
 
-  obtenerUnidadesActivas().forEach(u => {
+for (const u of obtenerUnidadesActivas()) {
 
     let key = u.nombre.split(" ")[0];
 
@@ -456,7 +456,7 @@ console.log(
       minDist = d;
       mejor = u;
     }
-  });
+}
 
   return mejor;
 }
