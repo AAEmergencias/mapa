@@ -102,6 +102,8 @@ let lugares = [];
 let ubicacionSeleccionada = null;
 let unidadSeleccionada = null;
 
+let unidadesFirestore = [];
+
 // ==========================
 // 📥 CARGAR KML (SIN CAPAS)
 // ==========================
@@ -3083,7 +3085,7 @@ async function cargarUnidadesFirestore() {
       )
     );
 
-    const unidadesFirestore = [];
+   unidadesFirestore = [];
 
     snapshot.forEach(docSnap => {
 
@@ -3108,6 +3110,11 @@ async function cargarUnidadesFirestore() {
     console.table(
       unidadesFirestore
     );
+
+    console.log(
+  "📊 Total unidades:",
+  unidadesFirestore.length
+);
 
   }
 
