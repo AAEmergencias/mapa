@@ -3116,6 +3116,14 @@ async function cargarUnidadesFirestore() {
   unidadesFirestore.length
 );
 
+    console.log(
+  "🚒 Primera unidad:"
+);
+
+console.log(
+  unidadesFirestore[0]
+);
+
   }
 
   catch(error) {
