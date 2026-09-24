@@ -414,7 +414,7 @@ if (!marker) return;
 // ==========================
 // 🚑 UNIDAD MÁS CERCANA
 // ==========================
-function unidadMasCercana(destino) {
+async function unidadMasCercana(destino) {
 
   let mejor = null;
   let minDist = Infinity;
