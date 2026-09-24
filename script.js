@@ -413,7 +413,7 @@ function unidadMasCercana(destino) {
   let mejor = null;
   let minDist = Infinity;
 
-  unidades.forEach(u => {
+  obtenerUnidadesActivas().forEach(u => {
 
     let key = u.nombre.split(" ")[0];
 let coords = unidadesCoords[key];
