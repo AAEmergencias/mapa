@@ -105,6 +105,20 @@ let unidadSeleccionada = null;
 let unidadesFirestore = [];
 let unidadesDinamicas = [];
 
+function obtenerUnidadesActivas() {
+
+  if (
+    unidadesDinamicas.length > 0
+  ) {
+
+    return unidadesDinamicas;
+
+  }
+
+  return unidades;
+
+}
+
 // ==========================
 // 📥 CARGAR KML (SIN CAPAS)
 // ==========================
@@ -3202,6 +3216,13 @@ console.table(
   diferencia
 );
 
+    console.log(
+  "🚒 Unidades activas:"
+);
+
+console.table(
+  obtenerUnidadesActivas()
+);
 
   }
 
