@@ -2962,7 +2962,7 @@ recuperarEmergenciasActivas();
 probarFirestoreUnidades();
 probarFirestoreBases();
 
-buscarGeoPointR1();
+// buscarGeoPointR1();
 
 probarCoordenadasR1();
 
@@ -3050,71 +3050,19 @@ async function obtenerCoordenadasUnidad(
 
 async function probarCoordenadasR1() {
 
-  const resultado =
+  const resultadoR1 =
 
     await obtenerCoordenadasUnidad(
       "R1"
     );
 
   console.log(
-    "🎯 Resultado Final:"
+    "🚒 R1:"
   );
 
   console.log(
-    resultado
+    resultadoR1
   );
-
-  const resultadoUIRM =
-
-  await obtenerCoordenadasUnidad(
-    "UIR-M"
-  );
-
-  console.log(
-  "🚒 Coordenadas UIR-M:"
-);
-
-  console.log(
-  resultadoUIRM
-);
-
-  const resultadoB1 =
-
-  await obtenerCoordenadasUnidad(
-    "B1"
-  );
-
-  console.log(
-  "🚒 Coordenadas B1:"
-);
-
-  console.log(
-  resultadoB1
-);
-
-  const resultadoH1 =
-
-  await obtenerCoordenadasUnidad(
-    "H1"
-  );
-
-console.log(
-  "🚒 Coordenadas H1:"
-);
-
-if (resultadoH1) {
-
-  console.log(
-    resultadoH1
-  );
-
-} else {
-
-  console.log(
-    "❌ Unidad no encontrada"
-  );
-
-}
 
 }
 
