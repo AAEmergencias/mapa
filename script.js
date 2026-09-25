@@ -115,6 +115,10 @@ function obtenerUnidadesActivas() {
 
   }
 
+  console.warn(
+  "⚠️ Usando catálogo respaldo"
+);
+  
   return unidades;
 
 }
