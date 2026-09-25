@@ -115,8 +115,12 @@ function obtenerUnidadesActivas() {
 
   }
 
-  console.warn(
+console.warn(
   "⚠️ Usando catálogo respaldo"
+);
+
+console.trace(
+  "📍 Quién llamó obtenerUnidadesActivas"
 );
   
   return unidades;
