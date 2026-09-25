@@ -3011,13 +3011,18 @@ async function obtenerCoordenadasUnidad(
   codigo
 ) {
 
-  if (
-    unidadesCoords[codigo]
-  ) {
+ if (
+  unidadesCoords[codigo]
+) {
 
-    return unidadesCoords[codigo];
+  console.log(
+    "📦 Coordenadas locales:",
+    codigo
+  );
 
-  }
+  return unidadesCoords[codigo];
+
+}
 
   const unidadesSnapshot =
     await getDocs(
@@ -3084,6 +3089,11 @@ async function obtenerCoordenadasUnidad(
 
     }
   );
+
+  console.log(
+  "🔥 Coordenadas Firestore:",
+  codigo
+);
 
   return coords;
 
