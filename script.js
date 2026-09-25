@@ -276,10 +276,28 @@ const unidades = [
 let baseActualUnidad = {};
 let estadoActualUnidad = {};
 
+/*
 unidades.forEach(u => {
   let key = u.nombre.split(" ")[0];
   baseActualUnidad[key] = u.base.trim();
 });
+*/
+
+function actualizarBasesDinamicas() {
+
+  baseActualUnidad = {};
+
+  obtenerUnidadesActivas().forEach(u => {
+
+    let key =
+      u.nombre.split(" ")[0];
+
+    baseActualUnidad[key] =
+      u.base.trim();
+
+  });
+
+}
 
 const basesCoords = {
 
@@ -3255,6 +3273,16 @@ console.table(
 
 console.table(
   obtenerUnidadesActivas()
+);
+
+    actualizarBasesDinamicas();
+
+console.log(
+  "🏠 Bases dinámicas cargadas:"
+);
+
+console.log(
+  baseActualUnidad
 );
 
   }
