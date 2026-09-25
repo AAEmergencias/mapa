@@ -3011,6 +3011,11 @@ async function obtenerCoordenadasUnidad(
   codigo
 ) {
 
+  console.log(
+  "🔎 Buscando coordenadas:",
+  codigo
+);
+
  if (
   unidadesCoords[codigo]
 ) {
