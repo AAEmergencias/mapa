@@ -2347,12 +2347,12 @@ if (
 }
 
   const unidadCompleta =
-    unidades.find(
-      u =>
-        u.nombre.startsWith(
-          codigo
-        )
-    );
+  obtenerUnidadesActivas().find(
+    u =>
+      u.nombre.startsWith(
+        codigo
+      )
+  );
 
   if (unidadCompleta) {
 
