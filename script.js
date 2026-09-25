@@ -3319,8 +3319,8 @@ console.table(
   unidadesDinamicas
 );
 
-    console.log(
-  "📦 Unidades estáticas:",
+  console.log(
+  "📦 Unidades referencia:",
   unidades.length
 );
 
