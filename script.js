@@ -2293,6 +2293,18 @@ else if (
 
 }
 
+  else if (
+
+  codigo.startsWith("R")
+
+) {
+
+  grupoUIR.appendChild(
+    boton
+  );
+
+}
+
   console.log(
   "🔥 Quitando unidad:",
   emergenciaActiva.unidades
