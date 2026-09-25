@@ -3037,10 +3037,13 @@ async function recuperarEstadosOperacionales() {
         data
       );
 
-      let unidadCompleta =
-        unidades.find(u =>
-          u.nombre.startsWith(data.unidad)
-        );
+     let unidadCompleta =
+  obtenerUnidadesActivas().find(
+    u =>
+      u.nombre.startsWith(
+        data.unidad
+      )
+  );
 
       if (!unidadCompleta) return;
 
