@@ -114,14 +114,6 @@ function obtenerUnidadesActivas() {
     return unidadesDinamicas;
 
   }
-
-console.warn(
-  "⚠️ Usando catálogo respaldo"
-);
-
-console.trace(
-  "📍 Quién llamó obtenerUnidadesActivas"
-);
   
   return unidades;
 
