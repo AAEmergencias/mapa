@@ -340,7 +340,7 @@ const unidadesCoords = {
 
 const listaUnidades = document.getElementById("listaUnidades");
 
-unidades.forEach((u, i) => {
+obtenerUnidadesActivas().forEach((u, i) => {
 
  let div = document.createElement("div");
 
