@@ -3011,10 +3011,10 @@ async function obtenerCoordenadasUnidad(
   codigo
 ) {
 
-  console.log(
-  "🔎 Buscando coordenadas:",
-  codigo
-);
+// console.log(
+//   "🔎 Buscando coordenadas:",
+//   codigo
+// );
 
   const unidadesSnapshot =
     await getDocs(
@@ -3038,11 +3038,11 @@ async function obtenerCoordenadasUnidad(
 
         unidad = data;
 
-        console.log(
-  "🚒 Unidad encontrada:",
-  data.codigo,
-  data.base
-);
+  // console.log(
+  // "🚒 Unidad encontrada:",
+  // data.codigo,
+  // data.base
+  // );
 
       }
 
@@ -3068,12 +3068,12 @@ async function obtenerCoordenadasUnidad(
       const data =
         docSnap.data();
 
-      console.log(
-  "🏠 Comparando:",
-  data.nombre,
-  "vs",
-  unidad.base
-);
+  // console.log(
+  // "🏠 Comparando:",
+  // data.nombre,
+  // "vs",
+  // unidad.base
+  // );
 
       if (
         data.nombre ===
@@ -3095,10 +3095,10 @@ async function obtenerCoordenadasUnidad(
     }
   );
 
-  console.log(
-  "🔥 Coordenadas Firestore:",
-  codigo
-);
+  // console.log(
+  // "🔥 Coordenadas Firestore:",
+  // codigo
+  // );
 
   return coords;
 
