@@ -2110,7 +2110,7 @@ console.log(
   grupoMedico
 );
 
-unidades.forEach(unidad => {
+obtenerUnidadesActivas().forEach(unidad => {
 
   const codigo =
     unidad.nombre.split(" ")[0];
