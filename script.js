@@ -2438,6 +2438,19 @@ if (
 
   }
 
+  else if (
+
+  codigo.startsWith("R")
+
+) {
+
+  grupoUIR.appendChild(
+    boton
+  );
+
+}
+
+
 });
 
 const campoNotas =
