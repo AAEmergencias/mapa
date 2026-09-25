@@ -909,7 +909,7 @@ incidenteActivoDiv = div;
 
     let selectUnidad = document.createElement("select");
 
-    unidades.forEach(u => {
+   obtenerUnidadesActivas().forEach(u => {
       let op = document.createElement("option");
       op.value = u.nombre;
       op.text = `${u.nombre} - ${u.base}`;
