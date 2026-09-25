@@ -3016,22 +3016,6 @@ async function obtenerCoordenadasUnidad(
   codigo
 );
 
-  /*
- if (
-  unidadesCoords[codigo]
-) {
-
-  console.log(
-    "📦 Coordenadas locales:",
-    codigo
-  );
-
-  return unidadesCoords[codigo];
-
-}
-
-*/
-
   const unidadesSnapshot =
     await getDocs(
       collection(
