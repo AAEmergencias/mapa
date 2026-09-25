@@ -260,6 +260,8 @@ if (titulo) {
 // ==========================
 // 🚑 UNIDADES
 // ==========================
+
+// ⚠️ CATÁLOGO LEGADO (respaldo temporal)
 const unidades = [
   { nombre: "UIR-E / Ermita", base: "Brigada La Ermita" },
   { nombre: "B1 / Bronces", base: " Brigada Los Bronces" },
@@ -3319,8 +3321,8 @@ console.table(
   unidadesDinamicas
 );
 
-  console.log(
-  "📦 Unidades referencia:",
+console.log(
+  "📦 Unidades respaldo:",
   unidades.length
 );
 
