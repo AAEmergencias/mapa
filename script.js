@@ -424,7 +424,7 @@ function renderizarListaUnidades() {
 
 }
 
-renderizarListaUnidades();
+// renderizarListaUnidades();
 
 // ==========================
 // 📏 DISTANCIA ENTRE PUNTOS
