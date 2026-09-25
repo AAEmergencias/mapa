@@ -2528,7 +2528,10 @@ btnGuardarNota.onclick = () => {
 panel.querySelector(".btnAgregarUnidad").onclick = () => {
 
   let nombreUnidad = select.value;
-  let unidadData = unidades.find(u => u.nombre === nombreUnidad);
+ let unidadData =
+  obtenerUnidadesActivas().find(
+    u => u.nombre === nombreUnidad
+  );
   if (!unidadData) return;
 
   let key = nombreUnidad.split(" ")[0];
