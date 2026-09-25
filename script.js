@@ -3332,6 +3332,8 @@ console.table(
 
     renderizarListaUnidades();
 
+    recuperarEstadosOperacionales();
+
 console.log(
   "🏠 Bases dinámicas cargadas:"
 );
