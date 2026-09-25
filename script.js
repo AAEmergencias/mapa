@@ -3054,6 +3054,12 @@ async function obtenerCoordenadasUnidad(
 
         unidad = data;
 
+        console.log(
+  "🚒 Unidad encontrada:",
+  data.codigo,
+  data.base
+);
+
       }
 
     }
@@ -3077,6 +3083,13 @@ async function obtenerCoordenadasUnidad(
 
       const data =
         docSnap.data();
+
+      console.log(
+  "🏠 Comparando:",
+  data.nombre,
+  "vs",
+  unidad.base
+);
 
       if (
         data.nombre ===
