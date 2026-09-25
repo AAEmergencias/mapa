@@ -2216,8 +2216,8 @@ if (
 
 }
 
-      const unidadCompleta =
-  unidades.find(
+const unidadCompleta =
+  obtenerUnidadesActivas().find(
     u =>
       u.nombre.startsWith(
         codigo
