@@ -3108,7 +3108,10 @@ async function recuperarEstadosOperacionales() {
 
 }
 
-recuperarEstadosOperacionales();
+// recuperarEstadosOperacionales();
+
+cargarUnidadesFirestore();
+
 recuperarEmergenciasActivas();
 
 // probarFirestoreUnidades();
@@ -3116,7 +3119,7 @@ recuperarEmergenciasActivas();
 // buscarGeoPointR1();
 // probarCoordenadasR1();
 
-cargarUnidadesFirestore();
+
 
 async function obtenerCoordenadasUnidad(
   codigo
