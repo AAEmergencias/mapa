@@ -3016,6 +3016,7 @@ async function obtenerCoordenadasUnidad(
   codigo
 );
 
+  /*
  if (
   unidadesCoords[codigo]
 ) {
@@ -3028,6 +3029,8 @@ async function obtenerCoordenadasUnidad(
   return unidadesCoords[codigo];
 
 }
+
+*/
 
   const unidadesSnapshot =
     await getDocs(
