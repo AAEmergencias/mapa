@@ -1305,7 +1305,10 @@ if (btnOrigen) {
 
     let key = unidad.split(" ")[0];
 
-    let unidadData = unidades.find(u => u.nombre.startsWith(key));
+    let unidadData =
+  obtenerUnidadesActivas().find(
+    u => u.nombre.startsWith(key)
+  );
 
     if (!unidadData) {
       console.log("❌ No se encontró unidad:", key);
