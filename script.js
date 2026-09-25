@@ -338,6 +338,7 @@ const unidadesCoords = {
 
 };
 
+/*
 const listaUnidades = document.getElementById("listaUnidades");
 
 obtenerUnidadesActivas().forEach((u, i) => {
@@ -362,6 +363,58 @@ div.innerHTML = `
   listaUnidades.appendChild(div);
   
 });
+
+*/
+
+function renderizarListaUnidades() {
+
+  const listaUnidades =
+    document.getElementById(
+      "listaUnidades"
+    );
+
+  if (!listaUnidades)
+    return;
+
+  listaUnidades.innerHTML = "";
+
+  obtenerUnidadesActivas().forEach(u => {
+
+    let div =
+      document.createElement("div");
+
+    div.className =
+      "unidad";
+
+    div.dataset.unidad =
+      u.nombre.split(" ")[0];
+
+    div.innerHTML = `
+      🚑 <b>${u.nombre}</b><br>
+      <small>⏳ Cargando estado...</small>
+    `;
+
+    div.addEventListener(
+      "click",
+      () => {
+
+        unidadSeleccionada =
+          u.nombre;
+
+        abrirModalEstados();
+
+      }
+    );
+
+    listaUnidades.appendChild(
+      div
+    );
+
+  });
+
+}
+
+renderizarListaUnidades();
 
 // ==========================
 // 📏 DISTANCIA ENTRE PUNTOS
@@ -3276,6 +3329,8 @@ console.table(
 );
 
     actualizarBasesDinamicas();
+
+    renderizarListaUnidades();
 
 console.log(
   "🏠 Bases dinámicas cargadas:"
