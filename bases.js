@@ -55,8 +55,6 @@ async function cargarBases() {
 
 <tr>
 
-  <td>-</td>
-
   <td>
     ${data.nombre || "-"}
   </td>
