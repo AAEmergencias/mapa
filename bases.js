@@ -79,9 +79,16 @@ async function cargarBases() {
     ✅ Sí
   </td>
 
-  <td>
+<td>
+
+  <button
+    class="btnEditarBase"
+    data-id="${docSnap.id}"
+  >
     ✏️
-  </td>
+  </button>
+
+</td>
 
 </tr>
 
