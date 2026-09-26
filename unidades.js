@@ -75,6 +75,7 @@ onAuthStateChanged(
 
     }
 
+    cargarBases();
     cargarUnidades();
 
   }
