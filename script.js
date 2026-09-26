@@ -711,11 +711,13 @@ const subtiposPorTipo = {
 // ==========================
 function actualizarEstadoUnidad(nombreUnidad, estado, nuevaBase = null, nota = "") {
 
+  /*
   console.log(
   "🚒 Estado cambiado",
   nombreUnidad,
   estado
 );
+*/
 
   // 🔥 guardar hora del estado
 if (emergenciaActiva) {
@@ -777,6 +779,7 @@ const key =
 
 }
 
+  /*
   console.log(
   "🔥 Guardando Firestore:",
   {
@@ -784,6 +787,8 @@ const key =
     estado: estado
   }
 );
+*/
+    
 
 if (
   estadoActualUnidad[
@@ -799,6 +804,7 @@ if (
 
 }
 
+  /*
   console.log(
   "🔥 GUARDANDO:",
   {
@@ -811,7 +817,7 @@ if (
       ]
   }
 );
-
+*/
 
 setDoc(
   doc(db, "estadoOperacional", key),
