@@ -500,6 +500,7 @@ for (const u of obtenerUnidadesActivas()) {
 
     let key = u.nombre.split(" ")[0];
 
+  /*
     console.log(
   "🔍 Nombre completo:",
   u.nombre
@@ -509,7 +510,7 @@ console.log(
   "🔑 Key:",
   key
 );
-
+*/ 
     
 // let coords = unidadesCoords[key];
 
