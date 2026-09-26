@@ -193,6 +193,12 @@ if (!docUnidad)
   "✏️ Editar Unidad";
 
       document.getElementById(
+  "subtituloUnidad"
+).innerText =
+  "🚒 Editando: " +
+  data.nombre;
+
+      document.getElementById(
   "codigoUnidad"
 ).value =
   data.codigo || "";
@@ -243,6 +249,11 @@ document.getElementById(
   "tituloModalUnidad"
 ).innerText =
   "🚒 Nueva Unidad";
+
+  document.getElementById(
+  "subtituloUnidad"
+).innerText =
+  "Crear nueva unidad";
   
 
   document.getElementById(
