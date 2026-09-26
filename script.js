@@ -318,6 +318,9 @@ const basesCoords = {
 
 };
 
+// 🔄 Traducción entre nombres mostrados en la interfaz
+// y nombres reales utilizados internamente
+
 const baseMap = {
   "Base Mina": "Brigada Mina",
   "Base 220": "SPA 220",
