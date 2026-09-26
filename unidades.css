@@ -130,18 +130,14 @@ h1 {
 
 }
 
-#modalUnidadContenido input {
+#modalUnidadContenido input,
+#modalUnidadContenido select {
 
     width: 100%;
-
     box-sizing: border-box;
-
     margin-bottom: 10px;
-
     padding: 10px;
-
     border-radius: 8px;
-
     border: none;
 
 }
