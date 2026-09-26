@@ -3406,13 +3406,17 @@ if (DEBUG) {
 
     recuperarEstadosOperacionales();
 
-console.log(
-  "🏠 Bases dinámicas cargadas:"
-);
+if (DEBUG) {
 
-console.log(
-  baseActualUnidad
-);
+  console.log(
+    "🏠 Bases dinámicas cargadas:"
+  );
+
+  console.log(
+    baseActualUnidad
+  );
+
+}
 
   }
 
