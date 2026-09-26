@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Gestión de Bases
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="unidades.css">
+
+</head>
+
+<body>
+
+    <h1>
+    🏠 Gestión de Bases
+</h1>
+
+    <button id="btnNuevaUnidad">
+
+    ➕ Nueva Base
+
+</button>
+
+    <div id="modalUnidad">
+
+    <div id="modalUnidadContenido">
+
+<h2 id="tituloModalUnidad">
+
+    🚒 Nueva Unidad
+
+</h2>
+
+<p id="subtituloUnidad"></p>
+   <label>Código</label>
+
+<input
+    id="codigoUnidad"
+    placeholder="Código (Ej: R1)"
+>
+
+   <label>Nombre</label>
+
+<input
+    id="nombreUnidad"
+    placeholder="Nombre (Ej: R1 / Rescate)"
+>
+
+<label>Base</label>
+
+<select id="baseUnidad">
+
+</select>
+
+        <label>
+
+    Capacidades / Recursos
+
+</label>
+
+    <input
+    id="capacidadesUnidad"
+    placeholder="Capacidades separadas por coma"
+>
+
+
+        <label id="labelActivaUnidad">
+
+    <input
+        type="checkbox"
+        id="activaUnidad"
+        checked
+    >
+
+    Unidad Activa
+
+</label>
+
+    <button id="guardarUnidad">
+
+        💾 Guardar Unidad
+
+    </button>
+
+    <button id="cerrarModalUnidad">
+
+        Cerrar
+
+    </button>
+
+</div>
+
+</div>
+
+<table id="tablaUnidades">
+
+    <thead>
+
+            <tr>
+
+                <th>Código</th>
+
+                <th>Nombre</th>
+
+                <th>Base</th>
+
+                <th>Capacidades</th>
+
+                <th>Activa</th>
+
+                <th>Acciones</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="listaUnidades">
+
+        </tbody>
+
+    </table>
+
+    <script
+        type="module"
+        src="bases.js">
+    </script>
+
+</body>
+
+</html>
