@@ -301,6 +301,9 @@ function actualizarBasesDinamicas() {
 
 }
 
+// 🏠 Coordenadas utilizadas para movimientos y animaciones hacia bases
+// No corresponde al catálogo principal de bases en Firestore
+
 const basesCoords = {
 
   "Brigada La Ermita": { lat: -33.36836139874689, lng: -70.39767004182966 },
