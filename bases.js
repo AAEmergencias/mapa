@@ -106,10 +106,10 @@ async function cargarBases() {
 
     btn.onclick = () => {
 
-      alert(
-        "Editar Base: " +
-        btn.dataset.id
-      );
+      document.getElementById(
+  "modalUnidad"
+).style.display =
+  "flex";
 
     };
 
