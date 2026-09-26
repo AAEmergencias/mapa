@@ -11,6 +11,8 @@ import {
 }
 from "./firebase.js";
 
+let baseEditando = null;
+
 onAuthStateChanged(
   auth,
   async (user) => {
@@ -95,5 +97,23 @@ async function cargarBases() {
 `;
 
   });
+
+  document
+  .querySelectorAll(
+    ".btnEditarBase"
+  )
+  .forEach(btn => {
+
+    btn.onclick = () => {
+
+      alert(
+        "Editar Base: " +
+        btn.dataset.id
+      );
+
+    };
+
+  });
+
 
 }
