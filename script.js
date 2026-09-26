@@ -105,6 +105,8 @@ let unidadSeleccionada = null;
 let unidadesFirestore = [];
 let unidadesDinamicas = [];
 
+const DEBUG = false;
+
 function obtenerUnidadesActivas() {
 
   if (
@@ -3278,18 +3280,22 @@ async function cargarUnidadesFirestore() {
 
     });
 
-    console.log(
-      "🚒 UNIDADES DESDE FIRESTORE"
-    );
+    if (DEBUG) {
 
-    console.table(
-      unidadesFirestore
-    );
+  console.log(
+    "🚒 UNIDADES DESDE FIRESTORE"
+  );
 
-    console.log(
-  "📊 Total unidades:",
-  unidadesFirestore.length
-);
+  console.table(
+    unidadesFirestore
+  );
+
+  console.log(
+    "📊 Total unidades:",
+    unidadesFirestore.length
+  );
+
+}
 
  /*   
     console.log(
