@@ -31,8 +31,64 @@ onAuthStateChanged(
 
 async function cargarBases() {
 
-  console.log(
-    "🏠 Cargando bases..."
-  );
+  const lista =
+    document.getElementById(
+      "listaUnidades"
+    );
+
+  lista.innerHTML = "";
+
+  const snapshot =
+    await getDocs(
+      collection(
+        db,
+        "bases"
+      )
+    );
+
+  snapshot.forEach(docSnap => {
+
+    const data =
+      docSnap.data();
+
+    lista.innerHTML += `
+
+<tr>
+
+  <td>-</td>
+
+  <td>
+    ${data.nombre || "-"}
+  </td>
+
+  <td>
+    ${
+      data.ubicacion
+        ? data.ubicacion.latitude.toFixed(6)
+        : "-"
+    }
+  </td>
+
+  <td>
+    ${
+      data.ubicacion
+        ? data.ubicacion.longitude.toFixed(6)
+        : "-"
+    }
+  </td>
+
+  <td>
+    ✅ Sí
+  </td>
+
+  <td>
+    ✏️
+  </td>
+
+</tr>
+
+`;
+
+  });
 
 }
