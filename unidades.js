@@ -16,6 +16,50 @@ import {
 }
 from "./firebase.js";
 
+async function cargarBases() {
+
+  const select =
+    document.getElementById(
+      "baseUnidad"
+    );
+
+  if (!select)
+    return;
+
+  select.innerHTML = "";
+
+  const snapshot =
+    await getDocs(
+      collection(
+        db,
+        "bases"
+      )
+    );
+
+  snapshot.forEach(docSnap => {
+
+    const data =
+      docSnap.data();
+
+    const option =
+      document.createElement(
+        "option"
+      );
+
+    option.value =
+      data.nombre;
+
+    option.textContent =
+      data.nombre;
+
+    select.appendChild(
+      option
+    );
+
+  });
+
+}
+
 let unidadEditando = null;
 
 onAuthStateChanged(
