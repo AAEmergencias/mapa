@@ -3341,23 +3341,27 @@ console.log(
     })
   );
 
-    console.log(
-  "🚒 UNIDADES DINÁMICAS:"
-);
+if (DEBUG) {
 
-console.table(
-  unidadesDinamicas
-);
+  console.log(
+    "🚒 UNIDADES DINÁMICAS:"
+  );
 
-console.log(
-  "📦 Unidades respaldo:",
-  unidades.length
-);
+  console.table(
+    unidadesDinamicas
+  );
 
-console.log(
-  "🚒 Unidades dinámicas:",
-  unidadesDinamicas.length
-);
+  console.log(
+    "📦 Unidades respaldo:",
+    unidades.length
+  );
+
+  console.log(
+    "🚒 Unidades dinámicas:",
+    unidadesDinamicas.length
+  );
+
+}
 
     const diferencia =
 
@@ -3376,21 +3380,25 @@ console.log(
 
   );
 
-    console.log(
-  "🚨 Diferencias:"
-);
+if (DEBUG) {
 
-console.table(
-  diferencia
-);
+  console.log(
+    "🚨 Diferencias:"
+  );
 
-    console.log(
-  "🚒 Unidades activas:"
-);
+  console.table(
+    diferencia
+  );
 
-console.table(
-  obtenerUnidadesActivas()
-);
+  console.log(
+    "🚒 Unidades activas:"
+  );
+
+  console.table(
+    obtenerUnidadesActivas()
+  );
+
+}
 
     actualizarBasesDinamicas();
 
