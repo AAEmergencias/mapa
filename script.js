@@ -326,6 +326,10 @@ const baseMap = {
   "Base Poli Tortolas": "Policlínico Las Tortolas"
 };
 
+
+// 📍 Estado dinámico de posición de unidades
+// Se actualiza cada vez que una unidad se mueve
+
 const unidadesCoords = {
 
   "UIR-E": { lat: -33.36836139874689, lng: -70.39767004182966 },
