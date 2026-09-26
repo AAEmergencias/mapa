@@ -106,12 +106,38 @@ async function cargarBases() {
 
     btn.onclick = () => {
 
-      document.getElementById(
-  "modalUnidad"
-).style.display =
-  "flex";
+  const base = snapshot.docs.find(
+    d => d.id === btn.dataset.id
+  );
 
-    };
+  if (!base)
+    return;
+
+  const data =
+    base.data();
+
+  document.getElementById(
+    "nombreBase"
+  ).value =
+    data.nombre || "";
+
+  document.getElementById(
+    "latitudBase"
+  ).value =
+    data.ubicacion?.latitude || "";
+
+  document.getElementById(
+    "longitudBase"
+  ).value =
+    data.ubicacion?.longitude || "";
+
+  document.getElementById(
+    "modalUnidad"
+  ).style.display =
+    "flex";
+
+};
+
 
   });
 
