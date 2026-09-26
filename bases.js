@@ -143,3 +143,13 @@ async function cargarBases() {
 
 
 }
+document.getElementById(
+  "cerrarModalUnidad"
+).onclick = () => {
+
+  document.getElementById(
+    "modalUnidad"
+  ).style.display =
+    "none";
+
+};
