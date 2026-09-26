@@ -3268,21 +3268,25 @@ async function cargarUnidadesFirestore() {
 
    unidadesFirestore = [];
 
-    snapshot.forEach(docSnap => {
+snapshot.forEach(docSnap => {
 
-      const data = docSnap.data();
+  const data = docSnap.data();
 
-      unidadesFirestore.push({
+  if (data.activa !== true) {
+    return;
+  }
 
-        codigo: data.codigo,
+  unidadesFirestore.push({
 
-        nombre: data.nombre,
+    codigo: data.codigo,
 
-        base: data.base
+    nombre: data.nombre,
 
-      });
+    base: data.base
 
-    });
+  });
+
+});
 
     if (DEBUG) {
 
