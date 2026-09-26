@@ -2729,6 +2729,17 @@ document.getElementById(
 };
 
 document.getElementById(
+  "btnUnidades"
+).onclick = () => {
+
+  window.open(
+    "unidades.html",
+    "_blank"
+  );
+
+};
+
+document.getElementById(
   "menuHerramientas"
 ).onclick = () => {
 
@@ -3852,6 +3863,9 @@ const rol =
 
 if (rol === "operador") {
 
+  btnUnidades.style.display =
+  "none";
+
   btnAdmin.style.display =
     "none";
 
@@ -3861,6 +3875,9 @@ if (rol === "operador") {
 }
 
 else if (rol === "admin") {
+
+  btnUnidades.style.display =
+  "none";
 
   btnAdmin.style.display =
     "none";
@@ -3880,6 +3897,9 @@ else if (rol === "admin") {
 }
 
 else if (rol === "superadmin") {
+
+  btnUnidades.style.display =
+  "block";
 
   btnAdmin.style.display =
     "none";
