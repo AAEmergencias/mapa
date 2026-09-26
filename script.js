@@ -3284,6 +3284,7 @@ async function cargarUnidadesFirestore() {
   unidadesFirestore.length
 );
 
+ /*   
     console.log(
   "🚒 Primera unidad:"
 );
@@ -3311,7 +3312,8 @@ console.log(
     "H1"
   )
 );
-
+*/
+    
     unidadesDinamicas =
 
   unidadesFirestore.map(
