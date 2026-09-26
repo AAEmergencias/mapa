@@ -3084,10 +3084,14 @@ async function recuperarEstadosOperacionales() {
       const data =
         docSnap.data();
 
-      console.log(
-        "🚒 Recuperando estado:",
-        data
-      );
+    if (DEBUG) {
+
+  console.log(
+    "🚒 Recuperando estado:",
+    data
+  );
+
+}
 
      let unidadCompleta =
   obtenerUnidadesActivas().find(
