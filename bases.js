@@ -53,42 +53,6 @@ async function cargarBases() {
       )
     );
 
-  for (const docSnap of snapshot.docs) {
-
-  const data =
-    docSnap.data();
-
-  if (
-    data.activa === undefined
-  ) {
-
-    await setDoc(
-
-      doc(
-        db,
-        "bases",
-        docSnap.id
-      ),
-
-      {
-
-        ...data,
-
-        activa: true
-
-      }
-
-    );
-
-    console.log(
-      "✅ Base migrada:",
-      docSnap.id
-    );
-
-  }
-
-}
-
   snapshot.forEach(docSnap => {
 
     const data =
