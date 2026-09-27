@@ -121,6 +121,14 @@ async function cargarBases() {
   const data =
     base.data();
 
+      baseEditando =
+  btn.dataset.id;
+
+console.log(
+  "EDITANDO:",
+  baseEditando
+);
+
   document.getElementById(
     "nombreBase"
   ).value =
