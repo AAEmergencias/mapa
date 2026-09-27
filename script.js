@@ -173,6 +173,8 @@ fetch('mapa.kml')
 
     map.fitBounds(layer.getBounds());
 
+    /*
+
     Object.entries(unidadesCoords).forEach(([nombre, coords]) => {
 
   let icono = nombre.startsWith("S")
@@ -189,6 +191,8 @@ fetch('mapa.kml')
   marcadoresUnidades[nombre] = marker;
 
 });
+
+*/
 
   });
 
