@@ -196,6 +196,49 @@ fetch('mapa.kml')
 
 });
 
+async function crearMarcadoresDesdeFirestore() {
+
+  for (const unidad of obtenerUnidadesActivas()) {
+
+    const codigo =
+      unidad.nombre.split(" ")[0];
+
+    const coords =
+      await obtenerCoordenadasUnidad(
+        codigo
+      );
+
+    if (!coords)
+      continue;
+
+    let icono =
+      codigo.startsWith("S")
+        ? iconos.ambulancia
+        : iconos.bomberos;
+
+    let marker = L.marker(
+      [coords.lat, coords.lng],
+      {
+        icon: icono
+      }
+    )
+    .addTo(map)
+    .bindPopup(
+      "🚑 Unidad: " + codigo
+    );
+
+    marcadoresUnidades[codigo] =
+      marker;
+
+    unidadesCoords[codigo] = {
+      lat: coords.lat,
+      lng: coords.lng
+    };
+
+  }
+
+}
+
 // ==========================
 // 🔎 BUSCADOR
 // ==========================
