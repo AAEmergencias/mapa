@@ -11,7 +11,8 @@ import {
   setDoc,
   updateDoc,
   deleteDoc,
-  onSnapshot
+  onSnapshot,
+  GeoPoint
 }
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
@@ -58,6 +59,8 @@ export {
   setDoc,
   updateDoc,
   deleteDoc,
+
+  GeoPoint,
 
   onSnapshot,
 
