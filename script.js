@@ -194,6 +194,49 @@ fetch('mapa.kml')
 
 */
 
+    as*nc function crearMarcadoresDesdeFi*estore() {
+
+  for (const unidad of*obtenerUnidadesActivas()) {
+
+    c*nst codigo =
+      unidad.nombre.s*lit(" ")[0];
+
+    const coords =
+ *    await obtenerCoordenadasUnidad*
+        codigo
+      );
+
+    if (*coords)
+      continue;
+
+    let i*ono =
+      codigo.startsWith("S")*        ? iconos.ambulancia
+      * : iconos.bomberos;
+
+    let marke* = L.marker(
+      [coords.lat, co*rds.lng],
+      {
+        icon: ic*no
+      }
+    )
+    .addTo(map)
+ *  .bindPopup(
+      "🚑 Unidad: " * codigo
+    );
+
+    marcadoresUnid*des[codigo] =
+      marker;
+
+    u*idadesCoords[codigo] =
+      {
+   *    lat: coords.lat,
+        lng: *oords.lng
+      };
+
+  }
+
+}
+
   });
 
 // ==========================
