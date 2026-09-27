@@ -181,16 +181,30 @@ document.getElementById(
       "activaUnidad"
     ).checked;
 
-  alert(
+await setDoc(
 
-    "Nombre: " + nombre +
+  doc(
+    db,
+    "bases",
+    baseEditando || nombre.replace(/\s/g, "")
+  ),
 
-    "\nLatitud: " + latitud +
+  {
+    nombre: nombre,
 
-    "\nLongitud: " + longitud +
+    activa: activa,
 
-    "\nActiva: " + activa
+    ubicacion: {
+      latitude: Number(latitud),
+      longitude: Number(longitud)
+    }
 
-  );
+  }
+
+);
+
+alert(
+  "✅ Base guardada"
+);
 
 };
