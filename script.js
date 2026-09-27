@@ -3196,9 +3196,11 @@ cargarUnidadesFirestore();
 
 setTimeout(() => {
 
+  /*
   console.log(
     "🚒 CREANDO MARCADORES DESDE FIRESTORE"
   );
+  */
 
   crearMarcadoresDesdeFirestore();
 
