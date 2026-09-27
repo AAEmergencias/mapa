@@ -233,3 +233,17 @@ h1 {
     font-weight: bold;
 
 }
+
+.btnEditarBase {
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    padding: 4px;
+
+}
