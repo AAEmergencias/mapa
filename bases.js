@@ -133,16 +133,6 @@ async function cargarBases() {
 ).innerText =
   "🏠 Editar Base";
 
-alert(
-  "EDITANDO: " +
-  baseEditando
-);
-
-console.log(
-  "EDITANDO:",
-  baseEditando
-);
-
   document.getElementById(
     "nombreBase"
   ).value =
@@ -204,11 +194,6 @@ document.getElementById(
     document.getElementById(
       "activaUnidad"
     ).checked;
-
-  console.log(
-  "BASE EDITANDO:",
-  baseEditando
-);
 
 await setDoc(
 
