@@ -240,3 +240,37 @@ alert(
 await cargarBases();
 
 };
+
+document.getElementById(
+  "btnNuevaUnidad"
+).onclick = () => {
+
+  baseEditando = null;
+
+  document.getElementById(
+    "tituloModalUnidad"
+  ).innerText =
+    "🏠 Nueva Base";
+
+  document.getElementById(
+    "nombreBase"
+  ).value = "";
+
+  document.getElementById(
+    "latitudBase"
+  ).value = "";
+
+  document.getElementById(
+    "longitudBase"
+  ).value = "";
+
+  document.getElementById(
+    "activaUnidad"
+  ).checked = true;
+
+  document.getElementById(
+    "modalUnidad"
+  ).style.display =
+    "flex";
+
+};
