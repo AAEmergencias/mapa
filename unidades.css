@@ -247,3 +247,9 @@ h1 {
     padding: 4px;
 
 }
+
+.btnEditarBase:hover {
+
+    transform: scale(1.15);
+
+}
