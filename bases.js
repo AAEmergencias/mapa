@@ -121,8 +121,13 @@ async function cargarBases() {
   const data =
     base.data();
 
-      baseEditando =
+     baseEditando =
   btn.dataset.id;
+
+alert(
+  "EDITANDO: " +
+  baseEditando
+);
 
 console.log(
   "EDITANDO:",
