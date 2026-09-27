@@ -6,7 +6,10 @@ import {
   onAuthStateChanged,
 
   collection,
-  getDocs
+  getDocs,
+
+  doc,
+  setDoc
 
 }
 from "./firebase.js";
