@@ -183,6 +183,11 @@ document.getElementById(
       "activaUnidad"
     ).checked;
 
+  console.log(
+  "BASE EDITANDO:",
+  baseEditando
+);
+
 await setDoc(
 
   doc(
@@ -196,10 +201,10 @@ await setDoc(
 
     activa: activa,
 
-    ubicacion: {
-      latitude: Number(latitud),
-      longitude: Number(longitud)
-    }
+   ubicacion: new GeoPoint(
+  Number(latitud),
+  Number(longitud)
+)
 
   }
 
