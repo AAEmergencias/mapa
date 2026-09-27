@@ -156,3 +156,13 @@ document.getElementById(
     "none";
 
 };
+
+document.getElementById(
+  "guardarUnidad"
+).onclick = async () => {
+
+  alert(
+    "Guardar Base funcionando"
+  );
+
+};
