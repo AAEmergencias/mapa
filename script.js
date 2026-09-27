@@ -3189,6 +3189,16 @@ async function recuperarEstadosOperacionales() {
 
 cargarUnidadesFirestore();
 
+setTimeout(() => {
+
+  console.log(
+    "🚒 CREANDO MARCADORES DESDE FIRESTORE"
+  );
+
+  crearMarcadoresDesdeFirestore();
+
+}, 3000);
+
 recuperarEmergenciasActivas();
 
 // probarFirestoreUnidades();
