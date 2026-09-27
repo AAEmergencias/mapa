@@ -161,8 +161,36 @@ document.getElementById(
   "guardarUnidad"
 ).onclick = async () => {
 
+  const nombre =
+    document.getElementById(
+      "nombreBase"
+    ).value.trim();
+
+  const latitud =
+    document.getElementById(
+      "latitudBase"
+    ).value.trim();
+
+  const longitud =
+    document.getElementById(
+      "longitudBase"
+    ).value.trim();
+
+  const activa =
+    document.getElementById(
+      "activaUnidad"
+    ).checked;
+
   alert(
-    "Guardar Base funcionando"
+
+    "Nombre: " + nombre +
+
+    "\nLatitud: " + latitud +
+
+    "\nLongitud: " + longitud +
+
+    "\nActiva: " + activa
+
   );
 
 };
