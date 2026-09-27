@@ -124,6 +124,11 @@ async function cargarBases() {
      baseEditando =
   btn.dataset.id;
 
+      document.getElementById(
+  "tituloModalUnidad"
+).innerText =
+  "🏠 Editar Base";
+
 alert(
   "EDITANDO: " +
   baseEditando
@@ -226,5 +231,12 @@ await setDoc(
 alert(
   "✅ Base guardada"
 );
+
+  document.getElementById(
+  "modalUnidad"
+).style.display =
+  "none";
+
+await cargarBases();
 
 };
