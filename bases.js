@@ -83,8 +83,12 @@ async function cargarBases() {
   </td>
 
   <td>
-    ✅ Sí
-  </td>
+  ${
+    data.activa
+      ? "✅ Sí"
+      : "❌ No"
+  }
+</td>
 
 <td>
 
