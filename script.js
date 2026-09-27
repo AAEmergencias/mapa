@@ -200,10 +200,12 @@ async function crearMarcadoresDesdeFirestore() {
 
   for (const unidad of obtenerUnidadesActivas()) {
 
+    /*
     console.log(
   "🚑 UNIDAD:",
   unidad
 );
+*/
 
     const codigo =
       unidad.nombre.split(" ")[0];
