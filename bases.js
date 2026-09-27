@@ -9,7 +9,9 @@ import {
   getDocs,
 
   doc,
-  setDoc
+  setDoc,
+
+  GeoPoint
 
 }
 from "./firebase.js";
