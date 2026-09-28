@@ -21,6 +21,10 @@ let auditoriaCompleta = [];
 let filtroActual =
   "Todas las acciones";
 
+let paginaActual = 1;
+
+const registrosPorPagina = 100;
+
 console.log(
   "📋 Bitácora Operacional cargada"
 );
@@ -120,7 +124,10 @@ snapshot.forEach(docSnap => {
 
   auditoriaCompleta = registros;
 
+  renderizarPagina();
+return;
 
+/*
  registros.forEach(
   data => {
     
@@ -171,6 +178,8 @@ snapshot.forEach(docSnap => {
 
     }
   );
+
+  */
 
 }
 
@@ -446,3 +455,113 @@ if (btnLimpiarBitacora) {
     };
 
 }
+
+function renderizarPagina() {
+
+  const lista =
+    document.getElementById(
+      "listaAuditoria"
+    );
+
+  lista.innerHTML = "";
+
+  const inicio =
+    (paginaActual - 1) *
+    registrosPorPagina;
+
+  const fin =
+    inicio +
+    registrosPorPagina;
+
+  const registrosPagina =
+    auditoriaCompleta.slice(
+      inicio,
+      fin
+    );
+
+  registrosPagina.forEach(
+    data => {
+
+      lista.innerHTML += `
+
+<tr>
+
+<td>${data.fecha || "-"}</td>
+
+<td>${data.hora || "-"}</td>
+
+<td>${data.usuario || "-"}</td>
+
+<td class="accion">
+${data.accion || "-"}
+</td>
+
+<td>
+
+${data.detalle || "-"}
+
+${
+  data.nota
+    ? `<br><small>📝 ${data.nota}</small>`
+    : ""
+}
+
+</td>
+
+</tr>
+
+`;
+
+    }
+  );
+
+  const totalPaginas =
+    Math.ceil(
+      auditoriaCompleta.length /
+      registrosPorPagina
+    ) || 1;
+
+  document.getElementById(
+    "paginaActual"
+  ).textContent =
+    `Página ${paginaActual} de ${totalPaginas}`;
+
+}
+
+document.getElementById(
+  "btnAnterior"
+).onclick = () => {
+
+  if (paginaActual > 1) {
+
+    paginaActual--;
+
+    renderizarPagina();
+
+  }
+
+};
+
+document.getElementById(
+  "btnSiguiente"
+).onclick = () => {
+
+  const totalPaginas =
+
+    Math.ceil(
+      auditoriaCompleta.length /
+      registrosPorPagina
+    );
+
+  if (
+    paginaActual <
+    totalPaginas
+  ) {
+
+    paginaActual++;
+
+    renderizarPagina();
+
+  }
+
+};
