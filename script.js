@@ -1439,7 +1439,7 @@ bases.forEach(base => {
 
     let key = unidad.split(" ")[0];
 
-    let baseReal = baseMap[base];
+   let baseReal = base;
 
     console.log(
   "BASE SELECCIONADA:",
