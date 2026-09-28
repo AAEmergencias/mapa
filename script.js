@@ -1479,11 +1479,11 @@ console.log(
 
 if (!destino) {
 
-  /*
+
   console.log(
     "❌ Coordenadas no encontradas"
   );
-  */
+
 
   return;
 
