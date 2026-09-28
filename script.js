@@ -3329,6 +3329,48 @@ async function obtenerCoordenadasUnidad(
 
 }
 
+async function obtenerCoordenadasBase(
+  nombreBase
+) {
+
+  const snapshot =
+    await getDocs(
+      collection(
+        db,
+        "bases"
+      )
+    );
+
+  let coords = null;
+
+  snapshot.forEach(docSnap => {
+
+    const data =
+      docSnap.data();
+
+    if (
+      data.nombre ===
+      nombreBase
+    ) {
+
+      coords = {
+
+        lat:
+          data.ubicacion.latitude,
+
+        lng:
+          data.ubicacion.longitude
+
+      };
+
+    }
+
+  });
+
+  return coords;
+
+}
+
 async function probarCoordenadasR1() {
 
   const resultadoR1 =
