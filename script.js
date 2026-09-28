@@ -1435,7 +1435,7 @@ bases.forEach(base => {
   item.className = "estado-item";
   item.innerText = base;
 
-  item.onclick = () => {
+ item.onclick = async () => {
 
     let key = unidad.split(" ")[0];
 
@@ -1462,17 +1462,32 @@ console.log(
       lat: pos.lat,
       lng: pos.lng
     };
+   
+let destino =
+  await obtenerCoordenadasBase(
+    baseReal
+  );
 
-    let destino = basesCoords[baseReal];
-
-    console.log(
+console.log(
   "DESTINO:",
   destino
 );
 
-    if (!destino) return;
+if (!destino) {
 
-    moverUnidad(unidad, origen, destino);
+  console.log(
+    "❌ Coordenadas no encontradas"
+  );
+
+  return;
+
+}
+
+moverUnidad(
+  unidad,
+  origen,
+  destino
+);
 
     modal.remove();
   };
