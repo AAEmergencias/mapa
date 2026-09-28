@@ -243,3 +243,31 @@ h1 {
     font-size: 15px;
 
 }
+
+#filtrosFecha {
+
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 10px;
+
+  margin-bottom: 15px;
+
+}
+
+#filtrosFecha select {
+
+  background: #16233f;
+
+  color: white;
+
+  border: 1px solid #00d4aa;
+
+  border-radius: 6px;
+
+  padding: 8px 12px;
+
+  font-size: 14px;
+
+}
