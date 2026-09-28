@@ -9,7 +9,10 @@ import {
   getDoc,
 
   collection,
-  getDocs
+  getDocs,
+
+  deleteDoc,
+  doc
 
 }
 from "./firebase.js";
