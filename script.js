@@ -1346,6 +1346,7 @@ if (panelActivo) {
 // ==========================
 // 🏠 MODAL BASES (PASO 4)
 // ==========================
+/* 
 const bases = [
   "Base Mina",
   "Base 220",
@@ -1356,6 +1357,9 @@ const bases = [
   "Base Tortolas",
   "Base Poli Tortolas"
 ];
+  */
+
+let bases = [];
 
 function abrirModalBases(unidad) {
 
