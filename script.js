@@ -3336,6 +3336,50 @@ async function probarCoordenadasR1() {
 
 }
 
+async function cargarBasesFirestore() {
+
+  try {
+
+    const snapshot =
+      await getDocs(
+        collection(
+          db,
+          "bases"
+        )
+      );
+
+    bases = [];
+
+    snapshot.forEach(docSnap => {
+
+      const data =
+        docSnap.data();
+
+      if (
+        data.activa === false
+      ) {
+        return;
+      }
+
+      bases.push(
+        data.nombre
+      );
+
+    });
+
+  }
+
+  catch(error) {
+
+    console.error(
+      "❌ Error cargando bases:",
+      error
+    );
+
+  }
+
+}
+
 async function cargarUnidadesFirestore() {
 
   try {
