@@ -1465,6 +1465,11 @@ console.log(
 
     let destino = basesCoords[baseReal];
 
+    console.log(
+  "DESTINO:",
+  destino
+);
+
     if (!destino) return;
 
     moverUnidad(unidad, origen, destino);
