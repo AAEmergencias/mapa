@@ -11,8 +11,7 @@ import {
   collection,
   getDocs,
 
-  deleteDoc,
-  doc
+  deleteDoc
 
 }
 from "./firebase.js";
@@ -370,3 +369,80 @@ document.getElementById(
 
   }
 );
+
+const btnLimpiarBitacora =
+  document.getElementById(
+    "btnLimpiarBitacora"
+  );
+
+if (btnLimpiarBitacora) {
+
+  btnLimpiarBitacora.onclick =
+    async () => {
+
+      const confirmar =
+        prompt(
+          "⚠️ Escriba ELIMINAR para borrar toda la bitácora"
+        );
+
+      if (
+        confirmar !==
+        "ELIMINAR"
+      ) {
+
+        alert(
+          "Operación cancelada"
+        );
+
+        return;
+
+      }
+
+      try {
+
+        const snapshot =
+          await getDocs(
+            collection(
+              db,
+              "auditoriaOperacional"
+            )
+          );
+
+        for (
+          const registro
+          of snapshot.docs
+        ) {
+
+          await deleteDoc(
+            doc(
+              db,
+              "auditoriaOperacional",
+              registro.id
+            )
+          );
+
+        }
+
+        alert(
+          "✅ Bitácora eliminada"
+        );
+
+        location.reload();
+
+      }
+
+      catch(error) {
+
+        console.error(
+          error
+        );
+
+        alert(
+          "❌ Error eliminando bitácora"
+        );
+
+      }
+
+    };
+
+}
