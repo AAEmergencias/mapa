@@ -4085,6 +4085,9 @@ if (rol === "operador") {
   menuHerramientas.style.display =
     "none";
 
+  btnBases.style.display =
+  "none";
+
 }
 
 else if (rol === "admin") {
@@ -4107,6 +4110,9 @@ else if (rol === "admin") {
   btnBitacora.style.display =
     "none";
 
+  btnBases.style.display =
+  "none";
+
 }
 
 else if (rol === "superadmin") {
@@ -4125,6 +4131,9 @@ else if (rol === "superadmin") {
 
   btnUsuarios.style.display =
     "block";
+
+  btnBases.style.display =
+  "block";
 
   btnBitacora.style.display =
     "block";
