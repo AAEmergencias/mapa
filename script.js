@@ -1441,6 +1441,7 @@ bases.forEach(base => {
 
    let baseReal = base;
 
+  /*
     console.log(
   "BASE SELECCIONADA:",
   base
@@ -1450,6 +1451,7 @@ console.log(
   "BASE REAL:",
   baseReal
 );
+*/
 
     actualizarEstadoUnidad(unidad, "6-10", baseReal);
 
@@ -1468,16 +1470,20 @@ let destino =
     baseReal
   );
 
+/*   
 console.log(
   "DESTINO:",
   destino
 );
+*/
 
 if (!destino) {
 
+  /*
   console.log(
     "❌ Coordenadas no encontradas"
   );
+  */
 
   return;
 
