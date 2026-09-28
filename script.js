@@ -377,6 +377,8 @@ const basesCoords = {
 // 🔄 Traducción entre nombres mostrados en la interfaz
 // y nombres reales utilizados internamente
 
+/*
+
 const baseMap = {
   "Base Mina": "Brigada Mina",
   "Base 220": "SPA 220",
@@ -387,6 +389,8 @@ const baseMap = {
   "Base Tortolas": "Brigada Las Tortolas",
   "Base Poli Tortolas": "Policlínico Las Tortolas"
 };
+
+*/
 
 
 // 📍 Estado dinámico de posición de unidades
