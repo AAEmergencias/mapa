@@ -1441,6 +1441,16 @@ bases.forEach(base => {
 
     let baseReal = baseMap[base];
 
+    console.log(
+  "BASE SELECCIONADA:",
+  base
+);
+
+console.log(
+  "BASE REAL:",
+  baseReal
+);
+
     actualizarEstadoUnidad(unidad, "6-10", baseReal);
 
     let marker = marcadoresUnidades[key];
