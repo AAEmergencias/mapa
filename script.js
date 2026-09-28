@@ -1384,7 +1384,7 @@ modal.innerHTML = `
   const btnOrigen = modal.querySelector(".btn-origen");
 
 if (btnOrigen) {
-  btnOrigen.onclick = () => {
+btnOrigen.onclick = async () => {
 
     let key = unidad.split(" ")[0];
 
@@ -1418,12 +1418,21 @@ if (btnOrigen) {
       lng: pos.lng
     };
 
-    let destino = basesCoords[baseOriginal];
+let destino =
+  await obtenerCoordenadasBase(
+    baseOriginal
+  );
 
-    if (!destino) {
-      console.log("❌ No hay coordenadas para:", baseOriginal);
-      return;
-    }
+if (!destino) {
+
+  console.log(
+    "❌ No hay coordenadas para:",
+    baseOriginal
+  );
+
+  return;
+
+}
 
     moverUnidad(unidad, origen, destino);
 
