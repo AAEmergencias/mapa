@@ -2847,6 +2847,18 @@ document.getElementById(
 };
 
 document.getElementById(
+  "btnBases"
+).onclick = () => {
+
+  window.open(
+    "bases.html",
+    "_blank"
+  );
+
+};
+
+
+document.getElementById(
   "menuHerramientas"
 ).onclick = () => {
 
