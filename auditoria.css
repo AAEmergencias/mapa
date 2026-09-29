@@ -287,3 +287,41 @@ h1 {
     margin-bottom: 25px;
 
 }
+
+#paginacionAuditoria button {
+
+    background: #16233f;
+
+    color: white;
+
+    border: 1px solid #00d4aa;
+
+    border-radius: 6px;
+
+    padding: 8px 16px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+
+}
+
+#paginacionAuditoria button:hover {
+
+    background: #00d4aa;
+
+    color: #00142c;
+
+}
+
+#paginaActual {
+
+    color: #ffffff;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+}
