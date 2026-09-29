@@ -3027,6 +3027,17 @@ document.getElementById(
 };
 
 document.getElementById(
+  "btnWallboard"
+).onclick = () => {
+
+  window.open(
+    "wallboard.html",
+    "_blank"
+  );
+
+};
+
+document.getElementById(
   "btnBitacora"
 ).onclick = () => {
 
