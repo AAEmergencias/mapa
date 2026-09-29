@@ -1591,3 +1591,93 @@ body {
     display: none;
 
 }
+
+.textoConfirmacion {
+
+  color: white;
+
+  text-align: center;
+
+  margin: 20px 0;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+}
+
+.btnConfirmar {
+
+  width: 100%;
+
+  padding: 12px;
+
+  margin-bottom: 10px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #ef4444;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+.btnConfirmar:hover {
+
+  background: #dc2626;
+
+}
+
+.modal-bases-content .cerrarBases {
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #374151;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+.btnConfirmarFinalizar {
+
+  width: 100%;
+
+  padding: 12px;
+
+  margin-bottom: 10px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #22c55e;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+}
+
+.btnConfirmarFinalizar:hover {
+
+  background: #16a34a;
+
+}
