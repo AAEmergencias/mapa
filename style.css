@@ -1000,23 +1000,34 @@ body {
 #cerrarParte,
 #irAdmin,
 #menuHerramientas,
-#btnWallboardDirecto {
+#btnWallboardDirecto,
+#verHistorial {
+
+  display: block;
 
   width: calc(100% - 20px);
 
-  margin: 10px auto;
-    
+  box-sizing: border-box;
+
+  margin: 8px 10px;
+
   padding: 14px;
 
   border: none;
 
   border-radius: 12px;
 
-  background: linear-gradient(
-    135deg,
-    #7c3aed,
-    #6d28d9
-  );
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+  transition: all 0.2s ease;
+
+}
 
   color: white;
 
@@ -1328,27 +1339,7 @@ body {
 }
 
 #verHistorial {
-
-  width: calc(100% - 20px);
-
-  margin: 10px auto;
-
-  display: block;
-
-  padding: 14px;
-
-  border: none;
-
-  border-radius: 12px;
-
   background: #2563eb;
-
-  color: white;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
 }
 
 #btnCambiarPassword {
