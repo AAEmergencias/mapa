@@ -492,8 +492,11 @@ function renderizarPagina() {
 
 <td>${data.usuario || "-"}</td>
 
-<td class="accion">
-${data.accion || "-"}
+<td
+  class="accion"
+  data-accion="${data.accion || ""}"
+>
+  ${data.accion || "-"}
 </td>
 
 <td>
