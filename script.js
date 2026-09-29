@@ -2030,10 +2030,63 @@ function abrirConfirmacionCancelar(
     modal
   );
 
+  const btnEliminar =
+  modal.querySelector(
+    ".btnConfirmar"
+  );
+
   const btnVolver =
   modal.querySelector(
     ".cerrarBases"
   );
+
+  btnEliminar.onclick = async () => {
+
+  try {
+
+    if (
+      emergenciaPanel &&
+      emergenciaPanel.firebaseId
+    ) {
+
+      await deleteDoc(
+        doc(
+          db,
+          "emergenciasActivas",
+          emergenciaPanel.firebaseId
+        )
+      );
+
+    }
+
+    if (panel) {
+      panel.remove();
+    }
+
+    if (panelNegro) {
+      panelNegro.remove();
+    }
+
+    modal.remove();
+
+    emergenciaActiva = null;
+
+    console.log(
+      "✅ Emergencia cancelada"
+    );
+
+  }
+
+  catch(error) {
+
+    console.error(
+      "❌ Error cancelando:",
+      error
+    );
+
+  }
+
+};
 
 btnVolver.onclick = () => {
 
