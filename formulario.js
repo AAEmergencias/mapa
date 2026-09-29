@@ -557,7 +557,7 @@ if (emergencia) {
       e.cerrada = true;
 
       console.log(
-        "✅ Emergencia cerrada:",
+        "✅ Emergencia marcada como cerrada:",
         e.id
       );
 
