@@ -1004,14 +1004,8 @@ body {
 
   width: calc(100% - 20px);
 
-  margin-left: 10px;
-
-  margin-right: 10px;
-
-  margin-top: 10px;
-
-  margin-bottom: 10px;
-  
+  margin: 10px auto;
+    
   padding: 14px;
 
   border: none;
@@ -1044,8 +1038,13 @@ body {
 }
 
 /* ✅ BOTÓN CERRAR (rojo controlado) */
+
 #cerrarParte {
-  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  background: linear-gradient(
+    135deg,
+    #dc2626,
+    #b91c1c
+  );
 }
 
 #cerrarParte:hover {
@@ -1059,22 +1058,6 @@ body {
 
 #menuHerramientas {
 
- #btnWallboardDirecto {
-
-  background: linear-gradient(
-    135deg,
-    #8b5cf6,
-    #6d28d9
-  );
-
-}
-
-  #btnWallboardDirecto:hover {
-
-  transform: translateY(-2px);
-
-}
-
   background: linear-gradient(
     135deg,
     #7c3aed,
@@ -1084,6 +1067,22 @@ body {
 }
 
 #menuHerramientas:hover {
+
+  transform: translateY(-2px);
+
+}
+
+#btnWallboardDirecto {
+
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #6d28d9
+  );
+
+}
+
+#btnWallboardDirecto:hover {
 
   transform: translateY(-2px);
 
@@ -1327,13 +1326,7 @@ body {
 
   width: calc(100% - 20px);
 
-margin-left: 10px;
-
-margin-right: 10px;
-
-margin-top: 10px;
-
-margin-bottom: 10px;
+  margin: 10px auto;
 
   display: block;
 
