@@ -271,3 +271,19 @@ h1 {
   font-size: 14px;
 
 }
+
+#paginacionAuditoria {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+    margin-bottom: 25px;
+
+}
