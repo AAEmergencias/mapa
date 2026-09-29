@@ -317,9 +317,10 @@ function actualizarResumenes(data) {
   const horarios =
     calcularHorarios(data);
 
-  const horarioTop =
+ const horarioTop =
   Object.entries(horarios)
-    .sort((a,b) => b[1] - a[1])[0];
+    .sort((a,b) => b[1] - a[1])[0] ||
+  ["sin_datos", 0];
 
   const ICONOS_HORARIO = {
 
@@ -373,14 +374,14 @@ const NOMBRES_HORARIO = {
 
     ${
       ICONOS_HORARIO[
-        horarioTop[0]
-      ]
+  horarioTop[0]
+] || "⏰"
     }
 
     ${
       NOMBRES_HORARIO[
-        horarioTop[0]
-      ]
+  horarioTop[0]
+] || "Sin datos"
     }
 
     (${horarioTop[1]})
@@ -467,7 +468,8 @@ const NOMBRES_HORARIO = {
 
       const tipoTop =
   Object.entries(porTipo)
-    .sort((a,b) => b[1] - a[1])[0];
+    .sort((a,b) => b[1] - a[1])[0] ||
+  ["Sin datos", 0];
 
   const divTipos =
     document.getElementById(
@@ -490,8 +492,8 @@ let htmlTipos = `
 
     ${
       ICONOS_TIPO[
-        tipoTop[0]
-      ] || "🚨"
+  tipoTop[0]
+] || "🚨"
     }
 
     ${tipoTop[0]}
