@@ -1002,9 +1002,11 @@ body {
 #menuHerramientas,
 #btnWallboardDirecto {
 
-  width: calc(100% - 20px);
+  display: none;
 
-  margin: 10px;
+  width: 90%;
+
+  margin: 10px auto;
 
   padding: 14px;
 
@@ -1012,15 +1014,28 @@ body {
 
   border-radius: 12px;
 
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #6d28d9
+  );
+
   color: white;
 
   font-weight: bold;
 
   cursor: pointer;
 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.3);
 
   transition: all 0.2s ease;
+
+}
+
+#btnWallboardDirecto:hover {
+
+  transform: translateY(-2px);
 
 }
 
