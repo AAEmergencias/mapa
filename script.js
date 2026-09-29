@@ -2780,6 +2780,19 @@ else if (
   };
 
   // ✅ FINALIZAR (cierra ambos)
+
+  panel.querySelector(
+  ".btnCancelar"
+).onclick = () => {
+
+  abrirConfirmacionCancelar(
+    panel,
+    panelNegro,
+    emergenciaPanel
+  );
+
+};
+  
 panel.querySelector(".btnFinalizar").onclick = () => {
 
   abrirConfirmacionFinalizar(
