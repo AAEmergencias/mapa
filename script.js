@@ -2011,9 +2011,9 @@ function abrirConfirmacionCancelar(
         ⚠️ Cancelar Emergencia
       </h3>
 
-      <p>
-        La emergencia será eliminada completamente.
-      </p>
+    <p class="textoConfirmacion">
+  La emergencia será eliminada completamente.
+</p>
 
       <button class="btnConfirmar">
         ELIMINAR
