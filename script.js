@@ -2030,6 +2030,17 @@ function abrirConfirmacionCancelar(
     modal
   );
 
+  const btnVolver =
+  modal.querySelector(
+    ".cerrarBases"
+  );
+
+btnVolver.onclick = () => {
+
+  modal.remove();
+
+};
+
 }
 
 // ==========================
