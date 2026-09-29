@@ -4207,6 +4207,11 @@ const btnUsuarios =
     "btnUsuarios"
   );
 
+    const btnWallboard =
+  document.getElementById(
+    "btnWallboard"
+  );
+
     const btnWallboardDirecto =
   document.getElementById(
     "btnWallboardDirecto"
