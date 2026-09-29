@@ -548,10 +548,23 @@ if (editando && editando.id) {
 
     let historial = JSON.parse(localStorage.getItem("historialEmergencias")) || [];
 
-if (!editando && emergencia) {
+if (emergencia) {
+
   historial.forEach(e => {
-    if (e.id === emergencia.id) e.cerrada = true;
+
+    if (e.id === emergencia.id) {
+
+      e.cerrada = true;
+
+      console.log(
+        "✅ Emergencia cerrada:",
+        e.id
+      );
+
+    }
+
   });
+
 }
 
     localStorage.setItem("historialEmergencias", JSON.stringify(historial));
