@@ -999,7 +999,8 @@ body {
 
 #cerrarParte,
 #irAdmin,
-#menuHerramientas {
+#menuHerramientas,
+#btnWallboardDirecto {
 
   width: calc(100% - 20px);
 
@@ -1038,6 +1039,22 @@ body {
 }
 
 #menuHerramientas {
+
+  #btnWallboardDirecto {
+
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #6d28d9
+  );
+
+}
+
+  #btnWallboardDirecto:hover {
+
+  transform: translateY(-2px);
+
+}
 
   background: linear-gradient(
     135deg,
