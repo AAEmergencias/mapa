@@ -231,11 +231,15 @@ let totalGeneral = partes.filter(p =>
 );
 
 document.getElementById("total").innerText = totalGeneral.length;
-let emergenciasCompletas = partes.filter(p =>
-  p.brigada && p.servicioMedico
+let emergenciasBrigada = partes.filter(p =>
+
+  p.brigada &&
+  p.brigada.trim() !== ""
+
 );
 
-document.getElementById("totalCompletas").innerText = emergenciasCompletas.length;
+document.getElementById("totalCompletas").innerText =
+  emergenciasBrigada.length;
 
 document.getElementById("totalPartes").innerText = partes.length;
 
@@ -1185,8 +1189,16 @@ async function actualizarTodo() {
   let totalGeneral = partes.filter(p => p.brigada || p.servicioMedico);
   document.getElementById("total").innerText = totalGeneral.length;
 
-  let emergenciasCompletas = partes.filter(p => p.brigada && p.servicioMedico);
-  document.getElementById("totalCompletas").innerText = emergenciasCompletas.length;
+let emergenciasBrigada = partes.filter(p =>
+
+  p.brigada &&
+  p.brigada.trim() !== ""
+
+);
+
+document.getElementById("totalCompletas").innerText =
+  emergenciasBrigada.length;
+
 
   document.getElementById("totalPartes").innerText = partes.length;
 
