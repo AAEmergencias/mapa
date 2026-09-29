@@ -1993,6 +1993,14 @@ function abrirConfirmacionFinalizar(
   document.body.appendChild(modal);
 
 }
+
+function abrirConfirmacionCancelar(
+  panel,
+  panelNegro,
+  emergenciaPanel
+) {
+
+}
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
