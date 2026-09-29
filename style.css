@@ -1040,12 +1040,17 @@ body {
 /* ✅ BOTÓN CERRAR (rojo controlado) */
 
 #cerrarParte {
+
   background: linear-gradient(
     135deg,
     #dc2626,
     #b91c1c
   );
+
+  margin-bottom: 10px;
+
 }
+
 
 #cerrarParte:hover {
   transform: translateY(-2px);
