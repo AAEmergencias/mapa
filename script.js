@@ -2000,7 +2000,37 @@ function abrirConfirmacionCancelar(
   emergenciaPanel
 ) {
 
+  let modal = document.createElement("div");
+
+  modal.className = "modal-bases";
+
+  modal.innerHTML = `
+    <div class="modal-bases-content">
+
+      <h3>
+        ⚠️ Cancelar Emergencia
+      </h3>
+
+      <p>
+        La emergencia será eliminada completamente.
+      </p>
+
+      <button class="btnConfirmar">
+        ELIMINAR
+      </button>
+
+      <button class="cerrarBases">
+        VOLVER
+      </button>
+
+    </div>
+  `;
+
 }
+
+  document.body.appendChild(
+    modal
+  );
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
