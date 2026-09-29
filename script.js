@@ -4278,7 +4278,7 @@ else if (rol === "admin") {
 else if (rol === "superadmin") {
 
   btnUnidades.style.display =
-  "block";
+    "block";
 
   btnAdmin.style.display =
     "none";
@@ -4293,13 +4293,16 @@ else if (rol === "superadmin") {
     "block";
 
   btnBases.style.display =
-  "block";
+    "block";
+
+  btnWallboard.style.display =
+    "block";
 
   btnBitacora.style.display =
     "block";
 
   btnWallboardDirecto.style.display =
-  "none";
+    "none";
 
 }
 
