@@ -899,13 +899,29 @@ body {
 
 
 .btnConfirmar {
-  background: #d32f2f;
-  color: white;
-  padding: 10px;
-  margin-right: 10px;
+
+  width: 100%;
+
+  height: 46px;
+
+  margin-top: 10px;
+
+  margin-bottom: 10px;
+
   border: none;
-  border-radius: 6px;
+
+  border-radius: 8px;
+
+  background: #374151;
+
+  color: white;
+
+  font-weight: bold;
+
+  font-size: 15px;
+
   cursor: pointer;
+
 }
 
 .btnConfirmar:hover {
@@ -1638,7 +1654,9 @@ body {
 
   width: 100%;
 
-  padding: 12px;
+  height: 46px;
+
+  margin-top: 0;
 
   border: none;
 
@@ -1649,6 +1667,8 @@ body {
   color: white;
 
   font-weight: bold;
+
+  font-size: 15px;
 
   cursor: pointer;
 
