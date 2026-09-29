@@ -3049,6 +3049,17 @@ document.getElementById(
 };
 
 document.getElementById(
+  "btnWallboardDirecto"
+).onclick = () => {
+
+  window.open(
+    "wallboard.html",
+    "_blank"
+  );
+
+};
+
+document.getElementById(
   "verHistorial"
 ).onclick = () => {
 
@@ -4196,6 +4207,11 @@ const btnUsuarios =
     "btnUsuarios"
   );
 
+    const btnWallboardDirecto =
+  document.getElementById(
+    "btnWallboardDirecto"
+  );
+
 const btnBitacora =
   document.getElementById(
     "btnBitacora"
@@ -4226,6 +4242,9 @@ if (rol === "operador") {
   btnBases.style.display =
   "none";
 
+  btnWallboardDirecto.style.display =
+  "block";
+
 }
 
 else if (rol === "admin") {
@@ -4251,6 +4270,9 @@ else if (rol === "admin") {
   btnBases.style.display =
   "none";
 
+  btnWallboardDirecto.style.display =
+  "block";
+
 }
 
 else if (rol === "superadmin") {
@@ -4275,6 +4297,9 @@ else if (rol === "superadmin") {
 
   btnBitacora.style.display =
     "block";
+
+  btnWallboardDirecto.style.display =
+  "none";
 
 }
 
