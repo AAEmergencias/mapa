@@ -2195,7 +2195,12 @@ panel.innerHTML = `
 
 </div>
 
-    <button class="btnFinalizar">Finalizar Emergencia</button>
+<button class="btnCancelar">
+  🗑 Cancelar Emergencia
+</button>
+
+
+<button class="btnFinalizar">Finalizar Emergencia</button>
 
   </div>
 `;
