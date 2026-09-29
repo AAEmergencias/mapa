@@ -1832,15 +1832,21 @@ function abrirConfirmacionFinalizar(
     <div class="modal-bases-content">
       <h3>⚠️ Confirmar acción</h3>
 
-      <p>¿Seguro que deseas finalizar la emergencia?</p>
+      <p class="textoConfirmacion">
+  ¿Seguro que deseas finalizar la emergencia?
+</p>
 
-      <button class="btnConfirmar">FINALIZAR</button>
+   <button class="btnConfirmarFinalizar">
+  ✅ FINALIZAR
+</button>
       <button class="cerrarBases">CANCELAR</button>
     </div>
   `;
 
-  const btnConfirmar =
-    modal.querySelector(".btnConfirmar");
+const btnConfirmar =
+  modal.querySelector(
+    ".btnConfirmarFinalizar"
+  );
 
   const btnCancelar =
     modal.querySelector(".cerrarBases");
