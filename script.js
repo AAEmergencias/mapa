@@ -2026,11 +2026,12 @@ function abrirConfirmacionCancelar(
     </div>
   `;
 
-}
-
   document.body.appendChild(
     modal
   );
+
+}
+
 // ==========================
 // 🚑 MODAL DE ESTADOS
 // ==========================
