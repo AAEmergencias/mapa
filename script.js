@@ -1929,14 +1929,35 @@ const btnConfirmar =
 
 );
 
-        historialEmergencias.push(
-          emergenciaPanel
-        );
+       let historialActual =
 
-        localStorage.setItem(
-          "historialEmergencias",
-          JSON.stringify(historialEmergencias)
-        );
+  JSON.parse(
+    localStorage.getItem(
+      "historialEmergencias"
+    )
+  ) || [];
+
+// evitar duplicados
+const existe = historialActual.find(
+  e => e.id === emergenciaPanel.id
+);
+
+if (!existe) {
+
+  emergenciaPanel.cerrada = false;
+
+  historialActual.push(
+    emergenciaPanel
+  );
+
+}
+
+localStorage.setItem(
+  "historialEmergencias",
+  JSON.stringify(
+    historialActual
+  )
+);
 
         if (
           emergenciaPanel.firebaseId
