@@ -440,10 +440,21 @@ document.getElementById("descripcion").value =
       : [emergencia.unidades];
 
     lista.forEach(u => {
-      if (!u.startsWith("S") && BRIGADAS_NOMBRE[u]) {
-        brigadas.push(BRIGADAS_NOMBRE[u]);
-      }
-    });
+
+  if (u.startsWith("S"))
+    return;
+
+  if (
+    catalogoUnidades[u]
+  ) {
+
+    brigadas.push(
+      catalogoUnidades[u].nombre
+    );
+
+  }
+
+});
   }
 
   document.getElementById("brigada").value = brigadas.join(", ");
