@@ -1195,9 +1195,17 @@ async function actualizarTodo() {
   );
 
   // ✅ KPIs
-  let totalGeneral = partes.filter(p => p.brigada || p.servicioMedico);
- document.getElementById("totalTraslados").innerText =
+let totalGeneral = partes.filter(p =>
+  p.brigada || p.servicioMedico
+);
+
+/*
+document.getElementById("totalTraslados").innerText =
   totalGeneral.length;
+*/
+
+  document.getElementById("totalTraslados").innerText =
+  "0";
 
 let emergenciasBrigada = partes.filter(p =>
 
