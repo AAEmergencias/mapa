@@ -996,6 +996,19 @@ let filtrados = partes.filter(p => {
   return true;
 });
 
+  // ✅ KPI SERVICIO MÉDICO
+
+document.getElementById(
+  "totalCompletas"
+).innerText =
+  filtrados.length;
+
+document.getElementById(
+  "totalPartes"
+).innerText =
+  filtrados.length;
+  
+
   actualizarResumenes(
   filtrados
 );
