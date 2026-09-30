@@ -232,7 +232,7 @@ let totalGeneral = partes.filter(p =>
 
 document.getElementById("total").innerText = totalGeneral.length;
 
-document.getElementById("totalCompletas").innerText =
+document.getElementById("totalTraslados").innerText =
   totalGeneral.length;
 
 
@@ -1196,7 +1196,8 @@ async function actualizarTodo() {
 
   // ✅ KPIs
   let totalGeneral = partes.filter(p => p.brigada || p.servicioMedico);
-  document.getElementById("total").innerText = totalGeneral.length;
+ document.getElementById("totalTraslados").innerText =
+  totalGeneral.length;
 
 let emergenciasBrigada = partes.filter(p =>
 
