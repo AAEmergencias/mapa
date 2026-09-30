@@ -875,6 +875,10 @@ document.getElementById(
   "totalPartes"
 ).innerText =
   filtrados.length;
+
+  document.getElementById(
+  "totalTraslados"
+).innerText = 0;
   
 
   actualizarResumenes(
