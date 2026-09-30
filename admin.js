@@ -1099,18 +1099,29 @@ filtrados.forEach(p => {
 
   p.vehiculo.split(",").forEach(v => {
 
-    let unidad = v.trim();
+    const codigo =
+      v.trim();
 
-    if (
-      unidad === "S1" ||
-      unidad === "S2" ||
-      unidad === "S3"
-    ) {
+    const unidad =
+      catalogoUnidades[codigo];
 
-      porAmbulancia[unidad] =
-        (porAmbulancia[unidad] || 0) + 1;
+    if (!unidad)
+      return;
 
-    }
+    const categorias =
+      unidad.categorias || [];
+
+    const esMedica =
+      categorias.some(c =>
+        c.toLowerCase()
+         .includes("médico")
+      );
+
+    if (!esMedica)
+      return;
+
+    porAmbulancia[codigo] =
+      (porAmbulancia[codigo] || 0) + 1;
 
   });
 
@@ -1119,6 +1130,11 @@ filtrados.forEach(p => {
 porAmbulancia = Object.fromEntries(
   Object.entries(porAmbulancia)
     .sort((a, b) => b[1] - a[1])
+);
+
+  console.log(
+  "AMBULANCIAS CONTADAS:",
+  porAmbulancia
 );
 
 // ✅ 2. Claves médicas
