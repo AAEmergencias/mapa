@@ -2759,6 +2759,7 @@ btnGuardarNota.onclick = () => {
 
   }
 
+  /*
   emergenciaActiva.unidades.forEach(
     unidad => {
 
@@ -2771,6 +2772,7 @@ btnGuardarNota.onclick = () => {
 
     }
   );
+    */
 
   btnGuardarNota.innerHTML =
     "✅ Guardado";
