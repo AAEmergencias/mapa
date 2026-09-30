@@ -1064,6 +1064,33 @@ ORDEN_MESES.forEach(mes => {
   let porEmpresa = contar(filtrados, "empresa");
   
  // ✅ 1. Ambulancias reales
+
+  const snapshotUnidades =
+  await getDocs(
+    collection(
+      db,
+      "unidades"
+    )
+  );
+
+let catalogoUnidades = {};
+
+snapshotUnidades.forEach(docSnap => {
+
+  const unidad =
+    docSnap.data();
+
+  catalogoUnidades[
+    unidad.codigo
+  ] = unidad;
+
+  console.log(
+  "CATALOGO MEDICO:",
+  catalogoUnidades
+);
+
+});
+  
 let porAmbulancia = {};
 
 filtrados.forEach(p => {
