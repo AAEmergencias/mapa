@@ -1257,13 +1257,17 @@ document.getElementById("totalTraslados").innerText =
     collection(db, "traslados")
   );
 
-  const totalTraslados =
+const totalTraslados =
   snapshotTraslados.size;
 
+if (vistaActual === "general") {
+
   document.getElementById(
-  "totalTraslados"
-).innerText =
-  totalTraslados;
+    "totalTraslados"
+  ).innerText =
+    totalTraslados;
+
+}
 
 /*
 let emergenciasBrigada = partes.filter(p =>
