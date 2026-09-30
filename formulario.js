@@ -398,11 +398,13 @@ document.getElementById("descripcion").value =
     "B2": "BRIGADA TORTOLAS"
   };
 
+  /*
   const MEDICOS = {
     "S1": "Pérez Caldera",
     "S2": "Tórtolas",
     "S3": "SPA 220"
   };
+  */
 
   let ambulancias = [];
   let nombresMedicos = [];
@@ -411,12 +413,26 @@ document.getElementById("descripcion").value =
     ? emergencia.unidades
     : [emergencia.unidades];
 
-  lista.forEach(u => {
-    if (u.startsWith("S")) {
-      ambulancias.push(u);
-      if (MEDICOS[u]) nombresMedicos.push(MEDICOS[u]);
+ lista.forEach(u => {
+
+  if (u.startsWith("S")) {
+
+    ambulancias.push(u);
+
+    if (
+      catalogoUnidades[u]
+    ) {
+
+      nombresMedicos.push(
+        catalogoUnidades[u].nombre
+      );
+
     }
-  });
+
+  }
+
+});
+
 
   ambulancias = [...new Set(ambulancias)];
   nombresMedicos = [...new Set(nombresMedicos)];
