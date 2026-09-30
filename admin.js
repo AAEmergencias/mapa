@@ -707,6 +707,18 @@ let filtrados = partes.filter(p => {
   return true;
 });
 
+  // ✅ KPI CONSAGRADO
+
+document.getElementById(
+  "totalCompletas"
+).innerText =
+  filtrados.length;
+
+document.getElementById(
+  "totalPartes"
+).innerText =
+  filtrados.length;
+
   actualizarResumenes(
   filtrados
 );
