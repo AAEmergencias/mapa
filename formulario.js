@@ -3,10 +3,14 @@ import {
   collection,
   addDoc,
   updateDoc,
-  doc
-} from "./firebase.js";
+  doc,
+  getDocs
+}
+from "./firebase.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+  "DOMContentLoaded",
+  async () => {
 
 let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
 
