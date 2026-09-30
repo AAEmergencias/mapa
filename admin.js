@@ -1011,6 +1011,8 @@ let filtrados = partes.filter(p => {
   return true;
 });
 
+  console.log("VEHICULOS MEDICOS:", filtrados.map(p => p.vehiculo));
+
   // ✅ KPI SERVICIO MÉDICO
 
 document.getElementById(
