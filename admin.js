@@ -1223,6 +1223,7 @@ document.getElementById("totalTraslados").innerText =
 ).innerText =
   totalTraslados;
 
+/*
 let emergenciasBrigada = partes.filter(p =>
 
   p.brigada &&
@@ -1232,6 +1233,17 @@ let emergenciasBrigada = partes.filter(p =>
 
 document.getElementById("totalCompletas").innerText =
   emergenciasBrigada.length;
+*/
+
+  const totalEmergencias =
+  partes.*ilter(p =>
+    p*brigada || p.servicioMedico
+  ).le*gth;
+
+document.getElementById(
+  "*otalCompletas"
+).innerText =
+  tot*lEmergencias;
 
 
   document.getElementById("totalPartes").innerText = partes.length;
