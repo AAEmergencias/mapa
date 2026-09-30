@@ -691,8 +691,9 @@ function actualizarDashboard() {
 
 let filtrados = partes.filter(p => {
 
-  // ✅ SOLO emergencias completas
-  if (!(p.brigada && p.servicioMedico)) return false;
+  // ✅ Brigada o Servicio Médico
+  if (!(p.brigada || p.servicioMedico))
+    return false;
 
   if (!p.fecha) return false;
 
