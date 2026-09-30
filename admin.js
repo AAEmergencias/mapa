@@ -864,6 +864,19 @@ if (!p.brigada || p.brigada.trim() === "") return false;
   return true;
 });
 
+  // ✅ KPI BRIGADA
+
+document.getElementById(
+  "totalCompletas"
+).innerText =
+  filtrados.length;
+
+document.getElementById(
+  "totalPartes"
+).innerText =
+  filtrados.length;
+  
+
   actualizarResumenes(
   filtrados
 );
