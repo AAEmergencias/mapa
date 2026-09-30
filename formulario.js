@@ -27,6 +27,32 @@ let parteEditar = JSON.parse(localStorage.getItem("parteEditar"));
     )
   );
 
+    let catalogoUnidades = {};
+
+const snapshotUnidades =
+  await getDocs(
+    collection(
+      db,
+      "unidades"
+    )
+  );
+
+snapshotUnidades.forEach(docSnap => {
+
+  const unidad =
+    docSnap.data();
+
+  catalogoUnidades[
+    unidad.codigo
+  ] = unidad;
+
+});
+
+    console.log(
+  "CATALOGO UNIDADES:",
+  catalogoUnidades
+);
+
 // ✅ SOLO anular lectura
 // cuando se viene desde cerrar parte
 
