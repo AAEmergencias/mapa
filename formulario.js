@@ -413,26 +413,33 @@ document.getElementById("descripcion").value =
     ? emergencia.unidades
     : [emergencia.unidades];
 
- lista.forEach(u => {
+lista.forEach(u => {
 
-  if (u.startsWith("S")) {
+  const unidad =
+    catalogoUnidades[u];
 
-    ambulancias.push(u);
+  if (!unidad)
+    return;
 
-    if (
-      catalogoUnidades[u]
-    ) {
+  const categorias =
+    unidad.categorias || [];
 
-      nombresMedicos.push(
-        catalogoUnidades[u].nombre
-      );
+  const esMedica =
+    categorias.some(c =>
+      c.toLowerCase()
+       .includes("médico")
+    );
 
-    }
+  if (!esMedica)
+    return;
 
-  }
+  ambulancias.push(u);
+
+  nombresMedicos.push(
+    unidad.nombre
+  );
 
 });
-
 
   ambulancias = [...new Set(ambulancias)];
   nombresMedicos = [...new Set(nombresMedicos)];
@@ -455,20 +462,29 @@ document.getElementById("descripcion").value =
       ? emergencia.unidades
       : [emergencia.unidades];
 
-    lista.forEach(u => {
+lista.forEach(u => {
 
-  if (u.startsWith("S"))
+  const unidad =
+    catalogoUnidades[u];
+
+  if (!unidad)
     return;
 
-  if (
-    catalogoUnidades[u]
-  ) {
+  const categorias =
+    unidad.categorias || [];
 
-    brigadas.push(
-      catalogoUnidades[u].nombre
+  const esMedica =
+    categorias.some(c =>
+      c.toLowerCase()
+       .includes("médico")
     );
 
-  }
+  if (esMedica)
+    return;
+
+  brigadas.push(
+    unidad.nombre
+  );
 
 });
   }
