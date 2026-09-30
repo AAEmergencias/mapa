@@ -1235,15 +1235,15 @@ document.getElementById("totalCompletas").innerText =
   emergenciasBrigada.length;
 */
 
-  const totalEmergencias =
-  partes.*ilter(p =>
-    p*brigada || p.servicioMedico
-  ).le*gth;
+const totalEmergencias =
+  partes.filter(p =>
+    p.brigada || p.servicioMedico
+  ).length;
 
 document.getElementById(
-  "*otalCompletas"
+  "totalCompletas"
 ).innerText =
-  tot*lEmergencias;
+  totalEmergencias;
 
 
   document.getElementById("totalPartes").innerText = partes.length;
