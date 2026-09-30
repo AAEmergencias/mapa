@@ -719,6 +719,17 @@ document.getElementById(
 ).innerText =
   filtrados.length;
 
+  getDocs(
+  collection(db, "traslados")
+).then(snapshot => {
+
+  document.getElementById(
+    "totalTraslados"
+  ).innerText =
+    snapshot.size;
+
+});
+
   actualizarResumenes(
   filtrados
 );
@@ -1262,7 +1273,8 @@ document.getElementById("totalTraslados").innerText =
   "0";
 */
 
-  const snapshotTraslados =
+ /*
+const snapshotTraslados =
   await getDocs(
     collection(db, "traslados")
   );
@@ -1278,6 +1290,7 @@ if (vistaActual === "general") {
     totalTraslados;
 
 }
+*/
 
 /*
 let emergenciasBrigada = partes.filter(p =>
