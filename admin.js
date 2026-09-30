@@ -230,6 +230,8 @@ let totalGeneral = partes.filter(p =>
   p.brigada || p.servicioMedico
 );
 
+// document.getElementById("total").innerText = totalGeneral.length;
+
 document.getElementById("totalTraslados").innerText =
   totalGeneral.length;
 
