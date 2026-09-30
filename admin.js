@@ -1064,10 +1064,34 @@ ORDEN_MESES.forEach(mes => {
   let porEmpresa = contar(filtrados, "empresa");
   
  // ✅ 1. Ambulancias reales
-let porAmbulancia = contar(filtrados, "ambulancia");
+let porAmbulancia = {};
+
+filtrados.forEach(p => {
+
+  if (!p.vehiculo) return;
+
+  p.vehiculo.split(",").forEach(v => {
+
+    let unidad = v.trim();
+
+    if (
+      unidad === "S1" ||
+      unidad === "S2" ||
+      unidad === "S3"
+    ) {
+
+      porAmbulancia[unidad] =
+        (porAmbulancia[unidad] || 0) + 1;
+
+    }
+
+  });
+
+});
 
 porAmbulancia = Object.fromEntries(
-  Object.entries(porAmbulancia).sort((a, b) => b[1] - a[1])
+  Object.entries(porAmbulancia)
+    .sort((a, b) => b[1] - a[1])
 );
 
 // ✅ 2. Claves médicas
