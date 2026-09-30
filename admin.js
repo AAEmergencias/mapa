@@ -1011,6 +1011,16 @@ document.getElementById(
   "totalPartes"
 ).innerText =
   filtrados.length;
+
+  const snapshotTraslados =
+  await getDocs(
+    collection(db, "traslados")
+  );
+
+document.getElementById(
+  "totalTraslados"
+).innerText =
+  snapshotTraslados.size;
   
 
   actualizarResumenes(
