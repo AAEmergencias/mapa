@@ -1075,10 +1075,6 @@ porClave = Object.fromEntries(
   Object.entries(porClave).sort((a, b) => b[1] - a[1])
 );
 
-const snapshotTraslados = await getDocs(
-  collection(db, "traslados")
-);
-
 let traslados = [];
 
 snapshotTraslados.forEach(doc => {
