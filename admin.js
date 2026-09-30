@@ -1204,8 +1204,23 @@ document.getElementById("totalTraslados").innerText =
   totalGeneral.length;
 */
 
-  document.getElementById("totalTraslados").innerText =
+/*
+document.getElementById("totalTraslados").innerText =
   "0";
+*/
+
+  const snapshotTraslados =
+  await getDocs(
+    collection(db, "traslados")
+  );
+
+  const totalTraslados =
+  snapshotTraslados.size;
+
+  document.getElementById(
+  "totalTraslados"
+).innerText =
+  totalTraslados;
 
 let emergenciasBrigada = partes.filter(p =>
 
