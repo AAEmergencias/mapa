@@ -1235,6 +1235,7 @@ document.getElementById("totalCompletas").innerText =
   emergenciasBrigada.length;
 */
 
+/*
 const totalEmergencias =
   partes.filter(p =>
     p.brigada || p.servicioMedico
@@ -1244,9 +1245,13 @@ document.getElementById(
   "totalCompletas"
 ).innerText =
   totalEmergencias;
+  */
 
-
-  document.getElementById("totalPartes").innerText = partes.length;
+/*
+document.getElementById("totalPartes").innerText = 
+  partes.length;
+*/
+  
 
   // ✅ ÚLTIMA EMERGENCIA (CORRECTO)
 let ultima = partes.length > 0
