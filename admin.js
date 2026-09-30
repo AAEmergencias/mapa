@@ -231,6 +231,7 @@ let totalGeneral = partes.filter(p =>
 );
 
 document.getElementById("total").innerText = totalGeneral.length;
+
 /*
 let emergenciasBrigada = partes.filter(p =>
 
