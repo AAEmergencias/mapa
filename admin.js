@@ -1120,8 +1120,11 @@ filtrados.forEach(p => {
     if (!esMedica)
       return;
 
-    porAmbulancia[codigo] =
-      (porAmbulancia[codigo] || 0) + 1;
+    const nombreMostrar =
+  unidad.nombre || codigo;
+
+porAmbulancia[nombreMostrar] =
+  (porAmbulancia[nombreMostrar] || 0) + 1;
 
   });
 
