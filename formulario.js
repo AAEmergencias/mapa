@@ -48,9 +48,19 @@ snapshotUnidades.forEach(docSnap => {
 
 });
 
-    console.log(
-  "CATALOGO UNIDADES:",
-  catalogoUnidades
+  console.log(
+  "R1:",
+  catalogoUnidades["R1"]
+);
+
+console.log(
+  "S1:",
+  catalogoUnidades["S1"]
+);
+
+console.log(
+  "B1:",
+  catalogoUnidades["B1"]
 );
 
 // ✅ SOLO anular lectura
