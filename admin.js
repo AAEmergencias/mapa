@@ -2342,6 +2342,12 @@ graficos.forEach(grafico => {
 
   if (!canvas) return;
 
+  if (
+  canvas.offsetParent === null
+) {
+  return;
+}
+
   const imagen =
     canvas.toDataURL(
       "image/png"
