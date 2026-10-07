@@ -2258,7 +2258,8 @@ pdf.text(
 // 📊 PAGINA 2
 // GRAFICO POR MES
 // ==========================
-const graficos = [
+
+  const graficos = [
 
   {
     id: "graficoMes",
@@ -2268,6 +2269,11 @@ const graficos = [
   {
     id: "graficoTipo",
     titulo: "Emergencias por Tipo"
+  },
+
+  {
+    id: "graficoSubtipo",
+    titulo: "Emergencias por Subtipo"
   },
 
   {
@@ -2281,8 +2287,48 @@ const graficos = [
   },
 
   {
+    id: "graficoPUE",
+    titulo: "PUE"
+  },
+
+  {
+    id: "graficoAsistencia",
+    titulo: "Asistencia Brigada"
+  },
+
+  {
+    id: "graficoUnidades",
+    titulo: "Unidades Más Utilizadas"
+  },
+
+  {
     id: "graficoMedico",
-    titulo: "Ambulancias"
+    titulo: "Ambulancias Utilizadas"
+  },
+
+  {
+    id: "graficoTraslados",
+    titulo: "Traslados"
+  },
+
+  {
+    id: "graficoCentrosTraslado",
+    titulo: "Centros de Derivación"
+  },
+
+  {
+    id: "graficoAmbulanciasTraslado",
+    titulo: "Traslados por Ambulancia"
+  },
+
+  {
+    id: "graficoTrasladosMes",
+    titulo: "Traslados por Mes"
+  },
+
+  {
+    id: "graficoClaves",
+    titulo: "Claves de Atención"
   }
 
 ];
