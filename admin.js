@@ -684,7 +684,7 @@ function actualizarBotones() {
 // ==========================
 // 🔄 ACTUALIZAR
 // ==========================
-function actualizarDashboard() {
+async function actualizarDashboard() {
 
   let mesFiltro = document.getElementById("filtroMes").value;
   let anioFiltro = document.getElementById("filtroAnio").value;
@@ -782,6 +782,64 @@ porClave = Object.fromEntries(
 
 let porPUE = contar(filtrados, "pue");
 // ✅ NUEVO: contar brigadas en CONSAGRADO
+
+const snapshotUnidades =
+  await getDocs(
+    collection(
+      db,
+      "unidades"
+    )
+  );
+
+let catalogoUnidades = {};
+
+snapshotUnidades.forEach(docSnap => {
+
+  const unidad =
+    docSnap.data();
+
+  catalogoUnidades[
+    unidad.codigo
+  ] = unidad;
+
+});
+
+  let porUnidad = {};
+
+  filtrados.forEach(p => {
+
+  if (!p.vehiculo)
+    return;
+
+  p.vehiculo.split(",").forEach(v => {
+
+    const codigo =
+      v.trim();
+
+    const unidad =
+      catalogoUnidades[codigo];
+
+    const nombre =
+      unidad?.nombre ||
+      codigo;
+
+    porUnidad[nombre] =
+      (porUnidad[nombre] || 0) + 1;
+
+  });
+
+});
+
+  porUnidad = Object.fromEntries(
+  Object.entries(porUnidad)
+    .sort((a, b) => b[1] - a[1])
+);
+
+  console.log(
+  "UNIDADES UTILIZADAS:",
+  porUnidad
+);
+  
 let porBrigada = contar(filtrados, "brigada");
 
 // ✅ ordenar (opcional pero recomendado)
@@ -812,6 +870,14 @@ crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porAmbulancia, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
 crear("graficoAsistencia", porBrigada, "bar");
+  
+  crear(
+  "graficoUnidades",
+  porUnidad,
+  "bar",
+  "#06b6d4",
+  true
+);
 
 let contenedor = document.getElementById("graficosSubtipos");
 if (contenedor) contenedor.innerHTML = "";
