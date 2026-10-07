@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Ejecutivo - Jefaturas</title>
+    
+    <!-- Librerías de CesiumJS con protocolo HTTPS explícito -->
+    <script src="https://cesium.com"></script>
+    <link href="https://cesium.com" rel="stylesheet">
+    
+    <style>
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; 
+            background-color: #0b0f19; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: white; 
+        }
+        #cesiumContainer { 
+            width: 100%; 
+            height: 100%; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            z-index: 1; 
+        }
+        .panel-lateral { 
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            width: 320px; 
+            background: rgba(11, 15, 25, 0.85); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(0, 212, 255, 0.2); 
+            border-radius: 8px; 
+            padding: 20px; 
+            z-index: 10; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
+        }
+        .banner-emergencia { 
+            position: absolute; 
+            top: 20px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: rgba(220, 53, 69, 0.9); 
+            color: white; 
+            padding: 15px 40px; 
+            font-size: 20px; 
+            font-weight: bold; 
+            border-radius: 4px; 
+            z-index: 10; 
+            display: none; 
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(220, 53, 69, 0.5); 
+            animation: pulso-banner 2s infinite;
+        }
+        .badge { 
+            display: inline-block; 
+            padding: 6px 12px; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            font-size: 12px; 
+            margin-bottom: 15px; 
+            border: 1px solid #28a745; 
+            color: #28a745; 
+            background: rgba(40, 167, 69, 0.2); 
+            letter-spacing: 0.5px;
+        }
+        .badge.alarma { 
+            border: 1px solid #dc3545; 
+            color: #dc3545; 
+            background: rgba(220, 53, 69, 0.2); 
+            animation: parpadeo-badge 1.5s infinite;
+        }
+        @keyframes parpadeo-badge {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        @keyframes pulso-banner {
+            0% { box-shadow: 0 0 10px rgba(220, 53, 69, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(220, 53, 69, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(220, 53, 69, 0.5); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner superior de alerta -->
+    <div id="bannerAlerta" class="banner-emergencia">
+        EMERGENCIA ACTIVADA: CAMPAMENTO PÉREZ CALDERA
+    </div>
+
+    <!-- Menú lateral de control -->
+    <div class="panel-lateral">
+        <h2 style="color: #00d4ff; margin-top:0; font-size:18px; letter-spacing: 1px; text-transform: uppercase;">CONTROL OPERACIONAL</h2>
+        <div id="statusBadge" class="badge">SISTEMA OPERACIONAL</div>
+        <p><strong>Ubicación:</strong> <span id="lblUbicacion">Mina Los Bronces</span></p>
+        <p><strong>Estado:</strong> <span id="lblEstado">Monitoreando en vivo...</span></p>
+        
+        <button id="btnSimular" style="width:100%; padding:12px; background:#00d4ff; border:none; border-radius:4px; font-weight:bold; color:#0b0f19; cursor:pointer; margin-top:20px; letter-spacing: 0.5px; transition: 0.3s;">
+            Simular Despacho (Firestore)
+        </button>
+    </div>
+
+    <!-- El contenedor del mapa global -->
+    <div id="cesiumContainer"></div>
+
+    <script>
+        // Esperamos a que la ventana y los scripts externos carguen por completo antes de iniciar Cesium
+        window.addEventListener('load', () => {
+            
+            // Tu token personal de Cesium Ion asignado correctamente
+            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6InBlY3kyOU9VdnJwbEN0aVAiLCJqdGkiOiJkZTYwMmQ3Yi1hMTc0LTQzOGEtYWY2ZS1iM2ZkM2Y2ZmVmNzIiLCJpZCI6NTE3MTMxLCJpc3MiOiJodHRwczovL2FwaS5jZXNpdW0uY29tIiwiYXVkIjoidW5kZWZpbmVkX2RlZmF1bHQiLCJpYXQiOjE3OTEzODM5MzZ9.QRq5nczLUZk9mxZCnYwXhqynkExaD7PMK8kAqmh97ig';
+
+            // Coordenadas reales de Mina Los Bronces, Chile
+            const latMina = -33.1512;
+            const lonMina = -70.3421;
+
+            // Iniciamos el visor 3D configurando el relieve moderno de forma asíncrona
+            const viewer = new Cesium.Viewer('cesiumContainer', {
+                terrain: Cesium.Terrain.fromWorldTerrain(),
+                animation: false, 
+                timeline: false, 
+                sceneModePicker: false, 
+                navigationHelpButton: false, 
+                geocoder: false, 
+                homeButton: false
+            });
+
+            // Enfocamos la cámara inicialmente sobre la cordillera chilena con inclinación
+            viewer.camera.setView({
+                destination: Cesium.Cartesian3.fromDegrees(lonMina, latMina, 6000),
+                orientation: { heading: Cesium.Math.toRadians(0.0), pitch: Cesium.Math.toRadians(-55.0), roll: 0.0 }
+            });
+
+            // Lógica interactiva para emular el flujo de datos en tiempo real
+            let activo = false;
+            document.getElementById('btnSimular').addEventListener('click', () => {
+                if (!activo) {
+                    document.getElementById('bannerAlerta').style.display = 'block';
+                    document.getElementById('statusBadge').className = 'badge alarma';
+                    document.getElementById('statusBadge').innerText = 'CRÍTICO: INCENDIO';
+                    document.getElementById('lblUbicacion').innerText = 'Campamento Pérez Caldera';
+                    document.getElementById('lblEstado').innerText = 'Brigada en camino';
+
+                    // Realiza un vuelo fluido en 3D descendiendo a la zona industrial afectada
+                    viewer.camera.flyTo({
+                        destination: Cesium.Cartesian3.fromDegrees(lonMina, latMina, 1500),
+                        orientation: { heading: Cesium.Math.toRadians(45.0), pitch: Cesium.Math.toRadians(-30.0), roll: 0.0 },
+                        duration: 3.0
+                    });
+                    document.getElementById('btnSimular').innerText = 'Restablecer Todo';
+                    document.getElementById('btnSimular').style.background = '#ff4a5a';
+                    activo = true;
+                } else {
+                    document.getElementById('bannerAlerta').style.display = 'none';
+                    document.getElementById('statusBadge').className = 'badge';
+                    document.getElementById('statusBadge').innerText = 'SISTEMA OPERACIONAL';
+                    document.getElementById('lblUbicacion').innerText = 'Mina Los Bronces';
+                    document.getElementById('lblEstado').innerText = 'Monitoreando en vivo...';
+
+                    // Regresa suavemente a la perspectiva de satélite general sobre la mina
+                    viewer.camera.flyTo({
+                        destination: Cesium.Cartesian3.fromDegrees(lonMina, latMina, 6000),
+                        orientation: { heading: Cesium.Math.toRadians(0.0), pitch: Cesium.Math.toRadians(-55.0), roll: 0.0 },
+                        duration: 2.0
+                    });
+                    document.getElementById('btnSimular').innerText = 'Simular Despacho (Firestore)';
+                    document.getElementById('btnSimular').style.background = '#00d4ff';
+                    activo = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
