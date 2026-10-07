@@ -1006,6 +1006,30 @@ let porMedico = {
 
 let porPUE = contar(filtrados, "pue");
 
+  let porUnidad = {};
+
+filtrados.forEach(p => {
+
+  if (!p.vehiculo)
+    return;
+
+  p.vehiculo.split(",").forEach(v => {
+
+    const nombre =
+      v.trim();
+
+    porUnidad[nombre] =
+      (porUnidad[nombre] || 0) + 1;
+
+  });
+
+});
+
+porUnidad = Object.fromEntries(
+  Object.entries(porUnidad)
+    .sort((a, b) => b[1] - a[1])
+);
+
 // ✅ NUEVO: contar por brigada reales
 let porBrigada = contar(filtrados, "brigada");
 
@@ -1028,6 +1052,13 @@ crear("graficoSubtipo", porSubtipo, "bar", "#f59e0b");
 crear("graficoEmpresa", porEmpresa, "bar", "#8b5cf6");
 crear("graficoMedico", porMedico, "pie");
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
+crear(
+  "graficoUnidades",
+  porUnidad,
+  "bar",
+  "#06b6d4",
+  true
+);
 
   let tipos = {};
 
@@ -1339,6 +1370,31 @@ traslados.forEach(t => {
   
 let porPUE = contar(filtrados, "pue");
 
+  let porUnidad = {};
+
+filtrados.forEach(p => {
+
+  if (!p.vehiculo)
+    return;
+
+  p.vehiculo.split(",").forEach(v => {
+
+    const nombre =
+      v.trim();
+
+    porUnidad[nombre] =
+      (porUnidad[nombre] || 0) + 1;
+
+  });
+
+});
+
+porUnidad = Object.fromEntries(
+  Object.entries(porUnidad)
+    .sort((a, b) => b[1] - a[1])
+);
+  
+
 // 🧹 primero destruir
 Chart.helpers.each(Chart.instances, function(inst) {
   inst.destroy();
@@ -1387,6 +1443,13 @@ crear("graficoTraslados", porTraslado, "pie");
 );
   
 crear("graficoPUE", porPUE, "bar", "#10b981", true);
+  crear(
+  "graficoUnidades",
+  porUnidad,
+  "bar",
+  "#06b6d4",
+  true
+);
 
 let contenedor = document.getElementById("graficosSubtipos");
 if (contenedor) contenedor.innerHTML = "";
