@@ -2398,6 +2398,23 @@ pdf.text(
 
 let fila = 35;
 
+  pdf.setFontSize(9);
+
+pdf.text("Fecha", 10, fila);
+pdf.text("Tipo", 35, fila);
+pdf.text("Lugar", 65, fila);
+pdf.text("Brigada", 95, fila);
+pdf.text("Médico", 125, fila);
+pdf.text("Dur.", 155, fila);
+pdf.text("PUE", 175, fila);
+
+fila += 5;
+
+pdf.line(10, fila, 195, fila);
+
+fila += 5;
+
+/*
 partes.forEach(parte => {
 
   pdf.setFontSize(10);
@@ -2518,6 +2535,91 @@ fila += 10;
   fila += 10;
 
   if (fila > 260) {
+
+    pdf.addPage();
+
+    fila = 20;
+
+  }
+
+});
+*/
+
+  partes.forEach(parte => {
+
+  let duracion = "-";
+
+  if (
+    parte.horaActivacion &&
+    parte.horaCierre
+  ) {
+
+    const inicio =
+      new Date(
+        `2000-01-01 ${parte.horaActivacion}`
+      );
+
+    const fin =
+      new Date(
+        `2000-01-01 ${parte.horaCierre}`
+      );
+
+    duracion =
+      Math.round(
+        (fin - inicio) /
+        1000 / 60
+      ) + " min";
+
+  }
+
+  pdf.setFontSize(8);
+
+  pdf.text(
+    (parte.fecha || "-").toString(),
+    10,
+    fila
+  );
+
+  pdf.text(
+    (parte.tipo || "-").substring(0, 12),
+    35,
+    fila
+  );
+
+  pdf.text(
+    (parte.lugar || "-").substring(0, 18),
+    65,
+    fila
+  );
+
+  pdf.text(
+    (parte.brigada || "-").substring(0, 15),
+    95,
+    fila
+  );
+
+  pdf.text(
+    (parte.servicioMedico || "-")
+      .substring(0, 12),
+    125,
+    fila
+  );
+
+  pdf.text(
+    duracion,
+    155,
+    fila
+  );
+
+  pdf.text(
+    (parte.pue || "-").substring(0, 10),
+    175,
+    fila
+  );
+
+  fila += 6;
+
+  if (fila > 270) {
 
     pdf.addPage();
 
