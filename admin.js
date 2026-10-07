@@ -2380,6 +2380,48 @@ graficos.forEach(grafico => {
     altoPDF
   );
 
+  let textoY =
+  30 + altoPDF + 10;
+
+pdf.setFontSize(10);
+
+pdf.text(
+  "Descripción:",
+  20,
+  textoY
+);
+
+textoY += 6;
+
+  let descripcion =
+
+  "Indicador operacional correspondiente a " +
+  grafico.titulo +
+  ".";
+
+pdf.text(
+  descripcion,
+  20,
+  textoY
+);
+
+  textoY += 12;
+
+pdf.text(
+  "Conclusión:",
+  20,
+  textoY
+);
+
+textoY += 6;
+
+  pdf.text(
+  "Se recomienda revisar este indicador para apoyar la toma de decisiones operacionales.",
+  20,
+  textoY
+);
+
+
 });
 
 // ==========================
