@@ -1938,7 +1938,7 @@ y += 10;
 );
 
 pdf.text(
-  `${fechas?.[0] || "-"} al ${fechas?.[fechas.length - 1] || "-"}`,
+  "Periodo generado automaticamente",
   70,
   y
 );
