@@ -2803,6 +2803,61 @@ if (emergenciaMasLarga) {
 
 }
 
+  pdf.addPage();
+
+pdf.setFontSize(20);
+
+pdf.text(
+  "INDICADORES OPERACIONALES",
+  20,
+  20
+);
+
+let indicadorY = 40;
+
+  pdf.setFontSize(12);
+
+pdf.text(
+  `🚨 Emergencias Totales: ${partes.length}`,
+  20,
+  indicadorY
+);
+
+indicadorY += 12;
+
+  const snapshotTraslados =
+  await getDocs(
+    collection(
+      db,
+      "traslados"
+    )
+  );
+
+pdf.text(
+  `🚑 Traslados: ${snapshotTraslados.size}`,
+  20,
+  indicadorY
+);
+
+indicadorY += 12;
+
+  pdf.text(
+  `✅ Partes Cerrados: ${partes.length}`,
+  20,
+  indicadorY
+);
+
+indicadorY += 12;
+
+  pdf.text(
+  `⏱ Tiempo Promedio: ${promedioEmergencias} min`,
+  20,
+  indicadorY
+);
+
+indicadorY += 12;
+
+
   const totalPaginas =
   pdf.getNumberOfPages();
 
