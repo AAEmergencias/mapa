@@ -2553,7 +2553,7 @@ case "graficoTipo":
     Object.entries(porTipo)
       .sort((a,b) => b[1] - a[1])[0];
 
-  conclusion =
+  descripcion =
     tipoTop
 
       ? `El tipo de emergencia predominante fue ${tipoTop[0]} con ${tipoTop[1]} eventos registrados.`
@@ -2575,7 +2575,7 @@ case "graficoTipo":
     Object.entries(porFaena)
       .sort((a,b) => b[1] - a[1])[0];
 
-  conclusion =
+ descripcion =
     faenaTop
 
       ? `La faena con mayor actividad operacional fue ${faenaTop[0]} con ${faenaTop[1]} eventos registrados.`
@@ -2590,7 +2590,7 @@ case "graficoTipo":
     Object.entries(porEmpresa)
       .sort((a,b) => b[1] - a[1])[0];
 
-  conclusion =
+  descripcion =
     empresaTop
 
       ? `La empresa con mayor cantidad de eventos registrados fue ${empresaTop[0]}.`
@@ -2605,7 +2605,7 @@ case "graficoTipo":
     Object.entries(porPUE)
       .sort((a,b) => b[1] - a[1])[0];
 
-  conclusion =
+ descripcion =
     pueTop
 
       ? `El PUE con mayor recurrencia fue ${pueTop[0]} con ${pueTop[1]} eventos.`
@@ -2620,7 +2620,7 @@ case "graficoTipo":
     Object.entries(porBrigada)
       .sort((a,b) => b[1] - a[1])[0];
 
-  conclusion =
+  descripcion =
     brigadaTopGraf
 
       ? `La brigada con mayor participación fue ${brigadaTopGraf[0]} con ${brigadaTopGraf[1]} activaciones.`
@@ -2649,7 +2649,7 @@ case "graficoTipo":
     Object.entries(porTraslado)
       .sort((a,b) => b[1] - a[1])[0];
 
-  conclusion =
+  descripcion =
     tipoTrasladoTop
 
       ? `Predominaron los traslados ${tipoTrasladoTop[0].toLowerCase()}s con ${tipoTrasladoTop[1]} registros.`
@@ -2671,7 +2671,7 @@ case "graficoAmbulanciasTraslado":
     Object.entries(porAmbulanciaTraslado)
       .sort((a,b) => b[1] - a[1])[0];
 
-  conclusion =
+  descripcion =
     ambulanciaTopTraslado
 
       ? `La ambulancia con mayor cantidad de derivaciones fue ${ambulanciaTopTraslado[0]}.`
