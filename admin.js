@@ -2127,7 +2127,7 @@ resumenY += 12;
 
 pdf.setFontSize(12);
 
-resumenY += 15;
+resumenY += 4;
 
   /*
 Object.entries(porTipo)
@@ -2221,7 +2221,7 @@ const brigadaTop =
   Object.entries(brigadas)
   .sort((a,b) => b[1] - a[1])[0];
 
-resumenY += 15;
+resumenY += 8;
 
 pdf.text(
   `Brigada mas utilizada: ${
