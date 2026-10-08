@@ -2472,12 +2472,20 @@ switch (grafico.id) {
 
     break;
 
-  case "graficoTipo":
+case "graficoTipo":
 
-    descripcion =
-      "Distribución de emergencias según clasificación operacional.";
+  const tipoTop =
+    Object.entries(porTipo)
+      .sort((a,b) => b[1] - a[1])[0];
 
-    break;
+  conclusion =
+    tipoTop
+
+      ? `El tipo de emergencia predominante fue ${tipoTop[0]} con ${tipoTop[1]} eventos registrados.`
+
+      : "No existen datos suficientes.";
+
+  break;
 
   case "graficoSubtipo":
 
@@ -2493,12 +2501,20 @@ switch (grafico.id) {
 
     break;
 
-  case "graficoEmpresa":
+ case "graficoEmpresa":
 
-    descripcion =
-      "Distribución de emergencias por empresa involucrada.";
+  const empresaTop =
+    Object.entries(porEmpresa)
+      .sort((a,b) => b[1] - a[1])[0];
 
-    break;
+  conclusion =
+    empresaTop
+
+      ? `La empresa con mayor cantidad de eventos registrados fue ${empresaTop[0]}.`
+
+      : "No existen datos suficientes.";
+
+  break;
 
   case "graficoPUE":
 
@@ -2640,8 +2656,16 @@ case "graficoAsistencia":
 
 case "graficoUnidades":
 
+  const unidadTop =
+    Object.entries(porUnidad)
+      .sort((a,b) => b[1] - a[1])[0];
+
   conclusion =
-    "Permite identificar los recursos operacionales más utilizados.";
+    unidadTop
+
+      ? `La unidad más utilizada fue ${unidadTop[0]} con ${unidadTop[1]} activaciones.`
+
+      : "No existen datos suficientes.";
 
   break;
 
