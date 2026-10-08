@@ -2723,16 +2723,8 @@ case "graficoAsistencia":
 
 case "graficoUnidades":
 
-  const unidadTop =
-    Object.entries(porUnidad)
-      .sort((a,b) => b[1] - a[1])[0];
-
   conclusion =
-    unidadTop
-
-      ? `La unidad más utilizada fue ${unidadTop[0]} con ${unidadTop[1]} activaciones.`
-
-      : "No existen datos suficientes.";
+    "Permite identificar los recursos operacionales más utilizados.";
 
   break;
 
