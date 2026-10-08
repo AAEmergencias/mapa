@@ -2061,6 +2061,30 @@ pdf.text(
   resumenY
 );
 
+  resumenY += 12;
+
+const snapshotTrasladosResumen =
+  await getDocs(
+    collection(
+      db,
+      "traslados"
+    )
+  );
+
+pdf.text(
+  `Traslados Registrados: ${snapshotTrasladosResumen.size}`,
+  20,
+  resumenY
+);
+
+  resumenY += 12;
+
+pdf.text(
+  `Partes Cerrados: ${partes.length}`,
+  20,
+  resumenY
+);
+
   const fechas =
   partes
     .map(p => p.fecha)
