@@ -1858,44 +1858,119 @@ pdf.addImage(
   25
 );
 
-  pdf.setFontSize(22);
+pdf.setFontSize(28);
 
-  pdf.text(
-    "CENTRAL DE EMERGENCIAS",
-    20,
-    y
-  );
-
-  y += 12;
-
-  pdf.setFontSize(14);
-
-  pdf.text(
-    "Informe Operacional",
-    20,
-    y
-  );
-
-  y += 8;
-
-pdf.setFontSize(10);
+pdf.setTextColor(
+  0,
+  91,
+  150
+);
 
 pdf.text(
-  "Informe Ejecutivo de Gestion de Emergencias",
+  "CONDOR",
+  75,
+  y,
+  {
+    align: "center"
+  }
+);
+
+y += 15;
+
+pdf.setFontSize(16);
+
+pdf.setTextColor(
+  40,
+  40,
+  40
+);
+
+pdf.text(
+  "Sistema Integral de Gestion de Emergencias",
+  105,
+  y,
+  {
+    align: "center"
+  }
+);
+
+y += 15;
+
+pdf.setFontSize(20);
+
+pdf.setTextColor(
+  0,
+  0,
+  0
+);
+
+pdf.text(
+  "INFORME EJECUTIVO OPERACIONAL",
+  105,
+  y,
+  {
+    align: "center"
+  }
+);
+
+y += 20;
+
+  pdf.setFontSize(12);
+
+pdf.text(
+  "Fecha de Emision:",
   20,
   y
 );
 
-  y += 15;
+pdf.text(
+  new Date().toLocaleString(),
+  70,
+  y
+);
 
-  pdf.setFontSize(10);
+y += 10;
 
   pdf.text(
-    "Fecha: " +
-    new Date().toLocaleString(),
-    20,
-    y
-  );
+  "Periodo Analizado:",
+  20,
+  y
+);
+
+pdf.text(
+  `${fechas?.[0] || "-"} al ${fechas?.[fechas.length - 1] || "-"}`,
+  70,
+  y
+);
+
+y += 10;
+
+  pdf.text(
+  "Sistema:",
+  20,
+  y
+);
+
+pdf.text(
+  "CONDOR",
+  70,
+  y
+);
+
+y += 10;
+
+  pdf.text(
+  "Central:",
+  20,
+  y
+);
+
+pdf.text(
+  "Central de Emergencias",
+  70,
+  y
+);
+
 
   y += 15;
 
