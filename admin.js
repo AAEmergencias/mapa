@@ -2085,27 +2085,7 @@ pdf.text(
   resumenY
 );
 
-  resumenY += 15;
-
-pdf.setFontSize(14);
-
-pdf.text(
-  "PARTICIPACION OPERACIONAL",
-  20,
-  resumenY
-);
-
-resumenY += 12;
-
-pdf.setFontSize(12);
-
-  const fechas =
-  partes
-    .map(p => p.fecha)
-    .filter(Boolean)
-    .sort();
-
-if (fechas.length > 0) {
+  if (fechas.length > 0) {
 
   resumenY += 10;
 
@@ -2127,6 +2107,26 @@ if (fechas.length > 0) {
 
 }
 
+  resumenY += 8;
+
+pdf.setFontSize(14);
+
+pdf.text(
+  "PARTICIPACION OPERACIONAL",
+  20,
+  resumenY
+);
+
+resumenY += 12;
+
+pdf.setFontSize(12);
+
+  const fechas =
+  partes
+    .map(p => p.fecha)
+    .filter(Boolean)
+    .sort();
+  
 resumenY += 15;
 
   /*
@@ -2186,7 +2186,7 @@ pdf.text(
   resumenY
 );
 
-  resumenY += 18;
+ resumenY += 8;
 
 pdf.setFontSize(14);
 
