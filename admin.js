@@ -2061,6 +2061,7 @@ partes.forEach(parte => {
 
 pdf.setFontSize(12);
 
+  /*
 pdf.text(
   `Total Emergencias: ${partes.length}`,
   20,
@@ -2090,6 +2091,87 @@ pdf.text(
   20,
   resumenY
 );
+*/
+
+  const snapshotTrasladosResumen =
+  await getDocs(
+    collection(
+      db,
+      "traslados"
+    )
+  );
+
+  pdf.setDrawColor(
+  0,
+  91,
+  150
+);
+
+pdf.rect(
+  20,
+  resumenY,
+  50,
+  22
+);
+
+pdf.rect(
+  80,
+  resumenY,
+  50,
+  22
+);
+
+pdf.rect(
+  140,
+  resumenY,
+  50,
+  22
+);
+
+  pdf.setFontSize(10);
+
+pdf.text(
+  "EMERGENCIAS",
+  25,
+  resumenY + 8
+);
+
+pdf.text(
+  "TRASLADOS",
+  90,
+  resumenY + 8
+);
+
+pdf.text(
+  "PARTES",
+  150,
+  resumenY + 8
+);
+
+  pdf.setFontSize(16);
+
+pdf.text(
+  String(partes.length),
+  40,
+  resumenY + 18
+);
+
+pdf.text(
+  String(snapshotTrasladosResumen.size),
+  100,
+  resumenY + 18
+);
+
+pdf.text(
+  String(partes.length),
+  162,
+  resumenY + 18
+);
+
+  resumenY += 35;
+
+  
+
 
   if (fechas.length > 0) {
 
