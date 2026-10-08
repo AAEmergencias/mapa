@@ -3098,6 +3098,7 @@ if (emergenciaMasLarga) {
 
 }
 
+  /*
   pdf.addPage();
 
 pdf.setFontSize(20);
@@ -3151,6 +3152,7 @@ indicadorY += 12;
 );
 
 indicadorY += 12;
+*/
 
 
   const totalPaginas =
