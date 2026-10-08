@@ -2106,7 +2106,7 @@ pdf.text(
   // ==========================
 // AMBULANCIA MAS UTILIZADA
 // ==========================
-
+/*
 let ambulancias = {};
 
 partes.forEach(parte => {
@@ -2121,6 +2121,68 @@ partes.forEach(parte => {
 
   ambulancias[ambulancia] =
     (ambulancias[ambulancia] || 0) + 1;
+
+});
+*/
+
+  const snapshotUnidades =
+  await getDocs(
+    collection(
+      db,
+      "unidades"
+    )
+  );
+
+let catalogoUnidades = {};
+
+snapshotUnidades.forEach(docSnap => {
+
+  const unidad =
+    docSnap.data();
+
+  catalogoUnidades[
+    unidad.codigo
+  ] = unidad;
+
+});
+
+  let ambulancias = {};
+
+  partes.forEach(parte => {
+
+  if (!parte.vehiculo)
+    return;
+
+  parte.vehiculo.split(",").forEach(v => {
+
+    const codigo =
+      v.trim();
+
+    const unidad =
+      catalogoUnidades[codigo];
+
+    if (!unidad)
+      return;
+
+    const categorias =
+      unidad.categorias || [];
+
+    const esMedica =
+      categorias.some(c =>
+        c.toLowerCase()
+          .includes("médico")
+      );
+
+    if (!esMedica)
+      return;
+
+    const nombre =
+      unidad.nombre || codigo;
+
+    ambulancias[nombre] =
+      (ambulancias[nombre] || 0) + 1;
+
+  });
 
 });
 
