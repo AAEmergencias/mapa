@@ -2586,13 +2586,122 @@ pdf.text(
 
 textoY += 6;
 
+  let conclusion = "";
+  switch (grafico.id) {
+
+      case "graficoMes":
+
+  conclusion =
+    "Las emergencias se distribuyen a lo largo del período analizado.";
+
+  break;
+
+case "graficoTipo":
+
+  conclusion =
+    "El gráfico permite identificar el tipo de emergencia predominante.";
+
+  break;
+
+case "graficoSubtipo":
+
+  conclusion =
+    "Los subtipos permiten identificar eventos específicos con mayor frecuencia.";
+
+  break;
+
+case "graficoFaena":
+
+  conclusion =
+    "Permite identificar las áreas operacionales con mayor ocurrencia de eventos.";
+
+  break;
+
+case "graficoEmpresa":
+
+  conclusion =
+    "Permite identificar las empresas con mayor cantidad de incidentes registrados.";
+
+  break;
+
+case "graficoPUE":
+
+  conclusion =
+    "Permite identificar los eventos críticos asociados a riesgos operacionales.";
+
+  break;
+
+case "graficoAsistencia":
+
+  conclusion =
+    "Muestra la participación de brigadas en la atención de emergencias.";
+
+  break;
+
+case "graficoUnidades":
+
+  conclusion =
+    "Permite identificar los recursos operacionales más utilizados.";
+
+  break;
+
+case "graficoMedico":
+
+  conclusion =
+    "Permite visualizar la participación del servicio médico en la operación.";
+
+  break;
+
+case "graficoTraslados":
+
+  conclusion =
+    "Permite comparar derivaciones internas y externas.";
+
+  break;
+
+case "graficoCentrosTraslado":
+
+  conclusion =
+    "Permite identificar los principales centros de derivación utilizados.";
+
+  break;
+
+case "graficoAmbulanciasTraslado":
+
+  conclusion =
+    "Permite identificar qué ambulancias realizaron más traslados.";
+
+  break;
+
+case "graficoTrasladosMes":
+
+  conclusion =
+    "Permite analizar la evolución mensual de los traslados médicos.";
+
+  break;
+
+case "graficoClaves":
+
+  conclusion =
+    "Permite identificar las claves médicas más frecuentes.";
+
+  break;
+
+default:
+
+  conclusion =
+    "Indicador operacional analizado.";
+
+}
+
   pdf.text(
-  "Se recomienda revisar este indicador para apoyar la toma de decisiones operacionales.",
+  conclusion,
   20,
   textoY
 );
 
 
+  
 });
 
 // ==========================
