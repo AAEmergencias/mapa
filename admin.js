@@ -2085,6 +2085,20 @@ pdf.text(
   resumenY
 );
 
+  resumenY += 15;
+
+pdf.setFontSize(14);
+
+pdf.text(
+  "PARTICIPACION OPERACIONAL",
+  20,
+  resumenY
+);
+
+resumenY += 12;
+
+pdf.setFontSize(12);
+
   const fechas =
   partes
     .map(p => p.fecha)
@@ -2115,6 +2129,7 @@ if (fechas.length > 0) {
 
 resumenY += 15;
 
+  /*
 Object.entries(porTipo)
 .forEach(([tipo, cantidad]) => {
 
@@ -2127,6 +2142,7 @@ Object.entries(porTipo)
   resumenY += 8;
 
 });
+*/
 
 // Brigadas
 const conBrigada =
@@ -2169,6 +2185,21 @@ pdf.text(
   20,
   resumenY
 );
+
+  resumenY += 18;
+
+pdf.setFontSize(14);
+
+pdf.text(
+  "RECURSOS DESTACADOS",
+  20,
+  resumenY
+);
+
+resumenY += 12;
+
+pdf.setFontSize(12);
+  
 
   // ==========================
 // BRIGADA MAS UTILIZADA
