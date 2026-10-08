@@ -2461,11 +2461,114 @@ pdf.text(
 
 textoY += 6;
 
-  let descripcion =
+  let descripcion = "";
 
-  "Indicador operacional correspondiente a " +
-  grafico.titulo +
-  ".";
+switch (grafico.id) {
+
+  case "graficoMes":
+
+    descripcion =
+      "Distribución mensual de emergencias registradas durante el período analizado.";
+
+    break;
+
+  case "graficoTipo":
+
+    descripcion =
+      "Distribución de emergencias según clasificación operacional.";
+
+    break;
+
+  case "graficoSubtipo":
+
+    descripcion =
+      "Detalle de emergencias clasificadas por subtipo.";
+
+    break;
+
+  case "graficoFaena":
+
+    descripcion =
+      "Distribución geográfica de emergencias por faena o sector operacional.";
+
+    break;
+
+  case "graficoEmpresa":
+
+    descripcion =
+      "Distribución de emergencias por empresa involucrada.";
+
+    break;
+
+  case "graficoPUE":
+
+    descripcion =
+      "Clasificación de eventos según PUE asociado.";
+
+    break;
+
+  case "graficoAsistencia":
+
+    descripcion =
+      "Participación de brigadas operacionales en emergencias.";
+
+    break;
+
+  case "graficoUnidades":
+
+    descripcion =
+      "Frecuencia de utilización de recursos operacionales.";
+
+    break;
+
+  case "graficoMedico":
+
+    descripcion =
+      "Participación del servicio médico en emergencias registradas.";
+
+    break;
+
+  case "graficoTraslados":
+
+    descripcion =
+      "Comparación entre traslados internos y externos.";
+
+    break;
+
+  case "graficoCentrosTraslado":
+
+    descripcion =
+      "Centros asistenciales utilizados para derivaciones externas.";
+
+    break;
+
+  case "graficoAmbulanciasTraslado":
+
+    descripcion =
+      "Uso de ambulancias en derivaciones externas.";
+
+    break;
+
+  case "graficoTrasladosMes":
+
+    descripcion =
+      "Distribución mensual de traslados médicos.";
+
+    break;
+
+  case "graficoClaves":
+
+    descripcion =
+      "Clasificación de atenciones según clave médica.";
+
+    break;
+
+  default:
+
+    descripcion =
+      grafico.titulo;
+
+}
 
 pdf.text(
   descripcion,
