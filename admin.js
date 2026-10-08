@@ -2043,6 +2043,12 @@ let resumenY = 40;
 // Emergencias por tipo
 let porTipo = {};
 
+  const fechas =
+  partes
+    .map(p => p.fecha)
+    .filter(Boolean)
+    .sort();
+
 partes.forEach(parte => {
 
   const tipo =
@@ -2121,12 +2127,6 @@ resumenY += 12;
 
 pdf.setFontSize(12);
 
-  const fechas =
-  partes
-    .map(p => p.fecha)
-    .filter(Boolean)
-    .sort();
-  
 resumenY += 15;
 
   /*
@@ -2408,7 +2408,7 @@ partes.forEach(parte => {
 
     : 0;
 
-  resumenY += 15;
+  resumenY += 8;
 
 pdf.text(
   `Tiempo Promedio: ${
