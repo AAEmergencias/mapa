@@ -2494,12 +2494,20 @@ case "graficoTipo":
 
     break;
 
-  case "graficoFaena":
+ case "graficoFaena":
 
-    descripcion =
-      "Distribución geográfica de emergencias por faena o sector operacional.";
+  const faenaTop =
+    Object.entries(porFaena)
+      .sort((a,b) => b[1] - a[1])[0];
 
-    break;
+  conclusion =
+    faenaTop
+
+      ? `La faena con mayor actividad operacional fue ${faenaTop[0]} con ${faenaTop[1]} eventos registrados.`
+
+      : "No existen datos suficientes.";
+
+  break;
 
  case "graficoEmpresa":
 
@@ -2516,19 +2524,35 @@ case "graficoTipo":
 
   break;
 
-  case "graficoPUE":
+ case "graficoPUE":
 
-    descripcion =
-      "Clasificación de eventos según PUE asociado.";
+  const pueTop =
+    Object.entries(porPUE)
+      .sort((a,b) => b[1] - a[1])[0];
 
-    break;
+  conclusion =
+    pueTop
 
-  case "graficoAsistencia":
+      ? `El PUE con mayor recurrencia fue ${pueTop[0]} con ${pueTop[1]} eventos.`
 
-    descripcion =
-      "Participación de brigadas operacionales en emergencias.";
+      : "No existen datos suficientes.";
 
-    break;
+  break;
+
+ case "graficoAsistencia":
+
+  const brigadaTopGraf =
+    Object.entries(porBrigada)
+      .sort((a,b) => b[1] - a[1])[0];
+
+  conclusion =
+    brigadaTopGraf
+
+      ? `La brigada con mayor participación fue ${brigadaTopGraf[0]} con ${brigadaTopGraf[1]} activaciones.`
+
+      : "No existen datos suficientes.";
+
+  break;
 
   case "graficoUnidades":
 
@@ -2544,12 +2568,20 @@ case "graficoTipo":
 
     break;
 
-  case "graficoTraslados":
+ case "graficoTraslados":
 
-    descripcion =
-      "Comparación entre traslados internos y externos.";
+  const tipoTrasladoTop =
+    Object.entries(porTraslado)
+      .sort((a,b) => b[1] - a[1])[0];
 
-    break;
+  conclusion =
+    tipoTrasladoTop
+
+      ? `Predominaron los traslados ${tipoTrasladoTop[0].toLowerCase()}s con ${tipoTrasladoTop[1]} registros.`
+
+      : "No existen datos suficientes.";
+
+  break;
 
   case "graficoCentrosTraslado":
 
@@ -2558,12 +2590,20 @@ case "graficoTipo":
 
     break;
 
-  case "graficoAmbulanciasTraslado":
+case "graficoAmbulanciasTraslado":
 
-    descripcion =
-      "Uso de ambulancias en derivaciones externas.";
+  const ambulanciaTopTraslado =
+    Object.entries(porAmbulanciaTraslado)
+      .sort((a,b) => b[1] - a[1])[0];
 
-    break;
+  conclusion =
+    ambulanciaTopTraslado
+
+      ? `La ambulancia con mayor cantidad de derivaciones fue ${ambulanciaTopTraslado[0]}.`
+
+      : "No existen datos suficientes.";
+
+  break;
 
   case "graficoTrasladosMes":
 
