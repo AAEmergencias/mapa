@@ -371,14 +371,63 @@ new Chart(
 
 );
 
+  console.log(
+  "DATOS POR TIPO:",
+  porTipo
+);
+
 // ==========================
 // GRAFICO TIPO
 // ==========================
 
-console.log(
-  "DATOS POR MES:",
-  porMes
-);
+const ctxTipo =
+  document.getElementById(
+    "graficoTipoInforme"
+  );
+
+if (ctxTipo) {
+
+  new Chart(
+
+    ctxTipo,
+
+    {
+
+      type: "pie",
+
+      data: {
+
+        labels:
+          Object.keys(
+            porTipo
+          ),
+
+        datasets: [{
+
+          data:
+            Object.values(
+              porTipo
+            ),
+
+          backgroundColor: [
+
+            "#005b96",
+            "#00AEEF",
+            "#00A651",
+            "#F7941D",
+            "#D71920"
+
+          ]
+
+        }]
+
+      }
+
+    }
+
+  );
+
+}
 
 // ==========================
 // GRAFICO MES
