@@ -65,6 +65,21 @@ partesSnap.forEach(doc => {
 
 };
 
+  let porTipo = {};
+
+  partes.forEach(parte => {
+
+  const tipo =
+    parte.tipo;
+
+  if (!tipo)
+    return;
+
+  porTipo[tipo] =
+    (porTipo[tipo] || 0) + 1;
+
+});
+
   partes.forEach(parte => {
 
   if (!parte.fecha)
@@ -277,6 +292,18 @@ partesSnap.forEach(doc => {
 
 </div>
 
+<div class="graficoCard">
+
+  <h3>
+    Emergencias por Tipo
+  </h3>
+
+  <canvas
+    id="graficoTipoInforme">
+  </canvas>
+
+</div>
+
 </section>
 
 <section>
@@ -307,6 +334,48 @@ new Chart(
   document.getElementById(
     "graficoMesInforme"
   ),
+
+  new Chart(
+
+  document.getElementById(
+    "graficoTipoInforme"
+  ),
+
+  {
+
+    type: "pie",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porTipo
+        ),
+
+      datasets: [{
+
+        data:
+          Object.values(
+            porTipo
+          ),
+
+        backgroundColor: [
+
+          "#005b96",
+          "#00AEEF",
+          "#00A651",
+          "#F7941D",
+          "#D71920"
+
+        ]
+
+      }]
+
+    }
+
+  }
+
+);
 
   {
 
