@@ -13,16 +13,14 @@ document.getElementById(
   "informe"
 ).innerHTML = `
 
-<div class="portada">
+<section class="portada">
 
   <img
     src="logo.png"
     class="logoInforme"
   >
 
-  <h1>
-    CONDOR
-  </h1>
+  <h1>CONDOR</h1>
 
   <h2>
     Sistema Integral de Gestión de Emergencias
@@ -32,20 +30,38 @@ document.getElementById(
     Informe Ejecutivo Operacional
   </h3>
 
-  <div class="infoPortada">
+</section>
 
-    <p>
-      Fecha Emisión:
-      ${new Date().toLocaleString()}
-    </p>
+<section id="resumen">
 
-    <p>
-      Generado por:
-      CONDOR
-    </p>
+  <h2>
+    📊 Resumen Ejecutivo
+  </h2>
 
-  </div>
+</section>
 
-</div>
+<section id="graficos">
+
+  <h2>
+    📈 Gráficos Operacionales
+  </h2>
+
+</section>
+
+<section id="tabla">
+
+  <h2>
+    📋 Detalle de Emergencias
+  </h2>
+
+</section>
+
+<section id="conclusiones">
+
+  <h2>
+    ✅ Conclusiones Operacionales
+  </h2>
+
+</section>
 
 `;
