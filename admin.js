@@ -2259,6 +2259,15 @@ const conBrigada =
     p => p.brigada
   ).length;
 
+  // Servicio Médico
+const conMedico =
+  partes.filter(
+    p =>
+      p.ambulancia &&
+      p.ambulancia !==
+      "No asiste"
+  ).length;
+
 resumenY += 10;
 
   /*
@@ -2268,14 +2277,7 @@ pdf.text(
   resumenY
 );
 
-// Servicio Médico
-const conMedico =
-  partes.filter(
-    p =>
-      p.ambulancia &&
-      p.ambulancia !==
-      "No asiste"
-  ).length;
+
 
 resumenY += 10;
 
