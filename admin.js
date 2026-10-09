@@ -2107,29 +2107,50 @@ pdf.text(
   150
 );
 
-pdf.rect(
+pdf.setFillColor(
+  240,
+  248,
+  255
+);
+
+pdf.roundedRect(
   20,
   resumenY,
   50,
-  22
+  22,
+  3,
+  3,
+  "FD"
 );
 
-pdf.rect(
+pdf.roundedRect(
   80,
   resumenY,
   50,
-  22
+  22,
+  3,
+  3,
+  "FD"
 );
 
-pdf.rect(
+pdf.roundedRect(
   140,
   resumenY,
   50,
-  22
+  22,
+  3,
+  3,
+  "FD"
 );
 
   pdf.setFontSize(10);
 
+pdf.setTextColor(
+  0,
+  91,
+  150
+);
+  
 pdf.text(
   "EMERGENCIAS",
   25,
@@ -2150,6 +2171,12 @@ pdf.text(
 
   pdf.setFontSize(16);
 
+pdf.setTextColor(
+  0,
+  0,
+  0
+);
+  
 pdf.text(
   String(partes.length),
   40,
