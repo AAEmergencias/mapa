@@ -329,13 +329,53 @@ partesSnap.forEach(doc => {
   porMes
 );
 
+// ==========================
+// GRAFICO MES
+// ==========================
+
 new Chart(
 
   document.getElementById(
     "graficoMesInforme"
   ),
 
-  new Chart(
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porMes
+        ),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+        data:
+          Object.values(
+            porMes
+          ),
+
+        backgroundColor:
+          "#005b96"
+
+      }]
+
+    }
+
+  }
+
+);
+
+// ==========================
+// GRAFICO TIPO
+// ==========================
+
+new Chart(
 
   document.getElementById(
     "graficoTipoInforme"
