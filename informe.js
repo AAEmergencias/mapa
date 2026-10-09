@@ -400,6 +400,30 @@ console.log(
 📋 Detalle de Emergencias
 </h2>
 
+<table id="tablaEmergencias">
+
+  <thead>
+
+    <tr>
+
+      <th>Fecha</th>
+
+      <th>Tipo</th>
+
+      <th>Faena</th>
+
+      <th>Brigada</th>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+  </tbody>
+
+</table>
+
 </section>
 
 <section>
