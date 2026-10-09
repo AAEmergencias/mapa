@@ -476,48 +476,6 @@ if (ctxTipo) {
 }
 
 // ==========================
-// GRAFICO MES
-// ==========================
-
-new Chart(
-
-  document.getElementById(
-    "graficoMesInforme"
-  ),
-
-  {
-
-    type: "bar",
-
-    data: {
-
-      labels:
-        Object.keys(
-          porMes
-        ),
-
-      datasets: [{
-
-        label:
-          "Emergencias",
-
-        data:
-          Object.values(
-            porMes
-          ),
-
-        backgroundColor:
-          "#005b96"
-
-      }]
-
-    }
-
-  }
-
-);
-
-// ==========================
 // GRAFICO TIPO
 // ==========================
 
