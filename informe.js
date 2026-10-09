@@ -46,6 +46,41 @@ partesSnap.forEach(doc => {
 
 });
 
+  let porMes = {};
+
+  const MESES = {
+
+  "01": "Enero",
+  "02": "Febrero",
+  "03": "Marzo",
+  "04": "Abril",
+  "05": "Mayo",
+  "06": "Junio",
+  "07": "Julio",
+  "08": "Agosto",
+  "09": "Septiembre",
+  "10": "Octubre",
+  "11": "Noviembre",
+  "12": "Diciembre"
+
+};
+
+  partes.forEach(parte => {
+
+  if (!parte.fecha)
+    return;
+
+  const mesNumero =
+    parte.fecha.split("-")[1];
+
+  const nombreMes =
+    MESES[mesNumero] || mesNumero;
+
+  porMes[nombreMes] =
+    (porMes[nombreMes] || 0) + 1;
+
+});
+
   let brigadas = {};
 
   partes.forEach(parte => {
