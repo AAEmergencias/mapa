@@ -375,6 +375,57 @@ new Chart(
 // GRAFICO TIPO
 // ==========================
 
+console.log(
+  "DATOS POR MES:",
+  porMes
+);
+
+// ==========================
+// GRAFICO MES
+// ==========================
+
+new Chart(
+
+  document.getElementById(
+    "graficoMesInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porMes
+        ),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+        data:
+          Object.values(
+            porMes
+          ),
+
+        backgroundColor:
+          "#005b96"
+
+      }]
+
+    }
+
+  }
+
+);
+
+// ==========================
+// GRAFICO TIPO
+// ==========================
+
 new Chart(
 
   document.getElementById(
@@ -417,39 +468,6 @@ new Chart(
 
 );
 
-  {
-
-    type: "bar",
-
-    data: {
-
-      labels:
-        Object.keys(
-          porMes
-        ),
-
-      datasets: [{
-
-        label:
-          "Emergencias",
-
-        data:
-          Object.values(
-            porMes
-          ),
-
-        backgroundColor:
-          "#005b96"
-
-      }]
-
-    }
-
   }
 
-);
-
-}
-
 cargarInforme();
-
