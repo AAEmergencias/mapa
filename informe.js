@@ -141,6 +141,46 @@ async function cargarInforme() {
 
 </div>
 
+<div class="kpiGrid">
+
+  <div class="kpiCard">
+
+    <span>
+      🏆 Brigada Top
+    </span>
+
+    <b>
+      R1 / Mina
+    </b>
+
+  </div>
+
+  <div class="kpiCard">
+
+    <span>
+      🚑 Ambulancia Top
+    </span>
+
+    <b>
+      S1 / Pérez
+    </b>
+
+  </div>
+
+  <div class="kpiCard">
+
+    <span>
+      ⏱ Tiempo Promedio
+    </span>
+
+    <b>
+      8 min
+    </b>
+
+  </div>
+
+</div>
+
 </section>
 
 <section>
