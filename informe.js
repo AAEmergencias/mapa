@@ -265,6 +265,18 @@ partesSnap.forEach(doc => {
 📈 Gráficos Operacionales
 </h2>
 
+<div class="graficoCard">
+
+  <h3>
+    Emergencias por Mes
+  </h3>
+
+  <canvas
+    id="graficoMesInforme">
+  </canvas>
+
+</div>
+
 </section>
 
 <section>
@@ -288,3 +300,37 @@ partesSnap.forEach(doc => {
 }
 
 cargarInforme();
+
+new Chart(
+
+  document.getElementById(
+    "graficoMesInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(porMes),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+        data:
+          Object.values(porMes),
+
+        backgroundColor:
+          "#005b96"
+
+      }]
+
+    }
+
+  }
+
+);
