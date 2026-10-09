@@ -192,3 +192,45 @@ section h2 {
   height: 350px !important;
 
 }
+
+#tablaEmergencias {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin-top: 20px;
+
+}
+
+#tablaEmergencias th {
+
+  background: #005b96;
+
+  color: white;
+
+  padding: 12px;
+
+  text-align: left;
+
+}
+
+#tablaEmergencias td {
+
+  padding: 10px;
+
+  border-bottom: 1px solid #ddd;
+
+}
+
+#tablaEmergencias tr:nth-child(even) {
+
+  background: #f5f7fa;
+
+}
+
+#tablaEmergencias tr:hover {
+
+  background: #e8f4ff;
+
+}
