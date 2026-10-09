@@ -485,7 +485,47 @@ new Chart(
     "graficoTipoInforme"
   ),
 
-  new Chart(
+  {
+
+    type: "pie",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porTipo
+        ),
+
+      datasets: [{
+
+        data:
+          Object.values(
+            porTipo
+          ),
+
+        backgroundColor: [
+
+          "#005b96",
+          "#00AEEF",
+          "#00A651",
+          "#F7941D",
+          "#D71920"
+
+        ]
+
+      }]
+
+    }
+
+  }
+
+);
+
+// ==========================
+// GRAFICO FAENA
+// ==========================
+
+new Chart(
 
   document.getElementById(
     "graficoFaenaInforme"
@@ -524,42 +564,6 @@ new Chart(
       responsive: true,
 
       maintainAspectRatio: false
-
-    }
-
-  }
-
-);
-
-  {
-
-    type: "pie",
-
-    data: {
-
-      labels:
-        Object.keys(
-          porTipo
-        ),
-
-      datasets: [{
-
-        data:
-          Object.values(
-            porTipo
-          ),
-
-        backgroundColor: [
-
-          "#005b96",
-          "#00AEEF",
-          "#00A651",
-          "#F7941D",
-          "#D71920"
-
-        ]
-
-      }]
 
     }
 
