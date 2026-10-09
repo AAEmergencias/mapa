@@ -2238,6 +2238,19 @@ pdf.setFontSize(12);
 
 resumenY += 4;
 
+const conBrigada =
+  partes.filter(
+    p => p.brigada
+  ).length;
+
+const conMedico =
+  partes.filter(
+    p =>
+      p.ambulancia &&
+      p.ambulancia !==
+      "No asiste"
+  ).length;
+
     pdf.setFillColor(
   240,
   248,
@@ -2345,21 +2358,6 @@ Object.entries(porTipo)
 
 });
 */
-
-// Brigadas
-const conBrigada =
-  partes.filter(
-    p => p.brigada
-  ).length;
-
-  // Servicio Médico
-const conMedico =
-  partes.filter(
-    p =>
-      p.ambulancia &&
-      p.ambulancia !==
-      "No asiste"
-  ).length;
 
 resumenY += 10;
 
