@@ -80,6 +80,21 @@ partesSnap.forEach(doc => {
 
 });
 
+  console.log(
+  "PARTES COMPLETAS:",
+  partes
+);
+
+console.log(
+  "POR TIPO:",
+  porTipo
+);
+
+console.log(
+  "TOTAL PARTES:",
+  partes.length
+);
+
   partes.forEach(parte => {
 
   if (!parte.fecha)
