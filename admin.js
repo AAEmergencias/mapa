@@ -2238,82 +2238,7 @@ pdf.setFontSize(12);
 
 resumenY += 4;
 
-  /*
-Object.entries(porTipo)
-.forEach(([tipo, cantidad]) => {
-
-  pdf.text(
-    `${tipo}: ${cantidad}`,
-    20,
-    resumenY
-  );
-
-  resumenY += 8;
-
-});
-*/
-
-// Brigadas
-const conBrigada =
-  partes.filter(
-    p => p.brigada
-  ).length;
-
-  // Servicio Médico
-const conMedico =
-  partes.filter(
-    p =>
-      p.ambulancia &&
-      p.ambulancia !==
-      "No asiste"
-  ).length;
-
-resumenY += 10;
-
-  /*
-pdf.text(
-  `Con Brigada: ${conBrigada}`,
-  20,
-  resumenY
-);
-
-
-
-resumenY += 10;
-
-pdf.text(
-  `Con Servicio Medico: ${conMedico}`,
-  20,
-  resumenY
-);
-
-resumenY += 10;
-
-pdf.text(
-  `Sin Servicio Medico: ${
-    partes.length -
-    conMedico
-  }`,
-  20,
-  resumenY
-);
-*/
-
- resumenY += 8;
-
-pdf.setFontSize(14);
-
-pdf.text(
-  "RECURSOS DESTACADOS",
-  20,
-  resumenY
-);
-
-resumenY += 12;
-
-pdf.setFontSize(12);
-
-  pdf.setFillColor(
+    pdf.setFillColor(
   240,
   248,
   255
@@ -2405,6 +2330,81 @@ pdf.text(
 );
 
   resumenY += 35;
+
+  /*
+Object.entries(porTipo)
+.forEach(([tipo, cantidad]) => {
+
+  pdf.text(
+    `${tipo}: ${cantidad}`,
+    20,
+    resumenY
+  );
+
+  resumenY += 8;
+
+});
+*/
+
+// Brigadas
+const conBrigada =
+  partes.filter(
+    p => p.brigada
+  ).length;
+
+  // Servicio Médico
+const conMedico =
+  partes.filter(
+    p =>
+      p.ambulancia &&
+      p.ambulancia !==
+      "No asiste"
+  ).length;
+
+resumenY += 10;
+
+  /*
+pdf.text(
+  `Con Brigada: ${conBrigada}`,
+  20,
+  resumenY
+);
+
+
+
+resumenY += 10;
+
+pdf.text(
+  `Con Servicio Medico: ${conMedico}`,
+  20,
+  resumenY
+);
+
+resumenY += 10;
+
+pdf.text(
+  `Sin Servicio Medico: ${
+    partes.length -
+    conMedico
+  }`,
+  20,
+  resumenY
+);
+*/
+
+ resumenY += 8;
+
+pdf.setFontSize(14);
+
+pdf.text(
+  "RECURSOS DESTACADOS",
+  20,
+  resumenY
+);
+
+resumenY += 12;
+
+pdf.setFontSize(12);
   
 
   // ==========================
