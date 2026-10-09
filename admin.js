@@ -2261,6 +2261,7 @@ const conBrigada =
 
 resumenY += 10;
 
+  /*
 pdf.text(
   `Con Brigada: ${conBrigada}`,
   20,
@@ -2294,6 +2295,7 @@ pdf.text(
   20,
   resumenY
 );
+*/
 
  resumenY += 8;
 
@@ -2308,6 +2310,99 @@ pdf.text(
 resumenY += 12;
 
 pdf.setFontSize(12);
+
+  pdf.setFillColor(
+  240,
+  248,
+  255
+);
+
+pdf.roundedRect(
+  20,
+  resumenY,
+  50,
+  22,
+  3,
+  3,
+  "FD"
+);
+
+pdf.roundedRect(
+  80,
+  resumenY,
+  50,
+  22,
+  3,
+  3,
+  "FD"
+);
+
+pdf.roundedRect(
+  140,
+  resumenY,
+  50,
+  22,
+  3,
+  3,
+  "FD"
+);
+
+  pdf.setTextColor(
+  0,
+  91,
+  150
+);
+
+pdf.setFontSize(10);
+
+pdf.text(
+  "BRIGADA",
+  32,
+  resumenY + 8
+);
+
+pdf.text(
+  "MEDICO",
+  95,
+  resumenY + 8
+);
+
+pdf.text(
+  "SIN MEDICO",
+  148,
+  resumenY + 8
+);
+
+  pdf.setTextColor(
+  0,
+  0,
+  0
+);
+
+pdf.setFontSize(16);
+
+pdf.text(
+  String(conBrigada),
+  43,
+  resumenY + 18
+);
+
+pdf.text(
+  String(conMedico),
+  102,
+  resumenY + 18
+);
+
+pdf.text(
+  String(
+    partes.length -
+    conMedico
+  ),
+  162,
+  resumenY + 18
+);
+
+  resumenY += 35;
   
 
   // ==========================
