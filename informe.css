@@ -1,0 +1,19 @@
+body {
+
+  background: #f5f7fa;
+
+  font-family: Arial, sans-serif;
+
+  margin: 0;
+
+  padding: 20px;
+
+}
+
+#informe {
+
+  max-width: 1200px;
+
+  margin: auto;
+
+}
