@@ -378,6 +378,18 @@ console.log(
 
 </div>
 
+<div class="graficoCard">
+
+  <h3>
+    Unidades Más Utilizadas
+  </h3>
+
+  <canvas
+    id="graficoUnidadInforme">
+  </canvas>
+
+</div>
+
 </div>
 
 </section>
