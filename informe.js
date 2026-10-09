@@ -103,6 +103,42 @@ async function cargarInforme() {
 
   </div>
 
+  <div class="kpiCard">
+
+  <span>
+    🚒 Con Brigada
+  </span>
+
+  <b>
+    7
+  </b>
+
+</div>
+
+<div class="kpiCard">
+
+  <span>
+    🚑 Con Médico
+  </span>
+
+  <b>
+    3
+  </b>
+
+</div>
+
+<div class="kpiCard">
+
+  <span>
+    ⚪ Sin Médico
+  </span>
+
+  <b>
+    5
+  </b>
+
+</div>
+
 </div>
 
 </section>
