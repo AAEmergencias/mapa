@@ -297,9 +297,10 @@ partesSnap.forEach(doc => {
 
 `;
 
-}
-
-cargarInforme();
+  console.log(
+  "DATOS POR MES:",
+  porMes
+);
 
 new Chart(
 
@@ -314,7 +315,9 @@ new Chart(
     data: {
 
       labels:
-        Object.keys(porMes),
+        Object.keys(
+          porMes
+        ),
 
       datasets: [{
 
@@ -322,7 +325,9 @@ new Chart(
           "Emergencias",
 
         data:
-          Object.values(porMes),
+          Object.values(
+            porMes
+          ),
 
         backgroundColor:
           "#005b96"
@@ -334,3 +339,8 @@ new Chart(
   }
 
 );
+
+}
+
+cargarInforme();
+
