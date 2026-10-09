@@ -476,52 +476,6 @@ if (ctxTipo) {
 }
 
 // ==========================
-// GRAFICO TIPO
-// ==========================
-
-new Chart(
-
-  document.getElementById(
-    "graficoTipoInforme"
-  ),
-
-  {
-
-    type: "pie",
-
-    data: {
-
-      labels:
-        Object.keys(
-          porTipo
-        ),
-
-      datasets: [{
-
-        data:
-          Object.values(
-            porTipo
-          ),
-
-        backgroundColor: [
-
-          "#005b96",
-          "#00AEEF",
-          "#00A651",
-          "#F7941D",
-          "#D71920"
-
-        ]
-
-      }]
-
-    }
-
-  }
-
-);
-
-// ==========================
 // GRAFICO FAENA
 // ==========================
 
