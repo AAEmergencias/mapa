@@ -36,6 +36,42 @@ async function cargarInforme() {
   const totalPartes =
     partesSnap.size;
 
+  const partes = [];
+
+partesSnap.forEach(doc => {
+
+  partes.push(
+    doc.data()
+  );
+
+});
+
+  let brigadas = {};
+
+  partes.forEach(parte => {
+
+  const brigada =
+    parte.brigada;
+
+  if (!brigada)
+    return;
+
+  brigadas[brigada] =
+    (brigadas[brigada] || 0) + 1;
+
+});
+
+
+  const brigadaTop =
+
+  Object.entries(
+    brigadas
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
   document.getElementById(
     "informe"
   ).innerHTML = `
