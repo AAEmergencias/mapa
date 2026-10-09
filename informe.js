@@ -69,6 +69,8 @@ partesSnap.forEach(doc => {
 
   let porFaena = {};
 
+  let porUnidad = {};
+
   partes.forEach(parte => {
 
   const tipo =
@@ -94,6 +96,34 @@ partesSnap.forEach(doc => {
     (porFaena[faena] || 0) + 1;
 
 });
+
+  partes.forEach(parte => {
+
+  if (!parte.vehiculo)
+    return;
+
+  parte.vehiculo
+    .split(",")
+
+    .forEach(v => {
+
+      const unidad =
+        v.trim();
+
+      if (!unidad)
+        return;
+
+      porUnidad[unidad] =
+        (porUnidad[unidad] || 0) + 1;
+
+    });
+
+});
+
+  console.log(
+  "DATOS POR UNIDAD:",
+  porUnidad
+);
 
   console.log(
   "PARTES COMPLETAS:",
