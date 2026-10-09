@@ -156,3 +156,27 @@ section h2 {
   max-height: 400px;
 
 }
+
+#graficoTipoInforme {
+
+  max-width: 350px;
+
+  max-height: 350px;
+
+  margin: auto;
+
+}
+
+.graficosGrid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(450px,1fr)
+    );
+
+  gap: 20px;
+
+}
