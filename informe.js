@@ -67,6 +67,8 @@ partesSnap.forEach(doc => {
 
   let porTipo = {};
 
+  let porFaena = {};
+
   partes.forEach(parte => {
 
   const tipo =
@@ -77,6 +79,19 @@ partesSnap.forEach(doc => {
 
   porTipo[tipo] =
     (porTipo[tipo] || 0) + 1;
+
+});
+
+  partes.forEach(parte => {
+
+  const faena =
+    parte.faena;
+
+  if (!faena)
+    return;
+
+  porFaena[faena] =
+    (porFaena[faena] || 0) + 1;
 
 });
 
@@ -321,6 +336,18 @@ console.log(
 
   </div>
 
+  <div class="graficoCard">
+
+  <h3>
+    Emergencias por Faena
+  </h3>
+
+  <canvas
+    id="graficoFaenaInforme">
+  </canvas>
+
+</div>
+
 </div>
 
 </section>
@@ -499,6 +526,52 @@ new Chart(
   document.getElementById(
     "graficoTipoInforme"
   ),
+
+  new Chart(
+
+  document.getElementById(
+    "graficoFaenaInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porFaena
+        ),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+        data:
+          Object.values(
+            porFaena
+          ),
+
+        backgroundColor:
+          "#00A651"
+
+      }]
+
+    },
+
+    options: {
+
+      responsive: true,
+
+      maintainAspectRatio: false
+
+    }
+
+  }
+
+);
 
   {
 
