@@ -186,8 +186,13 @@ partesSnap.forEach(doc => {
     </span>
 
     <b>
-      R1 / Mina
-    </b>
+  ${
+    brigadaTop
+      ? brigadaTop[0]
+      : "-"
+  }
+</b>
+
 
   </div>
 
