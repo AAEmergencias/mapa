@@ -420,17 +420,29 @@ console.log(
 
  <tbody>
 
-  <tr>
+${partes.map(parte => `
 
-    <td>2026-09-01</td>
+<tr>
 
-    <td>Vehicular</td>
+  <td>
+    ${parte.fecha || "-"}
+  </td>
 
-    <td>Los Bronces</td>
+  <td>
+    ${parte.tipo || "-"}
+  </td>
 
-    <td>B1</td>
+  <td>
+    ${parte.faena || "-"}
+  </td>
 
-  </tr>
+  <td>
+    ${parte.brigada || "-"}
+  </td>
+
+</tr>
+
+`).join("")}
 
 </tbody>
 
