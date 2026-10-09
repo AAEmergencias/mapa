@@ -418,9 +418,21 @@ console.log(
 
   </thead>
 
-  <tbody>
+ <tbody>
 
-  </tbody>
+  <tr>
+
+    <td>2026-09-01</td>
+
+    <td>Vehicular</td>
+
+    <td>Los Bronces</td>
+
+    <td>B1</td>
+
+  </tr>
+
+</tbody>
 
 </table>
 
