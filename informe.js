@@ -9,9 +9,36 @@ console.log(
   "✅ informe.js cargado"
 );
 
-document.getElementById(
-  "informe"
-).innerHTML = `
+async function cargarInforme() {
+
+  const partesSnap =
+    await getDocs(
+      collection(
+        db,
+        "partes"
+      )
+    );
+
+  const trasladosSnap =
+    await getDocs(
+      collection(
+        db,
+        "traslados"
+      )
+    );
+
+  const totalEmergencias =
+    partesSnap.size;
+
+  const totalTraslados =
+    trasladosSnap.size;
+
+  const totalPartes =
+    partesSnap.size;
+
+  document.getElementById(
+    "informe"
+  ).innerHTML = `
 
 <section class="portada">
 
@@ -32,36 +59,80 @@ document.getElementById(
 
 </section>
 
-<section id="resumen">
+<section>
 
-  <h2>
-    📊 Resumen Ejecutivo
-  </h2>
+<h2>
+📊 Resumen Ejecutivo
+</h2>
+
+<div class="kpiGrid">
+
+  <div class="kpiCard">
+
+    <span>
+      🚨 Emergencias
+    </span>
+
+    <b>
+      ${totalEmergencias}
+    </b>
+
+  </div>
+
+  <div class="kpiCard">
+
+    <span>
+      🚑 Traslados
+    </span>
+
+    <b>
+      ${totalTraslados}
+    </b>
+
+  </div>
+
+  <div class="kpiCard">
+
+    <span>
+      ✅ Partes
+    </span>
+
+    <b>
+      ${totalPartes}
+    </b>
+
+  </div>
+
+</div>
 
 </section>
 
-<section id="graficos">
+<section>
 
-  <h2>
-    📈 Gráficos Operacionales
-  </h2>
-
-</section>
-
-<section id="tabla">
-
-  <h2>
-    📋 Detalle de Emergencias
-  </h2>
+<h2>
+📈 Gráficos Operacionales
+</h2>
 
 </section>
 
-<section id="conclusiones">
+<section>
 
-  <h2>
-    ✅ Conclusiones Operacionales
-  </h2>
+<h2>
+📋 Detalle de Emergencias
+</h2>
+
+</section>
+
+<section>
+
+<h2>
+✅ Conclusiones Operacionales
+</h2>
 
 </section>
 
 `;
+
+}
+
+cargarInforme();
