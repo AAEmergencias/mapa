@@ -567,6 +567,58 @@ new Chart(
 
 );
 
+  // ==========================
+// GRAFICO UNIDADES
+// ==========================
+
+new Chart(
+
+  document.getElementById(
+    "graficoUnidadInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porUnidad
+        ),
+
+      datasets: [{
+
+        label:
+          "Utilizaciones",
+
+        data:
+          Object.values(
+            porUnidad
+          ),
+
+        backgroundColor:
+          "#f59e0b"
+
+      }]
+
+    },
+
+    options: {
+
+      indexAxis: "y",
+
+      responsive: true,
+
+      maintainAspectRatio: false
+
+    }
+
+  }
+
+);
+
   }
 
 cargarInforme();
