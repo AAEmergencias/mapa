@@ -456,6 +456,10 @@ ${partes.map(parte => `
 ✅ Conclusiones Operacionales
 </h2>
 
+<div id="conclusionesTexto">
+
+</div>
+
 </section>
 
 `;
@@ -666,6 +670,32 @@ new Chart(
   }
 
 );
+
+  document.getElementById(
+  "conclusionesTexto"
+).innerHTML = `
+
+<p>
+
+Se registraron
+<b>${totalEmergencias}</b>
+emergencias durante el período analizado.
+
+</p>
+
+<p>
+
+La brigada con mayor participación fue
+<b>
+${brigadaTop
+  ? brigadaTop[0]
+  : "-"
+}
+</b>.
+
+</p>
+
+`;
 
   }
 
