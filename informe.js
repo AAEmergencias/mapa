@@ -280,27 +280,31 @@ partesSnap.forEach(doc => {
 📈 Gráficos Operacionales
 </h2>
 
-<div class="graficoCard">
+<div class="graficosGrid">
 
-  <h3>
-    Emergencias por Mes
-  </h3>
+  <div class="graficoCard">
 
-  <canvas
-    id="graficoMesInforme">
-  </canvas>
+    <h3>
+      Emergencias por Mes
+    </h3>
 
-</div>
+    <canvas
+      id="graficoMesInforme">
+    </canvas>
 
-<div class="graficoCard">
+  </div>
 
-  <h3>
-    Emergencias por Tipo
-  </h3>
+  <div class="graficoCard">
 
-  <canvas
-    id="graficoTipoInforme">
-  </canvas>
+    <h3>
+      Emergencias por Tipo
+    </h3>
+
+    <canvas
+      id="graficoTipoInforme">
+    </canvas>
+
+  </div>
 
 </div>
 
