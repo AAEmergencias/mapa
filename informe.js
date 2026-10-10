@@ -673,64 +673,103 @@ const horarioTop =
 
   </h4>
 
-  <div class="hallazgoBox">
+ <div class="hallazgoBox">
+
+  <div class="hallazgoHeader">
 
     <b>
-
       🕒 Horario más frecuente
-
     </b>
 
-    <p>
+    <span>
 
-  🏆
+      ${
+        horarioTop
+          ? horarioTop[0]
+          : "-"
+      }
 
-  ${
-    horarioTop
-      ? horarioTop[0]
-      : "-"
-  }
+      (${horarioTop
+        ? horarioTop[1]
+        : 0})
 
-  (${horarioTop
-    ? horarioTop[1]
-    : 0})
-
-</p>
-
-    <ul>
-
-      <li>
-        🌙 Madrugada
-        (00:00 - 05:59)
-        →
-        ${porHorario.Madrugada}
-      </li>
-
-      <li>
-        ☀️ Mañana
-        (06:00 - 11:59)
-        →
-        ${porHorario.Mañana}
-      </li>
-
-      <li>
-        🌤️ Tarde
-        (12:00 - 17:59)
-        →
-        ${porHorario.Tarde}
-      </li>
-
-      <li>
-        🌃 Noche
-        (18:00 - 23:59)
-        →
-        ${porHorario.Noche}
-      </li>
-
-    </ul>
+    </span>
 
   </div>
 
+  <div class="hallazgoFila">
+
+    <div>
+
+      🌙 Madrugada
+
+      <small>
+        00:00 - 05:59
+      </small>
+
+    </div>
+
+    <strong>
+      ${porHorario.Madrugada}
+    </strong>
+
+  </div>
+
+  <div class="hallazgoFila">
+
+    <div>
+
+      ☀️ Mañana
+
+      <small>
+        06:00 - 11:59
+      </small>
+
+    </div>
+
+    <strong>
+      ${porHorario.Mañana}
+    </strong>
+
+  </div>
+
+  <div class="hallazgoFila">
+
+    <div>
+
+      🌤️ Tarde
+
+      <small>
+        12:00 - 17:59
+      </small>
+
+    </div>
+
+    <strong>
+      ${porHorario.Tarde}
+    </strong>
+
+  </div>
+
+  <div class="hallazgoFila">
+
+    <div>
+
+      🌃 Noche
+
+      <small>
+        18:00 - 23:59
+      </small>
+
+    </div>
+
+    <strong>
+      ${porHorario.Noche}
+    </strong>
+
+  </div>
+
+</div>
   <div class="hallazgoBox">
 
   <b>
