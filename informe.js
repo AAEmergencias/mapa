@@ -718,6 +718,52 @@ const horarioTop =
 
   </div>
 
+  <div class="hallazgoBox">
+
+  <b>
+
+    🚨 Tipo más frecuente
+
+  </b>
+
+  <p>
+
+    ${
+      tipoTop
+        ? tipoTop[0]
+        : "-"
+    }
+
+    (${tipoTop
+      ? tipoTop[1]
+      : 0})
+
+  </p>
+
+  <ul>
+
+    ${Object.entries(porTipo)
+
+      .map(([tipo, valor]) => `
+
+        <li>
+
+          ${tipo}
+
+          →
+
+          ${valor}
+
+        </li>
+
+      `)
+
+      .join("")}
+
+  </ul>
+
+</div>
+
 </div>
 
 </section>
