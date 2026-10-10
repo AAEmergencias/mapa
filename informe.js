@@ -597,6 +597,22 @@ const promedioEmergencias =
 
 </div>
 
+<div class="kpiCard">
+
+  <span>
+    🏭 Faena Top
+  </span>
+
+  <b>
+    ${
+      faenaTop
+        ? faenaTop[0]
+        : "-"
+    }
+  </b>
+
+</div>
+
 </section>
 
 <section>
