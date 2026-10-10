@@ -1621,6 +1621,63 @@ traslados durante el período evaluado.
 
   );
 
+    const slide2 =
+  pptx.addSlide();
+
+    slide2.addText(
+
+  "Resumen Ejecutivo",
+
+  {
+
+    x: 0.5,
+
+    y: 0.3,
+
+    w: 4,
+
+    h: 0.4,
+
+    fontSize: 22,
+
+    bold: true,
+
+    color: "005b96"
+
+  }
+
+);
+
+    slide2.addText(
+
+  `🚨 Emergencias: ${totalEmergencias}
+
+🚑 Traslados: ${totalTraslados}
+
+✅ Partes: ${totalPartes}
+
+🚒 Con Brigada: ${conBrigada}
+
+🚑 Con Médico: ${conMedico}
+
+⚪ Sin Médico: ${sinMedico}`,
+
+  {
+
+    x: 0.7,
+
+    y: 1.2,
+
+    w: 5,
+
+    h: 3,
+
+    fontSize: 18
+
+  }
+
+);
+
   pptx.writeFile({
 
     fileName:
