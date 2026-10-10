@@ -415,6 +415,16 @@ const promedioEmergencias =
 
   const faenaTop =
 
+      const horarioTop =
+
+  Object.entries(
+    porHorario
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
   Object.entries(
     porFaena
   )
@@ -1273,16 +1283,6 @@ new Chart(
 
   Object.entries(
     porTipo
-  )
-
-  .sort(
-    (a,b) => b[1] - a[1]
-  )[0];
-
-  const horarioTop =
-
-  Object.entries(
-    porHorario
   )
 
   .sort(
