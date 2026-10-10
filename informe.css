@@ -386,3 +386,37 @@ section h2 {
   color: #005b96;
 
 }
+
+.hallazgoBox {
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  background: white;
+
+  border-left: 4px solid #005b96;
+
+  border-radius: 8px;
+
+}
+
+.hallazgoBox ul {
+
+  list-style: none;
+
+  padding-left: 0;
+
+}
+
+.hallazgoBox li {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 6px 0;
+
+  border-bottom: 1px solid #eee;
+
+}
