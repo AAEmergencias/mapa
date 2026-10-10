@@ -582,6 +582,18 @@ console.log(
 
 </div>
 
+<div class="graficoCard">
+
+  <h3>
+    PUE Relacionado
+  </h3>
+
+  <canvas
+    id="graficoPUEInforme">
+  </canvas>
+
+</div>
+
 </div>
 
 </section>
@@ -1000,6 +1012,56 @@ new Chart(
 
         backgroundColor:
           "#ef4444"
+
+      }]
+
+    },
+
+    options: {
+
+      responsive: true,
+
+      maintainAspectRatio: false
+
+    }
+
+  }
+
+);
+
+  // ==========================
+// GRAFICO PUE
+// ==========================
+
+new Chart(
+
+  document.getElementById(
+    "graficoPUEInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porPUE
+        ),
+
+      datasets: [{
+
+        label:
+          "Eventos",
+
+        data:
+          Object.values(
+            porPUE
+          ),
+
+        backgroundColor:
+          "#dc2626"
 
       }]
 
