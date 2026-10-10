@@ -364,3 +364,25 @@ section h2 {
   font-weight: bold;
 
 }
+
+.hallazgosRapidos {
+
+  margin-top: 25px;
+
+  padding: 20px;
+
+  border: 2px solid #005b96;
+
+  border-radius: 12px;
+
+  background: #f8fbff;
+
+}
+
+.hallazgosRapidos h4 {
+
+  margin-top: 0;
+
+  color: #005b96;
+
+}
