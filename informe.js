@@ -1564,9 +1564,69 @@ traslados durante el período evaluado.
   "btnPPT"
 ).onclick = () => {
 
-  alert(
-    "🚧 PPTX en construcción"
+  const pptx =
+    new PptxGenJS();
+
+  pptx.layout =
+    "LAYOUT_WIDE";
+
+  const slide =
+    pptx.addSlide();
+
+  slide.addText(
+
+    "CONDOR",
+
+    {
+
+      x: 1,
+
+      y: 1,
+
+      w: 10,
+
+      h: 0.5,
+
+      fontSize: 24,
+
+      bold: true,
+
+      align: "center",
+
+      color: "005b96"
+
+    }
+
   );
+
+  slide.addText(
+
+    "Informe Ejecutivo Operacional",
+
+    {
+
+      x: 1,
+
+      y: 2,
+
+      w: 10,
+
+      h: 0.5,
+
+      fontSize: 18,
+
+      align: "center"
+
+    }
+
+  );
+
+  pptx.writeFile({
+
+    fileName:
+      "CONDOR_Informe_Ejecutivo.pptx"
+
+  });
 
 };
 
