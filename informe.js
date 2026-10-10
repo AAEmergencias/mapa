@@ -500,37 +500,49 @@ const promedioEmergencias =
 
   <div class="kpiCard">
 
-  <span>
-    🚒 Con Brigada
-  </span>
+ <span>
+  🚒 Con Brigada
+</span>
 
 <b>
   ${conBrigada}
 </b>
 
+<small>
+  ${porcentajeBrigada}%
+</small>
+
 </div>
 
 <div class="kpiCard">
 
   <span>
-    🚑 Con Médico
-  </span>
+  🚑 Con Médico
+</span>
 
-  <b>
+<b>
   ${conMedico}
 </b>
 
+<small>
+  ${porcentajeMedico}%
+</small>
+
 </div>
 
 <div class="kpiCard">
 
   <span>
-    ⚪ Sin Médico
-  </span>
+  ⚪ Sin Médico
+</span>
 
-  <b>
+<b>
   ${sinMedico}
 </b>
+
+<small>
+  ${porcentajeSinMedico}%
+</small>
 
 </div>
 
