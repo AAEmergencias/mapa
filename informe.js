@@ -275,14 +275,35 @@ console.log(
     p => p.brigada
   ).length;
 
+  const porcentajeBrigada =
+
+  Math.round(
+    (conBrigada /
+    totalEmergencias) * 100
+  );
+
 const conMedico =
   partes.filter(
     p => p.servicioMedico
-  ).length;
+  ).length; 
+
+  const porcentajeMedico =
+
+  Math.round(
+    (conMedico /
+    totalEmergencias) * 100
+  );
 
 const sinMedico =
   totalEmergencias -
   conMedico;
+
+  const porcentajeSinMedico =
+
+  Math.round(
+    (sinMedico /
+    totalEmergencias) * 100
+  );
 
   let totalMinutos = 0;
 
@@ -690,6 +711,8 @@ const promedioEmergencias =
 
       <th>Tipo</th>
 
+      <th>Subtipo</th>
+
       <th>Faena</th>
 
       <th>Brigada</th>
@@ -711,6 +734,10 @@ ${partes.map(parte => `
   <td>
     ${parte.tipo || "-"}
   </td>
+
+  <td>
+  ${parte.subtipo || "-"}
+</td>
 
   <td>
     ${parte.faena || "-"}
