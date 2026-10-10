@@ -297,6 +297,42 @@ section h2 {
 
 @media print {
 
+  .kpiGrid {
+
+  break-inside: avoid;
+
+}
+
+.kpiCard {
+
+  break-inside: avoid;
+
+}
+
+.hallazgosRapidos {
+
+  break-inside: avoid;
+
+}
+
+.hallazgoBox {
+
+  break-inside: avoid;
+
+}
+
+.graficoCard {
+
+  break-inside: avoid;
+
+}
+
+table {
+
+  break-inside: avoid;
+
+}
+
   #btnImprimir {
 
     display: none !important;
