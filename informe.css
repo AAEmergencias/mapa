@@ -258,3 +258,39 @@ section h2 {
   height: 350px !important;
 
 }
+
+.barraAcciones {
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-bottom: 20px;
+
+}
+
+#btnImprimir {
+
+  background: #005b96;
+
+  color: white;
+
+  border: none;
+
+  padding: 12px 20px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+}
+
+#btnImprimir:hover {
+
+  background: #00497a;
+
+}
