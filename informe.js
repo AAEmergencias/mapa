@@ -540,6 +540,18 @@ console.log(
 <div class="graficoCard">
 
   <h3>
+    Subcategorización de Emergencias
+  </h3>
+
+  <canvas
+    id="graficoSubtipoInforme">
+  </canvas>
+
+</div>
+
+<div class="graficoCard">
+
+  <h3>
     Emergencias por Horario
   </h3>
 
@@ -875,6 +887,58 @@ new Chart(
       maintainAspectRatio: false,
 
       indexAxis: "y"
+
+    }
+
+  }
+
+);
+
+  // ==========================
+// GRAFICO SUBTIPO
+// ==========================
+
+new Chart(
+
+  document.getElementById(
+    "graficoSubtipoInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porSubtipo
+        ),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+        data:
+          Object.values(
+            porSubtipo
+          ),
+
+        backgroundColor:
+          "#14b8a6"
+
+      }]
+
+    },
+
+    options: {
+
+      indexAxis: "y",
+
+      responsive: true,
+
+      maintainAspectRatio: false
 
     }
 
