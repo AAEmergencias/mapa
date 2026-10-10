@@ -644,6 +644,64 @@ const promedioEmergencias =
 
 </div>
 
+<div class="hallazgosRapidos">
+
+  <h4>
+
+    📍 Lectura Ejecutiva Rápida
+
+  </h4>
+
+  <div class="hallazgoBox">
+
+    <b>
+
+      🕒 Horario más frecuente
+
+    </b>
+
+    <p>
+
+      ${
+        horarioTop
+          ? horarioTop[0]
+          : "-"
+      }
+
+      (${horarioTop
+        ? horarioTop[1]
+        : 0})
+
+    </p>
+
+  </div>
+
+  <div class="hallazgoBox">
+
+    <b>
+
+      🚨 Tipo más frecuente
+
+    </b>
+
+    <p>
+
+      ${
+        tipoTop
+          ? tipoTop[0]
+          : "-"
+      }
+
+      (${tipoTop
+        ? tipoTop[1]
+        : 0})
+
+    </p>
+
+  </div>
+
+</div>
+
 </section>
 
 <section>
