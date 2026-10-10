@@ -770,51 +770,54 @@ const horarioTop =
   </div>
 
 </div>
-  <div class="hallazgoBox">
 
-  <b>
+<div class="hallazgoBox">
 
-    🚨 Tipo más frecuente
+  <div class="hallazgoHeader">
 
-  </b>
+    <b>
+      🚨 Tipo más frecuente
+    </b>
 
-  <p>
+    <span>
 
-  🏆
+      ${
+        tipoTop
+          ? tipoTop[0]
+          : "-"
+      }
 
-  ${
-    tipoTop
-      ? tipoTop[0]
-      : "-"
-  }
+      (${tipoTop
+        ? tipoTop[1]
+        : 0})
 
-  (${tipoTop
-    ? tipoTop[1]
-    : 0})
+    </span>
 
-</p>
+  </div>
 
-  <ul>
+  ${Object.entries(porTipo)
 
-    ${Object.entries(porTipo)
+    .map(([tipo, valor]) => `
 
-      .map(([tipo, valor]) => `
+      <div class="hallazgoFila">
 
-        <li>
+        <div>
 
           ${tipo}
 
-          →
+        </div>
+
+        <strong>
 
           ${valor}
 
-        </li>
+        </strong>
 
-      `)
+      </div>
 
-      .join("")}
+    `)
 
-  </ul>
+    .join("")}
 
 </div>
 
