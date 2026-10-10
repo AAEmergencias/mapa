@@ -797,6 +797,10 @@ const horarioTop =
 
 ${Object.entries(porTipo)
 
+  .sort(
+    (a,b) => b[1] - a[1]
+  )
+
   .map(([tipo, valor]) => {
 
     const icono = {
