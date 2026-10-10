@@ -413,6 +413,16 @@ const promedioEmergencias =
     (a,b) => b[1] - a[1]
   )[0];
 
+  const faenaTop =
+
+  Object.entries(
+    porFaena
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
   document.getElementById(
     "informe"
   ).innerHTML = `
@@ -1220,15 +1230,6 @@ new Chart(
     (a,b) => b[1] - a[1]
   )[0];
 
-  const faenaTop =
-
-  Object.entries(
-    porFaena
-  )
-
-  .sort(
-    (a,b) => b[1] - a[1]
-  )[0];
 
  document.getElementById(
   "conclusionesTexto"
