@@ -693,7 +693,7 @@ new Chart(
 
 );
 
-  // ==========================
+// ==========================
 // GRAFICO UNIDADES
 // ==========================
 
@@ -738,6 +738,58 @@ new Chart(
       responsive: true,
 
       maintainAspectRatio: false
+
+    }
+
+  }
+
+);
+
+  // ==========================
+// GRAFICO EMPRESA
+// ==========================
+
+new Chart(
+
+  document.getElementById(
+    "graficoEmpresaInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porEmpresa
+        ),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+        data:
+          Object.values(
+            porEmpresa
+          ),
+
+        backgroundColor:
+          "#8b5cf6"
+
+      }]
+
+    },
+
+    options: {
+
+      responsive: true,
+
+      maintainAspectRatio: false,
+
+      indexAxis: "y"
 
     }
 
