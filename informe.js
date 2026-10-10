@@ -795,15 +795,51 @@ const horarioTop =
 
   </div>
 
-  ${Object.entries(porTipo)
+${Object.entries(porTipo)
 
-    .map(([tipo, valor]) => `
+  .map(([tipo, valor]) => {
+
+    const icono = {
+
+  "Incendio": "🔥",
+
+  "Vehicular": "🚗",
+
+  "Rescate": "🧗",
+
+  "Medico": "🏥",
+
+  "Médico": "🏥",
+
+  "Hazmat": "☣️",
+
+  "Simulacros": "🎯",
+
+  "Sísmico": "🌎",
+
+  "Sismico": "🌎",
+
+  "Meteorologico": "🌧️",
+
+  "Meteorológico": "🌧️",
+
+  "Geológico": "⛰️",
+
+  "Geologico": "⛰️",
+
+  "Ambiental": "🌱",
+
+  "Otros": "📦"
+
+}[tipo] || "🚨";
+
+    return `
 
       <div class="hallazgoFila">
 
         <div>
 
-          ${tipo}
+          ${icono} ${tipo}
 
         </div>
 
@@ -815,9 +851,11 @@ const horarioTop =
 
       </div>
 
-    `)
+    `;
 
-    .join("")}
+  })
+
+  .join("")}
 
 </div>
 
