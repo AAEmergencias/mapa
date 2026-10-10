@@ -434,3 +434,47 @@ section h2 {
   margin-top: 20px;
 
 }
+
+.hallazgoHeader {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 15px;
+
+}
+
+.hallazgoFila {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 10px 0;
+
+  border-bottom: 1px solid #ddd;
+
+}
+
+.hallazgoFila small {
+
+  display: block;
+
+  color: #666;
+
+  margin-top: 2px;
+
+}
+
+.hallazgoFila strong {
+
+  color: #005b96;
+
+  font-size: 18px;
+
+}
