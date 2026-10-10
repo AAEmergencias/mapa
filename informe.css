@@ -265,9 +265,12 @@ section h2 {
 
   justify-content: flex-end;
 
+  gap: 10px;
+
   margin-bottom: 20px;
 
 }
+
 
 #btnImprimir {
 
@@ -286,6 +289,32 @@ section h2 {
   font-size: 16px;
 
   font-weight: bold;
+
+}
+
+#btnPPT {
+
+  background: #0f766e;
+
+  color: white;
+
+  border: none;
+
+  padding: 12px 20px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+}
+
+#btnPPT:hover {
+
+  background: #115e59;
 
 }
 
