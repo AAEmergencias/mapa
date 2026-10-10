@@ -297,6 +297,65 @@ section h2 {
 
 @media print {
 
+  .portada {
+
+  padding: 20px !important;
+
+}
+
+.logoInforme {
+
+  width: 100px !important;
+
+}
+
+.portada h1 {
+
+  font-size: 36px !important;
+
+}
+
+.portada h2 {
+
+  font-size: 20px !important;
+
+}
+
+.portada h3 {
+
+  font-size: 18px !important;
+
+  margin-top: 15px !important;
+
+}
+
+  .graficoCard {
+
+  page-break-inside: avoid;
+
+  break-inside: avoid;
+
+}
+
+  .kpiCard {
+
+  padding: 12px !important;
+
+}
+
+.kpiCard b {
+
+  font-size: 24px !important;
+
+}
+
+.kpiCard span {
+
+  font-size: 14px !important;
+
+}
+
+
   .kpiGrid {
 
   break-inside: avoid;
@@ -359,10 +418,26 @@ table {
 
   .portada {
 
-    box-shadow: none !important;
+  padding: 25px !important;
 
-  }
+  min-height: auto !important;
 
+}
+
+.logoInforme {
+
+  width: 120px !important;
+
+}
+
+section {
+
+  margin-top: 12px !important;
+
+  padding: 18px !important;
+
+}
+  
 }
 
 .ultimaActualizacion {
@@ -512,5 +587,50 @@ table {
   color: #005b96;
 
   font-size: 18px;
+
+}
+
+@media print {
+
+  .graficosGrid {
+
+    grid-template-columns:
+      1fr 1fr !important;
+
+  }
+
+}
+
+@media print {
+
+  canvas {
+
+    max-height: 250px !important;
+
+  }
+
+}
+
+@media print {
+
+  .hallazgosRapidos {
+
+    font-size: 11px;
+
+  }
+
+  .hallazgoBox {
+
+    padding: 10px;
+
+  }
+
+}
+
+@page {
+
+  size: A4;
+
+  margin: 10mm;
 
 }
