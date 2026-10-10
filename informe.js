@@ -662,23 +662,61 @@ const horarioTop =
 
   </h4>
 
-  <p>
-
-    🕒 Horario más frecuente:
+  <div class="hallazgoBox">
 
     <b>
+
+      🕒 Horario más frecuente
+
+    </b>
+
+    <p>
+
       ${
         horarioTop
           ? horarioTop[0]
           : "-"
       }
-    </b>
 
-    (${horarioTop
-      ? horarioTop[1]
-      : 0})
+      (${horarioTop
+        ? horarioTop[1]
+        : 0})
 
-  </p>
+    </p>
+
+    <ul>
+
+      <li>
+        🌙 Madrugada
+        (00:00 - 05:59)
+        →
+        ${porHorario.Madrugada}
+      </li>
+
+      <li>
+        ☀️ Mañana
+        (06:00 - 11:59)
+        →
+        ${porHorario.Mañana}
+      </li>
+
+      <li>
+        🌤️ Tarde
+        (12:00 - 17:59)
+        →
+        ${porHorario.Tarde}
+      </li>
+
+      <li>
+        🌃 Noche
+        (18:00 - 23:59)
+        →
+        ${porHorario.Noche}
+      </li>
+
+    </ul>
+
+  </div>
 
 </div>
 
