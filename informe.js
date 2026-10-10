@@ -671,7 +671,27 @@ new Chart(
 
 );
 
-  document.getElementById(
+  const tipoTop =
+
+  Object.entries(
+    porTipo
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
+  const faenaTop =
+
+  Object.entries(
+    porFaena
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
+ document.getElementById(
   "conclusionesTexto"
 ).innerHTML = `
 
@@ -694,6 +714,40 @@ ${brigadaTop
 </b>.
 
 </p>
+
+<p>
+
+El tipo de emergencia predominante fue
+<b>
+${tipoTop
+  ? tipoTop[0]
+  : "-"
+}
+</b>.
+
+</p>
+
+<p>
+
+La faena con mayor cantidad de eventos fue
+<b>
+${faenaTop
+  ? faenaTop[0]
+  : "-"
+}
+</b>.
+
+</p>
+
+<p>
+
+Se registraron
+<b>${totalTraslados}</b>
+traslados durante el período.
+
+</p>
+
+`;
 
 `;
 
