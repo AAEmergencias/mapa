@@ -75,6 +75,8 @@ partesSnap.forEach(doc => {
 
   let porUnidad = {};
 
+  let porPUE = {};
+
   let porHorario = {
 
   Madrugada: 0,
@@ -164,6 +166,20 @@ partesSnap.forEach(doc => {
 
   partes.forEach(parte => {
 
+  const pue =
+    parte.pue;
+
+  if (!pue)
+    return;
+
+  porPUE[pue] =
+    (porPUE[pue] || 0) + 1;
+
+});
+  
+
+  partes.forEach(parte => {
+
   if (!parte.horaActivacion)
     return;
 
@@ -211,6 +227,11 @@ partesSnap.forEach(doc => {
   console.log(
   "DATOS POR EMPRESA:",
   porEmpresa
+);
+
+  console.log(
+  "DATOS POR PUE:",
+  porPUE
 );
 
   console.log(
