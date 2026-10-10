@@ -448,11 +448,17 @@ const horarioTop =
     "informe"
   ).innerHTML = `
 
-  <div class="barraAcciones">
+ <div class="barraAcciones">
 
   <button id="btnImprimir">
 
     🖨 Imprimir Informe
+
+  </button>
+
+  <button id="btnPPT">
+
+    📊 Descargar PPTX
 
   </button>
 
