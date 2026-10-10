@@ -514,11 +514,15 @@ const promedioEmergencias =
 
   </div>
 
-  <h3 class="grupoTitulo">
+  </div>
+
+   <h3 class="grupoTitulo">
 
 🚒 Participación Operacional
 
 </h3>
+
+<div class="kpiGrid">
 
   <div class="kpiCard">
 
@@ -592,7 +596,6 @@ const promedioEmergencias =
   }
 </b>
 
-
   </div>
 
   <div class="kpiCard">
@@ -623,8 +626,6 @@ const promedioEmergencias =
 
   </div>
 
-</div>
-
 <div class="kpiCard">
 
   <span>
@@ -638,6 +639,8 @@ const promedioEmergencias =
         : "-"
     }
   </b>
+
+</div>
 
 </div>
 
