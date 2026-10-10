@@ -69,6 +69,8 @@ partesSnap.forEach(doc => {
 
   let porFaena = {};
 
+  let porEmpresa = {};
+
   let porUnidad = {};
 
   partes.forEach(parte => {
@@ -99,6 +101,19 @@ partesSnap.forEach(doc => {
 
   partes.forEach(parte => {
 
+  const empresa =
+    parte.empresa;
+
+  if (!empresa)
+    return;
+
+  porEmpresa[empresa] =
+    (porEmpresa[empresa] || 0) + 1;
+
+});
+
+  partes.forEach(parte => {
+
   if (!parte.vehiculo)
     return;
 
@@ -123,6 +138,11 @@ partesSnap.forEach(doc => {
   console.log(
   "DATOS POR UNIDAD:",
   porUnidad
+);
+
+  console.log(
+  "DATOS POR EMPRESA:",
+  porEmpresa
 );
 
   console.log(
