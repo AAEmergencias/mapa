@@ -1251,6 +1251,16 @@ new Chart(
     (a,b) => b[1] - a[1]
   )[0];
 
+  const horarioTop =
+
+  Object.entries(
+    porHorario
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
 
  document.getElementById(
   "conclusionesTexto"
@@ -1258,9 +1268,34 @@ new Chart(
 
 <p>
 
-Se registraron
+Durante el período analizado se registraron
 <b>${totalEmergencias}</b>
-emergencias durante el período analizado.
+emergencias operacionales.
+
+</p>
+
+<p>
+
+La actividad operacional se concentró
+principalmente en
+<b>
+${faenaTop
+  ? faenaTop[0]
+  : "-"
+}
+</b>.
+
+</p>
+
+<p>
+
+El tipo predominante fue
+<b>
+${tipoTop
+  ? tipoTop[0]
+  : "-"
+}
+</b>.
 
 </p>
 
@@ -1278,10 +1313,10 @@ ${brigadaTop
 
 <p>
 
-El tipo de emergencia predominante fue
+La ambulancia con mayor utilización fue
 <b>
-${tipoTop
-  ? tipoTop[0]
+${ambulanciaTop
+  ? ambulanciaTop[0]
   : "-"
 }
 </b>.
@@ -1290,10 +1325,11 @@ ${tipoTop
 
 <p>
 
-La faena con mayor cantidad de eventos fue
+La mayor actividad operacional se registró
+durante
 <b>
-${faenaTop
-  ? faenaTop[0]
+${horarioTop
+  ? horarioTop[0]
   : "-"
 }
 </b>.
@@ -1304,7 +1340,7 @@ ${faenaTop
 
 Se registraron
 <b>${totalTraslados}</b>
-traslados durante el período.
+traslados durante el período evaluado.
 
 </p>
 
