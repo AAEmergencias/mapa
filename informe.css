@@ -425,10 +425,9 @@ section h2 {
 
 .hallazgosRapidos {
 
-  display: grid;
+  display: flex;
 
-  grid-template-columns:
-    repeat(auto-fit,minmax(450px,1fr));
+  flex-direction: column;
 
   gap: 20px;
 
