@@ -433,6 +433,17 @@ const horarioTop =
     (a,b) => b[1] - a[1]
   )[0];
 
+  const tipoTop =
+
+  Object.entries(
+    porTipo
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
+
   document.getElementById(
     "informe"
   ).innerHTML = `
@@ -1362,17 +1373,6 @@ new Chart(
   }
 
 );
-
-  const tipoTop =
-
-  Object.entries(
-    porTipo
-  )
-
-  .sort(
-    (a,b) => b[1] - a[1]
-  )[0];
-
 
  document.getElementById(
   "conclusionesTexto"
