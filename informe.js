@@ -1560,6 +1560,16 @@ traslados durante el período evaluado.
 
 };
 
+  document.getElementById(
+  "btnPPT"
+).onclick = () => {
+
+  alert(
+    "🚧 PPTX en construcción"
+  );
+
+};
+
   }
 
 cargarInforme();
