@@ -1705,37 +1705,65 @@ traslados durante el período evaluado.
 
 );
 
-    slide3.addText(
+slide3.addShape(
 
-  `🏆 Brigada Top:
-${brigadaTop
-  ? brigadaTop[0]
-  : "-"}
-
-🚑 Ambulancia Top:
-${ambulanciaTop
-  ? ambulanciaTop[0]
-  : "-"}
-
-🏭 Faena Top:
-${faenaTop
-  ? faenaTop[0]
-  : "-"}
-
-⏱ Tiempo Promedio:
-${promedioEmergencias} min`,
+  pptx.ShapeType.roundRect,
 
   {
 
-    x: 0.8,
-
+    x: 0.5,
     y: 1.2,
 
-    w: 6,
+    w: 2.8,
+    h: 1.2,
 
-    h: 4,
+    fill: {
+      color: "F0F8FF"
+    },
 
-    fontSize: 18
+    line: {
+      color: "005b96"
+    }
+
+  }
+
+);
+
+slide3.addText(
+
+  "🏆 Brigada Top",
+
+  {
+
+    x: 0.6,
+    y: 1.35,
+
+    w: 2.6,
+    h: 0.3,
+
+    align: "center",
+
+    bold: true
+
+  }
+
+);
+
+slide3.addText(
+
+  brigadaTop
+    ? brigadaTop[0]
+    : "-",
+
+  {
+
+    x: 0.6,
+    y: 1.75,
+
+    w: 2.6,
+    h: 0.3,
+
+    align: "center"
 
   }
 
