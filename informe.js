@@ -749,8 +749,6 @@ traslados durante el período.
 
 `;
 
-`;
-
   }
 
 cargarInforme();
