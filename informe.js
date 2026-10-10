@@ -73,6 +73,18 @@ partesSnap.forEach(doc => {
 
   let porUnidad = {};
 
+  let porHorario = {
+
+  Madrugada: 0,
+
+  Mañana: 0,
+
+  Tarde: 0,
+
+  Noche: 0
+
+};
+
   partes.forEach(parte => {
 
   const tipo =
@@ -135,9 +147,50 @@ partesSnap.forEach(doc => {
 
 });
 
+  partes.forEach(parte => {
+
+  if (!parte.horaActivacion)
+    return;
+
+  const hora =
+    parseInt(
+      parte.horaActivacion.split(":")[0]
+    );
+
+  if (hora >= 0 && hora <= 5) {
+
+    porHorario.Madrugada++;
+
+  }
+
+  else if (hora <= 11) {
+
+    porHorario.Mañana++;
+
+  }
+
+  else if (hora <= 17) {
+
+    porHorario.Tarde++;
+
+  }
+
+  else {
+
+    porHorario.Noche++;
+
+  }
+
+});
+
   console.log(
   "DATOS POR UNIDAD:",
   porUnidad
+);
+
+  console.log(
+  "DATOS POR HORARIO:",
+  porHorario
 );
 
   console.log(
