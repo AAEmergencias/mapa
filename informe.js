@@ -452,6 +452,18 @@ console.log(
 
 </div>
 
+<div class="graficoCard">
+
+  <h3>
+    Emergencias por Empresa
+  </h3>
+
+  <canvas
+    id="graficoEmpresaInforme">
+  </canvas>
+
+</div>
+
 </div>
 
 </section>
