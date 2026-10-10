@@ -396,6 +396,16 @@ const promedioEmergencias =
     "informe"
   ).innerHTML = `
 
+  <div class="barraAcciones">
+
+  <button id="btnImprimir">
+
+    🖨 Imprimir Informe
+
+  </button>
+
+</div>
+
 <section class="portada">
 
   <img
