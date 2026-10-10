@@ -683,17 +683,19 @@ const horarioTop =
 
     <p>
 
-      ${
-        horarioTop
-          ? horarioTop[0]
-          : "-"
-      }
+  🏆
 
-      (${horarioTop
-        ? horarioTop[1]
-        : 0})
+  ${
+    horarioTop
+      ? horarioTop[0]
+      : "-"
+  }
 
-    </p>
+  (${horarioTop
+    ? horarioTop[1]
+    : 0})
+
+</p>
 
     <ul>
 
@@ -739,17 +741,19 @@ const horarioTop =
 
   <p>
 
-    ${
-      tipoTop
-        ? tipoTop[0]
-        : "-"
-    }
+  🏆
 
-    (${tipoTop
-      ? tipoTop[1]
-      : 0})
+  ${
+    tipoTop
+      ? tipoTop[0]
+      : "-"
+  }
 
-  </p>
+  (${tipoTop
+    ? tipoTop[1]
+    : 0})
+
+</p>
 
   <ul>
 
