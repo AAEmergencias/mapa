@@ -294,3 +294,37 @@ section h2 {
   background: #00497a;
 
 }
+
+@media print {
+
+  #btnImprimir {
+
+    display: none !important;
+
+  }
+
+  body {
+
+    background: white !important;
+
+    padding: 0;
+
+  }
+
+  section {
+
+    box-shadow: none !important;
+
+    border: 1px solid #ddd;
+
+    break-inside: avoid;
+
+  }
+
+  .portada {
+
+    box-shadow: none !important;
+
+  }
+
+}
