@@ -338,3 +338,15 @@ section h2 {
   color: #555;
 
 }
+
+.kpiCard small {
+
+  display: block;
+
+  margin-top: 6px;
+
+  color: #666;
+
+  font-size: 15px;
+
+}
