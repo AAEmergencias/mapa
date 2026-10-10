@@ -423,6 +423,14 @@ const promedioEmergencias =
     Informe Ejecutivo Operacional
   </h3>
 
+  <p class="ultimaActualizacion">
+
+  Última actualización:
+
+  ${new Date().toLocaleString()}
+
+</p>
+
 </section>
 
 <section>
