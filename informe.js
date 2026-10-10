@@ -158,6 +158,44 @@ console.log(
 
   let brigadas = {};
 
+  let ambulancias = {};
+
+  partes.forEach(parte => {
+
+  if (!parte.vehiculo)
+    return;
+
+  parte.vehiculo
+    .split(",")
+
+    .forEach(v => {
+
+      const unidad =
+        v.trim();
+
+      if (
+        unidad.startsWith("S")
+      ) {
+
+        ambulancias[unidad] =
+          (ambulancias[unidad] || 0) + 1;
+
+      }
+
+    });
+
+});
+
+  const ambulanciaTop =
+
+  Object.entries(
+    ambulancias
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
   partes.forEach(parte => {
 
   const brigada =
@@ -313,8 +351,12 @@ console.log(
     </span>
 
     <b>
-      S1 / Pérez
-    </b>
+  ${
+    ambulanciaTop
+      ? ambulanciaTop[0]
+      : "-"
+  }
+</b>
 
   </div>
 
