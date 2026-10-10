@@ -646,7 +646,29 @@ const promedioEmergencias =
 
 <div class="hallazgosRapidos">
 
-  📍 Lectura Ejecutiva Rápida
+  <h4>
+
+    📍 Lectura Ejecutiva Rápida
+
+  </h4>
+
+  <p>
+
+    🕒 Horario más frecuente:
+
+    <b>
+      ${
+        horarioTop
+          ? horarioTop[0]
+          : "-"
+      }
+    </b>
+
+    (${horarioTop
+      ? horarioTop[1]
+      : 0})
+
+  </p>
 
 </div>
 
