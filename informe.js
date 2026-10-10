@@ -270,6 +270,64 @@ console.log(
 
 });
 
+  const conBrigada =
+  partes.filter(
+    p => p.brigada
+  ).length;
+
+const conMedico =
+  partes.filter(
+    p => p.servicioMedico
+  ).length;
+
+const sinMedico =
+  totalEmergencias -
+  conMedico;
+
+  let totalMinutos = 0;
+
+let cantidadDuraciones = 0;
+
+  partes.forEach(parte => {
+
+  if (
+    !parte.horaActivacion ||
+    !parte.horaCierre
+  ) return;
+
+  const inicio =
+    new Date(
+      `2000-01-01 ${parte.horaActivacion}`
+    );
+
+  const fin =
+    new Date(
+      `2000-01-01 ${parte.horaCierre}`
+    );
+
+  const diferencia =
+    (fin - inicio) /
+    1000 /
+    60;
+
+  totalMinutos += diferencia;
+
+  cantidadDuraciones++;
+
+});
+
+const promedioEmergencias =
+
+  cantidadDuraciones > 0
+
+    ? Math.round(
+        totalMinutos /
+        cantidadDuraciones
+      )
+
+    : 0;
+
+
   let brigadas = {};
 
   let ambulancias = {};
@@ -407,9 +465,9 @@ console.log(
     🚒 Con Brigada
   </span>
 
-  <b>
-    7
-  </b>
+<b>
+  ${conBrigada}
+</b>
 
 </div>
 
@@ -420,8 +478,8 @@ console.log(
   </span>
 
   <b>
-    3
-  </b>
+  ${conMedico}
+</b>
 
 </div>
 
@@ -432,8 +490,8 @@ console.log(
   </span>
 
   <b>
-    5
-  </b>
+  ${sinMedico}
+</b>
 
 </div>
 
@@ -480,9 +538,9 @@ console.log(
       ⏱ Tiempo Promedio
     </span>
 
-    <b>
-      8 min
-    </b>
+   <b>
+  ${promedioEmergencias} min
+</b>
 
   </div>
 
