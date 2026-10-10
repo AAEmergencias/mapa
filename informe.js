@@ -517,6 +517,18 @@ console.log(
 
 </div>
 
+<div class="graficoCard">
+
+  <h3>
+    Emergencias por Horario
+  </h3>
+
+  <canvas
+    id="graficoHorarioInforme">
+  </canvas>
+
+</div>
+
 </div>
 
 </section>
@@ -843,6 +855,56 @@ new Chart(
       maintainAspectRatio: false,
 
       indexAxis: "y"
+
+    }
+
+  }
+
+);
+
+  // ==========================
+// GRAFICO HORARIO
+// ==========================
+
+new Chart(
+
+  document.getElementById(
+    "graficoHorarioInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        Object.keys(
+          porHorario
+        ),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+        data:
+          Object.values(
+            porHorario
+          ),
+
+        backgroundColor:
+          "#ef4444"
+
+      }]
+
+    },
+
+    options: {
+
+      responsive: true,
+
+      maintainAspectRatio: false
 
     }
 
