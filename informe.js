@@ -415,18 +415,18 @@ const promedioEmergencias =
 
   const faenaTop =
 
-      const horarioTop =
-
   Object.entries(
-    porHorario
+    porFaena
   )
 
   .sort(
     (a,b) => b[1] - a[1]
   )[0];
 
+const horarioTop =
+
   Object.entries(
-    porFaena
+    porHorario
   )
 
   .sort(
