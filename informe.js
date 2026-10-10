@@ -470,6 +470,12 @@ const promedioEmergencias =
 📊 Resumen Ejecutivo
 </h2>
 
+<h3 class="grupoTitulo">
+
+📌 Indicadores Generales
+
+</h3>
+
 <div class="kpiGrid">
 
   <div class="kpiCard">
@@ -507,6 +513,12 @@ const promedioEmergencias =
     </b>
 
   </div>
+
+  <h3 class="grupoTitulo">
+
+🚒 Participación Operacional
+
+</h3>
 
   <div class="kpiCard">
 
@@ -557,6 +569,12 @@ const promedioEmergencias =
 </div>
 
 </div>
+
+<h3 class="grupoTitulo">
+
+🏆 Indicadores Destacados
+
+</h3>
 
 <div class="kpiGrid">
 
