@@ -1769,6 +1769,70 @@ slide3.addText(
 
 );
 
+    slide3.addShape(
+
+  pptx.ShapeType.roundRect,
+
+  {
+
+    x: 3.6,
+    y: 1.2,
+
+    w: 2.8,
+    h: 1.2,
+
+    fill: {
+      color: "F0F8FF"
+    },
+
+    line: {
+      color: "005b96"
+    }
+
+  }
+
+);
+
+slide3.addText(
+
+  "🚑 Ambulancia Top",
+
+  {
+
+    x: 3.7,
+    y: 1.35,
+
+    w: 2.6,
+    h: 0.3,
+
+    align: "center",
+
+    bold: true
+
+  }
+
+);
+
+slide3.addText(
+
+  ambulanciaTop
+    ? ambulanciaTop[0]
+    : "-",
+
+  {
+
+    x: 3.7,
+    y: 1.75,
+
+    w: 2.6,
+    h: 0.3,
+
+    align: "center"
+
+  }
+
+);
+
   pptx.writeFile({
 
     fileName:
