@@ -1225,6 +1225,14 @@ traslados durante el período.
 
 `;
 
+  document.getElementById(
+  "btnImprimir"
+).onclick = () => {
+
+  window.print();
+
+};
+
   }
 
 cargarInforme();
