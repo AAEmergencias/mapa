@@ -1578,6 +1578,10 @@ traslados durante el período evaluado.
       "image/png"
     );
 
+    console.log(
+  graficoMesPNG
+);
+
   pptx.layout =
     "LAYOUT_WIDE";
 
