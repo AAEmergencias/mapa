@@ -1560,30 +1560,35 @@ traslados durante el período evaluado.
 
 };
 
-  document.getElementById(
+document.getElementById(
   "btnPPT"
 ).onclick = () => {
 
   const pptx =
     new PptxGenJS();
 
-    const graficoMesPNG =
-
-  document
-    .getElementById(
-      "graficoMesInforme"
-    )
-
-    .toDataURL(
-      "image/png"
-    );
-
-    console.log(
-  graficoMesPNG
-);
-
   pptx.layout =
     "LAYOUT_WIDE";
+
+  const graficoMesPNG =
+
+    document
+      .getElementById(
+        "graficoMesInforme"
+      )
+
+      .toDataURL(
+        "image/png"
+      );
+
+  console.log(
+    graficoMesPNG
+  );
+
+  // TEMPORAL
+  window.open(
+    graficoMesPNG
+  );
 
   const slide =
     pptx.addSlide();
