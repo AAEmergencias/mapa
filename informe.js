@@ -1567,6 +1567,24 @@ document.getElementById(
   const pptx =
     new PptxGenJS();
 
+  function agregarLogo(slide) {
+
+  slide.addImage({
+
+    path: "logo.png",
+
+    x: 0.2,
+
+    y: 0.1,
+
+    w: 0.7,
+
+    h: 0.35
+
+  });
+
+}
+
   pptx.layout =
     "LAYOUT_WIDE";
 
@@ -1652,6 +1670,8 @@ const graficoPUEPNG =
   const slide =
     pptx.addSlide();
 
+  agregarLogo(slide);
+
   slide.addText(
 
     "CONDOR",
@@ -1702,6 +1722,8 @@ const graficoPUEPNG =
 
     const slide2 =
   pptx.addSlide();
+
+ agregarLogo(slide2);
 
     slide2.addText(
 
@@ -1759,6 +1781,8 @@ const graficoPUEPNG =
 
     const slide3 =
   pptx.addSlide();
+
+agregarLogo(slide3);
 
     slide3.addText(
 
@@ -2040,6 +2064,8 @@ slide3.addText(
 
     const slide4 =
   pptx.addSlide();
+
+  agregarLogo(slide4);
 
     
     slide4.addText(
@@ -2494,6 +2520,8 @@ tiposOrdenados
     const slide5 =
   pptx.addSlide();
 
+  agregarLogo(slide5);
+
    slide5.addText(
 
   "Emergencias por Mes",
@@ -2539,6 +2567,8 @@ slide5.addImage(
   const slide6 =
   pptx.addSlide();
 
+  agregarLogo(slide6);
+
 slide6.addText(
   "Emergencias por Tipo",
   {
@@ -2562,6 +2592,8 @@ slide6.addImage({
 
   const slide7 =
   pptx.addSlide();
+
+  agregarLogo(slide7);
 
 slide7.addText(
   "Emergencias por Faena",
@@ -2587,6 +2619,8 @@ slide7.addImage({
   const slide8 =
   pptx.addSlide();
 
+  agregarLogo(slide8);
+
 slide8.addText(
   "Unidades Más Utilizadas",
   {
@@ -2610,6 +2644,8 @@ slide8.addImage({
 
   const slide9 =
   pptx.addSlide();
+
+  agregarLogo(slide9);
 
 slide9.addText(
   "Empresas Afectadas",
@@ -2635,6 +2671,8 @@ slide9.addImage({
   const slide10 =
   pptx.addSlide();
 
+  agregarLogo(slide10);
+
 slide10.addText(
   "Emergencias por Horario",
   {
@@ -2658,6 +2696,8 @@ slide10.addImage({
 
   const slide11 =
   pptx.addSlide();
+
+  agregarLogo(slide11);
 
 slide11.addText(
   "Subcategorización de Emergencias",
@@ -2683,6 +2723,8 @@ slide11.addImage({
   const slide12 =
   pptx.addSlide();
 
+  agregarLogo(slide12);
+
 slide12.addText(
   "PUE Relacionado",
   {
@@ -2706,6 +2748,8 @@ slide12.addImage({
 
   const slide13 =
   pptx.addSlide();
+
+  agregarLogo(slide13);
 
   slide13.addText(
 
