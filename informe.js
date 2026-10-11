@@ -1959,6 +1959,92 @@ slide3.addText(
 
 );
 
+    const slide4 =
+  pptx.addSlide();
+
+    slide4.addText(
+
+  "Lectura Ejecutiva Rápida",
+
+  {
+
+    x: 0.5,
+
+    y: 0.3,
+
+    w: 5,
+
+    h: 0.4,
+
+    fontSize: 22,
+
+    bold: true,
+
+    color: "005b96"
+
+  }
+
+);
+
+    slide4.addText(
+
+  `🕒 Horario más frecuente
+
+${horarioTop
+  ? horarioTop[0]
+  : "-"}
+
+(${horarioTop
+  ? horarioTop[1]
+  : 0})`,
+
+  {
+
+    x: 0.7,
+
+    y: 1.2,
+
+    w: 3.5,
+
+    h: 1.2,
+
+    fontSize: 18,
+
+    bold: true
+
+  }
+
+);
+
+
+    slide4.addText(
+
+  `🌙 Madrugada    ${porHorario.Madrugada}
+
+☀️ Mañana        ${porHorario.Mañana}
+
+🌤️ Tarde         ${porHorario.Tarde}
+
+🌃 Noche         ${porHorario.Noche}`,
+
+  {
+
+    x: 0.8,
+
+    y: 2.2,
+
+    w: 3.5,
+
+    h: 2,
+
+    fontSize: 14
+
+  }
+
+);
+
+    
+
   pptx.writeFile({
 
     fileName:
