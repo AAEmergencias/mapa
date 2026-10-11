@@ -1962,6 +1962,7 @@ slide3.addText(
     const slide4 =
   pptx.addSlide();
 
+    
     slide4.addText(
 
   "Lectura Ejecutiva Rápida",
@@ -1986,27 +1987,43 @@ slide3.addText(
 
 );
 
-    slide4.addText(
+    // TARJETA HORARIO
 
-  `🕒 Horario más frecuente
+slide4.addShape(
 
-${horarioTop
-  ? horarioTop[0]
-  : "-"}
+  pptx.ShapeType.roundRect,
 
-(${horarioTop
-  ? horarioTop[1]
-  : 0})`,
+  {
+
+    x: 0.5,
+    y: 1.0,
+
+    w: 5.8,
+    h: 3.2,
+
+    fill: {
+      color: "F8FBFF"
+    },
+
+    line: {
+      color: "005b96"
+    }
+
+  }
+
+);
+
+slide4.addText(
+
+  "🕒 Horario más frecuente",
 
   {
 
     x: 0.7,
+    y: 1.15,
 
-    y: 1.2,
-
-    w: 3.5,
-
-    h: 1.2,
+    w: 2.8,
+    h: 0.3,
 
     fontSize: 18,
 
@@ -2016,32 +2033,215 @@ ${horarioTop
 
 );
 
+slide4.addText(
 
-    slide4.addText(
-
-  `🌙 Madrugada    ${porHorario.Madrugada}
-
-☀️ Mañana        ${porHorario.Mañana}
-
-🌤️ Tarde         ${porHorario.Tarde}
-
-🌃 Noche         ${porHorario.Noche}`,
+  `${horarioTop ? horarioTop[0] : "-"} (${horarioTop ? horarioTop[1] : 0})`,
 
   {
 
-    x: 0.8,
+    x: 3.5,
+    y: 1.15,
 
-    y: 2.2,
+    w: 2.2,
+    h: 0.3,
 
-    w: 3.5,
+    fontSize: 16,
 
-    h: 2,
+    bold: true,
 
-    fontSize: 14
+    align: "right",
+
+    color: "005b96"
 
   }
 
 );
+
+// MADRUGADA
+
+slide4.addText(
+
+  "🌙 Madrugada",
+
+  {
+    x: 0.8,
+    y: 1.8,
+    w: 2,
+    h: 0.2,
+    bold: true
+  }
+
+);
+
+slide4.addText(
+
+  "00:00 - 05:59",
+
+  {
+    x: 0.8,
+    y: 2.05,
+    w: 2,
+    h: 0.2,
+    fontSize: 10,
+    color: "666666"
+  }
+
+);
+
+slide4.addText(
+
+  `${porHorario.Madrugada}`,
+
+  {
+    x: 4.8,
+    y: 1.9,
+    w: 0.6,
+    h: 0.2,
+    align: "right",
+    bold: true
+  }
+
+);
+
+// MAÑANA
+
+slide4.addText(
+
+  "☀️ Mañana",
+
+  {
+    x: 0.8,
+    y: 2.45,
+    w: 2,
+    h: 0.2,
+    bold: true
+  }
+
+);
+
+slide4.addText(
+
+  "06:00 - 11:59",
+
+  {
+    x: 0.8,
+    y: 2.7,
+    w: 2,
+    h: 0.2,
+    fontSize: 10,
+    color: "666666"
+  }
+
+);
+
+slide4.addText(
+
+  `${porHorario.Mañana}`,
+
+  {
+    x: 4.8,
+    y: 2.55,
+    w: 0.6,
+    h: 0.2,
+    align: "right",
+    bold: true
+  }
+
+);
+
+// TARDE
+
+slide4.addText(
+
+  "🌤️ Tarde",
+
+  {
+    x: 0.8,
+    y: 3.1,
+    w: 2,
+    h: 0.2,
+    bold: true
+  }
+
+);
+
+slide4.addText(
+
+  "12:00 - 17:59",
+
+  {
+    x: 0.8,
+    y: 3.35,
+    w: 2,
+    h: 0.2,
+    fontSize: 10,
+    color: "666666"
+  }
+
+);
+
+slide4.addText(
+
+  `${porHorario.Tarde}`,
+
+  {
+    x: 4.8,
+    y: 3.2,
+    w: 0.6,
+    h: 0.2,
+    align: "right",
+    bold: true
+  }
+
+);
+
+// NOCHE
+
+slide4.addText(
+
+  "🌃 Noche",
+
+  {
+    x: 0.8,
+    y: 3.75,
+    w: 2,
+    h: 0.2,
+    bold: true
+  }
+
+);
+
+slide4.addText(
+
+  "18:00 - 23:59",
+
+  {
+    x: 0.8,
+    y: 4.0,
+    w: 2,
+    h: 0.2,
+    fontSize: 10,
+    color: "666666"
+  }
+
+);
+
+slide4.addText(
+
+  `${porHorario.Noche}`,
+
+  {
+    x: 4.8,
+    y: 3.85,
+    w: 0.6,
+    h: 0.2,
+    align: "right",
+    bold: true
+  }
+
+);
+
+   
 
     
 
