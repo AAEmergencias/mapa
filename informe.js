@@ -1774,7 +1774,7 @@ const graficoPUEPNG =
 
       x: 1,
 
-      y: 1,
+     y: 1.4,
 
       w: 10,
 
@@ -1813,6 +1813,104 @@ const graficoPUEPNG =
     }
 
   );
+
+  slide.addText(
+
+  "Sistema Integral de Gestión de Emergencias",
+
+  {
+
+    x: 1,
+
+    y: 2.6,
+
+    w: 10,
+
+    h: 0.3,
+
+    fontSize: 14,
+
+    align: "center",
+
+    color: "666666"
+
+  }
+
+);
+
+  slide.addText(
+
+  "Central de Emergencias",
+
+  {
+
+    x: 1,
+
+    y: 3.3,
+
+    w: 10,
+
+    h: 0.3,
+
+    fontSize: 16,
+
+    bold: true,
+
+    align: "center",
+
+    color: "005b96"
+
+  }
+
+);
+
+  slide.addText(
+
+  "Reporte Ejecutivo Automatizado",
+
+  {
+
+    x: 1,
+
+    y: 3.8,
+
+    w: 10,
+
+    h: 0.3,
+
+    fontSize: 13,
+
+    align: "center",
+
+    color: "666666"
+
+  }
+
+);
+
+  slide.addText(
+
+  new Date().toLocaleDateString(),
+
+  {
+
+    x: 1,
+
+    y: 4.6,
+
+    w: 10,
+
+    h: 0.3,
+
+    fontSize: 14,
+
+    align: "center",
+
+    color: "444444"
+
+  }
+
+);
 
     const slide2 =
   pptx.addSlide();
