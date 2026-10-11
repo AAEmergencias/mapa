@@ -1833,6 +1833,132 @@ slide3.addText(
 
 );
 
+    slide3.addShape(
+
+  pptx.ShapeType.roundRect,
+
+  {
+
+    x: 6.7,
+    y: 1.2,
+
+    w: 2.8,
+    h: 1.2,
+
+    fill: {
+      color: "F0F8FF"
+    },
+
+    line: {
+      color: "005b96"
+    }
+
+  }
+
+);
+
+slide3.addText(
+
+  "🏭 Faena Top",
+
+  {
+
+    x: 6.8,
+    y: 1.35,
+
+    w: 2.6,
+    h: 0.3,
+
+    align: "center",
+
+    bold: true
+
+  }
+
+);
+
+slide3.addText(
+
+  faenaTop
+    ? faenaTop[0]
+    : "-",
+
+  {
+
+    x: 6.8,
+    y: 1.75,
+
+    w: 2.6,
+    h: 0.3,
+
+    align: "center"
+
+  }
+
+);
+
+    slide3.addShape(
+
+  pptx.ShapeType.roundRect,
+
+  {
+
+    x: 9.8,
+    y: 1.2,
+
+    w: 2.8,
+    h: 1.2,
+
+    fill: {
+      color: "F0F8FF"
+    },
+
+    line: {
+      color: "005b96"
+    }
+
+  }
+
+);
+
+slide3.addText(
+
+  "⏱ Tiempo Promedio",
+
+  {
+
+    x: 9.9,
+    y: 1.35,
+
+    w: 2.6,
+    h: 0.3,
+
+    align: "center",
+
+    bold: true
+
+  }
+
+);
+
+slide3.addText(
+
+  `${promedioEmergencias} min`,
+
+  {
+
+    x: 9.9,
+    y: 1.75,
+
+    w: 2.6,
+    h: 0.3,
+
+    align: "center"
+
+  }
+
+);
+
   pptx.writeFile({
 
     fileName:
