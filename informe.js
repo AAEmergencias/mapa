@@ -2318,6 +2318,235 @@ slide3.addText(
 
 );
 
+  slide3.addShape(
+  pptx.ShapeType.roundRect,
+  {
+    x: 0.5,
+    y: 3.0,
+    w: 2.0,
+    h: 0.9,
+    fill: { color: "F0F8FF" },
+    line: { color: "005b96" }
+  }
+);
+
+slide3.addText(
+  "🚨 Emergencias",
+  {
+    x: 0.55,
+    y: 3.1,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    bold: true,
+    fontSize: 11
+  }
+);
+
+slide3.addText(
+  `${totalEmergencias}`,
+  {
+    x: 0.55,
+    y: 3.4,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    fontSize: 16,
+    bold: true
+  }
+);
+
+  slide3.addShape(
+  pptx.ShapeType.roundRect,
+  {
+    x: 2.7,
+    y: 3.0,
+    w: 2.0,
+    h: 0.9,
+    fill: { color: "F0F8FF" },
+    line: { color: "005b96" }
+  }
+);
+
+slide3.addText(
+  "🚑 Traslados",
+  {
+    x: 2.75,
+    y: 3.1,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    bold: true,
+    fontSize: 11
+  }
+);
+
+slide3.addText(
+  `${totalTraslados}`,
+  {
+    x: 2.75,
+    y: 3.4,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    fontSize: 16,
+    bold: true
+  }
+);
+
+  slide3.addShape(
+  pptx.ShapeType.roundRect,
+  {
+    x: 4.9,
+    y: 3.0,
+    w: 2.0,
+    h: 0.9,
+    fill: { color: "F0F8FF" },
+    line: { color: "005b96" }
+  }
+);
+
+slide3.addText(
+  "✅ Partes",
+  {
+    x: 4.95,
+    y: 3.1,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    bold: true,
+    fontSize: 11
+  }
+);
+
+slide3.addText(
+  `${totalPartes}`,
+  {
+    x: 4.95,
+    y: 3.4,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    fontSize: 16,
+    bold: true
+  }
+);
+
+  slide3.addShape(
+  pptx.ShapeType.roundRect,
+  {
+    x: 7.1,
+    y: 3.0,
+    w: 2.0,
+    h: 0.9,
+    fill: { color: "F0F8FF" },
+    line: { color: "005b96" }
+  }
+);
+
+slide3.addText(
+  "🚒 Con Brigada",
+  {
+    x: 7.15,
+    y: 3.1,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    bold: true,
+    fontSize: 10
+  }
+);
+
+slide3.addText(
+  `${conBrigada}`,
+  {
+    x: 7.15,
+    y: 3.35,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    fontSize: 16,
+    bold: true
+  }
+);
+
+  slide3.addShape(
+  pptx.ShapeType.roundRect,
+  {
+    x: 9.3,
+    y: 3.0,
+    w: 2.0,
+    h: 0.9,
+    fill: { color: "F0F8FF" },
+    line: { color: "005b96" }
+  }
+);
+
+slide3.addText(
+  "🚑 Con Médico",
+  {
+    x: 9.35,
+    y: 3.1,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    bold: true,
+    fontSize: 10
+  }
+);
+
+slide3.addText(
+  `${conMedico}`,
+  {
+    x: 9.35,
+    y: 3.35,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    fontSize: 16,
+    bold: true
+  }
+);
+
+  slide3.addShape(
+  pptx.ShapeType.roundRect,
+  {
+    x: 11.5,
+    y: 3.0,
+    w: 1.6,
+    h: 0.9,
+    fill: { color: "F0F8FF" },
+    line: { color: "005b96" }
+  }
+);
+
+slide3.addText(
+  "⚪ Sin Médico",
+  {
+    x: 11.55,
+    y: 3.1,
+    w: 1.5,
+    h: 0.2,
+    align: "center",
+    bold: true,
+    fontSize: 9
+  }
+);
+
+slide3.addText(
+  `${sinMedico}`,
+  {
+    x: 11.55,
+    y: 3.35,
+    w: 1.5,
+    h: 0.2,
+    align: "center",
+    fontSize: 16,
+    bold: true
+  }
+);
+
+
     const slide4 =
   pptx.addSlide();
   
