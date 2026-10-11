@@ -2412,6 +2412,60 @@ tiposOrdenados
 
   });
 
+    const slide5 =
+  pptx.addSlide();
+
+    slide5.addText(
+
+  "Emergencias por Mes",
+
+  {
+
+    x: 0.5,
+
+    y: 0.3,
+
+    w: 5,
+
+    h: 0.4,
+
+    fontSize: 22,
+
+    bold: true,
+
+    color: "005b96"
+
+  }
+
+);
+
+    slide5.addText(
+
+  Object.entries(porMes)
+
+    .map(
+      ([mes, valor]) =>
+        `${mes}: ${valor}`
+    )
+
+    .join("\n"),
+
+  {
+
+    x: 1,
+
+    y: 1.2,
+
+    w: 4,
+
+    h: 3,
+
+    fontSize: 18
+
+  }
+
+);
+
    
 
     
