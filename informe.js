@@ -2241,6 +2241,143 @@ slide4.addText(
 
 );
 
+    // TARJETA TIPO
+
+slide4.addShape(
+
+  pptx.ShapeType.roundRect,
+
+  {
+
+    x: 6.8,
+    y: 1.0,
+
+    w: 5.8,
+    h: 3.2,
+
+    fill: {
+      color: "F8FBFF"
+    },
+
+    line: {
+      color: "005b96"
+    }
+
+  }
+
+);
+
+    slide4.addText(
+
+  "🚨 Tipo más frecuente",
+
+  {
+
+    x: 7.0,
+    y: 1.15,
+
+    w: 2.8,
+
+    h: 0.3,
+
+    fontSize: 18,
+
+    bold: true
+
+  }
+
+);
+
+    slide4.addText(
+
+  `${tipoTop ? tipoTop[0] : "-"} (${tipoTop ? tipoTop[1] : 0})`,
+
+  {
+
+    x: 10.0,
+
+    y: 1.15,
+
+    w: 2.2,
+
+    h: 0.3,
+
+    fontSize: 16,
+
+    bold: true,
+
+    align: "right",
+
+    color: "005b96"
+
+  }
+
+);
+
+    const tiposOrdenados =
+
+  Object.entries(porTipo)
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  );
+
+    let yTipo = 1.8;
+
+tiposOrdenados
+  .slice(0, 5)
+  .forEach(([tipo, valor]) => {
+
+    slide4.addText(
+
+      `${tipo}`,
+
+      {
+
+        x: 7.1,
+
+        y: yTipo,
+
+        w: 3.5,
+
+        h: 0.2,
+
+        fontSize: 12,
+
+        bold: true
+
+      }
+
+    );
+
+    slide4.addText(
+
+      `${valor}`,
+
+      {
+
+        x: 11.2,
+
+        y: yTipo,
+
+        w: 0.5,
+
+        h: 0.2,
+
+        fontSize: 12,
+
+        bold: true,
+
+        align: "right"
+
+      }
+
+    );
+
+    yTipo += 0.45;
+
+  });
+
    
 
     
