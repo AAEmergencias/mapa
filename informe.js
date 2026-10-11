@@ -2362,9 +2362,9 @@ tiposOrdenados
 
 }[tipo] || "🚨";
 
-    slide4.addText(
+     `${icono} ${tipo}`
 
- `${icono} ${tipo}`
+    slide4.addText(
 
       {
 
