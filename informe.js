@@ -1567,6 +1567,17 @@ traslados durante el período evaluado.
   const pptx =
     new PptxGenJS();
 
+    const graficoMesPNG =
+
+  document
+    .getElementById(
+      "graficoMesInforme"
+    )
+
+    .toDataURL(
+      "image/png"
+    );
+
   pptx.layout =
     "LAYOUT_WIDE";
 
