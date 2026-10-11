@@ -2362,27 +2362,27 @@ tiposOrdenados
 
 }[tipo] || "🚨";
 
-     `${icono} ${tipo}`
+   slide4.addText(
 
-    slide4.addText(
+  `${icono} ${tipo}`,
 
-      {
+  {
 
-        x: 7.1,
+    x: 7.1,
 
-        y: yTipo,
+    y: yTipo,
 
-        w: 3.5,
+    w: 3.5,
 
-        h: 0.2,
+    h: 0.2,
 
-        fontSize: 12,
+    fontSize: 12,
 
-        bold: true
+    bold: true
 
-      }
+  }
 
-    );
+);
 
     slide4.addText(
 
