@@ -2704,6 +2704,67 @@ slide12.addImage({
   h: 5.5
 });
 
+  const slide13 =
+  pptx.addSlide();
+
+  slide13.addText(
+
+  "Conclusiones Operacionales",
+
+  {
+
+    x: 0.5,
+
+    y: 0.3,
+
+    w: 6,
+
+    h: 0.4,
+
+    fontSize: 22,
+
+    bold: true,
+
+    color: "005b96"
+
+  }
+
+);
+
+  slide13.addText(
+
+  `• Durante el período analizado se registraron ${totalEmergencias} emergencias operacionales.
+
+• La actividad operacional se concentró principalmente en ${faenaTop ? faenaTop[0] : "-"}.
+
+• El tipo predominante fue ${tipoTop ? tipoTop[0] : "-"}.
+
+• La brigada con mayor participación fue ${brigadaTop ? brigadaTop[0] : "-"}.
+
+• La ambulancia con mayor utilización fue ${ambulanciaTop ? ambulanciaTop[0] : "-"}.
+
+• La mayor actividad operacional se registró durante ${horarioTop ? horarioTop[0] : "-"}.
+
+• Se registraron ${totalTraslados} traslados durante el período evaluado.`,
+
+  {
+
+    x: 0.8,
+
+    y: 1.2,
+
+    w: 10,
+
+    h: 4,
+
+    fontSize: 18,
+
+    breakLine: false
+
+  }
+
+);
+
 
     
 
