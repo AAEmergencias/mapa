@@ -1636,6 +1636,56 @@ document.getElementById(
 
 }
 
+  function agregarPie(slide, numero) {
+
+  slide.addText(
+
+    "CONDOR | Informe Ejecutivo Operacional",
+
+    {
+
+      x: 0.3,
+
+      y: 7.0,
+
+      w: 6,
+
+      h: 0.2,
+
+      fontSize: 9,
+
+      color: "666666"
+
+    }
+
+  );
+
+  slide.addText(
+
+    `${numero} / 13`,
+
+    {
+
+      x: 11.3,
+
+      y: 7.0,
+
+      w: 0.8,
+
+      h: 0.2,
+
+      fontSize: 9,
+
+      color: "666666",
+
+      align: "right"
+
+    }
+
+  );
+
+}
+
   pptx.layout =
     "LAYOUT_WIDE";
 
