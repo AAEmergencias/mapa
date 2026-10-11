@@ -1581,9 +1581,68 @@ document.getElementById(
         "image/png"
       );
 
-  console.log(
-    graficoMesPNG
-  );
+  const graficoTipoPNG =
+  document
+    .getElementById(
+      "graficoTipoInforme"
+    )
+    .toDataURL(
+      "image/png"
+    );
+
+const graficoFaenaPNG =
+  document
+    .getElementById(
+      "graficoFaenaInforme"
+    )
+    .toDataURL(
+      "image/png"
+    );
+
+const graficoUnidadPNG =
+  document
+    .getElementById(
+      "graficoUnidadInforme"
+    )
+    .toDataURL(
+      "image/png"
+    );
+
+const graficoEmpresaPNG =
+  document
+    .getElementById(
+      "graficoEmpresaInforme"
+    )
+    .toDataURL(
+      "image/png"
+    );
+
+const graficoHorarioPNG =
+  document
+    .getElementById(
+      "graficoHorarioInforme"
+    )
+    .toDataURL(
+      "image/png"
+    );
+
+const graficoSubtipoPNG =
+  document
+    .getElementById(
+      "graficoSubtipoInforme"
+    )
+    .toDataURL(
+      "image/png"
+    );
+
+const graficoPUEPNG =
+  document
+    .getElementById(
+      "graficoPUEInforme"
+    )
+    .toDataURL(
+      "image/png"
+    );
 
   // TEMPORAL
   window.open(
@@ -2477,7 +2536,174 @@ slide5.addImage(
 
 );
 
-   
+  const slide6 =
+  pptx.addSlide();
+
+slide6.addText(
+  "Emergencias por Tipo",
+  {
+    x: 0.5,
+    y: 0.3,
+    w: 5,
+    h: 0.4,
+    fontSize: 22,
+    bold: true,
+    color: "005b96"
+  }
+);
+
+slide6.addImage({
+  data: graficoTipoPNG,
+  x: 0.5,
+  y: 1,
+  w: 10,
+  h: 5.5
+});
+
+  const slide7 =
+  pptx.addSlide();
+
+slide7.addText(
+  "Emergencias por Faena",
+  {
+    x: 0.5,
+    y: 0.3,
+    w: 5,
+    h: 0.4,
+    fontSize: 22,
+    bold: true,
+    color: "005b96"
+  }
+);
+
+slide7.addImage({
+  data: graficoFaenaPNG,
+  x: 0.5,
+  y: 1,
+  w: 10,
+  h: 5.5
+});
+
+  const slide8 =
+  pptx.addSlide();
+
+slide8.addText(
+  "Unidades Más Utilizadas",
+  {
+    x: 0.5,
+    y: 0.3,
+    w: 5,
+    h: 0.4,
+    fontSize: 22,
+    bold: true,
+    color: "005b96"
+  }
+);
+
+slide8.addImage({
+  data: graficoUnidadPNG,
+  x: 0.5,
+  y: 1,
+  w: 10,
+  h: 5.5
+});
+
+  const slide9 =
+  pptx.addSlide();
+
+slide9.addText(
+  "Empresas Afectadas",
+  {
+    x: 0.5,
+    y: 0.3,
+    w: 5,
+    h: 0.4,
+    fontSize: 22,
+    bold: true,
+    color: "005b96"
+  }
+);
+
+slide9.addImage({
+  data: graficoEmpresaPNG,
+  x: 0.5,
+  y: 1,
+  w: 10,
+  h: 5.5
+});
+
+  const slide10 =
+  pptx.addSlide();
+
+slide10.addText(
+  "Emergencias por Horario",
+  {
+    x: 0.5,
+    y: 0.3,
+    w: 5,
+    h: 0.4,
+    fontSize: 22,
+    bold: true,
+    color: "005b96"
+  }
+);
+
+slide10.addImage({
+  data: graficoHorarioPNG,
+  x: 0.5,
+  y: 1,
+  w: 10,
+  h: 5.5
+});
+
+  const slide11 =
+  pptx.addSlide();
+
+slide11.addText(
+  "Subcategorización de Emergencias",
+  {
+    x: 0.5,
+    y: 0.3,
+    w: 6,
+    h: 0.4,
+    fontSize: 22,
+    bold: true,
+    color: "005b96"
+  }
+);
+
+slide11.addImage({
+  data: graficoSubtipoPNG,
+  x: 0.5,
+  y: 1,
+  w: 10,
+  h: 5.5
+});
+
+  const slide12 =
+  pptx.addSlide();
+
+slide12.addText(
+  "PUE Relacionado",
+  {
+    x: 0.5,
+    y: 0.3,
+    w: 5,
+    h: 0.4,
+    fontSize: 22,
+    bold: true,
+    color: "005b96"
+  }
+);
+
+slide12.addImage({
+  data: graficoPUEPNG,
+  x: 0.5,
+  y: 1,
+  w: 10,
+  h: 5.5
+});
+
 
     
 
