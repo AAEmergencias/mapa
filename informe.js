@@ -1569,6 +1569,56 @@ document.getElementById(
 
   function agregarLogo(slide) {
 
+    function agregarPie(slide, numero) {
+
+  slide.addText(
+
+    "CONDOR | Informe Ejecutivo Operacional",
+
+    {
+
+      x: 0.3,
+
+      y: 7.0,
+
+      w: 6,
+
+      h: 0.2,
+
+      fontSize: 9,
+
+      color: "666666"
+
+    }
+
+  );
+
+  slide.addText(
+
+    `${numero} / 13`,
+
+    {
+
+      x: 11.5,
+
+      y: 7.0,
+
+      w: 1,
+
+      h: 0.2,
+
+      fontSize: 9,
+
+      color: "666666",
+
+      align: "right"
+
+    }
+
+  );
+
+}
+
   slide.addImage({
 
     path: "logo.png",
@@ -1661,11 +1711,6 @@ const graficoPUEPNG =
     .toDataURL(
       "image/png"
     );
-
-  // TEMPORAL
-  window.open(
-    graficoMesPNG
-  );
 
   const slide =
     pptx.addSlide();
