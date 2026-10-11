@@ -2435,7 +2435,7 @@ tiposOrdenados
     const slide5 =
   pptx.addSlide();
 
-    slide5.addText(
+   slide5.addText(
 
   "Emergencias por Mes",
 
@@ -2459,28 +2459,19 @@ tiposOrdenados
 
 );
 
-    slide5.addText(
-
-  Object.entries(porMes)
-
-    .map(
-      ([mes, valor]) =>
-        `${mes}: ${valor}`
-    )
-
-    .join("\n"),
+slide5.addImage(
 
   {
 
-    x: 1,
+    data: graficoMesPNG,
 
-    y: 1.2,
+    x: 0.5,
 
-    w: 4,
+    y: 1,
 
-    h: 3,
+    w: 10,
 
-    fontSize: 18
+    h: 5.5
 
   }
 
