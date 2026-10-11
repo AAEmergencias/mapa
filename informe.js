@@ -1569,7 +1569,7 @@ document.getElementById(
 
   function agregarLogo(slide) {
 
-    function agregarPie(slide, numero) {
+ function agregarPie(slide, numero) {
 
   slide.addText(
 
@@ -1618,6 +1618,7 @@ document.getElementById(
   );
 
 }
+
 
   slide.addImage({
 
