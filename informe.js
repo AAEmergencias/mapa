@@ -2328,9 +2328,43 @@ tiposOrdenados
   .slice(0, 5)
   .forEach(([tipo, valor]) => {
 
+    const icono = {
+
+  "Incendio": "🔥",
+
+  "Vehicular": "🚗",
+
+  "Rescate": "🧗",
+
+  "Medico": "🏥",
+
+  "Médico": "🏥",
+
+  "Hazmat": "☣️",
+
+  "Simulacros": "🎯",
+
+  "Sísmico": "🌎",
+
+  "Sismico": "🌎",
+
+  "Meteorologico": "🌧️",
+
+  "Meteorológico": "🌧️",
+
+  "Geologico": "⛰️",
+
+  "Geológico": "⛰️",
+
+  "Ambiental": "🌱",
+
+  "Otros": "📦"
+
+}[tipo] || "🚨";
+
     slide4.addText(
 
-      `${tipo}`,
+ `${icono} ${tipo}`
 
       {
 
