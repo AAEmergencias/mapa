@@ -2369,8 +2369,8 @@ slide3.addText(
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 7.1,
-    y: 3.0,
+    x: 2.7,
+    y: 4.2,
     w: 2.0,
     h: 0.9,
     fill: { color: "F0F8FF" },
@@ -2381,8 +2381,8 @@ slide3.addText(
 slide3.addText(
   "🚒 Con Brigada",
   {
-    x: 7.15,
-    y: 3.1,
+    x: 2.75,
+    y: 4.3,
     w: 1.9,
     h: 0.2,
     align: "center",
@@ -2394,8 +2394,8 @@ slide3.addText(
 slide3.addText(
   `${conBrigada}`,
   {
-    x: 7.15,
-    y: 3.35,
+    x: 2.75,
+    y: 4.55,
     w: 1.9,
     h: 0.2,
     align: "center",
@@ -2407,8 +2407,8 @@ slide3.addText(
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 9.3,
-    y: 3.0,
+    x: 4.9,
+    y: 4.2,
     w: 2.0,
     h: 0.9,
     fill: { color: "F0F8FF" },
@@ -2419,8 +2419,8 @@ slide3.addText(
 slide3.addText(
   "🚑 Con Médico",
   {
-    x: 9.35,
-    y: 3.1,
+    x: 4.95,
+    y: 4.3,
     w: 1.9,
     h: 0.2,
     align: "center",
@@ -2432,8 +2432,8 @@ slide3.addText(
 slide3.addText(
   `${conMedico}`,
   {
-    x: 9.35,
-    y: 3.35,
+    x: 4.95,
+    y: 4.55,
     w: 1.9,
     h: 0.2,
     align: "center",
@@ -2445,8 +2445,8 @@ slide3.addText(
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 11.5,
-    y: 3.0,
+    x: 7.1,
+    y: 4.2,
     w: 1.6,
     h: 0.9,
     fill: { color: "F0F8FF" },
@@ -2457,8 +2457,8 @@ slide3.addText(
 slide3.addText(
   "⚪ Sin Médico",
   {
-    x: 11.55,
-    y: 3.1,
+    x: 7.15,
+    y: 4.3,
     w: 1.5,
     h: 0.2,
     align: "center",
@@ -2470,8 +2470,8 @@ slide3.addText(
 slide3.addText(
   `${sinMedico}`,
   {
-    x: 11.55,
-    y: 3.35,
+    x: 7.15,
+    y: 4.55,
     w: 1.5,
     h: 0.2,
     align: "center",
