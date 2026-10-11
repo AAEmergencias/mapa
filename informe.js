@@ -2293,7 +2293,7 @@ slide3.addText(
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 2.7,
+    x: 0.5,
     y: 3.0,
     w: 2.0,
     h: 0.9,
@@ -2305,7 +2305,7 @@ slide3.addText(
 slide3.addText(
   "🚑 Traslados",
   {
-    x: 2.75,
+    x: 0.55,
     y: 3.1,
     w: 1.9,
     h: 0.2,
@@ -2318,7 +2318,7 @@ slide3.addText(
 slide3.addText(
   `${totalTraslados}`,
   {
-    x: 2.75,
+    x: 0.55,
     y: 3.4,
     w: 1.9,
     h: 0.2,
@@ -2369,7 +2369,7 @@ slide3.addText(
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 2.7,
+    x: 0.5,
     y: 4.2,
     w: 2.0,
     h: 0.9,
@@ -2380,6 +2380,44 @@ slide3.addText(
 
 slide3.addText(
   "🚒 Con Brigada",
+  {
+    x: 0.55,
+    y: 4.3,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    bold: true,
+    fontSize: 10
+  }
+);
+
+slide3.addText(
+  `${conBrigada}`,
+  {
+    x: 0.55,
+    y: 4.55,
+    w: 1.9,
+    h: 0.2,
+    align: "center",
+    fontSize: 16,
+    bold: true
+  }
+);
+
+  slide3.addShape(
+  pptx.ShapeType.roundRect,
+  {
+    x: 2.7,
+    y: 4.2,
+    w: 2.0,
+    h: 0.9,
+    fill: { color: "F0F8FF" },
+    line: { color: "005b96" }
+  }
+);
+
+slide3.addText(
+  "🚑 Con Médico",
   {
     x: 2.75,
     y: 4.3,
@@ -2392,7 +2430,7 @@ slide3.addText(
 );
 
 slide3.addText(
-  `${conBrigada}`,
+  `${conMedico}`,
   {
     x: 2.75,
     y: 4.55,
@@ -2409,44 +2447,6 @@ slide3.addText(
   {
     x: 4.9,
     y: 4.2,
-    w: 2.0,
-    h: 0.9,
-    fill: { color: "F0F8FF" },
-    line: { color: "005b96" }
-  }
-);
-
-slide3.addText(
-  "🚑 Con Médico",
-  {
-    x: 4.95,
-    y: 4.3,
-    w: 1.9,
-    h: 0.2,
-    align: "center",
-    bold: true,
-    fontSize: 10
-  }
-);
-
-slide3.addText(
-  `${conMedico}`,
-  {
-    x: 4.95,
-    y: 4.55,
-    w: 1.9,
-    h: 0.2,
-    align: "center",
-    fontSize: 16,
-    bold: true
-  }
-);
-
-  slide3.addShape(
-  pptx.ShapeType.roundRect,
-  {
-    x: 7.1,
-    y: 4.2,
     w: 1.6,
     h: 0.9,
     fill: { color: "F0F8FF" },
@@ -2457,7 +2457,7 @@ slide3.addText(
 slide3.addText(
   "⚪ Sin Médico",
   {
-    x: 7.15,
+    x: 4.95,
     y: 4.3,
     w: 1.5,
     h: 0.2,
@@ -2470,7 +2470,7 @@ slide3.addText(
 slide3.addText(
   `${sinMedico}`,
   {
-    x: 7.15,
+    x: 4.95,
     y: 4.55,
     w: 1.5,
     h: 0.2,
