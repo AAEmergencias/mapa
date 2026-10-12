@@ -443,6 +443,36 @@ const horarioTop =
     (a,b) => b[1] - a[1]
   )[0];
 
+  const empresaTop =
+
+  Object.entries(
+    porEmpresa
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
+  const pueTop =
+
+  Object.entries(
+    porPUE
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
+  const subtipoTop =
+
+  Object.entries(
+    porSubtipo
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  )[0];
+
 
   document.getElementById(
     "informe"
