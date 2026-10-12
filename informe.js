@@ -2489,7 +2489,9 @@ slide3.addText(
     bold: true
   }
 );
-    // TARJETA HORARIO
+
+
+// TARJETA HORARIO
 
 slide4.addShape(
 
