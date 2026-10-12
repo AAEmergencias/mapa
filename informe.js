@@ -2290,10 +2290,12 @@ slide3.addText(
   }
 );
 
+   // KPI TRASLADOS
+
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 0.5,
+    x: 2.8,
     y: 3.0,
     w: 2.0,
     h: 0.9,
@@ -2305,7 +2307,7 @@ slide3.addText(
 slide3.addText(
   "🚑 Traslados",
   {
-    x: 0.55,
+    x: 2.85,
     y: 3.1,
     w: 1.9,
     h: 0.2,
@@ -2318,7 +2320,7 @@ slide3.addText(
 slide3.addText(
   `${totalTraslados}`,
   {
-    x: 0.55,
+    x: 2.85,
     y: 3.4,
     w: 1.9,
     h: 0.2,
@@ -2328,10 +2330,12 @@ slide3.addText(
   }
 );
 
+   // KPI PARTES
+
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 4.9,
+    x: 5.1,
     y: 3.0,
     w: 2.0,
     h: 0.9,
@@ -2343,7 +2347,7 @@ slide3.addText(
 slide3.addText(
   "✅ Partes",
   {
-    x: 4.95,
+    x: 5.15,
     y: 3.1,
     w: 1.9,
     h: 0.2,
@@ -2356,8 +2360,8 @@ slide3.addText(
 slide3.addText(
   `${totalPartes}`,
   {
-    x: 4.95,
-    y: 3.4,
+    x: 5.15,
+    y: 3.1,
     w: 1.9,
     h: 0.2,
     align: "center",
@@ -2365,6 +2369,8 @@ slide3.addText(
     bold: true
   }
 );
+
+   // KPI CON BRIGADA
 
   slide3.addShape(
   pptx.ShapeType.roundRect,
@@ -2404,6 +2410,8 @@ slide3.addText(
   }
 );
 
+   // KPI CON MEDICO
+
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
@@ -2441,6 +2449,8 @@ slide3.addText(
     bold: true
   }
 );
+
+   // KPI SIN MEDICO
 
   slide3.addShape(
   pptx.ShapeType.roundRect,
