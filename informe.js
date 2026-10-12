@@ -1081,7 +1081,7 @@ new Chart(
     type: "bar",
 
     data: {
-
+      
       labels:
         Object.keys(
           porMes
@@ -1102,16 +1102,42 @@ new Chart(
 
       }]
 
+    },
+
+    options: {
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 16
+
+      },
+
+      anchor: "center",
+
+      align: "center"
+
     }
+
+  }
+
+}
 
   }
 
 );
 
-  console.log(
-  "DATOS POR TIPO:",
-  porTipo
-);
 
 // ==========================
 // GRAFICO TIPO
