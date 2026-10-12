@@ -1256,13 +1256,35 @@ new Chart(
 
     },
 
-    options: {
+ options: {
 
-      responsive: true,
+  responsive: true,
 
-      maintainAspectRatio: false
+  maintainAspectRatio: false,
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 16
+
+      }
 
     }
+
+  }
+
+}
 
   }
 
