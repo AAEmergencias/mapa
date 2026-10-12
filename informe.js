@@ -2255,7 +2255,7 @@ slide3.addText(
   slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 1.6,
+    x: 0.5,
     y: 3.0,
     w: 2.0,
     h: 0.9,
@@ -2267,7 +2267,7 @@ slide3.addText(
 slide3.addText(
   "🚨 Emergencias",
   {
-    x: 1.65,
+    x: 0.55,
     y: 3.1,
     w: 1.9,
     h: 0.2,
@@ -2280,7 +2280,7 @@ slide3.addText(
 slide3.addText(
   `${totalEmergencias}`,
   {
-    x: 1.65,
+    x: 0.55,
     y: 3.4,
     w: 1.9,
     h: 0.2,
