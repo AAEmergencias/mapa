@@ -114,13 +114,13 @@ section h2 {
 .kpiCard {
 
   background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #e8f4ff 55%,
-    #d9efff 100%
-  );
+  135deg,
+  #ffffff 0%,
+  #edf7ff 60%,
+  #dcefff 100%
+);
 
-  border: 2px solid #005b96;
+  border: 1px solid #b8d8f5;
 
   border-radius: 18px;
 
@@ -128,8 +128,8 @@ section h2 {
 
   text-align: center;
 
-  box-shadow:
-    0 6px 16px rgba(0,91,150,.15);
+ box-shadow:
+  0 8px 20px rgba(0,91,150,.12);
 
 }
 
@@ -552,11 +552,15 @@ section h2 {
 
   margin-bottom: 15px;
 
-  color: #005b96;
+  color: #004b87;
 
   font-size: 22px;
 
   font-weight: bold;
+
+  border-left: 5px solid #00AEEF;
+
+padding-left: 12px;
 
 }
 
