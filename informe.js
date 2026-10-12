@@ -1184,6 +1184,32 @@ if (ctxTipo) {
 
         }]
 
+      },
+
+      options: {
+
+        plugins: {
+
+          datalabels: {
+
+            color: "#ffffff",
+
+            textStrokeColor: "#000000",
+
+            textStrokeWidth: 2,
+
+            font: {
+
+              weight: "bold",
+
+              size: 14
+
+            }
+
+          }
+
+        }
+
       }
 
     }
