@@ -1328,15 +1328,37 @@ new Chart(
 
     },
 
-    options: {
+options: {
 
-      indexAxis: "y",
+  indexAxis: "y",
 
-      responsive: true,
+  responsive: true,
 
-      maintainAspectRatio: false
+  maintainAspectRatio: false,
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 16
+
+      }
 
     }
+
+  }
+
+}
 
   }
 
@@ -1380,15 +1402,37 @@ new Chart(
 
     },
 
-    options: {
+  options: {
 
-      responsive: true,
+  responsive: true,
 
-      maintainAspectRatio: false,
+  maintainAspectRatio: false,
 
-      indexAxis: "y"
+  indexAxis: "y",
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 16
+
+      }
 
     }
+
+  }
+
+}
 
   }
 
@@ -1471,15 +1515,37 @@ new Chart(
 
     },
 
-    options: {
+  options: {
 
-      indexAxis: "y",
+  indexAxis: "y",
 
-      responsive: true,
+  responsive: true,
 
-      maintainAspectRatio: false
+  maintainAspectRatio: false,
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 14
+
+      }
 
     }
+
+  }
+
+}
 
   }
 
@@ -1523,13 +1589,35 @@ new Chart(
 
     },
 
-    options: {
+   options: {
 
-      responsive: true,
+  responsive: true,
 
-      maintainAspectRatio: false
+  maintainAspectRatio: false,
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 16
+
+      }
 
     }
+
+  }
+
+}
 
   }
 
@@ -1573,13 +1661,35 @@ new Chart(
 
     },
 
-    options: {
+  options: {
 
-      responsive: true,
+  responsive: true,
 
-      maintainAspectRatio: false
+  maintainAspectRatio: false,
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 16
+
+      }
 
     }
+
+  }
+
+}
 
   }
 
