@@ -2493,6 +2493,22 @@ slide3.addText(
 
 // TARJETA HORARIO
 
+  const slide4 =
+  pptx.addSlide();
+  
+    slide4.addText(
+  "Lectura Ejecutiva Rápida",
+  {
+    x: 0.5,
+    y: 0.3,
+    w: 5,
+    h: 0.4,
+    fontSize: 22,
+    bold: true,
+    color: "005b96"
+  }
+);
+
 slide4.addShape(
 
   pptx.ShapeType.roundRect,
