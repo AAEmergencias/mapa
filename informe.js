@@ -1062,6 +1062,10 @@ ${partes.map(parte => `
   porMes
 );
 
+  Chart.register(
+  ChartDataLabels
+);
+
 // ==========================
 // GRAFICO MES
 // ==========================
