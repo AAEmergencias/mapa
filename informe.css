@@ -131,6 +131,14 @@ section h2 {
  box-shadow:
   0 8px 20px rgba(0,91,150,.12);
 
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
 }
 
 .kpiCard:hover {
@@ -145,7 +153,13 @@ section h2 {
 
 .kpiCard span {
 
+  display: block;
+
+  font-size: 16px;
+
   color: #005b96;
+
+  margin-bottom: 8px;
 
   font-weight: 600;
 
@@ -153,11 +167,17 @@ section h2 {
 
 .kpiCard b {
 
-  font-size: 32px;
+  font-size: 26px;
 
   color: #005b96;
 
   font-weight: 700;
+
+  display: block;
+
+  margin-top: 10px;
+
+  line-height: 1.2;
 
 }
 
