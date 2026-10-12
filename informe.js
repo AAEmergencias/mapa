@@ -3437,8 +3437,6 @@ slide12.addImage({
   const slide13 =
   pptx.addSlide();
 
-
-
   slide13.addText(
 
   "Conclusiones Operacionales",
@@ -3463,37 +3461,41 @@ slide12.addImage({
 
 );
 
-  slide13.addText(
+slide13.addText(
 
-  `• Durante el período analizado se registraron ${totalEmergencias} emergencias operacionales.
+`• Durante el período analizado se registraron ${totalEmergencias} emergencias operacionales y ${totalTraslados} traslados.
 
 • La actividad operacional se concentró principalmente en ${faenaTop ? faenaTop[0] : "-"}.
 
-• El tipo predominante fue ${tipoTop ? tipoTop[0] : "-"}.
+• La empresa con mayor participación operacional fue ${empresaTop ? empresaTop[0] : "-"}.
+
+• La categoría predominante correspondió a ${tipoTop ? tipoTop[0] : "-"}.
+
+• El subtipo predominante correspondió a ${subtipoTop ? subtipoTop[0] : "-"}.
+
+• El horario con mayor frecuencia de activaciones fue ${horarioTop ? horarioTop[0] : "-"}.
+
+• El PUE predominante fue ${pueTop ? pueTop[0] : "-"}.
 
 • La brigada con mayor participación fue ${brigadaTop ? brigadaTop[0] : "-"}.
 
 • La ambulancia con mayor utilización fue ${ambulanciaTop ? ambulanciaTop[0] : "-"}.
 
-• La mayor actividad operacional se registró durante ${horarioTop ? horarioTop[0] : "-"}.
+• El tiempo promedio de atención registrado fue de ${promedioEmergencias} minutos.`,
 
-• Se registraron ${totalTraslados} traslados durante el período evaluado.`,
+{
 
-  {
+  x: 0.8,
 
-    x: 0.8,
+  y: 1.2,
 
-    y: 1.2,
+  w: 10,
 
-    w: 10,
+  h: 5,
 
-    h: 4,
+  fontSize: 16
 
-    fontSize: 18,
-
-    breakLine: false
-
-  }
+}
 
 );
 
