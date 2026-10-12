@@ -2250,9 +2250,9 @@ slide3.addText(
 
 );
 
-  // KPI EMERGENCIAS
+// KPI EMERGENCIAS
 
-  slide3.addShape(
+slide3.addShape(
   pptx.ShapeType.roundRect,
   {
     x: 0.5,
@@ -2290,9 +2290,9 @@ slide3.addText(
   }
 );
 
-   // KPI TRASLADOS
+// KPI TRASLADOS
 
-  slide3.addShape(
+slide3.addShape(
   pptx.ShapeType.roundRect,
   {
     x: 2.8,
@@ -2330,9 +2330,9 @@ slide3.addText(
   }
 );
 
-   // KPI PARTES
+// KPI PARTES
 
-  slide3.addShape(
+slide3.addShape(
   pptx.ShapeType.roundRect,
   {
     x: 5.1,
@@ -2361,7 +2361,7 @@ slide3.addText(
   `${totalPartes}`,
   {
     x: 5.15,
-    y: 3.1,
+    y: 3.4,
     w: 1.9,
     h: 0.2,
     align: "center",
@@ -2370,9 +2370,9 @@ slide3.addText(
   }
 );
 
-   // KPI CON BRIGADA
+// KPI CON BRIGADA
 
-  slide3.addShape(
+slide3.addShape(
   pptx.ShapeType.roundRect,
   {
     x: 0.5,
@@ -2410,12 +2410,12 @@ slide3.addText(
   }
 );
 
-   // KPI CON MEDICO
+// KPI CON MEDICO
 
-  slide3.addShape(
+slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 2.7,
+    x: 2.8,
     y: 4.2,
     w: 2.0,
     h: 0.9,
@@ -2427,7 +2427,7 @@ slide3.addText(
 slide3.addText(
   "🚑 Con Médico",
   {
-    x: 2.75,
+    x: 2.85,
     y: 4.3,
     w: 1.9,
     h: 0.2,
@@ -2440,7 +2440,7 @@ slide3.addText(
 slide3.addText(
   `${conMedico}`,
   {
-    x: 2.75,
+    x: 2.85,
     y: 4.55,
     w: 1.9,
     h: 0.2,
@@ -2450,14 +2450,14 @@ slide3.addText(
   }
 );
 
-   // KPI SIN MEDICO
+// KPI SIN MEDICO
 
-  slide3.addShape(
+slide3.addShape(
   pptx.ShapeType.roundRect,
   {
-    x: 4.9,
+    x: 5.1,
     y: 4.2,
-    w: 1.6,
+    w: 2.0,
     h: 0.9,
     fill: { color: "F0F8FF" },
     line: { color: "005b96" }
@@ -2467,9 +2467,9 @@ slide3.addText(
 slide3.addText(
   "⚪ Sin Médico",
   {
-    x: 4.95,
+    x: 5.15,
     y: 4.3,
-    w: 1.5,
+    w: 1.9,
     h: 0.2,
     align: "center",
     bold: true,
@@ -2480,44 +2480,15 @@ slide3.addText(
 slide3.addText(
   `${sinMedico}`,
   {
-    x: 4.95,
+    x: 5.15,
     y: 4.55,
-    w: 1.5,
+    w: 1.9,
     h: 0.2,
     align: "center",
     fontSize: 16,
     bold: true
   }
 );
-
-
-    const slide4 =
-  pptx.addSlide();
-  
-    slide4.addText(
-
-  "Lectura Ejecutiva Rápida",
-
-  {
-
-    x: 0.5,
-
-    y: 0.3,
-
-    w: 5,
-
-    h: 0.4,
-
-    fontSize: 22,
-
-    bold: true,
-
-    color: "005b96"
-
-  }
-
-);
-
     // TARJETA HORARIO
 
 slide4.addShape(
