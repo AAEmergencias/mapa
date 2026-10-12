@@ -653,6 +653,18 @@ const horarioTop =
   }
 </b>
 
+<small>
+
+  ${
+    brigadaTop
+      ? brigadaTop[1]
+      : 0
+  }
+
+  activaciones
+
+</small>
+
   </div>
 
   <div class="kpiCard">
@@ -669,6 +681,18 @@ const horarioTop =
   }
 </b>
 
+<small>
+
+  ${
+    ambulancias[
+      ambulanciaTop?.[0]
+    ] || 0
+  }
+
+  activaciones
+
+</small>
+
   </div>
 
   <div class="kpiCard">
@@ -680,6 +704,14 @@ const horarioTop =
    <b>
   ${promedioEmergencias} min
 </b>
+
+<small>
+
+  promedio atención
+
+</small>
+
+
 
   </div>
 
@@ -696,6 +728,18 @@ const horarioTop =
         : "-"
     }
   </b>
+
+  <small>
+
+  ${
+    faenaTop
+      ? faenaTop[1]
+      : 0
+  }
+
+  eventos
+
+</small>
 
 </div>
 
