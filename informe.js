@@ -1725,7 +1725,7 @@ new Chart(
 
 );
 
- document.getElementById(
+document.getElementById(
   "conclusionesTexto"
 ).innerHTML = `
 
@@ -1733,17 +1733,31 @@ new Chart(
 
 Durante el período analizado se registraron
 <b>${totalEmergencias}</b>
-emergencias operacionales.
+emergencias operacionales y
+<b>${totalTraslados}</b>
+traslados.
 
 </p>
 
 <p>
 
-La actividad operacional se concentró
-principalmente en
+La actividad operacional se concentró principalmente en
 <b>
 ${faenaTop
   ? faenaTop[0]
+  : "-"
+}
+</b>,
+constituyéndose como la faena con mayor número de eventos.
+
+</p>
+
+<p>
+
+La empresa con mayor participación operacional fue
+<b>
+${empresaTop
+  ? empresaTop[0]
   : "-"
 }
 </b>.
@@ -1752,10 +1766,46 @@ ${faenaTop
 
 <p>
 
-El tipo predominante fue
+La categoría predominante correspondió a
 <b>
 ${tipoTop
   ? tipoTop[0]
+  : "-"
+}
+</b>.
+
+</p>
+
+<p>
+
+El subtipo predominante correspondió a
+<b>
+${subtipoTop
+  ? subtipoTop[0]
+  : "-"
+}
+</b>.
+
+</p>
+
+<p>
+
+El horario con mayor frecuencia de activaciones fue
+<b>
+${horarioTop
+  ? horarioTop[0]
+  : "-"
+}
+</b>.
+
+</p>
+
+<p>
+
+El PUE predominante fue
+<b>
+${pueTop
+  ? pueTop[0]
   : "-"
 }
 </b>.
@@ -1770,13 +1820,8 @@ ${brigadaTop
   ? brigadaTop[0]
   : "-"
 }
-</b>.
-
-</p>
-
-<p>
-
-La ambulancia con mayor utilización fue
+</b>,
+mientras que la ambulancia con mayor utilización fue
 <b>
 ${ambulanciaTop
   ? ambulanciaTop[0]
@@ -1788,22 +1833,8 @@ ${ambulanciaTop
 
 <p>
 
-La mayor actividad operacional se registró
-durante
-<b>
-${horarioTop
-  ? horarioTop[0]
-  : "-"
-}
-</b>.
-
-</p>
-
-<p>
-
-Se registraron
-<b>${totalTraslados}</b>
-traslados durante el período evaluado.
+El tiempo promedio de atención registrado fue de
+<b>${promedioEmergencias} minutos</b>.
 
 </p>
 
