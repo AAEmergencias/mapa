@@ -1316,7 +1316,7 @@ new Chart(
 
 );
 
-  // ==========================
+// ==========================
 // GRAFICO SUBTIPO
 // ==========================
 
@@ -1333,9 +1333,48 @@ new Chart(
     data: {
 
       labels:
+
         Object.keys(
           porSubtipo
-        ),
+        ).map(nombre => {
+
+          if (
+            nombre.length > 30
+          ) {
+
+            const mitad =
+              Math.floor(
+                nombre.length / 2
+              );
+
+            const espacio =
+              nombre.indexOf(
+                " ",
+                mitad
+              );
+
+            if (espacio > 0) {
+
+              return [
+
+                nombre.substring(
+                  0,
+                  espacio
+                ),
+
+                nombre.substring(
+                  espacio + 1
+                )
+
+              ];
+
+            }
+
+          }
+
+          return nombre;
+
+        }),
 
       datasets: [{
 
