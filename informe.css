@@ -20,6 +20,8 @@ body {
 
 .portada {
 
+  position: relative;
+
   background: white;
 
   text-align: center;
@@ -35,9 +37,9 @@ body {
 
 .logoInforme {
 
-  width: 180px;
+  width: 1240px;
 
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 
 }
 
@@ -763,3 +765,58 @@ padding-left: 12px;
   font-weight: 600;
 
 }
+
+.subtituloPortada {
+
+  margin-top: 15px;
+
+  font-size: 18px;
+
+  color: #005b96;
+
+  font-weight: 600;
+
+}
+
+.periodoPortada {
+
+  margin-top: 25px;
+
+  padding: 15px;
+
+  background: #eef8ff;
+
+  border-left: 5px solid #00AEEF;
+
+  border-radius: 10px;
+
+  width: fit-content;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  color: #004b87;
+
+  font-size: 16px;
+
+}
+
+.contactoPortada {
+
+  position: absolute;
+
+  right: 30px;
+
+  bottom: 30px;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  color: #666;
+
+  text-align: right;
+
+}
+
