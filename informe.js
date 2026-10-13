@@ -1001,8 +1001,7 @@ ${Object.entries(porTipo)
   "SELECT ENCONTRADO:",
   filtroAnio
 );
-
-
+    
     aniosDisponibles
   .forEach(anio => {
 
@@ -1017,6 +1016,11 @@ ${Object.entries(porTipo)
     `;
 
   });
+
+    console.log(
+  "HTML DEL SELECT:",
+  filtroAnio.innerHTML
+);
 
     document.getElementById(
   "btnFiltrar"
