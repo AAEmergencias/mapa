@@ -570,8 +570,6 @@ const horarioTop =
     class="logoInforme"
   >
 
-  <h1>CONDOR</h1>
-
   <h2>
     Sistema Integral de Gestión de Emergencias
   </h2>
@@ -579,6 +577,40 @@ const horarioTop =
   <h3>
     Informe Ejecutivo Operacional
   </h3>
+
+  <p class="subtituloPortada">
+
+  Elaborado automáticamente por CONDOR
+
+</p>
+
+<div class="periodoPortada">
+
+  <b>📅 Periodo Analizado</b>
+
+  <br>
+
+  ${textoPeriodo}
+
+</div>
+
+<div class="contactoPortada">
+
+  Contacto
+
+  <br>
+
+  Carlos Cortés
+
+  <br>
+
+  +56 9 7451 2957
+
+  <br>
+
+  ccortesb10@gmail.com
+
+</div>
 
   <p class="ultimaActualizacion">
 
