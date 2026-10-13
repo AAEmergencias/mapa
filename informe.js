@@ -1247,6 +1247,60 @@ ${partes.map(parte => `
     "filtroMes"
   ).value;
 
+      let textoPeriodo =
+  "Todos los registros disponibles";
+
+      const nombreMes = {
+
+  "01": "Enero",
+  "02": "Febrero",
+  "03": "Marzo",
+  "04": "Abril",
+  "05": "Mayo",
+  "06": "Junio",
+  "07": "Julio",
+  "08": "Agosto",
+  "09": "Septiembre",
+  "10": "Octubre",
+  "11": "Noviembre",
+  "12": "Diciembre"
+
+}[mesSeleccionado];
+
+      if (
+  anioSeleccionado &&
+  mesSeleccionado
+) {
+
+  textoPeriodo =
+
+    `${nombreMes} ${anioSeleccionado}`;
+
+}
+else if (
+  anioSeleccionado
+) {
+
+  textoPeriodo =
+
+    `Todos los meses de ${anioSeleccionado}`;
+
+}
+else if (
+  mesSeleccionado
+) {
+
+  textoPeriodo =
+
+    `${nombreMes} de todos los años`;
+
+}
+
+      console.log(
+  "PERIODO:",
+  textoPeriodo
+);
+
 const partesFiltradas =
 
   partesOriginales.filter(parte => {
