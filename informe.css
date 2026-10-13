@@ -412,6 +412,8 @@ section h2 {
 
 @media print {
 
+  
+
   #btnImprimir {
 
     display: none !important;
