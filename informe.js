@@ -1292,6 +1292,10 @@ cargarInforme(
 // GRAFICO MES
 // ==========================
 
+  Chart.getChart(
+  "graficoMesInforme"
+)?.destroy();
+
 new Chart(
 
   document.getElementById(
