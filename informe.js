@@ -987,6 +987,26 @@ ${Object.entries(porTipo)
 
     `;
 
+    const filtroAnio =
+  document.getElementById(
+    "filtroAnio"
+  );
+
+    aniosDisponibles
+  .forEach(anio => {
+
+    filtroAnio.innerHTML += `
+
+      <option value="${anio}">
+
+        ${anio}
+
+      </option>
+
+    `;
+
+  });
+
   })
 
   .join("")}
