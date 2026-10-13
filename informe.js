@@ -1252,30 +1252,12 @@ ${partes.map(parte => `
 
     });
 
-  console.log(
-    "AÑO SELECCIONADO:",
-    anioSeleccionado
-  );
-
-  console.log(
-    "PARTES FILTRADAS:",
-    partesFiltradas.length
-  );
-
-alert(
-
-  `Se encontraron ${partesFiltradas.length} registros.
-
-Próximamente se recargará el informe usando estos registros.`
-
+cargarInforme(
+  partesFiltradas
 );
 
 };
 
-  console.log(
-  "DATOS POR MES:",
-  porMes
-);
 
   Chart.register(
   ChartDataLabels
