@@ -1007,6 +1007,26 @@ ${Object.entries(porTipo)
 
   });
 
+    document.getElementById(
+  "btnFiltrar"
+).onclick = () => {
+
+  const anioSeleccionado =
+
+    document.getElementById(
+      "filtroAnio"
+    ).value;
+
+  console.log(
+
+    "AÑO SELECCIONADO:",
+
+    anioSeleccionado
+
+  );
+
+};
+
   })
 
   .join("")}
