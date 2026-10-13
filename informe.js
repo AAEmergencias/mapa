@@ -10,7 +10,8 @@ console.log(
 );
 
 async function cargarInforme(
-  partesExternas = null
+  partesExternas = null,
+  textoPeriodo = "Todos los registros disponibles"
 ) {
 
   const partesSnap =
@@ -1352,7 +1353,8 @@ const partesFiltradas =
   });
 
 cargarInforme(
-  partesFiltradas
+  partesFiltradas,
+  textoPeriodo
 );
 
 };
