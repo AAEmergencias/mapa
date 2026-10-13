@@ -573,6 +573,15 @@ section h2 {
 
   }
 
+  #filtroAnio,
+#filtroMes,
+#btnFiltrar,
+#btnPPT {
+
+  display: none !important;
+
+}
+
 }
 
 .ultimaActualizacion {
