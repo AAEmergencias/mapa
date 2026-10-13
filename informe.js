@@ -9,7 +9,9 @@ console.log(
   "✅ informe.js cargado"
 );
 
-async function cargarInforme() {
+async function cargarInforme(
+  partesExternas = null
+) {
 
   const partesSnap =
     await getDocs(
@@ -36,7 +38,7 @@ async function cargarInforme() {
   const totalPartes =
     partesSnap.size;
 
-  const partes = [];
+  let partes = [];
 
 partesSnap.forEach(doc => {
 
@@ -45,6 +47,13 @@ partesSnap.forEach(doc => {
   );
 
 });
+
+  if (partesExternas) {
+
+  partes =
+    partesExternas;
+
+}
 
   const aniosDisponibles =
   [...new Set(
@@ -1253,8 +1262,12 @@ ${partes.map(parte => `
     partesFiltradas.length
   );
 
-      alert(
-  `Se encontraron ${partesFiltradas.length} registros`
+alert(
+
+  `Se encontraron ${partesFiltradas.length} registros.
+
+Próximamente se recargará el informe usando estos registros.`
+
 );
 
 };
