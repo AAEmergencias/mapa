@@ -1253,6 +1253,10 @@ ${partes.map(parte => `
     partesFiltradas.length
   );
 
+      alert(
+  `Se encontraron ${partesFiltradas.length} registros`
+);
+
 };
 
   console.log(
