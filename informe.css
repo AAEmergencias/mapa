@@ -320,6 +320,37 @@ section h2 {
 
   margin-bottom: 20px;
 
+  flex-wrap: wrap;
+
+}
+
+#filtroAnio,
+#filtroMes {
+
+  padding: 10px;
+
+  border-radius: 8px;
+
+  border: 1px solid #ccc;
+
+}
+
+#btnFiltrar {
+
+  background: #00AEEF;
+
+  color: white;
+
+  border: none;
+
+  padding: 12px 20px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
 }
 
 
