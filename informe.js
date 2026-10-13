@@ -55,15 +55,14 @@ partesSnap.forEach(doc => {
 
 }
 
-  console.log(
-  "PARTES USADAS:",
-  partes.length
-);
+  const partesOriginales =
+  [...partes];
+
 
   const aniosDisponibles =
   [...new Set(
 
-    partes
+    partesOriginales
 
       .map(
         p => p.fecha?.split("-")[0]
@@ -1263,7 +1262,6 @@ const partesFiltradas =
   parte.fecha
     .split("-")[1]
     .padStart(2, "0");
-  parte.fecha.split("-")[1];
 
     console.log(
   "MES PARTE:",
