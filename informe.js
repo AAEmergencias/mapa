@@ -55,6 +55,11 @@ partesSnap.forEach(doc => {
 
 }
 
+  console.log(
+  "PARTES USADAS:",
+  partes.length
+);
+
   const aniosDisponibles =
   [...new Set(
 
