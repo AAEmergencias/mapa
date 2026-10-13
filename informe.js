@@ -992,55 +992,7 @@ ${Object.entries(porTipo)
 
     `;
 
-    const filtroAnio =
-  document.getElementById(
-    "filtroAnio"
-  );
-
-    console.log(
-  "SELECT ENCONTRADO:",
-  filtroAnio
-);
-    
-    aniosDisponibles
-  .forEach(anio => {
-
-    filtroAnio.innerHTML += `
-
-      <option value="${anio}">
-
-        ${anio}
-
-      </option>
-
-    `;
-
-  });
-
-    console.log(
-  "HTML DEL SELECT:",
-  filtroAnio.innerHTML
-);
-
-    document.getElementById(
-  "btnFiltrar"
-).onclick = () => {
-
-  const anioSeleccionado =
-
-    document.getElementById(
-      "filtroAnio"
-    ).value;
-
-  console.log(
-
-    "AÑO SELECCIONADO:",
-
-    anioSeleccionado
-
-  );
-
-};
+ 
 
   })
 
@@ -1235,6 +1187,56 @@ ${partes.map(parte => `
 </section>
 
 `;
+
+     const filtroAnio =
+  document.getElementById(
+    "filtroAnio"
+  );
+
+    console.log(
+  "SELECT ENCONTRADO:",
+  filtroAnio
+);
+    
+    aniosDisponibles
+  .forEach(anio => {
+
+    filtroAnio.innerHTML += `
+
+      <option value="${anio}">
+
+        ${anio}
+
+      </option>
+
+    `;
+
+  });
+
+    console.log(
+  "HTML DEL SELECT:",
+  filtroAnio.innerHTML
+);
+
+    document.getElementById(
+  "btnFiltrar"
+).onclick = () => {
+
+  const anioSeleccionado =
+
+    document.getElementById(
+      "filtroAnio"
+    ).value;
+
+  console.log(
+
+    "AÑO SELECCIONADO:",
+
+    anioSeleccionado
+
+  );
+
+};
 
   console.log(
   "DATOS POR MES:",
