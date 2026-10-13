@@ -1228,12 +1228,29 @@ ${partes.map(parte => `
       "filtroAnio"
     ).value;
 
+  const partesFiltradas =
+
+    partes.filter(parte => {
+
+      if (!anioSeleccionado)
+        return true;
+
+      return (
+        parte.fecha?.split("-")[0]
+        ===
+        anioSeleccionado
+      );
+
+    });
+
   console.log(
-
     "AÑO SELECCIONADO:",
-
     anioSeleccionado
+  );
 
+  console.log(
+    "PARTES FILTRADAS:",
+    partesFiltradas.length
   );
 
 };
