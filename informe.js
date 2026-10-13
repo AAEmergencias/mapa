@@ -1259,7 +1259,16 @@ const partesFiltradas =
       parte.fecha.split("-")[0];
 
     const mesParte =
-      parte.fecha.split("-")[1];
+
+  parte.fecha
+    .split("-")[1]
+    .padStart(2, "0");
+  parte.fecha.split("-")[1];
+
+    console.log(
+  "MES PARTE:",
+  mesParte
+);
 
     const cumpleAnio =
 
