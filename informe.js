@@ -48,16 +48,16 @@ partesSnap.forEach(doc => {
 
 });
 
+  const partesOriginales =
+
+  [...partes];
+
   if (partesExternas) {
 
   partes =
     partesExternas;
 
 }
-
-  const partesOriginales =
-  [...partes];
-
 
   const aniosDisponibles =
   [...new Set(
@@ -1249,7 +1249,7 @@ ${partes.map(parte => `
 
 const partesFiltradas =
 
-  partes.filter(parte => {
+  partesOriginales.filter(parte => {
 
     if (!parte.fecha)
       return false;
