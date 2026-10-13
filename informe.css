@@ -39,7 +39,9 @@ body {
 
   width: 240px;
 
-  margin-bottom: 15px;
+  display: block;
+
+  margin: 0 auto 20px auto;
 
 }
 
