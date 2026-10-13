@@ -595,6 +595,14 @@ const horarioTop =
 📊 Resumen Ejecutivo
 </h2>
 
+<div id="periodoSeleccionado">
+
+  📅 Mostrando:
+
+  ${textoPeriodo}
+
+</div>
+
 <h3 class="grupoTitulo">
 
 📌 Indicadores Generales
