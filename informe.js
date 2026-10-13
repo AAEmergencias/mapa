@@ -46,6 +46,21 @@ partesSnap.forEach(doc => {
 
 });
 
+  const aniosDisponibles =
+  [...new Set(
+
+    partes
+
+      .map(
+        p => p.fecha?.split("-")[0]
+      )
+
+      .filter(Boolean)
+
+  )]
+
+  .sort();
+
   let porMes = {};
 
   const MESES = {
