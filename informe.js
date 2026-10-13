@@ -61,6 +61,11 @@ partesSnap.forEach(doc => {
 
   .sort();
 
+  console.log(
+  "AÑOS DISPONIBLES:",
+  aniosDisponibles
+);
+
   let porMes = {};
 
   const MESES = {
