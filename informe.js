@@ -1237,20 +1237,45 @@ ${partes.map(parte => `
       "filtroAnio"
     ).value;
 
-  const partesFiltradas =
+      const mesSeleccionado =
 
-    partes.filter(parte => {
+  document.getElementById(
+    "filtroMes"
+  ).value;
 
-      if (!anioSeleccionado)
-        return true;
+const partesFiltradas =
 
-      return (
-        parte.fecha?.split("-")[0]
-        ===
-        anioSeleccionado
-      );
+  partes.filter(parte => {
 
-    });
+    if (!parte.fecha)
+      return false;
+
+    const anioParte =
+      parte.fecha.split("-")[0];
+
+    const mesParte =
+      parte.fecha.split("-")[1];
+
+    const cumpleAnio =
+
+      !anioSeleccionado ||
+
+      anioParte ===
+      anioSeleccionado;
+
+    const cumpleMes =
+
+      !mesSeleccionado ||
+
+      mesParte ===
+      mesSeleccionado;
+
+    return (
+      cumpleAnio &&
+      cumpleMes
+    );
+
+  });
 
 cargarInforme(
   partesFiltradas
