@@ -997,6 +997,12 @@ ${Object.entries(porTipo)
     "filtroAnio"
   );
 
+    console.log(
+  "SELECT ENCONTRADO:",
+  filtroAnio
+);
+
+
     aniosDisponibles
   .forEach(anio => {
 
