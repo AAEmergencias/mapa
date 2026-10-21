@@ -2432,19 +2432,19 @@ const graficoPUEPNG =
 
   slide.addText(
 
-  "Central de Emergencias",
+  "Periodo Analizado",
 
   {
 
     x: 1,
 
-    y: 3.3,
+    y: 4.4,
 
     w: 10,
 
     h: 0.3,
 
-    fontSize: 16,
+    fontSize: 14,
 
     bold: true,
 
@@ -2458,23 +2458,25 @@ const graficoPUEPNG =
 
   slide.addText(
 
-  "Reporte Ejecutivo Automatizado",
+  textoPeriodo,
 
   {
 
     x: 1,
 
-    y: 3.8,
+    y: 4.8,
 
     w: 10,
 
     h: 0.3,
 
-    fontSize: 13,
+    fontSize: 18,
+
+    bold: true,
 
     align: "center",
 
-    color: "666666"
+    color: "000000"
 
   }
 
@@ -2488,7 +2490,7 @@ const graficoPUEPNG =
 
     x: 1,
 
-    y: 4.6,
+    y: 5.0,
 
     w: 10,
 
