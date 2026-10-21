@@ -1239,14 +1239,19 @@ ${partes
 
 ${partes.length > 10 ? `
 
-<button id="btnVerTodas">
+<div class="contenedorVerMas">
 
-  ▼ Ver todas las emergencias
-  (${partes.length})
+  <button id="btnVerTodas">
 
-</button>
+    ▼ Ver todas las emergencias
+    (${partes.length})
+
+  </button>
+
+</div>
 
 ` : ""}
+
 
 </section>
 
@@ -1414,6 +1419,7 @@ cargarInforme(
 };
 
   const btnVerTodas =
+
   document.getElementById(
     "btnVerTodas"
   );
@@ -1423,7 +1429,7 @@ if (btnVerTodas) {
   btnVerTodas.onclick = () => {
 
     alert(
-      "Próximamente se mostrará el detalle completo."
+      "Próximo paso: desplegar la tabla completa."
     );
 
   };
