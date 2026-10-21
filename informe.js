@@ -1194,13 +1194,24 @@ ${Object.entries(porTipo)
 
  <tbody>
 
-${partes.map(parte => `
+${partes
+  .slice(0, 10)
+  .map(parte => `
 
 <tr>
 
-  <td>
-    ${parte.fecha || "-"}
-  </td>
+ <td>
+
+  ${
+    parte.fecha
+      ? parte.fecha
+          .split("-")
+          .reverse()
+          .join("/")
+      : "-"
+  }
+
+</td>
 
   <td>
     ${parte.tipo || "-"}
@@ -1225,6 +1236,17 @@ ${partes.map(parte => `
 </tbody>
 
 </table>
+
+${partes.length > 10 ? `
+
+<button id="btnVerTodas">
+
+  ▼ Ver todas las emergencias
+  (${partes.length})
+
+</button>
+
+` : ""}
 
 </section>
 
@@ -1390,6 +1412,23 @@ cargarInforme(
 );
 
 };
+
+  const btnVerTodas =
+  document.getElementById(
+    "btnVerTodas"
+  );
+
+if (btnVerTodas) {
+
+  btnVerTodas.onclick = () => {
+
+    alert(
+      "Próximamente se mostrará el detalle completo."
+    );
+
+  };
+
+}
 
 
   Chart.register(
