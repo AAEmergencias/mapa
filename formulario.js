@@ -941,15 +941,53 @@ if (btnAgregarRespondedor) {
 
       </td>
 
+      <td>
+
+  <button
+    type="button"
+    class="btnEliminarFila">
+
+    ❌
+
+  </button>
+
+</td>
+
     `;
 
     tabla.appendChild(
       fila
     );
 
+    fila
+  .querySelector(
+    ".btnEliminarFila"
+  )
+  .onclick = () => {
+
+    fila.remove();
+
+  };
+
   };
 
 }
+
+    document
+  .querySelectorAll(
+    ".btnEliminarFila"
+  )
+  .forEach(btn => {
+
+    btn.onclick = () => {
+
+      btn
+        .closest("tr")
+        .remove();
+
+    };
+
+  });
 
 // ✅ cerrar todo el script
 });
