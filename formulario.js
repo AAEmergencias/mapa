@@ -532,6 +532,51 @@ document.getElementById("formParte").onsubmit = async (e) => {
 
     let parte = {
 
+      reportaNombre:
+  document.getElementById(
+    "reportaNombre"
+  ).value,
+
+reportaCargo:
+  document.getElementById(
+    "reportaCargo"
+  ).value,
+
+reportaEmpresa:
+  document.getElementById(
+    "reportaEmpresa"
+  ).value,
+
+lugarExacto:
+  document.getElementById(
+    "lugarExacto"
+  ).value,
+
+detalleRecepcion:
+  document.getElementById(
+    "detalleRecepcion"
+  ).value,
+
+lesionadosRecepcion:
+  document.getElementById(
+    "lesionadosRecepcion"
+  ).value,
+
+condicionesEntorno:
+  document.getElementById(
+    "condicionesEntorno"
+  ).value,
+
+estadoActualRecepcion:
+  document.getElementById(
+    "estadoActualRecepcion"
+  ).value,
+
+medidasIniciales:
+  document.getElementById(
+    "medidasIniciales"
+  ).value,
+
       fecha: document.getElementById("fecha").value,
       horaActivacion: document.getElementById("horaActivacion").value,
       horaCierre: document.getElementById("horaCierre").value,
