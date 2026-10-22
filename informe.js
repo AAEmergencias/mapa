@@ -1129,7 +1129,7 @@ ${Object.entries(porTipo)
 <div class="graficoCard">
 
   <h3>
-    Subcategorización de Emergencias
+🏆 Top 10 Subcategorías de Emergencias
   </h3>
 
   <canvas
@@ -1963,7 +1963,7 @@ new Chart(
 // GRAFICO SUBTIPO
 // ==========================
 
-  const subtiposOrdenados =
+const subtiposOrdenados =
 
   Object.entries(
     porSubtipo
@@ -1971,7 +1971,9 @@ new Chart(
 
   .sort(
     (a,b) => b[1] - a[1]
-  );
+  )
+
+  .slice(0, 10);
 
 new Chart(
 
@@ -3832,7 +3834,7 @@ slide10.addImage({
 
 
 slide11.addText(
-  "Subcategorización de Emergencias",
+  "🏆 Top 10 Subcategorías de Emergencias",
   {
     x: 0.5,
     y: 0.3,
