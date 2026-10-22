@@ -411,6 +411,12 @@ section h2 {
 }
 
 @media print {
+
+  .graficoPUECard {
+
+  grid-column: 1 / -1 !important;
+
+}
   
 
   #graficoPUEInforme {
