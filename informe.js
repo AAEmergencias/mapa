@@ -1318,32 +1318,116 @@ ${partes.length >= 10 ? `
     "graficosSubtipoDinamicos"
   );
 
+const iconosTipo = {
+
+  "Vehicular": "🚗",
+  "Rescate": "🧗",
+  "Medico": "🏥",
+  "Médico": "🏥",
+  "Hazmat": "☣️",
+  "Incendio": "🔥",
+  "Sísmico": "🌎",
+  "Sismico": "🌎",
+  "Ambiental": "🌱",
+  "Meteorológico": "🌧️",
+  "Meteorologico": "🌧️",
+  "Geológico": "⛰️",
+  "Geologico": "⛰️"
+
+};
+
+contenedorSubtipos.innerHTML = `
+
+  <h3 class="grupoTitulo">
+
+    📋 Subtipos por Tipo de Emergencia
+
+  </h3>
+
+`;
+
 Object.entries(
   porTipoSubtipo
-).forEach(([tipo]) => {
+).forEach(([tipo, subtipos]) => {
 
-  const idCanvas =
+  const icono =
 
-    `graficoSubtipo_${tipo
-      .replaceAll(" ", "_")}`;
+    iconosTipo[tipo] || "📊";
 
-  contenedorSubtipos.innerHTML += `
+  const cantidadSubtipos =
 
-    <div class="graficoCard">
+    Object.keys(
+      subtipos
+    ).length;
 
-      <h3>
+  // SOLO UN SUBTIPO
+  if (
+    cantidadSubtipos === 1
+  ) {
 
-        📊 Subtipos ${tipo}
+    const [subtipo, cantidad] =
 
-      </h3>
+      Object.entries(
+        subtipos
+      )[0];
 
-      <canvas
-        id="${idCanvas}">
-      </canvas>
+    contenedorSubtipos.innerHTML += `
 
-    </div>
+      <div class="hallazgoBox">
 
-  `;
+        <h4>
+
+          ${icono} ${tipo}
+
+        </h4>
+
+        <ul>
+
+          <li>
+
+            ${subtipo}
+
+            <strong>
+              (${cantidad})
+            </strong>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    `;
+
+  }
+
+  // DOS O MÁS SUBTIPOS
+  else {
+
+    const idCanvas =
+
+      `graficoSubtipo_${tipo
+        .replaceAll(" ", "_")}`;
+
+    contenedorSubtipos.innerHTML += `
+
+      <div class="graficoCard">
+
+        <h3>
+
+          ${icono} Subtipos ${tipo}
+
+        </h3>
+
+        <canvas
+          id="${idCanvas}">
+        </canvas>
+
+      </div>
+
+    `;
+
+  }
 
 });
 
