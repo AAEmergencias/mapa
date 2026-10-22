@@ -173,41 +173,6 @@ partes.forEach(parte => {
   porTipoSubtipo
 );
 
-  const contenedorSubtipos =
-
-  document.getElementById(
-    "graficosSubtipoDinamicos"
-  );
-
-Object.entries(
-  porTipoSubtipo
-).forEach(([tipo]) => {
-
-  const idCanvas =
-
-    `graficoSubtipo_${tipo
-      .replaceAll(" ", "_")}`;
-
-  contenedorSubtipos.innerHTML += `
-
-    <div class="graficoCard">
-
-      <h3>
-
-        📊 Subtipos ${tipo}
-
-      </h3>
-
-      <canvas
-        id="${idCanvas}">
-      </canvas>
-
-    </div>
-
-  `;
-
-});
-
   partes.forEach(parte => {
 
   const faena =
@@ -1104,7 +1069,6 @@ ${Object.entries(porTipo)
       </div>
 
     `;
-
  
 
   })
