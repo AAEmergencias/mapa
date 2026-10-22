@@ -434,21 +434,29 @@ section h2 {
 
   }
 
-  section {
+ section {
 
-    box-shadow: none !important;
+  box-shadow: none !important;
 
-    border: 1px solid #ddd;
+  border: 1px solid #ddd;
 
-    margin-top: 10px !important;
+  margin-top: 10px !important;
 
-    padding: 15px !important;
+  padding: 15px !important;
 
-    break-inside: avoid;
+}
 
-    page-break-inside: avoid;
+.kpiGrid,
+.hallazgosRapidos,
+#tablaEmergencias {
 
-  }
+  break-inside: avoid;
+
+  page-break-inside: avoid;
+
+}
+
+  
 
   .portada {
 
