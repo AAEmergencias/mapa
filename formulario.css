@@ -199,3 +199,13 @@ body::before {
   background: #b91c1c;
 
 }
+
+#tablaRespondedores th {
+
+  color: white;
+
+  padding-bottom: 10px;
+
+  text-align: center;
+
+}
