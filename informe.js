@@ -1058,7 +1058,7 @@ ${Object.entries(porTipo)
 
 </section>
 
-<section>
+<section class="seccionGraficos">
 
 <h2>
 📈 Gráficos Operacionales
@@ -1166,7 +1166,7 @@ ${Object.entries(porTipo)
 
 </section>
 
-<section>
+<section class="seccionDetalle">
 
 <h2>
 📋 Detalle de Emergencias
