@@ -1194,11 +1194,13 @@ ${Object.entries(porTipo)
 
  <tbody>
 
-${partes
-  .slice(0, 10)
-  .map(parte => `
+${partes.map((parte, index) => `
 
-<tr>
+<tr class="${
+  index >= 10
+    ? "filaOculta"
+    : ""
+}">
 
  <td>
 
@@ -1237,7 +1239,7 @@ ${partes
 
 </table>
 
-${partes.length > 10 ? `
+${partes.length >= 10 ? `
 
 <div class="contenedorVerMas">
 
@@ -1426,14 +1428,39 @@ cargarInforme(
 
 if (btnVerTodas) {
 
+  let expandido = false;
+
   btnVerTodas.onclick = () => {
 
-    alert(
-      "Próximo paso: desplegar la tabla completa."
-    );
+    expandido = !expandido;
+
+    document
+      .querySelectorAll(
+        ".filaOculta"
+      )
+      .forEach(fila => {
+
+        fila.style.display =
+
+          expandido
+
+            ? "table-row"
+
+            : "none";
+
+      });
+
+    btnVerTodas.textContent =
+
+      expandido
+
+        ? "▲ Ocultar emergencias"
+
+        : `▼ Ver todas las emergencias (${partes.length})`;
 
   };
 
+}
 }
 
 
