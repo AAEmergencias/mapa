@@ -1312,6 +1312,41 @@ ${partes.length >= 10 ? `
 
 `;
 
+  const contenedorSubtipos =
+
+  document.getElementById(
+    "graficosSubtipoDinamicos"
+  );
+
+Object.entries(
+  porTipoSubtipo
+).forEach(([tipo]) => {
+
+  const idCanvas =
+
+    `graficoSubtipo_${tipo
+      .replaceAll(" ", "_")}`;
+
+  contenedorSubtipos.innerHTML += `
+
+    <div class="graficoCard">
+
+      <h3>
+
+        📊 Subtipos ${tipo}
+
+      </h3>
+
+      <canvas
+        id="${idCanvas}">
+      </canvas>
+
+    </div>
+
+  `;
+
+});
+
      const filtroAnio =
   document.getElementById(
     "filtroAnio"
