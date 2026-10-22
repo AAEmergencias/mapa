@@ -1150,7 +1150,7 @@ ${Object.entries(porTipo)
 
 </div>
 
-<div class="graficoCard">
+<div class="graficoCard graficoPUECard">
 
   <h3>
     PUE Relacionado
