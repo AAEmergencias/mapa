@@ -235,3 +235,46 @@ body::before {
   min-width: 180px;
 
 }
+
+#tablaHitos {
+
+  width: 100%;
+
+  border-spacing: 12px;
+
+}
+
+#tablaHitos th {
+
+  color: white;
+
+  padding-bottom: 10px;
+
+  text-align: center;
+
+}
+
+#tablaHitos input[type="text"] {
+
+  min-width: 180px;
+
+}
+
+#tablaHitos td:nth-child(3) input {
+
+  min-width: 220px;
+
+}
+
+#tablaHitos td:nth-child(4) input {
+
+  min-width: 220px;
+
+}
+
+#tablaHitos td:last-child {
+
+  white-space: nowrap;
+
+}
+
