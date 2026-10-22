@@ -412,6 +412,18 @@ section h2 {
 
 @media print {
 
+  .seccionGraficos {
+
+  page-break-before: always;
+
+}
+
+  .seccionDetalle {
+
+  page-break-before: always;
+
+}
+
   .graficoPUECard {
 
   grid-column: 1 / -1 !important;
