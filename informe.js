@@ -1194,7 +1194,21 @@ ${Object.entries(porTipo)
 
  <tbody>
 
-${partes.map((parte, index) => `
+${[...partes]
+
+  .sort((a, b) => {
+
+    if (!a.fecha) return 1;
+    if (!b.fecha) return -1;
+
+    return (
+      new Date(b.fecha) -
+      new Date(a.fecha)
+    );
+
+  })
+
+  .map((parte, index) => `
 
 <tr class="${
   index >= 10
