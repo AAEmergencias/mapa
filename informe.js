@@ -1347,6 +1347,89 @@ Object.entries(
 
 });
 
+  Object.entries(
+  porTipoSubtipo
+).forEach(([tipo, datos]) => {
+
+  const idCanvas =
+
+    `graficoSubtipo_${tipo
+      .replaceAll(" ", "_")}`;
+
+  new Chart(
+
+    document.getElementById(
+      idCanvas
+    ),
+
+    {
+
+      type: "bar",
+
+      data: {
+
+        labels:
+
+          Object.keys(
+            datos
+          ),
+
+        datasets: [{
+
+          label:
+            "Eventos",
+
+          data:
+
+            Object.values(
+              datos
+            ),
+
+          backgroundColor:
+            "#00AEEF"
+
+        }]
+
+      },
+
+      options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        indexAxis: "y",
+
+        plugins: {
+
+          datalabels: {
+
+            color: "#ffffff",
+
+            textStrokeColor: "#000000",
+
+            textStrokeWidth: 2,
+
+            font: {
+
+              weight: "bold",
+
+              size: 12
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  );
+
+});
+
      const filtroAnio =
   document.getElementById(
     "filtroAnio"
