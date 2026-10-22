@@ -842,3 +842,42 @@ padding-left: 12px;
 
 }
 
+.contenedorVerMas {
+
+  margin-top: 15px;
+
+  text-align: center;
+
+}
+
+#btnVerTodas {
+
+  background: linear-gradient(
+    135deg,
+    #005b96,
+    #00AEEF
+  );
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  box-shadow:
+    0 3px 10px rgba(0,91,150,.20);
+
+}
+
+
+#btnVerTodas:hover {
+
+  background: #00497a;
+
+}
