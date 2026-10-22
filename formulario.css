@@ -175,3 +175,27 @@ body::before {
   background: #00497a;
 
 }
+
+.btnEliminarFila {
+
+  background: #dc2626;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 6px;
+
+  padding: 6px 10px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+}
+
+.btnEliminarFila:hover {
+
+  background: #b91c1c;
+
+}
