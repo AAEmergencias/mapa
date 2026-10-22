@@ -2081,6 +2081,90 @@ new Chart(
 
 );
 
+  // ==========================
+// GRAFICO PUE
+// ==========================
+
+const pueOrdenados =
+
+  Object.entries(
+    porPUE
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  );
+
+new Chart(
+
+  document.getElementById(
+    "graficoPUEInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+        pueOrdenados.map(
+          x => x[0]
+        ),
+
+      datasets: [{
+
+        label:
+          "Eventos",
+
+        data:
+          pueOrdenados.map(
+            x => x[1]
+          ),
+
+        backgroundColor:
+          "#dc2626"
+
+      }]
+
+    },
+
+    options: {
+
+      responsive: true,
+
+      maintainAspectRatio: false,
+
+      plugins: {
+
+        datalabels: {
+
+          color: "#ffffff",
+
+          textStrokeColor: "#000000",
+
+          textStrokeWidth: 2,
+
+          font: {
+
+            weight: "bold",
+
+            size: 16
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+);
+
+  
+
 document.getElementById(
   "conclusionesTexto"
 ).innerHTML = `
