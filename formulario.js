@@ -989,5 +989,82 @@ if (btnAgregarRespondedor) {
 
   });
 
+    const btnAgregarHito =
+  document.getElementById(
+    "btnAgregarHito"
+  );
+
+if (btnAgregarHito) {
+
+  btnAgregarHito.onclick = () => {
+
+    const tabla =
+
+      document.querySelector(
+        "#tablaHitos tbody"
+      );
+
+    const fila =
+
+      document.createElement(
+        "tr"
+      );
+
+    fila.innerHTML = `
+
+      <td>
+        <input type="time">
+      </td>
+
+      <td>
+        <input
+          type="text"
+          placeholder="Ej: Jefe Turno Mina">
+      </td>
+
+      <td>
+        <input
+          type="text"
+          placeholder="Detalle del hito">
+      </td>
+
+      <td>
+        <input
+          type="text"
+          placeholder="Observaciones">
+      </td>
+
+      <td>
+
+        <button
+          type="button"
+          class="btnEliminarFila">
+
+          ❌
+
+        </button>
+
+      </td>
+
+    `;
+
+    tabla.appendChild(
+      fila
+    );
+
+    fila
+      .querySelector(
+        ".btnEliminarFila"
+      )
+      .onclick = () => {
+
+        fila.remove();
+
+      };
+
+  };
+
+}
+
 // ✅ cerrar todo el script
 });
