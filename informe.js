@@ -103,6 +103,8 @@ partesSnap.forEach(doc => {
 
   let porSubtipo = {};
 
+  let porTipoSubtipo = {};
+
   let porFaena = {};
 
   let porEmpresa = {};
@@ -136,7 +138,10 @@ partesSnap.forEach(doc => {
 
 });
 
-  partes.forEach(parte => {
+partes.forEach(parte => {
+
+  const tipo =
+    parte.tipo;
 
   const subtipo =
     parte.subtipo;
@@ -145,9 +150,28 @@ partesSnap.forEach(doc => {
     return;
 
   porSubtipo[subtipo] =
+
     (porSubtipo[subtipo] || 0) + 1;
 
+  if (!tipo)
+    return;
+
+  if (!porTipoSubtipo[tipo]) {
+
+    porTipoSubtipo[tipo] = {};
+
+  }
+
+  porTipoSubtipo[tipo][subtipo] =
+
+    (porTipoSubtipo[tipo][subtipo] || 0) + 1;
+
 });
+
+  console.log(
+  "POR TIPO SUBTIPO:",
+  porTipoSubtipo
+);
 
   partes.forEach(parte => {
 
