@@ -2042,14 +2042,24 @@ new Chart(
 
 );
 
-  // ==========================
-// GRAFICO PUE
+// ==========================
+// GRAFICO FAENA
 // ==========================
 
+const faenasOrdenadas =
+
+  Object.entries(
+    porFaena
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  );
+  
 new Chart(
 
   document.getElementById(
-    "graficoPUEInforme"
+    "graficoFaenaInforme"
   ),
 
   {
@@ -2058,29 +2068,29 @@ new Chart(
 
     data: {
 
-      labels:
-        Object.keys(
-          porPUE
-        ),
+     labels:
+  faenasOrdenadas.map(
+    x => x[0]
+  ),
 
       datasets: [{
 
         label:
-          "Eventos",
+          "Emergencias",
 
-        data:
-          Object.values(
-            porPUE
-          ),
+      data:
+  faenasOrdenadas.map(
+    x => x[1]
+  ),
 
         backgroundColor:
-          "#dc2626"
+          "#00A651"
 
       }]
 
     },
 
-  options: {
+ options: {
 
   responsive: true,
 
@@ -2101,6 +2111,296 @@ new Chart(
         weight: "bold",
 
         size: 16
+
+      }
+
+    }
+
+  }
+
+}
+
+  }
+
+);
+
+// ==========================
+// GRAFICO UNIDADES
+// ==========================
+
+const unidadesOrdenadas =
+
+  Object.entries(
+    porUnidad
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  );
+  
+new Chart(
+
+  document.getElementById(
+    "graficoUnidadInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+    labels:
+  unidadesOrdenadas.map(
+    x => x[0]
+  ),
+
+      datasets: [{
+
+        label:
+          "Utilizaciones",
+
+       data:
+  unidadesOrdenadas.map(
+    x => x[1]
+  ),
+
+        backgroundColor:
+          "#f59e0b"
+
+      }]
+
+    },
+
+options: {
+
+  indexAxis: "y",
+
+  responsive: true,
+
+  maintainAspectRatio: false,
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 16
+
+      }
+
+    }
+
+  }
+
+}
+
+  }
+
+);
+
+  // ==========================
+// GRAFICO EMPRESA
+// ==========================
+
+  const empresasOrdenadas =
+
+  Object.entries(
+    porEmpresa
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  );
+
+new Chart(
+
+  document.getElementById(
+    "graficoEmpresaInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+    labels:
+  empresasOrdenadas.map(
+    x => x[0]
+  ),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+      data:
+  empresasOrdenadas.map(
+    x => x[1]
+  ),
+
+        backgroundColor:
+          "#8b5cf6"
+
+      }]
+
+    },
+
+  options: {
+
+  responsive: true,
+
+  maintainAspectRatio: false,
+
+  indexAxis: "y",
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 16
+
+      }
+
+    }
+
+  }
+
+}
+
+  }
+
+);
+
+// ==========================
+// GRAFICO SUBTIPO
+// ==========================
+
+  const subtiposOrdenados =
+
+  Object.entries(
+    porSubtipo
+  )
+
+  .sort(
+    (a,b) => b[1] - a[1]
+  );
+
+new Chart(
+
+  document.getElementById(
+    "graficoSubtipoInforme"
+  ),
+
+  {
+
+    type: "bar",
+
+    data: {
+
+      labels:
+
+        subtiposOrdenados.map(
+  ([nombre]) => {
+
+          if (
+            nombre.length > 30
+          ) {
+
+            const mitad =
+              Math.floor(
+                nombre.length / 2
+              );
+
+            const espacio =
+              nombre.indexOf(
+                " ",
+                mitad
+              );
+
+            if (espacio > 0) {
+
+              return [
+
+                nombre.substring(
+                  0,
+                  espacio
+                ),
+
+                nombre.substring(
+                  espacio + 1
+                )
+
+              ];
+
+            }
+
+          }
+
+          return nombre;
+
+        }),
+
+      datasets: [{
+
+        label:
+          "Emergencias",
+
+        data:
+  subtiposOrdenados.map(
+    x => x[1]
+  ),
+
+        backgroundColor:
+          "#14b8a6"
+
+      }]
+
+    },
+
+  options: {
+
+  indexAxis: "y",
+
+  responsive: true,
+
+  maintainAspectRatio: false,
+
+  plugins: {
+
+    datalabels: {
+
+      color: "#ffffff",
+
+      textStrokeColor: "#000000",
+
+      textStrokeWidth: 2,
+
+      font: {
+
+        weight: "bold",
+
+        size: 14
 
       }
 
