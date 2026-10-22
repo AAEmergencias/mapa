@@ -3072,6 +3072,17 @@ document.getElementById(
 };
 
 document.getElementById(
+  "btnInformeJefatura"
+).onclick = () => {
+
+  window.open(
+    "informe.html",
+    "_blank"
+  );
+
+};
+
+document.getElementById(
   "btnWallboardDirecto"
 ).onclick = () => {
 
@@ -4245,6 +4256,11 @@ const btnBitacora =
     "btnBitacora"
   );
 
+    const btnInformeJefatura =
+  document.getElementById(
+    "btnInformeJefatura"
+  );
+
 const btnPanelAdmin =
   document.getElementById(
     "btnPanelAdmin"
@@ -4277,6 +4293,9 @@ if (rol === "operador") {
 
 else if (rol === "admin") {
 
+  btnInformeJefatura.style.display =
+  "block";
+
   btnUnidades.style.display =
   "none";
 
@@ -4304,6 +4323,9 @@ else if (rol === "admin") {
 }
 
 else if (rol === "superadmin") {
+
+  btnInformeJefatura.style.display =
+  "block";
 
   btnUnidades.style.display =
     "block";
