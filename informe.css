@@ -826,3 +826,19 @@ padding-left: 12px;
 
 }
 
+.filaOculta {
+
+  display: none;
+
+}
+
+@media print {
+
+  .filaOculta {
+
+    display: table-row !important;
+
+  }
+
+}
+
