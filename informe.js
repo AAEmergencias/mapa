@@ -1461,7 +1461,6 @@ if (btnVerTodas) {
   };
 
 }
-}
 
 
   Chart.register(
