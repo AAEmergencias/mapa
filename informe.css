@@ -411,8 +411,14 @@ section h2 {
 }
 
 @media print {
-
   
+
+  #graficoPUEInforme {
+
+  height: 280px !important;
+
+}
+
 
   #btnImprimir {
 
@@ -553,11 +559,11 @@ section h2 {
 
   }
 
-  canvas {
+canvas {
 
-    max-height: 220px !important;
+  max-height: 260px !important;
 
-  }
+}
 
   #tablaEmergencias th {
 
@@ -840,7 +846,7 @@ padding-left: 12px;
 
   }
 
-}
+    }
 
 .contenedorVerMas {
 
