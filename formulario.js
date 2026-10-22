@@ -883,5 +883,73 @@ function formatearHora(hora) {
   return `${h}:${m}`;
 }
 
+    const btnAgregarRespondedor =
+  document.getElementById(
+    "btnAgregarRespondedor"
+  );
+
+if (btnAgregarRespondedor) {
+
+  btnAgregarRespondedor.onclick = () => {
+
+    const tabla =
+
+      document.querySelector(
+        "#tablaRespondedores tbody"
+      );
+
+    const fila =
+
+      document.createElement("tr");
+
+    fila.innerHTML = `
+
+      <td>
+
+        <input
+          type="text"
+          placeholder="Ej: SAMU">
+
+      </td>
+
+      <td>
+
+        <input
+          type="time">
+
+      </td>
+
+      <td>
+
+        <input
+          type="time">
+
+      </td>
+
+      <td>
+
+        <input
+          type="time">
+
+      </td>
+
+      <td>
+
+        <input
+          type="text"
+          placeholder="Observaciones">
+
+      </td>
+
+    `;
+
+    tabla.appendChild(
+      fila
+    );
+
+  };
+
+}
+
 // ✅ cerrar todo el script
 });
