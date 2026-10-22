@@ -209,3 +209,29 @@ body::before {
   text-align: center;
 
 }
+
+#tablaRespondedores {
+
+  width: 100%;
+
+  border-spacing: 12px;
+
+}
+
+#tablaRespondedores input[type="time"] {
+
+  width: 110px;
+
+}
+
+#tablaRespondedores td:last-child {
+
+  white-space: nowrap;
+
+}
+
+#tablaRespondedores input[type="text"] {
+
+  min-width: 180px;
+
+}
