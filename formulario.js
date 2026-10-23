@@ -117,6 +117,92 @@ if (
 
   document.getElementById("operador").value = datos.operador || "";
 
+  if (
+  datos.respondedores &&
+  datos.respondedores.length > 0
+) {
+
+  const tbody =
+
+    document.querySelector(
+      "#tablaRespondedores tbody"
+    );
+
+  tbody.innerHTML = "";
+
+  datos.respondedores.forEach(
+    respondedor => {
+
+      const fila =
+        document.createElement(
+          "tr"
+        );
+
+      fila.innerHTML = `
+
+        <td>
+          <input
+            type="text"
+            value="${respondedor.unidad || ""}">
+        </td>
+
+        <td>
+          <input
+            type="time"
+            value="${respondedor.horaDespacho || ""}">
+        </td>
+
+        <td>
+          <input
+            type="time"
+            value="${respondedor.horaLlegada || ""}">
+        </td>
+
+        <td>
+          <input
+            type="time"
+            value="${respondedor.horaRegreso || ""}">
+        </td>
+
+        <td>
+          <input
+            type="text"
+            value="${respondedor.observaciones || ""}">
+        </td>
+
+        <td>
+
+          <button
+            type="button"
+            class="btnEliminarFila">
+
+            ❌
+
+          </button>
+
+        </td>
+
+      `;
+
+      tbody.appendChild(
+        fila
+      );
+
+      fila
+        .querySelector(
+          ".btnEliminarFila"
+        )
+        .onclick = () => {
+
+          fila.remove();
+
+        };
+
+    }
+  );
+
+}
+
  if (
   parteVer &&
   !parteEditar
