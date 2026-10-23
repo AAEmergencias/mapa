@@ -530,6 +530,42 @@ if (
 document.getElementById("formParte").onsubmit = async (e) => {
     e.preventDefault();
 
+  const respondedores =
+
+  Array.from(
+
+    document.querySelectorAll(
+      "#tablaRespondedores tbody tr"
+    )
+
+  ).map(fila => {
+
+    const inputs =
+      fila.querySelectorAll(
+        "input"
+      );
+
+    return {
+
+      unidad:
+        inputs[0]?.value || "",
+
+      horaDespacho:
+        inputs[1]?.value || "",
+
+      horaLlegada:
+        inputs[2]?.value || "",
+
+      horaRegreso:
+        inputs[3]?.value || "",
+
+      observaciones:
+        inputs[4]?.value || ""
+
+    };
+
+  });
+
     let parte = {
 
       reportaNombre:
@@ -628,8 +664,11 @@ antiguedadLaboral:
       pue: document.getElementById("pue").value,
       descripcionPue: document.getElementById("descPue").value,
 
-      operador: document.getElementById("operador").value
-    };
+      operador: document.getElementById("operador").value,
+
+respondedores:
+  respondedores
+    };  
 
     let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
     let editando = JSON.parse(localStorage.getItem("parteEditar"));
