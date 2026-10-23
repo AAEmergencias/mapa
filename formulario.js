@@ -117,6 +117,61 @@ if (
 
   document.getElementById("operador").value = datos.operador || "";
 
+  document.getElementById(
+  "reportaNombre"
+).value =
+
+  datos.reportaNombre || "";
+
+document.getElementById(
+  "reportaCargo"
+).value =
+
+  datos.reportaCargo || "";
+
+document.getElementById(
+  "reportaEmpresa"
+).value =
+
+  datos.reportaEmpresa || "";
+
+document.getElementById(
+  "lugarExacto"
+).value =
+
+  datos.lugarExacto || "";
+
+document.getElementById(
+  "detalleRecepcion"
+).value =
+
+  datos.detalleRecepcion || "";
+
+document.getElementById(
+  "lesionadosRecepcion"
+).value =
+
+  datos.lesionadosRecepcion || "";
+
+document.getElementById(
+  "condicionesEntorno"
+).value =
+
+  datos.condicionesEntorno || "";
+
+document.getElementById(
+  "estadoActualRecepcion"
+).value =
+
+  datos.estadoActualRecepcion || "";
+
+document.getElementById(
+  "medidasIniciales"
+).value =
+
+  datos.medidasIniciales || "";
+
+
   if (
   datos.respondedores &&
   datos.respondedores.length > 0
@@ -168,6 +223,87 @@ if (
           <input
             type="text"
             value="${respondedor.observaciones || ""}">
+        </td>
+
+        <td>
+
+          <button
+            type="button"
+            class="btnEliminarFila">
+
+            ❌
+
+          </button>
+
+        </td>
+
+      `;
+
+      tbody.appendChild(
+        fila
+      );
+
+      fila
+        .querySelector(
+          ".btnEliminarFila"
+        )
+        .onclick = () => {
+
+          fila.remove();
+
+        };
+
+    }
+  );
+
+}
+
+  if (
+  datos.hitos &&
+  datos.hitos.length > 0
+) {
+
+  const tbody =
+
+    document.querySelector(
+      "#tablaHitos tbody"
+    );
+
+  tbody.innerHTML = "";
+
+  datos.hitos.forEach(
+    hito => {
+
+      const fila =
+
+        document.createElement(
+          "tr"
+        );
+
+      fila.innerHTML = `
+
+        <td>
+          <input
+            type="time"
+            value="${hito.hora || ""}">
+        </td>
+
+        <td>
+          <input
+            type="text"
+            value="${hito.personaLugar || ""}">
+        </td>
+
+        <td>
+          <input
+            type="text"
+            value="${hito.detalle || ""}">
+        </td>
+
+        <td>
+          <input
+            type="text"
+            value="${hito.observaciones || ""}">
         </td>
 
         <td>
