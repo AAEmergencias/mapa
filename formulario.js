@@ -566,6 +566,39 @@ document.getElementById("formParte").onsubmit = async (e) => {
 
   });
 
+  const hitos =
+
+  Array.from(
+
+    document.querySelectorAll(
+      "#tablaHitos tbody tr"
+    )
+
+  ).map(fila => {
+
+    const inputs =
+      fila.querySelectorAll(
+        "input"
+      );
+
+    return {
+
+      hora:
+        inputs[0]?.value || "",
+
+      personaLugar:
+        inputs[1]?.value || "",
+
+      detalle:
+        inputs[2]?.value || "",
+
+      observaciones:
+        inputs[3]?.value || ""
+
+    };
+
+  });
+
     let parte = {
 
       reportaNombre:
@@ -667,7 +700,11 @@ antiguedadLaboral:
       operador: document.getElementById("operador").value,
 
 respondedores:
-  respondedores
+  respondedores,
+
+hitos:
+  hitos,
+      
     };  
 
     let partes = JSON.parse(localStorage.getItem("partesEmergencia")) || [];
