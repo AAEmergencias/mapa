@@ -789,28 +789,34 @@ function crearFilaUnidad(
 
 }
   
-  const nombresBrigadas = {
+const brigadas =
 
-  "B1": "Bronces",
-  "B2": "Tórtolas",
-  "UIR-M": "Mina",
-  "UIR-E": "Ermita",
-  "UIR-S": "STP"
+  unidades.filter(unidad => {
 
-};
+    const codigo =
+      unidad.codigo || "";
 
-const brigadas = [
-  
-"B1",
-"B2",
-"UIR-M",
-"UIR-E",
-"UIR-S"
- ];
+    return (
+
+      codigo.startsWith("B") ||
+
+      codigo.startsWith("UIR") ||
+
+      codigo.startsWith("R")
+
+    );
+
+  });
 
 let htmlBrigadas = "";
 
-brigadas.forEach(brigada => {
+brigadas.forEach(unidad => {
+
+  const brigada =
+    unidad.codigo;
+
+  const nombreBrigada =
+    unidad.nombre;
 
   const estadoActual =
     estadosOperacionales.find(
@@ -820,7 +826,7 @@ brigadas.forEach(brigada => {
 if (!estadoActual) {
 
   htmlBrigadas += crearFilaUnidad(
-    `${brigada} - ${nombresBrigadas[brigada]}`,
+    nombreBrigada,
     "🟢 Disponible"
   );
 
@@ -832,84 +838,84 @@ if (!estadoActual) {
 
     case "6-T":
     htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🟠 En Trayecto"
 );
       break;
 
     case "6-3":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🔴 En el Lugar"
 );
       break;
 
     case "6-7":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🟡 Situación Controlada"
 );
       break;
 
     case "6-15":
      htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🏥 Centro Asistencial"
 );
       break;
 
     case "6-9":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🔵 Se Retira"
 );
       break;
 
     case "6-13":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🟣 Otros Trámites"
 );
       break;
 
       case "6-11":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🔴 En Panne"
 );
   break;
 
 case "6-12":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🚧 Sufre Colisión"
 );
   break;
 
 case "6-14":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "⛽ Servicentro"
 );
   break;
 
 case "6-18":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🚇 Ingresa a Túnel"
 );
   break;
 
 case "6-19":
 htmlBrigadas += crearFilaUnidad(
-  `${brigada} - ${nombresBrigadas[brigada]}`,
+  nombreBrigada,
   "🚇 Sale del Túnel"
 );
   break;
 
     default:
   htmlBrigadas += crearFilaUnidad(
-    `${brigada} - ${nombresBrigadas[brigada]}`,
+    nombreBrigada,
     "🟢 Disponible"
   );
   break;
