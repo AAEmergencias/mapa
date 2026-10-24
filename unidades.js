@@ -273,6 +273,14 @@ document.getElementById(
 ).value = "";
 
   document.getElementById(
+  "caracteristicasUnidad"
+).value = "";
+
+document.getElementById(
+  "materialMenorUnidad"
+).value = "";
+
+  document.getElementById(
     "modalUnidad"
   ).style.display = "flex";
 
@@ -326,6 +334,18 @@ document.getElementById(
     "activaUnidad"
   ).checked;
 
+  const caracteristicas =
+
+  document.getElementById(
+    "caracteristicasUnidad"
+  ).value.trim();
+
+const materialMenor =
+
+  document.getElementById(
+    "materialMenorUnidad"
+  ).value.trim();
+
    if (
 
     !codigo ||
@@ -346,27 +366,35 @@ document.getElementById(
 
   }
 
-    await setDoc(
-    doc(
-      db,
-      "unidades",
-      codigo
-    ),
-    {
+  await setDoc(
+  doc(
+    db,
+    "unidades",
+    codigo
+  ),
+  {
 
-      codigo,
+    codigo,
 
-      nombre,
+    nombre,
 
-      base,
+    base,
 
-      activa: activa,
+    activa: activa,
 
-      categorias:
-  categorias
+    categorias:
+      categorias,
 
-    }
-  );
+    caracteristicas:
+      caracteristicas,
+
+    materialMenor:
+      materialMenor
+
+  }
+);
+
+  
 
     alert(
     "✅ Unidad creada"
