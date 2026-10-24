@@ -67,12 +67,21 @@ const emergenciasSnapshot =
     )
   );
 
+    const unidadesSnapshot =
+  await getDocs(
+    collection(
+      db,
+      "unidades"
+    )
+  );
+
 console.log("✅ EMERGENCIAS OK");
 
     let partes = [];
     let traslados = [];
     let estadosOperacionales = [];
     let emergenciasActivas = [];
+    let unidades = [];
 
     partesSnapshot.forEach(doc => {
 
@@ -130,6 +139,17 @@ console.log("✅ EMERGENCIAS OK");
 
 });
 
+    unidadesSnapshot.forEach(
+  doc => {
+
+    unidades.push(
+      doc.data()
+    );
+
+  }
+);
+    
+
 
     console.log("PARTES:", partes);
     console.log("TRASLADOS:", traslados);
@@ -152,7 +172,8 @@ actualizarPantalla(
   partes,
   traslados,
   estadosOperacionales,
-  emergenciasActivas
+  emergenciasActivas,
+  unidades
 );
 
   }
@@ -175,9 +196,15 @@ function actualizarPantalla(
   partes,
   traslados,
   estadosOperacionales,
-  emergenciasActivas
+  emergenciasActivas,
+  unidades
 ) {
 
+  console.log(
+  "UNIDADES WALLBOARD:",
+  unidades
+);
+  
   // ==========================
   // ORDENAR PARTES
   // ==========================
