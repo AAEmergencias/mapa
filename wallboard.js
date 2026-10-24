@@ -931,25 +931,26 @@ document.getElementById(
   // AMBULANCIAS
   // ==========================
 
-  const nombresAmbulancias = {
+  const ambulancias =
 
-  "S1": "Pérez Caldera",
-  "S2": "Poli Tórtolas",
-  "S3": "SPA 220"
+  unidades.filter(unidad => {
 
-};
+    const codigo =
+      unidad.codigo || "";
 
-const ambulancias = [
-  
-"S1",
-"S2",
-"S3"
-  
- ];
+    return codigo.startsWith("S");
+
+  });
 
 let htmlAmbulancias = "";
 
 ambulancias.forEach(unidad => {
+
+  const codigo =
+    unidad.codigo;
+
+  const nombreAmbulancia =
+    unidad.nombre;
 
   const estadoActual =
     estadosOperacionales.find(
@@ -959,7 +960,7 @@ ambulancias.forEach(unidad => {
   if (!estadoActual) {
 
    htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
   "🟢 Disponible"
 );
     return;
@@ -970,21 +971,21 @@ ambulancias.forEach(unidad => {
 
     case "6-T":
  htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
   "🟠 En Trayecto"
 );
   break;
 
     case "6-3":
     htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
   "🔴 En el Lugar"
 );
       break;
 
     case "6-7":
        htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
   "🟡 Situación Controlada" 
 );
       break;
@@ -992,7 +993,7 @@ ambulancias.forEach(unidad => {
     case "6-15":
 
 htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
   "🏥 Centro Asistencial",
   estadoActual.notas || ""
 );
@@ -1001,7 +1002,7 @@ break;
 
     case "6-9":
        htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
   "🔵 Se Retira"
     );  
       break;
@@ -1009,7 +1010,7 @@ break;
    case "6-13":
 
 htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
   "🟣 Otros Trámites",
   estadoActual.notas || ""
 );
@@ -1018,42 +1019,42 @@ break;
 
     default:
     htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
     "🟢 Disponible"
       );
       break;
 
       case "6-11":
    htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
     "🔴 En Panne"
      );
       break;
 
 case "6-12":
      htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
     "🚧 Sufre Colisión"
   );
       break;
 
 case "6-14":
    htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
     "⛽ Servicentro"
   );
       break;
 
 case "6-18":
    htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
   "🚇 Ingresa a Túnel"
   );
       break;
 
 case "6-19":
    htmlAmbulancias += crearFilaUnidad(
-  `${unidad} - ${nombresAmbulancias[unidad]}`,
+  nombreAmbulancia,
      "🚇 Sale del Túnel"
   );
       break;
