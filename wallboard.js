@@ -798,16 +798,23 @@ const brigadas =
 
     return (
 
-      codigo.startsWith("B") ||
+      unidad.activa === true &&
 
-      codigo.startsWith("UIR") ||
+      (
 
-      codigo.startsWith("R")
+        codigo.startsWith("B") ||
+
+        codigo.startsWith("UIR") ||
+
+        codigo.startsWith("R")
+
+      )
 
     );
 
   });
 
+  
 let htmlBrigadas = "";
 
 brigadas.forEach(unidad => {
@@ -931,14 +938,20 @@ document.getElementById(
   // AMBULANCIAS
   // ==========================
 
-  const ambulancias =
+const ambulancias =
 
   unidades.filter(unidad => {
 
     const codigo =
       unidad.codigo || "";
 
-    return codigo.startsWith("S");
+    return (
+
+      unidad.activa === true &&
+
+      codigo.startsWith("S")
+
+    );
 
   });
 
