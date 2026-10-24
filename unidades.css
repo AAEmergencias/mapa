@@ -253,3 +253,37 @@ h1 {
     transform: scale(1.15);
 
 }
+
+
+.campoGrande {
+
+  margin-top: 15px;
+
+}
+
+.campoGrande label {
+
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-weight: bold;
+
+}
+
+.campoGrande textarea {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  resize: vertical;
+
+  border-radius: 8px;
+
+  padding: 10px;
+
+  font-family: inherit;
+
+}
+
