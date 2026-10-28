@@ -1,0 +1,49 @@
+body{
+    margin:0;
+    padding:20px;
+    background:#f3f4f6;
+    font-family:Arial,sans-serif;
+}
+
+header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.botones{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:20px;
+}
+
+button{
+    border:none;
+    padding:15px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.verde{
+    background:#16a34a;
+    color:white;
+}
+
+.rojo{
+    background:#dc2626;
+    color:white;
+}
+
+.azul{
+    background:#2563eb;
+    color:white;
+}

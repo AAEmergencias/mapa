@@ -1,1 +1,64 @@
-prueba
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cóndor Brigadista</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🚒 Cóndor Brigadista</h1>
+    </header>
+
+    <main>
+
+        <div class="card">
+
+            <h2 id="tipo">Vehicular</h2>
+
+            <p>
+                <strong>Subtipo:</strong>
+                <span id="subtipo">
+                    Colisión vehículos livianos
+                </span>
+            </p>
+
+            <p>
+                <strong>Notas:</strong>
+            </p>
+
+            <div id="notas">
+                Sin observaciones
+            </div>
+
+            <div class="botones">
+
+                <button id="btnRecibido" class="verde">
+                    ✅ RECIBIDO
+                </button>
+
+                <button id="btnRechazar" class="rojo">
+                    ❌ RECHAZAR
+                </button>
+
+                <button id="btnNavegar" class="azul">
+                    🗺️ NAVEGAR
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
